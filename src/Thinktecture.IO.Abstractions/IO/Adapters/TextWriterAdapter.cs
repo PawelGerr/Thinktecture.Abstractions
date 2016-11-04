@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Thinktecture.IO
+namespace Thinktecture.IO.Adapters
 {
 	public class TextWriterAdapter : ITextWriter
 	{

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Thinktecture.IO
+namespace Thinktecture.IO.Adapters
 {
 	public class DirectoryAdapter : IDirectory
 	{

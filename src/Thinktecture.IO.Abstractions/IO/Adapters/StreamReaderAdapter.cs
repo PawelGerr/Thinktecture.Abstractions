@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace Thinktecture.IO
+namespace Thinktecture.IO.Adapters
 {
 	public class StreamReaderAdapter : TextReaderAdapter, IStreamReader
 	{

@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Thinktecture.IO
+namespace Thinktecture.IO.Adapters
 {
 	public class FileSystemInfoAdapter : IFileSystemInfo
 	{

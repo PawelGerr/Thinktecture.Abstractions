@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Text;
 
-namespace Thinktecture.Runtime
+namespace Thinktecture.Runtime.InteropServices
 {
 	/// <summary>
 	/// Represents a wrapper class for operating system handles. This class must be inherited.

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+using Thinktecture.IO;
+using Thinktecture.IO.Adapters;
 
-namespace Thinktecture.IO
+namespace Thinktecture
 {
 	public static class FileStreamExtensions
 	{

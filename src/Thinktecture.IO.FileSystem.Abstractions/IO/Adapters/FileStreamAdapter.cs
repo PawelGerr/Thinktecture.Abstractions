@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using Thinktecture.IO.Adapters;
+using Thinktecture.Win32.SafeHandles;
 
-namespace Thinktecture.IO
+namespace Thinktecture.IO.Adapters
 {
 	public class FileStreamAdapter : StreamAdapter, IFileStream
 	{

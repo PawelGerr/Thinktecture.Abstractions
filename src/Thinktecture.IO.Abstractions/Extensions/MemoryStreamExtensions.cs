@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
+﻿using System.IO;
+using Thinktecture.IO;
+using Thinktecture.IO.Adapters;
 
-namespace Thinktecture.IO.Extensions
+namespace Thinktecture
 {
-    public static class MemoryStreamExtensions
+	public static class MemoryStreamExtensions
     {
 		/// <summary>
 		/// Converts provided stream to <see cref="IMemoryStream"/>;

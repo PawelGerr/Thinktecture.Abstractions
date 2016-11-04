@@ -1,8 +1,6 @@
-﻿using System;
-using System.IO;
-using Thinktecture.IO.Extensions;
+﻿using System.IO;
 
-namespace Thinktecture.IO
+namespace Thinktecture.IO.Adapters
 {
 	public class FileInfoAdapter : FileSystemInfoAdapter, IFileInfo
 	{

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Win32.SafeHandles;
-using Thinktecture.Runtime;
+﻿using Microsoft.Win32.SafeHandles;
+using Thinktecture.Runtime.InteropServices;
 
-namespace Thinktecture.IO
+namespace Thinktecture.Win32.SafeHandles
 {
 	/// <summary>Represents a wrapper class for a file handle. </summary>
 	public interface ISafeFileHandle : ISafeHandle

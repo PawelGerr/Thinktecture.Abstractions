@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
+﻿using System.Runtime.InteropServices;
+using Thinktecture.Runtime.InteropServices;
+using Thinktecture.Runtime.InteropServices.Adapters;
 
-namespace Thinktecture.Runtime
+namespace Thinktecture
 {
 	public static class SafeHandleExtensions
 	{

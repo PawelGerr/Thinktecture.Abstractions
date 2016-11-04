@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Win32.SafeHandles;
+﻿using Microsoft.Win32.SafeHandles;
+using Thinktecture.Win32.SafeHandles;
+using Thinktecture.Win32.SafeHandles.Adapters;
 
-namespace Thinktecture.IO
+namespace Thinktecture
 {
 	public static class SafeFileHandleExtensions
 	{

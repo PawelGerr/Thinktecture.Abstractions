@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Thinktecture.IO
+namespace Thinktecture.IO.Adapters
 {
 	public class DirectoryInfoAdapter : FileSystemInfoAdapter, IDirectoryInfo
 	{

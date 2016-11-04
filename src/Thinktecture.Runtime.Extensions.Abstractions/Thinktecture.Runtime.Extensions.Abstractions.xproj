@@ -6,8 +6,8 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>52d30479-dffe-4f95-a124-351bb07a78aa</ProjectGuid>
-    <RootNamespace>Thinktecture</RootNamespace>
+    <ProjectGuid>8da9b6e6-a52c-4c3f-bd70-66543dc28711</ProjectGuid>
+    <RootNamespace>Thinktecture.Runtime</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>

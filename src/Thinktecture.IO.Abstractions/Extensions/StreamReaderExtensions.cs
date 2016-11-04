@@ -1,6 +1,8 @@
 ﻿using System.IO;
+using Thinktecture.IO;
+using Thinktecture.IO.Adapters;
 
-namespace Thinktecture.IO
+namespace Thinktecture
 {
 	public static class StreamReaderExtensions
 	{

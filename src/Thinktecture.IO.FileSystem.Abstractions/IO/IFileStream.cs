@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Thinktecture.Win32.SafeHandles;
 
 namespace Thinktecture.IO
 {

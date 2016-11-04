@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Text;
 
-namespace Thinktecture.Runtime
+namespace Thinktecture.Runtime.InteropServices.Adapters
 {
 	public class SafeHandleAdapter : ISafeHandle
 	{

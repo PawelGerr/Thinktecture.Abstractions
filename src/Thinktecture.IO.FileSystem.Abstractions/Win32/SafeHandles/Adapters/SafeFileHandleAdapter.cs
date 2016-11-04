@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.Win32.SafeHandles;
-using Thinktecture.Runtime;
+using Thinktecture.Runtime.InteropServices.Adapters;
 
-namespace Thinktecture.IO
+namespace Thinktecture.Win32.SafeHandles.Adapters
 {
 	public class SafeFileHandleAdapter : SafeHandleAdapter, ISafeFileHandle
 	{
