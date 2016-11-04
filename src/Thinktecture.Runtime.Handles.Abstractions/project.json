@@ -1,0 +1,13 @@
+﻿{
+	"version": "1.0.0-*",
+
+	"dependencies": {
+		"System.Runtime.Handles": "4.0.1"
+	},
+
+	"frameworks": {
+		"netstandard1.3": {
+    
+		}
+	}
+}
