@@ -9,8 +9,8 @@ namespace Thinktecture
 		/// <summary>
 		/// Converts safe handle to <see cref="ISafeHandle"/>.
 		/// </summary>
-		/// <param name="handle"></param>
-		/// <returns>Converted safe handle.</returns>
+		/// <param name="handle"><see cref="SafeHandle"/> to convert</param>
+		/// <returns>Instance of <see cref="ISafeHandle"/>.</returns>
 		public static ISafeHandle ToInterface(this SafeHandle handle)
 		{
 			return new SafeHandleAdapter(handle);

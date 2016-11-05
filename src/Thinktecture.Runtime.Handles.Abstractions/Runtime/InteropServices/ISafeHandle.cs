@@ -9,9 +9,9 @@ namespace Thinktecture.Runtime.InteropServices
 	public interface ISafeHandle : IDisposable
 	{
 		/// <summary>
-		/// Get inner safe file handle.
+		/// Get inner instance of <see cref="SafeHandle"/>.
 		/// </summary>
-		/// <returns>A safe file handle.</returns>
+		/// <returns>An instance of <see cref="SafeHandle"/>.</returns>
 		SafeHandle ToImplementation();
 
 		/// <summary>Gets a value indicating whether the handle is closed.</summary>
