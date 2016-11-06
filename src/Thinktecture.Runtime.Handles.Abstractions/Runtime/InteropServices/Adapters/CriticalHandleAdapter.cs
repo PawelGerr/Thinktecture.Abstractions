@@ -3,6 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace Thinktecture.Runtime.InteropServices.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="CriticalHandle"/>.
+	/// </summary>
 	public class CriticalHandleAdapter : ICriticalHandle
 	{
 		private readonly CriticalHandle _handle;
@@ -13,6 +16,10 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 		/// <inheritdoc />
 		public bool IsInvalid => _handle.IsInvalid;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CriticalHandleAdapter"/> class.
+		/// </summary>
+		/// <param name="handle">Handle to be used by the adapter.</param>
 		public CriticalHandleAdapter(CriticalHandle handle)
 		{
 			if (handle == null)

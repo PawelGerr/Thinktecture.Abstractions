@@ -3,6 +3,9 @@ using Thinktecture.Adapters;
 
 namespace Thinktecture
 {
+	/// <summary>
+	/// Extensions for <see cref="Random"/>.
+	/// </summary>
 	public static class RandomExtensions
 	{
 		/// <summary>

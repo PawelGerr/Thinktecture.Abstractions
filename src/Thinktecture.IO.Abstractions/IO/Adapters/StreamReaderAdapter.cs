@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="StreamReader"/>.
+	/// </summary>
 	public class StreamReaderAdapter : TextReaderAdapter, IStreamReader
 	{
 		/// <summary>A <see cref="T:System.IO.StreamReader" /> object around an empty stream.</summary>
@@ -12,7 +15,7 @@ namespace Thinktecture.IO.Adapters
 
 		private readonly StreamReader _reader;
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StreamReader" /> class for the specified stream.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream.</summary>
 		/// <param name="stream">The stream to be read. </param>
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="stream" /> does not support reading. </exception>
@@ -23,7 +26,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StreamReader" /> class for the specified stream, with the specified byte order mark detection option.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified byte order mark detection option.</summary>
 		/// <param name="stream">The stream to be read. </param>
 		/// <param name="detectEncodingFromByteOrderMarks">Indicates whether to look for byte order marks at the beginning of the file. </param>
 		/// <exception cref="T:System.ArgumentException">
@@ -35,7 +38,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StreamReader" /> class for the specified stream, with the specified character encoding and byte order mark detection option.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding and byte order mark detection option.</summary>
 		/// <param name="stream">The stream to be read. </param>
 		/// <param name="encoding">The character encoding to use. </param>
 		/// <param name="detectEncodingFromByteOrderMarks">Indicates whether to look for byte order marks at the beginning of the file. </param>
@@ -48,7 +51,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StreamReader" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
 		/// <param name="stream">The stream to be read. </param>
 		/// <param name="encoding">The character encoding to use. </param>
 		/// <param name="detectEncodingFromByteOrderMarks">Indicates whether to look for byte order marks at the beginning of the file. </param>
@@ -63,7 +66,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StreamReader" /> class for the specified stream based on the specified character encoding, byte order mark detection option, and buffer size, and optionally leaves the stream open.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream based on the specified character encoding, byte order mark detection option, and buffer size, and optionally leaves the stream open.</summary>
 		/// <param name="stream">The stream to read.</param>
 		/// <param name="encoding">The character encoding to use.</param>
 		/// <param name="detectEncodingFromByteOrderMarks">true to look for byte order marks at the beginning of the file; otherwise, false.</param>
@@ -74,6 +77,10 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="StreamReaderAdapter" /> class.
+		/// </summary>
+		/// <param name="reader">Reader to be used by the adapter.</param>
 		public StreamReaderAdapter(StreamReader reader)
 			: base(reader)
 		{

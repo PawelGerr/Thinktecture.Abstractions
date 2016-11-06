@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="TextReader"/>.
+	/// </summary>
 	public class TextReaderAdapter : ITextReader
 	{
 		/// <summary>Provides a TextReader with no data to read from.</summary>
@@ -12,6 +15,10 @@ namespace Thinktecture.IO.Adapters
 
 		private readonly TextReader _reader;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="TextReaderAdapter" /> class.
+		/// </summary>
+		/// <param name="reader">Reader to be used by the adapter.</param>
 		public TextReaderAdapter(TextReader reader)
 		{
 			if (reader == null)

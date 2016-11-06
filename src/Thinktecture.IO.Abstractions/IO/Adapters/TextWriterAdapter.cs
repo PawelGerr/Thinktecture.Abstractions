@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="TextWriter"/>.
+	/// </summary>
 	public class TextWriterAdapter : ITextWriter
 	{
 		/// <summary>Provides a TextWriter with no backing store that can be written to, but not read from.</summary>
@@ -13,6 +16,10 @@ namespace Thinktecture.IO.Adapters
 
 		private readonly TextWriter _writer;
 
+		/// <summary>
+		/// Creates an instance of <see cref="TextWriterAdapter"/>.
+		/// </summary>
+		/// <param name="writer">write to be used by the adapter.</param>
 		public TextWriterAdapter(TextWriter writer)
 		{
 			if (writer == null)

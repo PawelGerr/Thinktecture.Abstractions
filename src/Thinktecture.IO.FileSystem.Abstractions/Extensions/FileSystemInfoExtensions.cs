@@ -4,6 +4,9 @@ using Thinktecture.IO.Adapters;
 
 namespace Thinktecture
 {
+	/// <summary>
+	/// Extensions for <see cref="FileSystemInfo"/>.
+	/// </summary>
 	public static class FileSystemInfoExtensions
 	{
 		/// <summary>

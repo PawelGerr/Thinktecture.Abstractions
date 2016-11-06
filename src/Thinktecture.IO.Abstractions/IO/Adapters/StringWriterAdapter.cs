@@ -4,24 +4,27 @@ using System.Text;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="StringWriter"/>.
+	/// </summary>
 	public class StringWriterAdapter : TextWriterAdapter, IStringWriter
 	{
 		private readonly StringWriter _writer;
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StringWriter" /> class.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StringWriterAdapter" /> class.</summary>
 		public StringWriterAdapter()
 			: this(new StringWriter())
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StringWriter" /> class with the specified format control.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StringWriterAdapter" /> class with the specified format control.</summary>
 		/// <param name="formatProvider">An <see cref="T:System.IFormatProvider" /> object that controls formatting. </param>
 		public StringWriterAdapter(IFormatProvider formatProvider)
 			: this(new StringWriter(formatProvider))
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StringWriter" /> class that writes to the specified <see cref="T:System.Text.StringBuilder" />.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StringWriterAdapter" /> class that writes to the specified <see cref="T:System.Text.StringBuilder" />.</summary>
 		/// <param name="sb">The StringBuilder to write to. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="sb" /> is null. </exception>
@@ -30,7 +33,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StringWriter" /> class that writes to the specified <see cref="T:System.Text.StringBuilder" /> and has the specified format provider.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StringWriterAdapter" /> class that writes to the specified <see cref="T:System.Text.StringBuilder" /> and has the specified format provider.</summary>
 		/// <param name="sb">The StringBuilder to write to. </param>
 		/// <param name="formatProvider">An <see cref="T:System.IFormatProvider" /> object that controls formatting. </param>
 		/// <exception cref="T:System.ArgumentNullException">
@@ -40,6 +43,10 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="StringWriterAdapter" /> class.
+		/// </summary>
+		/// <param name="writer">Writer to be used by the adapter.</param>
 		public StringWriterAdapter(StringWriter writer) : base(writer)
 		{
 			if (writer == null)

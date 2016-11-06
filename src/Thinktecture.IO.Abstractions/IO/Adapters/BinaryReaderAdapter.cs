@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="BinaryReader"/>.
+	/// </summary>
 	public class BinaryReaderAdapter : IBinaryReader
 	{
 		private readonly BinaryReader _reader;
@@ -11,7 +14,7 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		public Stream BaseStream => _reader.BaseStream;
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.BinaryReader" /> class based on the specified stream and using UTF-8 encoding.</summary>
+		/// <summary>Initializes a new instance of the <see cref="BinaryReaderAdapter" /> class based on the specified stream and using UTF-8 encoding.</summary>
 		/// <param name="input">The input stream. </param>
 		/// <exception cref="T:System.ArgumentException">The stream does not support reading, is null, or is already closed. </exception>
 		public BinaryReaderAdapter(IStream input)
@@ -19,7 +22,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.BinaryReader" /> class based on the specified stream and character encoding.</summary>
+		/// <summary>Initializes a new instance of the <see cref="BinaryReaderAdapter" /> class based on the specified stream and character encoding.</summary>
 		/// <param name="input">The input stream. </param>
 		/// <param name="encoding">The character encoding to use. </param>
 		/// <exception cref="T:System.ArgumentException">The stream does not support reading, is null, or is already closed. </exception>
@@ -30,7 +33,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.BinaryReader" /> class based on the specified stream and character encoding, and optionally leaves the stream open.</summary>
+		/// <summary>Initializes a new instance of the <see cref="BinaryReaderAdapter" /> class based on the specified stream and character encoding, and optionally leaves the stream open.</summary>
 		/// <param name="input">The input stream.</param>
 		/// <param name="encoding">The character encoding to use.</param>
 		/// <param name="leaveOpen">true to leave the stream open after the <see cref="T:System.IO.BinaryReader" /> object is disposed; otherwise, false.</param>
@@ -42,6 +45,10 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="BinaryReaderAdapter" /> class.
+		/// </summary>
+		/// <param name="reader">Reader to use by the adapter.</param>
 		public BinaryReaderAdapter(BinaryReader reader)
 		{
 			if (reader == null)

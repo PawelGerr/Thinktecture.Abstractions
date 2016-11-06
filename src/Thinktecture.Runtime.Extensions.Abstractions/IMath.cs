@@ -2,6 +2,9 @@
 
 namespace Thinktecture
 {
+	/// <summary>
+	/// Provides constants and static methods for trigonometric, logarithmic, and other common mathematical functions.
+	/// </summary>
 	public interface IMath
 	{
 		/// <summary>Represents the ratio of the circumference of a circle to its diameter, specified by the constant, π.</summary>

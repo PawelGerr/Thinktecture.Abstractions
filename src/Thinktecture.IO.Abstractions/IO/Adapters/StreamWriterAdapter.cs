@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="StreamWriter"/>.
+	/// </summary>
 	public class StreamWriterAdapter : TextWriterAdapter, IStreamWriter
 	{
 		/// <summary>Provides a StreamWriter with no backing store that can be written to, but not read from.</summary>
@@ -12,7 +15,7 @@ namespace Thinktecture.IO.Adapters
 
 		private readonly StreamWriter _writer;
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StreamWriter" /> class for the specified stream by using UTF-8 encoding and the default buffer size.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using UTF-8 encoding and the default buffer size.</summary>
 		/// <param name="stream">The stream to write to. </param>
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="stream" /> is not writable. </exception>
@@ -23,7 +26,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StreamWriter" /> class for the specified stream by using the specified encoding and the default buffer size.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using the specified encoding and the default buffer size.</summary>
 		/// <param name="stream">The stream to write to. </param>
 		/// <param name="encoding">The character encoding to use. </param>
 		/// <exception cref="T:System.ArgumentNullException">
@@ -35,7 +38,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StreamWriter" /> class for the specified stream by using the specified encoding and buffer size.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using the specified encoding and buffer size.</summary>
 		/// <param name="stream">The stream to write to. </param>
 		/// <param name="encoding">The character encoding to use. </param>
 		/// <param name="bufferSize">The buffer size, in bytes. </param>
@@ -50,7 +53,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.StreamWriter" /> class for the specified stream by using the specified encoding and buffer size, and optionally leaves the stream open.</summary>
+		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using the specified encoding and buffer size, and optionally leaves the stream open.</summary>
 		/// <param name="stream">The stream to write to.</param>
 		/// <param name="encoding">The character encoding to use.</param>
 		/// <param name="bufferSize">The buffer size, in bytes.</param>
@@ -66,6 +69,10 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="StreamWriterAdapter" /> class.
+		/// </summary>
+		/// <param name="writer">Writer to be used by the adapter.</param>
 		public StreamWriterAdapter(StreamWriter writer)
 			: base(writer)
 		{

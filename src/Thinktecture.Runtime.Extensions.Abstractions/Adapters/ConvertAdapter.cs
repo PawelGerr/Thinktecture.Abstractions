@@ -2,6 +2,9 @@
 
 namespace Thinktecture.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="Convert"/>.
+	/// </summary>
 	public class ConvertAdapter : IConvert
 	{
 		/// <inheritdoc /> 

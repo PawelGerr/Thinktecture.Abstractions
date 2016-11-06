@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="File"/>.
+	/// </summary>
 	public class FileAdapter : IFile
 	{
 		/// <inheritdoc />

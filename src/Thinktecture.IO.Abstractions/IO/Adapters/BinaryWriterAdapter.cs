@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="BinaryWriter"/>.
+	/// </summary>
 	public class BinaryWriterAdapter : IBinaryWriter
 	{
 		/// <summary>Specifies a <see cref="T:System.IO.BinaryWriter" /> with no backing store.</summary>
@@ -15,7 +18,7 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		public Stream BaseStream => _writer.BaseStream;
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.BinaryWriter" /> class based on the specified stream and using UTF-8 encoding.</summary>
+		/// <summary>Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class based on the specified stream and using UTF-8 encoding.</summary>
 		/// <param name="output">The output stream. </param>
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
@@ -25,7 +28,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.BinaryWriter" /> class based on the specified stream and character encoding.</summary>
+		/// <summary>Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class based on the specified stream and character encoding.</summary>
 		/// <param name="output">The output stream. </param>
 		/// <param name="encoding">The character encoding to use. </param>
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
@@ -36,7 +39,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.BinaryWriter" /> class based on the specified stream and character encoding, and optionally leaves the stream open.</summary>
+		/// <summary>Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class based on the specified stream and character encoding, and optionally leaves the stream open.</summary>
 		/// <param name="output">The output stream.</param>
 		/// <param name="encoding">The character encoding to use.</param>
 		/// <param name="leaveOpen">true to leave the stream open after the <see cref="T:System.IO.BinaryWriter" /> object is disposed; otherwise, false.</param>
@@ -48,10 +51,15 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class
+		/// </summary>
+		/// <param name="writer">Writer to be used by the adapter.</param>
 		public BinaryWriterAdapter(BinaryWriter writer)
 		{
 			if (writer == null)
 				throw new ArgumentNullException(nameof(writer));
+
 			_writer = writer;
 		}
 

@@ -4,6 +4,9 @@ using Thinktecture.Diagnostics.Adapters;
 
 namespace Thinktecture
 {
+	/// <summary>
+	/// Extensions for <see cref="Stopwatch"/>.
+	/// </summary>
 	public static class StopwatchExtensions
 	{
 		/// <summary>

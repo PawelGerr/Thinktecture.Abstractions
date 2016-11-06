@@ -3,16 +3,20 @@
 	"title": "Thinktecture.Runtime.Handles.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
 	"description": "Provides interfaces for types in System.Runtime.Handles: SafeHandle, CriticalHandle, SafeWaitHandle.",
-	"authors": [ "Pawel Gerr" ],
+	"authors": ["Pawel Gerr"],
 
 	"packOptions": {
 		"projectUrl": "https://github.com/PawelGerr",
-		"tags": [ "handles", "abstraction" ],
+		"tags": ["handles", "abstraction"],
 		"licenseUrl": "https://github.com/PawelGerr/LICENSE.md",
 		"repository": {
 			"type": "git",
 			"url": "git+ssh://git@github.com/PawelGerr/"
 		}
+	},
+
+	"buildOptions": {
+		"xmlDoc": true
 	},
 
 	"frameworks": {

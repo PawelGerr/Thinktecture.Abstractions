@@ -2,6 +2,9 @@
 
 namespace Thinktecture.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="Math"/>.
+	/// </summary>
 	public class MathAdapter : IMath
 	{
 		/// <inheritdoc /> 

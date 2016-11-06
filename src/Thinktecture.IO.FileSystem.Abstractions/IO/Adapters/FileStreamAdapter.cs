@@ -4,6 +4,9 @@ using Thinktecture.Win32.SafeHandles;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="FileStream"/>.
+	/// </summary>
 	public class FileStreamAdapter : StreamAdapter, IFileStream
 	{
 		private readonly FileStream _fileStream;
@@ -17,7 +20,7 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		public ISafeFileHandle SafeFileHandle => _fileStream.SafeFileHandle.ToInterface();
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.FileStream" /> class for the specified file handle, with the specified read/write permission. </summary>
+		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class for the specified file handle, with the specified read/write permission. </summary>
 		/// <param name="handle">A file handle for the file that the current FileStream object will encapsulate. </param>
 		/// <param name="access">A constant that sets the <see cref="P:System.IO.FileStream.CanRead" /> and <see cref="P:System.IO.FileStream.CanWrite" /> properties of the FileStream object. </param>
 		/// <exception cref="T:System.ArgumentException">
@@ -30,7 +33,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.FileStream" /> class for the specified file handle, with the specified read/write permission, and buffer size.</summary>
+		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class for the specified file handle, with the specified read/write permission, and buffer size.</summary>
 		/// <param name="handle">A file handle for the file that the current FileStream object will encapsulate. </param>
 		/// <param name="access">A <see cref="T:System.IO.FileAccess" /> constant that sets the <see cref="P:System.IO.FileStream.CanRead" /> and <see cref="P:System.IO.FileStream.CanWrite" /> properties of the FileStream object. </param>
 		/// <param name="bufferSize">A positive <see cref="T:System.Int32" /> value greater than 0 indicating the buffer size. The default buffer size is 4096.</param>
@@ -44,7 +47,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.FileStream" /> class for the specified file handle, with the specified read/write permission, buffer size, and synchronous or asynchronous state.</summary>
+		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class for the specified file handle, with the specified read/write permission, buffer size, and synchronous or asynchronous state.</summary>
 		/// <param name="handle">A file handle for the file that this FileStream object will encapsulate. </param>
 		/// <param name="access">A constant that sets the <see cref="P:System.IO.FileStream.CanRead" /> and <see cref="P:System.IO.FileStream.CanWrite" /> properties of the FileStream object. </param>
 		/// <param name="bufferSize">A positive <see cref="T:System.Int32" /> value greater than 0 indicating the buffer size. The default buffer size is 4096.</param>
@@ -59,7 +62,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.FileStream" /> class with the specified path and creation mode.</summary>
+		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class with the specified path and creation mode.</summary>
 		/// <param name="path">A relative or absolute path for the file that the current FileStream object will encapsulate. </param>
 		/// <param name="mode">A constant that determines how to open or create the file. </param>
 		/// <exception cref="T:System.ArgumentException">
@@ -80,7 +83,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.FileStream" /> class with the specified path, creation mode, and read/write permission.</summary>
+		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class with the specified path, creation mode, and read/write permission.</summary>
 		/// <param name="path">A relative or absolute path for the file that the current FileStream object will encapsulate. </param>
 		/// <param name="mode">A constant that determines how to open or create the file. </param>
 		/// <param name="access">A constant that determines how the file can be accessed by the FileStream object. This also determines the values returned by the <see cref="P:System.IO.FileStream.CanRead" /> and <see cref="P:System.IO.FileStream.CanWrite" /> properties of the FileStream object. <see cref="P:System.IO.FileStream.CanSeek" /> is true if <paramref name="path" /> specifies a disk file. </param>
@@ -103,7 +106,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.FileStream" /> class with the specified path, creation mode, read/write permission, and sharing permission.</summary>
+		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class with the specified path, creation mode, read/write permission, and sharing permission.</summary>
 		/// <param name="path">A relative or absolute path for the file that the current FileStream object will encapsulate. </param>
 		/// <param name="mode">A constant that determines how to open or create the file. </param>
 		/// <param name="access">A constant that determines how the file can be accessed by the FileStream object. This also determines the values returned by the <see cref="P:System.IO.FileStream.CanRead" /> and <see cref="P:System.IO.FileStream.CanWrite" /> properties of the FileStream object. <see cref="P:System.IO.FileStream.CanSeek" /> is true if <paramref name="path" /> specifies a disk file. </param>
@@ -127,7 +130,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.FileStream" /> class with the specified path, creation mode, read/write and sharing permission, and buffer size.</summary>
+		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class with the specified path, creation mode, read/write and sharing permission, and buffer size.</summary>
 		/// <param name="path">A relative or absolute path for the file that the current FileStream object will encapsulate. </param>
 		/// <param name="mode">A constant that determines how to open or create the file. </param>
 		/// <param name="access">A constant that determines how the file can be accessed by the FileStream object. This also determines the values returned by the <see cref="P:System.IO.FileStream.CanRead" /> and <see cref="P:System.IO.FileStream.CanWrite" /> properties of the FileStream object. <see cref="P:System.IO.FileStream.CanSeek" /> is true if <paramref name="path" /> specifies a disk file. </param>
@@ -152,7 +155,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.FileStream" /> class with the specified path, creation mode, read/write and sharing permission, the access other FileStreams can have to the same file, the buffer size, and additional file options.</summary>
+		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class with the specified path, creation mode, read/write and sharing permission, the access other FileStreams can have to the same file, the buffer size, and additional file options.</summary>
 		/// <param name="path">A relative or absolute path for the file that the current FileStream object will encapsulate. </param>
 		/// <param name="mode">A constant that determines how to open or create the file. </param>
 		/// <param name="access">A constant that determines how the file can be accessed by the FileStream object. This also determines the values returned by the <see cref="P:System.IO.FileStream.CanRead" /> and <see cref="P:System.IO.FileStream.CanWrite" /> properties of the FileStream object. <see cref="P:System.IO.FileStream.CanSeek" /> is true if <paramref name="path" /> specifies a disk file. </param>
@@ -178,7 +181,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.FileStream" /> class with the specified path, creation mode, read/write and sharing permission, buffer size, and synchronous or asynchronous state.</summary>
+		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class with the specified path, creation mode, read/write and sharing permission, buffer size, and synchronous or asynchronous state.</summary>
 		/// <param name="path">A relative or absolute path for the file that the current FileStream object will encapsulate. </param>
 		/// <param name="mode">A constant that determines how to open or create the file. </param>
 		/// <param name="access">A constant that determines how the file can be accessed by the FileStream object. This also determines the values returned by the <see cref="P:System.IO.FileStream.CanRead" /> and <see cref="P:System.IO.FileStream.CanWrite" /> properties of the FileStream object. <see cref="P:System.IO.FileStream.CanSeek" /> is true if <paramref name="path" /> specifies a disk file. </param>
@@ -204,6 +207,10 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="FileStream" /> class.
+		/// </summary>
+		/// <param name="fileStream">File stream to be used by the adapter.</param>
 		public FileStreamAdapter(FileStream fileStream)
 			: base(fileStream)
 		{

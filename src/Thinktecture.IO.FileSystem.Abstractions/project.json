@@ -16,6 +16,11 @@
 		}
 	},
 
+	"buildOptions": {
+		"nowarn": ["CS1734"],
+		"xmlDoc": true
+	},
+
 	"dependencies": {
 		"Thinktecture.IO.Abstractions": "1.0.0-*",
 		"Thinktecture.Runtime.Handles.Abstractions": "1.0.0-*"

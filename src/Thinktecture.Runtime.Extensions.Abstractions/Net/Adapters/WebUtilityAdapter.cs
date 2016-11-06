@@ -2,6 +2,9 @@
 
 namespace Thinktecture.Net.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="WebUtility"/>.
+	/// </summary>
 	public class WebUtilityAdapter : IWebUtility
 	{
 		/// <inheritdoc />

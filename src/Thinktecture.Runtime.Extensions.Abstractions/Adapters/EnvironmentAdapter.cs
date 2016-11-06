@@ -2,6 +2,9 @@
 
 namespace Thinktecture.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="Environment"/>.
+	/// </summary>
 	public class EnvironmentAdapter : IEnvironment
 	{
 		/// <inheritdoc />

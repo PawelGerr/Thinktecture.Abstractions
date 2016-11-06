@@ -2,6 +2,9 @@
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="Path"/>.
+	/// </summary>
 	public class PathAdapter : IPath
 	{
 		/// <inheritdoc />

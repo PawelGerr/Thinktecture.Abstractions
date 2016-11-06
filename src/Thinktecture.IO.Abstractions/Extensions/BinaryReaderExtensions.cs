@@ -4,6 +4,9 @@ using Thinktecture.IO.Adapters;
 
 namespace Thinktecture
 {
+	/// <summary>
+	/// Extensions for <see cref="BinaryReader"/>.
+	/// </summary>
 	public static class BinaryReaderExtensions
 	{
 		/// <summary>

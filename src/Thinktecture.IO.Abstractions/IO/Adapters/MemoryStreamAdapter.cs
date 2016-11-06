@@ -3,6 +3,9 @@ using System.IO;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="MemoryStream"/>.
+	/// </summary>
 	public class MemoryStreamAdapter : StreamAdapter, IMemoryStream
 	{
 		private readonly MemoryStream _stream;
@@ -14,13 +17,13 @@ namespace Thinktecture.IO.Adapters
 			set { _stream.Capacity = value; }
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.MemoryStream" /> class with an expandable capacity initialized to zero.</summary>
+		/// <summary>Initializes a new instance of the <see cref="MemoryStreamAdapter" /> class with an expandable capacity initialized to zero.</summary>
 		public MemoryStreamAdapter()
 			: this(new MemoryStream())
 		{
 		}
 
-		/// <summary>Initializes a new non-resizable instance of the <see cref="T:System.IO.MemoryStream" /> class based on the specified byte array.</summary>
+		/// <summary>Initializes a new non-resizable instance of the <see cref="MemoryStreamAdapter" /> class based on the specified byte array.</summary>
 		/// <param name="buffer">The array of unsigned bytes from which to create the current stream. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="buffer" /> is null. </exception>
@@ -29,7 +32,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new non-resizable instance of the <see cref="T:System.IO.MemoryStream" /> class based on the specified byte array with the <see cref="P:System.IO.MemoryStream.CanWrite" /> property set as specified.</summary>
+		/// <summary>Initializes a new non-resizable instance of the <see cref="MemoryStreamAdapter" /> class based on the specified byte array with the <see cref="P:System.IO.MemoryStream.CanWrite" /> property set as specified.</summary>
 		/// <param name="buffer">The array of unsigned bytes from which to create this stream. </param>
 		/// <param name="writable">The setting of the <see cref="P:System.IO.MemoryStream.CanWrite" /> property, which determines whether the stream supports writing. </param>
 		/// <exception cref="T:System.ArgumentNullException">
@@ -39,7 +42,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new non-resizable instance of the <see cref="T:System.IO.MemoryStream" /> class based on the specified region (index) of a byte array.</summary>
+		/// <summary>Initializes a new non-resizable instance of the <see cref="MemoryStreamAdapter" /> class based on the specified region (index) of a byte array.</summary>
 		/// <param name="buffer">The array of unsigned bytes from which to create this stream. </param>
 		/// <param name="index">The index into <paramref name="buffer" /> at which the stream begins. </param>
 		/// <param name="count">The length of the stream in bytes. </param>
@@ -53,7 +56,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new non-resizable instance of the <see cref="T:System.IO.MemoryStream" /> class based on the specified region of a byte array, with the <see cref="P:System.IO.MemoryStream.CanWrite" /> property set as specified.</summary>
+		/// <summary>Initializes a new non-resizable instance of the <see cref="MemoryStreamAdapter" /> class based on the specified region of a byte array, with the <see cref="P:System.IO.MemoryStream.CanWrite" /> property set as specified.</summary>
 		/// <param name="buffer">The array of unsigned bytes from which to create this stream. </param>
 		/// <param name="index">The index in <paramref name="buffer" /> at which the stream begins. </param>
 		/// <param name="count">The length of the stream in bytes. </param>
@@ -68,7 +71,7 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.MemoryStream" /> class with an expandable capacity initialized as specified.</summary>
+		/// <summary>Initializes a new instance of the <see cref="MemoryStreamAdapter" /> class with an expandable capacity initialized as specified.</summary>
 		/// <param name="capacity">The initial size of the internal array in bytes. </param>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="capacity" /> is negative. </exception>
@@ -77,6 +80,10 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="MemoryStreamAdapter" /> class.
+		/// </summary>
+		/// <param name="stream">Stream to be used by the adapter.</param>
 		public MemoryStreamAdapter(MemoryStream stream)
 			: base(stream)
 		{

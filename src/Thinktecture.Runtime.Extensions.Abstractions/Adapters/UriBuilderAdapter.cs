@@ -2,20 +2,24 @@
 
 namespace Thinktecture.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="UriBuilder"/>.
+	/// </summary>
 	public class UriBuilderAdapter : IUriBuilder
 	{
 		private readonly UriBuilder _builder;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="UriBuilder"/> class.
+		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class.
 		/// </summary>
 		public UriBuilderAdapter()
 			: this(new UriBuilder())
 		{
 		}
 
+#pragma warning disable CS1574
 		/// <summary>
-		/// Initializes a new instance of the <see cref="UriBuilder"/> class with the specified URI.
+		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class with the specified URI.
 		/// </summary>
 		/// <param name="uri">A URI string.</param>
 		/// <exception cref="ArgumentNullException"><paramref name="uri"/> is null.</exception>
@@ -33,9 +37,11 @@ namespace Thinktecture.Adapters
 			: this(new UriBuilder(uri))
 		{
 		}
+#pragma warning restore CS1574
+
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="UriBuilder"/> class with the specified scheme and host.
+		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class with the specified scheme and host.
 		/// </summary>
 		/// <param name="scheme">An Internet access protocol.</param>
 		/// <param name="hostName">A DNS-style domain name or IP address.</param>
@@ -45,7 +51,7 @@ namespace Thinktecture.Adapters
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="UriBuilder"/> class with the specified scheme, host, and port.
+		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class with the specified scheme, host, and port.
 		/// </summary>
 		/// <param name="scheme">An Internet access protocol.</param>
 		/// <param name="hostName">A DNS-style domain name or IP address.</param>
@@ -57,7 +63,7 @@ namespace Thinktecture.Adapters
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="UriBuilder"/> class with the specified scheme, host, port number, and path.
+		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class with the specified scheme, host, port number, and path.
 		/// </summary>
 		/// <param name="scheme">An Internet access protocol.</param>
 		/// <param name="hostName">A DNS-style domain name or IP address.</param>
@@ -70,7 +76,7 @@ namespace Thinktecture.Adapters
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="UriBuilder"/> class with the specified scheme, host, port number, path and query string or fragment identifier.
+		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class with the specified scheme, host, port number, path and query string or fragment identifier.
 		/// </summary>
 		/// <param name="scheme">An Internet access protocol.</param>
 		/// <param name="hostName">A DNS-style domain name or IP address.</param>
@@ -80,12 +86,12 @@ namespace Thinktecture.Adapters
 		/// <exception cref="ArgumentException"><paramref name="extraValue"/> is neither <c>null</c> nor <see cref="String.Empty"/>, nor does a valid fragment identifier begin with a number sign (#), nor a valid query string begin with a question mark (?).</exception>
 		/// <exception cref="ArgumentOutOfRangeException"><paramref name="portNumber"/> is less than -1 or greater than 65,535.</exception>
 		public UriBuilderAdapter(string scheme, string hostName, int portNumber, string path, string extraValue)
-			: this(new UriBuilder(scheme, hostName, portNumber, path,extraValue))
+			: this(new UriBuilder(scheme, hostName, portNumber, path, extraValue))
 		{
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="UriBuilder"/> class with the specified Uri instance.
+		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class with the specified Uri instance.
 		/// </summary>
 		/// <param name="uri">An instance of the Uri class.</param>
 		/// <exception cref="ArgumentNullException"><paramref name="uri"/> is null.</exception>
@@ -94,6 +100,10 @@ namespace Thinktecture.Adapters
 		{
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class.
+		/// </summary>
+		/// <param name="builder"></param>
 		public UriBuilderAdapter(UriBuilder builder)
 		{
 			if (builder == null)

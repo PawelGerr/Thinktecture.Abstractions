@@ -2,6 +2,9 @@
 
 namespace Thinktecture.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="BitConverter"/>.
+	/// </summary>
 	public class BitConverterAdapter : IBitConverter
 	{
 		/// <inheritdoc />

@@ -2,6 +2,9 @@
 
 namespace Thinktecture
 {
+	/// <summary>
+	/// Provides a custom constructor for uniform resource identifiers (URIs) and modifies URIs for the <see cref="Uri"/> class.
+	/// </summary>
 	public interface IUriBuilder
 	{
 		/// <summary>
@@ -48,6 +51,7 @@ namespace Thinktecture
 		/// </summary>
 		string Scheme { get; set; }
 
+#pragma warning disable CS1574
 		/// <summary>
 		/// Gets the Uri instance constructed by the specified UriBuilder instance.
 		/// </summary>
@@ -56,6 +60,7 @@ namespace Thinktecture
 		/// The UriBuilder instance has a bad password.
 		/// </exception>
 		Uri Uri { get; }
+#pragma warning restore CS1574
 
 		/// <summary>
 		/// The user name associated with the user that accesses the URI.
@@ -75,6 +80,7 @@ namespace Thinktecture
 		/// <returns>The hash code generated for the URI.</returns>
 		int GetHashCode();
 
+#pragma warning disable CS1574
 		/// <summary>
 		/// Returns the display string for the specified UriBuilder instance.
 		/// </summary>
@@ -84,5 +90,6 @@ namespace Thinktecture
 		/// </exception>
 		/// <returns>The string that contains the unescaped display string of the UriBuilder.</returns>
 		string ToString();
+#pragma warning restore CS1574
 	}
 }

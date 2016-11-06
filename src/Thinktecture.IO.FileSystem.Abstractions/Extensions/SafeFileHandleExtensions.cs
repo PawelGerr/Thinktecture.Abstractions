@@ -4,6 +4,9 @@ using Thinktecture.Win32.SafeHandles.Adapters;
 
 namespace Thinktecture
 {
+	/// <summary>
+	/// Extensions for <see cref="SafeFileHandle"/>.
+	/// </summary>
 	public static class SafeFileHandleExtensions
 	{
 		/// <summary>

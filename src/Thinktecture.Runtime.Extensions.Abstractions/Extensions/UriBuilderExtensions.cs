@@ -3,6 +3,9 @@ using Thinktecture.Adapters;
 
 namespace Thinktecture
 {
+	/// <summary>
+	/// Extensions for <see cref="UriBuilder"/>.
+	/// </summary>
 	public static class UriBuilderExtensions
 	{
 		/// <summary>

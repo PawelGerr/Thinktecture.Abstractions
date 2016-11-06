@@ -4,6 +4,9 @@ using System.IO;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="Directory"/>.
+	/// </summary>
 	public class DirectoryAdapter : IDirectory
 	{
 		/// <inheritdoc />

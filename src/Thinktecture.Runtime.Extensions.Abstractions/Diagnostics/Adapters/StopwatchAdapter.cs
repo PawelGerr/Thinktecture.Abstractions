@@ -3,6 +3,9 @@ using System.Diagnostics;
 
 namespace Thinktecture.Diagnostics.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="Stopwatch"/>.
+	/// </summary>
 	public class StopwatchAdapter : IStopwatch
 	{
 		/// <summary>
@@ -48,13 +51,17 @@ namespace Thinktecture.Diagnostics.Adapters
 		public long ElapsedTicks => _stopwatch.ElapsedTicks;
 
 		/// <summary>
-		///	Initializes a new instance of the <see cref="Stopwatch"/> class.
+		///	Initializes a new instance of the <see cref="StopwatchAdapter"/> class.
 		/// </summary>
 		public StopwatchAdapter()
 			: this(new Stopwatch())
 		{
 		}
 
+		/// <summary>
+		/// 	Initializes a new instance of the <see cref="StopwatchAdapter"/> class.
+		/// </summary>
+		/// <param name="stopwatch">Stopwatch to be use by the adapter.</param>
 		public StopwatchAdapter(Stopwatch stopwatch)
 		{
 			if (stopwatch == null)

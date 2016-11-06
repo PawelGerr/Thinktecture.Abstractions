@@ -4,6 +4,9 @@ using Thinktecture.Runtime.InteropServices.Adapters;
 
 namespace Thinktecture
 {
+	/// <summary>
+	/// Extensions for <see cref="SafeHandle"/>.
+	/// </summary>
 	public static class SafeHandleExtensions
 	{
 		/// <summary>

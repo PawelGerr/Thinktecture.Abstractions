@@ -3,10 +3,17 @@ using System.IO;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="FileSystemInfo"/>.
+	/// </summary>
 	public class FileSystemInfoAdapter : IFileSystemInfo
 	{
 		private readonly FileSystemInfo _info;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="FileSystemInfoAdapter" /> class.
+		/// </summary>
+		/// <param name="info">File system info to be used by the adapter.</param>
 		public FileSystemInfoAdapter(FileSystemInfo info)
 		{
 			if (info == null)

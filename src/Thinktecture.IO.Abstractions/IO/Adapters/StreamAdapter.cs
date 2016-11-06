@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="Stream"/>.
+	/// </summary>
 	public class StreamAdapter : IStream
 	{
 		/// <summary>A Stream with no backing store.</summary>
@@ -49,6 +52,10 @@ namespace Thinktecture.IO.Adapters
 			set { _stream.WriteTimeout = value; }
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="StreamAdapter" /> class.
+		/// </summary>
+		/// <param name="stream">Stream to be used by the adapter.</param>
 		public StreamAdapter(Stream stream)
 		{
 			if (stream == null)

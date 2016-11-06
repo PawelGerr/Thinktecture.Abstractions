@@ -4,6 +4,9 @@ using Thinktecture.IO.Adapters;
 
 namespace Thinktecture
 {
+	/// <summary>
+	/// Extensions for <see cref="TextReader"/>.
+	/// </summary>
 	public static class TextReaderExtensions
 	{
 		/// <summary>

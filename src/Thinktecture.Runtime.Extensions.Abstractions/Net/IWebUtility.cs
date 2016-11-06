@@ -1,5 +1,8 @@
 ﻿namespace Thinktecture.Net
 {
+	/// <summary>
+	/// Provides methods for encoding and decoding URLs when processing Web requests.
+	/// </summary>
 	public interface IWebUtility
 	{
 		/// <summary>

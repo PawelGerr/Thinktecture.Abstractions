@@ -1,12 +1,16 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace Thinktecture.IO.Adapters
 {
+	/// <summary>
+	/// Adapter for <see cref="FileInfo"/>.
+	/// </summary>
 	public class FileInfoAdapter : FileSystemInfoAdapter, IFileInfo
 	{
 		private readonly FileInfo _info;
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.IO.FileInfo" /> class, which acts as a wrapper for a file path.</summary>
+		/// <summary>Initializes a new instance of the <see cref="FileInfoAdapter" /> class, which acts as a wrapper for a file path.</summary>
 		/// <param name="fileName">The fully qualified name of the new file, or the relative file name. Do not end the path with the directory separator character.</param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="fileName" /> is null. </exception>
@@ -21,9 +25,16 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="FileInfoAdapter" /> class.
+		/// </summary>
+		/// <param name="info">File info to be used by the adapter.</param>
 		public FileInfoAdapter(FileInfo info)
 			: base(info)
 		{
+			if (info == null)
+				throw new ArgumentNullException(nameof(info));
+
 			_info = info;
 		}
 

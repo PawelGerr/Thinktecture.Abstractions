@@ -21,10 +21,12 @@ namespace Thinktecture.IO
 		/// <filterpriority>2</filterpriority>
 		IStream BaseStream { get; }
 
+#pragma warning disable 0419
 		/// <summary>Gets the current character encoding that the current <see cref="T:System.IO.StreamReader" /> object is using.</summary>
-		/// <returns>The current character encoding used by the current reader. The value can be different after the first call to any <see cref="IStreamReader.Read" /> method of <see cref="T:System.IO.StreamReader" />, since encoding autodetection is not done until the first call to a <see cref="StreamReader.Read" /> method.</returns>
+		/// <returns>The current character encoding used by the current reader. The value can be different after the first call to any <see cref="Read" /> method of <see cref="T:System.IO.StreamReader" />, since encoding autodetection is not done until the first call to a <see cref="Read" /> method.</returns>
 		/// <filterpriority>2</filterpriority>
 		Encoding CurrentEncoding { get; }
+#pragma warning restore 0419
 
 		/// <summary>Gets a value that indicates whether the current stream position is at the end of the stream.</summary>
 		/// <returns>true if the current stream position is at the end of the stream; otherwise false.</returns>
@@ -50,7 +52,7 @@ namespace Thinktecture.IO
 
 		/// <summary>Reads a specified maximum of characters from the current stream into a buffer, beginning at the specified index.</summary>
 		/// <returns>The number of characters that have been read, or 0 if at the end of the stream and no data was read. The number will be less than or equal to the <paramref name="count" /> parameter, depending on whether the data is available within the stream.</returns>
-		/// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index + count - 1" />) replaced by the characters read from the current source. </param>
+		/// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index" /> + <paramref name="count"/> - 1) replaced by the characters read from the current source. </param>
 		/// <param name="index">The index of <paramref name="buffer" /> at which to begin writing. </param>
 		/// <param name="count">The maximum number of characters to read. </param>
 		/// <exception cref="T:System.ArgumentException">The buffer length minus <paramref name="index" /> is less than <paramref name="count" />. </exception>
@@ -78,7 +80,7 @@ namespace Thinktecture.IO
 
 		/// <summary>Reads a specified maximum number of characters from the current stream and writes the data to a buffer, beginning at the specified index.</summary>
 		/// <returns>The number of characters that have been read. The number will be less than or equal to <paramref name="count" />, depending on whether all input characters have been read.</returns>
-		/// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index + count - 1" />) replaced by the characters read from the current source.</param>
+		/// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index" /> + <paramref name="count"/> - 1) replaced by the characters read from the current source.</param>
 		/// <param name="index">The position in <paramref name="buffer" /> at which to begin writing.</param>
 		/// <param name="count">The maximum number of characters to read.</param>
 		/// <exception cref="T:System.ArgumentNullException">
