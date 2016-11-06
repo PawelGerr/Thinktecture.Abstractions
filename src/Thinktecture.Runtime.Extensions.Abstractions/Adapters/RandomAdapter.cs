@@ -6,6 +6,19 @@ namespace Thinktecture.Adapters
 	{
 		private readonly Random _random;
 
+		/// <summary>Initializes a new instance of the <see cref="T:System.Random" /> class, using a time-dependent default seed value.</summary>
+		public RandomAdapter()
+			: this(new Random())
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="T:System.Random" /> class, using the specified seed value.</summary>
+		/// <param name="seed">A number used to calculate a starting value for the pseudo-random number sequence. If a negative number is specified, the absolute value of the number is used. </param>
+		public RandomAdapter(int seed)
+			: this(new Random(seed))
+		{
+		}
+
 		public RandomAdapter(Random random)
 		{
 			if (random == null)

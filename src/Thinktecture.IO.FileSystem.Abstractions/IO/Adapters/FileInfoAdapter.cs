@@ -6,7 +6,22 @@ namespace Thinktecture.IO.Adapters
 	{
 		private readonly FileInfo _info;
 
-		public FileInfoAdapter(FileInfo info) 
+		/// <summary>Initializes a new instance of the <see cref="T:System.IO.FileInfo" /> class, which acts as a wrapper for a file path.</summary>
+		/// <param name="fileName">The fully qualified name of the new file, or the relative file name. Do not end the path with the directory separator character.</param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="fileName" /> is null. </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.ArgumentException">The file name is empty, contains only white spaces, or contains invalid characters. </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">Access to <paramref name="fileName" /> is denied. </exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="fileName" /> contains a colon (:) in the middle of the string. </exception>
+		public FileInfoAdapter(string fileName)
+			: this(new FileInfo(fileName))
+		{
+		}
+
+		public FileInfoAdapter(FileInfo info)
 			: base(info)
 		{
 			_info = info;
@@ -23,14 +38,14 @@ namespace Thinktecture.IO.Adapters
 
 		/// <inheritdoc />
 		public string DirectoryName => _info.DirectoryName;
-	
+
 		/// <inheritdoc />
 		public bool IsReadOnly
 		{
 			get { return _info.IsReadOnly; }
 			set { _info.IsReadOnly = value; }
 		}
-		
+
 		/// <inheritdoc />
 		public long Length => _info.Length;
 
@@ -63,7 +78,7 @@ namespace Thinktecture.IO.Adapters
 		{
 			return _info.CreateText().ToInterface();
 		}
-	
+
 		/// <inheritdoc />
 		public void MoveTo(string destFileName)
 		{
@@ -105,6 +120,5 @@ namespace Thinktecture.IO.Adapters
 		{
 			return _info.OpenWrite().ToInterface();
 		}
-		
 	}
 }

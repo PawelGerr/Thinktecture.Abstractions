@@ -6,13 +6,17 @@ namespace Thinktecture.IO.Adapters
 {
 	public class TextReaderAdapter : ITextReader
 	{
+		/// <summary>Provides a TextReader with no data to read from.</summary>
+		/// <filterpriority>1</filterpriority>
+		public static readonly ITextReader Null = new TextReaderAdapter(TextReader.Null);
+
 		private readonly TextReader _reader;
 
 		public TextReaderAdapter(TextReader reader)
 		{
 			if (reader == null)
 				throw new ArgumentNullException(nameof(reader));
-
+			
 			_reader = reader;
 		}
 

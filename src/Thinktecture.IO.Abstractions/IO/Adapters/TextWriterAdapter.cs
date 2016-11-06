@@ -7,6 +7,10 @@ namespace Thinktecture.IO.Adapters
 {
 	public class TextWriterAdapter : ITextWriter
 	{
+		/// <summary>Provides a TextWriter with no backing store that can be written to, but not read from.</summary>
+		/// <filterpriority>1</filterpriority>
+		public static readonly ITextWriter Null = new TextWriterAdapter(TextWriter.Null);
+
 		private readonly TextWriter _writer;
 
 		public TextWriterAdapter(TextWriter writer)

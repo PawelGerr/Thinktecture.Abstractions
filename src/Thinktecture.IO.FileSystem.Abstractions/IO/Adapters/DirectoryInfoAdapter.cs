@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Thinktecture.IO.Adapters
 {
@@ -9,8 +8,21 @@ namespace Thinktecture.IO.Adapters
 	{
 		private readonly DirectoryInfo _dir;
 
-		public DirectoryInfoAdapter(DirectoryInfo dir) :
-			base(dir)
+		/// <summary>Initializes a new instance of the <see cref="T:System.IO.DirectoryInfo" /> class on the specified path.</summary>
+		/// <param name="path">A string specifying the path on which to create the DirectoryInfo. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="path" /> is null. </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> contains invalid characters such as ", &lt;, &gt;, or |. </exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. The specified path, file name, or both are too long.</exception>
+		public DirectoryInfoAdapter(string path)
+			: this(new DirectoryInfo(path))
+		{
+		}
+
+		public DirectoryInfoAdapter(DirectoryInfo dir)
+			: base(dir)
 		{
 			if (dir == null)
 				throw new ArgumentNullException(nameof(dir));
@@ -29,7 +41,7 @@ namespace Thinktecture.IO.Adapters
 
 		/// <inheritdoc />
 		public IDirectoryInfo Root => _dir.Root.ToInterface();
-		
+
 		/// <inheritdoc />
 		public void Create()
 		{
@@ -51,109 +63,109 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		public IEnumerable<IDirectoryInfo> EnumerateDirectories()
 		{
-			return _dir.EnumerateDirectories().Select(d => d.ToInterface());
+			return Convert(_dir.EnumerateDirectories());
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IDirectoryInfo> EnumerateDirectories(string searchPattern)
 		{
-			return _dir.EnumerateDirectories(searchPattern).Select(d => d.ToInterface());
+			return Convert(_dir.EnumerateDirectories(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IDirectoryInfo> EnumerateDirectories(string searchPattern, SearchOption searchOption)
 		{
-			return _dir.EnumerateDirectories(searchPattern, searchOption).Select(d => d.ToInterface());
+			return Convert(_dir.EnumerateDirectories(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileInfo> EnumerateFiles()
 		{
-			return _dir.EnumerateFiles().Select(f => f.ToInterface());
+			return Convert(_dir.EnumerateFiles());
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileInfo> EnumerateFiles(string searchPattern)
 		{
-			return _dir.EnumerateFiles(searchPattern).Select(f => f.ToInterface());
+			return Convert(_dir.EnumerateFiles(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileInfo> EnumerateFiles(string searchPattern, SearchOption searchOption)
 		{
-			return _dir.EnumerateFiles(searchPattern, searchOption).Select(f => f.ToInterface());
+			return Convert(_dir.EnumerateFiles(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos()
 		{
-			return _dir.EnumerateFileSystemInfos().Select(f => f.ToInterface());
+			return Convert(_dir.EnumerateFileSystemInfos());
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos(string searchPattern)
 		{
-			return _dir.EnumerateFileSystemInfos(searchPattern).Select(f => f.ToInterface());
+			return Convert(_dir.EnumerateFileSystemInfos(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos(string searchPattern, SearchOption searchOption)
 		{
-			return _dir.EnumerateFileSystemInfos(searchPattern, searchOption).Select(f => f.ToInterface());
+			return Convert(_dir.EnumerateFileSystemInfos(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo[] GetDirectories()
 		{
-			return _dir.GetDirectories().Select(d => d.ToInterface()).ToArray();
+			return Convert(_dir.GetDirectories());
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo[] GetDirectories(string searchPattern)
 		{
-			return _dir.GetDirectories(searchPattern).Select(d => d.ToInterface()).ToArray();
+			return Convert(_dir.GetDirectories(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo[] GetDirectories(string searchPattern, SearchOption searchOption)
 		{
-			return _dir.GetDirectories(searchPattern, searchOption).Select(d => d.ToInterface()).ToArray();
+			return Convert(_dir.GetDirectories(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles()
 		{
-			return _dir.GetFiles().Select(f => f.ToInterface()).ToArray();
+			return Convert(_dir.GetFiles());
 		}
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles(string searchPattern)
 		{
-			return _dir.GetFiles(searchPattern).Select(f => f.ToInterface()).ToArray();
+			return Convert(_dir.GetFiles(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles(string searchPattern, SearchOption searchOption)
 		{
-			return _dir.GetFiles(searchPattern, searchOption).Select(f => f.ToInterface()).ToArray();
+			return Convert(_dir.GetFiles(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IFileSystemInfo[] GetFileSystemInfos()
 		{
-			return _dir.GetFileSystemInfos().Select(f => f.ToInterface()).ToArray();
+			return Convert(_dir.GetFileSystemInfos());
 		}
 
 		/// <inheritdoc />
 		public IFileSystemInfo[] GetFileSystemInfos(string searchPattern)
 		{
-			return _dir.GetFileSystemInfos(searchPattern).Select(f => f.ToInterface()).ToArray();
+			return Convert(_dir.GetFileSystemInfos(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IFileSystemInfo[] GetFileSystemInfos(string searchPattern, SearchOption searchOption)
 		{
-			return _dir.GetFileSystemInfos(searchPattern, searchOption).Select(f => f.ToInterface()).ToArray();
+			return Convert(_dir.GetFileSystemInfos(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
@@ -161,6 +173,65 @@ namespace Thinktecture.IO.Adapters
 		{
 			_dir.MoveTo(destDirName);
 		}
-	
+
+		private IEnumerable<IDirectoryInfo> Convert(IEnumerable<DirectoryInfo> infos)
+		{
+			foreach (var info in infos)
+			{
+				yield return info.ToInterface();
+			}
+		}
+
+		private IEnumerable<IFileInfo> Convert(IEnumerable<FileInfo> infos)
+		{
+			foreach (var info in infos)
+			{
+				yield return info.ToInterface();
+			}
+		}
+
+		private IEnumerable<IFileSystemInfo> Convert(IEnumerable<FileSystemInfo> infos)
+		{
+			foreach (var info in infos)
+			{
+				yield return info.ToInterface();
+			}
+		}
+
+		private IDirectoryInfo[] Convert(DirectoryInfo[] infos)
+		{
+			var interfaces = new IDirectoryInfo[infos.Length];
+
+			for (var i = 0; i < infos.Length; i++)
+			{
+				interfaces[i] = infos[i].ToInterface();
+			}
+
+			return interfaces;
+		}
+
+		private IFileInfo[] Convert(FileInfo[] infos)
+		{
+			var interfaces = new IFileInfo[infos.Length];
+
+			for (var i = 0; i < infos.Length; i++)
+			{
+				interfaces[i] = infos[i].ToInterface();
+			}
+
+			return interfaces;
+		}
+
+		private IFileSystemInfo[] Convert(FileSystemInfo[] infos)
+		{
+			var interfaces = new IFileSystemInfo[infos.Length];
+
+			for (var i = 0; i < infos.Length; i++)
+			{
+				interfaces[i] = infos[i].ToInterface();
+			}
+
+			return interfaces;
+		}
 	}
 }

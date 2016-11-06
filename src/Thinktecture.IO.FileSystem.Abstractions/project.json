@@ -1,7 +1,9 @@
 {
 	"version": "1.0.0-*",
 	"title": "Thinktecture.IO.FileSystem.Abstractions",
-	"description": "Provides interfaces for types in System.IO.FileSystem.",
+	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
+	"description":
+		"Provides interfaces for types in System.IO.FileSystem: Directory, File, FileSystemInfo, DirectoryInfo, FileInfo, FileStream, SafeFileHandle.",
 	"authors": ["Pawel Gerr"],
 
 	"packOptions": {
@@ -10,7 +12,7 @@
 		"licenseUrl": "https://github.com/PawelGerr/LICENSE.md",
 		"repository": {
 			"type": "git",
-			"url": "git://github.com/PawelGerr/"
+			"url": "git+ssh://git@github.com/PawelGerr/"
 		}
 	},
 
@@ -22,11 +24,44 @@
 	"frameworks": {
 		"netstandard1.3": {
 			"dependencies": {
-				"System.Linq": "4.1.0",
 				"System.IO.FileSystem": "4.0.1"
 			}
 		},
-		"net45": {},
-		"net46": {}
+		"net45": {
+			"frameworkAssemblies": {
+				"System.Runtime": {
+					"type": "build",
+					"version": ""
+				},
+				"System.IO": {
+					"type": "build",
+					"version": ""
+				},
+				"System.Threading.Tasks": {
+					"type": "build",
+					"version": ""
+				}
+			}
+		},
+		"net46": {
+			"frameworkAssemblies": {
+				"System.Runtime": {
+					"type": "build",
+					"version": ""
+				},
+				"System.IO": {
+					"type": "build",
+					"version": ""
+				},
+				"System.Threading.Tasks": {
+					"type": "build",
+					"version": ""
+				},
+				"System.Runtime.Handles": {
+					"type": "build",
+					"version": ""
+				}
+			}
+		}
 	}
 }

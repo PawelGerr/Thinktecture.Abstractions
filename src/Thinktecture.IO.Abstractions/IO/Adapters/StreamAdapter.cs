@@ -7,6 +7,10 @@ namespace Thinktecture.IO.Adapters
 {
 	public class StreamAdapter : IStream
 	{
+		/// <summary>A Stream with no backing store.</summary>
+		/// <filterpriority>1</filterpriority>
+		public static readonly IStream Null = new StreamAdapter(Stream.Null);
+
 		private readonly Stream _stream;
 
 		/// <inheritdoc />
