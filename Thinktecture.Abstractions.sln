@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3891EBEC-9FFC-45C2-A970-6D39415969BE}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
+		LICENCE.md = LICENCE.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Thinktecture.IO.FileSystem.Abstractions", "src\Thinktecture.IO.FileSystem.Abstractions\Thinktecture.IO.FileSystem.Abstractions.xproj", "{D8B5876B-CFDB-47D4-A1DE-01E715D10871}"

@@ -1,17 +1,32 @@
 {
 	"version": "1.0.0-*",
+	"title": "Thinktecture.IO.FileSystem.Abstractions",
+	"description": "Provides interfaces for types in System.IO.FileSystem.",
+	"authors": ["Pawel Gerr"],
 
-  "dependencies": {
-    "System.IO.FileSystem": "4.0.1",
-    "Thinktecture.IO.Abstractions": "1.0.0-*",
-    "Thinktecture.Runtime.Handles.Abstractions": "1.0.0-*"
-  },
+	"packOptions": {
+		"projectUrl": "https://github.com/PawelGerr",
+		"tags": ["io", "filesystem", "abstraction"],
+		"licenseUrl": "https://github.com/PawelGerr/LICENSE.md",
+		"repository": {
+			"type": "git",
+			"url": "git://github.com/PawelGerr/"
+		}
+	},
+
+	"dependencies": {
+		"Thinktecture.IO.Abstractions": "1.0.0-*",
+		"Thinktecture.Runtime.Handles.Abstractions": "1.0.0-*"
+	},
 
 	"frameworks": {
 		"netstandard1.3": {
 			"dependencies": {
-				"System.Linq": "4.1.0"
+				"System.Linq": "4.1.0",
+				"System.IO.FileSystem": "4.0.1"
 			}
-		}
+		},
+		"net45": {},
+		"net46": {}
 	}
 }

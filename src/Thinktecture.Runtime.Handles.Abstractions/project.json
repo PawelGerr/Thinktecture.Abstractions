@@ -1,13 +1,26 @@
 ﻿{
 	"version": "1.0.0-*",
+	"title": "Thinktecture.Runtime.Handles.Abstractions",
+	"description": "Provides interfaces for types in System.Runtime.Handles.",
+	"authors": ["Pawel Gerr"],
 
-	"dependencies": {
-		"System.Runtime.Handles": "4.0.1"
+	"packOptions": {
+		"projectUrl": "https://github.com/PawelGerr",
+		"tags": ["handles", "abstraction"],
+		"licenseUrl": "https://github.com/PawelGerr/LICENSE.md",
+		"repository": {
+			"type": "git",
+			"url": "git://github.com/PawelGerr/"
+		}
 	},
 
 	"frameworks": {
 		"netstandard1.3": {
-    
-		}
+			"dependencies": {
+				"System.Runtime.Handles": "4.0.1"
+			}
+		},
+		"net45": {},
+		"net46": {}
 	}
 }

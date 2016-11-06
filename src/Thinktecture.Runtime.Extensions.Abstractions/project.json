@@ -1,12 +1,26 @@
 {
-  "version": "1.0.0-*",
+	"version": "1.0.0-*",
+	"title": "Thinktecture.Runtime.Extensions.Abstractions",
+	"description": "Provides interfaces for types in System.Runtime.Extensions.",
+	"authors": ["Pawel Gerr"],
 
-  "dependencies": {
-    "System.Runtime.Extensions": "4.1.0"
-  },
+	"packOptions": {
+		"projectUrl": "https://github.com/PawelGerr",
+		"tags": ["runtime", "abstraction"],
+		"licenseUrl": "https://github.com/PawelGerr/LICENSE.md",
+		"repository": {
+			"type": "git",
+			"url": "git://github.com/PawelGerr/"
+		}
+	},
 
-  "frameworks": {
-    "netstandard1.0": {
-    }
-  }
+	"frameworks": {
+		"netstandard1.0": {
+			"dependencies": {
+				"System.Runtime.Extensions": "4.1.0"
+			}
+		},
+		"net45": {},
+		"net46": {}
+	}
 }
