@@ -7,12 +7,12 @@
 	"authors": ["Pawel Gerr"],
 
 	"packOptions": {
-		"projectUrl": "https://github.com/PawelGerr",
+		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
 		"tags": ["io", "abstraction"],
-		"licenseUrl": "https://github.com/PawelGerr/LICENSE.md",
+		"licenseUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md",
 		"repository": {
 			"type": "git",
-			"url": "git+ssh://git@github.com/PawelGerr/"
+			"url": "git@github.com:PawelGerr/Thinktecture.Abstractions.git"
 		}
 	},
 

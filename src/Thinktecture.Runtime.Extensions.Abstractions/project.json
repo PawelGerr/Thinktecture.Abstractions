@@ -2,16 +2,17 @@
 	"version": "1.0.0-*",
 	"title": "Thinktecture.Runtime.Extensions.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
-	"description": "Provides interfaces for type in System.Runtime.Extensions: Path, BitConverter, Convert, Environment, Math, Random, UriBuilder, Stopwatch, WebUtility.",
+	"description":
+		"Provides interfaces for type in System.Runtime.Extensions: Path, BitConverter, Convert, Environment, Math, Random, UriBuilder, Stopwatch, WebUtility.",
 	"authors": ["Pawel Gerr"],
 
 	"packOptions": {
-		"projectUrl": "https://github.com/PawelGerr",
+		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
 		"tags": ["runtime", "abstraction"],
-		"licenseUrl": "https://github.com/PawelGerr/LICENSE.md",
+		"licenseUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md",
 		"repository": {
 			"type": "git",
-			"url": "git+ssh://git@github.com/PawelGerr/"
+			"url": "git@github.com:PawelGerr/Thinktecture.Abstractions.git"
 		}
 	},
 
