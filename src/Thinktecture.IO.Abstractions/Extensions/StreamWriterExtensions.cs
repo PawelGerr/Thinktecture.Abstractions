@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -16,7 +17,7 @@ namespace Thinktecture
 		/// <returns>Converted writer.</returns>
 		public static IStreamWriter ToInterface(this StreamWriter writer)
 		{
-			return new StreamWriterAdapter(writer);
+			return (writer == null) ? null : new StreamWriterAdapter(writer);
 		}
 	}
 }

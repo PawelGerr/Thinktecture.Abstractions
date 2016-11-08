@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using Thinktecture.Runtime.InteropServices;
 using Thinktecture.Runtime.InteropServices.Adapters;
 
@@ -16,7 +17,7 @@ namespace Thinktecture
 		/// <returns>Instance of <see cref="ICriticalHandle"/>.</returns>
 		public static ICriticalHandle ToInterface(this CriticalHandle handle)
 		{
-			return new CriticalHandleAdapter(handle);
+			return (handle == null) ? null : new CriticalHandleAdapter(handle);
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -16,7 +17,7 @@ namespace Thinktecture
 		/// <returns>Converted reader.</returns>
 		public static ITextReader ToInterface(this TextReader reader)
 		{
-			return new TextReaderAdapter(reader);
+			return (reader == null) ? null : new TextReaderAdapter(reader);
 		}
 	}
 }

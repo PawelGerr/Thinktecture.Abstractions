@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32.SafeHandles;
+﻿using System;
+using Microsoft.Win32.SafeHandles;
 using Thinktecture.Win32.SafeHandles;
 using Thinktecture.Win32.SafeHandles.Adapters;
 
@@ -16,7 +17,7 @@ namespace Thinktecture
 		/// <returns>Instance of <see cref="ISafeWaitHandle"/>.</returns>
 		public static ISafeWaitHandle ToInterface(this SafeWaitHandle handle)
 		{
-			return new SafeWaitHandleAdapter(handle);
+			return (handle == null) ? null : new SafeWaitHandleAdapter(handle);
 		}
 	}
 }

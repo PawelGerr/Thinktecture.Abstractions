@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -16,7 +17,7 @@ namespace Thinktecture
 		/// <returns>Converted reader.</returns>
 		public static IStreamReader ToInterface(this StreamReader reader)
 		{
-			return new StreamReaderAdapter(reader);
+			return (reader == null) ? null : new StreamReaderAdapter(reader);
 		}
 	}
 }

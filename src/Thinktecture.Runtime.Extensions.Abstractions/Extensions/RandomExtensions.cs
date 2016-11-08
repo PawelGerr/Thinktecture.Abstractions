@@ -15,7 +15,7 @@ namespace Thinktecture
 		/// <returns>Instance of <see cref="IRandom"/>.</returns>
 		public static IRandom ToInterface(this Random random)
 		{
-			return new RandomAdapter(random);
+			return (random == null) ? null : new RandomAdapter(random);
 		}
 	}
 }

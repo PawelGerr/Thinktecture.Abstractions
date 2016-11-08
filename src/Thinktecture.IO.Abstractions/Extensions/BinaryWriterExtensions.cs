@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -16,7 +17,7 @@ namespace Thinktecture
 		/// <returns>Converted writer.</returns>
 		public static IBinaryWriter ToInterface(this BinaryWriter writer)
 		{
-			return new BinaryWriterAdapter(writer);
+			return (writer == null) ? null : new BinaryWriterAdapter(writer);
 		}
 	}
 }

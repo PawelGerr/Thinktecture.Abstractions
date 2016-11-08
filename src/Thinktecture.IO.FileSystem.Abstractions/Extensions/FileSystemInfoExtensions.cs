@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -16,7 +17,7 @@ namespace Thinktecture
 		/// <returns>Converted file system info.</returns>
 		public static IFileSystemInfo ToInterface(this FileSystemInfo info)
 		{
-			return new FileSystemInfoAdapter(info);
+			return (info == null) ? null : new FileSystemInfoAdapter(info);
 		}
 	}
 }

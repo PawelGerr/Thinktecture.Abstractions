@@ -15,7 +15,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="IUriBuilder"/>.</returns>
 		public static IUriBuilder ToInterface(this UriBuilder builder)
 		{
-			return new UriBuilderAdapter(builder);
+			return (builder == null) ? null : new UriBuilderAdapter(builder);
 		}
 	}
 }

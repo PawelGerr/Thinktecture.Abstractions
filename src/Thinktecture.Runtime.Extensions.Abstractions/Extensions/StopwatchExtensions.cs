@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using Thinktecture.Diagnostics;
 using Thinktecture.Diagnostics.Adapters;
 
@@ -16,7 +17,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="IStopwatch"/>.</returns>
 		public static IStopwatch ToInterface(this Stopwatch stopwatch)
 		{
-			return new StopwatchAdapter(stopwatch);
+			return (stopwatch == null) ? null : new StopwatchAdapter(stopwatch);
 		}
 	}
 }

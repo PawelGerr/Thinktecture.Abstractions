@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -14,9 +15,9 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="file">File info to convert.</param>
 		/// <returns>Converted file info.</returns>
-		public static IFileInfo ToInterface(this FileInfo file) 
+		public static IFileInfo ToInterface(this FileInfo file)
 		{
-			return new FileInfoAdapter(file);
+			return (file == null) ? null : new FileInfoAdapter(file);
 		}
 	}
 }

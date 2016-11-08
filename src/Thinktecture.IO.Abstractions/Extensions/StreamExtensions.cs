@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -16,7 +17,7 @@ namespace Thinktecture
 		/// <returns>Converted stream.</returns>
 		public static IStream ToInterface(this Stream stream)
 		{
-			return new StreamAdapter(stream);
+			return (stream == null) ? null : new StreamAdapter(stream);
 		}
 	}
 }
