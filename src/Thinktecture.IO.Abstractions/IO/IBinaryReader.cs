@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 
 namespace Thinktecture.IO
@@ -8,10 +9,10 @@ namespace Thinktecture.IO
 	public interface IBinaryReader : IDisposable
 	{
 		/// <summary>
-		/// Gets inner binary reader.
+		/// Gets inner instance of <see cref="BinaryReader"/>.
 		/// </summary>
-		/// <returns>Binary reader.</returns>
-		BinaryReader ToImplementation();
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		BinaryReader InternalInstance { get; }
 
 		/// <summary>Exposes access to the underlying stream of the <see cref="T:System.IO.BinaryReader" />.</summary>
 		/// <returns>The underlying stream associated with the BinaryReader.</returns>

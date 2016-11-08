@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,11 +14,11 @@ namespace Thinktecture.IO
 	public interface IStream : IDisposable
 	{
 		/// <summary>
-		/// Gets the inner stream.
+		/// Gets inner instance of <see cref="Stream"/>.
 		/// </summary>
-		/// <returns>Inner stream.</returns>
-		Stream ToImplementation();
-
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		Stream InternalInstance { get; }
+		
 		/// <summary>When overridden in a derived class, gets a value indicating whether the current stream supports reading.</summary>
 		/// <returns>true if the stream supports reading; otherwise, false.</returns>
 		/// <filterpriority>1</filterpriority>
@@ -207,6 +208,7 @@ namespace Thinktecture.IO
 		/// <filterpriority>1</filterpriority>
 		int Read(byte[] buffer, int offset, int count);
 
+#pragma warning disable 1584
 		/// <summary>Asynchronously reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.</summary>
 		/// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached. </returns>
 		/// <param name="buffer">The buffer to write the data into.</param>
@@ -221,7 +223,9 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous read operation. </exception>
 		Task<int> ReadAsync(byte[] buffer, int offset, int count);
+#pragma warning restore 1584
 
+#pragma warning disable 1584
 		/// <summary>Asynchronously reads a sequence of bytes from the current stream, advances the position within the stream by the number of bytes read, and monitors cancellation requests.</summary>
 		/// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached. </returns>
 		/// <param name="buffer">The buffer to write the data into.</param>
@@ -237,6 +241,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous read operation. </exception>
 		Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken);
+#pragma warning restore 1584
 
 		/// <summary>Reads a byte from the stream and advances the position within the stream by one byte, or returns -1 if at the end of the stream.</summary>
 		/// <returns>The unsigned byte cast to an Int32, or -1 if at the end of the stream.</returns>

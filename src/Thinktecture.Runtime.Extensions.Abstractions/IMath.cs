@@ -9,6 +9,7 @@ namespace Thinktecture
 	{
 		/// <summary>Represents the ratio of the circumference of a circle to its diameter, specified by the constant, π.</summary>
 		/// <filterpriority>1</filterpriority>
+		// ReSharper disable once InconsistentNaming
 		double PI { get; }
 
 		/// <summary>Represents the natural logarithmic base, specified by the constant, e.</summary>
@@ -137,6 +138,7 @@ namespace Thinktecture
 		/// <param name="x">A dividend. </param>
 		/// <param name="y">A divisor. </param>
 		/// <filterpriority>1</filterpriority>
+		// ReSharper disable once InconsistentNaming
 		double IEEERemainder(double x, double y);
 
 		/// <summary>Returns the natural (base e) logarithm of a specified number.</summary>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 
 namespace Thinktecture.IO
@@ -10,11 +11,11 @@ namespace Thinktecture.IO
 	public interface IDirectoryInfo : IFileSystemInfo
 	{
 		/// <summary>
-		/// Gets inner directory info.
+		/// Gets inner instance of <see cref="DirectoryInfo"/>.
 		/// </summary>
-		/// <returns>A directory info.</returns>
-		new DirectoryInfo ToImplementation();
-
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		new DirectoryInfo InternalInstance { get; }
+		
 		/// <summary>Gets a value indicating whether the directory exists.</summary>
 		/// <returns>true if the directory exists; otherwise, false.</returns>
 		/// <filterpriority>1</filterpriority>

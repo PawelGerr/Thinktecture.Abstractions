@@ -18,16 +18,30 @@
 		"nowarn": ["CS1734"],
 		"xmlDoc": true
 	},
-  "frameworks": {
-    "netstandard1.0": {
-      "dependencies": {
-        "System.IO": "4.1.0"
-      }
-    },
-    "net45": {},
-    "net46": {}
-  },
-  "dependencies": {
-    "Thinktecture.Text.Encoding.Abstractions": "1.0.0-*"
-  }
+	"frameworks": {
+		"netstandard1.0": {
+			"dependencies": {
+				"System.IO": "4.1.0"
+			}
+		},
+		"net45": {
+			"frameworkAssemblies": {
+				"System.Text.Encoding": {
+					"type": "build",
+					"version": ""
+				}
+			}
+		},
+		"net46": {
+			"frameworkAssemblies": {
+				"System.Text.Encoding": {
+					"type": "build",
+					"version": ""
+				}
+			}
+		}
+	},
+	"dependencies": {
+		"Thinktecture.Text.Encoding.Abstractions": "1.0.0-*"
+	}
 }

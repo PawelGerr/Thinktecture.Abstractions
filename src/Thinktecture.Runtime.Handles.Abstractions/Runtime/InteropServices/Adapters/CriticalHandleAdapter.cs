@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 namespace Thinktecture.Runtime.InteropServices.Adapters
@@ -8,13 +9,15 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 	/// </summary>
 	public class CriticalHandleAdapter : ICriticalHandle
 	{
-		private readonly CriticalHandle _handle;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public CriticalHandle InternalInstance { get; }
 
 		/// <inheritdoc />
-		public bool IsClosed => _handle.IsClosed;
+		public bool IsClosed => InternalInstance.IsClosed;
 
 		/// <inheritdoc />
-		public bool IsInvalid => _handle.IsInvalid;
+		public bool IsInvalid => InternalInstance.IsInvalid;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CriticalHandleAdapter"/> class.
@@ -25,25 +28,19 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 			if (handle == null)
 				throw new ArgumentNullException(nameof(handle));
 
-			_handle = handle;
+			InternalInstance = handle;
 		}
-
-		/// <inheritdoc />
-		public CriticalHandle ToImplementation()
-		{
-			return _handle;
-		}
-
+		
 		/// <inheritdoc />
 		public void SetHandleAsInvalid()
 		{
-			_handle.SetHandleAsInvalid();
+			InternalInstance.SetHandleAsInvalid();
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			_handle.Dispose();
+			InternalInstance.Dispose();
 		}
 	}
 }

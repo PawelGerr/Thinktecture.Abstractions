@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 namespace Thinktecture.Runtime.InteropServices
@@ -9,10 +10,10 @@ namespace Thinktecture.Runtime.InteropServices
 	public interface ISafeHandle : IDisposable
 	{
 		/// <summary>
-		/// Get inner instance of <see cref="SafeHandle"/>.
+		/// Gets inner instance of <see cref="SafeHandle"/>.
 		/// </summary>
-		/// <returns>An instance of <see cref="SafeHandle"/>.</returns>
-		SafeHandle ToImplementation();
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		SafeHandle InternalInstance { get; }
 
 		/// <summary>Gets a value indicating whether the handle is closed.</summary>
 		/// <returns>true if the handle is closed; otherwise, false.</returns>

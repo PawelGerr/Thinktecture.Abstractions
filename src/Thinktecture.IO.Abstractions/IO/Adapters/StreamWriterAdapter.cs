@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using Thinktecture.Text;
@@ -14,7 +15,9 @@ namespace Thinktecture.IO.Adapters
 		/// <filterpriority>1</filterpriority>
 		public new static readonly IStreamWriter Null = new StreamWriterAdapter(StreamWriter.Null);
 
-		private readonly StreamWriter _writer;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public new StreamWriter InternalInstance { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using UTF-8 encoding and the default buffer size.</summary>
 		/// <param name="stream">The stream to write to. </param>
@@ -23,7 +26,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="stream" /> is null. </exception>
 		public StreamWriterAdapter(IStream stream)
-			: this(new StreamWriter(stream?.ToImplementation()))
+			: this(new StreamWriter(stream.ToImplementation()))
 		{
 		}
 
@@ -46,7 +49,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="stream" /> is not writable. </exception>
 		public StreamWriterAdapter(IStream stream, IEncoding encoding)
-			: this(new StreamWriter(stream?.ToImplementation(), encoding.ToImplementation()))
+			: this(new StreamWriter(stream.ToImplementation(), encoding.ToImplementation()))
 		{
 		}
 
@@ -70,7 +73,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="stream" /> is not writable. </exception>
 		public StreamWriterAdapter(IStream stream, Encoding encoding)
-			: this(new StreamWriter(stream?.ToImplementation(), encoding))
+			: this(new StreamWriter(stream.ToImplementation(), encoding))
 		{
 		}
 
@@ -97,7 +100,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="stream" /> is not writable. </exception>
 		public StreamWriterAdapter(IStream stream, IEncoding encoding, int bufferSize)
-			: this(new StreamWriter(stream?.ToImplementation(), encoding.ToImplementation(), bufferSize))
+			: this(new StreamWriter(stream.ToImplementation(), encoding.ToImplementation(), bufferSize))
 		{
 		}
 
@@ -127,7 +130,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="stream" /> is not writable. </exception>
 		public StreamWriterAdapter(IStream stream, Encoding encoding, int bufferSize)
-			: this(new StreamWriter(stream?.ToImplementation(), encoding, bufferSize))
+			: this(new StreamWriter(stream.ToImplementation(), encoding, bufferSize))
 		{
 		}
 
@@ -158,7 +161,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="stream" /> is not writable. </exception>
 		public StreamWriterAdapter(IStream stream, IEncoding encoding, int bufferSize, bool leaveOpen)
-			: this(new StreamWriter(stream?.ToImplementation(), encoding.ToImplementation(), bufferSize, leaveOpen))
+			: this(new StreamWriter(stream.ToImplementation(), encoding.ToImplementation(), bufferSize, leaveOpen))
 		{
 		}
 
@@ -190,7 +193,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="stream" /> is not writable. </exception>
 		public StreamWriterAdapter(IStream stream, Encoding encoding, int bufferSize, bool leaveOpen)
-			: this(new StreamWriter(stream?.ToImplementation(), encoding, bufferSize, leaveOpen))
+			: this(new StreamWriter(stream.ToImplementation(), encoding, bufferSize, leaveOpen))
 		{
 		}
 
@@ -220,23 +223,17 @@ namespace Thinktecture.IO.Adapters
 			if (writer == null)
 				throw new ArgumentNullException(nameof(writer));
 
-			_writer = writer;
+			InternalInstance = writer;
 		}
-
-		/// <inheritdoc />
-		StreamWriter IStreamWriter.ToImplementation()
-		{
-			return _writer;
-		}
-
+		
 		/// <inheritdoc />
 		public bool AutoFlush
 		{
-			get { return _writer.AutoFlush; }
-			set { _writer.AutoFlush = value; }
+			get { return InternalInstance.AutoFlush; }
+			set { InternalInstance.AutoFlush = value; }
 		}
 
 		/// <inheritdoc />
-		public IStream BaseStream => _writer.BaseStream.ToInterface();
+		public IStream BaseStream => InternalInstance.BaseStream.ToInterface();
 	}
 }

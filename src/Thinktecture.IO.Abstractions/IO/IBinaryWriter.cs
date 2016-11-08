@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 
 namespace Thinktecture.IO
@@ -8,11 +9,11 @@ namespace Thinktecture.IO
 	public interface IBinaryWriter : IDisposable
 	{
 		/// <summary>
-		/// Gets inner binary writer.
+		/// Gets inner instance of <see cref="BinaryWriter"/>.
 		/// </summary>
-		/// <returns>Inner writer.</returns>
-		BinaryWriter ToImplementation();
-
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		BinaryWriter InternalInstance { get; }
+	
 		/// <summary>Gets the underlying stream of the <see cref="T:System.IO.BinaryWriter" />.</summary>
 		/// <returns>The underlying stream associated with the BinaryWriter.</returns>
 		/// <filterpriority>1</filterpriority>

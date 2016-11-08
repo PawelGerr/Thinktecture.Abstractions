@@ -837,7 +837,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurred while performing the operation. </exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
-		/// <paramref name="creationTime" /> specifies a value outside the range of dates, times, or both permitted for this operation. </exception>
+		/// <paramref name="creationTimeUtc" /> specifies a value outside the range of dates, times, or both permitted for this operation. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.NotSupportedException">
 		/// <paramref name="path" /> is in an invalid format. </exception>

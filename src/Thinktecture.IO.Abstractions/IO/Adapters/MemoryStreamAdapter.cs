@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 
 namespace Thinktecture.IO.Adapters
@@ -8,13 +9,15 @@ namespace Thinktecture.IO.Adapters
 	/// </summary>
 	public class MemoryStreamAdapter : StreamAdapter, IMemoryStream
 	{
-		private readonly MemoryStream _stream;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public new MemoryStream InternalInstance { get; }
 
 		/// <inheritdoc />
 		public int Capacity
 		{
-			get { return _stream.Capacity; }
-			set { _stream.Capacity = value; }
+			get { return InternalInstance.Capacity; }
+			set { InternalInstance.Capacity = value; }
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="MemoryStreamAdapter" /> class with an expandable capacity initialized to zero.</summary>
@@ -90,31 +93,25 @@ namespace Thinktecture.IO.Adapters
 			if (stream == null)
 				throw new ArgumentNullException(nameof(stream));
 
-			_stream = stream;
+			InternalInstance = stream;
 		}
-
-		/// <inheritdoc />
-		MemoryStream IMemoryStream.ToImplementation()
-		{
-			return _stream;
-		}
-
+		
 		/// <inheritdoc />
 		public byte[] ToArray()
 		{
-			return _stream.ToArray();
+			return InternalInstance.ToArray();
 		}
 
 		/// <inheritdoc />
 		public void WriteTo(IStream stream)
 		{
-			_stream.WriteTo(stream.ToImplementation());
+			InternalInstance.WriteTo(stream.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public void WriteTo(Stream stream)
 		{
-			_stream.WriteTo(stream);
+			InternalInstance.WriteTo(stream);
 		}
 	}
 }

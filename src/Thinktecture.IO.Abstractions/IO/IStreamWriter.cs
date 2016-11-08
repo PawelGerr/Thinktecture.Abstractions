@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,11 @@ namespace Thinktecture.IO
 	public interface IStreamWriter : ITextWriter
 	{
 		/// <summary>
-		/// Gets inner stream writer.
+		/// Gets inner instance of <see cref="StreamWriter"/>.
 		/// </summary>
-		/// <returns>A stream writer.</returns>
-		new StreamWriter ToImplementation();
-
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		new StreamWriter InternalInstance { get; }
+		
 		/// <summary>Gets or sets a value indicating whether the <see cref="T:System.IO.StreamWriter" /> will flush its buffer to the underlying stream after every call to <see cref="M:System.IO.StreamWriter.Write(System.Char)" />.</summary>
 		/// <returns>true to force <see cref="T:System.IO.StreamWriter" /> to flush its buffer; otherwise, false.</returns>
 		/// <filterpriority>1</filterpriority>

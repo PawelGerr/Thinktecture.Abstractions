@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 
 namespace Thinktecture.Diagnostics
@@ -9,11 +10,11 @@ namespace Thinktecture.Diagnostics
 	public interface IStopwatch
 	{
 		/// <summary>
-		/// Gets inner <see cref="Stopwatch"/>.
+		/// Gets inner instance of <see cref="Stopwatch"/>.
 		/// </summary>
-		/// <returns>Instance of <see cref="Stopwatch"/></returns>
-		Stopwatch ToImplementation();
-
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		Stopwatch InternalInstance { get; }
+		
 		/// <summary>
 		/// Gets a value indicating whether the <see cref="Stopwatch"/> timer is running.
 		/// </summary>

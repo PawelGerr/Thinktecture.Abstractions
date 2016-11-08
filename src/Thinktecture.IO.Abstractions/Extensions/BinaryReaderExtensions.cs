@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (reader == null) ? null : new BinaryReaderAdapter(reader);
 		}
+
+		/// <summary>
+		/// Converts provided reader to <see cref="BinaryReader"/>.
+		/// </summary>
+		/// <param name="reader">Reader to convert.</param>
+		/// <returns>Converted reader.</returns>
+		public static BinaryReader ToImplementation(this IBinaryReader reader)
+		{
+			return reader?.InternalInstance;
+		}
 	}
 }

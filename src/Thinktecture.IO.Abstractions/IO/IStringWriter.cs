@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,10 @@ namespace Thinktecture.IO
 	public interface IStringWriter : ITextWriter
 	{
 		/// <summary>
-		/// Gets inner string writer.
+		/// Gets inner instance of <see cref="StringWriter"/>.
 		/// </summary>
-		/// <returns>Inner string writer.</returns>
-		new StringWriter ToImplementation();
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		new StringWriter InternalInstance { get; }
 
 		/// <summary>Gets the <see cref="T:System.Text.Encoding" /> in which the output is written.</summary>
 		/// <returns>The Encoding in which the output is written.</returns>

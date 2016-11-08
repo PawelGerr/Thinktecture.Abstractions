@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (writer == null) ? null : new TextWriterAdapter(writer);
 		}
+
+		/// <summary>
+		/// Converts writer to <see cref="TextWriter"/>.
+		/// </summary>
+		/// <param name="writer">Writer to convert.</param>
+		/// <returns>Converted writer.</returns>
+		public static TextWriter ToImplementation(this ITextWriter writer)
+		{
+			return writer?.InternalInstance;
+		}
 	}
 }

@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (info == null) ? null : new FileSystemInfoAdapter(info);
 		}
+
+		/// <summary>
+		/// Converts file system info to <see cref="FileSystemInfo"/>.
+		/// </summary>
+		/// <param name="info">File system info to convert.</param>
+		/// <returns>Converted file system info.</returns>
+		public static FileSystemInfo ToImplementation(this IFileSystemInfo info)
+		{
+			return info?.InternalInstance;
+		}
 	}
 }

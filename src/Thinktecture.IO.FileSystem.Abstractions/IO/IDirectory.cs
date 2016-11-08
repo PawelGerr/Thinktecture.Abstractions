@@ -387,7 +387,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters with the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. -or- <paramref name="searchPattern" /> does not contain a valid pattern.</exception>
 		/// <exception cref="T:System.ArgumentNullException">
-		/// <paramref name="path" /> or <paramref name="searchpattern" /> is null.</exception>
+		/// <paramref name="path" /> or <paramref name="searchPattern" /> is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>

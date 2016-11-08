@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using Thinktecture.Text;
@@ -14,7 +15,9 @@ namespace Thinktecture.IO.Adapters
 		/// <filterpriority>1</filterpriority>
 		public new static readonly IStreamReader Null = new StreamReaderAdapter(StreamReader.Null);
 
-		private readonly StreamReader _reader;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public new StreamReader InternalInstance { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream.</summary>
 		/// <param name="stream">The stream to be read. </param>
@@ -23,7 +26,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="stream" /> is null. </exception>
 		public StreamReaderAdapter(IStream stream)
-			: this(new StreamReader(stream?.ToImplementation()))
+			: this(new StreamReader(stream.ToImplementation()))
 		{
 		}
 
@@ -46,7 +49,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="stream" /> is null. </exception>
 		public StreamReaderAdapter(IStream stream, bool detectEncodingFromByteOrderMarks)
-			: this(new StreamReader(stream?.ToImplementation(), detectEncodingFromByteOrderMarks))
+			: this(new StreamReader(stream.ToImplementation(), detectEncodingFromByteOrderMarks))
 		{
 		}
 
@@ -71,7 +74,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="stream" /> or <paramref name="encoding" /> is null. </exception>
 		public StreamReaderAdapter(IStream stream, IEncoding encoding, bool detectEncodingFromByteOrderMarks)
-			: this(new StreamReader(stream?.ToImplementation(), encoding.ToImplementation(), detectEncodingFromByteOrderMarks))
+			: this(new StreamReader(stream.ToImplementation(), encoding.ToImplementation(), detectEncodingFromByteOrderMarks))
 		{
 		}
 
@@ -97,7 +100,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="stream" /> or <paramref name="encoding" /> is null. </exception>
 		public StreamReaderAdapter(IStream stream, Encoding encoding, bool detectEncodingFromByteOrderMarks)
-			: this(new StreamReader(stream?.ToImplementation(), encoding, detectEncodingFromByteOrderMarks))
+			: this(new StreamReader(stream.ToImplementation(), encoding, detectEncodingFromByteOrderMarks))
 		{
 		}
 
@@ -125,7 +128,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="bufferSize" /> is less than or equal to zero. </exception>
 		public StreamReaderAdapter(IStream stream, IEncoding encoding, bool detectEncodingFromByteOrderMarks, int bufferSize)
-			: this(new StreamReader(stream?.ToImplementation(), encoding.ToImplementation(), detectEncodingFromByteOrderMarks, bufferSize))
+			: this(new StreamReader(stream.ToImplementation(), encoding.ToImplementation(), detectEncodingFromByteOrderMarks, bufferSize))
 		{
 		}
 
@@ -155,7 +158,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="bufferSize" /> is less than or equal to zero. </exception>
 		public StreamReaderAdapter(IStream stream, Encoding encoding, bool detectEncodingFromByteOrderMarks, int bufferSize)
-			: this(new StreamReader(stream?.ToImplementation(), encoding, detectEncodingFromByteOrderMarks, bufferSize))
+			: this(new StreamReader(stream.ToImplementation(), encoding, detectEncodingFromByteOrderMarks, bufferSize))
 		{
 		}
 
@@ -181,7 +184,7 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="bufferSize">The minimum buffer size.</param>
 		/// <param name="leaveOpen">true to leave the stream open after the <see cref="T:System.IO.StreamReader" /> object is disposed; otherwise, false.</param>
 		public StreamReaderAdapter(IStream stream, IEncoding encoding, bool detectEncodingFromByteOrderMarks, int bufferSize, bool leaveOpen)
-			: this(new StreamReader(stream?.ToImplementation(), encoding.ToImplementation(), detectEncodingFromByteOrderMarks, bufferSize, leaveOpen))
+			: this(new StreamReader(stream.ToImplementation(), encoding.ToImplementation(), detectEncodingFromByteOrderMarks, bufferSize, leaveOpen))
 		{
 		}
 
@@ -203,7 +206,7 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="bufferSize">The minimum buffer size.</param>
 		/// <param name="leaveOpen">true to leave the stream open after the <see cref="T:System.IO.StreamReader" /> object is disposed; otherwise, false.</param>
 		public StreamReaderAdapter(IStream stream, Encoding encoding, bool detectEncodingFromByteOrderMarks, int bufferSize, bool leaveOpen)
-			: this(new StreamReader(stream?.ToImplementation(), encoding, detectEncodingFromByteOrderMarks, bufferSize, leaveOpen))
+			: this(new StreamReader(stream.ToImplementation(), encoding, detectEncodingFromByteOrderMarks, bufferSize, leaveOpen))
 		{
 		}
 
@@ -228,28 +231,22 @@ namespace Thinktecture.IO.Adapters
 			if (reader == null)
 				throw new ArgumentNullException(nameof(reader));
 
-			_reader = reader;
+			InternalInstance = reader;
 		}
+		
+		/// <inheritdoc />
+		public IStream BaseStream => InternalInstance.BaseStream.ToInterface();
 
 		/// <inheritdoc />
-		StreamReader IStreamReader.ToImplementation()
-		{
-			return _reader;
-		}
+		public IEncoding CurrentEncoding => InternalInstance.CurrentEncoding.ToInterface();
 
 		/// <inheritdoc />
-		public IStream BaseStream => _reader.BaseStream.ToInterface();
-
-		/// <inheritdoc />
-		public IEncoding CurrentEncoding => _reader.CurrentEncoding.ToInterface();
-
-		/// <inheritdoc />
-		public bool EndOfStream => _reader.EndOfStream;
+		public bool EndOfStream => InternalInstance.EndOfStream;
 
 		/// <inheritdoc />
 		public void DiscardBufferedData()
 		{
-			_reader.DiscardBufferedData();
+			InternalInstance.DiscardBufferedData();
 		}
 	}
 }

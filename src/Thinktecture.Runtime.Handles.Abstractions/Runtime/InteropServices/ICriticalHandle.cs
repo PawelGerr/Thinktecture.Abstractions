@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 namespace Thinktecture.Runtime.InteropServices
@@ -11,8 +12,8 @@ namespace Thinktecture.Runtime.InteropServices
 		/// <summary>
 		/// Gets inner instance of <see cref="CriticalHandle"/>.
 		/// </summary>
-		/// <returns>An instance of <see cref="CriticalHandle"/>.</returns>
-		CriticalHandle ToImplementation();
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		CriticalHandle InternalInstance { get; }
 
 		/// <summary>Gets a value indicating whether the handle is closed.</summary>
 		/// <returns>true if the handle is closed; otherwise, false.</returns>

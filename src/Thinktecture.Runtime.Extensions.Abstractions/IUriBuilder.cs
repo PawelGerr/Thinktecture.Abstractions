@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Thinktecture
 {
@@ -8,11 +9,11 @@ namespace Thinktecture
 	public interface IUriBuilder
 	{
 		/// <summary>
-		/// Gets inner instance of <see cref="UriBuilder"/>;
+		/// Gets inner instance of <see cref="UriBuilder"/>.
 		/// </summary>
-		/// <returns>Instance of <see cref="UriBuilder"/>.</returns>
-		UriBuilder ToImplementation();
-
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		UriBuilder InternalInstance { get; }
+		
 		/// <summary>
 		/// Gets or sets the fragment portion of the URI.
 		/// </summary>
@@ -51,16 +52,16 @@ namespace Thinktecture
 		/// </summary>
 		string Scheme { get; set; }
 
-#pragma warning disable CS1574
+#pragma warning disable 1584, 1574
 		/// <summary>
 		/// Gets the Uri instance constructed by the specified UriBuilder instance.
 		/// </summary>
-		/// <exception cref="System.UriFormatException">
+		/// <exception cref="UriFormatException">
 		/// In the .NET for Windows Store apps or the Portable Class Library, catch the base class exception, FormatException, instead.
 		/// The UriBuilder instance has a bad password.
 		/// </exception>
 		Uri Uri { get; }
-#pragma warning restore CS1574
+#pragma warning restore 1584, 1574
 
 		/// <summary>
 		/// The user name associated with the user that accesses the URI.
@@ -80,7 +81,7 @@ namespace Thinktecture
 		/// <returns>The hash code generated for the URI.</returns>
 		int GetHashCode();
 
-#pragma warning disable CS1574
+#pragma warning disable 1584, 1574
 		/// <summary>
 		/// Returns the display string for the specified UriBuilder instance.
 		/// </summary>
@@ -90,6 +91,6 @@ namespace Thinktecture
 		/// </exception>
 		/// <returns>The string that contains the unescaped display string of the UriBuilder.</returns>
 		string ToString();
-#pragma warning restore CS1574
+#pragma warning restore 1584, 1574
 	}
 }

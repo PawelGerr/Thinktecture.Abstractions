@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Thinktecture
 {
@@ -11,8 +12,8 @@ namespace Thinktecture
 		/// <summary>
 		/// Gets inner instance of <see cref="Random"/>.
 		/// </summary>
-		/// <returns>Instance of <see cref="Random"/>.</returns>
-		Random ToImplementation();
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		Random InternalInstance { get; }
 
 		/// <summary>Returns a non-negative random integer.</summary>
 		/// <returns>A 32-bit signed integer that is greater than or equal to 0 and less than <see cref="F:System.Int32.MaxValue" />.</returns>

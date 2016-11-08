@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Thinktecture.Adapters
 {
@@ -7,7 +8,9 @@ namespace Thinktecture.Adapters
 	/// </summary>
 	public class RandomAdapter : IRandom
 	{
-		private readonly Random _random;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public Random InternalInstance { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="RandomAdapter" /> class, using a time-dependent default seed value.</summary>
 		public RandomAdapter()
@@ -31,43 +34,37 @@ namespace Thinktecture.Adapters
 			if (random == null)
 				throw new ArgumentNullException(nameof(random));
 
-			_random = random;
+			InternalInstance = random;
 		}
-
-		/// <inheritdoc />
-		public Random ToImplementation()
-		{
-			return _random;
-		}
-
+		
 		/// <inheritdoc />
 		public int Next()
 		{
-			return _random.Next();
+			return InternalInstance.Next();
 		}
 
 		/// <inheritdoc />
 		public int Next(int maxValue)
 		{
-			return _random.Next(maxValue);
+			return InternalInstance.Next(maxValue);
 		}
 
 		/// <inheritdoc />
 		public int Next(int minValue, int maxValue)
 		{
-			return _random.Next(minValue, maxValue);
+			return InternalInstance.Next(minValue, maxValue);
 		}
 
 		/// <inheritdoc />
 		public void NextBytes(byte[] buffer)
 		{
-			_random.NextBytes(buffer);
+			InternalInstance.NextBytes(buffer);
 		}
 
 		/// <inheritdoc />
 		public double NextDouble()
 		{
-			return _random.NextDouble();
+			return InternalInstance.NextDouble();
 		}
 	}
 }

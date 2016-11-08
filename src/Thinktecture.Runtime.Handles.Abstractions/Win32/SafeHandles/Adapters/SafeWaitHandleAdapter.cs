@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Microsoft.Win32.SafeHandles;
 using Thinktecture.Runtime.InteropServices.Adapters;
 
@@ -9,7 +10,9 @@ namespace Thinktecture.Win32.SafeHandles.Adapters
 	/// </summary>
 	public class SafeWaitHandleAdapter : SafeHandleAdapter, ISafeWaitHandle
 	{
-		private readonly SafeWaitHandle _handle;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public new SafeWaitHandle InternalInstance { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="SafeWaitHandleAdapter" /> class. </summary>
 		/// <param name="existingHandle">An <see cref="T:System.IntPtr" /> object that represents the pre-existing handle to use.</param>
@@ -29,13 +32,7 @@ namespace Thinktecture.Win32.SafeHandles.Adapters
 			if (handle == null)
 				throw new ArgumentNullException(nameof(handle));
 
-			_handle = handle;
-		}
-
-		/// <inheritdoc />
-		SafeWaitHandle ISafeWaitHandle.ToImplementation()
-		{
-			return _handle;
+			InternalInstance = handle;
 		}
 	}
 }

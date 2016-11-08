@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (reader == null) ? null : new StreamReaderAdapter(reader);
 		}
+
+		/// <summary>
+		/// Converts provided reader to <see cref="StreamReader"/>.
+		/// </summary>
+		/// <param name="reader">Reader to convert</param>
+		/// <returns>Converted reader.</returns>
+		public static StreamReader ToImplementation(this IStreamReader reader)
+		{
+			return reader?.InternalInstance;
+		}
 	}
 }

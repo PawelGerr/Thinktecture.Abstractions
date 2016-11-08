@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Microsoft.Win32.SafeHandles;
 using Thinktecture.Runtime.InteropServices.Adapters;
 
@@ -9,7 +10,9 @@ namespace Thinktecture.Win32.SafeHandles.Adapters
 	/// </summary>
 	public class SafeFileHandleAdapter : SafeHandleAdapter, ISafeFileHandle
 	{
-		private readonly SafeFileHandle _handle;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public new SafeFileHandle InternalInstance { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="SafeFileHandleAdapter" /> class.</summary>
 		/// <param name="preexistingHandle">An <see cref="T:System.IntPtr" /> object that represents the pre-existing handle to use.</param>
@@ -29,13 +32,7 @@ namespace Thinktecture.Win32.SafeHandles.Adapters
 			if (handle == null)
 				throw new ArgumentNullException(nameof(handle));
 
-			_handle = handle;
-		}
-
-		/// <inheritdoc />
-		SafeFileHandle ISafeFileHandle.ToImplementation()
-		{
-			return _handle;
+			InternalInstance = handle;
 		}
 	}
 }

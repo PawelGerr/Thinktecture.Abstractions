@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -13,7 +14,9 @@ namespace Thinktecture.IO.Adapters
 		/// <filterpriority>1</filterpriority>
 		public static readonly ITextReader Null = new TextReaderAdapter(TextReader.Null);
 
-		private readonly TextReader _reader;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public TextReader InternalInstance { get; }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="TextReaderAdapter" /> class.
@@ -24,79 +27,73 @@ namespace Thinktecture.IO.Adapters
 			if (reader == null)
 				throw new ArgumentNullException(nameof(reader));
 			
-			_reader = reader;
+			InternalInstance = reader;
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			_reader.Dispose();
+			InternalInstance.Dispose();
 		}
-
-		/// <inheritdoc />
-		public TextReader ToImplementation()
-		{
-			return _reader;
-		}
-
+		
 		/// <inheritdoc />
 		public int Peek()
 		{
-			return _reader.Peek();
+			return InternalInstance.Peek();
 		}
 
 		/// <inheritdoc />
 		public int Read()
 		{
-			return _reader.Read();
+			return InternalInstance.Read();
 		}
 
 		/// <inheritdoc />
 		public int Read(char[] buffer, int index, int count)
 		{
-			return _reader.Read(buffer, index, count);
+			return InternalInstance.Read(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public Task<int> ReadAsync(char[] buffer, int index, int count)
 		{
-			return _reader.ReadAsync(buffer, index, count);
+			return InternalInstance.ReadAsync(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public int ReadBlock(char[] buffer, int index, int count)
 		{
-			return _reader.ReadBlock(buffer, index, count);
+			return InternalInstance.ReadBlock(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public Task<int> ReadBlockAsync(char[] buffer, int index, int count)
 		{
-			return _reader.ReadBlockAsync(buffer, index, count);
+			return InternalInstance.ReadBlockAsync(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public string ReadLine()
 		{
-			return _reader.ReadLine();
+			return InternalInstance.ReadLine();
 		}
 
 		/// <inheritdoc />
 		public Task<string> ReadLineAsync()
 		{
-			return _reader.ReadLineAsync();
+			return InternalInstance.ReadLineAsync();
 		}
 
 		/// <inheritdoc />
 		public string ReadToEnd()
 		{
-			return _reader.ReadToEnd();
+			return InternalInstance.ReadToEnd();
 		}
 
 		/// <inheritdoc />
 		public Task<string> ReadToEndAsync()
 		{
-			return _reader.ReadToEndAsync();
+			return InternalInstance.ReadToEndAsync();
 		}
 	}
 }

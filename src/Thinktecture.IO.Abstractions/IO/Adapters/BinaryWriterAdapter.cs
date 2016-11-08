@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using Thinktecture.Text;
@@ -14,10 +15,12 @@ namespace Thinktecture.IO.Adapters
 		/// <filterpriority>1</filterpriority>
 		public static readonly IBinaryWriter Null = new BinaryWriterAdapter(BinaryWriter.Null);
 
-		private readonly BinaryWriter _writer;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public BinaryWriter InternalInstance { get; }
 
 		/// <inheritdoc />
-		public IStream BaseStream => _writer.BaseStream.ToInterface();
+		public IStream BaseStream => InternalInstance.BaseStream.ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class based on the specified stream and using UTF-8 encoding.</summary>
 		/// <param name="output">The output stream. </param>
@@ -25,7 +28,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> is null. </exception>
 		public BinaryWriterAdapter(IStream output)
-			: this(new BinaryWriter(output?.ToImplementation()))
+			: this(new BinaryWriter(output.ToImplementation()))
 		{
 		}
 
@@ -46,7 +49,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
 		public BinaryWriterAdapter(IStream output, IEncoding encoding)
-			: this(new BinaryWriter(output?.ToImplementation(), encoding.ToImplementation()))
+			: this(new BinaryWriter(output.ToImplementation(), encoding.ToImplementation()))
 		{
 		}
 
@@ -68,7 +71,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
 		public BinaryWriterAdapter(IStream output, Encoding encoding)
-			: this(new BinaryWriter(output?.ToImplementation(), encoding))
+			: this(new BinaryWriter(output.ToImplementation(), encoding))
 		{
 		}
 
@@ -91,7 +94,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
 		public BinaryWriterAdapter(IStream output, IEncoding encoding, bool leaveOpen)
-			: this(new BinaryWriter(output?.ToImplementation(), encoding.ToImplementation(), leaveOpen))
+			: this(new BinaryWriter(output.ToImplementation(), encoding.ToImplementation(), leaveOpen))
 		{
 		}
 
@@ -115,7 +118,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
 		public BinaryWriterAdapter(IStream output, Encoding encoding, bool leaveOpen)
-			: this(new BinaryWriter(output?.ToImplementation(), encoding, leaveOpen))
+			: this(new BinaryWriter(output.ToImplementation(), encoding, leaveOpen))
 		{
 		}
 
@@ -140,139 +143,133 @@ namespace Thinktecture.IO.Adapters
 			if (writer == null)
 				throw new ArgumentNullException(nameof(writer));
 
-			_writer = writer;
-		}
-
-		/// <inheritdoc />
-		public BinaryWriter ToImplementation()
-		{
-			return _writer;
+			InternalInstance = writer;
 		}
 
 		/// <inheritdoc />
 		public void Flush()
 		{
-			_writer.Flush();
+			InternalInstance.Flush();
 		}
 
 		/// <inheritdoc />
 		public long Seek(int offset, SeekOrigin origin)
 		{
-			return _writer.Seek(offset, origin);
+			return InternalInstance.Seek(offset, origin);
 		}
 
 		/// <inheritdoc />
 		public void Write(bool value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(byte value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(byte[] buffer)
 		{
-			_writer.Write(buffer);
+			InternalInstance.Write(buffer);
 		}
 
 		/// <inheritdoc />
 		public void Write(byte[] buffer, int index, int count)
 		{
-			_writer.Write(buffer, index, count);
+			InternalInstance.Write(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public void Write(char ch)
 		{
-			_writer.Write(ch);
+			InternalInstance.Write(ch);
 		}
 
 		/// <inheritdoc />
 		public void Write(char[] chars)
 		{
-			_writer.Write(chars);
+			InternalInstance.Write(chars);
 		}
 
 		/// <inheritdoc />
 		public void Write(char[] chars, int index, int count)
 		{
-			_writer.Write(chars, index, count);
+			InternalInstance.Write(chars, index, count);
 		}
 
 		/// <inheritdoc />
 		public void Write(decimal value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(double value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(short value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(int value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(long value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(sbyte value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(float value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(string value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(ushort value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(uint value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(ulong value)
 		{
-			_writer.Write(value);
+			InternalInstance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			_writer.Dispose();
+			InternalInstance.Dispose();
 		}
 	}
 }

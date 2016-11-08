@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.IO;
 
 namespace Thinktecture.IO.Adapters
@@ -8,8 +9,10 @@ namespace Thinktecture.IO.Adapters
 	/// </summary>
 	public class StringReaderAdapter : TextReaderAdapter, IStringReader
 	{
-		private readonly StringReader _reader;
-
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public new StringReader InternalInstance { get; }
+		
 		/// <summary>Initializes a new instance of the <see cref="StringReaderAdapter" /> class that reads from the specified string.</summary>
 		/// <param name="s">The string to which the <see cref="T:System.IO.StringReader" /> should be initialized. </param>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="s" /> parameter is null. </exception>
@@ -28,13 +31,7 @@ namespace Thinktecture.IO.Adapters
 			if (reader == null)
 				throw new ArgumentNullException(nameof(reader));
 
-			_reader = reader;
-		}
-
-		/// <inheritdoc />
-		StringReader IStringReader.ToImplementation()
-		{
-			return _reader;
+			InternalInstance = reader;
 		}
 	}
 }

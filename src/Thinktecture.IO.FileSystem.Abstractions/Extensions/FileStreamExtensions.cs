@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (file == null) ? null : new FileStreamAdapter(file);
 		}
+
+		/// <summary>
+		/// Converts file stream to <see cref="FileStream"/>.
+		/// </summary>
+		/// <param name="file">File stream to convert.</param>
+		/// <returns>Converted file stream.</returns>
+		public static FileStream ToImplementation(this IFileStream file)
+		{
+			return file?.InternalInstance;
+		}
 	}
 }

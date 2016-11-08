@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using Microsoft.Win32.SafeHandles;
 using Thinktecture.Win32.SafeHandles;
@@ -10,16 +11,18 @@ namespace Thinktecture.IO.Adapters
 	/// </summary>
 	public class FileStreamAdapter : StreamAdapter, IFileStream
 	{
-		private readonly FileStream _fileStream;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public new FileStream InternalInstance { get; }
 
 		/// <inheritdoc />
-		public bool IsAsync => _fileStream.IsAsync;
+		public bool IsAsync => InternalInstance.IsAsync;
 
 		/// <inheritdoc />
-		public string Name => _fileStream.Name;
+		public string Name => InternalInstance.Name;
 
 		/// <inheritdoc />
-		public ISafeFileHandle SafeFileHandle => _fileStream.SafeFileHandle.ToInterface();
+		public ISafeFileHandle SafeFileHandle => InternalInstance.SafeFileHandle.ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class for the specified file handle, with the specified read/write permission. </summary>
 		/// <param name="handle">A file handle for the file that the current FileStream object will encapsulate. </param>
@@ -30,7 +33,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.IO.IOException">An I/O error, such as a disk error, occurred.-or-The stream has been closed. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
 		public FileStreamAdapter(ISafeFileHandle handle, FileAccess access)
-			: this(new FileStream(handle?.ToImplementation(), access))
+			: this(new FileStream(handle.ToImplementation(), access))
 		{
 		}
 
@@ -57,7 +60,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
 		public FileStreamAdapter(ISafeFileHandle handle, FileAccess access, int bufferSize)
-			: this(new FileStream(handle?.ToImplementation(), access, bufferSize))
+			: this(new FileStream(handle.ToImplementation(), access, bufferSize))
 		{
 		}
 
@@ -86,7 +89,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
 		public FileStreamAdapter(ISafeFileHandle handle, FileAccess access, int bufferSize, bool isAsync)
-			: this(new FileStream(handle?.ToImplementation(), access, bufferSize, isAsync))
+			: this(new FileStream(handle.ToImplementation(), access, bufferSize, isAsync))
 		{
 		}
 
@@ -260,19 +263,13 @@ namespace Thinktecture.IO.Adapters
 			if (fileStream == null)
 				throw new ArgumentNullException(nameof(fileStream));
 
-			_fileStream = fileStream;
+			InternalInstance = fileStream;
 		}
-
-		/// <inheritdoc />
-		FileStream IFileStream.ToImplementation()
-		{
-			return _fileStream;
-		}
-
+		
 		/// <inheritdoc />
 		public void Flush(bool flushToDisk)
 		{
-			_fileStream.Flush(flushToDisk);
+			InternalInstance.Flush(flushToDisk);
 		}
 	}
 }

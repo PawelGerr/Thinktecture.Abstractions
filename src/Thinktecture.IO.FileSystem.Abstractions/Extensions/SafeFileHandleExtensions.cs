@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (handle == null) ? null : new SafeFileHandleAdapter(handle);
 		}
+
+		/// <summary>
+		/// Converts safe file handle to <see cref="SafeFileHandle"/>.
+		/// </summary>
+		/// <param name="handle">Safe file handle to convert.</param>
+		/// <returns>Converted safe file handle.</returns>
+		public static SafeFileHandle ToImplementation(this ISafeFileHandle handle)
+		{
+			return handle?.InternalInstance;
+		}
 	}
 }

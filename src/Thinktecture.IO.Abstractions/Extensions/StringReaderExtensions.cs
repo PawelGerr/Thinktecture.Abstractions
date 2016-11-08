@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (reader == null) ? null : new StringReaderAdapter(reader);
 		}
+
+		/// <summary>
+		/// Converts provided reader to <see cref="StringReader"/>.
+		/// </summary>
+		/// <param name="reader">Reader to convert.</param>
+		/// <returns>Converted reader.</returns>
+		public static StringReader ToImplementation(this IStringReader reader)
+		{
+			return reader?.InternalInstance;
+		}
 	}
 }

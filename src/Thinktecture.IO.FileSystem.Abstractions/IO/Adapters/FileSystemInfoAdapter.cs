@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.IO;
 
 namespace Thinktecture.IO.Adapters
@@ -8,7 +9,9 @@ namespace Thinktecture.IO.Adapters
 	/// </summary>
 	public class FileSystemInfoAdapter : IFileSystemInfo
 	{
-		private readonly FileSystemInfo _info;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public FileSystemInfo InternalInstance { get; }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="FileSystemInfoAdapter" /> class.
@@ -19,86 +22,80 @@ namespace Thinktecture.IO.Adapters
 			if (info == null)
 				throw new ArgumentNullException(nameof(info));
 
-			_info = info;
+			InternalInstance = info;
 		}
-
-		/// <inheritdoc />
-		public FileSystemInfo ToImplementation()
-		{
-			return _info;
-		}
-
+		
 		/// <inheritdoc />
 		public FileAttributes Attributes
 		{
-			get { return _info.Attributes; }
-			set { _info.Attributes = value; }
+			get { return InternalInstance.Attributes; }
+			set { InternalInstance.Attributes = value; }
 		}
 
 		/// <inheritdoc />
 		public DateTime CreationTime
 		{
-			get { return _info.CreationTime; }
-			set { _info.CreationTime = value; }
+			get { return InternalInstance.CreationTime; }
+			set { InternalInstance.CreationTime = value; }
 		}
 
 		/// <inheritdoc />
 		public DateTime CreationTimeUtc
 		{
-			get { return _info.CreationTimeUtc; }
-			set { _info.CreationTimeUtc = value; }
+			get { return InternalInstance.CreationTimeUtc; }
+			set { InternalInstance.CreationTimeUtc = value; }
 		}
 
 		/// <inheritdoc />
-		public bool Exists => _info.Exists;
+		public bool Exists => InternalInstance.Exists;
 
 		/// <inheritdoc />
-		public string Extension => _info.Extension;
+		public string Extension => InternalInstance.Extension;
 
 		/// <inheritdoc />
-		public string FullName => _info.FullName;
+		public string FullName => InternalInstance.FullName;
 
 		/// <inheritdoc />
-		public string Name => _info.Name;
+		public string Name => InternalInstance.Name;
 
 		/// <inheritdoc />
 		public DateTime LastAccessTime
 		{
-			get { return _info.LastAccessTime; }
-			set { _info.LastAccessTime = value; }
+			get { return InternalInstance.LastAccessTime; }
+			set { InternalInstance.LastAccessTime = value; }
 		}
 
 		/// <inheritdoc />
 		public DateTime LastAccessTimeUtc
 		{
-			get { return _info.LastAccessTimeUtc; }
-			set { _info.LastAccessTimeUtc = value; }
+			get { return InternalInstance.LastAccessTimeUtc; }
+			set { InternalInstance.LastAccessTimeUtc = value; }
 		}
 
 		/// <inheritdoc />
 		public DateTime LastWriteTime
 		{
-			get { return _info.LastWriteTime; }
-			set { _info.LastWriteTime = value; }
+			get { return InternalInstance.LastWriteTime; }
+			set { InternalInstance.LastWriteTime = value; }
 		}
 
 		/// <inheritdoc />
 		public DateTime LastWriteTimeUtc
 		{
-			get { return _info.LastWriteTimeUtc; }
-			set { _info.LastWriteTimeUtc = value; }
+			get { return InternalInstance.LastWriteTimeUtc; }
+			set { InternalInstance.LastWriteTimeUtc = value; }
 		}
 
 		/// <inheritdoc />
 		public void Delete()
 		{
-			_info.Delete();
+			InternalInstance.Delete();
 		}
 
 		/// <inheritdoc />
 		public void Refresh()
 		{
-			_info.Refresh();
+			InternalInstance.Refresh();
 		}
 	}
 }

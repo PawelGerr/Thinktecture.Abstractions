@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.ComponentModel;
+using System.Text;
 
 namespace Thinktecture.Text
 {
@@ -9,8 +10,8 @@ namespace Thinktecture.Text
 		/// <summary>
 		/// Gets inner instance of <see cref="Decoder"/>.
 		/// </summary>
-		/// <returns>Instance of <see cref="Decoder"/>.</returns>
-		Decoder ToImplementation();
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		Decoder InternalInstance { get; }
 
 		/// <summary>Converts an array of encoded bytes to UTF-16 encoded characters and stores the result in a character array.</summary>
 		/// <param name="bytes">A byte array to convert.</param>

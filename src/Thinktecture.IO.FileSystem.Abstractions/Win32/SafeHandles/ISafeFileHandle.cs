@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32.SafeHandles;
+﻿using System.ComponentModel;
+using Microsoft.Win32.SafeHandles;
 using Thinktecture.Runtime.InteropServices;
 
 namespace Thinktecture.Win32.SafeHandles
@@ -7,10 +8,10 @@ namespace Thinktecture.Win32.SafeHandles
 	public interface ISafeFileHandle : ISafeHandle
 	{
 		/// <summary>
-		/// Get inner safe file handle.
+		/// Gets inner instance of <see cref="SafeFileHandle"/>.
 		/// </summary>
-		/// <returns>A safe file handle.</returns>
-		new SafeFileHandle ToImplementation();
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		new SafeFileHandle InternalInstance { get; }
 
 		/// <summary>When overridden in a derived class, gets a value indicating whether the handle value is invalid.</summary>
 		/// <returns>true if the handle value is invalid; otherwise, false.</returns>

@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (writer == null) ? null : new StreamWriterAdapter(writer);
 		}
+		
+		/// <summary>
+		/// Converts provided writer to <see cref="StreamWriter"/>.
+		/// </summary>
+		/// <param name="writer">Writer to convert.</param>
+		/// <returns>Converted writer.</returns>
+		public static StreamWriter ToImplementation(this IStreamWriter writer)
+		{
+			return writer?.InternalInstance;
+		}
 	}
 }

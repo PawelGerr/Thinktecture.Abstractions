@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.ComponentModel;
+using System.Text;
 
 namespace Thinktecture.Text
 {
@@ -7,10 +8,10 @@ namespace Thinktecture.Text
 	public interface IEncoder
 	{
 		/// <summary>
-		/// Gets inner <see cref="Encoder"/>.
+		/// Gets inner instance of <see cref="Encoder"/>.
 		/// </summary>
-		/// <returns>Instance of <see cref="Encoder"/>.</returns>
-		Encoder ToImplementation();
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		Encoder InternalInstance { get; }
 
 		/// <summary>Converts an array of Unicode characters to an encoded byte sequence and stores the result in an array of bytes.</summary>
 		/// <param name="chars">An array of characters to convert.</param>

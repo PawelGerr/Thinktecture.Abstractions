@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 
 namespace Thinktecture.IO
@@ -10,10 +11,10 @@ namespace Thinktecture.IO
 	public interface IFileSystemInfo
 	{
 		/// <summary>
-		/// Gets inner file system info.
+		/// Gets inner instance of <see cref="FileSystemInfo"/>.
 		/// </summary>
-		/// <returns>A file system info.</returns>
-		FileSystemInfo ToImplementation();
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		FileSystemInfo InternalInstance { get; }
 
 		/// <summary>Gets or sets the attributes for the current file or directory.</summary>
 		/// <returns>

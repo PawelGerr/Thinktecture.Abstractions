@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Thinktecture.Adapters
 {
@@ -7,7 +8,9 @@ namespace Thinktecture.Adapters
 	/// </summary>
 	public class UriBuilderAdapter : IUriBuilder
 	{
-		private readonly UriBuilder _builder;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public UriBuilder InternalInstance { get; }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class.
@@ -17,7 +20,7 @@ namespace Thinktecture.Adapters
 		{
 		}
 
-#pragma warning disable CS1574
+#pragma warning disable 1584, 1574
 		/// <summary>
 		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class with the specified URI.
 		/// </summary>
@@ -37,8 +40,7 @@ namespace Thinktecture.Adapters
 			: this(new UriBuilder(uri))
 		{
 		}
-#pragma warning restore CS1574
-
+#pragma warning restore 1584, 1574
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class with the specified scheme and host.
@@ -109,72 +111,66 @@ namespace Thinktecture.Adapters
 			if (builder == null)
 				throw new ArgumentNullException(nameof(builder));
 
-			_builder = builder;
-		}
-
-		/// <inheritdoc />
-		public UriBuilder ToImplementation()
-		{
-			return _builder;
+			InternalInstance = builder;
 		}
 
 		/// <inheritdoc />
 		public string Fragment
 		{
-			get { return _builder.Fragment; }
-			set { _builder.Fragment = value; }
+			get { return InternalInstance.Fragment; }
+			set { InternalInstance.Fragment = value; }
 		}
 
 		/// <inheritdoc />
 		public string Host
 		{
-			get { return _builder.Host; }
-			set { _builder.Host = value; }
+			get { return InternalInstance.Host; }
+			set { InternalInstance.Host = value; }
 		}
 
 		/// <inheritdoc />
 		public string Password
 		{
-			get { return _builder.Password; }
-			set { _builder.Password = value; }
+			get { return InternalInstance.Password; }
+			set { InternalInstance.Password = value; }
 		}
 
 		/// <inheritdoc />
 		public string Path
 		{
-			get { return _builder.Path; }
-			set { _builder.Path = value; }
+			get { return InternalInstance.Path; }
+			set { InternalInstance.Path = value; }
 		}
 
 		/// <inheritdoc />
 		public int Port
 		{
-			get { return _builder.Port; }
-			set { _builder.Port = value; }
+			get { return InternalInstance.Port; }
+			set { InternalInstance.Port = value; }
 		}
 
 		/// <inheritdoc />
 		public string Query
 		{
-			get { return _builder.Query; }
-			set { _builder.Query = value; }
+			get { return InternalInstance.Query; }
+			set { InternalInstance.Query = value; }
 		}
 
 		/// <inheritdoc />
 		public string Scheme
 		{
-			get { return _builder.Scheme; }
-			set { _builder.Scheme = value; }
+			get { return InternalInstance.Scheme; }
+			set { InternalInstance.Scheme = value; }
 		}
 
 		/// <inheritdoc />
-		public Uri Uri => _builder.Uri;
+		public Uri Uri => InternalInstance.Uri;
 
 		/// <inheritdoc />
 		public string UserName
 		{
-			get { return _builder.UserName; }
-			set { _builder.UserName = value; }
+			get { return InternalInstance.UserName; }
+			set { InternalInstance.UserName = value; }
 		}
 	}
 }

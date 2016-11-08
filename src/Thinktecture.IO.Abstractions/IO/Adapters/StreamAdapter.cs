@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,42 +15,44 @@ namespace Thinktecture.IO.Adapters
 		/// <filterpriority>1</filterpriority>
 		public static readonly IStream Null = new StreamAdapter(Stream.Null);
 
-		private readonly Stream _stream;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public Stream InternalInstance { get; }
 
 		/// <inheritdoc />
-		public bool CanRead => _stream.CanRead;
+		public bool CanRead => InternalInstance.CanRead;
 
 		/// <inheritdoc />
-		public bool CanSeek => _stream.CanSeek;
+		public bool CanSeek => InternalInstance.CanSeek;
 
 		/// <inheritdoc />
-		public bool CanTimeout => _stream.CanTimeout;
+		public bool CanTimeout => InternalInstance.CanTimeout;
 
 		/// <inheritdoc />
-		public bool CanWrite => _stream.CanWrite;
+		public bool CanWrite => InternalInstance.CanWrite;
 
 		/// <inheritdoc />
-		public long Length => _stream.Length;
+		public long Length => InternalInstance.Length;
 
 		/// <inheritdoc />
 		public long Position
 		{
-			get { return _stream.Position; }
-			set { _stream.Position = value; }
+			get { return InternalInstance.Position; }
+			set { InternalInstance.Position = value; }
 		}
 
 		/// <inheritdoc />
 		public int ReadTimeout
 		{
-			get { return _stream.ReadTimeout; }
-			set { _stream.ReadTimeout = value; }
+			get { return InternalInstance.ReadTimeout; }
+			set { InternalInstance.ReadTimeout = value; }
 		}
 
 		/// <inheritdoc />
 		public int WriteTimeout
 		{
-			get { return _stream.WriteTimeout; }
-			set { _stream.WriteTimeout = value; }
+			get { return InternalInstance.WriteTimeout; }
+			set { InternalInstance.WriteTimeout = value; }
 		}
 
 		/// <summary>
@@ -61,157 +64,151 @@ namespace Thinktecture.IO.Adapters
 			if (stream == null)
 				throw new ArgumentNullException(nameof(stream));
 
-			_stream = stream;
+			InternalInstance = stream;
 		}
-
-		/// <inheritdoc />
-		public Stream ToImplementation()
-		{
-			return _stream;
-		}
-
+		
 		/// <inheritdoc />
 		public void CopyTo(IStream destination)
 		{
-			_stream.CopyTo(destination.ToImplementation());
+			InternalInstance.CopyTo(destination.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public void CopyTo(Stream destination)
 		{
-			_stream.CopyTo(destination);
+			InternalInstance.CopyTo(destination);
 		}
 
 		/// <inheritdoc />
 		public void CopyTo(IStream destination, int bufferSize)
 		{
-			_stream.CopyTo(destination.ToImplementation(), bufferSize);
+			InternalInstance.CopyTo(destination.ToImplementation(), bufferSize);
 		}
 
 		/// <inheritdoc />
 		public void CopyTo(Stream destination, int bufferSize)
 		{
-			_stream.CopyTo(destination, bufferSize);
+			InternalInstance.CopyTo(destination, bufferSize);
 		}
 
 		/// <inheritdoc />
 		public Task CopyToAsync(IStream destination)
 		{
-			return _stream.CopyToAsync(destination.ToImplementation());
+			return InternalInstance.CopyToAsync(destination.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public Task CopyToAsync(Stream destination)
 		{
-			return _stream.CopyToAsync(destination);
+			return InternalInstance.CopyToAsync(destination);
 		}
 
 		/// <inheritdoc />
 		public Task CopyToAsync(IStream destination, int bufferSize)
 		{
-			return _stream.CopyToAsync(destination.ToImplementation(), bufferSize);
+			return InternalInstance.CopyToAsync(destination.ToImplementation(), bufferSize);
 		}
 
 		/// <inheritdoc />
 		public Task CopyToAsync(Stream destination, int bufferSize)
 		{
-			return _stream.CopyToAsync(destination, bufferSize);
+			return InternalInstance.CopyToAsync(destination, bufferSize);
 		}
 
 		/// <inheritdoc />
 		public Task CopyToAsync(IStream destination, int bufferSize, CancellationToken cancellationToken)
 		{
-			return _stream.CopyToAsync(destination.ToImplementation(), bufferSize, cancellationToken);
+			return InternalInstance.CopyToAsync(destination.ToImplementation(), bufferSize, cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken)
 		{
-			return _stream.CopyToAsync(destination, bufferSize, cancellationToken);
+			return InternalInstance.CopyToAsync(destination, bufferSize, cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public void Flush()
 		{
-			_stream.Flush();
+			InternalInstance.Flush();
 		}
 
 		/// <inheritdoc />
 		public Task FlushAsync()
 		{
-			return _stream.FlushAsync();
+			return InternalInstance.FlushAsync();
 		}
 
 		/// <inheritdoc />
 		public Task FlushAsync(CancellationToken cancellationToken)
 		{
-			return _stream.FlushAsync(cancellationToken);
+			return InternalInstance.FlushAsync(cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public int Read(byte[] buffer, int offset, int count)
 		{
-			return _stream.Read(buffer, offset, count);
+			return InternalInstance.Read(buffer, offset, count);
 		}
 
 		/// <inheritdoc />
 		public Task<int> ReadAsync(byte[] buffer, int offset, int count)
 		{
-			return _stream.ReadAsync(buffer, offset, count);
+			return InternalInstance.ReadAsync(buffer, offset, count);
 		}
 
 		/// <inheritdoc />
 		public Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
 		{
-			return _stream.ReadAsync(buffer, offset, count, cancellationToken);
+			return InternalInstance.ReadAsync(buffer, offset, count, cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public int ReadByte()
 		{
-			return _stream.ReadByte();
+			return InternalInstance.ReadByte();
 		}
 
 		/// <inheritdoc />
 		public long Seek(long offset, SeekOrigin origin)
 		{
-			return _stream.Seek(offset, origin);
+			return InternalInstance.Seek(offset, origin);
 		}
 
 		/// <inheritdoc />
 		public void SetLength(long value)
 		{
-			_stream.SetLength(value);
+			InternalInstance.SetLength(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(byte[] buffer, int offset, int count)
 		{
-			_stream.Write(buffer, offset, count);
+			InternalInstance.Write(buffer, offset, count);
 		}
 
 		/// <inheritdoc />
 		public Task WriteAsync(byte[] buffer, int offset, int count)
 		{
-			return _stream.WriteAsync(buffer, offset, count);
+			return InternalInstance.WriteAsync(buffer, offset, count);
 		}
 
 		/// <inheritdoc />
 		public Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
 		{
-			return _stream.WriteAsync(buffer, offset, count, cancellationToken);
+			return InternalInstance.WriteAsync(buffer, offset, count, cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public void WriteByte(byte value)
 		{
-			_stream.WriteByte(value);
+			InternalInstance.WriteByte(value);
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			_stream.Dispose();
+			InternalInstance.Dispose();
 		}
 	}
 }

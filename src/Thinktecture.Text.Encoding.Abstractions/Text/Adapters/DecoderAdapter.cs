@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Text;
 
 namespace Thinktecture.Text.Adapters
@@ -8,7 +9,9 @@ namespace Thinktecture.Text.Adapters
 	/// </summary>
 	public class DecoderAdapter : IDecoder
 	{
-		private readonly Decoder _decoder;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public Decoder InternalInstance { get; }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="DecoderAdapter" /> class.
@@ -19,49 +22,49 @@ namespace Thinktecture.Text.Adapters
 			if (decoder == null)
 				throw new ArgumentNullException(nameof(decoder));
 
-			_decoder = decoder;
+			InternalInstance = decoder;
 		}
 
 		/// <inheritdoc />
 		public Decoder ToImplementation()
 		{
-			return _decoder;
+			return InternalInstance;
 		}
 
 		/// <inheritdoc />
 		public void Convert(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex, int charCount, bool flush, out int bytesUsed, out int charsUsed, out bool completed)
 		{
-			_decoder.Convert(bytes, byteIndex, byteCount, chars, charIndex, charCount, flush, out bytesUsed, out charsUsed, out completed);
+			InternalInstance.Convert(bytes, byteIndex, byteCount, chars, charIndex, charCount, flush, out bytesUsed, out charsUsed, out completed);
 		}
 
 		/// <inheritdoc />
 		public int GetCharCount(byte[] bytes, int index, int count)
 		{
-			return _decoder.GetCharCount(bytes, index, count);
+			return InternalInstance.GetCharCount(bytes, index, count);
 		}
 
 		/// <inheritdoc />
 		public int GetCharCount(byte[] bytes, int index, int count, bool flush)
 		{
-			return _decoder.GetCharCount(bytes, index, count, flush);
+			return InternalInstance.GetCharCount(bytes, index, count, flush);
 		}
 
 		/// <inheritdoc />
 		public int GetChars(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex)
 		{
-			return _decoder.GetChars(bytes, byteIndex, byteCount, chars, charIndex);
+			return InternalInstance.GetChars(bytes, byteIndex, byteCount, chars, charIndex);
 		}
 
 		/// <inheritdoc />
 		public int GetChars(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex, bool flush)
 		{
-			return _decoder.GetChars(bytes, byteIndex, byteCount, chars, charIndex, flush);
+			return InternalInstance.GetChars(bytes, byteIndex, byteCount, chars, charIndex, flush);
 		}
 
 		/// <inheritdoc />
 		public void Reset()
 		{
-			_decoder.Reset();
+			InternalInstance.Reset();
 		}
 	}
 }

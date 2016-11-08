@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Thinktecture.Win32.SafeHandles;
@@ -12,10 +13,10 @@ namespace Thinktecture.IO
 	public interface IFileStream : IStream
     {
 		/// <summary>
-		/// Gets inner file stream.
+		/// Gets inner instance of <see cref="FileStream"/>.
 		/// </summary>
-		/// <returns>A file stream</returns>
-	    new FileStream ToImplementation();
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		new FileStream InternalInstance { get; }
 
 		/// <summary>Gets a value indicating whether the current stream supports reading.</summary>
 		/// <returns>true if the stream supports reading; false if the stream is closed or was opened with write-only access.</returns>
@@ -100,28 +101,30 @@ namespace Thinktecture.IO
 	    /// <filterpriority>1</filterpriority>
 	    new int Read(byte[] array, int offset, int count);
 
-	    /// <summary>Asynchronously reads a sequence of bytes from the current stream, advances the position within the stream by the number of bytes read, and monitors cancellation requests.</summary>
-	    /// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached. </returns>
-	    /// <param name="buffer">The buffer to write the data into.</param>
-	    /// <param name="offset">The byte offset in <paramref name="buffer" /> at which to begin writing data from the stream.</param>
-	    /// <param name="count">The maximum number of bytes to read.</param>
-	    /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
-	    /// <exception cref="T:System.ArgumentNullException">
-	    /// <paramref name="buffer" /> is null.</exception>
-	    /// <exception cref="T:System.ArgumentOutOfRangeException">
-	    /// <paramref name="offset" /> or <paramref name="count" /> is negative.</exception>
-	    /// <exception cref="T:System.ArgumentException">The sum of <paramref name="offset" /> and <paramref name="count" /> is larger than the buffer length.</exception>
-	    /// <exception cref="T:System.NotSupportedException">The stream does not support reading.</exception>
-	    /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
-	    /// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous read operation. </exception>
-	    new Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken);
+#pragma warning disable 1584
+		/// <summary>Asynchronously reads a sequence of bytes from the current stream, advances the position within the stream by the number of bytes read, and monitors cancellation requests.</summary>
+		/// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached. </returns>
+		/// <param name="buffer">The buffer to write the data into.</param>
+		/// <param name="offset">The byte offset in <paramref name="buffer" /> at which to begin writing data from the stream.</param>
+		/// <param name="count">The maximum number of bytes to read.</param>
+		/// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="buffer" /> is null.</exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="offset" /> or <paramref name="count" /> is negative.</exception>
+		/// <exception cref="T:System.ArgumentException">The sum of <paramref name="offset" /> and <paramref name="count" /> is larger than the buffer length.</exception>
+		/// <exception cref="T:System.NotSupportedException">The stream does not support reading.</exception>
+		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
+		/// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous read operation. </exception>
+		new Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken);
+#pragma warning restore 1584
 
-	    /// <summary>Reads a byte from the file and advances the read position one byte.</summary>
-	    /// <returns>The byte, cast to an <see cref="T:System.Int32" />, or -1 if the end of the stream has been reached.</returns>
-	    /// <exception cref="T:System.NotSupportedException">The current stream does not support reading. </exception>
-	    /// <exception cref="T:System.ObjectDisposedException">The current stream is closed. </exception>
-	    /// <filterpriority>1</filterpriority>
-	    new int ReadByte();
+		/// <summary>Reads a byte from the file and advances the read position one byte.</summary>
+		/// <returns>The byte, cast to an <see cref="T:System.Int32" />, or -1 if the end of the stream has been reached.</returns>
+		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading. </exception>
+		/// <exception cref="T:System.ObjectDisposedException">The current stream is closed. </exception>
+		/// <filterpriority>1</filterpriority>
+		new int ReadByte();
 
 	    /// <summary>Sets the current position of this stream to the given value.</summary>
 	    /// <returns>The new position in the stream.</returns>

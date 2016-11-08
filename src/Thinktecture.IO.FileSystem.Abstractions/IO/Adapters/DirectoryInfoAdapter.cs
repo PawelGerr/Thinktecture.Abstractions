@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 
 namespace Thinktecture.IO.Adapters
@@ -9,7 +10,9 @@ namespace Thinktecture.IO.Adapters
 	/// </summary>
 	public class DirectoryInfoAdapter : FileSystemInfoAdapter, IDirectoryInfo
 	{
-		private readonly DirectoryInfo _directoryInfo;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public new DirectoryInfo InternalInstance { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="DirectoryInfoAdapter" /> class on the specified path.</summary>
 		/// <param name="path">A string specifying the path on which to create the DirectoryInfo. </param>
@@ -34,151 +37,145 @@ namespace Thinktecture.IO.Adapters
 			if (directoryInfo == null)
 				throw new ArgumentNullException(nameof(directoryInfo));
 
-			_directoryInfo = directoryInfo;
+			InternalInstance = directoryInfo;
 		}
+		
+		/// <inheritdoc />
+		public IDirectoryInfo Parent => InternalInstance.Parent.ToInterface();
 
 		/// <inheritdoc />
-		DirectoryInfo IDirectoryInfo.ToImplementation()
-		{
-			return _directoryInfo;
-		}
-
-		/// <inheritdoc />
-		public IDirectoryInfo Parent => _directoryInfo.Parent.ToInterface();
-
-		/// <inheritdoc />
-		public IDirectoryInfo Root => _directoryInfo.Root.ToInterface();
+		public IDirectoryInfo Root => InternalInstance.Root.ToInterface();
 
 		/// <inheritdoc />
 		public void Create()
 		{
-			_directoryInfo.Create();
+			InternalInstance.Create();
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo CreateSubdirectory(string path)
 		{
-			return _directoryInfo.CreateSubdirectory(path).ToInterface();
+			return InternalInstance.CreateSubdirectory(path).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public void Delete(bool recursive)
 		{
-			_directoryInfo.Delete(recursive);
+			InternalInstance.Delete(recursive);
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IDirectoryInfo> EnumerateDirectories()
 		{
-			return Convert(_directoryInfo.EnumerateDirectories());
+			return Convert(InternalInstance.EnumerateDirectories());
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IDirectoryInfo> EnumerateDirectories(string searchPattern)
 		{
-			return Convert(_directoryInfo.EnumerateDirectories(searchPattern));
+			return Convert(InternalInstance.EnumerateDirectories(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IDirectoryInfo> EnumerateDirectories(string searchPattern, SearchOption searchOption)
 		{
-			return Convert(_directoryInfo.EnumerateDirectories(searchPattern, searchOption));
+			return Convert(InternalInstance.EnumerateDirectories(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileInfo> EnumerateFiles()
 		{
-			return Convert(_directoryInfo.EnumerateFiles());
+			return Convert(InternalInstance.EnumerateFiles());
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileInfo> EnumerateFiles(string searchPattern)
 		{
-			return Convert(_directoryInfo.EnumerateFiles(searchPattern));
+			return Convert(InternalInstance.EnumerateFiles(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileInfo> EnumerateFiles(string searchPattern, SearchOption searchOption)
 		{
-			return Convert(_directoryInfo.EnumerateFiles(searchPattern, searchOption));
+			return Convert(InternalInstance.EnumerateFiles(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos()
 		{
-			return Convert(_directoryInfo.EnumerateFileSystemInfos());
+			return Convert(InternalInstance.EnumerateFileSystemInfos());
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos(string searchPattern)
 		{
-			return Convert(_directoryInfo.EnumerateFileSystemInfos(searchPattern));
+			return Convert(InternalInstance.EnumerateFileSystemInfos(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos(string searchPattern, SearchOption searchOption)
 		{
-			return Convert(_directoryInfo.EnumerateFileSystemInfos(searchPattern, searchOption));
+			return Convert(InternalInstance.EnumerateFileSystemInfos(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo[] GetDirectories()
 		{
-			return Convert(_directoryInfo.GetDirectories());
+			return Convert(InternalInstance.GetDirectories());
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo[] GetDirectories(string searchPattern)
 		{
-			return Convert(_directoryInfo.GetDirectories(searchPattern));
+			return Convert(InternalInstance.GetDirectories(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo[] GetDirectories(string searchPattern, SearchOption searchOption)
 		{
-			return Convert(_directoryInfo.GetDirectories(searchPattern, searchOption));
+			return Convert(InternalInstance.GetDirectories(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles()
 		{
-			return Convert(_directoryInfo.GetFiles());
+			return Convert(InternalInstance.GetFiles());
 		}
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles(string searchPattern)
 		{
-			return Convert(_directoryInfo.GetFiles(searchPattern));
+			return Convert(InternalInstance.GetFiles(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles(string searchPattern, SearchOption searchOption)
 		{
-			return Convert(_directoryInfo.GetFiles(searchPattern, searchOption));
+			return Convert(InternalInstance.GetFiles(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IFileSystemInfo[] GetFileSystemInfos()
 		{
-			return Convert(_directoryInfo.GetFileSystemInfos());
+			return Convert(InternalInstance.GetFileSystemInfos());
 		}
 
 		/// <inheritdoc />
 		public IFileSystemInfo[] GetFileSystemInfos(string searchPattern)
 		{
-			return Convert(_directoryInfo.GetFileSystemInfos(searchPattern));
+			return Convert(InternalInstance.GetFileSystemInfos(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IFileSystemInfo[] GetFileSystemInfos(string searchPattern, SearchOption searchOption)
 		{
-			return Convert(_directoryInfo.GetFileSystemInfos(searchPattern, searchOption));
+			return Convert(InternalInstance.GetFileSystemInfos(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public void MoveTo(string destDirName)
 		{
-			_directoryInfo.MoveTo(destDirName);
+			InternalInstance.MoveTo(destDirName);
 		}
 
 		private IEnumerable<IDirectoryInfo> Convert(IEnumerable<DirectoryInfo> infos)

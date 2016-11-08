@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 
@@ -9,7 +10,9 @@ namespace Thinktecture.IO.Adapters
 	/// </summary>
 	public class StringWriterAdapter : TextWriterAdapter, IStringWriter
 	{
-		private readonly StringWriter _writer;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public new StringWriter InternalInstance { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="StringWriterAdapter" /> class.</summary>
 		public StringWriterAdapter()
@@ -52,19 +55,13 @@ namespace Thinktecture.IO.Adapters
 			if (writer == null)
 				throw new ArgumentNullException(nameof(writer));
 
-			_writer = writer;
+			InternalInstance = writer;
 		}
-
-		/// <inheritdoc />
-		StringWriter IStringWriter.ToImplementation()
-		{
-			return _writer;
-		}
-
+		
 		/// <inheritdoc />
 		public StringBuilder GetStringBuilder()
 		{
-			return _writer.GetStringBuilder();
+			return InternalInstance.GetStringBuilder();
 		}
 	}
 }

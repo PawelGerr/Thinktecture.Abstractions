@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.ComponentModel;
+using System.Text;
 
 namespace Thinktecture.Text
 {
@@ -7,11 +8,11 @@ namespace Thinktecture.Text
 	public interface IEncoding
 	{
 		/// <summary>
-		/// Gets the inner instance of <see cref="Encoding"/>.
+		/// Gets inner instance of <see cref="Encoding"/>.
 		/// </summary>
-		/// <returns>An instance of <see cref="Encoding"/></returns>
-		Encoding ToImplementation();
-
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		Encoding InternalInstance { get; }
+		
 		/// <summary>When overridden in a derived class, gets the name registered with the Internet Assigned Numbers Authority (IANA) for the current encoding.</summary>
 		/// <returns>The IANA name for the current <see cref="T:System.Text.Encoding" />.</returns>
 		/// <filterpriority>2</filterpriority>

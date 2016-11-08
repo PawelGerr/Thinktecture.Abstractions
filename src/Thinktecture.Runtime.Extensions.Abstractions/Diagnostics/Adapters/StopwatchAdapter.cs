@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 
 namespace Thinktecture.Diagnostics.Adapters
@@ -36,19 +37,21 @@ namespace Thinktecture.Diagnostics.Adapters
 			return Stopwatch.StartNew().ToInterface();
 		}
 
-		private readonly Stopwatch _stopwatch;
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public Stopwatch InternalInstance { get; }
 
 		/// <inheritdoc />
-		public bool IsRunning => _stopwatch.IsRunning;
+		public bool IsRunning => InternalInstance.IsRunning;
 
 		/// <inheritdoc />
-		public TimeSpan Elapsed => _stopwatch.Elapsed;
+		public TimeSpan Elapsed => InternalInstance.Elapsed;
 
 		/// <inheritdoc />
-		public long ElapsedMilliseconds => _stopwatch.ElapsedMilliseconds;
+		public long ElapsedMilliseconds => InternalInstance.ElapsedMilliseconds;
 
 		/// <inheritdoc />
-		public long ElapsedTicks => _stopwatch.ElapsedTicks;
+		public long ElapsedTicks => InternalInstance.ElapsedTicks;
 
 		/// <summary>
 		///	Initializes a new instance of the <see cref="StopwatchAdapter"/> class.
@@ -67,37 +70,31 @@ namespace Thinktecture.Diagnostics.Adapters
 			if (stopwatch == null)
 				throw new ArgumentNullException(nameof(stopwatch));
 
-			_stopwatch = stopwatch;
+			InternalInstance = stopwatch;
 		}
-
-		/// <inheritdoc />
-		public Stopwatch ToImplementation()
-		{
-			return _stopwatch;
-		}
-
+		
 		/// <inheritdoc />
 		public void Start()
 		{
-			_stopwatch.Start();
+			InternalInstance.Start();
 		}
 
 		/// <inheritdoc />
 		public void Stop()
 		{
-			_stopwatch.Stop();
+			InternalInstance.Stop();
 		}
 
 		/// <inheritdoc />
 		public void Reset()
 		{
-			_stopwatch.Reset();
+			InternalInstance.Reset();
 		}
 
 		/// <inheritdoc />
 		public void Restart()
 		{
-			_stopwatch.Reset();
+			InternalInstance.Reset();
 		}
 	}
 }

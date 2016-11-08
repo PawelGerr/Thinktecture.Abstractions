@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32.SafeHandles;
+﻿using System.ComponentModel;
+using Microsoft.Win32.SafeHandles;
 using Thinktecture.Runtime.InteropServices;
 
 namespace Thinktecture.Win32.SafeHandles
@@ -9,10 +10,9 @@ namespace Thinktecture.Win32.SafeHandles
 	public interface ISafeWaitHandle : ISafeHandle
 	{
 		/// <summary>
-		/// Get inner instance of <see cref="SafeWaitHandle"/>.
+		/// Gets inner instance of <see cref="SafeWaitHandle"/>.
 		/// </summary>
-		/// <returns>An instance of <see cref="SafeWaitHandle"/>.</returns>
-		new SafeWaitHandle ToImplementation();
-
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		new SafeWaitHandle InternalInstance { get; }
 	}
 }

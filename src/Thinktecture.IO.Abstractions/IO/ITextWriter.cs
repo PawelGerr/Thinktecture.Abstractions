@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,11 @@ namespace Thinktecture.IO
 	public interface ITextWriter : IDisposable
 	{
 		/// <summary>
-		/// Gets inner text writer.
+		/// Gets inner instance of <see cref="TextWriter"/>.
 		/// </summary>
-		/// <returns>A text writer.</returns>
-		TextWriter ToImplementation();
-
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		TextWriter InternalInstance { get; }
+		
 		/// <summary>When overridden in a derived class, returns the character encoding in which the output is written.</summary>
 		/// <returns>The character encoding in which the output is written.</returns>
 		/// <filterpriority>1</filterpriority>
