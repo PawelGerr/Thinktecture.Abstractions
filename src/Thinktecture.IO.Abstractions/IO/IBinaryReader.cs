@@ -16,7 +16,7 @@ namespace Thinktecture.IO
 		/// <summary>Exposes access to the underlying stream of the <see cref="T:System.IO.BinaryReader" />.</summary>
 		/// <returns>The underlying stream associated with the BinaryReader.</returns>
 		/// <filterpriority>2</filterpriority>
-		Stream BaseStream { get; }
+		IStream BaseStream { get; }
 
 		/// <summary>Releases all resources used by the current instance of the <see cref="T:System.IO.BinaryReader" /> class.</summary>
 		new void Dispose();

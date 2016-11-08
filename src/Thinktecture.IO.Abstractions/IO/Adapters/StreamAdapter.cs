@@ -77,9 +77,21 @@ namespace Thinktecture.IO.Adapters
 		}
 
 		/// <inheritdoc />
+		public void CopyTo(Stream destination)
+		{
+			_stream.CopyTo(destination);
+		}
+
+		/// <inheritdoc />
 		public void CopyTo(IStream destination, int bufferSize)
 		{
 			_stream.CopyTo(destination.ToImplementation(), bufferSize);
+		}
+
+		/// <inheritdoc />
+		public void CopyTo(Stream destination, int bufferSize)
+		{
+			_stream.CopyTo(destination, bufferSize);
 		}
 
 		/// <inheritdoc />
@@ -89,15 +101,33 @@ namespace Thinktecture.IO.Adapters
 		}
 
 		/// <inheritdoc />
+		public Task CopyToAsync(Stream destination)
+		{
+			return _stream.CopyToAsync(destination);
+		}
+
+		/// <inheritdoc />
 		public Task CopyToAsync(IStream destination, int bufferSize)
 		{
 			return _stream.CopyToAsync(destination.ToImplementation(), bufferSize);
 		}
 
 		/// <inheritdoc />
+		public Task CopyToAsync(Stream destination, int bufferSize)
+		{
+			return _stream.CopyToAsync(destination, bufferSize);
+		}
+
+		/// <inheritdoc />
 		public Task CopyToAsync(IStream destination, int bufferSize, CancellationToken cancellationToken)
 		{
 			return _stream.CopyToAsync(destination.ToImplementation(), bufferSize, cancellationToken);
+		}
+
+		/// <inheritdoc />
+		public Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken)
+		{
+			return _stream.CopyToAsync(destination, bufferSize, cancellationToken);
 		}
 
 		/// <inheritdoc />

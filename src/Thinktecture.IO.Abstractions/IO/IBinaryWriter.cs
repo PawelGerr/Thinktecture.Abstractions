@@ -16,7 +16,7 @@ namespace Thinktecture.IO
 		/// <summary>Gets the underlying stream of the <see cref="T:System.IO.BinaryWriter" />.</summary>
 		/// <returns>The underlying stream associated with the BinaryWriter.</returns>
 		/// <filterpriority>1</filterpriority>
-		Stream BaseStream { get; }
+		IStream BaseStream { get; }
 
 		/// <summary>Releases all resources used by the current instance of the <see cref="T:System.IO.BinaryWriter" /> class.</summary>
 		new void Dispose();

@@ -110,5 +110,11 @@ namespace Thinktecture.IO.Adapters
 		{
 			_stream.WriteTo(stream.ToImplementation());
 		}
+
+		/// <inheritdoc />
+		public void WriteTo(Stream stream)
+		{
+			_stream.WriteTo(stream);
+		}
 	}
 }

@@ -74,6 +74,15 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
 		void CopyTo(IStream destination);
 
+		/// <summary>Reads the bytes from the current stream and writes them to another stream.</summary>
+		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="destination" /> is null.</exception>
+		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
+		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
+		void CopyTo(Stream destination);
+
 		/// <summary>Reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
 		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
 		/// <param name="bufferSize">The size of the buffer. This value must be greater than zero. The default size is 81920.</param>
@@ -86,6 +95,18 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
 		void CopyTo(IStream destination, int bufferSize);
 
+		/// <summary>Reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
+		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+		/// <param name="bufferSize">The size of the buffer. This value must be greater than zero. The default size is 81920.</param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="destination" /> is null.</exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="bufferSize" /> is negative or zero.</exception>
+		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
+		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
+		void CopyTo(Stream destination, int bufferSize);
+
 		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream.</summary>
 		/// <returns>A task that represents the asynchronous copy operation.</returns>
 		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
@@ -94,6 +115,15 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
 		Task CopyToAsync(IStream destination);
+
+		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream.</summary>
+		/// <returns>A task that represents the asynchronous copy operation.</returns>
+		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="destination" /> is null.</exception>
+		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
+		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
+		Task CopyToAsync(Stream destination);
 
 		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
 		/// <returns>A task that represents the asynchronous copy operation.</returns>
@@ -107,6 +137,18 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
 		Task CopyToAsync(IStream destination, int bufferSize);
 
+		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
+		/// <returns>A task that represents the asynchronous copy operation.</returns>
+		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+		/// <param name="bufferSize">The size, in bytes, of the buffer. This value must be greater than zero. The default size is 81920.</param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="destination" /> is null.</exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="bufferSize" /> is negative or zero.</exception>
+		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
+		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
+		Task CopyToAsync(Stream destination, int bufferSize);
+
 		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size and cancellation token.</summary>
 		/// <returns>A task that represents the asynchronous copy operation.</returns>
 		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
@@ -119,6 +161,19 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
 		Task CopyToAsync(IStream destination, int bufferSize, CancellationToken cancellationToken);
+
+		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size and cancellation token.</summary>
+		/// <returns>A task that represents the asynchronous copy operation.</returns>
+		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+		/// <param name="bufferSize">The size, in bytes, of the buffer. This value must be greater than zero. The default size is 81920.</param>
+		/// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="P:System.Threading.CancellationToken.None" />.</param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="destination" /> is null.</exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="bufferSize" /> is negative or zero.</exception>
+		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
+		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
+		Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken);
 
 		/// <summary>When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written to the underlying device.</summary>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>

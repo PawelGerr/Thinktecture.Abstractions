@@ -168,5 +168,13 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The current or target stream is closed. </exception>
 		/// <filterpriority>2</filterpriority>
 		void WriteTo(IStream stream);
+
+		/// <summary>Writes the entire contents of this memory stream to another stream.</summary>
+		/// <param name="stream">The stream to write this memory stream to. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="stream" /> is null. </exception>
+		/// <exception cref="T:System.ObjectDisposedException">The current or target stream is closed. </exception>
+		/// <filterpriority>2</filterpriority>
+		void WriteTo(Stream stream);
 	}
 }
