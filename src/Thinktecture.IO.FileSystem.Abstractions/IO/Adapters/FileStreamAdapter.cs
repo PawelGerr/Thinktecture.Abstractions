@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Microsoft.Win32.SafeHandles;
 using Thinktecture.Win32.SafeHandles;
 
 namespace Thinktecture.IO.Adapters
@@ -33,6 +34,19 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
+		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class for the specified file handle, with the specified read/write permission. </summary>
+		/// <param name="handle">A file handle for the file that the current FileStream object will encapsulate. </param>
+		/// <param name="access">A constant that sets the <see cref="P:System.IO.FileStream.CanRead" /> and <see cref="P:System.IO.FileStream.CanWrite" /> properties of the FileStream object. </param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="access" /> is not a field of <see cref="T:System.IO.FileAccess" />. </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error, such as a disk error, occurred.-or-The stream has been closed. </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
+		public FileStreamAdapter(SafeFileHandle handle, FileAccess access)
+			: this(new FileStream(handle, access))
+		{
+		}
+
 		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class for the specified file handle, with the specified read/write permission, and buffer size.</summary>
 		/// <param name="handle">A file handle for the file that the current FileStream object will encapsulate. </param>
 		/// <param name="access">A <see cref="T:System.IO.FileAccess" /> constant that sets the <see cref="P:System.IO.FileStream.CanRead" /> and <see cref="P:System.IO.FileStream.CanWrite" /> properties of the FileStream object. </param>
@@ -44,6 +58,20 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
 		public FileStreamAdapter(ISafeFileHandle handle, FileAccess access, int bufferSize)
 			: this(new FileStream(handle?.ToImplementation(), access, bufferSize))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class for the specified file handle, with the specified read/write permission, and buffer size.</summary>
+		/// <param name="handle">A file handle for the file that the current FileStream object will encapsulate. </param>
+		/// <param name="access">A <see cref="T:System.IO.FileAccess" /> constant that sets the <see cref="P:System.IO.FileStream.CanRead" /> and <see cref="P:System.IO.FileStream.CanWrite" /> properties of the FileStream object. </param>
+		/// <param name="bufferSize">A positive <see cref="T:System.Int32" /> value greater than 0 indicating the buffer size. The default buffer size is 4096.</param>
+		/// <exception cref="T:System.ArgumentException">The <paramref name="handle" /> parameter is an invalid handle.-or-The <paramref name="handle" /> parameter is a synchronous handle and it was used asynchronously. </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="bufferSize" /> parameter is negative. </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error, such as a disk error, occurred.-or-The stream has been closed.  </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
+		public FileStreamAdapter(SafeFileHandle handle, FileAccess access, int bufferSize)
+			: this(new FileStream(handle, access, bufferSize))
 		{
 		}
 
@@ -59,6 +87,21 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
 		public FileStreamAdapter(ISafeFileHandle handle, FileAccess access, int bufferSize, bool isAsync)
 			: this(new FileStream(handle?.ToImplementation(), access, bufferSize, isAsync))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class for the specified file handle, with the specified read/write permission, buffer size, and synchronous or asynchronous state.</summary>
+		/// <param name="handle">A file handle for the file that this FileStream object will encapsulate. </param>
+		/// <param name="access">A constant that sets the <see cref="P:System.IO.FileStream.CanRead" /> and <see cref="P:System.IO.FileStream.CanWrite" /> properties of the FileStream object. </param>
+		/// <param name="bufferSize">A positive <see cref="T:System.Int32" /> value greater than 0 indicating the buffer size. The default buffer size is 4096.</param>
+		/// <param name="isAsync">true if the handle was opened asynchronously (that is, in overlapped I/O mode); otherwise, false. </param>
+		/// <exception cref="T:System.ArgumentException">The <paramref name="handle" /> parameter is an invalid handle.-or-The <paramref name="handle" /> parameter is a synchronous handle and it was used asynchronously. </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="bufferSize" /> parameter is negative. </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error, such as a disk error, occurred.-or-The stream has been closed.  </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
+		public FileStreamAdapter(SafeFileHandle handle, FileAccess access, int bufferSize, bool isAsync)
+			: this(new FileStream(handle, access, bufferSize, isAsync))
 		{
 		}
 

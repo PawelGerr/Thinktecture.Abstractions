@@ -28,7 +28,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		FileAttributes Attributes{get; set; }
+		FileAttributes Attributes { get; set; }
 
 		/// <summary>Gets or sets the creation time of the current file or directory.</summary>
 		/// <returns>The creation date and time of the current <see cref="T:System.IO.FileSystemInfo" /> object.</returns>
@@ -54,7 +54,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime CreationTimeUtc{get; set; }
+		DateTime CreationTimeUtc { get; set; }
 
 		/// <summary>Gets a value indicating whether the file or directory exists.</summary>
 		/// <returns>true if the file or directory exists; otherwise, false.</returns>
@@ -86,7 +86,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		 DateTime LastAccessTime { get; set; }
+		DateTime LastAccessTime { get; set; }
 
 		/// <summary>Gets or sets the time, in coordinated universal time (UTC), that the current file or directory was last accessed.</summary>
 		/// <returns>The UTC time that the current file or directory was last accessed.</returns>
@@ -135,9 +135,9 @@ namespace Thinktecture.IO
 		/// <filterpriority>2</filterpriority>
 		void Delete();
 
-	    /// <summary>Refreshes the state of the object.</summary>
-	    /// <exception cref="T:System.IO.IOException">A device such as a disk drive is not ready. </exception>
-	    /// <filterpriority>1</filterpriority>
-	    void Refresh();
-    }
+		/// <summary>Refreshes the state of the object.</summary>
+		/// <exception cref="T:System.IO.IOException">A device such as a disk drive is not ready. </exception>
+		/// <filterpriority>1</filterpriority>
+		void Refresh();
+	}
 }
