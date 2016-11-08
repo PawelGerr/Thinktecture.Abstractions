@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Text;
+using Thinktecture.Text;
 
 namespace Thinktecture.IO.Adapters
 {
@@ -44,6 +45,28 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
+		public BinaryWriterAdapter(IStream output, IEncoding encoding)
+			: this(new BinaryWriter(output?.ToImplementation(), encoding.ToImplementation()))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class based on the specified stream and character encoding.</summary>
+		/// <param name="output">The output stream. </param>
+		/// <param name="encoding">The character encoding to use. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
+		public BinaryWriterAdapter(Stream output, IEncoding encoding)
+			: this(new BinaryWriter(output, encoding.ToImplementation()))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class based on the specified stream and character encoding.</summary>
+		/// <param name="output">The output stream. </param>
+		/// <param name="encoding">The character encoding to use. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
 		public BinaryWriterAdapter(IStream output, Encoding encoding)
 			: this(new BinaryWriter(output?.ToImplementation(), encoding))
 		{
@@ -57,6 +80,30 @@ namespace Thinktecture.IO.Adapters
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
 		public BinaryWriterAdapter(Stream output, Encoding encoding)
 			: this(new BinaryWriter(output, encoding))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class based on the specified stream and character encoding, and optionally leaves the stream open.</summary>
+		/// <param name="output">The output stream.</param>
+		/// <param name="encoding">The character encoding to use.</param>
+		/// <param name="leaveOpen">true to leave the stream open after the <see cref="T:System.IO.BinaryWriter" /> object is disposed; otherwise, false.</param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
+		public BinaryWriterAdapter(IStream output, IEncoding encoding, bool leaveOpen)
+			: this(new BinaryWriter(output?.ToImplementation(), encoding.ToImplementation(), leaveOpen))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class based on the specified stream and character encoding, and optionally leaves the stream open.</summary>
+		/// <param name="output">The output stream.</param>
+		/// <param name="encoding">The character encoding to use.</param>
+		/// <param name="leaveOpen">true to leave the stream open after the <see cref="T:System.IO.BinaryWriter" /> object is disposed; otherwise, false.</param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
+		public BinaryWriterAdapter(Stream output, IEncoding encoding, bool leaveOpen)
+			: this(new BinaryWriter(output, encoding.ToImplementation(), leaveOpen))
 		{
 		}
 

@@ -21,10 +21,11 @@
 		"xmlDoc": true
 	},
 
-	"dependencies": {
-		"Thinktecture.IO.Abstractions": "1.0.0-*",
-		"Thinktecture.Runtime.Handles.Abstractions": "1.0.0-*"
-	},
+  "dependencies": {
+    "Thinktecture.IO.Abstractions": "1.0.0-*",
+    "Thinktecture.Runtime.Handles.Abstractions": "1.0.0-*",
+    "Thinktecture.Text.Encoding.Abstractions": "1.0.0-*"
+  },
 
 	"frameworks": {
 		"netstandard1.3": {

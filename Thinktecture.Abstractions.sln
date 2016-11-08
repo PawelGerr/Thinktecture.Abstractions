@@ -20,6 +20,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Thinktecture.Runtime.Handle
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Thinktecture.Runtime.Extensions.Abstractions", "src\Thinktecture.Runtime.Extensions.Abstractions\Thinktecture.Runtime.Extensions.Abstractions.xproj", "{8DA9B6E6-A52C-4C3F-BD70-66543DC28711}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Thinktecture.Text.Encoding.Abstractions", "src\Thinktecture.Text.Encoding.Abstractions\Thinktecture.Text.Encoding.Abstractions.xproj", "{7CAFD962-AA27-46D6-BAB3-FCCE4C213E57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{8DA9B6E6-A52C-4C3F-BD70-66543DC28711}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DA9B6E6-A52C-4C3F-BD70-66543DC28711}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DA9B6E6-A52C-4C3F-BD70-66543DC28711}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CAFD962-AA27-46D6-BAB3-FCCE4C213E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CAFD962-AA27-46D6-BAB3-FCCE4C213E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CAFD962-AA27-46D6-BAB3-FCCE4C213E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CAFD962-AA27-46D6-BAB3-FCCE4C213E57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,5 +57,6 @@ Global
 		{02401651-C48A-4DEC-86E5-869C44D50FB6} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 		{52D30479-DFFE-4F95-A124-351BB07A78AA} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 		{8DA9B6E6-A52C-4C3F-BD70-66543DC28711} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
+		{7CAFD962-AA27-46D6-BAB3-FCCE4C213E57} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Thinktecture.Text;
 
 namespace Thinktecture.IO
 {
@@ -25,7 +26,7 @@ namespace Thinktecture.IO
 		/// <summary>Gets the current character encoding that the current <see cref="T:System.IO.StreamReader" /> object is using.</summary>
 		/// <returns>The current character encoding used by the current reader. The value can be different after the first call to any <see cref="Read" /> method of <see cref="T:System.IO.StreamReader" />, since encoding autodetection is not done until the first call to a <see cref="Read" /> method.</returns>
 		/// <filterpriority>2</filterpriority>
-		Encoding CurrentEncoding { get; }
+		IEncoding CurrentEncoding { get; }
 #pragma warning restore 0419
 
 		/// <summary>Gets a value that indicates whether the current stream position is at the end of the stream.</summary>

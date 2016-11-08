@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Thinktecture.Text;
 
 namespace Thinktecture.IO
 {
@@ -46,6 +47,26 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
+		void AppendAllLines(string path, IEnumerable<string> contents, IEncoding encoding);
+
+		/// <summary>Appends lines to a file by using a specified encoding, and then closes the file. If the specified file does not exist, this method creates a file, writes the specified lines to the file, and then closes the file.</summary>
+		/// <param name="path">The file to append the lines to. The file is created if it doesn't already exist.</param>
+		/// <param name="contents">The lines to append to the file.</param>
+		/// <param name="encoding">The character encoding to use.</param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method.</exception>
+		/// <exception cref="T:System.ArgumentNullException">Either<paramref name=" path" />, <paramref name="contents" />, or <paramref name="encoding" /> is null.</exception>
+		/// <exception cref="T:System.IO.DirectoryNotFoundException">
+		/// <paramref name="path" /> is invalid (for example, the directory doesn’t exist or it is on an unmapped drive).</exception>
+		/// <exception cref="T:System.IO.FileNotFoundException">The file specified by <paramref name="path" /> was not found.</exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file.</exception>
+		/// <exception cref="T:System.IO.PathTooLongException">
+		/// <paramref name="path" /> exceeds the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="path" /> is in an invalid format.</exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">
+		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
 		void AppendAllLines(string path, IEnumerable<string> contents, Encoding encoding);
 
 		/// <summary>Opens a file, appends the specified string to the file, and then closes the file. If the file does not exist, this method creates a file, writes the specified string to the file, then closes the file.</summary>
@@ -68,6 +89,28 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		void AppendAllText(string path, string contents);
+
+		/// <summary>Appends the specified string to the file, creating the file if it does not already exist.</summary>
+		/// <param name="path">The file to append the specified string to. </param>
+		/// <param name="contents">The string to append to the file. </param>
+		/// <param name="encoding">The character encoding to use. </param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="path" /> is null. </exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, the directory doesn’t exist or it is on an unmapped drive). </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file. </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">
+		/// <paramref name="path" /> specified a file that is read-only.-or- This operation is not supported on the current platform.-or- <paramref name="path" /> specified a directory.-or- The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="path" /> is in an invalid format. </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void AppendAllText(string path, string contents, IEncoding encoding);
 
 		/// <summary>Appends the specified string to the file, creating the file if it does not already exist.</summary>
 		/// <param name="path">The file to append the specified string to. </param>
@@ -595,6 +638,29 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		string[] ReadAllLines(string path, IEncoding encoding);
+
+		/// <summary>Opens a file, reads all lines of the file with the specified encoding, and then closes the file.</summary>
+		/// <returns>A string array containing all lines of the file.</returns>
+		/// <param name="path">The file to open for reading. </param>
+		/// <param name="encoding">The encoding applied to the contents of the file. </param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="path" /> is null. </exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file. </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">
+		/// <paramref name="path" /> specified a file that is read-only.-or- This operation is not supported on the current platform.-or- <paramref name="path" /> specified a directory.-or- The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.IO.FileNotFoundException">The file specified in <paramref name="path" /> was not found. </exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="path" /> is in an invalid format. </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
 		string[] ReadAllLines(string path, Encoding encoding);
 
 		/// <summary>Opens a text file, reads all lines of the file, and then closes the file.</summary>
@@ -640,6 +706,29 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		string ReadAllText(string path, IEncoding encoding);
+
+		/// <summary>Opens a file, reads all lines of the file with the specified encoding, and then closes the file.</summary>
+		/// <returns>A string containing all lines of the file.</returns>
+		/// <param name="path">The file to open for reading. </param>
+		/// <param name="encoding">The encoding applied to the contents of the file. </param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="path" /> is null. </exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file. </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">
+		/// <paramref name="path" /> specified a file that is read-only.-or- This operation is not supported on the current platform.-or- <paramref name="path" /> specified a directory.-or- The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.IO.FileNotFoundException">The file specified in <paramref name="path" /> was not found. </exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="path" /> is in an invalid format. </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
 		string ReadAllText(string path, Encoding encoding);
 
 		/// <summary>Reads the lines of a file.</summary>
@@ -659,6 +748,25 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
 		IEnumerable<string> ReadLines(string path);
+
+		/// <summary>Read the lines of a file that has a specified encoding.</summary>
+		/// <returns>All the lines of the file, or the lines that are the result of a query.</returns>
+		/// <param name="path">The file to read.</param>
+		/// <param name="encoding">The encoding that is applied to the contents of the file. </param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method.</exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="path" /> is null.</exception>
+		/// <exception cref="T:System.IO.DirectoryNotFoundException">
+		/// <paramref name="path" /> is invalid (for example, it is on an unmapped drive).</exception>
+		/// <exception cref="T:System.IO.FileNotFoundException">The file specified by <paramref name="path" /> was not found.</exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file.</exception>
+		/// <exception cref="T:System.IO.PathTooLongException">
+		/// <paramref name="path" /> exceeds the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">
+		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
+		IEnumerable<string> ReadLines(string path, IEncoding encoding);
 
 		/// <summary>Read the lines of a file that has a specified encoding.</summary>
 		/// <returns>All the lines of the file, or the lines that are the result of a query.</returns>
@@ -875,6 +983,25 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
+		void WriteAllLines(string path, IEnumerable<string> contents, IEncoding encoding);
+
+		/// <summary>Creates a new file by using the specified encoding, writes a collection of strings to the file, and then closes the file.</summary>
+		/// <param name="path">The file to write to.</param>
+		/// <param name="contents">The lines to write to the file.</param>
+		/// <param name="encoding">The character encoding to use.</param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method.</exception>
+		/// <exception cref="T:System.ArgumentNullException">Either<paramref name=" path" />,<paramref name=" contents" />, or <paramref name="encoding" /> is null.</exception>
+		/// <exception cref="T:System.IO.DirectoryNotFoundException">
+		/// <paramref name="path" /> is invalid (for example, it is on an unmapped drive).</exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file.</exception>
+		/// <exception cref="T:System.IO.PathTooLongException">
+		/// <paramref name="path" /> exceeds the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="path" /> is in an invalid format.</exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">
+		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
 		void WriteAllLines(string path, IEnumerable<string> contents, Encoding encoding);
 
 		/// <summary>Creates a new file, writes the specified string to the file, and then closes the file. If the target file already exists, it is overwritten.</summary>
@@ -897,6 +1024,28 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		void WriteAllText(string path, string contents);
+
+		/// <summary>Creates a new file, writes the specified string to the file using the specified encoding, and then closes the file. If the target file already exists, it is overwritten.</summary>
+		/// <param name="path">The file to write to. </param>
+		/// <param name="contents">The string to write to the file. </param>
+		/// <param name="encoding">The encoding to apply to the string.</param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="path" /> is null or <paramref name="contents" /> is empty. </exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file. </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">
+		/// <paramref name="path" /> specified a file that is read-only.-or- This operation is not supported on the current platform.-or- <paramref name="path" /> specified a directory.-or- The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="path" /> is in an invalid format. </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void WriteAllText(string path, string contents, IEncoding encoding);
 
 		/// <summary>Creates a new file, writes the specified string to the file using the specified encoding, and then closes the file. If the target file already exists, it is overwritten.</summary>
 		/// <param name="path">The file to write to. </param>

@@ -1,0 +1,32 @@
+﻿{
+	"version": "1.0.0-*",
+	"title": "Thinktecture.Text.Encoding.Abstractions",
+	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
+	"description": "Provides interfaces for types in System.Text.Encoding: Encoding, Encoder, Decoder",
+	"authors": ["Pawel Gerr"],
+
+	"packOptions": {
+		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
+		"tags": ["encoding", "abstraction"],
+		"licenseUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md",
+		"repository": {
+			"type": "git",
+			"url": "git@github.com:PawelGerr/Thinktecture.Abstractions.git"
+		}
+	},
+
+	"buildOptions": {
+		"nowarn": [],
+		"xmlDoc": true
+	},
+
+	"frameworks": {
+		"netstandard1.0": {
+			"dependencies": {
+				"System.Text.Encoding": "4.0.11"
+			}
+		},
+		"net45": {},
+		"net46": {}
+	}
+}

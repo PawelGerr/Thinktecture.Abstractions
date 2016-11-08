@@ -72,3 +72,8 @@ Provides interfaces for type in `System.Runtime.Extensions`: `Path`, `BitConvert
 Provides interfaces for types in `System.Runtime.Handles`: `SafeHandle`, `CriticalHandle`, `SafeWaitHandle`
 
 **Nuget**: `Install-Package Thinktecture.Runtime.Handles.Abstractions`
+
+### Thinktecture.Text.Encoding.Abstractions
+Provides interfaces for types in `System.Text.Encoding`: `Encoding`, `Encoder`, `Decoder`
+
+**Nuget**: `Install-Package Thinktecture.Text.Encoding.Abstractions`

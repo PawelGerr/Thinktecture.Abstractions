@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Thinktecture.Text;
 
 namespace Thinktecture.IO.Adapters
 {
@@ -17,15 +18,27 @@ namespace Thinktecture.IO.Adapters
 		}
 
 		/// <inheritdoc />
+		public void AppendAllLines(string path, IEnumerable<string> contents, IEncoding encoding)
+		{
+			File.AppendAllLines(path, contents, encoding.ToImplementation());
+		}
+
+		/// <inheritdoc />
 		public void AppendAllLines(string path, IEnumerable<string> contents, Encoding encoding)
 		{
 			File.AppendAllLines(path, contents, encoding);
 		}
-
+		
 		/// <inheritdoc />
 		public void AppendAllText(string path, string contents)
 		{
 			File.AppendAllText(path, contents);
+		}
+
+		/// <inheritdoc />
+		public void AppendAllText(string path, string contents, IEncoding encoding)
+		{
+			File.AppendAllText(path, contents, encoding.ToImplementation());
 		}
 
 		/// <inheritdoc />
@@ -185,6 +198,12 @@ namespace Thinktecture.IO.Adapters
 		}
 
 		/// <inheritdoc />
+		public string[] ReadAllLines(string path, IEncoding encoding)
+		{
+			return File.ReadAllLines(path, encoding.ToImplementation());
+		}
+
+		/// <inheritdoc />
 		public string[] ReadAllLines(string path, Encoding encoding)
 		{
 			return File.ReadAllLines(path, encoding);
@@ -197,6 +216,12 @@ namespace Thinktecture.IO.Adapters
 		}
 
 		/// <inheritdoc />
+		public string ReadAllText(string path, IEncoding encoding)
+		{
+			return File.ReadAllText(path, encoding.ToImplementation());
+		}
+
+		/// <inheritdoc />
 		public string ReadAllText(string path, Encoding encoding)
 		{
 			return File.ReadAllText(path, encoding);
@@ -206,6 +231,12 @@ namespace Thinktecture.IO.Adapters
 		public IEnumerable<string> ReadLines(string path)
 		{
 			return File.ReadLines(path);
+		}
+
+		/// <inheritdoc />
+		public IEnumerable<string> ReadLines(string path, IEncoding encoding)
+		{
+			return File.ReadLines(path, encoding.ToImplementation());
 		}
 
 		/// <inheritdoc />
@@ -269,6 +300,12 @@ namespace Thinktecture.IO.Adapters
 		}
 
 		/// <inheritdoc />
+		public void WriteAllLines(string path, IEnumerable<string> contents, IEncoding encoding)
+		{
+			File.WriteAllLines(path, contents, encoding.ToImplementation());
+		}
+
+		/// <inheritdoc />
 		public void WriteAllLines(string path, IEnumerable<string> contents, Encoding encoding)
 		{
 			File.WriteAllLines(path, contents, encoding);
@@ -278,6 +315,12 @@ namespace Thinktecture.IO.Adapters
 		public void WriteAllText(string path, string contents)
 		{
 			File.WriteAllText(path, contents);
+		}
+
+		/// <inheritdoc />
+		public void WriteAllText(string path, string contents, IEncoding encoding)
+		{
+			File.WriteAllText(path, contents, encoding.ToImplementation());
 		}
 
 		/// <inheritdoc />
