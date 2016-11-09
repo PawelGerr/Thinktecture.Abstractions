@@ -265,7 +265,7 @@ namespace Thinktecture.IO.Adapters
 
 			InternalInstance = fileStream;
 		}
-		
+
 		/// <inheritdoc />
 		public void Flush(bool flushToDisk)
 		{

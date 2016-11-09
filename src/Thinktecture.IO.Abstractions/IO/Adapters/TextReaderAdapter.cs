@@ -95,5 +95,23 @@ namespace Thinktecture.IO.Adapters
 		{
 			return InternalInstance.ReadToEndAsync();
 		}
+		
+		/// <inheritdoc />
+		public override string ToString()
+		{
+			return InternalInstance.ToString();
+		}
+
+		/// <inheritdoc />
+		public override bool Equals(object obj)
+		{
+			return InternalInstance.Equals(obj);
+		}
+
+		/// <inheritdoc />
+		public override int GetHashCode()
+		{
+			return InternalInstance.GetHashCode();
+		}
 	}
 }

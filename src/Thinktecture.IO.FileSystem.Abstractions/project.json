@@ -17,7 +17,6 @@
 	},
 
 	"buildOptions": {
-		"nowarn": ["CS1734"],
 		"xmlDoc": true
 	},
 

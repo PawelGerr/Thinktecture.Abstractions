@@ -12,7 +12,7 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new FileInfo InternalInstance { get; }
-		
+
 		/// <summary>Initializes a new instance of the <see cref="FileInfoAdapter" /> class, which acts as a wrapper for a file path.</summary>
 		/// <param name="fileName">The fully qualified name of the new file, or the relative file name. Do not end the path with the directory separator character.</param>
 		/// <exception cref="T:System.ArgumentNullException">
@@ -40,7 +40,7 @@ namespace Thinktecture.IO.Adapters
 
 			InternalInstance = info;
 		}
-		
+
 		/// <inheritdoc />
 		public IDirectoryInfo Directory => InternalInstance.Directory.ToInterface();
 

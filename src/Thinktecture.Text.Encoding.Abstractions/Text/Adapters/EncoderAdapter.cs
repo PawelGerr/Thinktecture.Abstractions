@@ -49,5 +49,23 @@ namespace Thinktecture.Text.Adapters
 		{
 			return InternalInstance.GetBytes(chars, charIndex, charCount, bytes, byteIndex, flush);
 		}
+
+		/// <inheritdoc />
+		public override string ToString()
+		{
+			return InternalInstance.ToString();
+		}
+
+		/// <inheritdoc />
+		public override bool Equals(object obj)
+		{
+			return InternalInstance.Equals(obj);
+		}
+
+		/// <inheritdoc />
+		public override int GetHashCode()
+		{
+			return InternalInstance.GetHashCode();
+		}
 	}
 }

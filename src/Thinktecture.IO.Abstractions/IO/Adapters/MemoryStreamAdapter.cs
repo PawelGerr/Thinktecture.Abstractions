@@ -95,7 +95,7 @@ namespace Thinktecture.IO.Adapters
 
 			InternalInstance = stream;
 		}
-		
+
 		/// <inheritdoc />
 		public byte[] ToArray()
 		{

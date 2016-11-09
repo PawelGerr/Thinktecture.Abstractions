@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
+using Thinktecture.Text;
 
 namespace Thinktecture.IO.Adapters
 {
@@ -31,6 +32,15 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="sb">The StringBuilder to write to. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="sb" /> is null. </exception>
+		public StringWriterAdapter(IStringBuilder sb)
+			: this(new StringWriter(sb.ToImplementation()))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StringWriterAdapter" /> class that writes to the specified <see cref="T:System.Text.StringBuilder" />.</summary>
+		/// <param name="sb">The StringBuilder to write to. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="sb" /> is null. </exception>
 		public StringWriterAdapter(StringBuilder sb)
 			: this(new StringWriter(sb))
 		{
@@ -41,8 +51,18 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="formatProvider">An <see cref="T:System.IFormatProvider" /> object that controls formatting. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="sb" /> is null. </exception>
+		public StringWriterAdapter(IStringBuilder sb, IFormatProvider formatProvider)
+			: this(new StringWriter(sb.ToImplementation(), formatProvider))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StringWriterAdapter" /> class that writes to the specified <see cref="T:System.Text.StringBuilder" /> and has the specified format provider.</summary>
+		/// <param name="sb">The StringBuilder to write to. </param>
+		/// <param name="formatProvider">An <see cref="T:System.IFormatProvider" /> object that controls formatting. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="sb" /> is null. </exception>
 		public StringWriterAdapter(StringBuilder sb, IFormatProvider formatProvider)
-			: this(new StringWriter(sb,formatProvider))
+			: this(new StringWriter(sb, formatProvider))
 		{
 		}
 
@@ -57,11 +77,11 @@ namespace Thinktecture.IO.Adapters
 
 			InternalInstance = writer;
 		}
-		
+
 		/// <inheritdoc />
-		public StringBuilder GetStringBuilder()
+		public IStringBuilder GetStringBuilder()
 		{
-			return InternalInstance.GetStringBuilder();
+			return InternalInstance.GetStringBuilder().ToInterface();
 		}
 	}
 }

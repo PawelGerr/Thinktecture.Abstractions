@@ -172,5 +172,23 @@ namespace Thinktecture.Adapters
 			get { return InternalInstance.UserName; }
 			set { InternalInstance.UserName = value; }
 		}
+
+		/// <inheritdoc />
+		public override bool Equals(object rparam)
+		{
+			return InternalInstance.Equals(rparam);
+		}
+
+		/// <inheritdoc />
+		public override int GetHashCode()
+		{
+			return InternalInstance.GetHashCode();
+		}
+
+		/// <inheritdoc />
+		public override string ToString()
+		{
+			return InternalInstance.ToString();
+		}
 	}
 }

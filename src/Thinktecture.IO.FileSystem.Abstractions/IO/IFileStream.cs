@@ -84,24 +84,24 @@ namespace Thinktecture.IO
 	    /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 	    new Task FlushAsync(CancellationToken cancellationToken);
 
-	    /// <summary>Reads a block of bytes from the stream and writes the data in a given buffer.</summary>
-	    /// <returns>The total number of bytes read into the buffer. This might be less than the number of bytes requested if that number of bytes are not currently available, or zero if the end of the stream is reached.</returns>
-	    /// <param name="array">When this method returns, contains the specified byte array with the values between <paramref name="offset" /> and (<paramref name="offset" /> + <paramref name="count" /> - 1<paramref name=")" /> replaced by the bytes read from the current source. </param>
-	    /// <param name="offset">The byte offset in <paramref name="array" /> at which the read bytes will be placed. </param>
-	    /// <param name="count">The maximum number of bytes to read. </param>
-	    /// <exception cref="T:System.ArgumentNullException">
-	    /// <paramref name="array" /> is null. </exception>
-	    /// <exception cref="T:System.ArgumentOutOfRangeException">
-	    /// <paramref name="offset" /> or <paramref name="count" /> is negative. </exception>
-	    /// <exception cref="T:System.NotSupportedException">The stream does not support reading. </exception>
-	    /// <exception cref="T:System.IO.IOException">An I/O error occurred. </exception>
-	    /// <exception cref="T:System.ArgumentException">
-	    /// <paramref name="offset" /> and <paramref name="count" /> describe an invalid range in <paramref name="array" />. </exception>
-	    /// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
-	    /// <filterpriority>1</filterpriority>
-	    new int Read(byte[] array, int offset, int count);
+		/// <summary>Reads a block of bytes from the stream and writes the data in a given buffer.</summary>
+		/// <returns>The total number of bytes read into the buffer. This might be less than the number of bytes requested if that number of bytes are not currently available, or zero if the end of the stream is reached.</returns>
+		/// <param name="array">When this method returns, contains the specified byte array with the values between <paramref name="offset" /> and (<paramref name="offset" /> + <paramref name="count" /> - 1) replaced by the bytes read from the current source. </param>
+		/// <param name="offset">The byte offset in <paramref name="array" /> at which the read bytes will be placed. </param>
+		/// <param name="count">The maximum number of bytes to read. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="array" /> is null. </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="offset" /> or <paramref name="count" /> is negative. </exception>
+		/// <exception cref="T:System.NotSupportedException">The stream does not support reading. </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred. </exception>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="offset" /> and <paramref name="count" /> describe an invalid range in <paramref name="array" />. </exception>
+		/// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
+		/// <filterpriority>1</filterpriority>
+		new int Read(byte[] array, int offset, int count);
 
-#pragma warning disable 1584
+#pragma warning disable 1584, 1734
 		/// <summary>Asynchronously reads a sequence of bytes from the current stream, advances the position within the stream by the number of bytes read, and monitors cancellation requests.</summary>
 		/// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached. </returns>
 		/// <param name="buffer">The buffer to write the data into.</param>
@@ -117,7 +117,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous read operation. </exception>
 		new Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken);
-#pragma warning restore 1584
+#pragma warning restore 1584, 1734
 
 		/// <summary>Reads a byte from the file and advances the read position one byte.</summary>
 		/// <returns>The byte, cast to an <see cref="T:System.Int32" />, or -1 if the end of the stream has been reached.</returns>

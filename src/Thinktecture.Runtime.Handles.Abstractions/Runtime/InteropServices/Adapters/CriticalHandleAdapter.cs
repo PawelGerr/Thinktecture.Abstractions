@@ -30,7 +30,7 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 
 			InternalInstance = handle;
 		}
-		
+
 		/// <inheritdoc />
 		public void SetHandleAsInvalid()
 		{
@@ -41,6 +41,24 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 		public void Dispose()
 		{
 			InternalInstance.Dispose();
+		}
+
+		/// <inheritdoc />
+		public override string ToString()
+		{
+			return InternalInstance.ToString();
+		}
+
+		/// <inheritdoc />
+		public override bool Equals(object obj)
+		{
+			return InternalInstance.Equals(obj);
+		}
+
+		/// <inheritdoc />
+		public override int GetHashCode()
+		{
+			return InternalInstance.GetHashCode();
 		}
 	}
 }

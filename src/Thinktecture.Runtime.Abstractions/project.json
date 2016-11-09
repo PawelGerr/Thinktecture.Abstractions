@@ -1,0 +1,32 @@
+﻿{
+	"version": "1.0.0-*",
+	"title": "Thinktecture.Runtime.Abstractions",
+	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
+	"description": "Provides interfaces for types in System.Runtime: StringBuilder.",
+	"authors": ["Pawel Gerr"],
+	"packOptions": {
+		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
+		"tags": ["runtime", "abstraction"],
+		"licenseUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md",
+		"repository": {
+			"type": "git",
+			"url": "git@github.com:PawelGerr/Thinktecture.Abstractions.git"
+		}
+	},
+	"buildOptions": {
+		"xmlDoc": true
+	},
+	"frameworks": {
+		"netstandard1.0": {
+			"dependencies": {
+				"System.Runtime": "4.1.0"
+			}
+		},
+		"net45": {
+			
+		},
+		"net46": {
+			
+		}
+	}
+}

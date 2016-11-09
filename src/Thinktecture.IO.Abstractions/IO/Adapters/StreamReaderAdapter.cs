@@ -233,7 +233,7 @@ namespace Thinktecture.IO.Adapters
 
 			InternalInstance = reader;
 		}
-		
+
 		/// <inheritdoc />
 		public IStream BaseStream => InternalInstance.BaseStream.ToInterface();
 

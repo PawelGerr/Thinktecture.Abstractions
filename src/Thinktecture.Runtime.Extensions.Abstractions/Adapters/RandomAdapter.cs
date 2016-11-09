@@ -36,7 +36,7 @@ namespace Thinktecture.Adapters
 
 			InternalInstance = random;
 		}
-		
+
 		/// <inheritdoc />
 		public int Next()
 		{
@@ -65,6 +65,24 @@ namespace Thinktecture.Adapters
 		public double NextDouble()
 		{
 			return InternalInstance.NextDouble();
+		}
+
+		/// <inheritdoc />
+		public override string ToString()
+		{
+			return InternalInstance.ToString();
+		}
+
+		/// <inheritdoc />
+		public override bool Equals(object obj)
+		{
+			return InternalInstance.Equals(obj);
+		}
+
+		/// <inheritdoc />
+		public override int GetHashCode()
+		{
+			return InternalInstance.GetHashCode();
 		}
 	}
 }

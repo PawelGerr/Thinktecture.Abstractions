@@ -199,12 +199,6 @@ namespace Thinktecture.Text.Adapters
 		}
 
 		/// <inheritdoc />
-		public override bool Equals(object value)
-		{
-			return InternalInstance.Equals(value);
-		}
-
-		/// <inheritdoc />
 		public int GetByteCount(char[] chars)
 		{
 			return InternalInstance.GetByteCount(chars);
@@ -295,12 +289,6 @@ namespace Thinktecture.Text.Adapters
 		}
 
 		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return InternalInstance.GetHashCode();
-		}
-
-		/// <inheritdoc />
 		public int GetMaxByteCount(int charCount)
 		{
 			return InternalInstance.GetMaxByteCount(charCount);
@@ -322,6 +310,24 @@ namespace Thinktecture.Text.Adapters
 		public string GetString(byte[] bytes, int index, int count)
 		{
 			return InternalInstance.GetString(bytes, index, count);
+		}
+
+		/// <inheritdoc />
+		public override string ToString()
+		{
+			return InternalInstance.ToString();
+		}
+
+		/// <inheritdoc />
+		public override bool Equals(object obj)
+		{
+			return InternalInstance.Equals(obj);
+		}
+
+		/// <inheritdoc />
+		public override int GetHashCode()
+		{
+			return InternalInstance.GetHashCode();
 		}
 	}
 }

@@ -60,5 +60,23 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 		{
 			InternalInstance.Dispose();
 		}
+
+		/// <inheritdoc />
+		public override string ToString()
+		{
+			return InternalInstance.ToString();
+		}
+
+		/// <inheritdoc />
+		public override bool Equals(object obj)
+		{
+			return InternalInstance.Equals(obj);
+		}
+
+		/// <inheritdoc />
+		public override int GetHashCode()
+		{
+			return InternalInstance.GetHashCode();
+		}
 	}
 }

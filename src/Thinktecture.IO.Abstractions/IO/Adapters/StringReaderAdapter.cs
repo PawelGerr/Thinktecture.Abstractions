@@ -12,12 +12,12 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new StringReader InternalInstance { get; }
-		
+
 		/// <summary>Initializes a new instance of the <see cref="StringReaderAdapter" /> class that reads from the specified string.</summary>
 		/// <param name="s">The string to which the <see cref="T:System.IO.StringReader" /> should be initialized. </param>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="s" /> parameter is null. </exception>
 		public StringReaderAdapter(string s)
-			:this(new StringReader(s))
+			: this(new StringReader(s))
 		{
 		}
 

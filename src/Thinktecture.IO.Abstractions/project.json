@@ -14,10 +14,16 @@
 			"url": "git@github.com:PawelGerr/Thinktecture.Abstractions.git"
 		}
 	},
+
 	"buildOptions": {
-		"nowarn": ["CS1734"],
 		"xmlDoc": true
 	},
+
+	"dependencies": {
+		"Thinktecture.Runtime.Abstractions": "1.0.0-*",
+		"Thinktecture.Text.Encoding.Abstractions": "1.0.0-*"
+	},
+
 	"frameworks": {
 		"netstandard1.0": {
 			"dependencies": {
@@ -26,6 +32,10 @@
 		},
 		"net45": {
 			"frameworkAssemblies": {
+				"System.Runtime": {
+					"type": "build",
+					"version": ""
+				},
 				"System.Text.Encoding": {
 					"type": "build",
 					"version": ""
@@ -34,14 +44,15 @@
 		},
 		"net46": {
 			"frameworkAssemblies": {
+				"System.Runtime": {
+					"type": "build",
+					"version": ""
+				},
 				"System.Text.Encoding": {
 					"type": "build",
 					"version": ""
 				}
 			}
 		}
-	},
-	"dependencies": {
-		"Thinktecture.Text.Encoding.Abstractions": "1.0.0-*"
 	}
 }

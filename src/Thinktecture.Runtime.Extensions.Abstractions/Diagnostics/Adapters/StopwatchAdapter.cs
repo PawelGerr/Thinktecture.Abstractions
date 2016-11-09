@@ -72,7 +72,7 @@ namespace Thinktecture.Diagnostics.Adapters
 
 			InternalInstance = stopwatch;
 		}
-		
+
 		/// <inheritdoc />
 		public void Start()
 		{
@@ -95,6 +95,24 @@ namespace Thinktecture.Diagnostics.Adapters
 		public void Restart()
 		{
 			InternalInstance.Reset();
+		}
+
+		/// <inheritdoc />
+		public override string ToString()
+		{
+			return InternalInstance.ToString();
+		}
+
+		/// <inheritdoc />
+		public override bool Equals(object obj)
+		{
+			return InternalInstance.Equals(obj);
+		}
+
+		/// <inheritdoc />
+		public override int GetHashCode()
+		{
+			return InternalInstance.GetHashCode();
 		}
 	}
 }

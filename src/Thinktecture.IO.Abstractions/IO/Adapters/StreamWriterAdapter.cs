@@ -225,7 +225,7 @@ namespace Thinktecture.IO.Adapters
 
 			InternalInstance = writer;
 		}
-		
+
 		/// <inheritdoc />
 		public bool AutoFlush
 		{

@@ -175,7 +175,7 @@ namespace Thinktecture.IO
 		/// </PermissionSet>
 		IFileStream Open(FileMode mode);
 
-#pragma warning disable 1584
+#pragma warning disable 1584, 1734
 		/// <summary>Opens a file in the specified mode with read, write, or read/write access.</summary>
 		/// <returns>A <see cref="T:System.IO.FileStream" /> object opened in the specified mode and access, and unshared.</returns>
 		/// <param name="mode">A <see cref="T:System.IO.FileMode" /> constant specifying the mode (for example, Open or Append) in which to open the file. </param>
@@ -191,9 +191,9 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		IFileStream Open(FileMode mode, FileAccess access);
-#pragma warning restore 1584
+#pragma warning restore 1584, 1734
 
-#pragma warning disable 1584
+#pragma warning disable 1584, 1734
 		/// <summary>Opens a file in the specified mode with read, write, or read/write access and the specified sharing option.</summary>
 		/// <returns>A <see cref="T:System.IO.FileStream" /> object opened with the specified mode, access, and sharing options.</returns>
 		/// <param name="mode">A <see cref="T:System.IO.FileMode" /> constant specifying the mode (for example, Open or Append) in which to open the file. </param>
@@ -210,9 +210,9 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		IFileStream Open(FileMode mode, FileAccess access, FileShare share);
-#pragma warning restore 1584
+#pragma warning restore 1584, 1734
 
-#pragma warning disable 1584
+#pragma warning disable 1584, 1734
 		/// <summary>Creates a read-only <see cref="T:System.IO.FileStream" />.</summary>
 		/// <returns>A new read-only <see cref="T:System.IO.FileStream" /> object.</returns>
 		/// <exception cref="T:System.UnauthorizedAccessException">
@@ -224,9 +224,9 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		IFileStream OpenRead();
-#pragma warning restore 1584
+#pragma warning restore 1584, 1734
 
-#pragma warning disable 1584
+#pragma warning disable 1584, 1734
 		/// <summary>Creates a <see cref="T:System.IO.StreamReader" /> with UTF8 encoding that reads from an existing text file.</summary>
 		/// <returns>A new StreamReader with UTF8 encoding.</returns>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
@@ -239,7 +239,7 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		IStreamReader OpenText();
-#pragma warning restore 1584
+#pragma warning restore 1584, 1734
 
 		/// <summary>Creates a write-only <see cref="T:System.IO.FileStream" />.</summary>
 		/// <returns>A write-only unshared <see cref="T:System.IO.FileStream" /> object for a new or existing file.</returns>

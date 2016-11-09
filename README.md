@@ -77,3 +77,13 @@ Provides interfaces for types in `System.Runtime.Handles`: `SafeHandle`, `Critic
 Provides interfaces for types in `System.Text.Encoding`: `Encoding`, `Encoder`, `Decoder`
 
 **Nuget**: `Install-Package Thinktecture.Text.Encoding.Abstractions`
+
+### Thinktecture.Runtime.Abstractions
+Provides interfaces for types in `System.Runtime`: `StringBuilder`.
+
+**Nuget**: `Install-Package Thinktecture.Runtime.Abstractions`
+
+### Thinktecture.IO.FileSystem.Watcher.Abstractions
+Provides interfaces for types in `System.IO.FileSystem.Watcher`: `FileSystemWatcher`.
+
+**Nuget**: `Install-Package Thinktecture.IO.FileSystem.Watcher.Abstractions`

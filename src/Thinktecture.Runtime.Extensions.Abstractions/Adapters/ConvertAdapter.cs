@@ -1114,6 +1114,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc /> 
 		public string ToString(DateTime value)
 		{
+			// ReSharper disable once SpecifyACultureInStringConversionExplicitly
 			return Convert.ToString(value);
 		}
 
@@ -1126,6 +1127,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc /> 
 		public string ToString(decimal value)
 		{
+			// ReSharper disable once SpecifyACultureInStringConversionExplicitly
 			return Convert.ToString(value);
 		}
 
@@ -1138,6 +1140,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc /> 
 		public string ToString(double value)
 		{
+			// ReSharper disable once SpecifyACultureInStringConversionExplicitly
 			return Convert.ToString(value);
 		}
 
@@ -1228,6 +1231,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc /> 
 		public string ToString(float value)
 		{
+			// ReSharper disable once SpecifyACultureInStringConversionExplicitly
 			return Convert.ToString(value);
 		}
 

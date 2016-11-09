@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Thinktecture.Text;
 
 namespace Thinktecture.IO
 {
@@ -28,7 +29,7 @@ namespace Thinktecture.IO
 		/// <summary>Returns the underlying <see cref="T:System.Text.StringBuilder" />.</summary>
 		/// <returns>The underlying StringBuilder.</returns>
 		/// <filterpriority>2</filterpriority>
-		StringBuilder GetStringBuilder();
+		IStringBuilder GetStringBuilder();
 
 		/// <summary>Returns a string containing the characters written to the current StringWriter so far.</summary>
 		/// <returns>The string containing the characters written to the current StringWriter.</returns>

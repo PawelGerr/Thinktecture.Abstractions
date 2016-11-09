@@ -64,7 +64,7 @@ namespace Thinktecture.IO
 		/// <filterpriority>1</filterpriority>
 		new int Read(char[] buffer, int index, int count);
 
-#pragma warning disable 1584
+#pragma warning disable 1584, 1734
 		/// <summary>Reads a specified maximum number of characters from the current stream asynchronously and writes the data to a buffer, beginning at the specified index. </summary>
 		/// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached.</returns>
 		/// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index" /> + <paramref name="count" /> - 1) replaced by the characters read from the current source.</param>
@@ -78,7 +78,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
 		new Task<int> ReadAsync(char[] buffer, int index, int count);
-#pragma warning restore 1584
+#pragma warning restore 1584, 1734
 
 		/// <summary>Reads a specified maximum number of characters from the current stream and writes the data to a buffer, beginning at the specified index.</summary>
 		/// <returns>The number of characters that have been read. The number will be less than or equal to <paramref name="count" />, depending on whether all input characters have been read.</returns>
@@ -94,7 +94,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurred. </exception>
 		new int ReadBlock(char[] buffer, int index, int count);
 
-#pragma warning disable 1584
+#pragma warning disable 1584, 1734
 		/// <summary>Reads a specified maximum number of characters from the current stream asynchronously and writes the data to a buffer, beginning at the specified index.</summary>
 		/// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached.</returns>
 		/// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index" /> + <paramref name="count" /> - 1) replaced by the characters read from the current source.</param>
@@ -108,7 +108,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
 		new Task<int> ReadBlockAsync(char[] buffer, int index, int count);
-#pragma warning restore 1584
+#pragma warning restore 1584, 1734
 
 		/// <summary>Reads a line of characters from the current stream and returns the data as a string.</summary>
 		/// <returns>The next line from the input stream, or null if the end of the input stream is reached.</returns>
@@ -117,14 +117,14 @@ namespace Thinktecture.IO
 		/// <filterpriority>1</filterpriority>
 		new string ReadLine();
 
-#pragma warning disable 1584
+#pragma warning disable 1584, 1734
 		/// <summary>Reads a line of characters asynchronously from the current stream and returns the data as a string.</summary>
 		/// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the next line from the stream, or is null if all the characters have been read.</returns>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The number of characters in the next line is larger than <see cref="F:System.Int32.MaxValue" />.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
 		new Task<string> ReadLineAsync();
-#pragma warning restore 1584
+#pragma warning restore 1584, 1734
 
 		/// <summary>Reads all characters from the current position to the end of the stream.</summary>
 		/// <returns>The rest of the stream as a string, from the current position to the end. If the current position is at the end of the stream, returns an empty string ("").</returns>
@@ -133,13 +133,13 @@ namespace Thinktecture.IO
 		/// <filterpriority>1</filterpriority>
 		new string ReadToEnd();
 
-#pragma warning disable 1584
+#pragma warning disable 1584, 1734
 		/// <summary>Reads all characters from the current position to the end of the stream asynchronously and returns them as one string.</summary>
 		/// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains a string with the characters from the current position to the end of the stream.</returns>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The number of characters is larger than <see cref="F:System.Int32.MaxValue" />.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
 		new Task<string> ReadToEndAsync();
-#pragma warning restore 1584
+#pragma warning restore 1584, 1734
 	}
 }

@@ -69,6 +69,7 @@ namespace Thinktecture.IO
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
 		void AppendAllLines(string path, IEnumerable<string> contents, Encoding encoding);
 
+#pragma warning disable 618
 		/// <summary>Opens a file, appends the specified string to the file, and then closes the file. If the file does not exist, this method creates a file, writes the specified string to the file, then closes the file.</summary>
 		/// <param name="path">The file to append the specified string to. </param>
 		/// <param name="contents">The string to append to the file. </param>
@@ -1068,5 +1069,6 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		void WriteAllText(string path, string contents, Encoding encoding);
+#pragma warning restore 618
 	}
 }
