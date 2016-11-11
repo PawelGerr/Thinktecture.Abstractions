@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>Converted directory info.</returns>
 		public static DirectoryInfo ToImplementation(this IDirectoryInfo directoryInfo)
 		{
-			return directoryInfo?.InternalInstance;
+			return directoryInfo?.UnsafeConvert();
 		}
 	}
 }

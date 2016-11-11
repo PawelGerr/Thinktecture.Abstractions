@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>Instance of <see cref="SafeHandle"/>.</returns>
 		public static SafeHandle ToImplementation(this ISafeHandle handle)
 		{
-			return handle?.InternalInstance;
+			return handle?.UnsafeConvert();
 		}
 	}
 }

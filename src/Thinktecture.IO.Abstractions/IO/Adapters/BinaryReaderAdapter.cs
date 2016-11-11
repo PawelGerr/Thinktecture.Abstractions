@@ -13,10 +13,15 @@ namespace Thinktecture.IO.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public BinaryReader InternalInstance { get; }
+		public BinaryReader UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly BinaryReader _instance;
 
 		/// <inheritdoc />
-		public IStream BaseStream => InternalInstance.BaseStream.ToInterface();
+		public IStream BaseStream => _instance.BaseStream.ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="BinaryReaderAdapter" /> class based on the specified stream and using UTF-8 encoding.</summary>
 		/// <param name="input">The input stream. </param>
@@ -135,151 +140,151 @@ namespace Thinktecture.IO.Adapters
 			if (reader == null)
 				throw new ArgumentNullException(nameof(reader));
 
-			InternalInstance = reader;
+			_instance = reader;
 		}
 
 		/// <inheritdoc />
 		public int PeekChar()
 		{
-			return InternalInstance.PeekChar();
+			return _instance.PeekChar();
 		}
 
 		/// <inheritdoc />
 		public int Read()
 		{
-			return InternalInstance.Read();
+			return _instance.Read();
 		}
 
 		/// <inheritdoc />
 		public int Read(byte[] buffer, int index, int count)
 		{
-			return InternalInstance.Read(buffer, index, count);
+			return _instance.Read(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public int Read(char[] buffer, int index, int count)
 		{
-			return InternalInstance.Read(buffer, index, count);
+			return _instance.Read(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public bool ReadBoolean()
 		{
-			return InternalInstance.ReadBoolean();
+			return _instance.ReadBoolean();
 		}
 
 		/// <inheritdoc />
 		public byte ReadByte()
 		{
-			return InternalInstance.ReadByte();
+			return _instance.ReadByte();
 		}
 
 		/// <inheritdoc />
 		public byte[] ReadBytes(int count)
 		{
-			return InternalInstance.ReadBytes(count);
+			return _instance.ReadBytes(count);
 		}
 
 		/// <inheritdoc />
 		public char ReadChar()
 		{
-			return InternalInstance.ReadChar();
+			return _instance.ReadChar();
 		}
 
 		/// <inheritdoc />
 		public char[] ReadChars(int count)
 		{
-			return InternalInstance.ReadChars(count);
+			return _instance.ReadChars(count);
 		}
 
 		/// <inheritdoc />
 		public decimal ReadDecimal()
 		{
-			return InternalInstance.ReadDecimal();
+			return _instance.ReadDecimal();
 		}
 
 		/// <inheritdoc />
 		public double ReadDouble()
 		{
-			return InternalInstance.ReadDouble();
+			return _instance.ReadDouble();
 		}
 
 		/// <inheritdoc />
 		public short ReadInt16()
 		{
-			return InternalInstance.ReadInt16();
+			return _instance.ReadInt16();
 		}
 
 		/// <inheritdoc />
 		public int ReadInt32()
 		{
-			return InternalInstance.ReadInt32();
+			return _instance.ReadInt32();
 		}
 
 		/// <inheritdoc />
 		public long ReadInt64()
 		{
-			return InternalInstance.ReadInt64();
+			return _instance.ReadInt64();
 		}
 
 		/// <inheritdoc />
 		public sbyte ReadSByte()
 		{
-			return InternalInstance.ReadSByte();
+			return _instance.ReadSByte();
 		}
 
 		/// <inheritdoc />
 		public float ReadSingle()
 		{
-			return InternalInstance.ReadSingle();
+			return _instance.ReadSingle();
 		}
 
 		/// <inheritdoc />
 		public string ReadString()
 		{
-			return InternalInstance.ReadString();
+			return _instance.ReadString();
 		}
 
 		/// <inheritdoc />
 		public ushort ReadUInt16()
 		{
-			return InternalInstance.ReadUInt16();
+			return _instance.ReadUInt16();
 		}
 
 		/// <inheritdoc />
 		public uint ReadUInt32()
 		{
-			return InternalInstance.ReadUInt32();
+			return _instance.ReadUInt32();
 		}
 
 		/// <inheritdoc />
 		public ulong ReadUInt64()
 		{
-			return InternalInstance.ReadUInt64();
+			return _instance.ReadUInt64();
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			InternalInstance.Dispose();
+			_instance.Dispose();
 		}
 
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return InternalInstance.ToString();
+			return _instance.ToString();
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
 		{
-			return InternalInstance.Equals(obj);
+			return _instance.Equals(obj);
 		}
 
 		/// <inheritdoc />
 		public override int GetHashCode()
 		{
-			return InternalInstance.GetHashCode();
+			return _instance.GetHashCode();
 		}
 	}
 }

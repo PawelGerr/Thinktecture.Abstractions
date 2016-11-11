@@ -175,10 +175,15 @@ namespace Thinktecture.Text.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Encoding InternalInstance { get; }
+		public Encoding UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly Encoding _instance;
 
 		/// <inheritdoc />
-		public string WebName => InternalInstance.WebName;
+		public string WebName => _instance.WebName;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="EncodingAdapter" /> class.
@@ -189,145 +194,145 @@ namespace Thinktecture.Text.Adapters
 			if (encoding == null)
 				throw new ArgumentNullException(nameof(encoding));
 
-			InternalInstance = encoding;
+			_instance = encoding;
 		}
 
 		/// <inheritdoc />
 		public Encoding ToImplementation()
 		{
-			return InternalInstance;
+			return _instance;
 		}
 
 		/// <inheritdoc />
 		public int GetByteCount(char[] chars)
 		{
-			return InternalInstance.GetByteCount(chars);
+			return _instance.GetByteCount(chars);
 		}
 
 		/// <inheritdoc />
 		public int GetByteCount(char[] chars, int index, int count)
 		{
-			return InternalInstance.GetByteCount(chars, index, count);
+			return _instance.GetByteCount(chars, index, count);
 		}
 
 		/// <inheritdoc />
 		public int GetByteCount(string s)
 		{
-			return InternalInstance.GetByteCount(s);
+			return _instance.GetByteCount(s);
 		}
 
 		/// <inheritdoc />
 		public byte[] GetBytes(char[] chars)
 		{
-			return InternalInstance.GetBytes(chars);
+			return _instance.GetBytes(chars);
 		}
 
 		/// <inheritdoc />
 		public byte[] GetBytes(char[] chars, int index, int count)
 		{
-			return InternalInstance.GetBytes(chars, index, count);
+			return _instance.GetBytes(chars, index, count);
 		}
 
 		/// <inheritdoc />
 		public int GetBytes(char[] chars, int charIndex, int charCount, byte[] bytes, int byteIndex)
 		{
-			return InternalInstance.GetBytes(chars, charIndex, charCount, bytes, byteIndex);
+			return _instance.GetBytes(chars, charIndex, charCount, bytes, byteIndex);
 		}
 
 		/// <inheritdoc />
 		public byte[] GetBytes(string s)
 		{
-			return InternalInstance.GetBytes(s);
+			return _instance.GetBytes(s);
 		}
 
 		/// <inheritdoc />
 		public int GetBytes(string s, int charIndex, int charCount, byte[] bytes, int byteIndex)
 		{
-			return InternalInstance.GetBytes(s, charIndex, charCount, bytes, byteIndex);
+			return _instance.GetBytes(s, charIndex, charCount, bytes, byteIndex);
 		}
 
 		/// <inheritdoc />
 		public int GetCharCount(byte[] bytes)
 		{
-			return InternalInstance.GetCharCount(bytes);
+			return _instance.GetCharCount(bytes);
 		}
 
 		/// <inheritdoc />
 		public int GetCharCount(byte[] bytes, int index, int count)
 		{
-			return InternalInstance.GetCharCount(bytes, index, count);
+			return _instance.GetCharCount(bytes, index, count);
 		}
 
 		/// <inheritdoc />
 		public char[] GetChars(byte[] bytes)
 		{
-			return InternalInstance.GetChars(bytes);
+			return _instance.GetChars(bytes);
 		}
 
 		/// <inheritdoc />
 		public char[] GetChars(byte[] bytes, int index, int count)
 		{
-			return InternalInstance.GetChars(bytes, index, count);
+			return _instance.GetChars(bytes, index, count);
 		}
 
 		/// <inheritdoc />
 		public int GetChars(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex)
 		{
-			return InternalInstance.GetChars(bytes, byteIndex, byteCount, chars, charIndex);
+			return _instance.GetChars(bytes, byteIndex, byteCount, chars, charIndex);
 		}
 
 		/// <inheritdoc />
 		public IDecoder GetDecoder()
 		{
-			return InternalInstance.GetDecoder().ToInterface();
+			return _instance.GetDecoder().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IEncoder GetEncoder()
 		{
-			return InternalInstance.GetEncoder().ToInterface();
+			return _instance.GetEncoder().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public int GetMaxByteCount(int charCount)
 		{
-			return InternalInstance.GetMaxByteCount(charCount);
+			return _instance.GetMaxByteCount(charCount);
 		}
 
 		/// <inheritdoc />
 		public int GetMaxCharCount(int byteCount)
 		{
-			return InternalInstance.GetMaxCharCount(byteCount);
+			return _instance.GetMaxCharCount(byteCount);
 		}
 
 		/// <inheritdoc />
 		public byte[] GetPreamble()
 		{
-			return InternalInstance.GetPreamble();
+			return _instance.GetPreamble();
 		}
 
 		/// <inheritdoc />
 		public string GetString(byte[] bytes, int index, int count)
 		{
-			return InternalInstance.GetString(bytes, index, count);
+			return _instance.GetString(bytes, index, count);
 		}
 
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return InternalInstance.ToString();
+			return _instance.ToString();
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
 		{
-			return InternalInstance.Equals(obj);
+			return _instance.Equals(obj);
 		}
 
 		/// <inheritdoc />
 		public override int GetHashCode()
 		{
-			return InternalInstance.GetHashCode();
+			return _instance.GetHashCode();
 		}
 	}
 }

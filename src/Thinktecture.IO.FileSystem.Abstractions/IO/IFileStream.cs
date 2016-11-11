@@ -14,9 +14,10 @@ namespace Thinktecture.IO
     {
 		/// <summary>
 		/// Gets inner instance of <see cref="FileStream"/>.
+		/// It is not intended to be used directly. Use <see cref="FileStreamExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		new FileStream InternalInstance { get; }
+		new FileStream UnsafeConvert();
 
 		/// <summary>Gets a value indicating whether the current stream supports reading.</summary>
 		/// <returns>true if the stream supports reading; false if the stream is closed or was opened with write-only access.</returns>

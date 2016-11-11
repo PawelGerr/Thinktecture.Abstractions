@@ -10,7 +10,12 @@ namespace Thinktecture.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public UriBuilder InternalInstance { get; }
+		public UriBuilder UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly UriBuilder _instance;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class.
@@ -111,84 +116,84 @@ namespace Thinktecture.Adapters
 			if (builder == null)
 				throw new ArgumentNullException(nameof(builder));
 
-			InternalInstance = builder;
+			_instance = builder;
 		}
 
 		/// <inheritdoc />
 		public string Fragment
 		{
-			get { return InternalInstance.Fragment; }
-			set { InternalInstance.Fragment = value; }
+			get { return _instance.Fragment; }
+			set { _instance.Fragment = value; }
 		}
 
 		/// <inheritdoc />
 		public string Host
 		{
-			get { return InternalInstance.Host; }
-			set { InternalInstance.Host = value; }
+			get { return _instance.Host; }
+			set { _instance.Host = value; }
 		}
 
 		/// <inheritdoc />
 		public string Password
 		{
-			get { return InternalInstance.Password; }
-			set { InternalInstance.Password = value; }
+			get { return _instance.Password; }
+			set { _instance.Password = value; }
 		}
 
 		/// <inheritdoc />
 		public string Path
 		{
-			get { return InternalInstance.Path; }
-			set { InternalInstance.Path = value; }
+			get { return _instance.Path; }
+			set { _instance.Path = value; }
 		}
 
 		/// <inheritdoc />
 		public int Port
 		{
-			get { return InternalInstance.Port; }
-			set { InternalInstance.Port = value; }
+			get { return _instance.Port; }
+			set { _instance.Port = value; }
 		}
 
 		/// <inheritdoc />
 		public string Query
 		{
-			get { return InternalInstance.Query; }
-			set { InternalInstance.Query = value; }
+			get { return _instance.Query; }
+			set { _instance.Query = value; }
 		}
 
 		/// <inheritdoc />
 		public string Scheme
 		{
-			get { return InternalInstance.Scheme; }
-			set { InternalInstance.Scheme = value; }
+			get { return _instance.Scheme; }
+			set { _instance.Scheme = value; }
 		}
 
 		/// <inheritdoc />
-		public Uri Uri => InternalInstance.Uri;
+		public Uri Uri => _instance.Uri;
 
 		/// <inheritdoc />
 		public string UserName
 		{
-			get { return InternalInstance.UserName; }
-			set { InternalInstance.UserName = value; }
+			get { return _instance.UserName; }
+			set { _instance.UserName = value; }
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object rparam)
 		{
-			return InternalInstance.Equals(rparam);
+			return _instance.Equals(rparam);
 		}
 
 		/// <inheritdoc />
 		public override int GetHashCode()
 		{
-			return InternalInstance.GetHashCode();
+			return _instance.GetHashCode();
 		}
 
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return InternalInstance.ToString();
+			return _instance.ToString();
 		}
 	}
 }

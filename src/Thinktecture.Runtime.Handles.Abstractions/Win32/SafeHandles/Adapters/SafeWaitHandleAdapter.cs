@@ -12,7 +12,12 @@ namespace Thinktecture.Win32.SafeHandles.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new SafeWaitHandle InternalInstance { get; }
+		public new SafeWaitHandle UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly SafeWaitHandle _instance;
 
 		/// <summary>Initializes a new instance of the <see cref="SafeWaitHandleAdapter" /> class. </summary>
 		/// <param name="existingHandle">An <see cref="T:System.IntPtr" /> object that represents the pre-existing handle to use.</param>
@@ -32,7 +37,7 @@ namespace Thinktecture.Win32.SafeHandles.Adapters
 			if (handle == null)
 				throw new ArgumentNullException(nameof(handle));
 
-			InternalInstance = handle;
+			_instance = handle;
 		}
 	}
 }

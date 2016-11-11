@@ -11,8 +11,9 @@ namespace Thinktecture.Win32.SafeHandles
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="SafeWaitHandle"/>.
+		/// It is not intended to be used directly. Use <see cref="SafeWaitHandlerExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		new SafeWaitHandle InternalInstance { get; }
+		new SafeWaitHandle UnsafeConvert();
 	}
 }

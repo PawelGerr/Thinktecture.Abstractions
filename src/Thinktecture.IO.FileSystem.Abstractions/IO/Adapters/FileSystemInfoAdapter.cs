@@ -11,7 +11,12 @@ namespace Thinktecture.IO.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public FileSystemInfo InternalInstance { get; }
+		public FileSystemInfo UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly FileSystemInfo _instance;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="FileSystemInfoAdapter" /> class.
@@ -22,98 +27,98 @@ namespace Thinktecture.IO.Adapters
 			if (info == null)
 				throw new ArgumentNullException(nameof(info));
 
-			InternalInstance = info;
+			_instance = info;
 		}
 
 		/// <inheritdoc />
 		public FileAttributes Attributes
 		{
-			get { return InternalInstance.Attributes; }
-			set { InternalInstance.Attributes = value; }
+			get { return _instance.Attributes; }
+			set { _instance.Attributes = value; }
 		}
 
 		/// <inheritdoc />
 		public DateTime CreationTime
 		{
-			get { return InternalInstance.CreationTime; }
-			set { InternalInstance.CreationTime = value; }
+			get { return _instance.CreationTime; }
+			set { _instance.CreationTime = value; }
 		}
 
 		/// <inheritdoc />
 		public DateTime CreationTimeUtc
 		{
-			get { return InternalInstance.CreationTimeUtc; }
-			set { InternalInstance.CreationTimeUtc = value; }
+			get { return _instance.CreationTimeUtc; }
+			set { _instance.CreationTimeUtc = value; }
 		}
 
 		/// <inheritdoc />
-		public bool Exists => InternalInstance.Exists;
+		public bool Exists => _instance.Exists;
 
 		/// <inheritdoc />
-		public string Extension => InternalInstance.Extension;
+		public string Extension => _instance.Extension;
 
 		/// <inheritdoc />
-		public string FullName => InternalInstance.FullName;
+		public string FullName => _instance.FullName;
 
 		/// <inheritdoc />
-		public string Name => InternalInstance.Name;
+		public string Name => _instance.Name;
 
 		/// <inheritdoc />
 		public DateTime LastAccessTime
 		{
-			get { return InternalInstance.LastAccessTime; }
-			set { InternalInstance.LastAccessTime = value; }
+			get { return _instance.LastAccessTime; }
+			set { _instance.LastAccessTime = value; }
 		}
 
 		/// <inheritdoc />
 		public DateTime LastAccessTimeUtc
 		{
-			get { return InternalInstance.LastAccessTimeUtc; }
-			set { InternalInstance.LastAccessTimeUtc = value; }
+			get { return _instance.LastAccessTimeUtc; }
+			set { _instance.LastAccessTimeUtc = value; }
 		}
 
 		/// <inheritdoc />
 		public DateTime LastWriteTime
 		{
-			get { return InternalInstance.LastWriteTime; }
-			set { InternalInstance.LastWriteTime = value; }
+			get { return _instance.LastWriteTime; }
+			set { _instance.LastWriteTime = value; }
 		}
 
 		/// <inheritdoc />
 		public DateTime LastWriteTimeUtc
 		{
-			get { return InternalInstance.LastWriteTimeUtc; }
-			set { InternalInstance.LastWriteTimeUtc = value; }
+			get { return _instance.LastWriteTimeUtc; }
+			set { _instance.LastWriteTimeUtc = value; }
 		}
 
 		/// <inheritdoc />
 		public void Delete()
 		{
-			InternalInstance.Delete();
+			_instance.Delete();
 		}
 
 		/// <inheritdoc />
 		public void Refresh()
 		{
-			InternalInstance.Refresh();
+			_instance.Refresh();
 		}
 
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return InternalInstance.ToString();
+			return _instance.ToString();
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
 		{
-			return InternalInstance.Equals(obj);
+			return _instance.Equals(obj);
 		}
 
 		/// <inheritdoc />
 		public override int GetHashCode()
 		{
-			return InternalInstance.GetHashCode();
+			return _instance.GetHashCode();
 		}
 	}
 }

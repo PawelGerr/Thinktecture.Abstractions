@@ -10,10 +10,11 @@ namespace Thinktecture.IO
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="BinaryWriter"/>.
+		/// It is not intended to be used directly. Use <see cref="BinaryWriterExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		BinaryWriter InternalInstance { get; }
-	
+		BinaryWriter UnsafeConvert();
+
 		/// <summary>Gets the underlying stream of the <see cref="T:System.IO.BinaryWriter" />.</summary>
 		/// <returns>The underlying stream associated with the BinaryWriter.</returns>
 		/// <filterpriority>1</filterpriority>

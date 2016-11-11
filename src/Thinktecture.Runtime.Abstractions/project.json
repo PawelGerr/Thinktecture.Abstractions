@@ -6,6 +6,7 @@
 	"authors": ["Pawel Gerr"],
 	"packOptions": {
 		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
+		"iconUrl": "http://thinktecture.com/images/logo.png",
 		"tags": ["runtime", "abstraction"],
 		"licenseUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md",
 		"repository": {
@@ -22,11 +23,7 @@
 				"System.Runtime": "4.1.0"
 			}
 		},
-		"net45": {
-			
-		},
-		"net46": {
-			
-		}
+		"net45": {},
+		"net46": {}
 	}
 }

@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>Converted file info.</returns>
 		public static FileInfo ToImplementation(this IFileInfo file)
 		{
-			return file?.InternalInstance;
+			return file?.UnsafeConvert();
 		}
 	}
 }

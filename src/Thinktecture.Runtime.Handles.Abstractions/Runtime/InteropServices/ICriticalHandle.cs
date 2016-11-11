@@ -11,9 +11,10 @@ namespace Thinktecture.Runtime.InteropServices
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="CriticalHandle"/>.
+		/// It is not intended to be used directly. Use <see cref="CriticalHandleExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		CriticalHandle InternalInstance { get; }
+		CriticalHandle UnsafeConvert();
 
 		/// <summary>Gets a value indicating whether the handle is closed.</summary>
 		/// <returns>true if the handle is closed; otherwise, false.</returns>

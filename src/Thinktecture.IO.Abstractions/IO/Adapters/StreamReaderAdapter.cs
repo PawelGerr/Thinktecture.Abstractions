@@ -17,7 +17,12 @@ namespace Thinktecture.IO.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new StreamReader InternalInstance { get; }
+		public new StreamReader UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly StreamReader _instance;
 
 		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream.</summary>
 		/// <param name="stream">The stream to be read. </param>
@@ -231,22 +236,22 @@ namespace Thinktecture.IO.Adapters
 			if (reader == null)
 				throw new ArgumentNullException(nameof(reader));
 
-			InternalInstance = reader;
+			_instance = reader;
 		}
 
 		/// <inheritdoc />
-		public IStream BaseStream => InternalInstance.BaseStream.ToInterface();
+		public IStream BaseStream => _instance.BaseStream.ToInterface();
 
 		/// <inheritdoc />
-		public IEncoding CurrentEncoding => InternalInstance.CurrentEncoding.ToInterface();
+		public IEncoding CurrentEncoding => _instance.CurrentEncoding.ToInterface();
 
 		/// <inheritdoc />
-		public bool EndOfStream => InternalInstance.EndOfStream;
+		public bool EndOfStream => _instance.EndOfStream;
 
 		/// <inheritdoc />
 		public void DiscardBufferedData()
 		{
-			InternalInstance.DiscardBufferedData();
+			_instance.DiscardBufferedData();
 		}
 	}
 }

@@ -13,16 +13,21 @@ namespace Thinktecture.IO.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new FileStream InternalInstance { get; }
+		public new FileStream UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly FileStream _instance;
 
 		/// <inheritdoc />
-		public bool IsAsync => InternalInstance.IsAsync;
+		public bool IsAsync => _instance.IsAsync;
 
 		/// <inheritdoc />
-		public string Name => InternalInstance.Name;
+		public string Name => _instance.Name;
 
 		/// <inheritdoc />
-		public ISafeFileHandle SafeFileHandle => InternalInstance.SafeFileHandle.ToInterface();
+		public ISafeFileHandle SafeFileHandle => _instance.SafeFileHandle.ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="FileStream" /> class for the specified file handle, with the specified read/write permission. </summary>
 		/// <param name="handle">A file handle for the file that the current FileStream object will encapsulate. </param>
@@ -263,13 +268,13 @@ namespace Thinktecture.IO.Adapters
 			if (fileStream == null)
 				throw new ArgumentNullException(nameof(fileStream));
 
-			InternalInstance = fileStream;
+			_instance = fileStream;
 		}
 
 		/// <inheritdoc />
 		public void Flush(bool flushToDisk)
 		{
-			InternalInstance.Flush(flushToDisk);
+			_instance.Flush(flushToDisk);
 		}
 	}
 }

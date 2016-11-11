@@ -15,10 +15,11 @@ namespace Thinktecture.IO
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="Stream"/>.
+		/// It is not intended to be used directly. Use <see cref="StreamExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		Stream InternalInstance { get; }
-		
+		Stream UnsafeConvert();
+
 		/// <summary>When overridden in a derived class, gets a value indicating whether the current stream supports reading.</summary>
 		/// <returns>true if the stream supports reading; otherwise, false.</returns>
 		/// <filterpriority>1</filterpriority>

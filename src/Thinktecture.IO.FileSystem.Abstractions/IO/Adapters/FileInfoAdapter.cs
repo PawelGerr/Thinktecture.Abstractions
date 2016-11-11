@@ -11,7 +11,12 @@ namespace Thinktecture.IO.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new FileInfo InternalInstance { get; }
+		public new FileInfo UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly FileInfo _instance;
 
 		/// <summary>Initializes a new instance of the <see cref="FileInfoAdapter" /> class, which acts as a wrapper for a file path.</summary>
 		/// <param name="fileName">The fully qualified name of the new file, or the relative file name. Do not end the path with the directory separator character.</param>
@@ -38,95 +43,95 @@ namespace Thinktecture.IO.Adapters
 			if (info == null)
 				throw new ArgumentNullException(nameof(info));
 
-			InternalInstance = info;
+			_instance = info;
 		}
 
 		/// <inheritdoc />
-		public IDirectoryInfo Directory => InternalInstance.Directory.ToInterface();
+		public IDirectoryInfo Directory => _instance.Directory.ToInterface();
 
 		/// <inheritdoc />
-		public string DirectoryName => InternalInstance.DirectoryName;
+		public string DirectoryName => _instance.DirectoryName;
 
 		/// <inheritdoc />
 		public bool IsReadOnly
 		{
-			get { return InternalInstance.IsReadOnly; }
-			set { InternalInstance.IsReadOnly = value; }
+			get { return _instance.IsReadOnly; }
+			set { _instance.IsReadOnly = value; }
 		}
 
 		/// <inheritdoc />
-		public long Length => InternalInstance.Length;
+		public long Length => _instance.Length;
 
 		/// <inheritdoc />
 		public IStreamWriter AppendText()
 		{
-			return InternalInstance.AppendText().ToInterface();
+			return _instance.AppendText().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileInfo CopyTo(string destFileName)
 		{
-			return InternalInstance.CopyTo(destFileName).ToInterface();
+			return _instance.CopyTo(destFileName).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileInfo CopyTo(string destFileName, bool overwrite)
 		{
-			return InternalInstance.CopyTo(destFileName, overwrite).ToInterface();
+			return _instance.CopyTo(destFileName, overwrite).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileStream Create()
 		{
-			return InternalInstance.Create().ToInterface();
+			return _instance.Create().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IStreamWriter CreateText()
 		{
-			return InternalInstance.CreateText().ToInterface();
+			return _instance.CreateText().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public void MoveTo(string destFileName)
 		{
-			InternalInstance.MoveTo(destFileName);
+			_instance.MoveTo(destFileName);
 		}
 
 		/// <inheritdoc />
 		public IFileStream Open(FileMode mode)
 		{
-			return InternalInstance.Open(mode).ToInterface();
+			return _instance.Open(mode).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileStream Open(FileMode mode, FileAccess access)
 		{
-			return InternalInstance.Open(mode, access).ToInterface();
+			return _instance.Open(mode, access).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileStream Open(FileMode mode, FileAccess access, FileShare share)
 		{
-			return InternalInstance.Open(mode, access, share).ToInterface();
+			return _instance.Open(mode, access, share).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileStream OpenRead()
 		{
-			return InternalInstance.OpenRead().ToInterface();
+			return _instance.OpenRead().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IStreamReader OpenText()
 		{
-			return InternalInstance.OpenText().ToInterface();
+			return _instance.OpenText().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileStream OpenWrite()
 		{
-			return InternalInstance.OpenWrite().ToInterface();
+			return _instance.OpenWrite().ToInterface();
 		}
 	}
 }

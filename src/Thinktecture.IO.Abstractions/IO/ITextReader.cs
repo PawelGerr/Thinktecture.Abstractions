@@ -14,9 +14,10 @@ namespace Thinktecture.IO
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="TextReader"/>.
+		/// It is not intended to be used directly. Use <see cref="TextReaderExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		TextReader InternalInstance { get; }
+		TextReader UnsafeConvert();
 		
 		/// <summary>Reads the next character without changing the state of the reader or the character source. Returns the next available character without actually reading it from the reader.</summary>
 		/// <returns>An integer representing the next character to be read, or -1 if no more characters are available or the reader does not support seeking.</returns>

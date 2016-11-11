@@ -1,7 +1,7 @@
-Interfaces for commonly used .NET types like `File`, `Directory`, `Stream`, `Path`, `Math`, `Environment`, etc. for better testability.
+Interfaces for commonly used .NET types like `File`, `Directory`, `Stream`, `Path`, `Math`, `Environment`, etc. to be able to extend or to change the standard behavior and for better testability.
 
 * The interfaces have the same API like the .NET types
-* .NET Core support
+* Support of .NET 4.5, .NET 4.6 and .NET Core
 
 ## Usage
 Just use the interface like `IFIle` instead of `File`.
@@ -50,18 +50,30 @@ IFileInfo fileInfoInterface = ...
 FileInfo fileInfo = fileInfoInterface.ToImplementation();
 ```
 
+> **Resharper**: if you are using Resharper then you will see another member `UnsafeConvert()`. This member is for implementers of the interface only and it is not intended to be used directly.
+
 ## Projects
 The projects are mirroring the .NET assemblies, i.e. if the class `Stream` is in `System.IO.dll` then the interface `IStream` will be in `Thinktecture.IO.Abstractions.dll`.
+
+### Thinktecture.IO.FileSystem.Watcher.Abstractions
+Provides interfaces for types in `System.IO.FileSystem.Watcher`: `FileSystemWatcher`.
+
+**Nuget**: `Install-Package Thinktecture.IO.FileSystem.Watcher.Abstractions`
+
+### Thinktecture.IO.FileSystem.Abstractions
+Provides interfaces for types in `System.IO.FileSystem`: `Directory`, `File`, `FileSystemInfo`, `DirectoryInfo`, `FileInfo`, `FileStream`, `SafeFileHandle`.
+
+**Nuget**: `Install-Package Thinktecture.IO.FileSystem.Abstractions`
 
 ### Thinktecture.IO.Abstractions
 Provides interfaces for types in `System.IO`: `Stream`, `MemoryStream`, `BinaryReader`, `BinaryWriter`, `StreamReader`, `StreamWriter`, `StringReader`, `StringWriter`, `TextReader`, `TextWriter`
 
 **Nuget**: `Install-Package Thinktecture.IO.Abstractions`
 
-### Thinktecture.IO.FileSystem.Abstractions
-Provides interfaces for types in `System.IO.FileSystem`: `Directory`, `File`, `FileSystemInfo`, `DirectoryInfo`, `FileInfo`, `FileStream`, `SafeFileHandle`.
+### Thinktecture.Text.Encoding.Abstractions
+Provides interfaces for types in `System.Text.Encoding`: `Encoding`, `Encoder`, `Decoder`
 
-**Nuget**: `Install-Package Thinktecture.IO.FileSystem.Abstractions`
+**Nuget**: `Install-Package Thinktecture.Text.Encoding.Abstractions`
 
 ### Thinktecture.Runtime.Extensions.Abstractions
 Provides interfaces for type in `System.Runtime.Extensions`: `Path`, `BitConverter`, `Convert`, `Environment`, `Math`, `Random`, `UriBuilder`, `Stopwatch`, `WebUtility`
@@ -73,17 +85,7 @@ Provides interfaces for types in `System.Runtime.Handles`: `SafeHandle`, `Critic
 
 **Nuget**: `Install-Package Thinktecture.Runtime.Handles.Abstractions`
 
-### Thinktecture.Text.Encoding.Abstractions
-Provides interfaces for types in `System.Text.Encoding`: `Encoding`, `Encoder`, `Decoder`
-
-**Nuget**: `Install-Package Thinktecture.Text.Encoding.Abstractions`
-
 ### Thinktecture.Runtime.Abstractions
 Provides interfaces for types in `System.Runtime`: `StringBuilder`.
 
 **Nuget**: `Install-Package Thinktecture.Runtime.Abstractions`
-
-### Thinktecture.IO.FileSystem.Watcher.Abstractions
-Provides interfaces for types in `System.IO.FileSystem.Watcher`: `FileSystemWatcher`.
-
-**Nuget**: `Install-Package Thinktecture.IO.FileSystem.Watcher.Abstractions`

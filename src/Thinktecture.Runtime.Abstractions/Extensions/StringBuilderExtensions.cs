@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="StringBuilder"/>.</returns>
 		public static StringBuilder ToImplementation(this IStringBuilder builder)
 		{
-			return builder?.InternalInstance;
+			return builder?.UnsafeConvert();
 		}
 	}
 }

@@ -17,10 +17,15 @@ namespace Thinktecture.IO.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public BinaryWriter InternalInstance { get; }
+		public BinaryWriter UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly BinaryWriter _instance;
 
 		/// <inheritdoc />
-		public IStream BaseStream => InternalInstance.BaseStream.ToInterface();
+		public IStream BaseStream => _instance.BaseStream.ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class based on the specified stream and using UTF-8 encoding.</summary>
 		/// <param name="output">The output stream. </param>
@@ -143,151 +148,151 @@ namespace Thinktecture.IO.Adapters
 			if (writer == null)
 				throw new ArgumentNullException(nameof(writer));
 
-			InternalInstance = writer;
+			_instance = writer;
 		}
 
 		/// <inheritdoc />
 		public void Flush()
 		{
-			InternalInstance.Flush();
+			_instance.Flush();
 		}
 
 		/// <inheritdoc />
 		public long Seek(int offset, SeekOrigin origin)
 		{
-			return InternalInstance.Seek(offset, origin);
+			return _instance.Seek(offset, origin);
 		}
 
 		/// <inheritdoc />
 		public void Write(bool value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(byte value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(byte[] buffer)
 		{
-			InternalInstance.Write(buffer);
+			_instance.Write(buffer);
 		}
 
 		/// <inheritdoc />
 		public void Write(byte[] buffer, int index, int count)
 		{
-			InternalInstance.Write(buffer, index, count);
+			_instance.Write(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public void Write(char ch)
 		{
-			InternalInstance.Write(ch);
+			_instance.Write(ch);
 		}
 
 		/// <inheritdoc />
 		public void Write(char[] chars)
 		{
-			InternalInstance.Write(chars);
+			_instance.Write(chars);
 		}
 
 		/// <inheritdoc />
 		public void Write(char[] chars, int index, int count)
 		{
-			InternalInstance.Write(chars, index, count);
+			_instance.Write(chars, index, count);
 		}
 
 		/// <inheritdoc />
 		public void Write(decimal value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(double value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(short value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(int value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(long value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(sbyte value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(float value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(string value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(ushort value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(uint value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(ulong value)
 		{
-			InternalInstance.Write(value);
+			_instance.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			InternalInstance.Dispose();
+			_instance.Dispose();
 		}
 
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return InternalInstance.ToString();
+			return _instance.ToString();
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
 		{
-			return InternalInstance.Equals(obj);
+			return _instance.Equals(obj);
 		}
 
 		/// <inheritdoc />
 		public override int GetHashCode()
 		{
-			return InternalInstance.GetHashCode();
+			return _instance.GetHashCode();
 		}
 	}
 }

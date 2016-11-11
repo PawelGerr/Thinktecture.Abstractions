@@ -25,7 +25,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="UriBuilder"/>.</returns>
 		public static UriBuilder ToImplementation(this IUriBuilder builder)
 		{
-			return builder?.InternalInstance;
+			return builder?.UnsafeConvert();
 		}
 	}
 }

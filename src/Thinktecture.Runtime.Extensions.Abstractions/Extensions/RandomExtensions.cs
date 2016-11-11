@@ -25,7 +25,7 @@ namespace Thinktecture
 		/// <returns>Instance of <see cref="Random"/>.</returns>
 		public static Random ToImplementation(this IRandom random)
 		{
-			return random?.InternalInstance;
+			return random?.UnsafeConvert();
 		}
 	}
 }

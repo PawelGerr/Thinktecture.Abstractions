@@ -12,7 +12,12 @@ namespace Thinktecture.Win32.SafeHandles.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new SafeFileHandle InternalInstance { get; }
+		public new SafeFileHandle UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly SafeFileHandle _instance;
 
 		/// <summary>Initializes a new instance of the <see cref="SafeFileHandleAdapter" /> class.</summary>
 		/// <param name="preexistingHandle">An <see cref="T:System.IntPtr" /> object that represents the pre-existing handle to use.</param>
@@ -32,7 +37,7 @@ namespace Thinktecture.Win32.SafeHandles.Adapters
 			if (handle == null)
 				throw new ArgumentNullException(nameof(handle));
 
-			InternalInstance = handle;
+			_instance = handle;
 		}
 	}
 }

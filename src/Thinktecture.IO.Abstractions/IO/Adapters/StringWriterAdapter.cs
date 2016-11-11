@@ -13,7 +13,12 @@ namespace Thinktecture.IO.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new StringWriter InternalInstance { get; }
+		public new StringWriter UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly StringWriter _instance;
 
 		/// <summary>Initializes a new instance of the <see cref="StringWriterAdapter" /> class.</summary>
 		public StringWriterAdapter()
@@ -75,13 +80,13 @@ namespace Thinktecture.IO.Adapters
 			if (writer == null)
 				throw new ArgumentNullException(nameof(writer));
 
-			InternalInstance = writer;
+			_instance = writer;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder GetStringBuilder()
 		{
-			return InternalInstance.GetStringBuilder().ToInterface();
+			return _instance.GetStringBuilder().ToInterface();
 		}
 	}
 }

@@ -9,9 +9,10 @@ namespace Thinktecture.Text
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="Decoder"/>.
+		/// It is not intended to be used directly. Use <see cref="DecoderExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		Decoder InternalInstance { get; }
+		Decoder UnsafeConvert();
 
 		/// <summary>Converts an array of encoded bytes to UTF-16 encoded characters and stores the result in a character array.</summary>
 		/// <param name="bytes">A byte array to convert.</param>

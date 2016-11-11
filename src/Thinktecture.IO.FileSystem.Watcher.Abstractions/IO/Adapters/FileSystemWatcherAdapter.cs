@@ -11,83 +11,88 @@ namespace Thinktecture.IO.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public FileSystemWatcher InternalInstance { get; }
+		public FileSystemWatcher UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly FileSystemWatcher _instance;
 
 		/// <inheritdoc />
 		public bool EnableRaisingEvents
 		{
-			get { return InternalInstance.EnableRaisingEvents; }
-			set { InternalInstance.EnableRaisingEvents = value; }
+			get { return _instance.EnableRaisingEvents; }
+			set { _instance.EnableRaisingEvents = value; }
 		}
 
 		/// <inheritdoc />
 		public string Filter
 		{
-			get { return InternalInstance.Filter; }
-			set { InternalInstance.Filter = value; }
+			get { return _instance.Filter; }
+			set { _instance.Filter = value; }
 		}
 
 		/// <inheritdoc />
 		public bool IncludeSubdirectories
 		{
-			get { return InternalInstance.IncludeSubdirectories; }
-			set { InternalInstance.IncludeSubdirectories = value; }
+			get { return _instance.IncludeSubdirectories; }
+			set { _instance.IncludeSubdirectories = value; }
 		}
 
 		/// <inheritdoc />
 		public int InternalBufferSize
 		{
-			get { return InternalInstance.InternalBufferSize; }
-			set { InternalInstance.InternalBufferSize = value; }
+			get { return _instance.InternalBufferSize; }
+			set { _instance.InternalBufferSize = value; }
 		}
 
 		/// <inheritdoc />
 		public NotifyFilters NotifyFilter
 		{
-			get { return InternalInstance.NotifyFilter; }
-			set { InternalInstance.NotifyFilter = value; }
+			get { return _instance.NotifyFilter; }
+			set { _instance.NotifyFilter = value; }
 		}
 
 		/// <inheritdoc />
 		public string Path
 		{
-			get { return InternalInstance.Path; }
-			set { InternalInstance.Path = value; }
+			get { return _instance.Path; }
+			set { _instance.Path = value; }
 		}
 
 		/// <inheritdoc />
 		public event FileSystemEventHandler Changed
 		{
-			add { InternalInstance.Changed += value; }
-			remove { InternalInstance.Changed -= value; }
+			add { _instance.Changed += value; }
+			remove { _instance.Changed -= value; }
 		}
 
 		/// <inheritdoc />
 		public event FileSystemEventHandler Created
 		{
-			add { InternalInstance.Created += value; }
-			remove { InternalInstance.Created -= value; }
+			add { _instance.Created += value; }
+			remove { _instance.Created -= value; }
 		}
 
 		/// <inheritdoc />
 		public event FileSystemEventHandler Deleted
 		{
-			add { InternalInstance.Deleted += value; }
-			remove { InternalInstance.Deleted -= value; }
+			add { _instance.Deleted += value; }
+			remove { _instance.Deleted -= value; }
 		}
 
 		/// <inheritdoc />
 		public event ErrorEventHandler Error
 		{
-			add { InternalInstance.Error += value; }
-			remove { InternalInstance.Error -= value; }
+			add { _instance.Error += value; }
+			remove { _instance.Error -= value; }
 		}
 
 		/// <inheritdoc />
 		public event RenamedEventHandler Renamed
 		{
-			add { InternalInstance.Renamed += value; }
-			remove { InternalInstance.Renamed -= value; }
+			add { _instance.Renamed += value; }
+			remove { _instance.Renamed -= value; }
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="FileSystemWatcherAdapter" /> class.</summary>
@@ -128,43 +133,43 @@ namespace Thinktecture.IO.Adapters
 			if (watcher == null)
 				throw new ArgumentNullException(nameof(watcher));
 
-			InternalInstance = watcher;
+			_instance = watcher;
 		}
 
 		/// <inheritdoc />
 		public WaitForChangedResult WaitForChanged(WatcherChangeTypes changeType)
 		{
-			return InternalInstance.WaitForChanged(changeType);
+			return _instance.WaitForChanged(changeType);
 		}
 
 		/// <inheritdoc />
 		public WaitForChangedResult WaitForChanged(WatcherChangeTypes changeType, int timeout)
 		{
-			return InternalInstance.WaitForChanged(changeType, timeout);
+			return _instance.WaitForChanged(changeType, timeout);
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			InternalInstance.Dispose();
+			_instance.Dispose();
 		}
 
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return InternalInstance.ToString();
+			return _instance.ToString();
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
 		{
-			return InternalInstance.Equals(obj);
+			return _instance.Equals(obj);
 		}
 
 		/// <inheritdoc />
 		public override int GetHashCode()
 		{
-			return InternalInstance.GetHashCode();
+			return _instance.GetHashCode();
 		}
 	}
 }

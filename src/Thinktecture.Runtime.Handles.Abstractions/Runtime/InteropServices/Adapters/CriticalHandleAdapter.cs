@@ -11,13 +11,18 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public CriticalHandle InternalInstance { get; }
+		public CriticalHandle UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly CriticalHandle _instance;
 
 		/// <inheritdoc />
-		public bool IsClosed => InternalInstance.IsClosed;
+		public bool IsClosed => _instance.IsClosed;
 
 		/// <inheritdoc />
-		public bool IsInvalid => InternalInstance.IsInvalid;
+		public bool IsInvalid => _instance.IsInvalid;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CriticalHandleAdapter"/> class.
@@ -28,37 +33,37 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 			if (handle == null)
 				throw new ArgumentNullException(nameof(handle));
 
-			InternalInstance = handle;
+			_instance = handle;
 		}
 
 		/// <inheritdoc />
 		public void SetHandleAsInvalid()
 		{
-			InternalInstance.SetHandleAsInvalid();
+			_instance.SetHandleAsInvalid();
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			InternalInstance.Dispose();
+			_instance.Dispose();
 		}
 
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return InternalInstance.ToString();
+			return _instance.ToString();
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
 		{
-			return InternalInstance.Equals(obj);
+			return _instance.Equals(obj);
 		}
 
 		/// <inheritdoc />
 		public override int GetHashCode()
 		{
-			return InternalInstance.GetHashCode();
+			return _instance.GetHashCode();
 		}
 	}
 }

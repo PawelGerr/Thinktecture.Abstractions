@@ -10,9 +10,10 @@ namespace Thinktecture
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="UriBuilder"/>.
+		/// It is not intended to be used directly. Use <see cref="UriBuilderExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		UriBuilder InternalInstance { get; }
+		UriBuilder UnsafeConvert();
 		
 		/// <summary>
 		/// Gets or sets the fragment portion of the URI.

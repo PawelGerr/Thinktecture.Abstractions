@@ -11,9 +11,10 @@ namespace Thinktecture.Diagnostics
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="Stopwatch"/>.
+		/// It is not intended to be used directly. Use <see cref="StopwatchExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		Stopwatch InternalInstance { get; }
+		Stopwatch UnsafeConvert();
 		
 		/// <summary>
 		/// Gets a value indicating whether the <see cref="Stopwatch"/> timer is running.

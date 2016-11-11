@@ -11,13 +11,18 @@ namespace Thinktecture.IO.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new MemoryStream InternalInstance { get; }
+		public new MemoryStream UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly MemoryStream _instance;
 
 		/// <inheritdoc />
 		public int Capacity
 		{
-			get { return InternalInstance.Capacity; }
-			set { InternalInstance.Capacity = value; }
+			get { return _instance.Capacity; }
+			set { _instance.Capacity = value; }
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="MemoryStreamAdapter" /> class with an expandable capacity initialized to zero.</summary>
@@ -93,25 +98,25 @@ namespace Thinktecture.IO.Adapters
 			if (stream == null)
 				throw new ArgumentNullException(nameof(stream));
 
-			InternalInstance = stream;
+			_instance = stream;
 		}
 
 		/// <inheritdoc />
 		public byte[] ToArray()
 		{
-			return InternalInstance.ToArray();
+			return _instance.ToArray();
 		}
 
 		/// <inheritdoc />
 		public void WriteTo(IStream stream)
 		{
-			InternalInstance.WriteTo(stream.ToImplementation());
+			_instance.WriteTo(stream.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public void WriteTo(Stream stream)
 		{
-			InternalInstance.WriteTo(stream);
+			_instance.WriteTo(stream);
 		}
 	}
 }

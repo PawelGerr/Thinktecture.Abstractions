@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="Stopwatch"/>.</returns>
 		public static Stopwatch ToImplementation(this IStopwatch stopwatch)
 		{
-			return stopwatch?.InternalInstance;
+			return stopwatch?.UnsafeConvert();
 		}
 	}
 }

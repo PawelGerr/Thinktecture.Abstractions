@@ -16,7 +16,12 @@ namespace Thinktecture.IO.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public TextReader InternalInstance { get; }
+		public TextReader UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly TextReader _instance;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="TextReaderAdapter" /> class.
@@ -27,91 +32,91 @@ namespace Thinktecture.IO.Adapters
 			if (reader == null)
 				throw new ArgumentNullException(nameof(reader));
 			
-			InternalInstance = reader;
+			_instance = reader;
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			InternalInstance.Dispose();
+			_instance.Dispose();
 		}
 		
 		/// <inheritdoc />
 		public int Peek()
 		{
-			return InternalInstance.Peek();
+			return _instance.Peek();
 		}
 
 		/// <inheritdoc />
 		public int Read()
 		{
-			return InternalInstance.Read();
+			return _instance.Read();
 		}
 
 		/// <inheritdoc />
 		public int Read(char[] buffer, int index, int count)
 		{
-			return InternalInstance.Read(buffer, index, count);
+			return _instance.Read(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public Task<int> ReadAsync(char[] buffer, int index, int count)
 		{
-			return InternalInstance.ReadAsync(buffer, index, count);
+			return _instance.ReadAsync(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public int ReadBlock(char[] buffer, int index, int count)
 		{
-			return InternalInstance.ReadBlock(buffer, index, count);
+			return _instance.ReadBlock(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public Task<int> ReadBlockAsync(char[] buffer, int index, int count)
 		{
-			return InternalInstance.ReadBlockAsync(buffer, index, count);
+			return _instance.ReadBlockAsync(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public string ReadLine()
 		{
-			return InternalInstance.ReadLine();
+			return _instance.ReadLine();
 		}
 
 		/// <inheritdoc />
 		public Task<string> ReadLineAsync()
 		{
-			return InternalInstance.ReadLineAsync();
+			return _instance.ReadLineAsync();
 		}
 
 		/// <inheritdoc />
 		public string ReadToEnd()
 		{
-			return InternalInstance.ReadToEnd();
+			return _instance.ReadToEnd();
 		}
 
 		/// <inheritdoc />
 		public Task<string> ReadToEndAsync()
 		{
-			return InternalInstance.ReadToEndAsync();
+			return _instance.ReadToEndAsync();
 		}
 		
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return InternalInstance.ToString();
+			return _instance.ToString();
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
 		{
-			return InternalInstance.Equals(obj);
+			return _instance.Equals(obj);
 		}
 
 		/// <inheritdoc />
 		public override int GetHashCode()
 		{
-			return InternalInstance.GetHashCode();
+			return _instance.GetHashCode();
 		}
 	}
 }

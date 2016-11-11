@@ -8,6 +8,7 @@
 
 	"packOptions": {
 		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
+		"iconUrl": "http://thinktecture.com/images/logo.png",
 		"tags": ["io", "filesystem", "abstraction"],
 		"licenseUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md",
 		"repository": {

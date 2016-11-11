@@ -10,9 +10,10 @@ namespace Thinktecture.IO
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="StringReader"/>.
+		/// It is not intended to be used directly. Use <see cref="StringReaderExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		new StringReader InternalInstance { get; }
+		new StringReader UnsafeConvert();
 
 		/// <summary>Returns the next available character but does not consume it.</summary>
 		/// <returns>An integer representing the next character to be read, or -1 if no more characters are available or the stream does not support seeking.</returns>

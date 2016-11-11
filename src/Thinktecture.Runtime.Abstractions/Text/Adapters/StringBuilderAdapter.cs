@@ -14,32 +14,37 @@ namespace Thinktecture.Text.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public StringBuilder InternalInstance { get; }
+		public StringBuilder UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly StringBuilder _instance;
 
 		/// <inheritdoc />
 		public int Capacity
 		{
-			get { return InternalInstance.Capacity; }
-			set { InternalInstance.Capacity = value; }
+			get { return _instance.Capacity; }
+			set { _instance.Capacity = value; }
 		}
 
 		/// <inheritdoc />
 		[IndexerName("Chars")]
 		public char this[int index]
 		{
-			get { return InternalInstance[index]; }
-			set { InternalInstance[index] = value; }
+			get { return _instance[index]; }
+			set { _instance[index] = value; }
 		}
 
 		/// <inheritdoc />
 		public int Length
 		{
-			get { return InternalInstance.Length; }
-			set { InternalInstance.Length = value; }
+			get { return _instance.Length; }
+			set { _instance.Length = value; }
 		}
 
 		/// <inheritdoc />
-		public int MaxCapacity => InternalInstance.MaxCapacity;
+		public int MaxCapacity => _instance.MaxCapacity;
 
 		/// <summary>Initializes a new instance of the <see cref="StringBuilderAdapter" /> class.</summary>
 		public StringBuilderAdapter()
@@ -105,34 +110,34 @@ namespace Thinktecture.Text.Adapters
 			if (stringBuilder == null)
 				throw new ArgumentNullException(nameof(stringBuilder));
 
-			InternalInstance = stringBuilder;
+			_instance = stringBuilder;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(bool value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(byte value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(char value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(char value, int repeatCount)
 		{
-			InternalInstance.Append(value, repeatCount);
+			_instance.Append(value, repeatCount);
 			return this;
 		}
 
@@ -140,7 +145,7 @@ namespace Thinktecture.Text.Adapters
 		[SecuritySafeCritical]
 		public IStringBuilder Append(char[] value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
@@ -148,63 +153,63 @@ namespace Thinktecture.Text.Adapters
 		[SecuritySafeCritical]
 		public IStringBuilder Append(char[] value, int startIndex, int charCount)
 		{
-			InternalInstance.Append(value, startIndex, charCount);
+			_instance.Append(value, startIndex, charCount);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(Decimal value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(double value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(short value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(int value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(long value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(object value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(sbyte value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(float value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
@@ -212,7 +217,7 @@ namespace Thinktecture.Text.Adapters
 		[SecuritySafeCritical]
 		public IStringBuilder Append(string value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
@@ -220,63 +225,63 @@ namespace Thinktecture.Text.Adapters
 		[SecuritySafeCritical]
 		public IStringBuilder Append(string value, int startIndex, int count)
 		{
-			InternalInstance.Append(value, startIndex, count);
+			_instance.Append(value, startIndex, count);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(ushort value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(uint value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Append(ulong value)
 		{
-			InternalInstance.Append(value);
+			_instance.Append(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder AppendFormat(IFormatProvider provider, string format, params object[] args)
 		{
-			InternalInstance.AppendFormat(provider, format, args);
+			_instance.AppendFormat(provider, format, args);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder AppendFormat(string format, params object[] args)
 		{
-			InternalInstance.AppendFormat(format, args);
+			_instance.AppendFormat(format, args);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder AppendLine()
 		{
-			InternalInstance.AppendLine();
+			_instance.AppendLine();
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder AppendLine(string value)
 		{
-			InternalInstance.AppendLine(value);
+			_instance.AppendLine(value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Clear()
 		{
-			InternalInstance.Clear();
+			_instance.Clear();
 			return this;
 		}
 
@@ -284,38 +289,38 @@ namespace Thinktecture.Text.Adapters
 		[SecuritySafeCritical]
 		public void CopyTo(int sourceIndex, char[] destination, int destinationIndex, int count)
 		{
-			InternalInstance.CopyTo(sourceIndex, destination, destinationIndex, count);
+			_instance.CopyTo(sourceIndex, destination, destinationIndex, count);
 		}
 
 		/// <inheritdoc />
 		public int EnsureCapacity(int capacity)
 		{
-			return InternalInstance.EnsureCapacity(capacity);
+			return _instance.EnsureCapacity(capacity);
 		}
 
 		/// <inheritdoc />
 		public bool Equals(IStringBuilder sb)
 		{
-			return InternalInstance.Equals(sb.ToImplementation());
+			return _instance.Equals(sb.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public bool Equals(StringBuilder sb)
 		{
-			return InternalInstance.Equals(sb);
+			return _instance.Equals(sb);
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, bool value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, byte value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
@@ -323,14 +328,14 @@ namespace Thinktecture.Text.Adapters
 		[SecuritySafeCritical]
 		public IStringBuilder Insert(int index, char value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, char[] value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
@@ -338,63 +343,63 @@ namespace Thinktecture.Text.Adapters
 		[SecuritySafeCritical]
 		public IStringBuilder Insert(int index, char[] value, int startIndex, int charCount)
 		{
-			InternalInstance.Insert(index, value, startIndex, charCount);
+			_instance.Insert(index, value, startIndex, charCount);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, Decimal value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, double value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, short value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, int value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, long value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, object value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, sbyte value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, float value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
@@ -402,7 +407,7 @@ namespace Thinktecture.Text.Adapters
 		[SecuritySafeCritical]
 		public IStringBuilder Insert(int index, string value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
@@ -410,63 +415,63 @@ namespace Thinktecture.Text.Adapters
 		[SecuritySafeCritical]
 		public IStringBuilder Insert(int index, string value, int count)
 		{
-			InternalInstance.Insert(index, value, count);
+			_instance.Insert(index, value, count);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, ushort value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, uint value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Insert(int index, ulong value)
 		{
-			InternalInstance.Insert(index, value);
+			_instance.Insert(index, value);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Remove(int startIndex, int length)
 		{
-			InternalInstance.Remove(startIndex, length);
+			_instance.Remove(startIndex, length);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Replace(char oldChar, char newChar)
 		{
-			InternalInstance.Replace(oldChar, newChar);
+			_instance.Replace(oldChar, newChar);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Replace(char oldChar, char newChar, int startIndex, int count)
 		{
-			InternalInstance.Replace(oldChar, newChar, startIndex, Length);
+			_instance.Replace(oldChar, newChar, startIndex, Length);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Replace(string oldValue, string newValue)
 		{
-			InternalInstance.Replace(oldValue, newValue);
+			_instance.Replace(oldValue, newValue);
 			return this;
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder Replace(string oldValue, string newValue, int startIndex, int count)
 		{
-			InternalInstance.Replace(oldValue, newValue, startIndex, count);
+			_instance.Replace(oldValue, newValue, startIndex, count);
 			return this;
 		}
 
@@ -474,25 +479,25 @@ namespace Thinktecture.Text.Adapters
 		[SecuritySafeCritical]
 		public override string ToString()
 		{
-			return InternalInstance.ToString();
+			return _instance.ToString();
 		}
 
 		/// <inheritdoc />
 		public string ToString(int startIndex, int length)
 		{
-			return InternalInstance.ToString(startIndex, length);
+			return _instance.ToString(startIndex, length);
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
 		{
-			return InternalInstance.Equals(obj);
+			return _instance.Equals(obj);
 		}
 
 		/// <inheritdoc />
 		public override int GetHashCode()
 		{
-			return InternalInstance.GetHashCode();
+			return _instance.GetHashCode();
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>Converted safe file handle.</returns>
 		public static SafeFileHandle ToImplementation(this ISafeFileHandle handle)
 		{
-			return handle?.InternalInstance;
+			return handle?.UnsafeConvert();
 		}
 	}
 }

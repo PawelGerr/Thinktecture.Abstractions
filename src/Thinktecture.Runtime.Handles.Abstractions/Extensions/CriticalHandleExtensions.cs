@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>Instance of <see cref="CriticalHandle"/>.</returns>
 		public static CriticalHandle ToImplementation(this ICriticalHandle handle)
 		{
-			return handle?.InternalInstance;
+			return handle?.UnsafeConvert();
 		}
 	}
 }

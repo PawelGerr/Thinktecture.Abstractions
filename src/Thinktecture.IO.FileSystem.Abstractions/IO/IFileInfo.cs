@@ -11,9 +11,10 @@ namespace Thinktecture.IO
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="FileInfo"/>.
+		/// It is not intended to be used directly. Use <see cref="FileInfoExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		new FileInfo InternalInstance { get; }
+		new FileInfo UnsafeConvert();
 
 		/// <summary>Gets an instance of the parent directory.</summary>
 		/// <returns>A <see cref="T:System.IO.DirectoryInfo" /> object representing the parent directory of this file.</returns>

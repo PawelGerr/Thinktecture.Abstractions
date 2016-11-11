@@ -9,9 +9,10 @@ namespace Thinktecture.Text
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="Encoding"/>.
+		/// It is not intended to be used directly. Use <see cref="EncodingExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		Encoding InternalInstance { get; }
+		Encoding UnsafeConvert();
 		
 		/// <summary>When overridden in a derived class, gets the name registered with the Internet Assigned Numbers Authority (IANA) for the current encoding.</summary>
 		/// <returns>The IANA name for the current <see cref="T:System.Text.Encoding" />.</returns>

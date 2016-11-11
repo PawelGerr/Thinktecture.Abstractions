@@ -39,19 +39,24 @@ namespace Thinktecture.Diagnostics.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Stopwatch InternalInstance { get; }
+		public Stopwatch UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly Stopwatch _instance;
 
 		/// <inheritdoc />
-		public bool IsRunning => InternalInstance.IsRunning;
+		public bool IsRunning => _instance.IsRunning;
 
 		/// <inheritdoc />
-		public TimeSpan Elapsed => InternalInstance.Elapsed;
+		public TimeSpan Elapsed => _instance.Elapsed;
 
 		/// <inheritdoc />
-		public long ElapsedMilliseconds => InternalInstance.ElapsedMilliseconds;
+		public long ElapsedMilliseconds => _instance.ElapsedMilliseconds;
 
 		/// <inheritdoc />
-		public long ElapsedTicks => InternalInstance.ElapsedTicks;
+		public long ElapsedTicks => _instance.ElapsedTicks;
 
 		/// <summary>
 		///	Initializes a new instance of the <see cref="StopwatchAdapter"/> class.
@@ -70,49 +75,49 @@ namespace Thinktecture.Diagnostics.Adapters
 			if (stopwatch == null)
 				throw new ArgumentNullException(nameof(stopwatch));
 
-			InternalInstance = stopwatch;
+			_instance = stopwatch;
 		}
 
 		/// <inheritdoc />
 		public void Start()
 		{
-			InternalInstance.Start();
+			_instance.Start();
 		}
 
 		/// <inheritdoc />
 		public void Stop()
 		{
-			InternalInstance.Stop();
+			_instance.Stop();
 		}
 
 		/// <inheritdoc />
 		public void Reset()
 		{
-			InternalInstance.Reset();
+			_instance.Reset();
 		}
 
 		/// <inheritdoc />
 		public void Restart()
 		{
-			InternalInstance.Reset();
+			_instance.Reset();
 		}
 
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return InternalInstance.ToString();
+			return _instance.ToString();
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
 		{
-			return InternalInstance.Equals(obj);
+			return _instance.Equals(obj);
 		}
 
 		/// <inheritdoc />
 		public override int GetHashCode()
 		{
-			return InternalInstance.GetHashCode();
+			return _instance.GetHashCode();
 		}
 	}
 }

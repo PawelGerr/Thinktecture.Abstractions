@@ -11,9 +11,10 @@ namespace Thinktecture.IO
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="MemoryStream"/>.
+		/// It is not intended to be used directly. Use <see cref="MemoryStreamExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		new MemoryStream InternalInstance { get; }
+		new MemoryStream UnsafeConvert();
 
 		/// <summary>Gets a value indicating whether the current stream supports reading.</summary>
 		/// <returns>true if the stream is open.</returns>

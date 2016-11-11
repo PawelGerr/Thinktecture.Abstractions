@@ -12,9 +12,10 @@ namespace Thinktecture.IO
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="FileSystemInfo"/>.
+		/// It is not intended to be used directly. Use <see cref="FileSystemInfoExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		FileSystemInfo InternalInstance { get; }
+		FileSystemInfo UnsafeConvert();
 
 		/// <summary>Gets or sets the attributes for the current file or directory.</summary>
 		/// <returns>

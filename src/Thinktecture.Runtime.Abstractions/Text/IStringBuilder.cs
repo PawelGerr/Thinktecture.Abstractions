@@ -10,9 +10,10 @@ namespace Thinktecture.Text
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="StringBuilder"/>.
+		/// It is not intended to be used directly. Use <see cref="StringBuilderExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		StringBuilder InternalInstance { get; }
+		StringBuilder UnsafeConvert();
 
 		/// <summary>Gets or sets the maximum number of characters that can be contained in the memory allocated by the current instance.</summary>
 		/// <returns>The maximum number of characters that can be contained in the memory allocated by the current instance. Its value can range from <see cref="P:System.Text.StringBuilder.Length" /> to <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </returns>

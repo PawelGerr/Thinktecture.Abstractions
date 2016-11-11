@@ -10,7 +10,12 @@ namespace Thinktecture.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Random InternalInstance { get; }
+		public Random UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly Random _instance;
 
 		/// <summary>Initializes a new instance of the <see cref="RandomAdapter" /> class, using a time-dependent default seed value.</summary>
 		public RandomAdapter()
@@ -34,55 +39,55 @@ namespace Thinktecture.Adapters
 			if (random == null)
 				throw new ArgumentNullException(nameof(random));
 
-			InternalInstance = random;
+			_instance = random;
 		}
 
 		/// <inheritdoc />
 		public int Next()
 		{
-			return InternalInstance.Next();
+			return _instance.Next();
 		}
 
 		/// <inheritdoc />
 		public int Next(int maxValue)
 		{
-			return InternalInstance.Next(maxValue);
+			return _instance.Next(maxValue);
 		}
 
 		/// <inheritdoc />
 		public int Next(int minValue, int maxValue)
 		{
-			return InternalInstance.Next(minValue, maxValue);
+			return _instance.Next(minValue, maxValue);
 		}
 
 		/// <inheritdoc />
 		public void NextBytes(byte[] buffer)
 		{
-			InternalInstance.NextBytes(buffer);
+			_instance.NextBytes(buffer);
 		}
 
 		/// <inheritdoc />
 		public double NextDouble()
 		{
-			return InternalInstance.NextDouble();
+			return _instance.NextDouble();
 		}
 
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return InternalInstance.ToString();
+			return _instance.ToString();
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
 		{
-			return InternalInstance.Equals(obj);
+			return _instance.Equals(obj);
 		}
 
 		/// <inheritdoc />
 		public override int GetHashCode()
 		{
-			return InternalInstance.GetHashCode();
+			return _instance.GetHashCode();
 		}
 	}
 }

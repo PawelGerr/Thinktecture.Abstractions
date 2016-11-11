@@ -12,9 +12,10 @@ namespace Thinktecture.IO
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="DirectoryInfo"/>.
+		/// It is not intended to be used directly. Use <see cref="DirectoryInfoExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		new DirectoryInfo InternalInstance { get; }
+		new DirectoryInfo UnsafeConvert();
 		
 		/// <summary>Gets a value indicating whether the directory exists.</summary>
 		/// <returns>true if the directory exists; otherwise, false.</returns>

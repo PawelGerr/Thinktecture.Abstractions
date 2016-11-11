@@ -17,7 +17,12 @@ namespace Thinktecture.IO.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new StreamWriter InternalInstance { get; }
+		public new StreamWriter UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly StreamWriter _instance;
 
 		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using UTF-8 encoding and the default buffer size.</summary>
 		/// <param name="stream">The stream to write to. </param>
@@ -223,17 +228,17 @@ namespace Thinktecture.IO.Adapters
 			if (writer == null)
 				throw new ArgumentNullException(nameof(writer));
 
-			InternalInstance = writer;
+			_instance = writer;
 		}
 
 		/// <inheritdoc />
 		public bool AutoFlush
 		{
-			get { return InternalInstance.AutoFlush; }
-			set { InternalInstance.AutoFlush = value; }
+			get { return _instance.AutoFlush; }
+			set { _instance.AutoFlush = value; }
 		}
 
 		/// <inheritdoc />
-		public IStream BaseStream => InternalInstance.BaseStream.ToInterface();
+		public IStream BaseStream => _instance.BaseStream.ToInterface();
 	}
 }

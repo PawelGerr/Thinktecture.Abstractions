@@ -13,9 +13,10 @@ namespace Thinktecture.IO
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="StringWriter"/>.
+		/// It is not intended to be used directly. Use <see cref="StringWriterExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		new StringWriter InternalInstance { get; }
+		new StringWriter UnsafeConvert();
 
 		/// <summary>Gets the <see cref="T:System.Text.Encoding" /> in which the output is written.</summary>
 		/// <returns>The Encoding in which the output is written.</returns>

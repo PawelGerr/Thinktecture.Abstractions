@@ -9,9 +9,10 @@ namespace Thinktecture.Win32.SafeHandles
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="SafeFileHandle"/>.
+		/// It is not intended to be used directly. Use <see cref="SafeFileHandleExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		new SafeFileHandle InternalInstance { get; }
+		new SafeFileHandle UnsafeConvert();
 
 		/// <summary>When overridden in a derived class, gets a value indicating whether the handle value is invalid.</summary>
 		/// <returns>true if the handle value is invalid; otherwise, false.</returns>

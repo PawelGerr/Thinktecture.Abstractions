@@ -11,7 +11,12 @@ namespace Thinktecture.Text.Adapters
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Decoder InternalInstance { get; }
+		public Decoder UnsafeConvert()
+		{
+			return _instance;
+		}
+
+		private readonly Decoder _instance;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="DecoderAdapter" /> class.
@@ -22,67 +27,67 @@ namespace Thinktecture.Text.Adapters
 			if (decoder == null)
 				throw new ArgumentNullException(nameof(decoder));
 
-			InternalInstance = decoder;
+			_instance = decoder;
 		}
 
 		/// <inheritdoc />
 		public Decoder ToImplementation()
 		{
-			return InternalInstance;
+			return _instance;
 		}
 
 		/// <inheritdoc />
 		public void Convert(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex, int charCount, bool flush, out int bytesUsed, out int charsUsed, out bool completed)
 		{
-			InternalInstance.Convert(bytes, byteIndex, byteCount, chars, charIndex, charCount, flush, out bytesUsed, out charsUsed, out completed);
+			_instance.Convert(bytes, byteIndex, byteCount, chars, charIndex, charCount, flush, out bytesUsed, out charsUsed, out completed);
 		}
 
 		/// <inheritdoc />
 		public int GetCharCount(byte[] bytes, int index, int count)
 		{
-			return InternalInstance.GetCharCount(bytes, index, count);
+			return _instance.GetCharCount(bytes, index, count);
 		}
 
 		/// <inheritdoc />
 		public int GetCharCount(byte[] bytes, int index, int count, bool flush)
 		{
-			return InternalInstance.GetCharCount(bytes, index, count, flush);
+			return _instance.GetCharCount(bytes, index, count, flush);
 		}
 
 		/// <inheritdoc />
 		public int GetChars(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex)
 		{
-			return InternalInstance.GetChars(bytes, byteIndex, byteCount, chars, charIndex);
+			return _instance.GetChars(bytes, byteIndex, byteCount, chars, charIndex);
 		}
 
 		/// <inheritdoc />
 		public int GetChars(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex, bool flush)
 		{
-			return InternalInstance.GetChars(bytes, byteIndex, byteCount, chars, charIndex, flush);
+			return _instance.GetChars(bytes, byteIndex, byteCount, chars, charIndex, flush);
 		}
 
 		/// <inheritdoc />
 		public void Reset()
 		{
-			InternalInstance.Reset();
+			_instance.Reset();
 		}
 
 		/// <inheritdoc />
 		public override string ToString()
 		{
-			return InternalInstance.ToString();
+			return _instance.ToString();
 		}
 
 		/// <inheritdoc />
 		public override bool Equals(object obj)
 		{
-			return InternalInstance.Equals(obj);
+			return _instance.Equals(obj);
 		}
 
 		/// <inheritdoc />
 		public override int GetHashCode()
 		{
-			return InternalInstance.GetHashCode();
+			return _instance.GetHashCode();
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>Converted stream.</returns>
 		public static MemoryStream ToImplementation(this IMemoryStream stream)
 		{
-			return stream?.InternalInstance;
+			return stream?.UnsafeConvert();
 		}
 	}
 }

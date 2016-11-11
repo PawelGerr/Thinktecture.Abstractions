@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>Converted writer.</returns>
 		public static StreamWriter ToImplementation(this IStreamWriter writer)
 		{
-			return writer?.InternalInstance;
+			return writer?.UnsafeConvert();
 		}
 	}
 }

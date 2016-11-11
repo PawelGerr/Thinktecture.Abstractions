@@ -14,9 +14,10 @@ namespace Thinktecture.IO
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="StreamReader"/>.
+		/// It is not intended to be used directly. Use <see cref="StreamReaderExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		new StreamReader InternalInstance { get; }
+		new StreamReader UnsafeConvert();
 
 		/// <summary>Returns the underlying stream.</summary>
 		/// <returns>The underlying stream.</returns>

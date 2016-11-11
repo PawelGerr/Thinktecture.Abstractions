@@ -26,7 +26,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="FileSystemWatcher"/>.</returns>
 		public static FileSystemWatcher ToImplementation(this IFileSystemWatcher watcher)
 		{
-			return watcher?.InternalInstance;
+			return watcher?.UnsafeConvert();
 		}
 	}
 }

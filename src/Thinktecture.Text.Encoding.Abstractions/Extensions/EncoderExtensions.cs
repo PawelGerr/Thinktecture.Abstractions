@@ -26,7 +26,7 @@ namespace Thinktecture
 		/// <returns>Converted encoder.</returns>
 		public static Encoder ToImplementation(this IEncoder encoder)
 		{
-			return encoder?.InternalInstance;
+			return encoder?.UnsafeConvert();
 		}
 	}
 }

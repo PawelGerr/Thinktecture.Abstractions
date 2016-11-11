@@ -10,9 +10,10 @@ namespace Thinktecture.IO
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="FileSystemWatcher"/>.
+		/// It is not intended to be used directly. Use <see cref="FileSystemWatcherExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		FileSystemWatcher InternalInstance { get; }
+		FileSystemWatcher UnsafeConvert();
 
 		/// <summary>Gets or sets a value indicating whether the component is enabled.</summary>
 		/// <returns>true if the component is enabled; otherwise, false. The default is false. If you are using the component on a designer in Visual Studio 2005, the default is true.</returns>

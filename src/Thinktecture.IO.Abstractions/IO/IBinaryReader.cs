@@ -10,9 +10,10 @@ namespace Thinktecture.IO
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="BinaryReader"/>.
+		/// It is not intended to be used directly. Use <see cref="BinaryReaderExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		BinaryReader InternalInstance { get; }
+		BinaryReader UnsafeConvert();
 
 		/// <summary>Exposes access to the underlying stream of the <see cref="T:System.IO.BinaryReader" />.</summary>
 		/// <returns>The underlying stream associated with the BinaryReader.</returns>

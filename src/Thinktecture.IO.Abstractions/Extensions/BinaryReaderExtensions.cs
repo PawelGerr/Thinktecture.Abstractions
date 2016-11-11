@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>Converted reader.</returns>
 		public static BinaryReader ToImplementation(this IBinaryReader reader)
 		{
-			return reader?.InternalInstance;
+			return reader?.UnsafeConvert();
 		}
 	}
 }
