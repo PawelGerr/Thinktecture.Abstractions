@@ -343,8 +343,5 @@ namespace Thinktecture.IO
 	    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
 	    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
 	    Task WriteLineAsync(string value);
-
-		/// <summary>Releases all resources used by the <see cref="T:System.IO.TextWriter" /> object.</summary>
-		new void Dispose();
 	}
 }

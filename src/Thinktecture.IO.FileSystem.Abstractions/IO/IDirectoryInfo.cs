@@ -17,16 +17,6 @@ namespace Thinktecture.IO
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		new DirectoryInfo UnsafeConvert();
 		
-		/// <summary>Gets a value indicating whether the directory exists.</summary>
-		/// <returns>true if the directory exists; otherwise, false.</returns>
-		/// <filterpriority>1</filterpriority>
-		new bool Exists { get; }
-
-		/// <summary>Gets the name of this <see cref="T:System.IO.DirectoryInfo" /> instance.</summary>
-		/// <returns>The directory name.</returns>
-		/// <filterpriority>1</filterpriority>
-		new string Name { get; }
-
 		/// <summary>Gets the parent directory of a specified subdirectory.</summary>
 		/// <returns>The parent directory, or null if the path is null or if the file path denotes a root (such as "\", "C:", or * "\\server\share").</returns>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
@@ -71,18 +61,7 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		IDirectoryInfo CreateSubdirectory(string path);
-
-		/// <summary>Deletes this <see cref="T:System.IO.DirectoryInfo" /> if it is empty.</summary>
-		/// <exception cref="T:System.UnauthorizedAccessException">The directory contains a read-only file.</exception>
-		/// <exception cref="T:System.IO.DirectoryNotFoundException">The directory described by this <see cref="T:System.IO.DirectoryInfo" /> object does not exist or could not be found.</exception>
-		/// <exception cref="T:System.IO.IOException">The directory is not empty. -or-The directory is the application's current working directory.-or-There is an open handle on the directory, and the operating system is Windows XP or earlier. This open handle can result from enumerating directories. For more information, see How to: Enumerate Directories and Files.</exception>
-		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		/// <filterpriority>1</filterpriority>
-		/// <PermissionSet>
-		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
-		/// </PermissionSet>
-		new void Delete();
-
+		
 		/// <summary>Deletes this instance of a <see cref="T:System.IO.DirectoryInfo" />, specifying whether to delete subdirectories and files.</summary>
 		/// <param name="recursive">true to delete this directory, its subdirectories, and all files; otherwise, false. </param>
 		/// <exception cref="T:System.UnauthorizedAccessException">The directory contains a read-only file.</exception>

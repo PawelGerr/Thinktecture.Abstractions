@@ -19,10 +19,7 @@ namespace Thinktecture.IO
 		/// <returns>The underlying stream associated with the BinaryWriter.</returns>
 		/// <filterpriority>1</filterpriority>
 		IStream BaseStream { get; }
-
-		/// <summary>Releases all resources used by the current instance of the <see cref="T:System.IO.BinaryWriter" /> class.</summary>
-		new void Dispose();
-
+		
 		/// <summary>Clears all buffers for the current writer and causes any buffered data to be written to the underlying device.</summary>
 		/// <filterpriority>1</filterpriority>
 		void Flush();

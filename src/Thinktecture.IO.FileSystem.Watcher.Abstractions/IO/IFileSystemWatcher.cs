@@ -87,10 +87,5 @@ namespace Thinktecture.IO
 		/// <param name="timeout">The time (in milliseconds) to wait before timing out.</param>
 		/// <returns>A <see cref="WaitForChangedResult"/> that contains specific information on the change that occurred.</returns>
 		WaitForChangedResult WaitForChanged(WatcherChangeTypes changeType, int timeout);
-
-		/// <summary>
-		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-		/// </summary>
-		new void Dispose();
 	}
 }

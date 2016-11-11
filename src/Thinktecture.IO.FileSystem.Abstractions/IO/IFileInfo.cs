@@ -36,12 +36,7 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		string DirectoryName { get; }
-
-		/// <summary>Gets a value indicating whether a file exists.</summary>
-		/// <returns>true if the file exists; false if the file does not exist or if the file is a directory.</returns>
-		/// <filterpriority>1</filterpriority>
-		new bool Exists { get; }
-
+	
 		/// <summary>Gets or sets a value that determines if the current file is read only.</summary>
 		/// <returns>true if the current file is read only; otherwise, false.</returns>
 		/// <exception cref="T:System.IO.FileNotFoundException">The file described by the current <see cref="T:System.IO.FileInfo" /> object could not be found.</exception>
@@ -58,12 +53,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.FileNotFoundException">The file does not exist.-or- The Length property is called for a directory. </exception>
 		/// <filterpriority>1</filterpriority>
 		long Length { get; }
-
-		/// <summary>Gets the name of the file.</summary>
-		/// <returns>The name of the file.</returns>
-		/// <filterpriority>1</filterpriority>
-		new string Name { get; }
-
+	
 		/// <summary>Creates a <see cref="T:System.IO.StreamWriter" /> that appends text to the file represented by this instance of the <see cref="T:System.IO.FileInfo" />.</summary>
 		/// <returns>A new StreamWriter.</returns>
 		/// <filterpriority>1</filterpriority>
@@ -131,17 +121,7 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		IStreamWriter CreateText();
-
-		/// <summary>Permanently deletes a file.</summary>
-		/// <exception cref="T:System.IO.IOException">The target file is open or memory-mapped on a computer running Microsoft Windows NT.-or-There is an open handle on the file, and the operating system is Windows XP or earlier. This open handle can result from enumerating directories and files. For more information, see How to: Enumerate Directories and Files. </exception>
-		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		/// <exception cref="T:System.UnauthorizedAccessException">The path is a directory. </exception>
-		/// <filterpriority>1</filterpriority>
-		/// <PermissionSet>
-		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
-		/// </PermissionSet>
-		new void Delete();
-
+		
 		/// <summary>Moves a specified file to a new location, providing the option to specify a new file name.</summary>
 		/// <param name="destFileName">The path to move the file to, which can specify a different file name. </param>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs, such as the destination file already exists or the destination device is not ready. </exception>

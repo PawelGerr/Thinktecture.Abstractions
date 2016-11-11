@@ -35,11 +35,5 @@ namespace Thinktecture.Runtime.InteropServices
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
 		/// </PermissionSet>
 		void SetHandleAsInvalid();
-
-		/// <summary>Releases all resources used by the <see cref="T:System.Runtime.InteropServices.CriticalHandle" />. </summary>
-		/// <PermissionSet>
-		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
-		/// </PermissionSet>
-		new void Dispose();
 	}
 }

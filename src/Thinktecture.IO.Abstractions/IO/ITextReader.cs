@@ -130,8 +130,5 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
 		Task<string> ReadToEndAsync();
 #pragma warning restore 1584, 1734
-
-		/// <summary>Releases all resources used by the <see cref="T:System.IO.TextReader" /> object.</summary>
-		new void Dispose();
 	}
 }
