@@ -3,6 +3,8 @@ Interfaces for commonly used .NET types like `File`, `Directory`, `Stream`, `Pat
 * The interfaces have the same API like the .NET types
 * Support of .NET 4.5, .NET 4.6 and .NET Core
 
+Read my blog "[.NET Abstractions - It's not just about testing!](http://weblogs.thinktecture.com/pawel/2016/11/net-abstractions-its-not-just-about-testing.html)" for more info about the design decisions I made.
+
 ## Usage
 Just use the interface like `IFIle` instead of `File`.
 
