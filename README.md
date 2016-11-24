@@ -6,7 +6,11 @@ Interfaces for commonly used .NET types like `File`, `Directory`, `Stream`, `Pat
 Read my blog "[.NET Abstractions - It's not just about testing!](http://weblogs.thinktecture.com/pawel/2016/11/net-abstractions-its-not-just-about-testing.html)" for more info about the design decisions I made.
 
 ## Usage
-Just use the interface like `IFIle` instead of `File`.
+Just use the interface like `IFile` instead of `File`.
+
+More examples:
+
+* [Reading files](doc/ReadingFiles.md) 
 
 ```
 public class MyClass

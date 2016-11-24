@@ -26,6 +26,15 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Thinktecture.Runtime.Abstra
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Thinktecture.IO.FileSystem.Watcher.Abstractions", "src\Thinktecture.IO.FileSystem.Watcher.Abstractions\Thinktecture.IO.FileSystem.Watcher.Abstractions.xproj", "{2B0561FC-4688-4F8E-8A67-EE32251582A7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{C37A280D-0672-43EB-AA82-A7837C67FD0A}"
+	ProjectSection(SolutionItems) = preProject
+		doc\ReadingFiles.md = doc\ReadingFiles.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{F2F0BF55-C0C6-4325-98EB-CEC4E4A5EBC6}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Thinktecture.IO.FileSystem.Examples", "example\Thinktecture.IO.FileSystem.Examples\Thinktecture.IO.FileSystem.Examples.xproj", "{D7BECCD3-E9EC-429D-9959-422B73646720}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +69,10 @@ Global
 		{2B0561FC-4688-4F8E-8A67-EE32251582A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B0561FC-4688-4F8E-8A67-EE32251582A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B0561FC-4688-4F8E-8A67-EE32251582A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7BECCD3-E9EC-429D-9959-422B73646720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7BECCD3-E9EC-429D-9959-422B73646720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7BECCD3-E9EC-429D-9959-422B73646720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7BECCD3-E9EC-429D-9959-422B73646720}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,5 +85,6 @@ Global
 		{7CAFD962-AA27-46D6-BAB3-FCCE4C213E57} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 		{827067F0-AC71-480D-8BA6-CC327F6C7DAB} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 		{2B0561FC-4688-4F8E-8A67-EE32251582A7} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
+		{D7BECCD3-E9EC-429D-9959-422B73646720} = {F2F0BF55-C0C6-4325-98EB-CEC4E4A5EBC6}
 	EndGlobalSection
 EndGlobal
