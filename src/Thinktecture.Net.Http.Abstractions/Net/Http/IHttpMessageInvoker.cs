@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Thinktecture.Net.Http
 {
-	/// <summary>A specialty class that allows applications to call the <see cref="IHttpMessageInvoker.SendAsync(IHttpRequestMessage, CancellationToken)" /> method on an Http handler chain. </summary>
+	/// <summary>A specialty class that allows applications to call the <see cref="SendAsync(IHttpRequestMessage, CancellationToken)" /> method on an Http handler chain. </summary>
 	public interface IHttpMessageInvoker : IDisposable
 	{
+		/// <summary>
 		/// Gets inner instance of <see cref="HttpMessageInvoker"/>.
 		/// It is not intended to be used directly. Use <see cref="HttpMessageInvokerExtensions.ToImplementation"/> instead.
 		/// </summary>

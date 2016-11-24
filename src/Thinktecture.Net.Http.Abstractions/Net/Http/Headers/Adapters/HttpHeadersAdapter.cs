@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.Http.Headers;
 
-namespace Thinktecture.Net.Http.Adapters
+namespace Thinktecture.Net.Http.Headers.Adapters
 {
 	/// <summary>A collection of headers and their values as defined in RFC 2616.</summary>
 	public class HttpHeadersAdapter : IHttpHeaders
 	{
 		private readonly HttpHeaders _headers;
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.Net.Http.Headers.HttpHeadersAdapter" /> class.</summary>
+		/// <summary>Initializes a new instance of the <see cref="HttpHeadersAdapter" /> class.</summary>
 		/// <param name="headers">Http headers to be use by the adapter.</param>
 		public HttpHeadersAdapter(HttpHeaders headers)
 		{
@@ -43,7 +43,7 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <inheritdoc />
 		public bool TryAddWithoutValidation(string name, string value)
 		{
-			return _headers.TryAddWithoutValidation(name,value);
+			return _headers.TryAddWithoutValidation(name, value);
 		}
 
 		/// <inheritdoc />
@@ -89,15 +89,15 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _headers.ToString();
-		}
-
-		/// <inheritdoc />
 		IEnumerator IEnumerable.GetEnumerator()
 		{
 			return GetEnumerator();
+		}
+
+		/// <inheritdoc />
+		public override string ToString()
+		{
+			return _headers.ToString();
 		}
 
 		/// <inheritdoc />
@@ -110,6 +110,6 @@ namespace Thinktecture.Net.Http.Adapters
 		public override int GetHashCode()
 		{
 			return _headers.GetHashCode();
-		} 
+		}
 	}
 }

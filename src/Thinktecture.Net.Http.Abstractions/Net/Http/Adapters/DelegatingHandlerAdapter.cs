@@ -1,0 +1,40 @@
+﻿using System;
+using System.ComponentModel;
+using System.Net.Http;
+
+namespace Thinktecture.Net.Http.Adapters
+{
+	/// <summary>A type for HTTP handlers that delegate the processing of HTTP response messages to another handler, called the inner handler.</summary>
+	public class DelegatingHandlerAdapter : HttpMessageHandlerAdapter, IDelegatingHandler
+	{
+		private readonly DelegatingHandler _handler;
+
+		/// <summary>
+		/// Gets inner instance of <see cref="DelegatingHandler"/>.
+		/// It is not intended to be used directly. Use <see cref="DelegatingHandlerExtensions.ToImplementation"/> instead.
+		/// </summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public new DelegatingHandler UnsafeConvert()
+		{
+			return _handler;
+		}
+
+		/// <summary>Gets or sets the inner handler which processes the HTTP response messages.</summary>
+		/// <returns>Returns <see cref="T:System.Net.Http.HttpMessageHandler" />.The inner handler for HTTP response messages.</returns>
+		public IHttpMessageHandler InnerHandler
+		{
+			get { return _handler.InnerHandler.ToInterface(); }
+			set { _handler.InnerHandler = value.ToImplementation(); }
+		}
+
+		/// <summary>Creates a new instance of the <see cref="T:System.Net.Http.DelegatingHandler" /> class.</summary>
+		public DelegatingHandlerAdapter(DelegatingHandler handler)
+			: base(handler)
+		{
+			if (handler == null)
+				throw new ArgumentNullException(nameof(handler));
+
+			_handler = handler;
+		}
+	}
+}

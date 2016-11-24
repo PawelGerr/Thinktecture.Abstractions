@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Net.Http.Headers;
 
-namespace Thinktecture.Net.Http.Adapters
+namespace Thinktecture.Net.Http.Headers.Adapters
 {
 	/// <summary>Represents the collection of Request Headers as defined in RFC 2616.</summary>
 	public class HttpRequestHeadersAdapter : HttpHeadersAdapter, IHttpRequestHeaders

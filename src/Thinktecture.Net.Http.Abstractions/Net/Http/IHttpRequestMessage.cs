@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.Http;
-using System.Net.Http.Headers;
+using Thinktecture.Net.Http.Headers;
 
 namespace Thinktecture.Net.Http
 {
@@ -22,7 +22,7 @@ namespace Thinktecture.Net.Http
 
 		/// <summary>Gets or sets the contents of the HTTP message. </summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.HttpContent" />.The content of a message</returns>
-		HttpContent Content { get; set; }
+		IHttpContent Content { get; set; }
 
 		/// <summary>Gets or sets the HTTP method used by the HTTP request message.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.HttpMethod" />.The HTTP method used by the request message. The default is the GET method.</returns>
@@ -34,7 +34,7 @@ namespace Thinktecture.Net.Http
 
 		/// <summary>Gets the collection of HTTP request headers.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpRequestHeaders" />.The collection of HTTP request headers.</returns>
-		HttpRequestHeaders Headers { get; }
+		IHttpRequestHeaders Headers { get; }
 
 		/// <summary>Gets a set of properties for the HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.Collections.Generic.IDictionary`2" />.</returns>

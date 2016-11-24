@@ -1,74 +1,111 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
+using Thinktecture.Net.Http.Headers;
 
-namespace Thinktecture.Net.Http
+namespace Thinktecture.Net.Http.Adapters
 {
 	/// <summary>Represents a HTTP request message.</summary>
 	public class HttpRequestMessageAdapter : IHttpRequestMessage
 	{
+		private readonly HttpRequestMessage _message;
+
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
 		public HttpRequestMessage UnsafeConvert()
 		{
-			throw new NotImplementedException();
+			return _message;
 		}
 
-		/// <summary>Gets or sets the HTTP message version.</summary>
-		/// <returns>Returns <see cref="T:System.Version" />.The HTTP message version. The default is 1.1.</returns>
-		public Version Version { get; set; }
+		/// <inheritdoc />
+		public Version Version
+		{
+			get { return _message.Version; }
+			set { _message.Version = value; }
+		}
 
-		/// <summary>Gets or sets the contents of the HTTP message. </summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.HttpContent" />.The content of a message</returns>
-		public HttpContent Content { get; set; }
+		/// <inheritdoc />
+		public IHttpContent Content
+		{
+			get { return _message.Content.ToInterface(); }
+			set { _message.Content = value.ToImplementation(); }
+		}
 
-		/// <summary>Gets or sets the HTTP method used by the HTTP request message.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.HttpMethod" />.The HTTP method used by the request message. The default is the GET method.</returns>
-		public HttpMethod Method { get; set; }
+		/// <inheritdoc />
+		public HttpMethod Method
+		{
+			get { return _message.Method; }
+			set { _message.Method = value; }
+		}
 
-		/// <summary>Gets or sets the <see cref="T:System.Uri" /> used for the HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Uri" />.The <see cref="T:System.Uri" /> used for the HTTP request.</returns>
-		public Uri RequestUri { get; set; }
+		/// <inheritdoc />
+		public Uri RequestUri
+		{
+			get { return _message.RequestUri; }
+			set { _message.RequestUri = value; }
+		}
 
-		/// <summary>Gets the collection of HTTP request headers.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpRequestHeaders" />.The collection of HTTP request headers.</returns>
-		public HttpRequestHeaders Headers { get; }
+		/// <inheritdoc />
+		public IHttpRequestHeaders Headers => _message.Headers.ToInterface();
 
-		/// <summary>Gets a set of properties for the HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Collections.Generic.IDictionary`2" />.</returns>
-		public IDictionary<string, object> Properties { get; }
+		/// <inheritdoc />
+		public IDictionary<string, object> Properties => _message.Properties;
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.Net.Http.HttpRequestMessage" /> class.</summary>
-		public HttpRequestMessage()
-			: this(HttpMethod.Get, (Uri) null)
+		/// <summary>Initializes a new instance of the <see cref="HttpRequestMessageAdapter" /> class.</summary>
+		public HttpRequestMessageAdapter()
+			: this(new HttpRequestMessage())
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.Net.Http.HttpRequestMessage" /> class with an HTTP method and a request <see cref="T:System.Uri" />.</summary>
+		/// <summary>Initializes a new instance of the <see cref="HttpRequestMessageAdapter" /> class with an HTTP method and a request <see cref="T:System.Uri" />.</summary>
 		/// <param name="method">The HTTP method.</param>
 		/// <param name="requestUri">The <see cref="T:System.Uri" /> to request.</param>
-		public HttpRequestMessage(HttpMethod method, Uri requestUri)
+		public HttpRequestMessageAdapter(HttpMethod method, Uri requestUri)
+			: this(new HttpRequestMessage(method, requestUri))
 		{
 		}
 
-		/// <summary>Initializes a new instance of the <see cref="T:System.Net.Http.HttpRequestMessage" /> class with an HTTP method and a request <see cref="T:System.Uri" />.</summary>
+		/// <summary>Initializes a new instance of the <see cref="HttpRequestMessageAdapter" /> class with an HTTP method and a request <see cref="T:System.Uri" />.</summary>
 		/// <param name="method">The HTTP method.</param>
 		/// <param name="requestUri">A string that represents the request  <see cref="T:System.Uri" />.</param>
-		public HttpRequestMessage(HttpMethod method, string requestUri)
+		public HttpRequestMessageAdapter(HttpMethod method, string requestUri)
+			: this(new HttpRequestMessage(method, requestUri))
 		{
 		}
 
-		/// <summary>Returns a string that represents the current object.</summary>
-		/// <returns>Returns <see cref="T:System.String" />.A string representation of the current object.</returns>
-		public override string ToString()
+		/// <summary>Initializes a new instance of the <see cref="HttpRequestMessageAdapter" /> class.</summary>
+		/// <param name="message">Message to be used by the adapter.</param>
+		public HttpRequestMessageAdapter(HttpRequestMessage message)
 		{
+			if (message == null)
+				throw new ArgumentNullException(nameof(message));
+
+			_message = message;
 		}
 
-		/// <summary>Releases the unmanaged resources and disposes of the managed resources used by the <see cref="T:System.Net.Http.HttpRequestMessage" />.</summary>
+		/// <inheritdoc />
 		public void Dispose()
 		{
+			_message.Dispose();
+		}
+
+		/// <inheritdoc />
+		public override string ToString()
+		{
+			return _message.ToString();
+		}
+
+		/// <inheritdoc />
+		public override bool Equals(object obj)
+		{
+			return _message.Equals(obj);
+		}
+
+		/// <inheritdoc />
+		public override int GetHashCode()
+		{
+			return _message.GetHashCode();
 		}
 	}
 }

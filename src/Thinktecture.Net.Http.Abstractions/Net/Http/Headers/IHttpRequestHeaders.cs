@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.Http.Headers;
 
-namespace Thinktecture.Net.Http
+namespace Thinktecture.Net.Http.Headers
 {
 	/// <summary>Represents the collection of Request Headers as defined in RFC 2616.</summary>
 	public interface IHttpRequestHeaders : IHttpHeaders
@@ -89,6 +88,7 @@ namespace Thinktecture.Net.Http
 
 		/// <summary>Gets the value of the TE header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the TE header for an HTTP request.</returns>
+		// ReSharper disable once InconsistentNaming
 		HttpHeaderValueCollection<TransferCodingWithQualityHeaderValue> TE { get; }
 
 		/// <summary>Gets the value of the User-Agent header for an HTTP request.</summary>

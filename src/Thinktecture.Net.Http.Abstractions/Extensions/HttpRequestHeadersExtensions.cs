@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Headers;
-using Thinktecture.Net.Http;
-using Thinktecture.Net.Http.Adapters;
+using Thinktecture.Net.Http.Headers;
+using Thinktecture.Net.Http.Headers.Adapters;
 
 namespace Thinktecture
 {

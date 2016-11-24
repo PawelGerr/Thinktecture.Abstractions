@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Net.Http.Headers;
-using System.Text;
 
-namespace Thinktecture.Net.Http
+namespace Thinktecture.Net.Http.Headers
 {
 	/// <summary>A collection of headers and their values as defined in RFC 2616.</summary>
 	public interface IHttpHeaders : IEnumerable<KeyValuePair<string, IEnumerable<string>>>

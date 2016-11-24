@@ -1,97 +1,121 @@
 using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using Thinktecture.Net.Http.Adapters;
 
-namespace Thinktecture.Net.Http
+namespace Thinktecture.Net.Http.Headers.Adapters
 {
 	/// <summary>Represents the collectionof Response Headers as defined in RFC 2616.</summary>
-	public class HttpResponseHeadersAdapter : HttpHeadersAdapter
+	public class HttpResponseHeadersAdapter : HttpHeadersAdapter, IHttpResponseHeaders
 	{
-		/// <summary>Gets the value of the Accept-Ranges header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Accept-Ranges header for an HTTP response.</returns>
-		public HttpHeaderValueCollection<string> AcceptRanges { get; }
+		private readonly HttpResponseHeaders _headers;
 
-		/// <summary>Gets or sets the value of the Age header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.TimeSpan" />.The value of the Age header for an HTTP response.</returns>
-		public TimeSpan? Age { get
-			; set; }
+		/// <inheritdoc />
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public new HttpResponseHeaders UnsafeConvert()
+		{
+			return _headers;
+		}
 
-		/// <summary>Gets or sets the value of the ETag header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.EntityTagHeaderValue" />.The value of the ETag header for an HTTP response.</returns>
-		public EntityTagHeaderValue ETag { get; set; }
+		/// <inheritdoc />
+		public HttpHeaderValueCollection<string> AcceptRanges => _headers.AcceptRanges;
 
-		/// <summary>Gets or sets the value of the Location header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Uri" />.The value of the Location header for an HTTP response.</returns>
-		public Uri Location { get
-			; set; }
+		/// <inheritdoc />
+		public TimeSpan? Age
+		{
+			get { return _headers.Age; }
+			set { _headers.Age = value; }
+		}
 
-		/// <summary>Gets the value of the Proxy-Authenticate header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Proxy-Authenticate header for an HTTP response.</returns>
-		public HttpHeaderValueCollection<AuthenticationHeaderValue> ProxyAuthenticate { get; }
+		/// <inheritdoc />
+		public EntityTagHeaderValue ETag
+		{
+			get { return _headers.ETag; }
+			set { _headers.ETag = value; }
+		}
 
-		/// <summary>Gets or sets the value of the Retry-After header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" />.The value of the Retry-After header for an HTTP response.</returns>
-		public RetryConditionHeaderValue RetryAfter { get
-			; set; }
+		/// <inheritdoc />
+		public Uri Location
+		{
+			get { return _headers.Location; }
+			set { _headers.Location = value; }
+		}
 
-		/// <summary>Gets the value of the Server header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Server header for an HTTP response.</returns>
-		public HttpHeaderValueCollection<ProductInfoHeaderValue> Server { get; }
+		/// <inheritdoc />
+		public HttpHeaderValueCollection<AuthenticationHeaderValue> ProxyAuthenticate => _headers.ProxyAuthenticate;
 
-		/// <summary>Gets the value of the Vary header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Vary header for an HTTP response.</returns>
-		public HttpHeaderValueCollection<string> Vary { get; }
+		/// <inheritdoc />
+		public RetryConditionHeaderValue RetryAfter
+		{
+			get { return _headers.RetryAfter; }
+			set { _headers.RetryAfter = value; }
+		}
 
-		/// <summary>Gets the value of the WWW-Authenticate header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the WWW-Authenticate header for an HTTP response.</returns>
-		public HttpHeaderValueCollection<AuthenticationHeaderValue> WwwAuthenticate { get; }
+		/// <inheritdoc />
+		public HttpHeaderValueCollection<ProductInfoHeaderValue> Server => _headers.Server;
 
-		/// <summary>Gets or sets the value of the Cache-Control header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" />.The value of the Cache-Control header for an HTTP response.</returns>
-		public CacheControlHeaderValue CacheControl { get
-			; set; }
+		/// <inheritdoc />
+		public HttpHeaderValueCollection<string> Vary => _headers.Vary;
 
-		/// <summary>Gets the value of the Connection header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Connection header for an HTTP response.</returns>
-		public HttpHeaderValueCollection<string> Connection { get; }
+		/// <inheritdoc />
+		public HttpHeaderValueCollection<AuthenticationHeaderValue> WwwAuthenticate => _headers.WwwAuthenticate;
 
-		/// <summary>Gets or sets a value that indicates if the Connection header for an HTTP response contains Close.</summary>
-		/// <returns>Returns <see cref="T:System.Boolean" />.true if the Connection header contains Close, otherwise false.</returns>
-		public bool? ConnectionClose { get; set; }
+		/// <inheritdoc />
+		public CacheControlHeaderValue CacheControl
+		{
+			get { return _headers.CacheControl; }
+			set { _headers.CacheControl = value; }
+		}
 
-		/// <summary>Gets or sets the value of the Date header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.DateTimeOffset" />.The value of the Date header for an HTTP response.</returns>
-		public DateTimeOffset? Date { get; set; }
+		/// <inheritdoc />
+		public HttpHeaderValueCollection<string> Connection => _headers.Connection;
 
-		/// <summary>Gets the value of the Pragma header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Pragma header for an HTTP response.</returns>
-		public HttpHeaderValueCollection<NameValueHeaderValue> Pragma { get; }
+		/// <inheritdoc />
+		public bool? ConnectionClose
+		{
+			get { return _headers.ConnectionClose; }
+			set { _headers.ConnectionClose = value; }
+		}
 
-		/// <summary>Gets the value of the Trailer header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Trailer header for an HTTP response.</returns>
-		public HttpHeaderValueCollection<string> Trailer { get; }
+		/// <inheritdoc />
+		public DateTimeOffset? Date
+		{
+			get { return _headers.Date; }
+			set { _headers.Date = value; }
+		}
 
-		/// <summary>Gets the value of the Transfer-Encoding header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Transfer-Encoding header for an HTTP response.</returns>
-		public HttpHeaderValueCollection<TransferCodingHeaderValue> TransferEncoding { get; }
+		/// <inheritdoc />
+		public HttpHeaderValueCollection<NameValueHeaderValue> Pragma => _headers.Pragma;
 
-		/// <summary>Gets or sets a value that indicates if the Transfer-Encoding header for an HTTP response contains chunked.</summary>
-		/// <returns>Returns <see cref="T:System.Boolean" />.true if the Transfer-Encoding header contains chunked, otherwise false.</returns>
-		public bool? TransferEncodingChunked { get; set; }
+		/// <inheritdoc />
+		public HttpHeaderValueCollection<string> Trailer => _headers.Trailer;
 
-		/// <summary>Gets the value of the Upgrade header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Upgrade header for an HTTP response.</returns>
-		public HttpHeaderValueCollection<ProductHeaderValue> Upgrade { get; }
+		/// <inheritdoc />
+		public HttpHeaderValueCollection<TransferCodingHeaderValue> TransferEncoding => _headers.TransferEncoding;
 
-		/// <summary>Gets the value of the Via header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Via header for an HTTP response.</returns>
-		public HttpHeaderValueCollection<ViaHeaderValue> Via { get; }
+		/// <inheritdoc />
+		public bool? TransferEncodingChunked
+		{
+			get { return _headers.TransferEncodingChunked; }
+			set { _headers.TransferEncodingChunked = value; }
+		}
 
-		/// <summary>Gets the value of the Warning header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Warning header for an HTTP response.</returns>
-		public HttpHeaderValueCollection<WarningHeaderValue> Warning { get; }
+		/// <inheritdoc />
+		public HttpHeaderValueCollection<ProductHeaderValue> Upgrade => _headers.Upgrade;
+
+		/// <inheritdoc />
+		public HttpHeaderValueCollection<ViaHeaderValue> Via => _headers.Via;
+
+		/// <inheritdoc />
+		public HttpHeaderValueCollection<WarningHeaderValue> Warning => _headers.Warning;
+
+		/// <summary>Initializes a new instance of the <see cref="HttpResponseHeaders" /> class.</summary>
+		/// <param name="headers">Http headers to be use by the adapter.</param>
+		public HttpResponseHeadersAdapter(HttpResponseHeaders headers)
+			: base(headers)
+		{
+			if (headers == null)
+				throw new ArgumentNullException(nameof(headers));
+			_headers = headers;
+		}
 	}
 }
