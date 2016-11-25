@@ -2,8 +2,7 @@
 	"version": "1.0.0-*",
 	"title": "Thinktecture.IO.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
-	"description":
-		"Provides interfaces for types in System.IO: Stream, MemoryStream, BinaryReader, BinaryWriter, StreamReader, StreamWriter, StringReader, StringWriter, TextReader, TextWriter.",
+	"description": "Provides interfaces for types in System.IO: Stream, MemoryStream, BinaryReader, BinaryWriter, StreamReader, StreamWriter, StringReader, StringWriter, TextReader, TextWriter.",
 	"authors": ["Pawel Gerr"],
 	"packOptions": {
 		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
@@ -28,7 +27,7 @@
 	"frameworks": {
 		"netstandard1.0": {
 			"dependencies": {
-				"System.IO": "4.1.0"
+				"System.IO": "4.3.0"
 			}
 		},
 		"net45": {

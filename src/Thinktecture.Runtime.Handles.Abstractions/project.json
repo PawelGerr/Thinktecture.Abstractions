@@ -1,4 +1,4 @@
-﻿{
+{
 	"version": "1.0.0-*",
 	"title": "Thinktecture.Runtime.Handles.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
@@ -23,7 +23,7 @@
 	"frameworks": {
 		"netstandard1.3": {
 			"dependencies": {
-				"System.Runtime.Handles": "4.0.1"
+				"System.Runtime.Handles": "4.3.0"
 			}
 		},
 		"net45": {},

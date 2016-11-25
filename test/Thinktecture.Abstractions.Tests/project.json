@@ -1,16 +1,18 @@
 {
 	"version": "1.0.0-*",
 
-	"buildOptions": {
-		"emitEntryPoint": true
+	"dependencies": {
+		"FluentAssertions": "4.17.0",
+		"Moq": "4.6.38-alpha",
+		"xunit": "2.2.0-beta4-build3444",
+		"xunit.runner.visualstudio": "2.2.0-beta4-build1194"
 	},
 
-	"dependencies": {
-		"Thinktecture.IO.FileSystem.Abstractions": "1.0.0-*"
-	},
+	"testRunner": "xunit",
 
 	"frameworks": {
 		"netcoreapp1.0": {
+			"imports": "portable-net45",
 			"dependencies": {
 				"Microsoft.NETCore.App": {
 					"type": "platform",

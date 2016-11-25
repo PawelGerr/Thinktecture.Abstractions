@@ -2,8 +2,7 @@
 	"version": "1.0.0-*",
 	"title": "Thinktecture.IO.FileSystem.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
-	"description":
-		"Provides interfaces for types in System.IO.FileSystem: Directory, File, FileSystemInfo, DirectoryInfo, FileInfo, FileStream, SafeFileHandle.",
+	"description": "Provides interfaces for types in System.IO.FileSystem: Directory, File, FileSystemInfo, DirectoryInfo, FileInfo, FileStream, SafeFileHandle.",
 	"authors": ["Pawel Gerr"],
 
 	"packOptions": {
@@ -30,7 +29,7 @@
 	"frameworks": {
 		"netstandard1.3": {
 			"dependencies": {
-				"System.IO.FileSystem": "4.0.1"
+				"System.IO.FileSystem": "4.3.0"
 			}
 		},
 		"net45": {
