@@ -10,7 +10,7 @@ namespace Thinktecture
 	public static class DelegatingHandlerExtensions
 	{
 		/// <summary>
-		/// Converts provided handler to <see cref="IHttpMessageHandler"/>.
+		/// Converts provided handler to <see cref="IDelegatingHandler"/>.
 		/// </summary>
 		/// <param name="handler">Handler to convert.</param>
 		/// <returns>Converted handler.</returns>

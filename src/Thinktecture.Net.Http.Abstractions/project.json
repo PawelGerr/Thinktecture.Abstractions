@@ -2,7 +2,7 @@
 	"version": "1.0.0-*",
 	"title": "Thinktecture.Net.Http.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
-	"description": "Provides interfaces for types in System.Net.Http: HttpClient.",
+	"description": "Provides interfaces for types in System.Net.Http: HttpClient, HttpContent, HttpRequestMessage, HttpResponseMessage, HttpHeaders, DelegatingHandler, HttpClientHandler, HttpMessageHandler, HttpMessageInvoker, MessageProcessingHandler, MultipartContent, MultipartFormDataContent, HttpContentHeaders, HttpRequestHeaders, HttpResponseHeaders.",
 	"authors": ["Pawel Gerr"],
 	"packOptions": {
 		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
@@ -37,6 +37,7 @@
 		}
 	},
 	"dependencies": {
-		"Thinktecture.IO.Abstractions": "1.0.0-*"
+		"Thinktecture.IO.Abstractions": "1.0.0-*",
+		"Thinktecture.Net.Primitives.Abstractions": "1.0.0-*"
 	}
 }

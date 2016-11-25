@@ -32,7 +32,7 @@ namespace Thinktecture.Net.Http
 
 		/// <summary>Gets or sets the cookie container used to store server cookies by the handler.</summary>
 		/// <returns>Returns <see cref="T:System.Net.CookieContainer" />.The cookie container used to store server cookies by the handler.</returns>
-		CookieContainer CookieContainer { get; set; }
+		ICookieContainer CookieContainer { get; set; }
 
 		/// <summary>Gets or sets a value that indicates if the certificate is automatically picked from the certificate store or if the caller is allowed to pass in a specific client certificate.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.ClientCertificateOption" />.The collection of security certificates associated with this handler.</returns>

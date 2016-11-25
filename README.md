@@ -57,6 +57,11 @@ FileInfo fileInfo = fileInfoInterface.ToImplementation();
 ## Projects
 The projects are mirroring the .NET assemblies, i.e. if the class `Stream` is in `System.IO.dll` then the interface `IStream` will be in `Thinktecture.IO.Abstractions.dll`.
 
+### Thinktecture.Net.Http.Abstractions
+Provides interfaces for types in `System.Net.Http`: `HttpClient`, `HttpContent`, `HttpRequestMessage`, `HttpResponseMessage`, `HttpHeaders`, `DelegatingHandler`, `HttpClientHandler`, `HttpMessageHandler`, `HttpMessageInvoker`, `MessageProcessingHandler`, `MultipartContent`, `MultipartFormDataContent`, `HttpContentHeaders`, `HttpRequestHeaders`, `HttpResponseHeaders`.
+
+**Nuget**: `Install-Package Thinktecture.Net.Http.Abstractions`
+
 ### Thinktecture.IO.FileSystem.Watcher.Abstractions
 Provides interfaces for types in `System.IO.FileSystem.Watcher`: `FileSystemWatcher`.
 

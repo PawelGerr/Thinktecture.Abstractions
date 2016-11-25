@@ -34,10 +34,10 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <inheritdoc />
-		public CookieContainer CookieContainer
+		public ICookieContainer CookieContainer
 		{
-			get { return _handler.CookieContainer; }
-			set { _handler.CookieContainer = value; }
+			get { return _handler.CookieContainer.ToInterface(); }
+			set { _handler.CookieContainer = value.ToImplementation(); }
 		}
 
 		/// <inheritdoc />
