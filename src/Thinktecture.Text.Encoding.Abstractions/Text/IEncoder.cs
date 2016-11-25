@@ -5,14 +5,14 @@ namespace Thinktecture.Text
 {
 	/// <summary>Converts a set of characters into a sequence of bytes.</summary>
 	/// <filterpriority>1</filterpriority>
-	public interface IEncoder
+	public interface IEncoder : IAbstraction
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="Encoder"/>.
 		/// It is not intended to be used directly. Use <see cref="EncoderExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		Encoder UnsafeConvert();
+		new Encoder UnsafeConvert();
 
 		/// <summary>Converts an array of Unicode characters to an encoded byte sequence and stores the result in an array of bytes.</summary>
 		/// <param name="chars">An array of characters to convert.</param>

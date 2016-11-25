@@ -9,11 +9,11 @@ namespace Thinktecture.IO.Adapters
 	/// <summary>
 	/// Adapter for <see cref="BinaryReader"/>.
 	/// </summary>
-	public class BinaryReaderAdapter : IBinaryReader
+	public class BinaryReaderAdapter : AbstractionAdapter, IBinaryReader
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public BinaryReader UnsafeConvert()
+		public new BinaryReader UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -135,7 +135,8 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="BinaryReaderAdapter" /> class.
 		/// </summary>
 		/// <param name="reader">Reader to use by the adapter.</param>
-		public BinaryReaderAdapter(BinaryReader reader)
+		public BinaryReaderAdapter(BinaryReader reader) 
+			: base(reader)
 		{
 			if (reader == null)
 				throw new ArgumentNullException(nameof(reader));
@@ -267,24 +268,6 @@ namespace Thinktecture.IO.Adapters
 		public void Dispose()
 		{
 			_instance.Dispose();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

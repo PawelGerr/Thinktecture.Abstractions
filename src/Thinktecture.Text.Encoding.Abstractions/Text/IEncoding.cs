@@ -5,15 +5,15 @@ namespace Thinktecture.Text
 {
 	/// <summary>Represents a character encoding.To browse the .NET Framework source code for this type, see the Reference Source.</summary>
 	/// <filterpriority>1</filterpriority>
-	public interface IEncoding
+	public interface IEncoding : IAbstraction
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="Encoding"/>.
 		/// It is not intended to be used directly. Use <see cref="EncodingExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		Encoding UnsafeConvert();
-		
+		new Encoding UnsafeConvert();
+
 		/// <summary>When overridden in a derived class, gets the name registered with the Internet Assigned Numbers Authority (IANA) for the current encoding.</summary>
 		/// <returns>The IANA name for the current <see cref="T:System.Text.Encoding" />.</returns>
 		/// <filterpriority>2</filterpriority>

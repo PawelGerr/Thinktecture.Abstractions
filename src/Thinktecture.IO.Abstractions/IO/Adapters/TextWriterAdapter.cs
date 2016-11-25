@@ -9,7 +9,7 @@ namespace Thinktecture.IO.Adapters
 	/// <summary>
 	/// Adapter for <see cref="TextWriter"/>.
 	/// </summary>
-	public class TextWriterAdapter : ITextWriter
+	public class TextWriterAdapter : AbstractionAdapter, ITextWriter
 	{
 		/// <summary>Provides a TextWriter with no backing store that can be written to, but not read from.</summary>
 		/// <filterpriority>1</filterpriority>
@@ -17,7 +17,7 @@ namespace Thinktecture.IO.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public TextWriter UnsafeConvert()
+		public new TextWriter UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -29,6 +29,7 @@ namespace Thinktecture.IO.Adapters
 		/// </summary>
 		/// <param name="writer">write to be used by the adapter.</param>
 		public TextWriterAdapter(TextWriter writer)
+			: base(writer)
 		{
 			if (writer == null)
 				throw new ArgumentNullException(nameof(writer));
@@ -41,7 +42,7 @@ namespace Thinktecture.IO.Adapters
 		{
 			_instance.Dispose();
 		}
-		
+
 		/// <inheritdoc />
 		public Encoding Encoding => _instance.Encoding;
 
@@ -293,24 +294,6 @@ namespace Thinktecture.IO.Adapters
 		public Task WriteLineAsync(string value)
 		{
 			return _instance.WriteLineAsync(value);
-		}
-		
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

@@ -9,7 +9,7 @@ namespace Thinktecture.IO.Adapters
 	/// <summary>
 	/// Adapter for <see cref="Stream"/>.
 	/// </summary>
-	public class StreamAdapter : IStream
+	public class StreamAdapter : AbstractionAdapter, IStream
 	{
 		/// <summary>A Stream with no backing store.</summary>
 		/// <filterpriority>1</filterpriority>
@@ -17,7 +17,7 @@ namespace Thinktecture.IO.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Stream UnsafeConvert()
+		public new Stream UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -65,6 +65,7 @@ namespace Thinktecture.IO.Adapters
 		/// </summary>
 		/// <param name="stream">Stream to be used by the adapter.</param>
 		public StreamAdapter(Stream stream)
+			: base(stream)
 		{
 			if (stream == null)
 				throw new ArgumentNullException(nameof(stream));
@@ -214,24 +215,6 @@ namespace Thinktecture.IO.Adapters
 		public void Dispose()
 		{
 			_instance.Dispose();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

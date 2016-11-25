@@ -8,14 +8,14 @@ namespace Thinktecture.IO
 	/// Provides the base class for both <see cref="T:System.IO.FileInfo" /> and <see cref="T:System.IO.DirectoryInfo" /> objects.
 	/// </summary>
 	/// <filterpriority>2</filterpriority>
-	public interface IFileSystemInfo
+	public interface IFileSystemInfo : IAbstraction
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="FileSystemInfo"/>.
 		/// It is not intended to be used directly. Use <see cref="FileSystemInfoExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		FileSystemInfo UnsafeConvert();
+		new FileSystemInfo UnsafeConvert();
 
 		/// <summary>Gets or sets the attributes for the current file or directory.</summary>
 		/// <returns>

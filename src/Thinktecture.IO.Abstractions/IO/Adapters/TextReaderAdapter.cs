@@ -8,7 +8,7 @@ namespace Thinktecture.IO.Adapters
 	/// <summary>
 	/// Adapter for <see cref="TextReader"/>.
 	/// </summary>
-	public class TextReaderAdapter : ITextReader
+	public class TextReaderAdapter : AbstractionAdapter, ITextReader
 	{
 		/// <summary>Provides a TextReader with no data to read from.</summary>
 		/// <filterpriority>1</filterpriority>
@@ -16,7 +16,7 @@ namespace Thinktecture.IO.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public TextReader UnsafeConvert()
+		public new TextReader UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -28,10 +28,11 @@ namespace Thinktecture.IO.Adapters
 		/// </summary>
 		/// <param name="reader">Reader to be used by the adapter.</param>
 		public TextReaderAdapter(TextReader reader)
+			: base(reader)
 		{
 			if (reader == null)
 				throw new ArgumentNullException(nameof(reader));
-			
+
 			_instance = reader;
 		}
 
@@ -40,7 +41,7 @@ namespace Thinktecture.IO.Adapters
 		{
 			_instance.Dispose();
 		}
-		
+
 		/// <inheritdoc />
 		public int Peek()
 		{
@@ -99,24 +100,6 @@ namespace Thinktecture.IO.Adapters
 		public Task<string> ReadToEndAsync()
 		{
 			return _instance.ReadToEndAsync();
-		}
-		
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

@@ -6,11 +6,11 @@ namespace Thinktecture.Adapters
 	/// <summary>
 	/// Adapter for <see cref="Random"/>.
 	/// </summary>
-	public class RandomAdapter : IRandom
+	public class RandomAdapter : AbstractionAdapter, IRandom
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Random UnsafeConvert()
+		public new Random UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -35,6 +35,7 @@ namespace Thinktecture.Adapters
 		/// </summary>
 		/// <param name="random">Random to be used by the adapter.</param>
 		public RandomAdapter(Random random)
+			: base(random)
 		{
 			if (random == null)
 				throw new ArgumentNullException(nameof(random));
@@ -70,24 +71,6 @@ namespace Thinktecture.Adapters
 		public double NextDouble()
 		{
 			return _instance.NextDouble();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

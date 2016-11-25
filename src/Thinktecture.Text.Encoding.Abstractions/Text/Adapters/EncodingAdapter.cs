@@ -8,7 +8,7 @@ namespace Thinktecture.Text.Adapters
 	/// <summary>
 	/// Adapter for <see cref="Encoding"/>.
 	/// </summary>
-	public class EncodingAdapter : IEncoding
+	public class EncodingAdapter : AbstractionAdapter, IEncoding
 	{
 		/// <summary>Gets an encoding for the UTF-16 format that uses the big endian byte order.</summary>
 		/// <returns>An encoding object for the UTF-16 format that uses the big endian byte order.</returns>
@@ -175,7 +175,7 @@ namespace Thinktecture.Text.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Encoding UnsafeConvert()
+		public new Encoding UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -190,6 +190,7 @@ namespace Thinktecture.Text.Adapters
 		/// </summary>
 		/// <param name="encoding">Encoding to be used by the adapter.</param>
 		public EncodingAdapter(Encoding encoding)
+			: base(encoding)
 		{
 			if (encoding == null)
 				throw new ArgumentNullException(nameof(encoding));
@@ -315,24 +316,6 @@ namespace Thinktecture.Text.Adapters
 		public string GetString(byte[] bytes, int index, int count)
 		{
 			return _instance.GetString(bytes, index, count);
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

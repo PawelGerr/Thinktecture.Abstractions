@@ -7,11 +7,11 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 	/// <summary>
 	/// Adapter for <see cref="SafeHandle"/>.
 	/// </summary>
-	public class SafeHandleAdapter : ISafeHandle
+	public class SafeHandleAdapter : AbstractionAdapter, ISafeHandle
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public SafeHandle UnsafeConvert()
+		public new SafeHandle UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -29,13 +29,14 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 		/// </summary>
 		/// <param name="handle">Handle to be use by the adapter.</param>
 		public SafeHandleAdapter(SafeHandle handle)
+			: base(handle)
 		{
 			if (handle == null)
 				throw new ArgumentNullException(nameof(handle));
 
 			_instance = handle;
 		}
-		
+
 		/// <inheritdoc />
 		public void DangerousAddRef(ref bool success)
 		{
@@ -64,24 +65,6 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 		public void Dispose()
 		{
 			_instance.Dispose();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

@@ -6,14 +6,14 @@ namespace Thinktecture.IO
 {
 	/// <summary>Listens to the file system change notifications and raises events when a directory, or file in a directory, changes.To browse the .NET Framework source code for this type, see the Reference Source.</summary>
 	/// <filterpriority>2</filterpriority>
-	public interface IFileSystemWatcher : IDisposable
+	public interface IFileSystemWatcher : IAbstraction, IDisposable
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="FileSystemWatcher"/>.
 		/// It is not intended to be used directly. Use <see cref="FileSystemWatcherExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		FileSystemWatcher UnsafeConvert();
+		new FileSystemWatcher UnsafeConvert();
 
 		/// <summary>Gets or sets a value indicating whether the component is enabled.</summary>
 		/// <returns>true if the component is enabled; otherwise, false. The default is false. If you are using the component on a designer in Visual Studio 2005, the default is true.</returns>

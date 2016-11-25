@@ -6,14 +6,14 @@ namespace Thinktecture.IO
 {
 	/// <summary>Reads primitive data types as binary values in a specific encoding.</summary>
 	/// <filterpriority>2</filterpriority>
-	public interface IBinaryReader : IDisposable
+	public interface IBinaryReader : IAbstraction, IDisposable
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="BinaryReader"/>.
 		/// It is not intended to be used directly. Use <see cref="BinaryReaderExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		BinaryReader UnsafeConvert();
+		new BinaryReader UnsafeConvert();
 
 		/// <summary>Exposes access to the underlying stream of the <see cref="T:System.IO.BinaryReader" />.</summary>
 		/// <returns>The underlying stream associated with the BinaryReader.</returns>

@@ -7,11 +7,11 @@ namespace Thinktecture.IO.Adapters
 	/// <summary>
 	/// Adapter for <see cref="FileSystemInfo"/>.
 	/// </summary>
-	public class FileSystemInfoAdapter : IFileSystemInfo
+	public class FileSystemInfoAdapter : AbstractionAdapter, IFileSystemInfo
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public FileSystemInfo UnsafeConvert()
+		public new FileSystemInfo UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -23,6 +23,7 @@ namespace Thinktecture.IO.Adapters
 		/// </summary>
 		/// <param name="info">File system info to be used by the adapter.</param>
 		public FileSystemInfoAdapter(FileSystemInfo info)
+			: base(info)
 		{
 			if (info == null)
 				throw new ArgumentNullException(nameof(info));
@@ -101,24 +102,6 @@ namespace Thinktecture.IO.Adapters
 		public void Refresh()
 		{
 			_instance.Refresh();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

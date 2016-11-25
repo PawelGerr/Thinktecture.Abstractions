@@ -7,11 +7,11 @@ namespace Thinktecture.Text.Adapters
 	/// <summary>
 	/// Adapter for <see cref="Decoder"/>.
 	/// </summary>
-	public class DecoderAdapter : IDecoder
+	public class DecoderAdapter : AbstractionAdapter, IDecoder
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Decoder UnsafeConvert()
+		public new Decoder UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -23,6 +23,7 @@ namespace Thinktecture.Text.Adapters
 		/// </summary>
 		/// <param name="decoder">Decoder to be used by the adapter.</param>
 		public DecoderAdapter(Decoder decoder)
+			: base(decoder)
 		{
 			if (decoder == null)
 				throw new ArgumentNullException(nameof(decoder));
@@ -70,24 +71,6 @@ namespace Thinktecture.Text.Adapters
 		public void Reset()
 		{
 			_instance.Reset();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

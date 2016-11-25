@@ -9,7 +9,7 @@ namespace Thinktecture.IO.Adapters
 	/// <summary>
 	/// Adapter for <see cref="BinaryWriter"/>.
 	/// </summary>
-	public class BinaryWriterAdapter : IBinaryWriter
+	public class BinaryWriterAdapter : AbstractionAdapter, IBinaryWriter
 	{
 		/// <summary>Specifies a <see cref="T:System.IO.BinaryWriter" /> with no backing store.</summary>
 		/// <filterpriority>1</filterpriority>
@@ -17,7 +17,7 @@ namespace Thinktecture.IO.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public BinaryWriter UnsafeConvert()
+		public new BinaryWriter UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -144,6 +144,7 @@ namespace Thinktecture.IO.Adapters
 		/// </summary>
 		/// <param name="writer">Writer to be used by the adapter.</param>
 		public BinaryWriterAdapter(BinaryWriter writer)
+			: base(writer)
 		{
 			if (writer == null)
 				throw new ArgumentNullException(nameof(writer));
@@ -275,24 +276,6 @@ namespace Thinktecture.IO.Adapters
 		public void Dispose()
 		{
 			_instance.Dispose();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

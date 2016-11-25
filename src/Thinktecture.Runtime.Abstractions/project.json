@@ -23,7 +23,18 @@
 				"System.Runtime": "4.3.0"
 			}
 		},
-		"net45": {},
-		"net46": {}
+		"net45": {
+			"frameworkAssemblies": {
+				"System.Runtime": ""
+			}
+		},
+		"net46": {
+			"frameworkAssemblies": {
+				"System.Runtime": ""
+			}
+		}
+	},
+	"dependencies": {
+		"Thinktecture.Abstractions": "1.0.0-*"
 	}
 }

@@ -1,33 +1,31 @@
-{
+﻿{
 	"version": "1.0.0-*",
-	"title": "Thinktecture.Text.Encoding.Abstractions",
+	"title": "Thinktecture.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
-	"description": "Provides interfaces for types in System.Text.Encoding: Encoding, Encoder, Decoder",
+	"description": "Provides types used by all Thinktecture.*.Abstractions projects.",
 	"authors": ["Pawel Gerr"],
 	"packOptions": {
 		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
 		"iconUrl": "http://thinktecture.com/images/Logo_T_Nontransparent.png",
-		"tags": ["encoding", "abstraction"],
+		"tags": ["abstraction"],
 		"licenseUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md",
 		"repository": {
 			"type": "git",
 			"url": "git@github.com:PawelGerr/Thinktecture.Abstractions.git"
 		}
 	},
+
 	"buildOptions": {
-		"nowarn": [],
 		"xmlDoc": true
 	},
-  "frameworks": {
-    "netstandard1.0": {
-      "dependencies": {
-        "System.Text.Encoding": "4.3.0"
-      }
-    },
-    "net45": {},
-    "net46": {}
-  },
-  "dependencies": {
-    "Thinktecture.Abstractions": "1.0.0-*"
-  }
+
+	"frameworks": {
+		"netstandard1.0": {
+			"dependencies": {
+				"System.Runtime": "4.3.0"
+			}
+		},
+		"net45": {},
+		"net46": {}
+	}
 }

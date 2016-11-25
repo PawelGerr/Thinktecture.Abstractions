@@ -7,11 +7,11 @@ namespace Thinktecture.IO.Adapters
 	/// <summary>
 	/// Adapter for <see cref="FileSystemWatcher"/>.
 	/// </summary>
-	public class FileSystemWatcherAdapter : IFileSystemWatcher
+	public class FileSystemWatcherAdapter : AbstractionAdapter, IFileSystemWatcher
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public FileSystemWatcher UnsafeConvert()
+		public new FileSystemWatcher UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -129,6 +129,7 @@ namespace Thinktecture.IO.Adapters
 		/// </summary>
 		/// <param name="watcher">Watcher to be used by the adapter.</param>
 		public FileSystemWatcherAdapter(FileSystemWatcher watcher)
+			: base(watcher)
 		{
 			if (watcher == null)
 				throw new ArgumentNullException(nameof(watcher));
@@ -152,24 +153,6 @@ namespace Thinktecture.IO.Adapters
 		public void Dispose()
 		{
 			_instance.Dispose();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

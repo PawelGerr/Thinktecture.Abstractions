@@ -8,11 +8,11 @@ namespace Thinktecture.Text.Adapters
 	/// <summary>
 	/// Adapter for <see cref="Encoder"/>.
 	/// </summary>
-	public class EncoderAdapter : IEncoder
+	public class EncoderAdapter : AbstractionAdapter, IEncoder
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Encoder UnsafeConvert()
+		public new Encoder UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -24,6 +24,7 @@ namespace Thinktecture.Text.Adapters
 		/// </summary>
 		/// <param name="encoder"></param>
 		public EncoderAdapter(Encoder encoder)
+			: base(encoder)
 		{
 			if (encoder == null)
 				throw new ArgumentNullException(nameof(encoder));
@@ -53,24 +54,6 @@ namespace Thinktecture.Text.Adapters
 		public int GetBytes(char[] chars, int charIndex, int charCount, byte[] bytes, int byteIndex, bool flush)
 		{
 			return _instance.GetBytes(chars, charIndex, charCount, bytes, byteIndex, flush);
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

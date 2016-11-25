@@ -4,7 +4,6 @@
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
 	"description": "Provides interfaces for types in System.Runtime.Handles: SafeHandle, CriticalHandle, SafeWaitHandle.",
 	"authors": ["Pawel Gerr"],
-
 	"packOptions": {
 		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
 		"iconUrl": "http://thinktecture.com/images/Logo_T_Nontransparent.png",
@@ -15,11 +14,9 @@
 			"url": "git@github.com:PawelGerr/Thinktecture.Abstractions.git"
 		}
 	},
-
 	"buildOptions": {
 		"xmlDoc": true
 	},
-
 	"frameworks": {
 		"netstandard1.3": {
 			"dependencies": {
@@ -28,5 +25,8 @@
 		},
 		"net45": {},
 		"net46": {}
+	},
+	"dependencies": {
+		"Thinktecture.Abstractions": "1.0.0-*"
 	}
 }

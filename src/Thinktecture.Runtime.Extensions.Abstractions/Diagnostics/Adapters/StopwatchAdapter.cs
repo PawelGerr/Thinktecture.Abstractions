@@ -7,7 +7,7 @@ namespace Thinktecture.Diagnostics.Adapters
 	/// <summary>
 	/// Adapter for <see cref="Stopwatch"/>.
 	/// </summary>
-	public class StopwatchAdapter : IStopwatch
+	public class StopwatchAdapter : AbstractionAdapter, IStopwatch
 	{
 		/// <summary>
 		/// Gets the frequency of the timer as the number of ticks per second.This field is read-only.
@@ -39,7 +39,7 @@ namespace Thinktecture.Diagnostics.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Stopwatch UnsafeConvert()
+		public new Stopwatch UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -71,6 +71,7 @@ namespace Thinktecture.Diagnostics.Adapters
 		/// </summary>
 		/// <param name="stopwatch">Stopwatch to be use by the adapter.</param>
 		public StopwatchAdapter(Stopwatch stopwatch)
+			: base(stopwatch)
 		{
 			if (stopwatch == null)
 				throw new ArgumentNullException(nameof(stopwatch));
@@ -100,24 +101,6 @@ namespace Thinktecture.Diagnostics.Adapters
 		public void Restart()
 		{
 			_instance.Reset();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

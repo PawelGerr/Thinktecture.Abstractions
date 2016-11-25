@@ -1,0 +1,41 @@
+﻿using FluentAssertions;
+using Xunit;
+
+namespace Thinktecture.Abstractions.Tests.AbstractionAdapterTests
+{
+	public class Equals : AbstractionAdapterTestsBase
+	{
+		[Fact]
+		public void Should_return_true_if_comparing_with_itself()
+		{
+			// ReSharper disable once EqualExpressionComparison
+			Adapter.Equals(Adapter).Should().BeTrue();
+		}
+
+		[Fact]
+		public void Should_return_true_if_comparison_of_inner_objects_yields_true()
+		{
+			Adapter.Equals(new AbstractionAdapter(Implementation)).Should().BeTrue();
+		}
+
+		[Fact]
+		public void Should_return_false_if_comparison_of_inner_objects_yields_false()
+		{
+			Adapter.Equals(new AbstractionAdapter(new object())).Should().BeFalse();
+		}
+
+		[Fact]
+		public void Should_return_false_if_comparing_abstraction_with_non_abstraction()
+		{
+			// ReSharper disable once SuspiciousTypeConversion.Global
+			Adapter.Equals(Implementation).Should().BeFalse();
+		}
+
+		[Fact]
+		public void Should_return_false_if_comparing_non_abstraction_with_abstraction()
+		{
+			// ReSharper disable once SuspiciousTypeConversion.Global
+			Implementation.Equals(Adapter).Should().BeFalse();
+		}
+	}
+}

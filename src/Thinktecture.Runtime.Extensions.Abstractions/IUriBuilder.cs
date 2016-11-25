@@ -6,15 +6,15 @@ namespace Thinktecture
 	/// <summary>
 	/// Provides a custom constructor for uniform resource identifiers (URIs) and modifies URIs for the <see cref="Uri"/> class.
 	/// </summary>
-	public interface IUriBuilder
+	public interface IUriBuilder : IAbstraction
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="UriBuilder"/>.
 		/// It is not intended to be used directly. Use <see cref="UriBuilderExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		UriBuilder UnsafeConvert();
-		
+		new UriBuilder UnsafeConvert();
+
 		/// <summary>
 		/// Gets or sets the fragment portion of the URI.
 		/// </summary>

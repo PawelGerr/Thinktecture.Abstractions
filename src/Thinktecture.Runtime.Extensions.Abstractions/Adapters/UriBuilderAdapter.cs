@@ -6,11 +6,11 @@ namespace Thinktecture.Adapters
 	/// <summary>
 	/// Adapter for <see cref="UriBuilder"/>.
 	/// </summary>
-	public class UriBuilderAdapter : IUriBuilder
+	public class UriBuilderAdapter : AbstractionAdapter, IUriBuilder
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public UriBuilder UnsafeConvert()
+		public new UriBuilder UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -112,6 +112,7 @@ namespace Thinktecture.Adapters
 		/// </summary>
 		/// <param name="builder"></param>
 		public UriBuilderAdapter(UriBuilder builder)
+			: base(builder)
 		{
 			if (builder == null)
 				throw new ArgumentNullException(nameof(builder));
@@ -176,24 +177,6 @@ namespace Thinktecture.Adapters
 		{
 			get { return _instance.UserName; }
 			set { _instance.UserName = value; }
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object rparam)
-		{
-			return _instance.Equals(rparam);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
 		}
 	}
 }

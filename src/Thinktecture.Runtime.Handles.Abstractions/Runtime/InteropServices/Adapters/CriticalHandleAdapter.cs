@@ -7,11 +7,11 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 	/// <summary>
 	/// Adapter for <see cref="CriticalHandle"/>.
 	/// </summary>
-	public class CriticalHandleAdapter : ICriticalHandle
+	public class CriticalHandleAdapter : AbstractionAdapter, ICriticalHandle
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public CriticalHandle UnsafeConvert()
+		public new CriticalHandle UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -29,6 +29,7 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 		/// </summary>
 		/// <param name="handle">Handle to be used by the adapter.</param>
 		public CriticalHandleAdapter(CriticalHandle handle)
+			: base(handle)
 		{
 			if (handle == null)
 				throw new ArgumentNullException(nameof(handle));
@@ -46,24 +47,6 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 		public void Dispose()
 		{
 			_instance.Dispose();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

@@ -10,11 +10,11 @@ namespace Thinktecture.Text.Adapters
 	/// <summary>
 	/// Adapter for <see cref="StringBuilder"/>.
 	/// </summary>
-	public class StringBuilderAdapter : IStringBuilder
+	public class StringBuilderAdapter : AbstractionAdapter, IStringBuilder
 	{
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public StringBuilder UnsafeConvert()
+		public new StringBuilder UnsafeConvert()
 		{
 			return _instance;
 		}
@@ -106,6 +106,7 @@ namespace Thinktecture.Text.Adapters
 		/// </summary>
 		/// <param name="stringBuilder"><see cref="StringBuilder"/> to be used by the adapter.</param>
 		public StringBuilderAdapter(StringBuilder stringBuilder)
+			: base(stringBuilder)
 		{
 			if (stringBuilder == null)
 				throw new ArgumentNullException(nameof(stringBuilder));
@@ -476,28 +477,9 @@ namespace Thinktecture.Text.Adapters
 		}
 
 		/// <inheritdoc />
-		[SecuritySafeCritical]
-		public override string ToString()
-		{
-			return _instance.ToString();
-		}
-
-		/// <inheritdoc />
 		public string ToString(int startIndex, int length)
 		{
 			return _instance.ToString(startIndex, length);
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _instance.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _instance.GetHashCode();
 		}
 	}
 }

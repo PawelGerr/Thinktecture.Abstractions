@@ -10,14 +10,14 @@ namespace Thinktecture.IO
 	/// Represents a reader that can read a sequential series of characters.
 	/// </summary>
 	/// <filterpriority>2</filterpriority>
-	public interface ITextReader : IDisposable
+	public interface ITextReader : IAbstraction, IDisposable
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="TextReader"/>.
 		/// It is not intended to be used directly. Use <see cref="TextReaderExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		TextReader UnsafeConvert();
+		new TextReader UnsafeConvert();
 		
 		/// <summary>Reads the next character without changing the state of the reader or the character source. Returns the next available character without actually reading it from the reader.</summary>
 		/// <returns>An integer representing the next character to be read, or -1 if no more characters are available or the reader does not support seeking.</returns>
