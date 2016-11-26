@@ -22,19 +22,6 @@ namespace Thinktecture.Net
 		/// <summary>Gets the port number of the <see cref="T:System.Net.DnsEndPoint" />.</summary>
 		/// <returns>An integer value in the range 0 to 0xffff indicating the port number of the <see cref="T:System.Net.DnsEndPoint" />.</returns>
 		int Port { get; }
-
-		/// <summary>Compares two <see cref="T:System.Net.DnsEndPoint" /> objects.</summary>
-		/// <returns>true if the two <see cref="T:System.Net.DnsEndPoint" /> instances are equal; otherwise, false.</returns>
-		/// <param name="comparand">A <see cref="T:System.Net.DnsEndPoint" /> instance to compare to the current instance.</param>
-		bool Equals(object comparand);
-
-		/// <summary>Returns a hash value for a <see cref="T:System.Net.DnsEndPoint" />.</summary>
-		/// <returns>An integer hash value for the <see cref="T:System.Net.DnsEndPoint" />.</returns>
-		int GetHashCode();
-
-		/// <summary>Returns the host name or string representation of the IP address and port number of the <see cref="T:System.Net.DnsEndPoint" />.</summary>
-		/// <returns>A string containing the address family, host name or IP address string, and the port number of the specified <see cref="T:System.Net.DnsEndPoint" />.</returns>
-		string ToString();
 	}
 }
 

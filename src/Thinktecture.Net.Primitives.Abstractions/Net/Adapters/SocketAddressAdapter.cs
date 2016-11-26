@@ -8,13 +8,13 @@ using System.Net.Sockets;
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Stores serialized information from <see cref="T:System.Net.EndPoint" /> derived classes.</summary>
-	public class SocketAddressAdapter : ISocketAddress
+	public class SocketAddressAdapter : AbstractionAdapter, ISocketAddress
 	{
 		private readonly SocketAddress _address;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public SocketAddress UnsafeConvert()
+		public new SocketAddress UnsafeConvert()
 		{
 			return _address;
 		}
@@ -25,7 +25,7 @@ namespace Thinktecture.Net.Adapters
 		/// <inheritdoc />
 		public byte this[int offset]
 		{
-			get { return  _address[offset]; }
+			get { return _address[offset]; }
 			set { _address[offset] = value; }
 		}
 
@@ -52,6 +52,7 @@ namespace Thinktecture.Net.Adapters
 		/// <summary>Creates a new instance of the <see cref="T:System.Net.SocketAddress" /> class.</summary>
 		/// <param name="address">Address to be used by the adapter</param>
 		public SocketAddressAdapter(SocketAddress address)
+			: base(address)
 		{
 			if (address == null)
 				throw new ArgumentNullException(nameof(address));

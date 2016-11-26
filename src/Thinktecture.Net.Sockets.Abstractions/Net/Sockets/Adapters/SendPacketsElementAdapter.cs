@@ -7,13 +7,13 @@ namespace Thinktecture.Net.Sockets.Adapters
 	/// <summary>
 	/// Represents an element in a SendPacketsElement array.
 	/// </summary>
-	public class SendPacketsElementAdapter : ISendPacketsElement
+	public class SendPacketsElementAdapter : AbstractionAdapter, ISendPacketsElement
 	{
 		private readonly SendPacketsElement _element;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public SendPacketsElement UnsafeConvert()
+		public new SendPacketsElement UnsafeConvert()
 		{
 			return _element;
 		}
@@ -102,6 +102,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="element">Element to be used by the adapter.</param>
 		public SendPacketsElementAdapter(SendPacketsElement element)
+			: base(element)
 		{
 			if (element == null)
 				throw new ArgumentNullException(nameof(element));

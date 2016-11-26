@@ -9,7 +9,7 @@ namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Provides an Internet Protocol (IP) address.</summary>
 	// ReSharper disable once InconsistentNaming
-	public class IPAddressAdapter : IIPAddress
+	public class IPAddressAdapter : AbstractionAdapter, IIPAddress
 	{
 		private readonly IPAddress _address;
 
@@ -129,7 +129,7 @@ namespace Thinktecture.Net.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public IPAddress UnsafeConvert()
+		public new IPAddress UnsafeConvert()
 		{
 			return _address;
 		}
@@ -196,6 +196,7 @@ namespace Thinktecture.Net.Adapters
 		/// <summary>Initializes a new instance of the <see cref="IPAddressAdapter" /> class.</summary>
 		/// <param name="address">Address to be used by the adapter</param>
 		public IPAddressAdapter(IPAddress address)
+			: base(address)
 		{
 			if (address == null)
 				throw new ArgumentNullException(nameof(address));

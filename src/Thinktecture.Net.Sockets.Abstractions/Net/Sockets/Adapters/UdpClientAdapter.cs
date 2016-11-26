@@ -9,13 +9,13 @@ namespace Thinktecture.Net.Sockets.Adapters
 	/// <summary>
 	/// Provides User Datagram Protocol (UDP) network services.
 	/// </summary>
-	public class UdpClientAdapter : IUdpClient
+	public class UdpClientAdapter : AbstractionAdapter, IUdpClient
 	{
 		private readonly UdpClient _client;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public UdpClient UnsafeConvert()
+		public new UdpClient UnsafeConvert()
 		{
 			return _client;
 		}
@@ -117,6 +117,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="family">One of the AddressFamily values that specifies the addressing scheme of the socket.</param>
 		public UdpClientAdapter(AddressFamily family)
+			: this(new UdpClient(family))
 		{
 		}
 
@@ -125,6 +126,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="client">Client to be used by the adapter.</param>
 		public UdpClientAdapter(UdpClient client)
+			: base(client)
 		{
 			if (client == null)
 				throw new ArgumentNullException(nameof(client));

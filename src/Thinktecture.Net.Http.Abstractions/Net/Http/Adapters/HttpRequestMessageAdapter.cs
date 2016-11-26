@@ -7,13 +7,13 @@ using Thinktecture.Net.Http.Headers;
 namespace Thinktecture.Net.Http.Adapters
 {
 	/// <summary>Represents a HTTP request message.</summary>
-	public class HttpRequestMessageAdapter : IHttpRequestMessage
+	public class HttpRequestMessageAdapter : AbstractionAdapter, IHttpRequestMessage
 	{
 		private readonly HttpRequestMessage _message;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public HttpRequestMessage UnsafeConvert()
+		public new HttpRequestMessage UnsafeConvert()
 		{
 			return _message;
 		}
@@ -77,6 +77,7 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <summary>Initializes a new instance of the <see cref="HttpRequestMessageAdapter" /> class.</summary>
 		/// <param name="message">Message to be used by the adapter.</param>
 		public HttpRequestMessageAdapter(HttpRequestMessage message)
+			: base(message)
 		{
 			if (message == null)
 				throw new ArgumentNullException(nameof(message));
@@ -88,24 +89,6 @@ namespace Thinktecture.Net.Http.Adapters
 		public void Dispose()
 		{
 			_message.Dispose();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _message.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _message.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _message.GetHashCode();
 		}
 	}
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Thinktecture.Net.Http.Adapters
 {
 	/// <summary>A specialty class that allows applications to call the <see cref="SendAsync(IHttpRequestMessage, CancellationToken)" /> method on an Http handler chain. </summary>
-	public class HttpMessageInvokerAdapter : IHttpMessageInvoker
+	public class HttpMessageInvokerAdapter : AbstractionAdapter, IHttpMessageInvoker
 	{
 		private readonly HttpMessageInvoker _invoker;
 
@@ -16,7 +16,7 @@ namespace Thinktecture.Net.Http.Adapters
 		/// It is not intended to be used directly. Use <see cref="HttpClientExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public HttpMessageInvoker UnsafeConvert()
+		public new HttpMessageInvoker UnsafeConvert()
 		{
 			return _invoker;
 		}
@@ -49,6 +49,7 @@ namespace Thinktecture.Net.Http.Adapters
 		/// </summary>
 		/// <param name="invoker"></param>
 		public HttpMessageInvokerAdapter(HttpMessageInvoker invoker)
+			: base(invoker)
 		{
 			if (invoker == null)
 				throw new ArgumentNullException(nameof(invoker));
@@ -72,24 +73,6 @@ namespace Thinktecture.Net.Http.Adapters
 		public void Dispose()
 		{
 			_invoker.Dispose();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _invoker.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _invoker.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _invoker.GetHashCode();
 		}
 	}
 }

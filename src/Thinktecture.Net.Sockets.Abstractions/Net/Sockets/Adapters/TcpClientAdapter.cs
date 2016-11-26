@@ -9,13 +9,13 @@ namespace Thinktecture.Net.Sockets.Adapters
 	/// <summary>
 	/// Provides client connections for TCP network services.
 	/// </summary>
-	public class TcpClientAdapter : ITcpClient
+	public class TcpClientAdapter : AbstractionAdapter, ITcpClient
 	{
 		private readonly TcpClient _client;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public TcpClient UnsafeConvert()
+		public new TcpClient UnsafeConvert()
 		{
 			return _client;
 		}
@@ -104,6 +104,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="client">Client to be used by the adapter.</param>
 		public TcpClientAdapter(TcpClient client)
+			: base(client)
 		{
 			if (client == null)
 				throw new ArgumentNullException(nameof(client));

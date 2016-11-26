@@ -47,9 +47,5 @@ namespace Thinktecture.Net.Http
 		/// <summary>Throws an exception if the <see cref="P:System.Net.Http.HttpResponseMessage.IsSuccessStatusCode" /> property for the HTTP response is false.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.HttpResponseMessage" />.The HTTP response message if the call is successful.</returns>
 		IHttpResponseMessage EnsureSuccessStatusCode();
-
-		/// <summary>Returns a string that represents the current object.</summary>
-		/// <returns>Returns <see cref="T:System.String" />.A string representation of the current object.</returns>
-		string ToString();
 	}
 }

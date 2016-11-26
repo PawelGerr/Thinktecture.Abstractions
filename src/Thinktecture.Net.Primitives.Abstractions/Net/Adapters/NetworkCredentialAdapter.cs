@@ -5,13 +5,13 @@ using System.Net;
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Provides credentials for password-based authentication schemes such as basic, digest, NTLM, and Kerberos authentication.</summary>
-	public class NetworkCredentialAdapter : INetworkCredential
+	public class NetworkCredentialAdapter : AbstractionAdapter, INetworkCredential
 	{
 		private readonly NetworkCredential _credential;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public NetworkCredential UnsafeConvert()
+		public new NetworkCredential UnsafeConvert()
 		{
 			return _credential;
 		}
@@ -63,6 +63,7 @@ namespace Thinktecture.Net.Adapters
 		/// <summary>Initializes a new instance of the <see cref="NetworkCredentialAdapter" /> class.</summary>
 		/// <param name="credential">Credentials to be used by the adapter. </param>
 		public NetworkCredentialAdapter(NetworkCredential credential)
+			: base(credential)
 		{
 			if (credential == null)
 				throw new ArgumentNullException(nameof(credential));

@@ -72,21 +72,5 @@ namespace Thinktecture.Net
 		/// <returns>The version of HTTP state maintenance to which the cookie conforms.</returns>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The value specified for a version is not allowed. </exception>
 		int Version { get; set; }
-
-		/// <summary>Overrides the <see cref="M:System.Object.Equals(System.Object)" /> method.</summary>
-		/// <returns>Returns true if the <see cref="T:System.Net.Cookie" /> is equal to <paramref name="comparand" />. Two <see cref="T:System.Net.Cookie" /> instances are equal if their <see cref="P:System.Net.Cookie.Name" />, <see cref="P:System.Net.Cookie.Value" />, <see cref="P:System.Net.Cookie.Path" />, <see cref="P:System.Net.Cookie.Domain" />, and <see cref="P:System.Net.Cookie.Version" /> properties are equal. <see cref="P:System.Net.Cookie.Name" /> and <see cref="P:System.Net.Cookie.Domain" /> string comparisons are case-insensitive.</returns>
-		/// <param name="comparand">A reference to a <see cref="T:System.Net.Cookie" />. </param>
-		bool Equals(object comparand);
-
-		/// <summary>Overrides the <see cref="M:System.Object.GetHashCode" /> method.</summary>
-		/// <returns>The 32-bit signed integer hash code for this instance.</returns>
-		int GetHashCode();
-
-		/// <summary>Overrides the <see cref="M:System.Object.ToString" /> method.</summary>
-		/// <returns>Returns a string representation of this <see cref="T:System.Net.Cookie" /> object that is suitable for including in a HTTP Cookie: request header.</returns>
-		/// <PermissionSet>
-		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
-		/// </PermissionSet>
-		string ToString();
 	}
 }

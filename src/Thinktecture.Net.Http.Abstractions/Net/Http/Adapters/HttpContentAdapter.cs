@@ -10,13 +10,13 @@ using Thinktecture.Net.Http.Headers;
 namespace Thinktecture.Net.Http.Adapters
 {
 	/// <summary>A base class representing an HTTP entity body and content headers.</summary>
-	public class HttpContentAdapter : IHttpContent
+	public class HttpContentAdapter : AbstractionAdapter, IHttpContent
 	{
 		private readonly HttpContent _content;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public HttpContent UnsafeConvert()
+		public new HttpContent UnsafeConvert()
 		{
 			return _content;
 		}
@@ -26,6 +26,7 @@ namespace Thinktecture.Net.Http.Adapters
 
 		/// <summary>Initializes a new instance of the <see cref="HttpContentAdapter" /> class.</summary>
 		public HttpContentAdapter(HttpContent content)
+			: base(content)
 		{
 			if (content == null)
 				throw new ArgumentNullException(nameof(content));
@@ -103,24 +104,6 @@ namespace Thinktecture.Net.Http.Adapters
 		public void Dispose()
 		{
 			_content.Dispose();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _content.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _content.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _content.GetHashCode();
 		}
 	}
 }

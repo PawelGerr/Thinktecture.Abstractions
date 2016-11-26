@@ -36,6 +36,9 @@
 			}
 		},
 		"net45": {
+			"frameworkAssemblies": {
+				"System.Runtime": ""
+			},
 			"dependencies": {
 				"Thinktecture.Runtime.Handles.Abstractions": "1.0.0-*"
 			}
@@ -49,5 +52,8 @@
 				"System.Runtime.Handles": ""
 			}
 		}
+	},
+	"dependencies": {
+		"Thinktecture.Abstractions": "1.0.0-*"
 	}
 }

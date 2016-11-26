@@ -6,7 +6,7 @@ using System.Net;
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Provides a collection container for instances of the <see cref="T:System.Net.Cookie" /> class.</summary>
-	public class CookieCollectionAdapter : ICookieCollection
+	public class CookieCollectionAdapter : AbstractionAdapter, ICookieCollection
 	{
 		private readonly CookieCollection _collection;
 
@@ -21,7 +21,7 @@ namespace Thinktecture.Net.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public CookieCollection UnsafeConvert()
+		public new CookieCollection UnsafeConvert()
 		{
 			return _collection;
 		}
@@ -36,7 +36,8 @@ namespace Thinktecture.Net.Adapters
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="CookieCollectionAdapter" /> class.</summary>
-		public CookieCollectionAdapter(CookieCollection collection)
+		public CookieCollectionAdapter(CookieCollection collection) 
+			: base(collection)
 		{
 			if (collection == null)
 				throw new ArgumentNullException(nameof(collection));
@@ -78,24 +79,6 @@ namespace Thinktecture.Net.Adapters
 		public IEnumerator GetEnumerator()
 		{
 			return _collection.GetEnumerator();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _collection.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _collection.GetHashCode();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _collection.ToString();
 		}
 	}
 }

@@ -68,30 +68,5 @@ namespace Thinktecture
 		/// The user name associated with the user that accesses the URI.
 		/// </summary>
 		string UserName { get; set; }
-
-		/// <summary>
-		/// Compares an existing Uri instance with the contents of the UriBuilder for equality.
-		/// </summary>
-		/// <param name="rparam">The object to compare with the current instance.</param>
-		/// <returns><c>true</c> if rparam represents the same Uri as the Uri constructed by this UriBuilder instance; otherwise, <c>false</c>.</returns>
-		bool Equals(object rparam);
-
-		/// <summary>
-		/// Returns the hash code for the URI.
-		/// </summary>
-		/// <returns>The hash code generated for the URI.</returns>
-		int GetHashCode();
-
-#pragma warning disable 1584, 1574
-		/// <summary>
-		/// Returns the display string for the specified UriBuilder instance.
-		/// </summary>
-		/// <exception cref="System.UriFormatException">
-		/// In the .NET for Windows Store apps or the Portable Class Library, catch the base class exception, FormatException, instead.
-		/// The UriBuilder instance has a bad password.
-		/// </exception>
-		/// <returns>The string that contains the unescaped display string of the UriBuilder.</returns>
-		string ToString();
-#pragma warning restore 1584, 1574
 	}
 }

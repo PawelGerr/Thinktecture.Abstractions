@@ -7,13 +7,13 @@ using Thinktecture.Net.Http.Headers;
 namespace Thinktecture.Net.Http.Adapters
 {
 	/// <summary>Represents a HTTP response message including the status code and data.</summary>
-	public class HttpResponseMessageAdapter : IHttpResponseMessage
+	public class HttpResponseMessageAdapter : AbstractionAdapter, IHttpResponseMessage
 	{
 		private readonly HttpResponseMessage _message;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public HttpResponseMessage UnsafeConvert()
+		public new HttpResponseMessage UnsafeConvert()
 		{
 			return _message;
 		}
@@ -77,6 +77,7 @@ namespace Thinktecture.Net.Http.Adapters
 		/// </summary>
 		/// <param name="message">Message to be used by the adapter.</param>
 		public HttpResponseMessageAdapter(HttpResponseMessage message)
+			: base(message)
 		{
 			if (message == null)
 				throw new ArgumentNullException(nameof(message));
@@ -94,24 +95,6 @@ namespace Thinktecture.Net.Http.Adapters
 		public void Dispose()
 		{
 			_message.Dispose();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _message.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _message.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _message.GetHashCode();
 		}
 	}
 }

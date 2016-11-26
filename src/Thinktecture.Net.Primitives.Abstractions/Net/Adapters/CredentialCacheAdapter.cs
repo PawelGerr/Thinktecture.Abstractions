@@ -8,7 +8,7 @@ using System.Net;
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Provides storage for multiple credentials.</summary>
-	public class CredentialCacheAdapter : ICredentialCache
+	public class CredentialCacheAdapter : AbstractionAdapter, ICredentialCache
 	{
 		private readonly CredentialCache _cache;
 
@@ -25,7 +25,7 @@ namespace Thinktecture.Net.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public CredentialCache UnsafeConvert()
+		public new CredentialCache UnsafeConvert()
 		{
 			return _cache;
 		}
@@ -35,6 +35,7 @@ namespace Thinktecture.Net.Adapters
 		/// </summary>
 		/// <param name="cache">Cache to be used by the adapter.</param>
 		public CredentialCacheAdapter(CredentialCache cache)
+			: base(cache)
 		{
 			if (cache == null)
 				throw new ArgumentNullException(nameof(cache));

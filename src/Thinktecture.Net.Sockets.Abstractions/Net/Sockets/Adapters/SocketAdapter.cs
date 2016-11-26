@@ -8,7 +8,7 @@ using System.Net.Sockets;
 namespace Thinktecture.Net.Sockets.Adapters
 {
 	/// <summary>Implements the Berkeley sockets interface.</summary>
-	public class SocketAdapter : ISocket
+	public class SocketAdapter : AbstractionAdapter, ISocket
 	{
 		private readonly Socket _socket;
 
@@ -63,7 +63,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Socket UnsafeConvert()
+		public new Socket UnsafeConvert()
 		{
 			return _socket;
 		}
@@ -205,6 +205,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <summary>Initializes a new instance of the <see cref="SocketAdapter" /> class using the specified socket type and protocol.</summary>
 		/// <param name="socket"></param>
 		public SocketAdapter(Socket socket)
+			: base(socket)
 		{
 			if (socket == null)
 				throw new ArgumentNullException(nameof(socket));

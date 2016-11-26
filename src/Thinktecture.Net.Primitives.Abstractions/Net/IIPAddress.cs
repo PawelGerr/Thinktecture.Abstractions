@@ -47,23 +47,11 @@ namespace Thinktecture.Net
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <see name="ScopeId" /> &lt; 0- or -<see name="ScopeId" /> &gt; 0x00000000FFFFFFFF  </exception>
 		long ScopeId { get; set; }
-
-		/// <summary>Compares two IP addresses.</summary>
-		/// <returns>true if the two addresses are equal; otherwise, false.</returns>
-		/// <param name="comparand">An <see cref="T:System.Net.IPAddress" /> instance to compare to the current instance. </param>
-		bool Equals(object comparand);
-
+		
 		/// <summary>Provides a copy of the <see cref="T:System.Net.IPAddress" /> as an array of bytes.</summary>
 		/// <returns>A <see cref="T:System.Byte" /> array.</returns>
 		byte[] GetAddressBytes();
-
-		/// <summary>Returns a hash value for an IP address.</summary>
-		/// <returns>An integer hash value.</returns>
-		/// <PermissionSet>
-		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
-		/// </PermissionSet>
-		int GetHashCode();
-
+		
 		/// <summary>Maps the <see cref="T:System.Net.IPAddress" /> object to an IPv4 address.</summary>
 		/// <returns>Returns <see cref="T:System.Net.IPAddress" />.An IPv4 address.</returns>
 		IIPAddress MapToIPv4();
@@ -71,14 +59,6 @@ namespace Thinktecture.Net
 		/// <summary>Maps the <see cref="T:System.Net.IPAddress" /> object to an IPv6 address.</summary>
 		/// <returns>Returns <see cref="T:System.Net.IPAddress" />.An IPv6 address.</returns>
 		IIPAddress MapToIPv6();
-
-		/// <summary>Converts an Internet address to its standard notation.</summary>
-		/// <returns>A string that contains the IP address in either IPv4 dotted-quad or in IPv6 colon-hexadecimal notation.</returns>
-		/// <exception cref="T:System.Net.Sockets.SocketException">The address family is <see cref="F:System.Net.Sockets.AddressFamily.InterNetworkV6" /> and the address is bad. </exception>
-		/// <PermissionSet>
-		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
-		/// </PermissionSet>
-		string ToString();
 	}
 }
 

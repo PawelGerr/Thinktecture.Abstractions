@@ -5,7 +5,7 @@ using System.Net;
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Provides a container for a collection of <see cref="T:System.Net.CookieCollection" /> objects.</summary>
-	public class CookieContainerAdapter : ICookieContainer
+	public class CookieContainerAdapter : AbstractionAdapter, ICookieContainer
 	{
 		private readonly CookieContainer _container;
 
@@ -23,7 +23,7 @@ namespace Thinktecture.Net.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public CookieContainer UnsafeConvert()
+		public new CookieContainer UnsafeConvert()
 		{
 			return _container;
 		}
@@ -53,6 +53,7 @@ namespace Thinktecture.Net.Adapters
 		/// Initializes a new instance of the <see cref="CookieContainerAdapter" /> class.
 		/// </summary>
 		public CookieContainerAdapter(CookieContainer container)
+			: base(container)
 		{
 			if (container == null)
 				throw new ArgumentNullException(nameof(container));
@@ -100,24 +101,6 @@ namespace Thinktecture.Net.Adapters
 		public void SetCookies(Uri uri, string cookieHeader)
 		{
 			_container.SetCookies(uri, cookieHeader);
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _container.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _container.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _container.GetHashCode();
 		}
 	}
 }

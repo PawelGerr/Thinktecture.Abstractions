@@ -39,9 +39,5 @@ namespace Thinktecture.Net.Http
 		/// <summary>Gets a set of properties for the HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.Collections.Generic.IDictionary`2" />.</returns>
 		IDictionary<string, object> Properties { get; }
-
-		/// <summary>Returns a string that represents the current object.</summary>
-		/// <returns>Returns <see cref="T:System.String" />.A string representation of the current object.</returns>
-		string ToString();
 	}
 }

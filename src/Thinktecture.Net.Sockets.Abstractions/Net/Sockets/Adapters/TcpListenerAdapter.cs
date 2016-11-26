@@ -9,13 +9,13 @@ namespace Thinktecture.Net.Sockets.Adapters
 	/// <summary>
 	/// Listens for connections from TCP network clients.
 	/// </summary>
-	public class TcpListenerAdapter : ITcpListener
+	public class TcpListenerAdapter : AbstractionAdapter, ITcpListener
 	{
 		private readonly TcpListener _listener;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public TcpListener UnsafeConvert()
+		public new TcpListener UnsafeConvert()
 		{
 			return _listener;
 		}
@@ -78,6 +78,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="listener">Listener to be used by the adapter.</param>
 		public TcpListenerAdapter(TcpListener listener)
+			: base(listener)
 		{
 			if (listener == null)
 				throw new ArgumentNullException(nameof(listener));

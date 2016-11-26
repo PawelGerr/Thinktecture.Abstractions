@@ -7,13 +7,14 @@ using System.Net.Http.Headers;
 namespace Thinktecture.Net.Http.Headers.Adapters
 {
 	/// <summary>A collection of headers and their values as defined in RFC 2616.</summary>
-	public class HttpHeadersAdapter : IHttpHeaders
+	public class HttpHeadersAdapter : AbstractionAdapter, IHttpHeaders
 	{
 		private readonly HttpHeaders _headers;
 
 		/// <summary>Initializes a new instance of the <see cref="HttpHeadersAdapter" /> class.</summary>
 		/// <param name="headers">Http headers to be use by the adapter.</param>
 		public HttpHeadersAdapter(HttpHeaders headers)
+			: base(headers)
 		{
 			if (headers == null)
 				throw new ArgumentNullException(nameof(headers));
@@ -23,7 +24,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public HttpHeaders UnsafeConvert()
+		public new HttpHeaders UnsafeConvert()
 		{
 			return _headers;
 		}
@@ -92,24 +93,6 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		IEnumerator IEnumerable.GetEnumerator()
 		{
 			return GetEnumerator();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _headers.ToString();
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			return _headers.Equals(obj);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _headers.GetHashCode();
 		}
 	}
 }

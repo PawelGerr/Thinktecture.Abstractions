@@ -5,7 +5,7 @@ namespace Thinktecture.Adapters
 {
 	/// <summary>Represents the base class for classes that contain event data, and provides a value to use for events that do not include event data. </summary>
 	/// <filterpriority>1</filterpriority>
-	public class EventArgsAdapter : IEventArgs
+	public class EventArgsAdapter : AbstractionAdapter, IEventArgs
 	{
 		private readonly EventArgs _args;
 
@@ -15,7 +15,7 @@ namespace Thinktecture.Adapters
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public EventArgs UnsafeConvert()
+		public new EventArgs UnsafeConvert()
 		{
 			return _args;
 		}
@@ -33,6 +33,7 @@ namespace Thinktecture.Adapters
 		/// </summary>
 		/// <param name="args">EventArgs to be used by the adapter</param>
 		public EventArgsAdapter(EventArgs args)
+			: base(args)
 		{
 			if (args == null)
 				throw new ArgumentNullException(nameof(args));

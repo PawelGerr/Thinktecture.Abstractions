@@ -59,9 +59,5 @@ namespace Thinktecture.Net.Http.Headers
 		/// <returns>Returns <see cref="T:System.Boolean" />.true is the specified header exists in the collection; otherwise false.</returns>
 		/// <param name="name">The specific header.</param>
 		bool Contains(string name);
-
-		/// <summary>Returns a string that represents the current <see cref="T:System.Net.Http.Headers.HttpHeaders" /> object.</summary>
-		/// <returns>Returns <see cref="T:System.String" />.A string that represents the current object.</returns>
-		string ToString();
 	}
 }

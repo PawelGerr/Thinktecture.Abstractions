@@ -285,10 +285,5 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		void MoveTo(string destDirName);
-
-		/// <summary>Returns the original path that was passed by the user.</summary>
-		/// <returns>Returns the original path that was passed by the user.</returns>
-		/// <filterpriority>2</filterpriority>
-		string ToString();
 	}
 }

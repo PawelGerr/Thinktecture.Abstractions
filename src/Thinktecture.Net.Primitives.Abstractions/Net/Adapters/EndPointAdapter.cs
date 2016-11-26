@@ -8,13 +8,13 @@ using System.Net.Sockets;
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Identifies a network address. This is an abstract class.</summary>
-	public class EndPointAdapter : IEndPoint
+	public class EndPointAdapter : AbstractionAdapter, IEndPoint
 	{
 		private readonly EndPoint _endpoint;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public EndPoint UnsafeConvert()
+		public new EndPoint UnsafeConvert()
 		{
 			return _endpoint;
 		}
@@ -45,6 +45,7 @@ namespace Thinktecture.Net.Adapters
 		/// </summary>
 		/// <param name="endpoint">Endpoint to be used by the adapter.</param>
 		public EndPointAdapter(EndPoint endpoint)
+			: base(endpoint)
 		{
 			if (endpoint == null)
 				throw new ArgumentNullException(nameof(endpoint));

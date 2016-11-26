@@ -7,13 +7,13 @@ namespace Thinktecture.Net.Sockets.Adapters
 	/// <summary>
 	/// Specifies whether a Socket will remain connected after a call to the Close or Close methods and the length of time it will remain connected, if data remains to be sent.
 	/// </summary>
-	public class LingerOptionAdapter : ILingerOption
+	public class LingerOptionAdapter : AbstractionAdapter, ILingerOption
 	{
 		private readonly LingerOption _options;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public LingerOption UnsafeConvert()
+		public new LingerOption UnsafeConvert()
 		{
 			return _options;
 		}
@@ -47,6 +47,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="options">Options to be used by the adapter.</param>
 		public LingerOptionAdapter(LingerOption options)
+			: base(options)
 		{
 			if (options == null)
 				throw new ArgumentNullException(nameof(options));

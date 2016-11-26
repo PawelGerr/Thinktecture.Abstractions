@@ -18,13 +18,7 @@ namespace Thinktecture.Text
 		/// <returns>The IANA name for the current <see cref="T:System.Text.Encoding" />.</returns>
 		/// <filterpriority>2</filterpriority>
 		string WebName { get; }
-
-		/// <summary>Determines whether the specified <see cref="T:System.Object" /> is equal to the current instance.</summary>
-		/// <returns>true if <paramref name="value" /> is an instance of <see cref="T:System.Text.Encoding" /> and is equal to the current instance; otherwise, false. </returns>
-		/// <param name="value">The <see cref="T:System.Object" /> to compare with the current instance. </param>
-		/// <filterpriority>2</filterpriority>
-		bool Equals(object value);
-
+		
 		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding all the characters in the specified character array.</summary>
 		/// <returns>The number of bytes produced by encoding all the characters in the specified character array.</returns>
 		/// <param name="chars">The character array containing the characters to encode. </param>
@@ -191,12 +185,7 @@ namespace Thinktecture.Text
 		/// <returns>A <see cref="T:System.Text.Encoder" /> that converts a sequence of Unicode characters into an encoded sequence of bytes.</returns>
 		/// <filterpriority>1</filterpriority>
 		IEncoder GetEncoder();
-
-		/// <summary>Returns the hash code for the current instance.</summary>
-		/// <returns>The hash code for the current instance.</returns>
-		/// <filterpriority>1</filterpriority>
-		int GetHashCode();
-
+		
 		/// <summary>When overridden in a derived class, calculates the maximum number of bytes produced by encoding the specified number of characters.</summary>
 		/// <returns>The maximum number of bytes produced by encoding the specified number of characters.</returns>
 		/// <param name="charCount">The number of characters to encode. </param>

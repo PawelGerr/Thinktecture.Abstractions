@@ -29,22 +29,6 @@ namespace Thinktecture.Net
 		/// <param name="offset">The array index element of the desired information. </param>
 		/// <exception cref="T:System.IndexOutOfRangeException">The specified index does not exist in the buffer. </exception>
 		byte this[int offset] { get; set; }
-
-		/// <summary>Determines whether the specified <see cref="T:System.Object" /> is equal to the current <see cref="T:System.Net.SocketAddress" /> instance.</summary>
-		/// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
-		/// <param name="comparand">The specified <see cref="T:System.Object" /> to compare with the current <see cref="T:System.Net.SocketAddress" /> instance.</param>
-		bool Equals(object comparand);
-
-		/// <summary>Serves as a hash function for a particular type, suitable for use in hashing algorithms and data structures like a hash table.</summary>
-		/// <returns>A hash code for the current object.</returns>
-		int GetHashCode();
-
-		/// <summary>Returns information about the socket address.</summary>
-		/// <returns>A string that contains information about the <see cref="T:System.Net.SocketAddress" />.</returns>
-		/// <PermissionSet>
-		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
-		/// </PermissionSet>
-		string ToString();
 	}
 }
 

@@ -5,13 +5,13 @@ using System.Net;
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Provides a set of properties and methods that are used to manage cookies. This class cannot be inherited.</summary>
-	public class CookieAdapter : ICookie
+	public class CookieAdapter : AbstractionAdapter, ICookie
 	{
 		private readonly Cookie _cookie;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Cookie UnsafeConvert()
+		public new Cookie UnsafeConvert()
 		{
 			return _cookie;
 		}
@@ -151,29 +151,12 @@ namespace Thinktecture.Net.Adapters
 		/// </summary>
 		/// <param name="cookie">Cookie to be used by the adapter.</param>
 		public CookieAdapter(Cookie cookie)
+			: base(cookie)
 		{
 			if (cookie == null)
 				throw new ArgumentNullException(nameof(cookie));
 
 			_cookie = cookie;
-		}
-
-		/// <inheritdoc />
-		public override bool Equals(object comparand)
-		{
-			return _cookie.Equals(comparand);
-		}
-
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			return _cookie.GetHashCode();
-		}
-
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return _cookie.ToString();
 		}
 	}
 }

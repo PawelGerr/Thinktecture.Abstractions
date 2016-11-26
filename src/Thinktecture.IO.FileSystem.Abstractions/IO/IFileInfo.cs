@@ -231,10 +231,5 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		IFileStream OpenWrite();
-
-		/// <summary>Returns the path as a string.</summary>
-		/// <returns>A string representing the path.</returns>
-		/// <filterpriority>1</filterpriority>
-		string ToString();
 	}
 }

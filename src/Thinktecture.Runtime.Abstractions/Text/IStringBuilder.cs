@@ -495,12 +495,7 @@ namespace Thinktecture.Text
 		/// <paramref name="startIndex" /> or <paramref name="count" /> is less than zero.-or- <paramref name="startIndex" /> plus <paramref name="count" /> indicates a character position not within this instance.-or- Enlarging the value of this instance would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
 		/// <filterpriority>1</filterpriority>
 		IStringBuilder Replace(string oldValue, string newValue, int startIndex, int count);
-
-		/// <summary>Converts the value of this instance to a <see cref="T:System.String" />.</summary>
-		/// <returns>A string whose value is the same as this instance.</returns>
-		/// <filterpriority>1</filterpriority>
-		string ToString();
-
+		
 		/// <summary>Converts the value of a substring of this instance to a <see cref="T:System.String" />.</summary>
 		/// <returns>A string whose value is the same as the specified substring of this instance.</returns>
 		/// <param name="startIndex">The starting position of the substring in this instance. </param>

@@ -22,10 +22,5 @@ namespace Thinktecture.IO
 		/// <returns>The underlying StringBuilder.</returns>
 		/// <filterpriority>2</filterpriority>
 		IStringBuilder GetStringBuilder();
-
-		/// <summary>Returns a string containing the characters written to the current StringWriter so far.</summary>
-		/// <returns>The string containing the characters written to the current StringWriter.</returns>
-		/// <filterpriority>2</filterpriority>
-		string ToString();
 	}
 }
