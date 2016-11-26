@@ -57,10 +57,20 @@ FileInfo fileInfo = fileInfoInterface.ToImplementation();
 ## Projects
 The projects are mirroring the .NET assemblies, i.e. if the class `Stream` is in `System.IO.dll` then the interface `IStream` will be in `Thinktecture.IO.Abstractions.dll`.
 
+### Thinktecture.Net.Sockets.Abstractions
+Provides interfaces for types in `System.Net.Sockets`: `Socket`, `TcpClient`, `UdpClient`, `TcpListener`, `NetworkStream`, `ISocketAsyncEventArgs`, `LingerOption`, `SendPacketsElement`.
+
+**Nuget**: `Install-Package Thinktecture.Net.Sockets.Abstractions`
+
 ### Thinktecture.Net.Http.Abstractions
 Provides interfaces for types in `System.Net.Http`: `HttpClient`, `HttpContent`, `HttpRequestMessage`, `HttpResponseMessage`, `HttpHeaders`, `DelegatingHandler`, `HttpClientHandler`, `HttpMessageHandler`, `HttpMessageInvoker`, `MessageProcessingHandler`, `MultipartContent`, `MultipartFormDataContent`, `HttpContentHeaders`, `HttpRequestHeaders`, `HttpResponseHeaders`.
 
 **Nuget**: `Install-Package Thinktecture.Net.Http.Abstractions`
+
+### Thinktecture.Net.Primitives.Abstractions
+Provides interfaces for types in `System.Net.Primitives`: `IPAddress`, `IPEndPoint`, `NetworkCredential`, `EndPoint`, `Cookie`, `DnsEndPoint`, `SocketAddress`, `CookieCollection`, `CookieContainer`, `CredentialCache`, `TransportContext`, `ChannelBinding`.
+
+**Nuget**: `Install-Package Thinktecture.Net.Primitives.Abstractions`
 
 ### Thinktecture.IO.FileSystem.Watcher.Abstractions
 Provides interfaces for types in `System.IO.FileSystem.Watcher`: `FileSystemWatcher`.
@@ -93,6 +103,6 @@ Provides interfaces for types in `System.Runtime.Handles`: `SafeHandle`, `Critic
 **Nuget**: `Install-Package Thinktecture.Runtime.Handles.Abstractions`
 
 ### Thinktecture.Runtime.Abstractions
-Provides interfaces for types in `System.Runtime`: `StringBuilder`.
+Provides interfaces for types in `System.Runtime`: `StringBuilder`, `EventArgs`.
 
 **Nuget**: `Install-Package Thinktecture.Runtime.Abstractions`

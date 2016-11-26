@@ -58,9 +58,21 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <inheritdoc />
+		public Task CopyToAsync(Stream stream, ITransportContext context)
+		{
+			return _content.CopyToAsync(stream, context.ToImplementation());
+		}
+
+		/// <inheritdoc />
 		public Task CopyToAsync(IStream stream, TransportContext context)
 		{
 			return _content.CopyToAsync(stream.ToImplementation(), context);
+		}
+
+		/// <inheritdoc />
+		public Task CopyToAsync(IStream stream, ITransportContext context)
+		{
+			return _content.CopyToAsync(stream.ToImplementation(), context.ToImplementation());
 		}
 
 		/// <inheritdoc />

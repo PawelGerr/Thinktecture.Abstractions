@@ -6,6 +6,9 @@ namespace Thinktecture.Net
 {
 	/// <summary>Provides credentials for password-based authentication schemes such as basic, digest, NTLM, and Kerberos authentication.</summary>
 	public interface INetworkCredential : ICredentials
+#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
+		, ICredentialsByHost
+#endif
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="Cookie"/>.
@@ -40,5 +43,16 @@ namespace Thinktecture.Net
 		/// <param name="uri">The URI that the client provides authentication for. </param>
 		/// <param name="authType">The type of authentication requested, as defined in the <see cref="P:System.Net.IAuthenticationModule.AuthenticationType" /> property. </param>
 		new INetworkCredential GetCredential(Uri uri, string authType);
+
+#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
+
+		/// <summary>Returns an instance of the NetworkCredential class for the specified host, port, and authentication type.</summary>
+		/// <param name="host">The host computer that authenticates the client.</param>
+		/// <param name="port">The port on the host that the client communicates with.</param>
+		/// <param name="authenticationType">The type of authentication requested, as defined in the IAuthenticationModule.AuthenticationType property.</param>
+		/// <returns>A NetworkCredential for the specified host, port, and authentication protocol, or null if there are no credentials available for the specified host, port, and authentication protocol.</returns>
+		new INetworkCredential GetCredential(string host, int port, string authenticationType);
+
+#endif
 	}
 }

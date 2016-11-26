@@ -1,0 +1,68 @@
+﻿using System.ComponentModel;
+using System.Net.Sockets;
+using System.Threading.Tasks;
+
+namespace Thinktecture.Net.Sockets
+{
+	/// <summary>
+	/// Listens for connections from TCP network clients.
+	/// </summary>
+	public interface ITcpListener
+	{
+		/// <summary>
+		/// Gets inner instance of <see cref="LingerOption"/>.
+		/// It is not intended to be used directly. Use <see cref="LingerOptionExtensions.ToImplementation"/> instead.
+		/// </summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		TcpListener UnsafeConvert();
+
+		/// <summary>
+		/// Gets or sets a Boolean value that specifies whether the TcpListener allows only one underlying socket to listen to a specific port.
+		/// </summary>
+		bool ExclusiveAddressUse { get; set; }
+
+		/// <summary>
+		/// Gets the underlying EndPoint of the current TcpListener.
+		/// </summary>
+		IEndPoint LocalEndpoint { get; }
+
+		/// <summary>
+		/// Gets the underlying network Socket.
+		/// </summary>
+		ISocket Server { get; }
+
+		/// <summary>
+		/// Accepts a pending connection request as an asynchronous operation.
+		/// </summary>
+		/// <returns>The task object representing the asynchronous operation. The Result property on the task object returns a Socket used to send and receive data.</returns>
+		Task<ISocket> AcceptSocketAsync();
+
+		/// <summary>
+		/// Accepts a pending connection request as an asynchronous operation.
+		/// </summary>
+		/// <returns>The task object representing the asynchronous operation. The Result property on the task object returns a TcpClient used to send and receive data.</returns>
+		Task<ITcpClient> AcceptTcpClientAsync();
+
+		/// <summary>
+		/// Determines if there are pending connection requests.
+		/// </summary>
+		/// <returns><c>true</c> if connections are pending; otherwise, <c>false</c>.</returns>
+		bool Pending();
+
+		/// <summary>
+		/// Starts listening for incoming connection requests.
+		/// </summary>
+		void Start();
+
+		/// <summary>
+		/// Starts listening for incoming connection requests with a maximum number of pending connection.
+		/// </summary>
+		/// <param name="backlog">The maximum length of the pending connections queue.</param>
+		void Start(int backlog);
+
+		/// <summary>
+		/// Closes the listener.
+		/// </summary>
+		void Stop();
+	}
+}

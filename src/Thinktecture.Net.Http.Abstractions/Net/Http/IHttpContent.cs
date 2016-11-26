@@ -45,7 +45,19 @@ namespace Thinktecture.Net.Http
 		/// <returns>Returns <see cref="T:System.Threading.Tasks.Task" />.The task object representing the asynchronous operation.</returns>
 		/// <param name="stream">The target stream.</param>
 		/// <param name="context">Information about the transport (channel binding token, for example). This parameter may be null.</param>
+		Task CopyToAsync(Stream stream, ITransportContext context);
+
+		/// <summary>Serialize the HTTP content into a stream of bytes and copies it to the stream object provided as the <paramref name="stream" /> parameter.</summary>
+		/// <returns>Returns <see cref="T:System.Threading.Tasks.Task" />.The task object representing the asynchronous operation.</returns>
+		/// <param name="stream">The target stream.</param>
+		/// <param name="context">Information about the transport (channel binding token, for example). This parameter may be null.</param>
 		Task CopyToAsync(IStream stream, TransportContext context);
+
+		/// <summary>Serialize the HTTP content into a stream of bytes and copies it to the stream object provided as the <paramref name="stream" /> parameter.</summary>
+		/// <returns>Returns <see cref="T:System.Threading.Tasks.Task" />.The task object representing the asynchronous operation.</returns>
+		/// <param name="stream">The target stream.</param>
+		/// <param name="context">Information about the transport (channel binding token, for example). This parameter may be null.</param>
+		Task CopyToAsync(IStream stream, ITransportContext context);
 
 		/// <summary>Serialize the HTTP content into a stream of bytes and copies it to the stream object provided as the <paramref name="stream" /> parameter.</summary>
 		/// <returns>Returns <see cref="T:System.Threading.Tasks.Task" />.The task object representing the asynchronous operation.</returns>

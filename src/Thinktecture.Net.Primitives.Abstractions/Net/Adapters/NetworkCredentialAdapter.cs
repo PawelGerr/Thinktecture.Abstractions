@@ -81,5 +81,20 @@ namespace Thinktecture.Net.Adapters
 		{
 			return _credential.GetCredential(uri, authType);
 		}
+
+#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
+
+		/// <inheritdoc />
+		public INetworkCredential GetCredential(string host, int port, string authenticationType)
+		{
+			return _credential.GetCredential(host, port, authenticationType).ToInterface();
+		}
+
+		/// <inheritdoc />
+		NetworkCredential ICredentialsByHost.GetCredential(string host, int port, string authenticationType)
+		{
+			return _credential.GetCredential(host, port, authenticationType);
+		}
+#endif
 	}
 }
