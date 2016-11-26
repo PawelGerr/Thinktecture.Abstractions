@@ -7,14 +7,14 @@ using System.Net.Sockets;
 namespace Thinktecture.Net
 {
 	/// <summary>Identifies a network address.</summary>
-	public interface IEndPoint
+	public interface IEndPoint : IAbstraction
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="EndPoint"/>.
 		/// It is not intended to be used directly. Use <see cref="EndPointExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		EndPoint UnsafeConvert();
+		new EndPoint UnsafeConvert();
 
 		/// <summary>Gets the address family to which the endpoint belongs.</summary>
 		/// <returns>One of the <see cref="T:System.Net.Sockets.AddressFamily" /> values.</returns>

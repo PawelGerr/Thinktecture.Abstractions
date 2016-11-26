@@ -10,14 +10,14 @@ using Thinktecture.Net.Http.Headers;
 namespace Thinktecture.Net.Http
 {
 	/// <summary>A base class representing an HTTP entity body and content headers.</summary>
-	public interface IHttpContent : IDisposable
+	public interface IHttpContent : IAbstraction, IDisposable
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="HttpContent"/>.
 		/// It is not intended to be used directly. Use <see cref="HttpContentExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		HttpContent UnsafeConvert();
+		new HttpContent UnsafeConvert();
 
 		/// <summary>Gets the HTTP content headers as defined in RFC 2616.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpContentHeaders" />.The content headers as defined in RFC 2616.</returns>

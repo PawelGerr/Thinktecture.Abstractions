@@ -5,14 +5,14 @@ using System.Net;
 namespace Thinktecture.Net
 {
 	/// <summary>Provides a collection container for instances of the <see cref="T:System.Net.Cookie" /> class.</summary>
-	public interface ICookieCollection : ICollection
+	public interface ICookieCollection : IAbstraction, ICollection
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="CookieCollection"/>.
 		/// It is not intended to be used directly. Use <see cref="CookieCollectionExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		CookieCollection UnsafeConvert();
+		new CookieCollection UnsafeConvert();
 
 		/// <summary>Gets the <see cref="T:System.Net.Cookie" /> with a specific name from a <see cref="T:System.Net.CookieCollection" />.</summary>
 		/// <returns>The <see cref="T:System.Net.Cookie" /> with a specific name from a <see cref="T:System.Net.CookieCollection" />.</returns>

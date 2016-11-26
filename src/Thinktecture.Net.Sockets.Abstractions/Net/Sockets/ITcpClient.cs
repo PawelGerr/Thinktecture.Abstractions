@@ -9,14 +9,14 @@ namespace Thinktecture.Net.Sockets
 	/// <summary>
 	/// Provides client connections for TCP network services.
 	/// </summary>
-	public interface ITcpClient : IDisposable
+	public interface ITcpClient : IAbstraction, IDisposable
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="TcpClient"/>.
 		/// It is not intended to be used directly. Use <see cref="TcpClientExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		TcpClient UnsafeConvert();
+		new TcpClient UnsafeConvert();
 
 		/// <summary>
 		/// Gets the amount of data that has been received from the network and is available to be read.

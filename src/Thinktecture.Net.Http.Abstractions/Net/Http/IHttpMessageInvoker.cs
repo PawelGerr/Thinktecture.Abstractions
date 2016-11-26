@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 namespace Thinktecture.Net.Http
 {
 	/// <summary>A specialty class that allows applications to call the <see cref="SendAsync(IHttpRequestMessage, CancellationToken)" /> method on an Http handler chain. </summary>
-	public interface IHttpMessageInvoker : IDisposable
+	public interface IHttpMessageInvoker : IAbstraction, IDisposable
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="HttpMessageInvoker"/>.
 		/// It is not intended to be used directly. Use <see cref="HttpMessageInvokerExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		HttpMessageInvoker UnsafeConvert();
+		new HttpMessageInvoker UnsafeConvert();
 
 		/// <summary>Send an HTTP request as an asynchronous operation.</summary>
 		/// <returns>Returns <see cref="T:System.Threading.Tasks.Task`1" />.The task object representing the asynchronous operation.</returns>

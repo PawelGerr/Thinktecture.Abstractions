@@ -7,14 +7,14 @@ using System.Net.Sockets;
 namespace Thinktecture.Net.Sockets
 {
 	/// <summary>Implements the Berkeley sockets interface.</summary>
-	public interface ISocket : IDisposable
+	public interface ISocket : IAbstraction, IDisposable
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="Socket"/>.
 		/// It is not intended to be used directly. Use <see cref="SocketExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		Socket UnsafeConvert();
+		new Socket UnsafeConvert();
 
 		/// <summary>Gets the address family of the <see cref="T:System.Net.Sockets.Socket" />.</summary>
 		/// <returns>One of the <see cref="T:System.Net.Sockets.AddressFamily" /> values.</returns>
@@ -683,7 +683,7 @@ namespace Thinktecture.Net.Sockets
 		/// <returns>
 		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation. 
 		/// Returns false if the I/O operation completed synchronously.In this case, The SocketAsyncEventArgs.Completed event on the e parameter will not be raised and the e object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.
-	    /// </returns>
+		/// </returns>
 		bool SendPacketsAsync(SocketAsyncEventArgs e);
 
 		/// <summary>
@@ -693,7 +693,7 @@ namespace Thinktecture.Net.Sockets
 		/// <returns>
 		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation. 
 		/// Returns false if the I/O operation completed synchronously.In this case, The SocketAsyncEventArgs.Completed event on the e parameter will not be raised and the e object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.
-	    /// </returns>
+		/// </returns>
 		bool SendPacketsAsync(ISocketAsyncEventArgs e);
 
 		/// <summary>

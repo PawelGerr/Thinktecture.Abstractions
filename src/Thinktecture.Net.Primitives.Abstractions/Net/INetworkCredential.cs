@@ -5,9 +5,9 @@ using System.Net;
 namespace Thinktecture.Net
 {
 	/// <summary>Provides credentials for password-based authentication schemes such as basic, digest, NTLM, and Kerberos authentication.</summary>
-	public interface INetworkCredential : ICredentials
+	public interface INetworkCredential : IAbstraction, ICredentials
 #if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
-		, ICredentialsByHost
+			, ICredentialsByHost
 #endif
 	{
 		/// <summary>
@@ -15,7 +15,7 @@ namespace Thinktecture.Net
 		/// It is not intended to be used directly. Use <see cref="NetworkCredentialExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		NetworkCredential UnsafeConvert();
+		new NetworkCredential UnsafeConvert();
 
 		/// <summary>Gets or sets the domain or computer name that verifies the credentials.</summary>
 		/// <returns>The name of the domain associated with the credentials.</returns>
@@ -37,7 +37,7 @@ namespace Thinktecture.Net
 		///   <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		string UserName { get; set; }
-		
+
 		/// <summary>Returns an instance of the <see cref="T:System.Net.NetworkCredential" /> class for the specified Uniform Resource Identifier (URI) and authentication type.</summary>
 		/// <returns>A <see cref="T:System.Net.NetworkCredential" /> object.</returns>
 		/// <param name="uri">The URI that the client provides authentication for. </param>

@@ -6,14 +6,14 @@ namespace Thinktecture.Net.Sockets
 	/// <summary>
 	/// Specifies whether a Socket will remain connected after a call to the Close or Close methods and the length of time it will remain connected, if data remains to be sent.
 	/// </summary>
-	public interface ILingerOption
+	public interface ILingerOption : IAbstraction
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="LingerOption"/>.
 		/// It is not intended to be used directly. Use <see cref="LingerOptionExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		LingerOption UnsafeConvert();
+		new LingerOption UnsafeConvert();
 
 		/// <summary>
 		/// Gets or sets a value that indicates whether to linger after the Socket is closed.

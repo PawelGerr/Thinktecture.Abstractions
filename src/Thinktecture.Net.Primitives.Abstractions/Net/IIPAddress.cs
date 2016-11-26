@@ -8,14 +8,14 @@ namespace Thinktecture.Net
 {
 	/// <summary>Provides an Internet Protocol (IP) address.</summary>
 	// ReSharper disable once InconsistentNaming
-	public interface IIPAddress
+	public interface IIPAddress : IAbstraction
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="IPAddress"/>.
 		/// It is not intended to be used directly. Use <see cref="IPAddressExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		IPAddress UnsafeConvert();
+		new IPAddress UnsafeConvert();
 
 		/// <summary>Gets the address family of the IP address.</summary>
 		/// <returns>Returns <see cref="F:System.Net.Sockets.AddressFamily.InterNetwork" /> for IPv4 or <see cref="F:System.Net.Sockets.AddressFamily.InterNetworkV6" /> for IPv6.</returns>
@@ -47,11 +47,11 @@ namespace Thinktecture.Net
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <see name="ScopeId" /> &lt; 0- or -<see name="ScopeId" /> &gt; 0x00000000FFFFFFFF  </exception>
 		long ScopeId { get; set; }
-		
+
 		/// <summary>Provides a copy of the <see cref="T:System.Net.IPAddress" /> as an array of bytes.</summary>
 		/// <returns>A <see cref="T:System.Byte" /> array.</returns>
 		byte[] GetAddressBytes();
-		
+
 		/// <summary>Maps the <see cref="T:System.Net.IPAddress" /> object to an IPv4 address.</summary>
 		/// <returns>Returns <see cref="T:System.Net.IPAddress" />.An IPv4 address.</returns>
 		IIPAddress MapToIPv4();

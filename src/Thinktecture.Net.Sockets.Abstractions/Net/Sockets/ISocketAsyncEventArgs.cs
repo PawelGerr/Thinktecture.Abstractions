@@ -86,7 +86,7 @@ namespace Thinktecture.Net.Sockets
 
 		/// <summary>The event used to complete an asynchronous operation.</summary>
 		event EventHandler<ISocketAsyncEventArgs> Completed;
-		
+
 		/// <summary>Sets the data buffer to use with an asynchronous socket method.</summary>
 		/// <param name="buffer">The data buffer to use with an asynchronous socket method.</param>
 		/// <param name="offset">The offset, in bytes, in the data buffer where the operation starts.</param>

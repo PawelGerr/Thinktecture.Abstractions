@@ -7,14 +7,14 @@ namespace Thinktecture.Net.Sockets
 	/// <summary>
 	/// Represents an element in a SendPacketsElement array.
 	/// </summary>
-	public interface ISendPacketsElement
+	public interface ISendPacketsElement : IAbstraction
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="SendPacketsElement"/>.
 		/// It is not intended to be used directly. Use <see cref="SendPacketsElementExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		SendPacketsElement UnsafeConvert();
+		new SendPacketsElement UnsafeConvert();
 
 		/// <summary>
 		/// Gets the buffer to be sent if the SendPacketsElement class was initialized with a buffer parameter.

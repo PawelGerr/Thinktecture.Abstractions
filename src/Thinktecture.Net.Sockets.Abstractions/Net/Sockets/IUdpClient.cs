@@ -9,14 +9,14 @@ namespace Thinktecture.Net.Sockets
 	/// <summary>
 	/// Provides User Datagram Protocol (UDP) network services.
 	/// </summary>
-	public interface IUdpClient : IDisposable
+	public interface IUdpClient : IAbstraction, IDisposable
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="UdpClient"/>.
 		/// It is not intended to be used directly. Use <see cref="UdpClientExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		UdpClient UnsafeConvert();
+		new UdpClient UnsafeConvert();
 
 		/// <summary>
 		/// Gets the amount of data received from the network that is available to read.

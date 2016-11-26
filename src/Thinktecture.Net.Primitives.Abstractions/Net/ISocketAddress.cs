@@ -7,14 +7,14 @@ using System.Net.Sockets;
 namespace Thinktecture.Net
 {
 	/// <summary>Stores serialized information from <see cref="T:System.Net.EndPoint" /> derived classes.</summary>
-	public interface ISocketAddress
+	public interface ISocketAddress : IAbstraction
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="SocketAddress"/>.
 		/// It is not intended to be used directly. Use <see cref="SocketAddressExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		SocketAddress UnsafeConvert();
+		new SocketAddress UnsafeConvert();
 
 		/// <summary>Gets the <see cref="T:System.Net.Sockets.AddressFamily" /> enumerated value of the current <see cref="T:System.Net.SocketAddress" />.</summary>
 		/// <returns>One of the <see cref="T:System.Net.Sockets.AddressFamily" /> enumerated values.</returns>

@@ -5,14 +5,14 @@ using System.Net.Http.Headers;
 namespace Thinktecture.Net.Http.Headers
 {
 	/// <summary>A collection of headers and their values as defined in RFC 2616.</summary>
-	public interface IHttpHeaders : IEnumerable<KeyValuePair<string, IEnumerable<string>>>
+	public interface IHttpHeaders : IAbstraction, IEnumerable<KeyValuePair<string, IEnumerable<string>>>
 	{
 		/// <summary>
 		/// Gets inner instance of <see cref="HttpHeaders"/>.
 		/// It is not intended to be used directly. Use <see cref="HttpHeadersExtensions.ToImplementation"/> instead.
 		/// </summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		HttpHeaders UnsafeConvert();
+		new HttpHeaders UnsafeConvert();
 
 		/// <summary>Adds the specified header and its value into the <see cref="T:System.Net.Http.Headers.HttpHeaders" /> collection.</summary>
 		/// <param name="name">The header to add to the collection.</param>
