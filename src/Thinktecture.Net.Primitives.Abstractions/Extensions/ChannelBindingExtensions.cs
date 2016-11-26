@@ -1,0 +1,36 @@
+#if NETSTANDARD1_3 || NET45 || NET46
+
+using System.Security.Authentication.ExtendedProtection;
+using Thinktecture.Security.Authentication.ExtendedProtection;
+using Thinktecture.Security.Authentication.ExtendedProtection.Adapters;
+
+namespace Thinktecture
+{
+	/// <summary>
+	/// Extensions for <see cref="ChannelBinding"/>.
+	/// </summary>
+	public static class ChannelBindingExtensions
+	{
+		/// <summary>
+		/// Converts provided binding to <see cref="IChannelBinding"/>.
+		/// </summary>
+		/// <param name="binding">Binding to convert.</param>
+		/// <returns>Converted binding.</returns>
+		public static IChannelBinding ToInterface(this ChannelBinding binding)
+		{
+			return (binding == null) ? null : new ChannelBindingAdapter(binding);
+		}
+
+		/// <summary>
+		/// Converts provided bidning to <see cref="ChannelBinding"/>.
+		/// </summary>
+		/// <param name="binding">Binding to convert.</param>
+		/// <returns>Converted binding.</returns>
+		public static ChannelBinding ToImplementation(this IChannelBinding binding)
+		{
+			return binding?.UnsafeConvert();
+		}
+	}
+}
+
+#endif

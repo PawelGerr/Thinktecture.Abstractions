@@ -1,0 +1,45 @@
+{
+	"version": "1.0.0-*",
+	"title": "Thinktecture.Net.Http.Abstractions",
+	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
+	"description": "Provides interfaces for types in System.Net.Http: HttpClient, HttpContent, HttpRequestMessage, HttpResponseMessage, HttpHeaders, DelegatingHandler, HttpClientHandler, HttpMessageHandler, HttpMessageInvoker, MessageProcessingHandler, MultipartContent, MultipartFormDataContent, HttpContentHeaders, HttpRequestHeaders, HttpResponseHeaders.",
+	"authors": ["Pawel Gerr"],
+	"packOptions": {
+		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
+		"iconUrl": "http://thinktecture.com/images/Logo_T_Nontransparent.png",
+		"tags": ["http", "abstraction"],
+		"licenseUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md",
+		"repository": {
+			"type": "git",
+			"url": "git@github.com:PawelGerr/Thinktecture.Abstractions.git"
+		}
+	},
+	"buildOptions": {
+		"xmlDoc": true
+	},
+	"frameworks": {
+		"netstandard1.1": {
+			"dependencies": {
+				"System.Net.Http": "4.3.0"
+			}
+		},
+		"net45": {
+			"frameworkAssemblies": {
+				"System.IO": "",
+				"System.Net.Http": "",
+				"System.Net.Primitives": ""
+			}
+		},
+		"net46": {
+			"frameworkAssemblies": {
+				"System.IO": "",
+				"System.Net.Http": "",
+				"System.Net.Primitives": ""
+			}
+		}
+	},
+	"dependencies": {
+		"Thinktecture.IO.Abstractions": "1.0.0-*",
+		"Thinktecture.Net.Primitives.Abstractions": "1.0.0-*"
+	}
+}
