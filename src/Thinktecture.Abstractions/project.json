@@ -1,4 +1,4 @@
-﻿{
+{
 	"version": "1.0.0-*",
 	"title": "Thinktecture.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
@@ -14,15 +14,14 @@
 			"url": "git@github.com:PawelGerr/Thinktecture.Abstractions.git"
 		}
 	},
-
 	"buildOptions": {
 		"xmlDoc": true
 	},
-
 	"frameworks": {
 		"netstandard1.0": {
 			"dependencies": {
-				"System.Runtime": "4.3.0"
+				"System.Runtime": "4.3.0",
+				"System.Collections": "4.3.0"
 			}
 		},
 		"net45": {},

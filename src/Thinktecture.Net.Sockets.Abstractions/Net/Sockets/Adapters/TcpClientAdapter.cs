@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using Thinktecture.Extensions;
 
 namespace Thinktecture.Net.Sockets.Adapters
 {
@@ -133,19 +134,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public Task ConnectAsync(IIPAddress[] addresses, int port)
 		{
-			IPAddress[] ips = null;
-
-			if (addresses != null)
-			{
-				ips = new IPAddress[addresses.Length];
-
-				for (int i = 0; i < addresses.Length; i++)
-				{
-					ips[i] = addresses[i].ToImplementation();
-				}
-			}
-
-			return _client.ConnectAsync(ips, port);
+			return _client.ConnectAsync(addresses.ToImplementation<IIPAddress, IPAddress>(), port);
 		}
 
 		/// <inheritdoc />

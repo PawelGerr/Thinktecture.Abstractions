@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
+using Thinktecture.Extensions;
 
 namespace Thinktecture.Net.Sockets.Adapters
 {
@@ -11,7 +12,6 @@ namespace Thinktecture.Net.Sockets.Adapters
 	public class SocketAdapter : AbstractionAdapter, ISocket
 	{
 		private readonly Socket _socket;
-
 
 		/// <summary>Indicates whether the underlying operating system and network adaptors support Internet Protocol version 4 (IPv4).</summary>
 		/// <returns>true if the operating system and network adaptors support the IPv4 protocol; otherwise, false.</returns>
@@ -280,19 +280,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public void Connect(IIPAddress[] addresses, int port)
 		{
-			IPAddress[] temp = null;
-
-			if (addresses != null)
-			{
-				temp = new IPAddress[addresses.Length];
-
-				for (var i = 0; i < addresses.Length; i++)
-				{
-					temp[i] = addresses[i].ToImplementation();
-				}
-			}
-
-			_socket.Connect(temp, port);
+			_socket.Connect(addresses.ToImplementation<IIPAddress, IPAddress>(), port);
 		}
 
 		/// <inheritdoc />

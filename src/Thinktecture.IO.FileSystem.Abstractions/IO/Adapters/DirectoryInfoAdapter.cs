@@ -126,55 +126,55 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		public IDirectoryInfo[] GetDirectories()
 		{
-			return Convert(_instance.GetDirectories());
+			return _instance.GetDirectories().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo[] GetDirectories(string searchPattern)
 		{
-			return Convert(_instance.GetDirectories(searchPattern));
+			return _instance.GetDirectories(searchPattern).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo[] GetDirectories(string searchPattern, SearchOption searchOption)
 		{
-			return Convert(_instance.GetDirectories(searchPattern, searchOption));
+			return _instance.GetDirectories(searchPattern, searchOption).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles()
 		{
-			return Convert(_instance.GetFiles());
+			return _instance.GetFiles().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles(string searchPattern)
 		{
-			return Convert(_instance.GetFiles(searchPattern));
+			return _instance.GetFiles(searchPattern).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles(string searchPattern, SearchOption searchOption)
 		{
-			return Convert(_instance.GetFiles(searchPattern, searchOption));
+			return _instance.GetFiles(searchPattern, searchOption).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileSystemInfo[] GetFileSystemInfos()
 		{
-			return Convert(_instance.GetFileSystemInfos());
+			return _instance.GetFileSystemInfos().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileSystemInfo[] GetFileSystemInfos(string searchPattern)
 		{
-			return Convert(_instance.GetFileSystemInfos(searchPattern));
+			return _instance.GetFileSystemInfos(searchPattern).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileSystemInfo[] GetFileSystemInfos(string searchPattern, SearchOption searchOption)
 		{
-			return Convert(_instance.GetFileSystemInfos(searchPattern, searchOption));
+			return _instance.GetFileSystemInfos(searchPattern, searchOption).ToInterface();
 		}
 
 		/// <inheritdoc />
@@ -205,42 +205,6 @@ namespace Thinktecture.IO.Adapters
 			{
 				yield return info.ToInterface();
 			}
-		}
-
-		private IDirectoryInfo[] Convert(DirectoryInfo[] infos)
-		{
-			var interfaces = new IDirectoryInfo[infos.Length];
-
-			for (var i = 0; i < infos.Length; i++)
-			{
-				interfaces[i] = infos[i].ToInterface();
-			}
-
-			return interfaces;
-		}
-
-		private IFileInfo[] Convert(FileInfo[] infos)
-		{
-			var interfaces = new IFileInfo[infos.Length];
-
-			for (var i = 0; i < infos.Length; i++)
-			{
-				interfaces[i] = infos[i].ToInterface();
-			}
-
-			return interfaces;
-		}
-
-		private IFileSystemInfo[] Convert(FileSystemInfo[] infos)
-		{
-			var interfaces = new IFileSystemInfo[infos.Length];
-
-			for (var i = 0; i < infos.Length; i++)
-			{
-				interfaces[i] = infos[i].ToInterface();
-			}
-
-			return interfaces;
 		}
 	}
 }

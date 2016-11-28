@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.Sockets;
 using Thinktecture.Adapters;
+using Thinktecture.Extensions;
 
 namespace Thinktecture.Net.Sockets.Adapters
 {
@@ -10,7 +11,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 	public class SocketAsyncEventArgsAdapter : EventArgsAdapter, ISocketAsyncEventArgs
 	{
 		private readonly SocketAsyncEventArgs _args;
-		private readonly Dictionary<EventHandler<ISocketAsyncEventArgs>, EventHandlerContext> _completedHandlerLookup;
+		private readonly AbstractionEventHandlerLookup<ISocketAsyncEventArgs, SocketAsyncEventArgs> _completedLookup;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
@@ -67,38 +68,8 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public ISendPacketsElement[] SendPacketsElements
 		{
-			get
-			{
-				if (_args.SendPacketsElements == null)
-					return null;
-
-				var elements = new ISendPacketsElement[_args.SendPacketsElements.Length];
-
-				for (var i = 0; i < _args.SendPacketsElements.Length; i++)
-				{
-					elements[i] = _args.SendPacketsElements[i].ToInterface();
-				}
-
-				return elements;
-			}
-			set
-			{
-				if (value == null)
-				{
-					_args.SendPacketsElements = null;
-				}
-				else
-				{
-					var elements = new SendPacketsElement[_args.SendPacketsElements.Length];
-
-					for (var i = 0; i < value.Length; i++)
-					{
-						elements[i] = value[i].ToImplementation();
-					}
-
-					_args.SendPacketsElements = elements;
-				}
-			}
+			get { return _args.SendPacketsElements.ToInterface(); }
+			set { _args.SendPacketsElements = value.ToImplementation<ISendPacketsElement, SendPacketsElement>(); }
 		}
 
 		/// <inheritdoc />
@@ -132,36 +103,8 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public event EventHandler<ISocketAsyncEventArgs> Completed
 		{
-			add
-			{
-				if (value != null)
-				{
-					EventHandlerContext ctx;
-					if (!_completedHandlerLookup.TryGetValue(value, out ctx))
-					{
-						ctx = new EventHandlerContext((sender, args) => value(sender, args.ToInterface()));
-						_completedHandlerLookup.Add(value, ctx);
-					}
-
-					_args.Completed += ctx.Handler;
-					ctx.Count++;
-				}
-			}
-			remove
-			{
-				if (value != null)
-				{
-					EventHandlerContext ctx;
-					if (_completedHandlerLookup.TryGetValue(value, out ctx))
-					{
-						_args.Completed -= ctx.Handler;
-						ctx.Count--;
-
-						if (ctx.Count <= 0)
-							_completedHandlerLookup.Remove(value);
-					}
-				}
-			}
+			add { _args.Completed += _completedLookup.MapForAttachment(value, args => args.ToInterface()); }
+			remove { _args.Completed -= _completedLookup.TryMapForDetachment(value); }
 		}
 
 		/// <summary>
@@ -175,7 +118,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 				throw new ArgumentNullException(nameof(args));
 
 			_args = args;
-			_completedHandlerLookup = new Dictionary<EventHandler<ISocketAsyncEventArgs>, EventHandlerContext>(new InstanceEqualityComparer());
+			_completedLookup = new AbstractionEventHandlerLookup<ISocketAsyncEventArgs, SocketAsyncEventArgs>();
 		}
 
 		/// <inheritdoc />
@@ -194,30 +137,6 @@ namespace Thinktecture.Net.Sockets.Adapters
 		public void Dispose()
 		{
 			_args.Dispose();
-		}
-
-		private class EventHandlerContext
-		{
-			public EventHandler<SocketAsyncEventArgs> Handler { get; }
-			public int Count { get; set; }
-
-			public EventHandlerContext(EventHandler<SocketAsyncEventArgs> handler)
-			{
-				Handler = handler;
-			}
-		}
-
-		private class InstanceEqualityComparer : IEqualityComparer<EventHandler<ISocketAsyncEventArgs>>
-		{
-			public bool Equals(EventHandler<ISocketAsyncEventArgs> x, EventHandler<ISocketAsyncEventArgs> y)
-			{
-				return ReferenceEquals(x, y);
-			}
-
-			public int GetHashCode(EventHandler<ISocketAsyncEventArgs> obj)
-			{
-				return obj?.GetHashCode() ?? 0;
-			}
 		}
 	}
 }
