@@ -1,5 +1,5 @@
 {
-	"version": "1.0.0-*",
+	"version": "1.1.0-*",
 	"title": "Thinktecture.Net.Sockets.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
 	"description": "Provides interfaces for types in System.Net.Sockets: ",
@@ -7,7 +7,7 @@
 	"packOptions": {
 		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
 		"iconUrl": "http://thinktecture.com/images/Logo_T_Nontransparent.png",
-		"tags": ["io", "abstraction"],
+		"tags": ["sockets", "abstraction"],
 		"licenseUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md",
 		"repository": {
 			"type": "git",
@@ -20,8 +20,8 @@
 	},
 
 	"dependencies": {
-		"Thinktecture.IO.Abstractions": "1.0.0-*",
-		"Thinktecture.Net.Primitives.Abstractions": "1.0.0-*"
+		"Thinktecture.IO.Abstractions": "1.1.0-*",
+		"Thinktecture.Net.Primitives.Abstractions": "1.1.0-*"
 	},
 
 	"frameworks": {

@@ -1,12 +1,12 @@
 {
-	"version": "1.0.0-*",
+	"version": "1.1.0-*",
 
 	"buildOptions": {
 		"emitEntryPoint": true
 	},
 
 	"dependencies": {
-		"Thinktecture.IO.FileSystem.Abstractions": "1.0.0-*"
+		"Thinktecture.IO.FileSystem.Abstractions": "1.1.0-*"
 	},
 
 	"frameworks": {

@@ -62,6 +62,7 @@ namespace Thinktecture.Abstractions.Tests.AbstractionEventHandlerLookupTests
 			}
 		}
 
+		// ReSharper disable once ClassNeverInstantiated.Local
 		private class TestImplementation
 		{
 		}
