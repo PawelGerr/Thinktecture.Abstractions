@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (element == null) ? null : new SendPacketsElementAdapter(element);
 		}
-
-		/// <summary>
-		/// Converts provided element to <see cref="SendPacketsElement"/>.
-		/// </summary>
-		/// <param name="element">Element to convert.</param>
-		/// <returns>Converted element.</returns>
-		public static SendPacketsElement ToImplementation(this ISendPacketsElement element)
-		{
-			return element?.UnsafeConvert();
-		}
 	}
 }

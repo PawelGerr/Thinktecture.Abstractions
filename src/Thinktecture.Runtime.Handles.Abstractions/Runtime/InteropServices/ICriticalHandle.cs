@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 namespace Thinktecture.Runtime.InteropServices
@@ -7,15 +6,8 @@ namespace Thinktecture.Runtime.InteropServices
 	/// <summary>
 	/// Represents a wrapper class for handle resources.
 	/// </summary>
-	public interface ICriticalHandle : IAbstraction, IDisposable
+	public interface ICriticalHandle : IAbstraction<CriticalHandle>, IDisposable
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="CriticalHandle"/>.
-		/// It is not intended to be used directly. Use <see cref="CriticalHandleExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new CriticalHandle UnsafeConvert();
-
 		/// <summary>Gets a value indicating whether the handle is closed.</summary>
 		/// <returns>true if the handle is closed; otherwise, false.</returns>
 		/// <PermissionSet>

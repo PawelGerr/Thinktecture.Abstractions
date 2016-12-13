@@ -13,10 +13,7 @@ namespace Thinktecture.Net.Http.Adapters
 	{
 		private readonly HttpClient _client;
 
-		/// <summary>
-		/// Gets inner instance of <see cref="HttpClient"/>.
-		/// It is not intended to be used directly. Use <see cref="HttpClientExtensions.ToImplementation"/> instead.
-		/// </summary>
+		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new HttpClient UnsafeConvert()
 		{

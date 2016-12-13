@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 
 namespace Thinktecture
 {
@@ -7,15 +6,8 @@ namespace Thinktecture
 	/// Represents a pseudo-random number generator, which is a device that produces a sequence of numbers that meet certain statistical requirements for randomness.To browse the .NET Framework source code for this type, see the Reference Source.
 	/// </summary>
 	/// <filterpriority>1</filterpriority>
-	public interface IRandom : IAbstraction
+	public interface IRandom : IAbstraction<Random>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="Random"/>.
-		/// It is not intended to be used directly. Use <see cref="RandomExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new Random UnsafeConvert();
-
 		/// <summary>Returns a non-negative random integer.</summary>
 		/// <returns>A 32-bit signed integer that is greater than or equal to 0 and less than <see cref="F:System.Int32.MaxValue" />.</returns>
 		/// <filterpriority>1</filterpriority>

@@ -20,16 +20,6 @@ namespace Thinktecture
 		{
 			return (context == null) ? null : new TransportContextAdapter(context);
 		}
-
-		/// <summary>
-		/// Converts provided context to <see cref="TransportContext"/>.
-		/// </summary>
-		/// <param name="context">Context to convert.</param>
-		/// <returns>Converted context.</returns>
-		public static TransportContext ToImplementation(this ITransportContext context)
-		{
-			return context?.UnsafeConvert();
-		}
 	}
 }
 

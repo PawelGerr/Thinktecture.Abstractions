@@ -1,19 +1,11 @@
-﻿using System.ComponentModel;
-using System.Text;
+﻿using System.Text;
 
 namespace Thinktecture.Text
 {
 	/// <summary>Converts a sequence of encoded bytes into a set of characters.</summary>
 	/// <filterpriority>1</filterpriority>
-	public interface IDecoder : IAbstraction
+	public interface IDecoder : IAbstraction<Decoder>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="Decoder"/>.
-		/// It is not intended to be used directly. Use <see cref="DecoderExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new Decoder UnsafeConvert();
-
 		/// <summary>Converts an array of encoded bytes to UTF-16 encoded characters and stores the result in a character array.</summary>
 		/// <param name="bytes">A byte array to convert.</param>
 		/// <param name="byteIndex">The first element of <paramref name="bytes" /> to convert.</param>

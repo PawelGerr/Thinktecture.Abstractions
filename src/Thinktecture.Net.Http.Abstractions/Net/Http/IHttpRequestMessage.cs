@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Net.Http;
 using Thinktecture.Net.Http.Headers;
 
 namespace Thinktecture.Net.Http
 {
 	/// <summary>Represents a HTTP request message.</summary>
-	public interface IHttpRequestMessage : IAbstraction, IDisposable
+	public interface IHttpRequestMessage : IAbstraction<HttpRequestMessage>, IDisposable
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="HttpRequestMessage"/>.
-		/// It is not intended to be used directly. Use <see cref="HttpRequestMessageExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new HttpRequestMessage UnsafeConvert();
-
 		/// <summary>Gets or sets the HTTP message version.</summary>
 		/// <returns>Returns <see cref="T:System.Version" />.The HTTP message version. The default is 1.1.</returns>
 		Version Version { get; set; }

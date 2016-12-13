@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (cookie == null) ? null : new CookieAdapter(cookie);
 		}
-
-		/// <summary>
-		/// Converts provided cookie to <see cref="Cookie"/>.
-		/// </summary>
-		/// <param name="cookie">Cookie to convert.</param>
-		/// <returns>Converted cookie.</returns>
-		public static Cookie ToImplementation(this ICookie cookie)
-		{
-			return cookie?.UnsafeConvert();
-		}
 	}
 }

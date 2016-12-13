@@ -21,16 +21,6 @@ namespace Thinktecture
 		{
 			return (cache == null) ? null : new CredentialCacheAdapter(cache);
 		}
-
-		/// <summary>
-		/// Converts provided cache to <see cref="CredentialCache"/>.
-		/// </summary>
-		/// <param name="cache">Cache to convert.</param>
-		/// <returns>Converted cache.</returns>
-		public static CredentialCache ToImplementation(this ICredentialCache cache)
-		{
-			return cache?.UnsafeConvert();
-		}
 	}
 }
 

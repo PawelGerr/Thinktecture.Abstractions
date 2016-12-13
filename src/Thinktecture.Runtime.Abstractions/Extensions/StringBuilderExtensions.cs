@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using Thinktecture.Text;
 using Thinktecture.Text.Adapters;
 
@@ -18,16 +17,6 @@ namespace Thinktecture
 		public static IStringBuilder ToInterface(this StringBuilder builder)
 		{
 			return (builder == null) ? null : new StringBuilderAdapter(builder);
-		}
-
-		/// <summary>
-		/// Converts provided <see cref="IStringBuilder"/> to <see cref="StringBuilder"/>.
-		/// </summary>
-		/// <param name="builder"><see cref="IStringBuilder"/> to convert.</param>
-		/// <returns>An instance of <see cref="StringBuilder"/>.</returns>
-		public static StringBuilder ToImplementation(this IStringBuilder builder)
-		{
-			return builder?.UnsafeConvert();
 		}
 	}
 }

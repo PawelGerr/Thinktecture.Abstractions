@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
-using Thinktecture.Extensions;
 
 namespace Thinktecture.Net.Sockets.Adapters
 {
@@ -228,7 +227,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool AcceptAsync(ISocketAsyncEventArgs e)
 		{
-			return _socket.AcceptAsync(e.ToImplementation());
+			return _socket.AcceptAsync(e.ToImplementation<SocketAsyncEventArgs>());
 		}
 
 		/// <inheritdoc />
@@ -298,7 +297,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool ConnectAsync(ISocketAsyncEventArgs e)
 		{
-			return _socket.ConnectAsync(e.ToImplementation());
+			return _socket.ConnectAsync(e.ToImplementation<SocketAsyncEventArgs>());
 		}
 
 		/// <inheritdoc />
@@ -406,7 +405,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool ReceiveAsync(ISocketAsyncEventArgs e)
 		{
-			return _socket.ReceiveAsync(e.ToImplementation());
+			return _socket.ReceiveAsync(e.ToImplementation<SocketAsyncEventArgs>());
 		}
 
 		/// <inheritdoc />
@@ -498,7 +497,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool ReceiveFromAsync(ISocketAsyncEventArgs e)
 		{
-			return _socket.ReceiveFromAsync(e.ToImplementation());
+			return _socket.ReceiveFromAsync(e.ToImplementation<SocketAsyncEventArgs>());
 		}
 
 		/// <inheritdoc />
@@ -530,7 +529,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool ReceiveMessageFromAsync(ISocketAsyncEventArgs e)
 		{
-			return _socket.ReceiveMessageFromAsync(e.ToImplementation());
+			return _socket.ReceiveMessageFromAsync(e.ToImplementation<SocketAsyncEventArgs>());
 		}
 
 		/// <inheritdoc />
@@ -590,7 +589,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool SendAsync(ISocketAsyncEventArgs e)
 		{
-			return _socket.SendAsync(e.ToImplementation());
+			return _socket.SendAsync(e.ToImplementation<SocketAsyncEventArgs>());
 		}
 
 		/// <inheritdoc />
@@ -602,7 +601,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool SendPacketsAsync(ISocketAsyncEventArgs e)
 		{
-			return _socket.SendPacketsAsync(e.ToImplementation());
+			return _socket.SendPacketsAsync(e.ToImplementation<SocketAsyncEventArgs>());
 		}
 
 		/// <inheritdoc />
@@ -670,7 +669,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool SendToAsync(ISocketAsyncEventArgs e)
 		{
-			return _socket.SendToAsync(e.ToImplementation());
+			return _socket.SendToAsync(e.ToImplementation<SocketAsyncEventArgs>());
 		}
 
 		/// <inheritdoc />

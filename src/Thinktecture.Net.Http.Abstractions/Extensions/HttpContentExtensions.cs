@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (content == null) ? null : new HttpContentAdapter(content);
 		}
-
-		/// <summary>
-		/// Converts provided content to <see cref="HttpContent"/>.
-		/// </summary>
-		/// <param name="content">Content to convert.</param>
-		/// <returns>Converted content.</returns>
-		public static HttpContent ToImplementation(this IHttpContent content)
-		{
-			return content?.UnsafeConvert();
-		}
 	}
 }

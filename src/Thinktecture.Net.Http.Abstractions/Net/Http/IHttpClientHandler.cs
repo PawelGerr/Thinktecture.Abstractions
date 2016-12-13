@@ -1,19 +1,12 @@
-﻿using System.ComponentModel;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 
 namespace Thinktecture.Net.Http
 {
 	/// <summary>The default message handler used by <see cref="T:System.Net.Http.HttpClient" />.  </summary>
-	public interface IHttpClientHandler : IHttpMessageHandler
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
+	public interface IHttpClientHandler : IHttpMessageHandler, IAbstraction<HttpClientHandler>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="HttpClientHandler"/>.
-		/// It is not intended to be used directly. Use <see cref="HttpClientHandlerExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new HttpClientHandler UnsafeConvert();
-
 		/// <summary>Gets a value that indicates whether the handler supports automatic response content decompression.</summary>
 		/// <returns>Returns <see cref="T:System.Boolean" />.true if the if the handler supports automatic response content decompression; otherwise false. The default value is true.</returns>
 		bool SupportsAutomaticDecompression { get; }

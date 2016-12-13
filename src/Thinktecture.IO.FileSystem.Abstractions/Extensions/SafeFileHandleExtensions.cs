@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Win32.SafeHandles;
+﻿using Microsoft.Win32.SafeHandles;
 using Thinktecture.Win32.SafeHandles;
 using Thinktecture.Win32.SafeHandles.Adapters;
 
@@ -18,16 +17,6 @@ namespace Thinktecture
 		public static ISafeFileHandle ToInterface(this SafeFileHandle handle)
 		{
 			return (handle == null) ? null : new SafeFileHandleAdapter(handle);
-		}
-
-		/// <summary>
-		/// Converts safe file handle to <see cref="SafeFileHandle"/>.
-		/// </summary>
-		/// <param name="handle">Safe file handle to convert.</param>
-		/// <returns>Converted safe file handle.</returns>
-		public static SafeFileHandle ToImplementation(this ISafeFileHandle handle)
-		{
-			return handle?.UnsafeConvert();
 		}
 	}
 }

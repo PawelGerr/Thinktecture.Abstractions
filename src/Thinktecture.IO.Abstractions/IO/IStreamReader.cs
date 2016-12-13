@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Thinktecture.Text;
 
 namespace Thinktecture.IO
@@ -10,15 +7,9 @@ namespace Thinktecture.IO
 	/// Implements a <see cref="T:System.IO.TextReader" /> that reads characters from a byte stream in a particular encoding.To browse the .NET Framework source code for this type, see the Reference Source.
 	/// </summary>
 	/// <filterpriority>1</filterpriority>
-	public interface IStreamReader : ITextReader
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
+	public interface IStreamReader : ITextReader, IAbstraction<StreamReader>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="StreamReader"/>.
-		/// It is not intended to be used directly. Use <see cref="StreamReaderExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new StreamReader UnsafeConvert();
-
 		/// <summary>Returns the underlying stream.</summary>
 		/// <returns>The underlying stream.</returns>
 		/// <filterpriority>2</filterpriority>

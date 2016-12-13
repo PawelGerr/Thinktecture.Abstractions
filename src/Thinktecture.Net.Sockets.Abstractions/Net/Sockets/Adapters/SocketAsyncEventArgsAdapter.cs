@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.Sockets;
 using Thinktecture.Adapters;
-using Thinktecture.Extensions;
 
 namespace Thinktecture.Net.Sockets.Adapters
 {

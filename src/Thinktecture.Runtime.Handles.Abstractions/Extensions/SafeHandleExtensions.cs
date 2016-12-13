@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using Thinktecture.Runtime.InteropServices;
 using Thinktecture.Runtime.InteropServices.Adapters;
 
@@ -18,16 +17,6 @@ namespace Thinktecture
 		public static ISafeHandle ToInterface(this SafeHandle handle)
 		{
 			return (handle == null) ? null : new SafeHandleAdapter(handle);
-		}
-		
-		/// <summary>
-		/// Converts safe handle to <see cref="SafeHandle"/>.
-		/// </summary>
-		/// <param name="handle"><see cref="ISafeHandle"/> to convert</param>
-		/// <returns>Instance of <see cref="SafeHandle"/>.</returns>
-		public static SafeHandle ToImplementation(this ISafeHandle handle)
-		{
-			return handle?.UnsafeConvert();
 		}
 	}
 }

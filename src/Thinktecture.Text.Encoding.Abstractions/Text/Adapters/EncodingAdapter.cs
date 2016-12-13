@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
@@ -196,12 +195,6 @@ namespace Thinktecture.Text.Adapters
 				throw new ArgumentNullException(nameof(encoding));
 
 			_instance = encoding;
-		}
-
-		/// <inheritdoc />
-		public Encoding ToImplementation()
-		{
-			return _instance;
 		}
 
 		/// <inheritdoc />

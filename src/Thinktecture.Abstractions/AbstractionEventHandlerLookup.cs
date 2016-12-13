@@ -8,7 +8,7 @@ namespace Thinktecture
 	/// Allow mapping of event handlers.
 	/// </summary>
 	public class AbstractionEventHandlerLookup<TAbstraction, TImplementation>
-		where TAbstraction : IAbstraction
+		where TAbstraction : IAbstraction<TImplementation>
 	{
 		private readonly Dictionary<EventHandler<TAbstraction>, AbstractionEventHandlerContext<TImplementation>> _lookup;
 

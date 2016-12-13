@@ -19,15 +19,5 @@ namespace Thinktecture
 		{
 			return (stream == null) ? null : new StreamAdapter(stream);
 		}
-		
-		/// <summary>
-		/// Converts provided stream to <see cref="Stream"/>.
-		/// </summary>
-		/// <param name="stream">Stream to convert.</param>
-		/// <returns>Converted stream.</returns>
-		public static Stream ToImplementation(this IStream stream)
-		{
-			return stream?.UnsafeConvert();
-		}
 	}
 }

@@ -7,14 +7,8 @@ using System.Net;
 namespace Thinktecture.Net
 {
 	/// <summary>Provides storage for multiple credentials.</summary>
-	public interface ICredentialCache : IAbstraction, IEnumerable, ICredentials, ICredentialsByHost
+	public interface ICredentialCache : IAbstraction<CredentialCache>, IEnumerable, ICredentials, ICredentialsByHost
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="CredentialCache"/>.
-		/// It is not intended to be used directly. Use <see cref="CredentialCacheExtensions.ToImplementation"/> instead.
-		/// </summary>
-		new CredentialCache UnsafeConvert();
-
 #pragma warning disable 1584, 1711, 1572, 1581, 1580, CS1734
 		/// <summary>Adds a <see cref="T:System.Net.NetworkCredential" /> instance for use with SMTP to the credential cache and associates it with a host computer, port, and authentication protocol. Credentials added using this method are valid for SMTP only. This method does not work for HTTP or FTP requests.</summary>
 		/// <param name="host">A <see cref="T:System.String" /> that identifies the host computer.</param>

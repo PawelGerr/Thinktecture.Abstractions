@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (socket == null) ? null : new UdpClientAdapter(socket);
 		}
-
-		/// <summary>
-		/// Converts provided client to <see cref="UdpClient"/>.
-		/// </summary>
-		/// <param name="socket">Client to convert.</param>
-		/// <returns>Converted client.</returns>
-		public static UdpClient ToImplementation(this IUdpClient socket)
-		{
-			return socket?.UnsafeConvert();
-		}
 	}
 }

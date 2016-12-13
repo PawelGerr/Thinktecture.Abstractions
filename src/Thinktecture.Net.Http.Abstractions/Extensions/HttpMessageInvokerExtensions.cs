@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (invoker == null) ? null : new HttpMessageInvokerAdapter(invoker);
 		}
-
-		/// <summary>
-		/// Converts provided invoker to <see cref="HttpMessageInvoker"/>.
-		/// </summary>
-		/// <param name="invoker">Invoker to convert.</param>
-		/// <returns>Converted invoker.</returns>
-		public static HttpMessageInvoker ToImplementation(this IHttpMessageInvoker invoker)
-		{
-			return invoker?.UnsafeConvert();
-		}
 	}
 }

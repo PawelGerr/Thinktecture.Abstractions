@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
@@ -9,15 +8,8 @@ namespace Thinktecture.Net.Sockets
 	/// <summary>
 	/// Provides User Datagram Protocol (UDP) network services.
 	/// </summary>
-	public interface IUdpClient : IAbstraction, IDisposable
+	public interface IUdpClient : IAbstraction<UdpClient>, IDisposable
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="UdpClient"/>.
-		/// It is not intended to be used directly. Use <see cref="UdpClientExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new UdpClient UnsafeConvert();
-
 		/// <summary>
 		/// Gets the amount of data received from the network that is available to read.
 		/// </summary>

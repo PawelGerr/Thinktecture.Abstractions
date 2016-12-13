@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (handler == null) ? null : new DelegatingHandlerAdapter(handler);
 		}
-
-		/// <summary>
-		/// Converts provided handler to <see cref="DelegatingHandler"/>.
-		/// </summary>
-		/// <param name="handler">Handler to convert.</param>
-		/// <returns>Converted handler.</returns>
-		public static DelegatingHandler ToImplementation(this IDelegatingHandler handler)
-		{
-			return handler?.UnsafeConvert();
-		}
 	}
 }

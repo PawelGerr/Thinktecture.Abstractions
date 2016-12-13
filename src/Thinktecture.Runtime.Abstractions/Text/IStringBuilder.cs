@@ -1,20 +1,12 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Text;
 
 namespace Thinktecture.Text
 {
 	/// <summary>Represents a mutable string of characters. This class cannot be inherited.To browse the .NET Framework source code for this type, see the Reference Source.</summary>
 	/// <filterpriority>1</filterpriority>
-	public interface IStringBuilder: IAbstraction
+	public interface IStringBuilder: IAbstraction<StringBuilder>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="StringBuilder"/>.
-		/// It is not intended to be used directly. Use <see cref="StringBuilderExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new StringBuilder UnsafeConvert();
-
 		/// <summary>Gets or sets the maximum number of characters that can be contained in the memory allocated by the current instance.</summary>
 		/// <returns>The maximum number of characters that can be contained in the memory allocated by the current instance. Its value can range from <see cref="P:System.Text.StringBuilder.Length" /> to <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </returns>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The value specified for a set operation is less than the current length of this instance.-or- The value specified for a set operation is greater than the maximum capacity. </exception>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
@@ -30,12 +29,6 @@ namespace Thinktecture.Text.Adapters
 				throw new ArgumentNullException(nameof(encoder));
 
 			_instance = encoder;
-		}
-
-		/// <inheritdoc />
-		public Encoder ToImplementation()
-		{
-			return _instance;
 		}
 
 		/// <inheritdoc />

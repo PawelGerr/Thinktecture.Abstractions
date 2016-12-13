@@ -1,19 +1,11 @@
-﻿using System.ComponentModel;
-using System.Text;
+﻿using System.Text;
 
 namespace Thinktecture.Text
 {
 	/// <summary>Converts a set of characters into a sequence of bytes.</summary>
 	/// <filterpriority>1</filterpriority>
-	public interface IEncoder : IAbstraction
+	public interface IEncoder : IAbstraction<Encoder>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="Encoder"/>.
-		/// It is not intended to be used directly. Use <see cref="EncoderExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new Encoder UnsafeConvert();
-
 		/// <summary>Converts an array of Unicode characters to an encoded byte sequence and stores the result in an array of bytes.</summary>
 		/// <param name="chars">An array of characters to convert.</param>
 		/// <param name="charIndex">The first element of <paramref name="chars" /> to convert.</param>

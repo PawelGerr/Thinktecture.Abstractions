@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -18,16 +17,6 @@ namespace Thinktecture
 		public static IFileStream ToInterface(this FileStream file)
 		{
 			return (file == null) ? null : new FileStreamAdapter(file);
-		}
-
-		/// <summary>
-		/// Converts file stream to <see cref="FileStream"/>.
-		/// </summary>
-		/// <param name="file">File stream to convert.</param>
-		/// <returns>Converted file stream.</returns>
-		public static FileStream ToImplementation(this IFileStream file)
-		{
-			return file?.UnsafeConvert();
 		}
 	}
 }

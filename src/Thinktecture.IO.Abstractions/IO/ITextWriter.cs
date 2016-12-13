@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,15 +9,8 @@ namespace Thinktecture.IO
 	/// Represents a writer that can write a sequential series of characters. This class is abstract.
 	/// </summary>
 	/// <filterpriority>2</filterpriority>
-	public interface ITextWriter : IAbstraction, IDisposable
+	public interface ITextWriter : IAbstraction<TextWriter>, IDisposable
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="TextWriter"/>.
-		/// It is not intended to be used directly. Use <see cref="TextWriterExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new TextWriter UnsafeConvert();
-		
 		/// <summary>When overridden in a derived class, returns the character encoding in which the output is written.</summary>
 		/// <returns>The character encoding in which the output is written.</returns>
 		/// <filterpriority>1</filterpriority>

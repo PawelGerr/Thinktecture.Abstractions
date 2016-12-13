@@ -9,10 +9,7 @@ namespace Thinktecture.Net.Http.Adapters
 	{
 		private readonly DelegatingHandler _handler;
 
-		/// <summary>
-		/// Gets inner instance of <see cref="DelegatingHandler"/>.
-		/// It is not intended to be used directly. Use <see cref="DelegatingHandlerExtensions.ToImplementation"/> instead.
-		/// </summary>
+		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new DelegatingHandler UnsafeConvert()
 		{

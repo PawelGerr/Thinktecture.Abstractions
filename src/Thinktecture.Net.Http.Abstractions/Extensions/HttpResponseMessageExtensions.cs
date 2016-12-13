@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (message == null) ? null : new HttpResponseMessageAdapter(message);
 		}
-
-		/// <summary>
-		/// Converts provided message to <see cref="HttpResponseMessage"/>.
-		/// </summary>
-		/// <param name="message">Message to convert.</param>
-		/// <returns>Converted message.</returns>
-		public static HttpResponseMessage ToImplementation(this IHttpResponseMessage message)
-		{
-			return message?.UnsafeConvert();
-		}
 	}
 }

@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (content == null) ? null : new MultipartContentAdapter(content);
 		}
-
-		/// <summary>
-		/// Converts provided content to <see cref="MultipartContent"/>.
-		/// </summary>
-		/// <param name="content">Content to convert.</param>
-		/// <returns>Converted content.</returns>
-		public static MultipartContent ToImplementation(this IMultipartContent content)
-		{
-			return content?.UnsafeConvert();
-		}
 	}
 }

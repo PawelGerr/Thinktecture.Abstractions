@@ -21,16 +21,6 @@ namespace Thinktecture
 		{
 			return (address == null) ? null : new IPAddressAdapter(address);
 		}
-
-		/// <summary>
-		/// Converts provided address to <see cref="IPAddress"/>.
-		/// </summary>
-		/// <param name="address">Address to convert.</param>
-		/// <returns>Converted address.</returns>
-		public static IPAddress ToImplementation(this IIPAddress address)
-		{
-			return address?.UnsafeConvert();
-		}
 	}
 }
 

@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
 
 namespace Thinktecture.Net.Sockets
 {
 	/// <summary>Implements the Berkeley sockets interface.</summary>
-	public interface ISocket : IAbstraction, IDisposable
+	public interface ISocket : IAbstraction<Socket>, IDisposable
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="Socket"/>.
-		/// It is not intended to be used directly. Use <see cref="SocketExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new Socket UnsafeConvert();
-
 		/// <summary>Gets the address family of the <see cref="T:System.Net.Sockets.Socket" />.</summary>
 		/// <returns>One of the <see cref="T:System.Net.Sockets.AddressFamily" /> values.</returns>
 		AddressFamily AddressFamily { get; }

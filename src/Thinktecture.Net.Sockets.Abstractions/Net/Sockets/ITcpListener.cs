@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using System.Threading.Tasks;
 
 namespace Thinktecture.Net.Sockets
@@ -7,15 +6,8 @@ namespace Thinktecture.Net.Sockets
 	/// <summary>
 	/// Listens for connections from TCP network clients.
 	/// </summary>
-	public interface ITcpListener : IAbstraction
+	public interface ITcpListener : IAbstraction<TcpListener>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="LingerOption"/>.
-		/// It is not intended to be used directly. Use <see cref="LingerOptionExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new TcpListener UnsafeConvert();
-
 		/// <summary>
 		/// Gets or sets a Boolean value that specifies whether the TcpListener allows only one underlying socket to listen to a specific port.
 		/// </summary>

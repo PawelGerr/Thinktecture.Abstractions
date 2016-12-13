@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (option == null) ? null : new LingerOptionAdapter(option);
 		}
-
-		/// <summary>
-		/// Converts provided option to <see cref="LingerOption"/>.
-		/// </summary>
-		/// <param name="option">Option to convert.</param>
-		/// <returns>Converted option.</returns>
-		public static LingerOption ToImplementation(this ILingerOption option)
-		{
-			return option?.UnsafeConvert();
-		}
 	}
 }

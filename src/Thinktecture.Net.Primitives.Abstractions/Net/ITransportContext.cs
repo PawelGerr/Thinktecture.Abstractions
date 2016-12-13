@@ -12,15 +12,8 @@ using Thinktecture.Security.Authentication.ExtendedProtection;
 namespace Thinktecture.Net
 {
 	/// <summary>The <see cref="TransportContextAdapter" /> class provides additional context about the underlying transport layer.</summary>
-	public interface ITransportContext : IAbstraction
+	public interface ITransportContext : IAbstraction<TransportContext>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="TransportContext"/>.
-		/// It is not intended to be used directly. Use <see cref="TransportContextExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new TransportContext UnsafeConvert();
-
 #if NETSTANDARD1_3 || NET45 || NET46
 
 		/// <summary>Retrieves the requested channel binding. </summary>

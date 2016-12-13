@@ -1,6 +1,5 @@
 ﻿#if NETSTANDARD1_3 || NET45 || NET46
 
-using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
 
@@ -8,15 +7,8 @@ namespace Thinktecture.Net
 {
 	/// <summary>Provides an Internet Protocol (IP) address.</summary>
 	// ReSharper disable once InconsistentNaming
-	public interface IIPAddress : IAbstraction
+	public interface IIPAddress : IAbstraction<IPAddress>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="IPAddress"/>.
-		/// It is not intended to be used directly. Use <see cref="IPAddressExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new IPAddress UnsafeConvert();
-
 		/// <summary>Gets the address family of the IP address.</summary>
 		/// <returns>Returns <see cref="F:System.Net.Sockets.AddressFamily.InterNetwork" /> for IPv4 or <see cref="F:System.Net.Sockets.AddressFamily.InterNetworkV6" /> for IPv6.</returns>
 		AddressFamily AddressFamily { get; }

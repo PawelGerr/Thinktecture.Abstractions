@@ -20,16 +20,6 @@ namespace Thinktecture
 		{
 			return (endPoint == null) ? null : new DnsEndPointAdapter(endPoint);
 		}
-
-		/// <summary>
-		/// Converts provided endpoint to <see cref="DnsEndPoint"/>.
-		/// </summary>
-		/// <param name="endpoint">Endpoint to convert.</param>
-		/// <returns>Converted endpoint.</returns>
-		public static DnsEndPoint ToImplementation(this IDnsEndPoint endpoint)
-		{
-			return endpoint?.UnsafeConvert();
-		}
 	}
 }
 

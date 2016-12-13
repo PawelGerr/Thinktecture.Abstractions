@@ -20,16 +20,6 @@ namespace Thinktecture
 		{
 			return (endPoint == null) ? null : new EndPointAdapter(endPoint);
 		}
-
-		/// <summary>
-		/// Converts provided endpoint to <see cref="EndPoint"/>.
-		/// </summary>
-		/// <param name="endPoint">Endpoint to convert.</param>
-		/// <returns>Converted endpoint.</returns>
-		public static EndPoint ToImplementation(this IEndPoint endPoint)
-		{
-			return endPoint?.UnsafeConvert();
-		}
 	}
 }
 

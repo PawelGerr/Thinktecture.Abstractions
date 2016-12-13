@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,15 +9,8 @@ namespace Thinktecture.IO
 	/// Provides a generic view of a sequence of bytes. This is an abstract class.To browse the .NET Framework source code for this type, see the Reference Source.
 	/// </summary>
 	/// <filterpriority>2</filterpriority>
-	public interface IStream : IAbstraction, IDisposable
+	public interface IStream : IAbstraction<Stream>, IDisposable
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="Stream"/>.
-		/// It is not intended to be used directly. Use <see cref="StreamExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new Stream UnsafeConvert();
-
 		/// <summary>Gets a value indicating whether the current stream supports reading.</summary>
 		/// <returns>true if the stream supports reading; otherwise, false.</returns>
 		/// <filterpriority>1</filterpriority>

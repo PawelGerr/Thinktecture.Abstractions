@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Net;
 using System.Net.Http;
 using Thinktecture.Net.Http.Headers;
@@ -7,15 +6,8 @@ using Thinktecture.Net.Http.Headers;
 namespace Thinktecture.Net.Http
 {
 	/// <summary>Represents a HTTP response message including the status code and data.</summary>
-	public interface IHttpResponseMessage : IAbstraction, IDisposable
+	public interface IHttpResponseMessage : IAbstraction<HttpResponseMessage>, IDisposable
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="HttpResponseMessage"/>.
-		/// It is not intended to be used directly. Use <see cref="HttpResponseMessageExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new HttpResponseMessage UnsafeConvert();
-
 		/// <summary>Gets or sets the HTTP message version. </summary>
 		/// <returns>Returns <see cref="T:System.Version" />.The HTTP message version. The default is 1.1. </returns>
 		Version Version { get; set; }

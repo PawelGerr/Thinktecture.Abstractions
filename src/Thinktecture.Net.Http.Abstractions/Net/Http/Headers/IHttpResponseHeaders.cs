@@ -1,19 +1,12 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Net.Http.Headers;
 
 namespace Thinktecture.Net.Http.Headers
 {
 	/// <summary>Represents the collectionof Response Headers as defined in RFC 2616.</summary>
-	public interface IHttpResponseHeaders : IHttpHeaders
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
+	public interface IHttpResponseHeaders : IHttpHeaders, IAbstraction<HttpResponseHeaders>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="HttpResponseHeaders"/>.
-		/// It is not intended to be used directly. Use <see cref="HttpResponseHeadersExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new HttpResponseHeaders UnsafeConvert();
-
 		/// <summary>Gets the value of the Accept-Ranges header for an HTTP response.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Accept-Ranges header for an HTTP response.</returns>
 		HttpHeaderValueCollection<string> AcceptRanges { get; }

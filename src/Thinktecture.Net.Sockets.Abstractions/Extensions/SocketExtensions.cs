@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (socket == null) ? null : new SocketAdapter(socket);
 		}
-
-		/// <summary>
-		/// Converts provided socket to <see cref="Socket"/>.
-		/// </summary>
-		/// <param name="socket">Socket to convert.</param>
-		/// <returns>Converted socket.</returns>
-		public static Socket ToImplementation(this ISocket socket)
-		{
-			return socket?.UnsafeConvert();
-		}
 	}
 }

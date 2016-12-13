@@ -17,15 +17,5 @@ namespace Thinktecture
 		{
 			return (builder == null) ? null : new UriBuilderAdapter(builder);
 		}
-		
-		/// <summary>
-		/// Converts provided instance of <see cref="IUriBuilder"/> to <see cref="UriBuilder"/>.
-		/// </summary>
-		/// <param name="builder">Instance of <see cref="IUriBuilder"/> to convert.</param>
-		/// <returns>An instance of <see cref="UriBuilder"/>.</returns>
-		public static UriBuilder ToImplementation(this IUriBuilder builder)
-		{
-			return builder?.UnsafeConvert();
-		}
 	}
 }

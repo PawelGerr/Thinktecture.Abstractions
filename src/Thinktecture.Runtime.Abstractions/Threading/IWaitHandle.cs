@@ -1,21 +1,12 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Text;
 using System.Threading;
 
 namespace Thinktecture.Threading
 {
 	/// <summary>Encapsulates operating system–specific objects that wait for exclusive access to shared resources.</summary>
 	/// <filterpriority>2</filterpriority>
-	public interface IWaitHandle : IAbstraction, IDisposable
+	public interface IWaitHandle : IAbstraction<WaitHandle>, IDisposable
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="WaitHandle"/>.
-		/// It is not intended to be used directly. Use <see cref="WaitHandleExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new WaitHandle UnsafeConvert();
-
 		/// <summary>Blocks the current thread until the current <see cref="T:System.Threading.WaitHandle" /> receives a signal.</summary>
 		/// <returns>true if the current instance receives a signal. If the current instance is never signaled, <see cref="M:System.Threading.WaitHandle.WaitOne(System.Int32,System.Boolean)" /> never returns.</returns>
 		/// <exception cref="T:System.ObjectDisposedException">The current instance has already been disposed. </exception>

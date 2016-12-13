@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (credential == null) ? null : new NetworkCredentialAdapter(credential);
 		}
-
-		/// <summary>
-		/// Converts provided credential to <see cref="NetworkCredential"/>.
-		/// </summary>
-		/// <param name="credential">Credential to convert.</param>
-		/// <returns>Converted credential.</returns>
-		public static NetworkCredential ToImplementation(this INetworkCredential credential)
-		{
-			return credential?.UnsafeConvert();
-		}
 	}
 }

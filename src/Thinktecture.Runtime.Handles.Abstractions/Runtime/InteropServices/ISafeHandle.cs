@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 namespace Thinktecture.Runtime.InteropServices
@@ -7,15 +6,8 @@ namespace Thinktecture.Runtime.InteropServices
 	/// <summary>
 	/// Represents a wrapper class for operating system handles. This class must be inherited.
 	/// </summary>
-	public interface ISafeHandle : IAbstraction, IDisposable
+	public interface ISafeHandle : IAbstraction<SafeHandle>, IDisposable
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="SafeHandle"/>.
-		/// It is not intended to be used directly. Use <see cref="SafeHandleExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new SafeHandle UnsafeConvert();
-
 		/// <summary>Gets a value indicating whether the handle is closed.</summary>
 		/// <returns>true if the handle is closed; otherwise, false.</returns>
 		/// <PermissionSet>

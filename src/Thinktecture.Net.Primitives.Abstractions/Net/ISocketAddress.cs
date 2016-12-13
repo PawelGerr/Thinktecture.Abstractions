@@ -1,21 +1,13 @@
 ﻿#if NETSTANDARD1_3 || NET45 || NET46
 
-using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
 
 namespace Thinktecture.Net
 {
 	/// <summary>Stores serialized information from <see cref="T:System.Net.EndPoint" /> derived classes.</summary>
-	public interface ISocketAddress : IAbstraction
+	public interface ISocketAddress : IAbstraction<SocketAddress>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="SocketAddress"/>.
-		/// It is not intended to be used directly. Use <see cref="SocketAddressExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new SocketAddress UnsafeConvert();
-
 		/// <summary>Gets the <see cref="T:System.Net.Sockets.AddressFamily" /> enumerated value of the current <see cref="T:System.Net.SocketAddress" />.</summary>
 		/// <returns>One of the <see cref="T:System.Net.Sockets.AddressFamily" /> enumerated values.</returns>
 		AddressFamily Family { get; }

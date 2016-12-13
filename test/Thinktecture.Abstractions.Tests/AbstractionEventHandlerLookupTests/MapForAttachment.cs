@@ -62,12 +62,16 @@ namespace Thinktecture.Abstractions.Tests.AbstractionEventHandlerLookupTests
 			mappedHandler.Should().Be(mappedHandler2);
 		}
 
-		private interface ITestAbstraction : IAbstraction
+		private interface ITestAbstraction : IAbstraction<TestImplementation>
 		{
 		}
 
 		private class TestAdapter : ITestAbstraction
 		{
+			TestImplementation IAbstraction<TestImplementation>.UnsafeConvert()
+			{
+				throw new NotSupportedException();
+			}
 
 			public object UnsafeConvert()
 			{

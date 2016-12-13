@@ -1,22 +1,14 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Net;
 
 namespace Thinktecture.Net
 {
 	/// <summary>Provides credentials for password-based authentication schemes such as basic, digest, NTLM, and Kerberos authentication.</summary>
-	public interface INetworkCredential : IAbstraction, ICredentials
+	public interface INetworkCredential : IAbstraction<NetworkCredential>, ICredentials
 #if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
 			, ICredentialsByHost
 #endif
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="Cookie"/>.
-		/// It is not intended to be used directly. Use <see cref="NetworkCredentialExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new NetworkCredential UnsafeConvert();
-
 		/// <summary>Gets or sets the domain or computer name that verifies the credentials.</summary>
 		/// <returns>The name of the domain associated with the credentials.</returns>
 		/// <PermissionSet>

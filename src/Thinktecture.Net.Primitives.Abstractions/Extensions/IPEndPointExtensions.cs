@@ -21,16 +21,6 @@ namespace Thinktecture
 		{
 			return (endPoint == null) ? null : new IPEndPointAdapter(endPoint);
 		}
-
-		/// <summary>
-		/// Converts provided endpoint to <see cref="EndPoint"/>.
-		/// </summary>
-		/// <param name="credential">Endpoint to convert.</param>
-		/// <returns>Converted endpoint.</returns>
-		public static IPEndPoint ToImplementation(this IIPEndPoint credential)
-		{
-			return credential?.UnsafeConvert();
-		}
 	}
 }
 

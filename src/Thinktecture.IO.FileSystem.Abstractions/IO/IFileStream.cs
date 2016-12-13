@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.IO;
+﻿using System.IO;
 using Thinktecture.Win32.SafeHandles;
 
 namespace Thinktecture.IO
@@ -8,15 +7,9 @@ namespace Thinktecture.IO
 	/// Provides a <see cref="T:System.IO.Stream" /> for a file, supporting both synchronous and asynchronous read and write operations.To browse the .NET Framework source code for this type, see the Reference Source.
 	/// </summary>
 	/// <filterpriority>1</filterpriority>
-	public interface IFileStream : IStream
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
+	public interface IFileStream : IStream, IAbstraction<FileStream>
     {
-		/// <summary>
-		/// Gets inner instance of <see cref="FileStream"/>.
-		/// It is not intended to be used directly. Use <see cref="FileStreamExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new FileStream UnsafeConvert();
-		
 		/// <summary>Gets a value indicating whether the FileStream was opened asynchronously or synchronously.</summary>
 		/// <returns>true if the FileStream was opened asynchronously; otherwise, false.</returns>
 		/// <filterpriority>2</filterpriority>

@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Net.Sockets;
 
 namespace Thinktecture.Net.Sockets
 {
 	/// <summary>Represents an asynchronous socket operation.</summary>
-	public interface ISocketAsyncEventArgs : IEventArgs, IDisposable
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
+	public interface ISocketAsyncEventArgs : IEventArgs, IDisposable, IAbstraction<SocketAsyncEventArgs>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="SocketAsyncEventArgs"/>.
-		/// It is not intended to be used directly. Use <see cref="SocketAsyncEventArgsExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new SocketAsyncEventArgs UnsafeConvert();
-
 		/// <summary>Gets or sets the socket to use or the socket created for accepting a connection with an asynchronous socket method.</summary>
 		/// <returns>The <see cref="T:System.Net.Sockets.Socket" /> to use or the socket created for accepting a connection with an asynchronous socket method.</returns>
 		ISocket AcceptSocket { get; set; }

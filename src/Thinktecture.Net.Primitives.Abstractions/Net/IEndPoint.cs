@@ -1,21 +1,13 @@
 ﻿#if NETSTANDARD1_3 || NET45 || NET46
 
-using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
 
 namespace Thinktecture.Net
 {
 	/// <summary>Identifies a network address.</summary>
-	public interface IEndPoint : IAbstraction
+	public interface IEndPoint : IAbstraction<EndPoint>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="EndPoint"/>.
-		/// It is not intended to be used directly. Use <see cref="EndPointExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new EndPoint UnsafeConvert();
-
 		/// <summary>Gets the address family to which the endpoint belongs.</summary>
 		/// <returns>One of the <see cref="T:System.Net.Sockets.AddressFamily" /> values.</returns>
 		/// <exception cref="T:System.NotImplementedException">Any attempt is made to get or set the property when the property is not overridden in a descendant class. </exception>

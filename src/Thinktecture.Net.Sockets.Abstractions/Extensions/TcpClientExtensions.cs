@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (socket == null) ? null : new TcpClientAdapter(socket);
 		}
-
-		/// <summary>
-		/// Converts provided client to <see cref="TcpClient"/>.
-		/// </summary>
-		/// <param name="socket">Client to convert.</param>
-		/// <returns>Converted client.</returns>
-		public static TcpClient ToImplementation(this ITcpClient socket)
-		{
-			return socket?.UnsafeConvert();
-		}
 	}
 }

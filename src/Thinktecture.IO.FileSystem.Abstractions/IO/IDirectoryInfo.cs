@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 
 namespace Thinktecture.IO
@@ -8,15 +7,9 @@ namespace Thinktecture.IO
 	/// Exposes instance methods for creating, moving, and enumerating through directories and subdirectories. This class cannot be inherited.To browse the .NET Framework source code for this type, see the Reference Source.
 	/// </summary>
 	/// <filterpriority>1</filterpriority>
-	public interface IDirectoryInfo : IFileSystemInfo
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
+	public interface IDirectoryInfo : IFileSystemInfo, IAbstraction<DirectoryInfo>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="DirectoryInfo"/>.
-		/// It is not intended to be used directly. Use <see cref="DirectoryInfoExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new DirectoryInfo UnsafeConvert();
-		
 		/// <summary>Gets the parent directory of a specified subdirectory.</summary>
 		/// <returns>The parent directory, or null if the path is null or if the file path denotes a root (such as "\", "C:", or * "\\server\share").</returns>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>

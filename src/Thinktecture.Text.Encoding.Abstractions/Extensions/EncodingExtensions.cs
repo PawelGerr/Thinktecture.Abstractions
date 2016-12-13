@@ -19,15 +19,5 @@ namespace Thinktecture
 		{
 			return (encoding == null) ? null : new EncodingAdapter(encoding);
 		}
-
-		/// <summary>
-		/// Converts provided encoding to <see cref="Encoding"/>.
-		/// </summary>
-		/// <param name="encoding">Encoding to convert.</param>
-		/// <returns>Converted encoding.</returns>
-		public static Encoding ToImplementation(this IEncoding encoding)
-		{
-			return encoding?.UnsafeConvert();
-		}
 	}
 }

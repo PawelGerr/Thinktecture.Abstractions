@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (headers == null) ? null : new MultipartFormDataContentAdapter(headers);
 		}
-
-		/// <summary>
-		/// Converts provided content to <see cref="MultipartFormDataContent"/>.
-		/// </summary>
-		/// <param name="headers">Content to convert.</param>
-		/// <returns>Converted content.</returns>
-		public static MultipartFormDataContent ToImplementation(this IMultipartFormDataContent headers)
-		{
-			return headers?.UnsafeConvert();
-		}
 	}
 }

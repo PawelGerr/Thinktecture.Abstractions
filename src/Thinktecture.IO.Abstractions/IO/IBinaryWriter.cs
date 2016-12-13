@@ -1,20 +1,12 @@
 ﻿using System;
-using System.ComponentModel;
 using System.IO;
 
 namespace Thinktecture.IO
 {
 	/// <summary>Writes primitive types in binary to a stream and supports writing strings in a specific encoding.</summary>
 	/// <filterpriority>2</filterpriority>
-	public interface IBinaryWriter : IAbstraction, IDisposable
+	public interface IBinaryWriter : IAbstraction<BinaryWriter>, IDisposable
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="BinaryWriter"/>.
-		/// It is not intended to be used directly. Use <see cref="BinaryWriterExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new BinaryWriter UnsafeConvert();
-
 		/// <summary>Gets the underlying stream of the <see cref="T:System.IO.BinaryWriter" />.</summary>
 		/// <returns>The underlying stream associated with the BinaryWriter.</returns>
 		/// <filterpriority>1</filterpriority>

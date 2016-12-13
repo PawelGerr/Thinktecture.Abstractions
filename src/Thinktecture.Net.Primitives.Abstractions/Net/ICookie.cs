@@ -1,19 +1,11 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Net;
 
 namespace Thinktecture.Net
 {
 	/// <summary>Provides a set of properties and methods that are used to manage cookies. This class cannot be inherited.</summary>
-	public interface ICookie : IAbstraction
+	public interface ICookie : IAbstraction<Cookie>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="Cookie"/>.
-		/// It is not intended to be used directly. Use <see cref="CookieExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new Cookie UnsafeConvert();
-
 		/// <summary>Gets or sets a comment that the server can add to a <see cref="T:System.Net.Cookie" />.</summary>
 		/// <returns>An optional comment to document intended usage for this <see cref="T:System.Net.Cookie" />.</returns>
 		string Comment { get; set; }

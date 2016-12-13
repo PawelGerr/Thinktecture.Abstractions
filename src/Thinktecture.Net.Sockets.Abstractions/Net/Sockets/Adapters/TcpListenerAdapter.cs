@@ -69,7 +69,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <param name="localEP">An IPEndPoint that represents the local endpoint to which to bind the listener Socket.</param>
 		// ReSharper disable once InconsistentNaming
 		public TcpListenerAdapter(IIPEndPoint localEP)
-			: this(new TcpListener(localEP.ToImplementation()))
+			: this(new TcpListener(localEP.ToImplementation<IPEndPoint>()))
 		{
 		}
 

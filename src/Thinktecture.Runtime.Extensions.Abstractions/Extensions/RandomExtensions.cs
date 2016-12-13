@@ -17,15 +17,5 @@ namespace Thinktecture
 		{
 			return (random == null) ? null : new RandomAdapter(random);
 		}
-		
-		/// <summary>
-		/// Converts provided instance of <see cref="IRandom"/> to <see cref="Random"/>.
-		/// </summary>
-		/// <param name="random">Instance of <see cref="IRandom"/> to <see cref="Random"/>.</param>
-		/// <returns>Instance of <see cref="Random"/>.</returns>
-		public static Random ToImplementation(this IRandom random)
-		{
-			return random?.UnsafeConvert();
-		}
 	}
 }

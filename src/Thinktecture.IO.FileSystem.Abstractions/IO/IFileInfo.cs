@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.IO;
+﻿using System.IO;
 
 namespace Thinktecture.IO
 {
@@ -7,15 +6,9 @@ namespace Thinktecture.IO
 	/// Provides properties and instance methods for the creation, copying, deletion, moving, and opening of files, and aids in the creation of <see cref="T:System.IO.FileStream" /> objects. This class cannot be inherited.To browse the .NET Framework source code for this type, see the Reference Source.
 	/// </summary>
 	/// <filterpriority>1</filterpriority>
-	public interface IFileInfo : IFileSystemInfo
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
+	public interface IFileInfo : IFileSystemInfo, IAbstraction<FileInfo>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="FileInfo"/>.
-		/// It is not intended to be used directly. Use <see cref="FileInfoExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new FileInfo UnsafeConvert();
-
 		/// <summary>Gets an instance of the parent directory.</summary>
 		/// <returns>A <see cref="T:System.IO.DirectoryInfo" /> object representing the parent directory of this file.</returns>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive. </exception>

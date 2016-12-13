@@ -19,15 +19,5 @@ namespace Thinktecture
 		{
 			return (writer == null) ? null : new BinaryWriterAdapter(writer);
 		}
-		
-		/// <summary>
-		/// Converts provided writer to <see cref="BinaryWriter"/>.
-		/// </summary>
-		/// <param name="writer">Writer to convert.</param>
-		/// <returns>Converted writer.</returns>
-		public static BinaryWriter ToImplementation(this IBinaryWriter writer)
-		{
-			return writer?.UnsafeConvert();
-		}
 	}
 }

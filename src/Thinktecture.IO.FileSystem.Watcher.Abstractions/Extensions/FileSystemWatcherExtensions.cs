@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (watcher == null) ? null : new FileSystemWatcherAdapter(watcher);
 		}
-
-		/// <summary>
-		/// Converts provided <see cref="IFileSystemWatcher"/> to <see cref="FileSystemWatcher"/>.
-		/// </summary>
-		/// <param name="watcher"><see cref="IFileSystemWatcher"/> to convert.</param>
-		/// <returns>An instance of <see cref="FileSystemWatcher"/>.</returns>
-		public static FileSystemWatcher ToImplementation(this IFileSystemWatcher watcher)
-		{
-			return watcher?.UnsafeConvert();
-		}
 	}
 }

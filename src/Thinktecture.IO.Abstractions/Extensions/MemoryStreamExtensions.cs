@@ -19,15 +19,5 @@ namespace Thinktecture
 		{
 			return (stream == null) ? null : new MemoryStreamAdapter(stream);
 		}
-		
-		/// <summary>
-		/// Converts provided stream to <see cref="MemoryStream"/>;
-		/// </summary>
-		/// <param name="stream">Stream to convert.</param>
-		/// <returns>Converted stream.</returns>
-		public static MemoryStream ToImplementation(this IMemoryStream stream)
-		{
-			return stream?.UnsafeConvert();
-		}
 	}
 }

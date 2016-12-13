@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (client == null) ? null : new HttpClientAdapter(client);
 		}
-
-		/// <summary>
-		/// Converts provided client to <see cref="HttpClient"/>.
-		/// </summary>
-		/// <param name="client">Client to convert.</param>
-		/// <returns>Converted client.</returns>
-		public static HttpClient ToImplementation(this IHttpClient client)
-		{
-			return client?.UnsafeConvert();
-		}
 	}
 }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Thinktecture.IO;
@@ -11,15 +8,9 @@ using Thinktecture.Net.Http.Headers;
 namespace Thinktecture.Net.Http
 {
 	/// <summary>Provides a base class for sending HTTP requests and receiving HTTP responses from a resource identified by a URI. </summary>
-	public interface IHttpClient : IHttpMessageInvoker
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
+	public interface IHttpClient : IHttpMessageInvoker, IAbstraction<HttpClient>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="HttpClient"/>.
-		/// It is not intended to be used directly. Use <see cref="HttpClientExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new HttpClient UnsafeConvert();
-
 		/// <summary>Gets the headers which should be sent with each request.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpRequestHeaders" />.The headers which should be sent with each request.</returns>
 		IHttpRequestHeaders DefaultRequestHeaders { get; }

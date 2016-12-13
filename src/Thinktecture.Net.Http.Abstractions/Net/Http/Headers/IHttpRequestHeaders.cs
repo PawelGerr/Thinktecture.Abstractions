@@ -1,19 +1,12 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Net.Http.Headers;
 
 namespace Thinktecture.Net.Http.Headers
 {
 	/// <summary>Represents the collection of Request Headers as defined in RFC 2616.</summary>
-	public interface IHttpRequestHeaders : IHttpHeaders
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
+	public interface IHttpRequestHeaders : IHttpHeaders, IAbstraction<HttpRequestHeaders>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="HttpRequestHeaders"/>.
-		/// It is not intended to be used directly. Use <see cref="HttpRequestHeadersExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new HttpRequestHeaders UnsafeConvert();
-
 		/// <summary>Gets the value of the Accept header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Accept header for an HTTP request.</returns>
 		HttpHeaderValueCollection<MediaTypeWithQualityHeaderValue> Accept { get; }

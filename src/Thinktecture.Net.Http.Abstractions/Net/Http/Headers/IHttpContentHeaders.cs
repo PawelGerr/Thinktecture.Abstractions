@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Net.Http.Headers;
 
 namespace Thinktecture.Net.Http.Headers
 {
 	/// <summary>Represents the collection of Content Headers as defined in RFC 2616.</summary>
-	public interface IHttpContentHeaders : IHttpHeaders
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
+	public interface IHttpContentHeaders : IHttpHeaders, IAbstraction<HttpContentHeaders>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="HttpContentHeaders"/>.
-		/// It is not intended to be used directly. Use <see cref="HttpContentHeadersExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new HttpContentHeaders UnsafeConvert();
-
 		/// <summary>Gets the value of the Allow content header on an HTTP response. </summary>
 		/// <returns>Returns <see cref="T:System.Collections.Generic.ICollection`1" />.The value of the Allow header on an HTTP response.</returns>
 		ICollection<string> Allow { get; }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics;
 
 namespace Thinktecture.Diagnostics
@@ -7,15 +6,8 @@ namespace Thinktecture.Diagnostics
 	/// <summary>
 	/// Provides a set of methods and properties that you can use to accurately measure elapsed time.
 	/// </summary>
-	public interface IStopwatch : IAbstraction
+	public interface IStopwatch : IAbstraction<Stopwatch>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="Stopwatch"/>.
-		/// It is not intended to be used directly. Use <see cref="StopwatchExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new Stopwatch UnsafeConvert();
-
 		/// <summary>
 		/// Gets a value indicating whether the <see cref="Stopwatch"/> timer is running.
 		/// </summary>

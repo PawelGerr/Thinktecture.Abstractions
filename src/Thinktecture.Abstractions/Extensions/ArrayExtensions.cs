@@ -1,4 +1,4 @@
-﻿namespace Thinktecture.Extensions
+﻿namespace Thinktecture
 {
 	/// <summary>
 	/// Extensions for arrays
@@ -11,9 +11,9 @@
 		/// <typeparam name="TAbstraction">Type of the abstraction.</typeparam>
 		/// <typeparam name="TImplementation">Type of the implementation.</typeparam>
 		/// <param name="abstractions">Array with abstractions.</param>
-		/// <returns></returns>
+		/// <returns>Converted array.</returns>
 		public static TImplementation[] ToImplementation<TAbstraction, TImplementation>(this TAbstraction[] abstractions)
-			where TAbstraction : IAbstraction
+			where TAbstraction : IAbstraction<TImplementation>
 		{
 			if (abstractions == null)
 				return null;
@@ -22,7 +22,8 @@
 
 			for (var i = 0; i < abstractions.Length; i++)
 			{
-				implementations[i] = (TImplementation) abstractions[i]?.UnsafeConvert();
+				var abstraction = abstractions[i];
+				implementations[i] = abstraction == null ? default(TImplementation) : abstraction.UnsafeConvert();
 			}
 
 			return implementations;

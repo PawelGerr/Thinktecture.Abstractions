@@ -108,7 +108,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <param name="localEP">An IPEndPoint that respresents the local endpoint to which you bind the UDP connection.</param>
 		// ReSharper disable once InconsistentNaming
 		public UdpClientAdapter(IIPEndPoint localEP)
-			: this(new UdpClient(localEP.ToImplementation()))
+			: this(new UdpClient(localEP.ToImplementation<IPEndPoint>()))
 		{
 		}
 
@@ -233,7 +233,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public Task<int> SendAsync(byte[] datagram, int bytes, IIPEndPoint endPoint)
 		{
-			return _client.SendAsync(datagram, bytes, endPoint.ToImplementation());
+			return _client.SendAsync(datagram, bytes, endPoint.ToImplementation<IPEndPoint>());
 		}
 
 		/// <inheritdoc />

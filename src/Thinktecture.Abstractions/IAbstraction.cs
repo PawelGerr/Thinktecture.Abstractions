@@ -15,4 +15,17 @@ namespace Thinktecture
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		object UnsafeConvert();
 	}
+
+	/// <summary>
+	/// Represent an abstraction.
+	/// </summary>
+	public interface IAbstraction<out T> : IAbstraction
+	{
+		/// <summary>
+		/// Gets inner instance of the abstraction.
+		/// It is not intended to be used directly. Use extension method <c>ToImplementation</c> instead.
+		/// </summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		new T UnsafeConvert();
+	}
 }

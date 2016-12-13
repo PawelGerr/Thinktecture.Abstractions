@@ -32,12 +32,6 @@ namespace Thinktecture.Text.Adapters
 		}
 
 		/// <inheritdoc />
-		public Decoder ToImplementation()
-		{
-			return _instance;
-		}
-
-		/// <inheritdoc />
 		public void Convert(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex, int charCount, bool flush, out int bytesUsed, out int charsUsed, out bool completed)
 		{
 			_instance.Convert(bytes, byteIndex, byteCount, chars, charIndex, charCount, flush, out bytesUsed, out charsUsed, out completed);

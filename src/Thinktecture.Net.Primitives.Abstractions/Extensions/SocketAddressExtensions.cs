@@ -20,16 +20,6 @@ namespace Thinktecture
 		{
 			return (address == null) ? null : new SocketAddressAdapter(address);
 		}
-
-		/// <summary>
-		/// Converts provided address to <see cref="SocketAddress"/>.
-		/// </summary>
-		/// <param name="address">Address to convert.</param>
-		/// <returns>Converted address.</returns>
-		public static SocketAddress ToImplementation(this ISocketAddress address)
-		{
-			return address?.UnsafeConvert();
-		}
 	}
 }
 

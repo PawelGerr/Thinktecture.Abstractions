@@ -1,20 +1,13 @@
 ﻿#if NETSTANDARD1_3 || NET45 || NET46
 
-using System.ComponentModel;
 using System.Net;
 
 namespace Thinktecture.Net
 {
 	/// <summary>Identifies a network address.</summary>
-	public interface IDnsEndPoint : IEndPoint
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
+	public interface IDnsEndPoint : IEndPoint, IAbstraction<DnsEndPoint>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="DnsEndPoint"/>.
-		/// It is not intended to be used directly. Use <see cref="DnsEndPointExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new DnsEndPoint UnsafeConvert();
-		
 		/// <summary>Gets the host name or string representation of the Internet Protocol (IP) address of the host.</summary>
 		/// <returns>A host name or string representation of an IP address.</returns>
 		string Host { get; }

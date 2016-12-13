@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -18,16 +17,6 @@ namespace Thinktecture
 		public static IDirectoryInfo ToInterface(this DirectoryInfo directoryInfo)
 		{
 			return (directoryInfo == null) ? null : new DirectoryInfoAdapter(directoryInfo);
-		}
-		
-		/// <summary>
-		/// Converts provided directory info to <see cref="DirectoryInfo"/>.
-		/// </summary>
-		/// <param name="directoryInfo">Directory info to convert.</param>
-		/// <returns>Converted directory info.</returns>
-		public static DirectoryInfo ToImplementation(this IDirectoryInfo directoryInfo)
-		{
-			return directoryInfo?.UnsafeConvert();
 		}
 	}
 }

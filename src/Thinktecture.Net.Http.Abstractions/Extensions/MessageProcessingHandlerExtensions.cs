@@ -18,15 +18,5 @@ namespace Thinktecture
 		{
 			return (handler == null) ? null : new MessageProcessingHandlerAdapter(handler);
 		}
-
-		/// <summary>
-		/// Converts provided handler to <see cref="MessageProcessingHandler"/>.
-		/// </summary>
-		/// <param name="handler">Handler to convert.</param>
-		/// <returns>Converted handler.</returns>
-		public static MessageProcessingHandler ToImplementation(this IMessageProcessingHandler handler)
-		{
-			return handler?.UnsafeConvert();
-		}
 	}
 }

@@ -1,19 +1,11 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Net;
 
 namespace Thinktecture.Net
 {
 	/// <summary>Provides a container for a collection of <see cref="T:System.Net.CookieCollection" /> objects.</summary>
-	public interface ICookieContainer : IAbstraction
+	public interface ICookieContainer : IAbstraction<CookieContainer>
 	{
-		/// <summary>
-		/// Gets inner instance of <see cref="CookieContainer"/>.
-		/// It is not intended to be used directly. Use <see cref="CookieContainerExtensions.ToImplementation"/> instead.
-		/// </summary>
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		new CookieContainer UnsafeConvert();
-
 		/// <summary>Gets and sets the number of <see cref="T:System.Net.Cookie" /> instances that a <see cref="T:System.Net.CookieContainer" /> can hold.</summary>
 		/// <returns>The number of <see cref="T:System.Net.Cookie" /> instances that a <see cref="T:System.Net.CookieContainer" /> can hold. This is a hard limit and cannot be exceeded by adding a <see cref="T:System.Net.Cookie" />.</returns>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">

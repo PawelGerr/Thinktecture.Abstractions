@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Threading;
-using Thinktecture.Extensions;
 
 namespace Thinktecture.Threading.Adapters
 {
