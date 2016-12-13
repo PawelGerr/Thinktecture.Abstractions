@@ -66,6 +66,11 @@ Provides interfaces for types in `System.Net.Sockets`: `Socket`, `TcpClient`, `U
 
 **Nuget**: `Install-Package Thinktecture.Net.Sockets.Abstractions`
 
+### Thinktecture.Net.NetworkInformation.Abstractions
+Provides interfaces for types in `System.Net.NetworkInformation`: `NetworkInterface`, `PhysicalAddress`, `IPAddressInformation`, `IPAddressInformationCollection`, `IPInterfaceProperties`, `IPInterfaceStatistics`, `IPv4InterfaceProperties`, `IPv6InterfaceProperties`, `UnicastIPAddressInformation`, `UnicastIPAddressInformationCollection`, `MulticastIPAddressInformation`, `MulticastIPAddressInformationCollection`, `GatewayIPAddressInformation`, `GatewayIPAddressInformationCollection`.
+
+**Nuget**: `Install-Package Thinktecture.Net.NetworkInformation.Abstractions`
+
 ### Thinktecture.Net.Http.Abstractions
 Provides interfaces for types in `System.Net.Http`: `HttpClient`, `HttpContent`, `HttpRequestMessage`, `HttpResponseMessage`, `HttpHeaders`, `DelegatingHandler`, `HttpClientHandler`, `HttpMessageHandler`, `HttpMessageInvoker`, `MessageProcessingHandler`, `MultipartContent`, `MultipartFormDataContent`, `HttpContentHeaders`, `HttpRequestHeaders`, `HttpResponseHeaders`.
 

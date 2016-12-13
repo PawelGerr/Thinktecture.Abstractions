@@ -1,0 +1,48 @@
+{
+	"version": "1.1.0-*",
+	"title": "Thinktecture.Net.NetworkInformation.Abstractions",
+	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
+	"description": "Provides interfaces for types in System.Net.NetworkInformation: NetworkInterface, PhysicalAddress, IPAddressInformation, IPAddressInformationCollection, IPInterfaceProperties, IPInterfaceStatistics, IPv4InterfaceProperties, IPv6InterfaceProperties, UnicastIPAddressInformation, UnicastIPAddressInformationCollection, MulticastIPAddressInformation, MulticastIPAddressInformationCollection, GatewayIPAddressInformation, GatewayIPAddressInformationCollection.",
+	"authors": [ "Pawel Gerr" ],
+	"packOptions": {
+		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
+		"iconUrl": "http://thinktecture.com/images/Logo_T_Nontransparent.png",
+		"tags": [ "io", "abstraction" ],
+		"licenseUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md",
+		"repository": {
+			"type": "git",
+			"url": "git@github.com:PawelGerr/Thinktecture.Abstractions.git"
+		}
+	},
+
+	"buildOptions": {
+		"xmlDoc": true
+	},
+
+	"dependencies": {
+		"Thinktecture.Net.Primitives.Abstractions": "1.1.0-*"
+	},
+
+	"frameworks": {
+		"netstandard1.0": {
+			"dependencies": {
+				"System.Net.NetworkInformation": "4.1.0"
+			}
+		},
+		"netstandard1.3": {
+			"dependencies": {
+				"System.Net.NetworkInformation": "4.1.0"
+			}
+		},
+		"net45": {
+			"frameworkAssemblies": {
+
+			}
+		},
+		"net46": {
+			"frameworkAssemblies": {
+
+			}
+		}
+	}
+}
