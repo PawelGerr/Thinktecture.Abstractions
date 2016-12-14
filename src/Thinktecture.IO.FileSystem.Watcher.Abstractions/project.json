@@ -1,5 +1,5 @@
 {
-	"version": "1.1.0-*",
+	"version": "1.2.0-*",
 	"title": "Thinktecture.IO.FileSystem.Watcher.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
 	"description": "Provides interfaces for types in System.IO.FileSystem.Watcher: FileSystemWatcher.",
@@ -27,6 +27,6 @@
     "net46": {}
   },
   "dependencies": {
-    "Thinktecture.Abstractions": "1.1.0-*"
+    "Thinktecture.Abstractions": "1.2.0-*"
   }
 }

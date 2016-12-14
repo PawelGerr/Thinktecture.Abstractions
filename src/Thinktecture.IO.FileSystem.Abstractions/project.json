@@ -1,5 +1,5 @@
 {
-	"version": "1.1.0-*",
+	"version": "1.2.0-*",
 	"title": "Thinktecture.IO.FileSystem.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
 	"description": "Provides interfaces for types in System.IO.FileSystem: Directory, File, FileSystemInfo, DirectoryInfo, FileInfo, FileStream, SafeFileHandle.",
@@ -21,9 +21,9 @@
 	},
 
 	"dependencies": {
-		"Thinktecture.IO.Abstractions": "1.1.0-*",
-		"Thinktecture.Runtime.Handles.Abstractions": "1.1.0-*",
-		"Thinktecture.Text.Encoding.Abstractions": "1.1.0-*"
+		"Thinktecture.IO.Abstractions": "1.2.0-*",
+		"Thinktecture.Runtime.Handles.Abstractions": "1.2.0-*",
+		"Thinktecture.Text.Encoding.Abstractions": "1.2.0-*"
 	},
 
 	"frameworks": {
@@ -32,49 +32,7 @@
 				"System.IO.FileSystem": "4.3.0"
 			}
 		},
-		"net45": {
-			"frameworkAssemblies": {
-				"System.Runtime": {
-					"type": "build",
-					"version": ""
-				},
-				"System.IO": {
-					"type": "build",
-					"version": ""
-				},
-				"System.Text.Encoding": {
-					"type": "build",
-					"version": ""
-				},
-				"System.Threading.Tasks": {
-					"type": "build",
-					"version": ""
-				}
-			}
-		},
-		"net46": {
-			"frameworkAssemblies": {
-				"System.Runtime": {
-					"type": "build",
-					"version": ""
-				},
-				"System.IO": {
-					"type": "build",
-					"version": ""
-				},
-				"System.Text.Encoding": {
-					"type": "build",
-					"version": ""
-				},
-				"System.Threading.Tasks": {
-					"type": "build",
-					"version": ""
-				},
-				"System.Runtime.Handles": {
-					"type": "build",
-					"version": ""
-				}
-			}
-		}
+		"net45": {},
+		"net46": {}
 	}
 }

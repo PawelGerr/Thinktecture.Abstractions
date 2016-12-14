@@ -1,8 +1,8 @@
 {
-	"version": "1.1.0-*",
+	"version": "1.2.0-*",
 	"title": "Thinktecture.Runtime.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
-	"description": "Provides interfaces for types in System.Runtime: StringBuilder.",
+	"description": "Provides interfaces for types in System.Runtime: StringBuilder, WaitHandle, EventArgs.",
 	"authors": ["Pawel Gerr"],
 	"packOptions": {
 		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
@@ -23,18 +23,10 @@
 				"System.Runtime": "4.3.0"
 			}
 		},
-		"net45": {
-			"frameworkAssemblies": {
-				"System.Runtime": ""
-			}
-		},
-		"net46": {
-			"frameworkAssemblies": {
-				"System.Runtime": ""
-			}
-		}
+		"net45": {},
+		"net46": {}
 	},
 	"dependencies": {
-		"Thinktecture.Abstractions": "1.1.0-*"
+		"Thinktecture.Abstractions": "1.2.0-*"
 	}
 }

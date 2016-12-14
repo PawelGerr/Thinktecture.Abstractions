@@ -1,13 +1,13 @@
 {
-	"version": "1.1.0-*",
+	"version": "1.2.0-*",
 	"title": "Thinktecture.Net.Sockets.Abstractions",
 	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
-	"description": "Provides interfaces for types in System.Net.Sockets: ",
-	"authors": ["Pawel Gerr"],
+	"description": "Provides interfaces for types in System.Net.Sockets: Socket, TcpClient, UdpClient, TcpListener, NetworkStream, ISocketAsyncEventArgs, LingerOption, SendPacketsElement.",
+	"authors": [ "Pawel Gerr" ],
 	"packOptions": {
 		"projectUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions",
 		"iconUrl": "http://thinktecture.com/images/Logo_T_Nontransparent.png",
-		"tags": ["sockets", "abstraction"],
+		"tags": [ "sockets", "abstraction" ],
 		"licenseUrl": "https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md",
 		"repository": {
 			"type": "git",
@@ -20,8 +20,8 @@
 	},
 
 	"dependencies": {
-		"Thinktecture.IO.Abstractions": "1.1.0-*",
-		"Thinktecture.Net.Primitives.Abstractions": "1.1.0-*"
+		"Thinktecture.IO.Abstractions": "1.2.0-*",
+		"Thinktecture.Net.Primitives.Abstractions": "1.2.0-*"
 	},
 
 	"frameworks": {
@@ -31,17 +31,7 @@
 				"System.Net.Sockets": "4.3.0"
 			}
 		},
-		"net45": {
-			"frameworkAssemblies": {
-				"System.IO": "",
-				"System.Net.Primitives": ""
-			}
-		},
-		"net46": {
-			"frameworkAssemblies": {
-				"System.IO": "",
-				"System.Net.Primitives": ""
-			}
-		}
+		"net45": {},
+		"net46": {}
 	}
 }
