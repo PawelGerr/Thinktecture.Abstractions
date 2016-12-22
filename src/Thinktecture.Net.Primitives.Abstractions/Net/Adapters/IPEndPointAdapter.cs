@@ -62,6 +62,18 @@ namespace Thinktecture.Net.Adapters
 			: this(new IPEndPoint(address, port))
 		{
 		}
+		
+		/// <summary>Initializes a new instance of the <see cref="IPEndPointAdapter" /> class with the specified address and port number.</summary>
+		/// <param name="address">An <see cref="T:System.Net.IPAddress" />. </param>
+		/// <param name="port">The port number associated with the <paramref name="address" />, or 0 to specify any available port. <paramref name="port" /> is in host order.</param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="address" /> is null.</exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="port" /> is less than <see cref="F:System.Net.IPEndPoint.MinPort" />.-or- <paramref name="port" /> is greater than <see cref="F:System.Net.IPEndPoint.MaxPort" />.-or- <paramref name="address" /> is less than 0 or greater than 0x00000000FFFFFFFF. </exception>
+		public IPEndPointAdapter(IIPAddress address, int port)
+			: this(new IPEndPoint(address.ToImplementation(), port))
+		{
+		}
 
 		/// <summary>Initializes a new instance of the <see cref="IPEndPointAdapter" /> class.</summary>
 		/// <param name="endpoint">Endpoint to be used by the adapter.</param>
@@ -70,6 +82,7 @@ namespace Thinktecture.Net.Adapters
 		{
 			if (endpoint == null)
 				throw new ArgumentNullException(nameof(endpoint));
+
 			_endpoint = endpoint;
 		}
 	}

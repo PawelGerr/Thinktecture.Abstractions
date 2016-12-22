@@ -109,6 +109,14 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <summary>
 		/// Initializes new instance of <see cref="SocketAsyncEventArgsAdapter"/>.
 		/// </summary>
+		public SocketAsyncEventArgsAdapter()
+			: this(new SocketAsyncEventArgs())
+		{
+		}
+
+		/// <summary>
+		/// Initializes new instance of <see cref="SocketAsyncEventArgsAdapter"/>.
+		/// </summary>
 		/// <param name="args">Event args to be used by the adapter.</param>
 		public SocketAsyncEventArgsAdapter(SocketAsyncEventArgs args)
 			: base(args)
