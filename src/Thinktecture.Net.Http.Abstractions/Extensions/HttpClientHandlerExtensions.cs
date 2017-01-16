@@ -18,5 +18,15 @@ namespace Thinktecture
 		{
 			return (handler == null) ? null : new HttpClientHandlerAdapter(handler);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IHttpClientHandler"/> info to <see cref="HttpClientHandler"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IHttpClientHandler"/> to convert.</param>
+		/// <returns>An instance of <see cref="HttpClientHandler"/>.</returns>
+		public static HttpClientHandler ToImplementation(this IHttpClientHandler abstraction)
+		{
+			return ((IAbstraction<HttpClientHandler>)abstraction)?.UnsafeConvert();
+		}
 	}
 }

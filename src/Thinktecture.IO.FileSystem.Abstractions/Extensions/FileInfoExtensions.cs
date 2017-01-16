@@ -18,5 +18,15 @@ namespace Thinktecture
 		{
 			return (file == null) ? null : new FileInfoAdapter(file);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IFileInfo"/> info to <see cref="FileInfo"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IDirectoryInfo"/> to convert.</param>
+		/// <returns>An instance of <see cref="FileInfo"/>.</returns>
+		public static FileInfo ToImplementation(this IFileInfo abstraction)
+		{
+			return ((IAbstraction<FileInfo>)abstraction)?.UnsafeConvert();
+		}
 	}
 }

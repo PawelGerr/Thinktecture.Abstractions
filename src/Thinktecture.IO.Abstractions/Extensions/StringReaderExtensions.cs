@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (reader == null) ? null : new StringReaderAdapter(reader);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IStringReader"/> info to <see cref="StringReader"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IStringReader"/> to convert.</param>
+		/// <returns>An instance of <see cref="StringReader"/>.</returns>
+		public static StringReader ToImplementation(this IStringReader abstraction)
+		{
+			return ((IAbstraction<StringReader>) abstraction)?.UnsafeConvert();
+		}
 	}
 }

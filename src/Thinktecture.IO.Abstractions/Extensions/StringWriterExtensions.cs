@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (writer == null) ? null : new StringWriterAdapter(writer);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IStringWriter"/> info to <see cref="StringWriter"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IStringWriter"/> to convert.</param>
+		/// <returns>An instance of <see cref="StringWriter"/>.</returns>
+		public static StringWriter ToImplementation(this IStringWriter abstraction)
+		{
+			return ((IAbstraction<StringWriter>) abstraction)?.UnsafeConvert();
+		}
 	}
 }

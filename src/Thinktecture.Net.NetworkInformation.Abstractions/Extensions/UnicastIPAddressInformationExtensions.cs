@@ -21,6 +21,16 @@ namespace Thinktecture
 		{
 			return (info == null) ? null : new UnicastIPAddressInformationAdapter(info);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IUnicastIPAddressInformation"/> info to <see cref="UnicastIPAddressInformation"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IUnicastIPAddressInformation"/> to convert.</param>
+		/// <returns>An instance of <see cref="UnicastIPAddressInformation"/>.</returns>
+		public static UnicastIPAddressInformation ToImplementation(this IUnicastIPAddressInformation abstraction)
+		{
+			return ((IAbstraction<UnicastIPAddressInformation>) abstraction)?.UnsafeConvert();
+		}
 	}
 }
 

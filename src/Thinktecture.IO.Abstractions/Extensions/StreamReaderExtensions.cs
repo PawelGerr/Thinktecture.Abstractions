@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (reader == null) ? null : new StreamReaderAdapter(reader);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IStreamReader"/> info to <see cref="StreamReader"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IStreamReader"/> to convert.</param>
+		/// <returns>An instance of <see cref="StreamReader"/>.</returns>
+		public static StreamReader ToImplementation(this IStreamReader abstraction)
+		{
+			return ((IAbstraction<StreamReader>)abstraction)?.UnsafeConvert();
+		}
 	}
 }

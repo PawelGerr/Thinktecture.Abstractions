@@ -18,5 +18,15 @@ namespace Thinktecture
 		{
 			return (args == null) ? null : new SocketAsyncEventArgsAdapter(args);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="ISocketAsyncEventArgs"/> info to <see cref="SocketAsyncEventArgs"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="ISocketAsyncEventArgs"/> to convert.</param>
+		/// <returns>An instance of <see cref="SocketAsyncEventArgs"/>.</returns>
+		public static SocketAsyncEventArgs ToImplementation(this ISocketAsyncEventArgs abstraction)
+		{
+			return ((IAbstraction<SocketAsyncEventArgs>)abstraction)?.UnsafeConvert();
+		}
 	}
 }

@@ -18,5 +18,15 @@ namespace Thinktecture
 		{
 			return (handler == null) ? null : new MessageProcessingHandlerAdapter(handler);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IMessageProcessingHandler"/> info to <see cref="MessageProcessingHandler"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IMessageProcessingHandler"/> to convert.</param>
+		/// <returns>An instance of <see cref="MessageProcessingHandler"/>.</returns>
+		public static MessageProcessingHandler ToImplementation(this IMessageProcessingHandler abstraction)
+		{
+			return ((IAbstraction<MessageProcessingHandler>)abstraction)?.UnsafeConvert();
+		}
 	}
 }

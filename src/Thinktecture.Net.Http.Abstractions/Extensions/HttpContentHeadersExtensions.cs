@@ -18,5 +18,15 @@ namespace Thinktecture
 		{
 			return (headers == null) ? null : new HttpContentHeadersAdapter(headers);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IHttpContentHeaders"/> info to <see cref="HttpContentHeaders"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IHttpContentHeaders"/> to convert.</param>
+		/// <returns>An instance of <see cref="HttpContentHeaders"/>.</returns>
+		public static HttpContentHeaders ToImplementation(this IHttpContentHeaders abstraction)
+		{
+			return ((IAbstraction<HttpContentHeaders>) abstraction)?.UnsafeConvert();
+		}
 	}
 }

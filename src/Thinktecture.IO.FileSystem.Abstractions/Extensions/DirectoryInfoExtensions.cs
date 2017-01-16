@@ -18,5 +18,15 @@ namespace Thinktecture
 		{
 			return (directoryInfo == null) ? null : new DirectoryInfoAdapter(directoryInfo);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IDirectoryInfo"/> info to <see cref="DirectoryInfo"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IDirectoryInfo"/> to convert.</param>
+		/// <returns>An instance of <see cref="DirectoryInfo"/>.</returns>
+		public static DirectoryInfo ToImplementation(this IDirectoryInfo abstraction)
+		{
+			return ((IAbstraction<DirectoryInfo>) abstraction)?.UnsafeConvert();
+		}
 	}
 }

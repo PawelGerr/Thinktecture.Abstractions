@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (writer == null) ? null : new StreamWriterAdapter(writer);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IStreamWriter"/> info to <see cref="StreamWriter"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IStreamWriter"/> to convert.</param>
+		/// <returns>An instance of <see cref="StreamWriter"/>.</returns>
+		public static StreamWriter ToImplementation(this IStreamWriter abstraction)
+		{
+			return ((IAbstraction<StreamWriter>)abstraction)?.UnsafeConvert();
+		}
 	}
 }

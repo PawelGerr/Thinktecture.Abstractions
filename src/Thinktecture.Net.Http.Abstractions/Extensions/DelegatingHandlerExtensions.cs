@@ -18,5 +18,15 @@ namespace Thinktecture
 		{
 			return (handler == null) ? null : new DelegatingHandlerAdapter(handler);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IDelegatingHandler"/> info to <see cref="DelegatingHandler"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IDelegatingHandler"/> to convert.</param>
+		/// <returns>An instance of <see cref="DelegatingHandler"/>.</returns>
+		public static DelegatingHandler ToImplementation(this IDelegatingHandler abstraction)
+		{
+			return ((IAbstraction<DelegatingHandler>)abstraction)?.UnsafeConvert();
+		}
 	}
 }

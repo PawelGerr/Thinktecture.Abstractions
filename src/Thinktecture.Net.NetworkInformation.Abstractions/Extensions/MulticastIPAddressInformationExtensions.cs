@@ -21,6 +21,16 @@ namespace Thinktecture
 		{
 			return (info == null) ? null : new MulticastIPAddressInformationAdapter(info);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IMulticastIPAddressInformation"/> info to <see cref="MulticastIPAddressInformation"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IMulticastIPAddressInformation"/> to convert.</param>
+		/// <returns>An instance of <see cref="MulticastIPAddressInformation"/>.</returns>
+		public static MulticastIPAddressInformation ToImplementation(this IMulticastIPAddressInformation abstraction)
+		{
+			return ((IAbstraction<MulticastIPAddressInformation>) abstraction)?.UnsafeConvert();
+		}
 	}
 }
 

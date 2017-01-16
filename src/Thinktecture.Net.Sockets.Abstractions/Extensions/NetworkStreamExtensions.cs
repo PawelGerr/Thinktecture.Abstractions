@@ -19,5 +19,15 @@ namespace Thinktecture
 		{
 			return (stream == null) ? null : new NetworkStreamAdapter(stream);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="INetworkStream"/> info to <see cref="NetworkStream"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="INetworkStream"/> to convert.</param>
+		/// <returns>An instance of <see cref="NetworkStream"/>.</returns>
+		public static NetworkStream ToImplementation(this INetworkStream abstraction)
+		{
+			return ((IAbstraction<NetworkStream>) abstraction)?.UnsafeConvert();
+		}
 	}
 }

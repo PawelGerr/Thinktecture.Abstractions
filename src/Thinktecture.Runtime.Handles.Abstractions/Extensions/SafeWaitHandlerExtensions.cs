@@ -18,5 +18,15 @@ namespace Thinktecture
 		{
 			return (handle == null) ? null : new SafeWaitHandleAdapter(handle);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="ISafeWaitHandle"/> info to <see cref="SafeWaitHandle"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="ISafeWaitHandle"/> to convert.</param>
+		/// <returns>An instance of <see cref="SafeWaitHandle"/>.</returns>
+		public static SafeWaitHandle ToImplementation(this ISafeWaitHandle abstraction)
+		{
+			return ((IAbstraction<SafeWaitHandle>) abstraction)?.UnsafeConvert();
+		}
 	}
 }

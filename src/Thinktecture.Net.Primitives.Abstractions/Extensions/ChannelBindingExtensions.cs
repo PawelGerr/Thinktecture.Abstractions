@@ -20,6 +20,16 @@ namespace Thinktecture
 		{
 			return (binding == null) ? null : new ChannelBindingAdapter(binding);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IChannelBinding"/> info to <see cref="ChannelBinding"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IChannelBinding"/> to convert.</param>
+		/// <returns>An instance of <see cref="ChannelBinding"/>.</returns>
+		public static ChannelBinding ToImplementation(this IChannelBinding abstraction)
+		{
+			return ((IAbstraction<ChannelBinding>) abstraction)?.UnsafeConvert();
+		}
 	}
 }
 
