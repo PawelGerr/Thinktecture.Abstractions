@@ -1,7 +1,7 @@
 {
 	"version": "1.2.0-*",
 	"title": "Thinktecture.Abstractions",
-	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
+	"copyright": "(c) 2017, Pawel Gerr. All rights reserved.",
 	"description": "Provides types used by all Thinktecture.*.Abstractions projects.",
 	"authors": ["Pawel Gerr"],
 	"packOptions": {

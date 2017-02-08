@@ -1,7 +1,7 @@
 {
 	"version": "1.2.0-*",
 	"title": "Thinktecture.Net.NetworkInformation.Abstractions",
-	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
+	"copyright": "(c) 2017, Pawel Gerr. All rights reserved.",
 	"description": "Provides interfaces for types in System.Net.NetworkInformation: NetworkInterface, PhysicalAddress, IPAddressInformation, IPAddressInformationCollection, IPInterfaceProperties, IPInterfaceStatistics, IPv4InterfaceProperties, IPv6InterfaceProperties, UnicastIPAddressInformation, UnicastIPAddressInformationCollection, MulticastIPAddressInformation, MulticastIPAddressInformationCollection, GatewayIPAddressInformation, GatewayIPAddressInformationCollection.",
 	"authors": ["Pawel Gerr"],
 	"packOptions": {

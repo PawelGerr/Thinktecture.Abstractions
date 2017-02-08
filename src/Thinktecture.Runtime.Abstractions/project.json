@@ -1,7 +1,7 @@
 {
 	"version": "1.2.0-*",
 	"title": "Thinktecture.Runtime.Abstractions",
-	"copyright": "(c) 2016, Pawel Gerr. All rights reserved.",
+	"copyright": "(c) 2017, Pawel Gerr. All rights reserved.",
 	"description": "Provides interfaces for types in System.Runtime: StringBuilder, WaitHandle, EventArgs.",
 	"authors": ["Pawel Gerr"],
 	"packOptions": {
