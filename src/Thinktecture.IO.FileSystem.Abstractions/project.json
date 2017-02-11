@@ -1,5 +1,5 @@
 {
-	"version": "1.2.0-*",
+	"version": "1.3.0-*",
 	"title": "Thinktecture.IO.FileSystem.Abstractions",
 	"copyright": "(c) 2017, Pawel Gerr. All rights reserved.",
 	"description": "Provides interfaces for types in System.IO.FileSystem: Directory, File, FileSystemInfo, DirectoryInfo, FileInfo, FileStream, SafeFileHandle.",
@@ -21,9 +21,9 @@
 	},
 
 	"dependencies": {
-		"Thinktecture.IO.Abstractions": "1.2.0-*",
-		"Thinktecture.Runtime.Handles.Abstractions": "1.2.0-*",
-		"Thinktecture.Text.Encoding.Abstractions": "1.2.0-*"
+		"Thinktecture.IO.Abstractions": "1.3.0-*",
+		"Thinktecture.Runtime.Handles.Abstractions": "1.3.0-*",
+		"Thinktecture.Text.Encoding.Abstractions": "1.3.0-*"
 	},
 
 	"frameworks": {

@@ -1,16 +1,16 @@
 {
-	"version": "1.2.0-*",
+	"version": "1.3.0-*",
 
 	"buildOptions": {
 		"emitEntryPoint": true
 	},
 
 	"dependencies": {
-		"Thinktecture.IO.FileSystem.Abstractions": "1.2.0-*"
+		"Thinktecture.IO.FileSystem.Abstractions": "1.3.0-*"
 	},
 
 	"frameworks": {
-		"netcoreapp1.0": {
+		"netcoreapp1.1": {
 			"dependencies": {
 				"Microsoft.NETCore.App": {
 					"type": "platform",

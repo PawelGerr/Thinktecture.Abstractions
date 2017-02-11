@@ -1,5 +1,5 @@
 {
-	"version": "1.2.0-*",
+	"version": "1.3.0-*",
 	"title": "Thinktecture.Net.Primitives.Abstractions",
 	"copyright": "(c) 2017, Pawel Gerr. All rights reserved.",
 	"description":
@@ -32,21 +32,21 @@
 		"netstandard1.3": {
 			"dependencies": {
 				"System.Net.Primitives": "4.3.0",
-				"Thinktecture.Runtime.Handles.Abstractions": "1.2.0-*"
+				"Thinktecture.Runtime.Handles.Abstractions": "1.3.0-*"
 			}
 		},
 		"net45": {
 			"dependencies": {
-				"Thinktecture.Runtime.Handles.Abstractions": "1.2.0-*"
+				"Thinktecture.Runtime.Handles.Abstractions": "1.3.0-*"
 			}
 		},
 		"net46": {
 			"dependencies": {
-				"Thinktecture.Runtime.Handles.Abstractions": "1.2.0-*"
+				"Thinktecture.Runtime.Handles.Abstractions": "1.3.0-*"
 			}
 		}
 	},
 	"dependencies": {
-		"Thinktecture.Abstractions": "1.2.0-*"
+		"Thinktecture.Abstractions": "1.3.0-*"
 	}
 }

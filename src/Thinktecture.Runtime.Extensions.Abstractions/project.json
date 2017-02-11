@@ -1,5 +1,5 @@
 {
-	"version": "1.2.0-*",
+	"version": "1.3.0-*",
 	"title": "Thinktecture.Runtime.Extensions.Abstractions",
 	"copyright": "(c) 2017, Pawel Gerr. All rights reserved.",
 	"description": "Provides interfaces for type in System.Runtime.Extensions: Path, BitConverter, Convert, Environment, Math, Random, UriBuilder, Stopwatch, WebUtility.",
@@ -27,6 +27,6 @@
     "net46": {}
   },
   "dependencies": {
-    "Thinktecture.Abstractions": "1.2.0-*"
+    "Thinktecture.Abstractions": "1.3.0-*"
   }
 }

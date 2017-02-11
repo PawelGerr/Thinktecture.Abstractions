@@ -1,5 +1,5 @@
 {
-	"version": "1.2.0-*",
+	"version": "1.3.0-*",
 	"title": "Thinktecture.IO.Abstractions",
 	"copyright": "(c) 2017, Pawel Gerr. All rights reserved.",
 	"description": "Provides interfaces for types in System.IO: Stream, MemoryStream, BinaryReader, BinaryWriter, StreamReader, StreamWriter, StringReader, StringWriter, TextReader, TextWriter.",
@@ -20,8 +20,8 @@
 	},
 
 	"dependencies": {
-		"Thinktecture.Runtime.Abstractions": "1.2.0-*",
-		"Thinktecture.Text.Encoding.Abstractions": "1.2.0-*"
+		"Thinktecture.Runtime.Abstractions": "1.3.0-*",
+		"Thinktecture.Text.Encoding.Abstractions": "1.3.0-*"
 	},
 
 	"frameworks": {

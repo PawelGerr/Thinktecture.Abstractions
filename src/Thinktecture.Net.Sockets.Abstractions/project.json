@@ -1,5 +1,5 @@
 {
-	"version": "1.2.0-*",
+	"version": "1.3.0-*",
 	"title": "Thinktecture.Net.Sockets.Abstractions",
 	"copyright": "(c) 2017, Pawel Gerr. All rights reserved.",
 	"description": "Provides interfaces for types in System.Net.Sockets: Socket, TcpClient, UdpClient, TcpListener, NetworkStream, ISocketAsyncEventArgs, LingerOption, SendPacketsElement.",
@@ -20,8 +20,8 @@
 	},
 
 	"dependencies": {
-		"Thinktecture.IO.Abstractions": "1.2.0-*",
-		"Thinktecture.Net.Primitives.Abstractions": "1.2.0-*"
+		"Thinktecture.IO.Abstractions": "1.3.0-*",
+		"Thinktecture.Net.Primitives.Abstractions": "1.3.0-*"
 	},
 
 	"frameworks": {
