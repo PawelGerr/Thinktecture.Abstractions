@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <VersionPrefix>1.3.0</VersionPrefix>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <AssemblyName>Thinktecture.IO.FileSystem.Examples</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>Thinktecture.IO.FileSystem.Examples</PackageId>
+    <RuntimeFrameworkVersion>1.1.1</RuntimeFrameworkVersion>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Thinktecture.IO.FileSystem.Abstractions\Thinktecture.IO.FileSystem.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>
