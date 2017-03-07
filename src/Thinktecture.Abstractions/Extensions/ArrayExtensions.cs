@@ -1,4 +1,5 @@
-﻿namespace Thinktecture
+﻿// ReSharper disable once CheckNamespace
+namespace Thinktecture
 {
 	/// <summary>
 	/// Extensions for arrays

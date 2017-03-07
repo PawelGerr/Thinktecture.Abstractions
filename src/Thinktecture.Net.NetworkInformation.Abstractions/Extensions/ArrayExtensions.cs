@@ -3,6 +3,7 @@
 using System.Net.NetworkInformation;
 using Thinktecture.Net.NetworkInformation;
 
+// ReSharper disable once CheckNamespace
 namespace Thinktecture
 {
 	/// <summary>

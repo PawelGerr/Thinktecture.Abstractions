@@ -4,6 +4,7 @@ using System.Net;
 using Thinktecture.Net;
 using Thinktecture.Net.Adapters;
 
+// ReSharper disable once CheckNamespace
 namespace Thinktecture
 {
 	/// <summary>

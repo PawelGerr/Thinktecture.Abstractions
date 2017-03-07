@@ -2,6 +2,7 @@
 using Thinktecture.Text;
 using Thinktecture.Text.Adapters;
 
+// ReSharper disable once CheckNamespace
 namespace Thinktecture
 {
 	/// <summary>

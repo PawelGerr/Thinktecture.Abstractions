@@ -2,6 +2,7 @@
 using Thinktecture.Net.Http;
 using Thinktecture.Net.Http.Adapters;
 
+// ReSharper disable once CheckNamespace
 namespace Thinktecture
 {
 	/// <summary>

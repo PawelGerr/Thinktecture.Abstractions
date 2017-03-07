@@ -4,6 +4,7 @@ using System.Security.Authentication.ExtendedProtection;
 using Thinktecture.Security.Authentication.ExtendedProtection;
 using Thinktecture.Security.Authentication.ExtendedProtection.Adapters;
 
+// ReSharper disable once CheckNamespace
 namespace Thinktecture
 {
 	/// <summary>

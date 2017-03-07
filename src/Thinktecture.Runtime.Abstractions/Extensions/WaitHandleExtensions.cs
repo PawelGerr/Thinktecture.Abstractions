@@ -2,6 +2,7 @@
 using Thinktecture.Threading;
 using Thinktecture.Threading.Adapters;
 
+// ReSharper disable once CheckNamespace
 namespace Thinktecture
 {
 	/// <summary>

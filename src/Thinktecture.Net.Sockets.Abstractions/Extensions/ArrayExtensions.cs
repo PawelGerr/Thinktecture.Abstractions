@@ -1,6 +1,7 @@
 ﻿using System.Net.Sockets;
 using Thinktecture.Net.Sockets;
 
+// ReSharper disable once CheckNamespace
 namespace Thinktecture
 {
 	/// <summary>

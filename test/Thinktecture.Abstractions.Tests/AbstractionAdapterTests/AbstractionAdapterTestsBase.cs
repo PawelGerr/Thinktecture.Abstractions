@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Thinktecture.Abstractions.Tests.AbstractionAdapterTests
+namespace Thinktecture.AbstractionAdapterTests
 {
 	public class AbstractionAdapterTestsBase
 	{
