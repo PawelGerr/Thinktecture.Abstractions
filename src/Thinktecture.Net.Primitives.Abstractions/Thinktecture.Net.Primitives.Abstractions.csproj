@@ -23,7 +23,6 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
     <ProjectReference Include="..\Thinktecture.Runtime.Handles.Abstractions\Thinktecture.Runtime.Handles.Abstractions.csproj" />
-    <PackageReference Include="System.Net.Primitives" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
@@ -36,14 +35,6 @@
     <ProjectReference Include="..\Thinktecture.Runtime.Handles.Abstractions\Thinktecture.Runtime.Handles.Abstractions.csproj" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.0' ">
-    <PackageReference Include="System.Net.Primitives" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.1' ">
-    <PackageReference Include="System.Net.Primitives" Version="4.3.0" />
   </ItemGroup>
 
 </Project>
