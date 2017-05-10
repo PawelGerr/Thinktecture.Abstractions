@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>1.3.0</VersionPrefix>
+    <VersionPrefix>1.3.2</VersionPrefix>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <AssemblyName>Thinktecture.Abstractions.Tests</AssemblyName>
     <PackageId>Thinktecture.Abstractions.Tests</PackageId>
@@ -19,7 +19,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
     <PackageReference Include="FluentAssertions" Version="4.19.2" />
-    <PackageReference Include="Moq" Version="4.7.1" />
+    <PackageReference Include="Moq" Version="4.7.10" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
