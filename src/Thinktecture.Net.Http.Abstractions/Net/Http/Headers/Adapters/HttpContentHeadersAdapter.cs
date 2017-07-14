@@ -23,8 +23,8 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <inheritdoc />
 		public ContentDispositionHeaderValue ContentDisposition
 		{
-			get { return _headers.ContentDisposition; }
-			set { _headers.ContentDisposition = value; }
+			get => _headers.ContentDisposition;
+			set => _headers.ContentDisposition = value;
 		}
 
 		/// <inheritdoc />
@@ -36,50 +36,50 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <inheritdoc />
 		public long? ContentLength
 		{
-			get { return _headers.ContentLength; }
-			set { _headers.ContentLength = value; }
+			get => _headers.ContentLength;
+			set => _headers.ContentLength = value;
 		}
 
 		/// <inheritdoc />
 		public Uri ContentLocation
 		{
-			get { return _headers.ContentLocation; }
-			set { _headers.ContentLocation = value; }
+			get => _headers.ContentLocation;
+			set => _headers.ContentLocation = value;
 		}
 
 		/// <inheritdoc />
 		public byte[] ContentMD5
 		{
-			get { return _headers.ContentMD5; }
-			set { _headers.ContentMD5 = value; }
+			get => _headers.ContentMD5;
+			set => _headers.ContentMD5 = value;
 		}
 
 		/// <inheritdoc />
 		public ContentRangeHeaderValue ContentRange
 		{
-			get { return _headers.ContentRange; }
-			set { _headers.ContentRange = value; }
+			get => _headers.ContentRange;
+			set => _headers.ContentRange = value;
 		}
 
 		/// <inheritdoc />
 		public MediaTypeHeaderValue ContentType
 		{
-			get { return _headers.ContentType; }
-			set { _headers.ContentType = value; }
+			get => _headers.ContentType;
+			set => _headers.ContentType = value;
 		}
 
 		/// <inheritdoc />
 		public DateTimeOffset? Expires
 		{
-			get { return _headers.Expires; }
-			set { _headers.Expires = value; }
+			get => _headers.Expires;
+			set => _headers.Expires = value;
 		}
 
 		/// <inheritdoc />
 		public DateTimeOffset? LastModified
 		{
-			get { return _headers.LastModified; }
-			set { _headers.LastModified = value; }
+			get => _headers.LastModified;
+			set => _headers.LastModified = value;
 		}
 
 		/// <summary>
@@ -89,10 +89,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		public HttpContentHeadersAdapter(HttpContentHeaders headers)
 			: base(headers)
 		{
-			if (headers == null)
-				throw new ArgumentNullException(nameof(headers));
-
-			_headers = headers;
+			_headers = headers ?? throw new ArgumentNullException(nameof(headers));
 		}
 	}
 }

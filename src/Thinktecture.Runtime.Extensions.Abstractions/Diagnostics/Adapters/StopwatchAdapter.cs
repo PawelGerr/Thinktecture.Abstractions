@@ -73,10 +73,7 @@ namespace Thinktecture.Diagnostics.Adapters
 		public StopwatchAdapter(Stopwatch stopwatch)
 			: base(stopwatch)
 		{
-			if (stopwatch == null)
-				throw new ArgumentNullException(nameof(stopwatch));
-
-			_instance = stopwatch;
+			_instance = stopwatch ?? throw new ArgumentNullException(nameof(stopwatch));
 		}
 
 		/// <inheritdoc />

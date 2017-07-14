@@ -21,8 +21,8 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		public int Capacity
 		{
-			get { return _instance.Capacity; }
-			set { _instance.Capacity = value; }
+			get => _instance.Capacity;
+			set => _instance.Capacity = value;
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="MemoryStreamAdapter" /> class with an expandable capacity initialized to zero.</summary>
@@ -95,10 +95,7 @@ namespace Thinktecture.IO.Adapters
 		public MemoryStreamAdapter(MemoryStream stream)
 			: base(stream)
 		{
-			if (stream == null)
-				throw new ArgumentNullException(nameof(stream));
-
-			_instance = stream;
+			_instance = stream ?? throw new ArgumentNullException(nameof(stream));
 		}
 
 		/// <inheritdoc />

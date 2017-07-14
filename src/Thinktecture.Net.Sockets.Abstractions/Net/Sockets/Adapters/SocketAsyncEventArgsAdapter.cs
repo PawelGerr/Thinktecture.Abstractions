@@ -22,8 +22,8 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public ISocket AcceptSocket
 		{
-			get { return _args.AcceptSocket.ToInterface(); }
-			set { _args.AcceptSocket = value.ToImplementation(); }
+			get => _args.AcceptSocket.ToInterface();
+			set => _args.AcceptSocket = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
@@ -32,8 +32,8 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public IList<ArraySegment<byte>> BufferList
 		{
-			get { return _args.BufferList; }
-			set { _args.BufferList = value; }
+			get => _args.BufferList;
+			set => _args.BufferList = value;
 		}
 
 		/// <inheritdoc />
@@ -60,50 +60,50 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public IEndPoint RemoteEndPoint
 		{
-			get { return _args.RemoteEndPoint.ToInterface(); }
-			set { _args.RemoteEndPoint = value.ToImplementation(); }
+			get => _args.RemoteEndPoint.ToInterface();
+			set => _args.RemoteEndPoint = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
 		public ISendPacketsElement[] SendPacketsElements
 		{
-			get { return _args.SendPacketsElements.ToInterface(); }
-			set { _args.SendPacketsElements = value.ToImplementation<ISendPacketsElement, SendPacketsElement>(); }
+			get => _args.SendPacketsElements.ToInterface();
+			set => _args.SendPacketsElements = value.ToImplementation<ISendPacketsElement, SendPacketsElement>();
 		}
 
 		/// <inheritdoc />
 		public int SendPacketsSendSize
 		{
-			get { return _args.SendPacketsSendSize; }
-			set { _args.SendPacketsSendSize = value; }
+			get => _args.SendPacketsSendSize;
+			set => _args.SendPacketsSendSize = value;
 		}
 
 		/// <inheritdoc />
 		public SocketError SocketError
 		{
-			get { return _args.SocketError; }
-			set { _args.SocketError = value; }
+			get => _args.SocketError;
+			set => _args.SocketError = value;
 		}
 
 		/// <inheritdoc />
 		public SocketFlags SocketFlags
 		{
-			get { return _args.SocketFlags; }
-			set { _args.SocketFlags = value; }
+			get => _args.SocketFlags;
+			set => _args.SocketFlags = value;
 		}
 
 		/// <inheritdoc />
 		public object UserToken
 		{
-			get { return _args.UserToken; }
-			set { _args.UserToken = value; }
+			get => _args.UserToken;
+			set => _args.UserToken = value;
 		}
 
 		/// <inheritdoc />
 		public event EventHandler<ISocketAsyncEventArgs> Completed
 		{
-			add { _args.Completed += _completedLookup.MapForAttachment(value, args => args.ToInterface()); }
-			remove { _args.Completed -= _completedLookup.TryMapForDetachment(value); }
+			add => _args.Completed += _completedLookup.MapForAttachment(value, args => args.ToInterface());
+			remove => _args.Completed -= _completedLookup.TryMapForDetachment(value);
 		}
 
 		/// <summary>
@@ -121,10 +121,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		public SocketAsyncEventArgsAdapter(SocketAsyncEventArgs args)
 			: base(args)
 		{
-			if (args == null)
-				throw new ArgumentNullException(nameof(args));
-
-			_args = args;
+			_args = args ?? throw new ArgumentNullException(nameof(args));
 			_completedLookup = new AbstractionEventHandlerLookup<ISocketAsyncEventArgs, SocketAsyncEventArgs>();
 		}
 

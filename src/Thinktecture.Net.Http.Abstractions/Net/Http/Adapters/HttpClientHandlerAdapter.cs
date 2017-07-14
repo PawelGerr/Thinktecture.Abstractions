@@ -29,85 +29,85 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <inheritdoc />
 		public bool UseCookies
 		{
-			get { return _handler.UseCookies; }
-			set { _handler.UseCookies = value; }
+			get => _handler.UseCookies;
+			set => _handler.UseCookies = value;
 		}
 
 		/// <inheritdoc />
 		public ICookieContainer CookieContainer
 		{
-			get { return _handler.CookieContainer.ToInterface(); }
-			set { _handler.CookieContainer = value.ToImplementation(); }
+			get => _handler.CookieContainer.ToInterface();
+			set => _handler.CookieContainer = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
 		public ClientCertificateOption ClientCertificateOptions
 		{
-			get { return _handler.ClientCertificateOptions; }
-			set { _handler.ClientCertificateOptions = value; }
+			get => _handler.ClientCertificateOptions;
+			set => _handler.ClientCertificateOptions = value;
 		}
 
 		/// <inheritdoc />
 		public DecompressionMethods AutomaticDecompression
 		{
-			get { return _handler.AutomaticDecompression; }
-			set { _handler.AutomaticDecompression = value; }
+			get => _handler.AutomaticDecompression;
+			set => _handler.AutomaticDecompression = value;
 		}
 
 		/// <inheritdoc />
 		public bool UseProxy
 		{
-			get { return _handler.UseProxy; }
-			set { _handler.UseProxy = value; }
+			get => _handler.UseProxy;
+			set => _handler.UseProxy = value;
 		}
 
 		/// <inheritdoc />
 		public IWebProxy Proxy
 		{
-			get { return _handler.Proxy; }
-			set { _handler.Proxy = value; }
+			get => _handler.Proxy;
+			set => _handler.Proxy = value;
 		}
 
 		/// <inheritdoc />
 		public bool PreAuthenticate
 		{
-			get { return _handler.PreAuthenticate; }
-			set { _handler.PreAuthenticate = value; }
+			get => _handler.PreAuthenticate;
+			set => _handler.PreAuthenticate = value;
 		}
 
 		/// <inheritdoc />
 		public bool UseDefaultCredentials
 		{
-			get { return _handler.UseDefaultCredentials; }
-			set { _handler.UseDefaultCredentials = value; }
+			get => _handler.UseDefaultCredentials;
+			set => _handler.UseDefaultCredentials = value;
 		}
 
 		/// <inheritdoc />
 		public ICredentials Credentials
 		{
-			get { return _handler.Credentials; }
-			set { _handler.Credentials = value; }
+			get => _handler.Credentials;
+			set => _handler.Credentials = value;
 		}
 
 		/// <inheritdoc />
 		public bool AllowAutoRedirect
 		{
-			get { return _handler.AllowAutoRedirect; }
-			set { _handler.AllowAutoRedirect = value; }
+			get => _handler.AllowAutoRedirect;
+			set => _handler.AllowAutoRedirect = value;
 		}
 
 		/// <inheritdoc />
 		public int MaxAutomaticRedirections
 		{
-			get { return _handler.MaxAutomaticRedirections; }
-			set { _handler.MaxAutomaticRedirections = value; }
+			get => _handler.MaxAutomaticRedirections;
+			set => _handler.MaxAutomaticRedirections = value;
 		}
 
 		/// <inheritdoc />
 		public long MaxRequestContentBufferSize
 		{
-			get { return _handler.MaxRequestContentBufferSize; }
-			set { _handler.MaxRequestContentBufferSize = value; }
+			get => _handler.MaxRequestContentBufferSize;
+			set => _handler.MaxRequestContentBufferSize = value;
 		}
 
 		/// <summary>Creates an instance of a <see cref="HttpClientHandlerAdapter" /> class.</summary>
@@ -120,10 +120,7 @@ namespace Thinktecture.Net.Http.Adapters
 		public HttpClientHandlerAdapter(HttpClientHandler handler)
 			: base(handler)
 		{
-			if (handler == null)
-				throw new ArgumentNullException(nameof(handler));
-
-			_handler = handler;
+			_handler = handler ?? throw new ArgumentNullException(nameof(handler));
 		}
 	}
 }

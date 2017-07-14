@@ -104,10 +104,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		public SendPacketsElementAdapter(SendPacketsElement element)
 			: base(element)
 		{
-			if (element == null)
-				throw new ArgumentNullException(nameof(element));
-
-			_element = element;
+			_element = element ?? throw new ArgumentNullException(nameof(element));
 		}
 	}
 }

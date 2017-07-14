@@ -26,43 +26,43 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public ISocket Client
 		{
-			get { return _client.Client.ToInterface(); }
-			set { _client.Client = value.ToImplementation(); }
+			get => _client.Client.ToInterface();
+			set => _client.Client = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
 		public bool DontFragment
 		{
-			get { return _client.DontFragment; }
-			set { _client.DontFragment = value; }
+			get => _client.DontFragment;
+			set => _client.DontFragment = value;
 		}
 
 		/// <inheritdoc />
 		public bool EnableBroadcast
 		{
-			get { return _client.EnableBroadcast; }
-			set { _client.EnableBroadcast = value; }
+			get => _client.EnableBroadcast;
+			set => _client.EnableBroadcast = value;
 		}
 
 		/// <inheritdoc />
 		public bool ExclusiveAddressUse
 		{
-			get { return _client.ExclusiveAddressUse; }
-			set { _client.ExclusiveAddressUse = value; }
+			get => _client.ExclusiveAddressUse;
+			set => _client.ExclusiveAddressUse = value;
 		}
 
 		/// <inheritdoc />
 		public bool MulticastLoopback
 		{
-			get { return _client.MulticastLoopback; }
-			set { _client.MulticastLoopback = value; }
+			get => _client.MulticastLoopback;
+			set => _client.MulticastLoopback = value;
 		}
 
 		/// <inheritdoc />
 		public short Ttl
 		{
-			get { return _client.Ttl; }
-			set { _client.Ttl = value; }
+			get => _client.Ttl;
+			set => _client.Ttl = value;
 		}
 
 		/// <summary>
@@ -128,10 +128,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		public UdpClientAdapter(UdpClient client)
 			: base(client)
 		{
-			if (client == null)
-				throw new ArgumentNullException(nameof(client));
-
-			_client = client;
+			_client = client ?? throw new ArgumentNullException(nameof(client));
 		}
 
 		/// <inheritdoc />

@@ -26,8 +26,8 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public ISocket Client
 		{
-			get { return _client.Client.ToInterface(); }
-			set { _client.Client = value.ToImplementation(); }
+			get => _client.Client.ToInterface();
+			set => _client.Client = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
@@ -36,50 +36,50 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool ExclusiveAddressUse
 		{
-			get { return _client.ExclusiveAddressUse; }
-			set { _client.ExclusiveAddressUse = value; }
+			get => _client.ExclusiveAddressUse;
+			set => _client.ExclusiveAddressUse = value;
 		}
 
 		/// <inheritdoc />
 		public ILingerOption LingerState
 		{
-			get { return _client.LingerState.ToInterface(); }
-			set { _client.LingerState = value.ToImplementation(); }
+			get => _client.LingerState.ToInterface();
+			set => _client.LingerState = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
 		public bool NoDelay
 		{
-			get { return _client.NoDelay; }
-			set { _client.NoDelay = value; }
+			get => _client.NoDelay;
+			set => _client.NoDelay = value;
 		}
 
 		/// <inheritdoc />
 		public int ReceiveBufferSize
 		{
-			get { return _client.ReceiveBufferSize; }
-			set { _client.ReceiveBufferSize = value; }
+			get => _client.ReceiveBufferSize;
+			set => _client.ReceiveBufferSize = value;
 		}
 
 		/// <inheritdoc />
 		public int ReceiveTimeout
 		{
-			get { return _client.ReceiveTimeout; }
-			set { _client.ReceiveTimeout = value; }
+			get => _client.ReceiveTimeout;
+			set => _client.ReceiveTimeout = value;
 		}
 
 		/// <inheritdoc />
 		public int SendBufferSize
 		{
-			get { return _client.SendBufferSize; }
-			set { _client.SendBufferSize = value; }
+			get => _client.SendBufferSize;
+			set => _client.SendBufferSize = value;
 		}
 
 		/// <inheritdoc />
 		public int SendTimeout
 		{
-			get { return _client.SendTimeout; }
-			set { _client.SendTimeout = value; }
+			get => _client.SendTimeout;
+			set => _client.SendTimeout = value;
 		}
 
 		/// <summary>
@@ -106,10 +106,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		public TcpClientAdapter(TcpClient client)
 			: base(client)
 		{
-			if (client == null)
-				throw new ArgumentNullException(nameof(client));
-
-			_client = client;
+			_client = client ?? throw new ArgumentNullException(nameof(client));
 		}
 
 		/// <inheritdoc />

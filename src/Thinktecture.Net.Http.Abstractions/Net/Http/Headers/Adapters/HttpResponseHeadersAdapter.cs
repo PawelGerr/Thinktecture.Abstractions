@@ -22,22 +22,22 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <inheritdoc />
 		public TimeSpan? Age
 		{
-			get { return _headers.Age; }
-			set { _headers.Age = value; }
+			get => _headers.Age;
+			set => _headers.Age = value;
 		}
 
 		/// <inheritdoc />
 		public EntityTagHeaderValue ETag
 		{
-			get { return _headers.ETag; }
-			set { _headers.ETag = value; }
+			get => _headers.ETag;
+			set => _headers.ETag = value;
 		}
 
 		/// <inheritdoc />
 		public Uri Location
 		{
-			get { return _headers.Location; }
-			set { _headers.Location = value; }
+			get => _headers.Location;
+			set => _headers.Location = value;
 		}
 
 		/// <inheritdoc />
@@ -46,8 +46,8 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <inheritdoc />
 		public RetryConditionHeaderValue RetryAfter
 		{
-			get { return _headers.RetryAfter; }
-			set { _headers.RetryAfter = value; }
+			get => _headers.RetryAfter;
+			set => _headers.RetryAfter = value;
 		}
 
 		/// <inheritdoc />
@@ -62,8 +62,8 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <inheritdoc />
 		public CacheControlHeaderValue CacheControl
 		{
-			get { return _headers.CacheControl; }
-			set { _headers.CacheControl = value; }
+			get => _headers.CacheControl;
+			set => _headers.CacheControl = value;
 		}
 
 		/// <inheritdoc />
@@ -72,15 +72,15 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <inheritdoc />
 		public bool? ConnectionClose
 		{
-			get { return _headers.ConnectionClose; }
-			set { _headers.ConnectionClose = value; }
+			get => _headers.ConnectionClose;
+			set => _headers.ConnectionClose = value;
 		}
 
 		/// <inheritdoc />
 		public DateTimeOffset? Date
 		{
-			get { return _headers.Date; }
-			set { _headers.Date = value; }
+			get => _headers.Date;
+			set => _headers.Date = value;
 		}
 
 		/// <inheritdoc />
@@ -95,8 +95,8 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <inheritdoc />
 		public bool? TransferEncodingChunked
 		{
-			get { return _headers.TransferEncodingChunked; }
-			set { _headers.TransferEncodingChunked = value; }
+			get => _headers.TransferEncodingChunked;
+			set => _headers.TransferEncodingChunked = value;
 		}
 
 		/// <inheritdoc />
@@ -113,9 +113,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		public HttpResponseHeadersAdapter(HttpResponseHeaders headers)
 			: base(headers)
 		{
-			if (headers == null)
-				throw new ArgumentNullException(nameof(headers));
-			_headers = headers;
+			_headers = headers ?? throw new ArgumentNullException(nameof(headers));
 		}
 	}
 }

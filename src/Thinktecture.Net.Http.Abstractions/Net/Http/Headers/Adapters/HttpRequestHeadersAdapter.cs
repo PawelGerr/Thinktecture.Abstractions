@@ -36,8 +36,8 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" />.The value of the Authorization header for an HTTP request.</returns>
 		public AuthenticationHeaderValue Authorization
 		{
-			get { return _headers.Authorization; }
-			set { _headers.Authorization = value; }
+			get => _headers.Authorization;
+			set => _headers.Authorization = value;
 		}
 
 		/// <summary>Gets the value of the Expect header for an HTTP request.</summary>
@@ -48,24 +48,24 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <returns>Returns <see cref="T:System.Boolean" />.true if the Expect header contains Continue, otherwise false.</returns>
 		public bool? ExpectContinue
 		{
-			get { return _headers.ExpectContinue; }
-			set { _headers.ExpectContinue = value; }
+			get => _headers.ExpectContinue;
+			set => _headers.ExpectContinue = value;
 		}
 
 		/// <summary>Gets or sets the value of the From header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.String" />.The value of the From header for an HTTP request.</returns>
 		public string From
 		{
-			get { return _headers.From; }
-			set { _headers.From = value; }
+			get => _headers.From;
+			set => _headers.From = value;
 		}
 
 		/// <summary>Gets or sets the value of the Host header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.String" />.The value of the Host header for an HTTP request.</returns>
 		public string Host
 		{
-			get { return _headers.Host; }
-			set { _headers.Host = value; }
+			get => _headers.Host;
+			set => _headers.Host = value;
 		}
 
 		/// <summary>Gets the value of the If-Match header for an HTTP request.</summary>
@@ -76,8 +76,8 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <returns>Returns <see cref="T:System.DateTimeOffset" />.The value of the If-Modified-Since header for an HTTP request.</returns>
 		public DateTimeOffset? IfModifiedSince
 		{
-			get { return _headers.IfModifiedSince; }
-			set { _headers.IfModifiedSince = value; }
+			get => _headers.IfModifiedSince;
+			set => _headers.IfModifiedSince = value;
 		}
 
 		/// <summary>Gets the value of the If-None-Match header for an HTTP request.</summary>
@@ -88,48 +88,48 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" />.The value of the If-Range header for an HTTP request.</returns>
 		public RangeConditionHeaderValue IfRange
 		{
-			get { return _headers.IfRange; }
-			set { _headers.IfRange = value; }
+			get => _headers.IfRange;
+			set => _headers.IfRange = value;
 		}
 
 		/// <summary>Gets or sets the value of the If-Unmodified-Since header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.DateTimeOffset" />.The value of the If-Unmodified-Since header for an HTTP request.</returns>
 		public DateTimeOffset? IfUnmodifiedSince
 		{
-			get { return _headers.IfUnmodifiedSince; }
-			set { _headers.IfUnmodifiedSince = value; }
+			get => _headers.IfUnmodifiedSince;
+			set => _headers.IfUnmodifiedSince = value;
 		}
 
 		/// <summary>Gets or sets the value of the Max-Forwards header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.Int32" />.The value of the Max-Forwards header for an HTTP request.</returns>
 		public int? MaxForwards
 		{
-			get { return _headers.MaxForwards; }
-			set { _headers.MaxForwards = value; }
+			get => _headers.MaxForwards;
+			set => _headers.MaxForwards = value;
 		}
 
 		/// <summary>Gets or sets the value of the Proxy-Authorization header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" />.The value of the Proxy-Authorization header for an HTTP request.</returns>
 		public AuthenticationHeaderValue ProxyAuthorization
 		{
-			get { return _headers.ProxyAuthorization; }
-			set { _headers.ProxyAuthorization = value; }
+			get => _headers.ProxyAuthorization;
+			set => _headers.ProxyAuthorization = value;
 		}
 
 		/// <summary>Gets or sets the value of the Range header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.RangeHeaderValue" />.The value of the Range header for an HTTP request.</returns>
 		public RangeHeaderValue Range
 		{
-			get { return _headers.Range; }
-			set { _headers.Range = value; }
+			get => _headers.Range;
+			set => _headers.Range = value;
 		}
 
 		/// <summary>Gets or sets the value of the Referer header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.Uri" />.The value of the Referer header for an HTTP request.</returns>
 		public Uri Referrer
 		{
-			get { return _headers.Referrer; }
-			set { _headers.Referrer = value; }
+			get => _headers.Referrer;
+			set => _headers.Referrer = value;
 		}
 
 		/// <summary>Gets the value of the TE header for an HTTP request.</summary>
@@ -144,8 +144,8 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" />.The value of the Cache-Control header for an HTTP request.</returns>
 		public CacheControlHeaderValue CacheControl
 		{
-			get { return _headers.CacheControl; }
-			set { _headers.CacheControl = value; }
+			get => _headers.CacheControl;
+			set => _headers.CacheControl = value;
 		}
 
 		/// <summary>Gets the value of the Connection header for an HTTP request.</summary>
@@ -156,16 +156,16 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <returns>Returns <see cref="T:System.Boolean" />.true if the Connection header contains Close, otherwise false.</returns>
 		public bool? ConnectionClose
 		{
-			get { return _headers.ConnectionClose; }
-			set { _headers.ConnectionClose = value; }
+			get => _headers.ConnectionClose;
+			set => _headers.ConnectionClose = value;
 		}
 
 		/// <summary>Gets or sets the value of the Date header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.DateTimeOffset" />.The value of the Date header for an HTTP request.</returns>
 		public DateTimeOffset? Date
 		{
-			get { return _headers.Date; }
-			set { _headers.Date = value; }
+			get => _headers.Date;
+			set => _headers.Date = value;
 		}
 
 		/// <summary>Gets the value of the Pragma header for an HTTP request.</summary>
@@ -184,8 +184,8 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <returns>Returns <see cref="T:System.Boolean" />.true if the Transfer-Encoding header contains chunked, otherwise false.</returns>
 		public bool? TransferEncodingChunked
 		{
-			get { return _headers.TransferEncodingChunked; }
-			set { _headers.TransferEncodingChunked = value; }
+			get => _headers.TransferEncodingChunked;
+			set => _headers.TransferEncodingChunked = value;
 		}
 
 		/// <summary>Gets the value of the Upgrade header for an HTTP request.</summary>
@@ -205,9 +205,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		public HttpRequestHeadersAdapter(HttpRequestHeaders headers)
 			: base(headers)
 		{
-			if (headers == null)
-				throw new ArgumentNullException(nameof(headers));
-			_headers = headers;
+			_headers = headers ?? throw new ArgumentNullException(nameof(headers));
 		}
 	}
 }

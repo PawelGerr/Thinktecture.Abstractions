@@ -19,22 +19,22 @@ namespace Thinktecture.Net.Adapters
 		/// <inheritdoc />
 		public string Domain
 		{
-			get { return _credential.Domain; }
-			set { _credential.Domain = value; }
+			get => _credential.Domain;
+			set => _credential.Domain = value;
 		}
 
 		/// <inheritdoc />
 		public string Password
 		{
-			get { return _credential.Password; }
-			set { _credential.Password = value; }
+			get => _credential.Password;
+			set => _credential.Password = value;
 		}
 
 		/// <inheritdoc />
 		public string UserName
 		{
-			get { return _credential.UserName; }
-			set { _credential.UserName = value; }
+			get => _credential.UserName;
+			set => _credential.UserName = value;
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="NetworkCredentialAdapter" /> class.</summary>
@@ -65,10 +65,7 @@ namespace Thinktecture.Net.Adapters
 		public NetworkCredentialAdapter(NetworkCredential credential)
 			: base(credential)
 		{
-			if (credential == null)
-				throw new ArgumentNullException(nameof(credential));
-
-			_credential = credential;
+			_credential = credential ?? throw new ArgumentNullException(nameof(credential));
 		}
 
 		/// <inheritdoc />

@@ -24,10 +24,7 @@ namespace Thinktecture
 		/// <param name="handler">Event handler</param>
 		public AbstractionEventHandlerContext(EventHandler<T> handler)
 		{
-			if (handler == null)
-				throw new ArgumentNullException(nameof(handler));
-
-			Handler = handler;
+			Handler = handler ?? throw new ArgumentNullException(nameof(handler));
 		}
 	}
 }

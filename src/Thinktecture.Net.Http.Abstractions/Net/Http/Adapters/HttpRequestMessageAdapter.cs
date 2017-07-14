@@ -21,29 +21,29 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <inheritdoc />
 		public Version Version
 		{
-			get { return _message.Version; }
-			set { _message.Version = value; }
+			get => _message.Version;
+			set => _message.Version = value;
 		}
 
 		/// <inheritdoc />
 		public IHttpContent Content
 		{
-			get { return _message.Content.ToInterface(); }
-			set { _message.Content = value.ToImplementation(); }
+			get => _message.Content.ToInterface();
+			set => _message.Content = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
 		public HttpMethod Method
 		{
-			get { return _message.Method; }
-			set { _message.Method = value; }
+			get => _message.Method;
+			set => _message.Method = value;
 		}
 
 		/// <inheritdoc />
 		public Uri RequestUri
 		{
-			get { return _message.RequestUri; }
-			set { _message.RequestUri = value; }
+			get => _message.RequestUri;
+			set => _message.RequestUri = value;
 		}
 
 		/// <inheritdoc />
@@ -79,10 +79,7 @@ namespace Thinktecture.Net.Http.Adapters
 		public HttpRequestMessageAdapter(HttpRequestMessage message)
 			: base(message)
 		{
-			if (message == null)
-				throw new ArgumentNullException(nameof(message));
-
-			_message = message;
+			_message = message ?? throw new ArgumentNullException(nameof(message));
 		}
 
 		/// <inheritdoc />

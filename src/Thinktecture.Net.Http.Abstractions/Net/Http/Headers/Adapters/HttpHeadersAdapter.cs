@@ -16,10 +16,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		public HttpHeadersAdapter(HttpHeaders headers)
 			: base(headers)
 		{
-			if (headers == null)
-				throw new ArgumentNullException(nameof(headers));
-
-			_headers = headers;
+			_headers = headers ?? throw new ArgumentNullException(nameof(headers));
 		}
 
 		/// <inheritdoc />

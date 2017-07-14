@@ -225,17 +225,14 @@ namespace Thinktecture.IO.Adapters
 		public StreamWriterAdapter(StreamWriter writer)
 			: base(writer)
 		{
-			if (writer == null)
-				throw new ArgumentNullException(nameof(writer));
-
-			_instance = writer;
+			_instance = writer ?? throw new ArgumentNullException(nameof(writer));
 		}
 
 		/// <inheritdoc />
 		public bool AutoFlush
 		{
-			get { return _instance.AutoFlush; }
-			set { _instance.AutoFlush = value; }
+			get => _instance.AutoFlush;
+			set => _instance.AutoFlush = value;
 		}
 
 		/// <inheritdoc />

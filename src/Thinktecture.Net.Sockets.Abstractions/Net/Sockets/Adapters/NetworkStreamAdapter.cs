@@ -48,10 +48,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		public NetworkStreamAdapter(NetworkStream stream) 
 			: base(stream)
 		{
-			if (stream == null)
-				throw new ArgumentNullException(nameof(stream));
-
-			_stream = stream;
+			_stream = stream ?? throw new ArgumentNullException(nameof(stream));
 		}
 	}
 }

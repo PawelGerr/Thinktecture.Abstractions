@@ -114,59 +114,56 @@ namespace Thinktecture.Adapters
 		public UriBuilderAdapter(UriBuilder builder)
 			: base(builder)
 		{
-			if (builder == null)
-				throw new ArgumentNullException(nameof(builder));
-
-			_instance = builder;
+			_instance = builder ?? throw new ArgumentNullException(nameof(builder));
 		}
 
 		/// <inheritdoc />
 		public string Fragment
 		{
-			get { return _instance.Fragment; }
-			set { _instance.Fragment = value; }
+			get => _instance.Fragment;
+			set => _instance.Fragment = value;
 		}
 
 		/// <inheritdoc />
 		public string Host
 		{
-			get { return _instance.Host; }
-			set { _instance.Host = value; }
+			get => _instance.Host;
+			set => _instance.Host = value;
 		}
 
 		/// <inheritdoc />
 		public string Password
 		{
-			get { return _instance.Password; }
-			set { _instance.Password = value; }
+			get => _instance.Password;
+			set => _instance.Password = value;
 		}
 
 		/// <inheritdoc />
 		public string Path
 		{
-			get { return _instance.Path; }
-			set { _instance.Path = value; }
+			get => _instance.Path;
+			set => _instance.Path = value;
 		}
 
 		/// <inheritdoc />
 		public int Port
 		{
-			get { return _instance.Port; }
-			set { _instance.Port = value; }
+			get => _instance.Port;
+			set => _instance.Port = value;
 		}
 
 		/// <inheritdoc />
 		public string Query
 		{
-			get { return _instance.Query; }
-			set { _instance.Query = value; }
+			get => _instance.Query;
+			set => _instance.Query = value;
 		}
 
 		/// <inheritdoc />
 		public string Scheme
 		{
-			get { return _instance.Scheme; }
-			set { _instance.Scheme = value; }
+			get => _instance.Scheme;
+			set => _instance.Scheme = value;
 		}
 
 		/// <inheritdoc />
@@ -175,8 +172,8 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public string UserName
 		{
-			get { return _instance.UserName; }
-			set { _instance.UserName = value; }
+			get => _instance.UserName;
+			set => _instance.UserName = value;
 		}
 	}
 }

@@ -21,78 +21,78 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		public bool EnableRaisingEvents
 		{
-			get { return _instance.EnableRaisingEvents; }
-			set { _instance.EnableRaisingEvents = value; }
+			get => _instance.EnableRaisingEvents;
+			set => _instance.EnableRaisingEvents = value;
 		}
 
 		/// <inheritdoc />
 		public string Filter
 		{
-			get { return _instance.Filter; }
-			set { _instance.Filter = value; }
+			get => _instance.Filter;
+			set => _instance.Filter = value;
 		}
 
 		/// <inheritdoc />
 		public bool IncludeSubdirectories
 		{
-			get { return _instance.IncludeSubdirectories; }
-			set { _instance.IncludeSubdirectories = value; }
+			get => _instance.IncludeSubdirectories;
+			set => _instance.IncludeSubdirectories = value;
 		}
 
 		/// <inheritdoc />
 		public int InternalBufferSize
 		{
-			get { return _instance.InternalBufferSize; }
-			set { _instance.InternalBufferSize = value; }
+			get => _instance.InternalBufferSize;
+			set => _instance.InternalBufferSize = value;
 		}
 
 		/// <inheritdoc />
 		public NotifyFilters NotifyFilter
 		{
-			get { return _instance.NotifyFilter; }
-			set { _instance.NotifyFilter = value; }
+			get => _instance.NotifyFilter;
+			set => _instance.NotifyFilter = value;
 		}
 
 		/// <inheritdoc />
 		public string Path
 		{
-			get { return _instance.Path; }
-			set { _instance.Path = value; }
+			get => _instance.Path;
+			set => _instance.Path = value;
 		}
 
 		/// <inheritdoc />
 		public event FileSystemEventHandler Changed
 		{
-			add { _instance.Changed += value; }
-			remove { _instance.Changed -= value; }
+			add => _instance.Changed += value;
+			remove => _instance.Changed -= value;
 		}
 
 		/// <inheritdoc />
 		public event FileSystemEventHandler Created
 		{
-			add { _instance.Created += value; }
-			remove { _instance.Created -= value; }
+			add => _instance.Created += value;
+			remove => _instance.Created -= value;
 		}
 
 		/// <inheritdoc />
 		public event FileSystemEventHandler Deleted
 		{
-			add { _instance.Deleted += value; }
-			remove { _instance.Deleted -= value; }
+			add => _instance.Deleted += value;
+			remove => _instance.Deleted -= value;
 		}
 
 		/// <inheritdoc />
 		public event ErrorEventHandler Error
 		{
-			add { _instance.Error += value; }
-			remove { _instance.Error -= value; }
+			add => _instance.Error += value;
+			remove => _instance.Error -= value;
 		}
 
 		/// <inheritdoc />
 		public event RenamedEventHandler Renamed
 		{
-			add { _instance.Renamed += value; }
-			remove { _instance.Renamed -= value; }
+			add => _instance.Renamed += value;
+			remove => _instance.Renamed -= value;
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="FileSystemWatcherAdapter" /> class.</summary>
@@ -131,10 +131,7 @@ namespace Thinktecture.IO.Adapters
 		public FileSystemWatcherAdapter(FileSystemWatcher watcher)
 			: base(watcher)
 		{
-			if (watcher == null)
-				throw new ArgumentNullException(nameof(watcher));
-
-			_instance = watcher;
+			_instance = watcher ?? throw new ArgumentNullException(nameof(watcher));
 		}
 
 		/// <inheritdoc />

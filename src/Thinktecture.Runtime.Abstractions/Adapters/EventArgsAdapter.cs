@@ -35,10 +35,7 @@ namespace Thinktecture.Adapters
 		public EventArgsAdapter(EventArgs args)
 			: base(args)
 		{
-			if (args == null)
-				throw new ArgumentNullException(nameof(args));
-
-			_args = args;
+			_args = args ?? throw new ArgumentNullException(nameof(args));
 		}
 	}
 }

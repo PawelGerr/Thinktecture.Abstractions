@@ -24,23 +24,23 @@ namespace Thinktecture.Text.Adapters
 		/// <inheritdoc />
 		public int Capacity
 		{
-			get { return _instance.Capacity; }
-			set { _instance.Capacity = value; }
+			get => _instance.Capacity;
+			set => _instance.Capacity = value;
 		}
 
 		/// <inheritdoc />
 		[IndexerName("Chars")]
 		public char this[int index]
 		{
-			get { return _instance[index]; }
-			set { _instance[index] = value; }
+			get => _instance[index];
+			set => _instance[index] = value;
 		}
 
 		/// <inheritdoc />
 		public int Length
 		{
-			get { return _instance.Length; }
-			set { _instance.Length = value; }
+			get => _instance.Length;
+			set => _instance.Length = value;
 		}
 
 		/// <inheritdoc />
@@ -108,10 +108,7 @@ namespace Thinktecture.Text.Adapters
 		public StringBuilderAdapter(StringBuilder stringBuilder)
 			: base(stringBuilder)
 		{
-			if (stringBuilder == null)
-				throw new ArgumentNullException(nameof(stringBuilder));
-
-			_instance = stringBuilder;
+			_instance = stringBuilder ?? throw new ArgumentNullException(nameof(stringBuilder));
 		}
 
 		/// <inheritdoc />

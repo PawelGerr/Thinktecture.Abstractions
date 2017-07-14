@@ -191,10 +191,7 @@ namespace Thinktecture.Text.Adapters
 		public EncodingAdapter(Encoding encoding)
 			: base(encoding)
 		{
-			if (encoding == null)
-				throw new ArgumentNullException(nameof(encoding));
-
-			_instance = encoding;
+			_instance = encoding ?? throw new ArgumentNullException(nameof(encoding));
 		}
 
 		/// <inheritdoc />

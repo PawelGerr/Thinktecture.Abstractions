@@ -25,31 +25,28 @@ namespace Thinktecture.IO.Adapters
 		public FileSystemInfoAdapter(FileSystemInfo info)
 			: base(info)
 		{
-			if (info == null)
-				throw new ArgumentNullException(nameof(info));
-
-			_instance = info;
+			_instance = info ?? throw new ArgumentNullException(nameof(info));
 		}
 
 		/// <inheritdoc />
 		public FileAttributes Attributes
 		{
-			get { return _instance.Attributes; }
-			set { _instance.Attributes = value; }
+			get => _instance.Attributes;
+			set => _instance.Attributes = value;
 		}
 
 		/// <inheritdoc />
 		public DateTime CreationTime
 		{
-			get { return _instance.CreationTime; }
-			set { _instance.CreationTime = value; }
+			get => _instance.CreationTime;
+			set => _instance.CreationTime = value;
 		}
 
 		/// <inheritdoc />
 		public DateTime CreationTimeUtc
 		{
-			get { return _instance.CreationTimeUtc; }
-			set { _instance.CreationTimeUtc = value; }
+			get => _instance.CreationTimeUtc;
+			set => _instance.CreationTimeUtc = value;
 		}
 
 		/// <inheritdoc />
@@ -67,29 +64,29 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		public DateTime LastAccessTime
 		{
-			get { return _instance.LastAccessTime; }
-			set { _instance.LastAccessTime = value; }
+			get => _instance.LastAccessTime;
+			set => _instance.LastAccessTime = value;
 		}
 
 		/// <inheritdoc />
 		public DateTime LastAccessTimeUtc
 		{
-			get { return _instance.LastAccessTimeUtc; }
-			set { _instance.LastAccessTimeUtc = value; }
+			get => _instance.LastAccessTimeUtc;
+			set => _instance.LastAccessTimeUtc = value;
 		}
 
 		/// <inheritdoc />
 		public DateTime LastWriteTime
 		{
-			get { return _instance.LastWriteTime; }
-			set { _instance.LastWriteTime = value; }
+			get => _instance.LastWriteTime;
+			set => _instance.LastWriteTime = value;
 		}
 
 		/// <inheritdoc />
 		public DateTime LastWriteTimeUtc
 		{
-			get { return _instance.LastWriteTimeUtc; }
-			set { _instance.LastWriteTimeUtc = value; }
+			get => _instance.LastWriteTimeUtc;
+			set => _instance.LastWriteTimeUtc = value;
 		}
 
 		/// <inheritdoc />

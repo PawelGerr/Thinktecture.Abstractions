@@ -31,10 +31,7 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 		public SafeHandleAdapter(SafeHandle handle)
 			: base(handle)
 		{
-			if (handle == null)
-				throw new ArgumentNullException(nameof(handle));
-
-			_instance = handle;
+			_instance = handle ?? throw new ArgumentNullException(nameof(handle));
 		}
 
 		/// <inheritdoc />

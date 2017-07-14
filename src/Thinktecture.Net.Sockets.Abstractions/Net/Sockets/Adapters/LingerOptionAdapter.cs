@@ -21,15 +21,15 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool Enabled
 		{
-			get { return _options.Enabled; }
-			set { _options.Enabled = value; }
+			get => _options.Enabled;
+			set => _options.Enabled = value;
 		}
 
 		/// <inheritdoc />
 		public int LingerTime
 		{
-			get { return _options.LingerTime; }
-			set { _options.LingerTime = value; }
+			get => _options.LingerTime;
+			set => _options.LingerTime = value;
 		}
 
 		/// <summary>
@@ -49,10 +49,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		public LingerOptionAdapter(LingerOption options)
 			: base(options)
 		{
-			if (options == null)
-				throw new ArgumentNullException(nameof(options));
-
-			_options = options;
+			_options = options ?? throw new ArgumentNullException(nameof(options));
 		}
 	}
 }

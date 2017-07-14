@@ -227,10 +227,7 @@ namespace Thinktecture.Threading.Adapters
 		public WaitHandleAdapter(WaitHandle handle)
 			: base(handle)
 		{
-			if (handle == null)
-				throw new ArgumentNullException(nameof(handle));
-
-			_handle = handle;
+			_handle = handle ?? throw new ArgumentNullException(nameof(handle));
 		}
 
 		/// <inheritdoc />

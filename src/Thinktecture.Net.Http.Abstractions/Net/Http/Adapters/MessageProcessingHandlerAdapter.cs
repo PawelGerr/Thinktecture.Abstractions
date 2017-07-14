@@ -20,10 +20,7 @@ namespace Thinktecture.Net.Http.Adapters
 		public MessageProcessingHandlerAdapter(MessageProcessingHandler handler)
 			: base(handler)
 		{
-			if (handler == null)
-				throw new ArgumentNullException(nameof(handler));
-
-			_handler = handler;
+			_handler = handler ?? throw new ArgumentNullException(nameof(handler));
 		}
 	}
 }

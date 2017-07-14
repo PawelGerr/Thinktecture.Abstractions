@@ -23,10 +23,7 @@ namespace Thinktecture
 		/// <param name="implementation">Implementation to be used by the adapter.</param>
 		public AbstractionAdapter(object implementation)
 		{
-			if (implementation == null)
-				throw new ArgumentNullException(nameof(implementation));
-
-			_implementation = implementation;
+			_implementation = implementation ?? throw new ArgumentNullException(nameof(implementation));
 		}
 
 		/// <summary>

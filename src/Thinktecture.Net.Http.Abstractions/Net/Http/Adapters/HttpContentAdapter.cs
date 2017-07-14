@@ -28,10 +28,7 @@ namespace Thinktecture.Net.Http.Adapters
 		public HttpContentAdapter(HttpContent content)
 			: base(content)
 		{
-			if (content == null)
-				throw new ArgumentNullException(nameof(content));
-
-			_content = content;
+			_content = content ?? throw new ArgumentNullException(nameof(content));
 		}
 
 		/// <inheritdoc />

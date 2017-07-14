@@ -25,10 +25,7 @@ namespace Thinktecture.Text.Adapters
 		public DecoderAdapter(Decoder decoder)
 			: base(decoder)
 		{
-			if (decoder == null)
-				throw new ArgumentNullException(nameof(decoder));
-
-			_instance = decoder;
+			_instance = decoder ?? throw new ArgumentNullException(nameof(decoder));
 		}
 
 		/// <inheritdoc />

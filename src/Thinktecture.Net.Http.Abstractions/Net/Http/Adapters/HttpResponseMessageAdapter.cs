@@ -21,29 +21,29 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <inheritdoc />
 		public Version Version
 		{
-			get { return _message.Version; }
-			set { _message.Version = value; }
+			get => _message.Version;
+			set => _message.Version = value;
 		}
 
 		/// <inheritdoc />
 		public IHttpContent Content
 		{
-			get { return _message.Content.ToInterface(); }
-			set { _message.Content = value.ToImplementation(); }
+			get => _message.Content.ToInterface();
+			set => _message.Content = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
 		public HttpStatusCode StatusCode
 		{
-			get { return _message.StatusCode; }
-			set { _message.StatusCode = value; }
+			get => _message.StatusCode;
+			set => _message.StatusCode = value;
 		}
 
 		/// <inheritdoc />
 		public string ReasonPhrase
 		{
-			get { return _message.ReasonPhrase; }
-			set { _message.ReasonPhrase = value; }
+			get => _message.ReasonPhrase;
+			set => _message.ReasonPhrase = value;
 		}
 
 		/// <inheritdoc />
@@ -52,8 +52,8 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <inheritdoc />
 		public IHttpRequestMessage RequestMessage
 		{
-			get { return _message.RequestMessage.ToInterface(); }
-			set { _message.RequestMessage = value.ToImplementation(); }
+			get => _message.RequestMessage.ToInterface();
+			set => _message.RequestMessage = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
@@ -79,10 +79,7 @@ namespace Thinktecture.Net.Http.Adapters
 		public HttpResponseMessageAdapter(HttpResponseMessage message)
 			: base(message)
 		{
-			if (message == null)
-				throw new ArgumentNullException(nameof(message));
-
-			_message = message;
+			_message = message ?? throw new ArgumentNullException(nameof(message));
 		}
 
 		/// <inheritdoc />

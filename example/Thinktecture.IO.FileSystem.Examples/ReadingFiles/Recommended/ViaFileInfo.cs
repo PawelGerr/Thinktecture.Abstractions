@@ -16,10 +16,7 @@ namespace Thinktecture.IO.FileSystem.Examples.ReadingFiles.Recommended
 
 		public ViaFileInfo(ICustomFactory factory)
 		{
-			if (factory == null)
-				throw new ArgumentNullException(nameof(factory));
-
-			_factory = factory;
+			_factory = factory ?? throw new ArgumentNullException(nameof(factory));
 		}
 
 		public void ReadFile_With_OpenText()

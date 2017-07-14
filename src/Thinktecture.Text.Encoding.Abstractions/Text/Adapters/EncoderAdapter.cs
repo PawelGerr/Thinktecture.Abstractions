@@ -25,10 +25,7 @@ namespace Thinktecture.Text.Adapters
 		public EncoderAdapter(Encoder encoder)
 			: base(encoder)
 		{
-			if (encoder == null)
-				throw new ArgumentNullException(nameof(encoder));
-
-			_instance = encoder;
+			_instance = encoder ?? throw new ArgumentNullException(nameof(encoder));
 		}
 
 		/// <inheritdoc />

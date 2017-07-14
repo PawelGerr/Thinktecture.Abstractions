@@ -77,10 +77,7 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="writer">Writer to be used by the adapter.</param>
 		public StringWriterAdapter(StringWriter writer) : base(writer)
 		{
-			if (writer == null)
-				throw new ArgumentNullException(nameof(writer));
-
-			_instance = writer;
+			_instance = writer ?? throw new ArgumentNullException(nameof(writer));
 		}
 
 		/// <inheritdoc />

@@ -146,10 +146,7 @@ namespace Thinktecture.IO.Adapters
 		public BinaryWriterAdapter(BinaryWriter writer)
 			: base(writer)
 		{
-			if (writer == null)
-				throw new ArgumentNullException(nameof(writer));
-
-			_instance = writer;
+			_instance = writer ?? throw new ArgumentNullException(nameof(writer));
 		}
 
 		/// <inheritdoc />

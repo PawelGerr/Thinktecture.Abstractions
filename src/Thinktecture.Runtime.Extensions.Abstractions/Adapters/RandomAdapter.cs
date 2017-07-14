@@ -37,10 +37,7 @@ namespace Thinktecture.Adapters
 		public RandomAdapter(Random random)
 			: base(random)
 		{
-			if (random == null)
-				throw new ArgumentNullException(nameof(random));
-
-			_instance = random;
+			_instance = random ?? throw new ArgumentNullException(nameof(random));
 		}
 
 		/// <inheritdoc />

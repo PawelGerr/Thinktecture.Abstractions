@@ -38,10 +38,9 @@ namespace Thinktecture.Collections.Generic
 		{
 			if (collection == null)
 				throw new ArgumentNullException(nameof(collection));
-			if (toInterface == null)
-				throw new ArgumentNullException(nameof(toInterface));
+
 			Collection = collection;
-			_toInterface = toInterface;
+			_toInterface = toInterface ?? throw new ArgumentNullException(nameof(toInterface));
 		}
 		
 		/// <inheritdoc />

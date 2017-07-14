@@ -33,10 +33,7 @@ namespace Thinktecture.IO.Adapters
 		public StringReaderAdapter(StringReader reader)
 			: base(reader)
 		{
-			if (reader == null)
-				throw new ArgumentNullException(nameof(reader));
-
-			_instance = reader;
+			_instance = reader ?? throw new ArgumentNullException(nameof(reader));
 		}
 	}
 }

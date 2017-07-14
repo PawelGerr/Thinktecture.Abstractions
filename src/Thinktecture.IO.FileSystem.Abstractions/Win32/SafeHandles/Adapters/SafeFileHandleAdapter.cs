@@ -34,10 +34,7 @@ namespace Thinktecture.Win32.SafeHandles.Adapters
 		public SafeFileHandleAdapter(SafeFileHandle handle)
 			: base(handle)
 		{
-			if (handle == null)
-				throw new ArgumentNullException(nameof(handle));
-
-			_instance = handle;
+			_instance = handle ?? throw new ArgumentNullException(nameof(handle));
 		}
 	}
 }

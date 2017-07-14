@@ -17,13 +17,8 @@ public class ViaFile
 
 	public ViaFile(IFile file, ICustomFactory factory)
 	{
-		if (file == null)
-			throw new ArgumentNullException(nameof(file));
-		if (factory == null)
-			throw new ArgumentNullException(nameof(factory));
-
-		_file = file;
-		_factory = factory;
+		_file = file ?? throw new ArgumentNullException(nameof(file));
+		_factory = factory ?? throw new ArgumentNullException(nameof(factory));
 	}
 
 	public void ReadFile_With_OpenText()

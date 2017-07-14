@@ -19,78 +19,78 @@ namespace Thinktecture.Net.Adapters
 		/// <inheritdoc />
 		public string Comment
 		{
-			get { return _cookie.Comment; }
-			set { _cookie.Comment = value; }
+			get => _cookie.Comment;
+			set => _cookie.Comment = value;
 		}
 
 		/// <inheritdoc />
 		public Uri CommentUri
 		{
-			get { return _cookie.CommentUri; }
-			set { _cookie.CommentUri = value; }
+			get => _cookie.CommentUri;
+			set => _cookie.CommentUri = value;
 		}
 
 		/// <inheritdoc />
 		public bool Discard
 		{
-			get { return _cookie.Discard; }
-			set { _cookie.Discard = value; }
+			get => _cookie.Discard;
+			set => _cookie.Discard = value;
 		}
 
 		/// <inheritdoc />
 		public string Domain
 		{
-			get { return _cookie.Domain; }
-			set { _cookie.Domain = value; }
+			get => _cookie.Domain;
+			set => _cookie.Domain = value;
 		}
 
 		/// <inheritdoc />
 		public bool Expired
 		{
-			get { return _cookie.Expired; }
-			set { _cookie.Expired = value; }
+			get => _cookie.Expired;
+			set => _cookie.Expired = value;
 		}
 
 		/// <inheritdoc />
 		public DateTime Expires
 		{
-			get { return _cookie.Expires; }
-			set { _cookie.Expires = value; }
+			get => _cookie.Expires;
+			set => _cookie.Expires = value;
 		}
 
 		/// <inheritdoc />
 		public bool HttpOnly
 		{
-			get { return _cookie.HttpOnly; }
-			set { _cookie.HttpOnly = value; }
+			get => _cookie.HttpOnly;
+			set => _cookie.HttpOnly = value;
 		}
 
 		/// <inheritdoc />
 		public string Name
 		{
-			get { return _cookie.Name; }
-			set { _cookie.Name = value; }
+			get => _cookie.Name;
+			set => _cookie.Name = value;
 		}
 
 		/// <inheritdoc />
 		public string Path
 		{
-			get { return _cookie.Path; }
-			set { _cookie.Path = value; }
+			get => _cookie.Path;
+			set => _cookie.Path = value;
 		}
 
 		/// <inheritdoc />
 		public string Port
 		{
-			get { return _cookie.Port; }
-			set { _cookie.Port = value; }
+			get => _cookie.Port;
+			set => _cookie.Port = value;
 		}
 
 		/// <inheritdoc />
 		public bool Secure
 		{
-			get { return _cookie.Secure; }
-			set { _cookie.Secure = value; }
+			get => _cookie.Secure;
+			set => _cookie.Secure = value;
 		}
 
 		/// <inheritdoc />
@@ -99,15 +99,15 @@ namespace Thinktecture.Net.Adapters
 		/// <inheritdoc />
 		public string Value
 		{
-			get { return _cookie.Value; }
-			set { _cookie.Value = value; }
+			get => _cookie.Value;
+			set => _cookie.Value = value;
 		}
 
 		/// <inheritdoc />
 		public int Version
 		{
-			get { return _cookie.Version; }
-			set { _cookie.Version = value; }
+			get => _cookie.Version;
+			set => _cookie.Version = value;
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="CookieAdapter" /> class.</summary>
@@ -153,10 +153,7 @@ namespace Thinktecture.Net.Adapters
 		public CookieAdapter(Cookie cookie)
 			: base(cookie)
 		{
-			if (cookie == null)
-				throw new ArgumentNullException(nameof(cookie));
-
-			_cookie = cookie;
+			_cookie = cookie ?? throw new ArgumentNullException(nameof(cookie));
 		}
 	}
 }

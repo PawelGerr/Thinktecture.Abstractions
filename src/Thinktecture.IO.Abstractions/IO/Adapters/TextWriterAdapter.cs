@@ -31,10 +31,7 @@ namespace Thinktecture.IO.Adapters
 		public TextWriterAdapter(TextWriter writer)
 			: base(writer)
 		{
-			if (writer == null)
-				throw new ArgumentNullException(nameof(writer));
-
-			_instance = writer;
+			_instance = writer ?? throw new ArgumentNullException(nameof(writer));
 		}
 
 		/// <inheritdoc />
@@ -52,8 +49,8 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		public string NewLine
 		{
-			get { return _instance.NewLine; }
-			set { _instance.NewLine = value; }
+			get => _instance.NewLine;
+			set => _instance.NewLine = value;
 		}
 
 		/// <inheritdoc />

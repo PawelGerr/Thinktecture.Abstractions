@@ -14,10 +14,7 @@ namespace Thinktecture.Net.Http.Adapters
 		public HttpMessageHandlerAdapter(HttpMessageHandler handler)
 			: base(handler)
 		{
-			if (handler == null)
-				throw new ArgumentNullException(nameof(handler));
-
-			_handler = handler;
+			_handler = handler ?? throw new ArgumentNullException(nameof(handler));
 		}
 
 		/// <inheritdoc />

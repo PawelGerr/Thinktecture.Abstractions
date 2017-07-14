@@ -40,10 +40,7 @@ namespace Thinktecture.IO.Adapters
 		public FileInfoAdapter(FileInfo info)
 			: base(info)
 		{
-			if (info == null)
-				throw new ArgumentNullException(nameof(info));
-
-			_instance = info;
+			_instance = info ?? throw new ArgumentNullException(nameof(info));
 		}
 
 		/// <inheritdoc />
@@ -55,8 +52,8 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		public bool IsReadOnly
 		{
-			get { return _instance.IsReadOnly; }
-			set { _instance.IsReadOnly = value; }
+			get => _instance.IsReadOnly;
+			set => _instance.IsReadOnly = value;
 		}
 
 		/// <inheritdoc />

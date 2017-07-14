@@ -76,8 +76,8 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool Blocking
 		{
-			get { return _socket.Blocking; }
-			set { _socket.Blocking = value; }
+			get => _socket.Blocking;
+			set => _socket.Blocking = value;
 		}
 
 		/// <inheritdoc />
@@ -86,29 +86,29 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool DontFragment
 		{
-			get { return _socket.DontFragment; }
-			set { _socket.DontFragment = value; }
+			get => _socket.DontFragment;
+			set => _socket.DontFragment = value;
 		}
 
 		/// <inheritdoc />
 		public bool DualMode
 		{
-			get { return _socket.DualMode; }
-			set { _socket.DualMode = value; }
+			get => _socket.DualMode;
+			set => _socket.DualMode = value;
 		}
 
 		/// <inheritdoc />
 		public bool EnableBroadcast
 		{
-			get { return _socket.EnableBroadcast; }
-			set { _socket.EnableBroadcast = value; }
+			get => _socket.EnableBroadcast;
+			set => _socket.EnableBroadcast = value;
 		}
 
 		/// <inheritdoc />
 		public bool ExclusiveAddressUse
 		{
-			get { return _socket.ExclusiveAddressUse; }
-			set { _socket.ExclusiveAddressUse = value; }
+			get => _socket.ExclusiveAddressUse;
+			set => _socket.ExclusiveAddressUse = value;
 		}
 
 		/// <inheritdoc />
@@ -117,8 +117,8 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public ILingerOption LingerState
 		{
-			get { return _socket.LingerState.ToInterface(); }
-			set { _socket.LingerState = value.ToImplementation(); }
+			get => _socket.LingerState.ToInterface();
+			set => _socket.LingerState = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
@@ -127,15 +127,15 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool MulticastLoopback
 		{
-			get { return _socket.MulticastLoopback; }
-			set { _socket.MulticastLoopback = value; }
+			get => _socket.MulticastLoopback;
+			set => _socket.MulticastLoopback = value;
 		}
 
 		/// <inheritdoc />
 		public bool NoDelay
 		{
-			get { return _socket.NoDelay; }
-			set { _socket.NoDelay = value; }
+			get => _socket.NoDelay;
+			set => _socket.NoDelay = value;
 		}
 
 		/// <inheritdoc />
@@ -144,15 +144,15 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public int ReceiveBufferSize
 		{
-			get { return _socket.ReceiveBufferSize; }
-			set { _socket.ReceiveBufferSize = value; }
+			get => _socket.ReceiveBufferSize;
+			set => _socket.ReceiveBufferSize = value;
 		}
 
 		/// <inheritdoc />
 		public int ReceiveTimeout
 		{
-			get { return _socket.ReceiveTimeout; }
-			set { _socket.ReceiveTimeout = value; }
+			get => _socket.ReceiveTimeout;
+			set => _socket.ReceiveTimeout = value;
 		}
 
 		/// <inheritdoc />
@@ -161,15 +161,15 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public int SendBufferSize
 		{
-			get { return _socket.SendBufferSize; }
-			set { _socket.SendBufferSize = value; }
+			get => _socket.SendBufferSize;
+			set => _socket.SendBufferSize = value;
 		}
 
 		/// <inheritdoc />
 		public int SendTimeout
 		{
-			get { return _socket.SendTimeout; }
-			set { _socket.SendTimeout = value; }
+			get => _socket.SendTimeout;
+			set => _socket.SendTimeout = value;
 		}
 
 		/// <inheritdoc />
@@ -178,8 +178,8 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public short Ttl
 		{
-			get { return _socket.Ttl; }
-			set { _socket.Ttl = value; }
+			get => _socket.Ttl;
+			set => _socket.Ttl = value;
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="SocketAdapter" /> class using the specified address family, socket type and protocol.</summary>
@@ -206,10 +206,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		public SocketAdapter(Socket socket)
 			: base(socket)
 		{
-			if (socket == null)
-				throw new ArgumentNullException(nameof(socket));
-
-			_socket = socket;
+			_socket = socket ?? throw new ArgumentNullException(nameof(socket));
 		}
 
 		/// <inheritdoc />

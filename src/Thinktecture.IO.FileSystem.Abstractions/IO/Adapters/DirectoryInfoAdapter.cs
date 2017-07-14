@@ -39,10 +39,7 @@ namespace Thinktecture.IO.Adapters
 		public DirectoryInfoAdapter(DirectoryInfo directoryInfo)
 			: base(directoryInfo)
 		{
-			if (directoryInfo == null)
-				throw new ArgumentNullException(nameof(directoryInfo));
-
-			_instance = directoryInfo;
+			_instance = directoryInfo ?? throw new ArgumentNullException(nameof(directoryInfo));
 		}
 		
 		/// <inheritdoc />

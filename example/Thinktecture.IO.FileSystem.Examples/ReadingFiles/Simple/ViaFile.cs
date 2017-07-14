@@ -16,10 +16,7 @@ namespace Thinktecture.IO.FileSystem.Examples.ReadingFiles.Simple
 
 		public ViaFile(IFile file)
 		{
-			if (file == null)
-				throw new ArgumentNullException(nameof(file));
-
-			_file = file;
+			_file = file ?? throw new ArgumentNullException(nameof(file));
 		}
 
 		public void ReadFile_With_OpenText()

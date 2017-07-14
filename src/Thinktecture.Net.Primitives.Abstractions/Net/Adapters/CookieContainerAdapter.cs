@@ -55,10 +55,7 @@ namespace Thinktecture.Net.Adapters
 		public CookieContainerAdapter(CookieContainer container)
 			: base(container)
 		{
-			if (container == null)
-				throw new ArgumentNullException(nameof(container));
-
-			_container = container;
+			_container = container ?? throw new ArgumentNullException(nameof(container));
 		}
 
 		/// <inheritdoc />

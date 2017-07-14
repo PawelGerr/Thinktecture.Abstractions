@@ -39,10 +39,7 @@ namespace Thinktecture.Net.Adapters
 		public CookieCollectionAdapter(CookieCollection collection) 
 			: base(collection)
 		{
-			if (collection == null)
-				throw new ArgumentNullException(nameof(collection));
-
-			_collection = collection;
+			_collection = collection ?? throw new ArgumentNullException(nameof(collection));
 		}
 
 		/// <inheritdoc />
