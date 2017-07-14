@@ -48,22 +48,21 @@ namespace Thinktecture.Net.Http.Adapters
 		public HttpMessageInvokerAdapter(HttpMessageInvoker invoker)
 			: base(invoker)
 		{
-			if (invoker == null)
-				throw new ArgumentNullException(nameof(invoker));
-
-			_invoker = invoker;
+			_invoker = invoker ?? throw new ArgumentNullException(nameof(invoker));
 		}
 
 		/// <inheritdoc />
-		public async Task<IHttpResponseMessage> SendAsync(IHttpRequestMessage request, CancellationToken cancellationToken)
+		public Task<IHttpResponseMessage> SendAsync(IHttpRequestMessage request, CancellationToken cancellationToken)
 		{
-			return (await _invoker.SendAsync(request.ToImplementation(), cancellationToken)).ToInterface();
+			return _invoker.SendAsync(request.ToImplementation(), cancellationToken)
+				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
-		public async Task<IHttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+		public Task<IHttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 		{
-			return (await _invoker.SendAsync(request, cancellationToken)).ToInterface();
+			return _invoker.SendAsync(request, cancellationToken)
+				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />

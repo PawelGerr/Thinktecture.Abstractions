@@ -23,8 +23,8 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public bool ExclusiveAddressUse
 		{
-			get { return _listener.ExclusiveAddressUse; }
-			set { _listener.ExclusiveAddressUse = value; }
+			get => _listener.ExclusiveAddressUse;
+			set => _listener.ExclusiveAddressUse = value;
 		}
 
 		/// <inheritdoc />
@@ -80,22 +80,21 @@ namespace Thinktecture.Net.Sockets.Adapters
 		public TcpListenerAdapter(TcpListener listener)
 			: base(listener)
 		{
-			if (listener == null)
-				throw new ArgumentNullException(nameof(listener));
-
-			_listener = listener;
+			_listener = listener ?? throw new ArgumentNullException(nameof(listener));
 		}
 
 		/// <inheritdoc />
-		public async Task<ISocket> AcceptSocketAsync()
+		public Task<ISocket> AcceptSocketAsync()
 		{
-			return (await _listener.AcceptSocketAsync()).ToInterface();
+			return _listener.AcceptSocketAsync()
+				.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
-		public async Task<ITcpClient> AcceptTcpClientAsync()
+		public Task<ITcpClient> AcceptTcpClientAsync()
 		{
-			return (await _listener.AcceptTcpClientAsync()).ToInterface();
+			return _listener.AcceptTcpClientAsync()
+				.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />

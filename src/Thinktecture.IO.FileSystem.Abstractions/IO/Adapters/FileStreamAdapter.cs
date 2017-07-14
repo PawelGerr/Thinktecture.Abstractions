@@ -265,10 +265,7 @@ namespace Thinktecture.IO.Adapters
 		public FileStreamAdapter(FileStream fileStream)
 			: base(fileStream)
 		{
-			if (fileStream == null)
-				throw new ArgumentNullException(nameof(fileStream));
-
-			_instance = fileStream;
+			_instance = fileStream ?? throw new ArgumentNullException(nameof(fileStream));
 		}
 
 		/// <inheritdoc />

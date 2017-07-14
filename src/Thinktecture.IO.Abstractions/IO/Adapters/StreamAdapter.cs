@@ -42,22 +42,22 @@ namespace Thinktecture.IO.Adapters
 		/// <inheritdoc />
 		public long Position
 		{
-			get { return _instance.Position; }
-			set { _instance.Position = value; }
+			get => _instance.Position;
+			set => _instance.Position = value;
 		}
 
 		/// <inheritdoc />
 		public int ReadTimeout
 		{
-			get { return _instance.ReadTimeout; }
-			set { _instance.ReadTimeout = value; }
+			get => _instance.ReadTimeout;
+			set => _instance.ReadTimeout = value;
 		}
 
 		/// <inheritdoc />
 		public int WriteTimeout
 		{
-			get { return _instance.WriteTimeout; }
-			set { _instance.WriteTimeout = value; }
+			get => _instance.WriteTimeout;
+			set => _instance.WriteTimeout = value;
 		}
 
 		/// <summary>
@@ -67,10 +67,7 @@ namespace Thinktecture.IO.Adapters
 		public StreamAdapter(Stream stream)
 			: base(stream)
 		{
-			if (stream == null)
-				throw new ArgumentNullException(nameof(stream));
-
-			_instance = stream;
+			_instance = stream ?? throw new ArgumentNullException(nameof(stream));
 		}
 
 		/// <inheritdoc />
