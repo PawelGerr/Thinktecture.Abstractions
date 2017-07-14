@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4860E453-E56B-4BED-BA8A-DDFA89A19B0D}"
 EndProject
@@ -47,6 +47,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.Net.Sockets.Abstractions", "src\Thinktecture.Net.Sockets.Abstractions\Thinktecture.Net.Sockets.Abstractions.csproj", "{A7907887-601D-4B1D-9484-099F39C0FCEB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.Net.NetworkInformation.Abstractions", "src\Thinktecture.Net.NetworkInformation.Abstractions\Thinktecture.Net.NetworkInformation.Abstractions.csproj", "{F927011A-CED0-4E14-82B5-789BEB1A044F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.Abstractions.Wpf.Example", "example\Thinktecture.Abstractions.Wpf.Example\Thinktecture.Abstractions.Wpf.Example.csproj", "{0A81E014-DC74-43B5-9D59-7AADFA25E628}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -110,6 +112,10 @@ Global
 		{F927011A-CED0-4E14-82B5-789BEB1A044F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F927011A-CED0-4E14-82B5-789BEB1A044F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F927011A-CED0-4E14-82B5-789BEB1A044F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A81E014-DC74-43B5-9D59-7AADFA25E628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A81E014-DC74-43B5-9D59-7AADFA25E628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A81E014-DC74-43B5-9D59-7AADFA25E628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A81E014-DC74-43B5-9D59-7AADFA25E628}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,5 +135,6 @@ Global
 		{751EE0A0-51FF-4D8E-86D8-F223904E814F} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 		{A7907887-601D-4B1D-9484-099F39C0FCEB} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 		{F927011A-CED0-4E14-82B5-789BEB1A044F} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
+		{0A81E014-DC74-43B5-9D59-7AADFA25E628} = {F2F0BF55-C0C6-4325-98EB-CEC4E4A5EBC6}
 	EndGlobalSection
 EndGlobal
