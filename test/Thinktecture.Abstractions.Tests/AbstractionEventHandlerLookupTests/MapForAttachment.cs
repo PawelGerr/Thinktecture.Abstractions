@@ -32,13 +32,14 @@ namespace Thinktecture.AbstractionEventHandlerLookupTests
 		}
 
 		[Fact]
-		public void Should_return_new_handler_that_delegates_calls()
+		public void Should_return_new_handler_that_delegates_calls_if_using_eventhandler()
 		{
 			var sender = new object();
 			var implementation = new TestImplementation();
 			var adapter = new TestAdapter();
 			var calls = new List<Tuple<object, ITestAbstraction>>();
 
+			// ReSharper disable once ConvertToLocalFunction
 			EventHandler<ITestAbstraction> handler = (s, args) => calls.Add(new Tuple<object, ITestAbstraction>(s, args));
 
 			var mappedHandler = _lookup.MapForAttachment(handler, impl => adapter);
@@ -52,15 +53,50 @@ namespace Thinktecture.AbstractionEventHandlerLookupTests
 		}
 
 		[Fact]
-		public void Should_return_same_handler_for_same_input()
+		public void Should_return_new_handler_that_delegates_calls_if_using_method()
+		{
+			var sender = new object();
+			var implementation = new TestImplementation();
+			var adapter = new TestAdapter();
+			var calls = new List<Tuple<object, ITestAbstraction>>();
+
+			void Handler(object s, ITestAbstraction args) => calls.Add(new Tuple<object, ITestAbstraction>(s, args));
+
+			var mappedHandler = _lookup.MapForAttachment(Handler, impl => adapter);
+
+			mappedHandler.Should().NotBeNull();
+			mappedHandler(sender, implementation);
+
+			calls.Should().HaveCount(1);
+			calls[0].Item1.Should().Be(sender);
+			calls[0].Item2.Should().Be(adapter);
+		}
+
+		[Fact]
+		public void Should_return_same_handler_for_same_eventhandler()
 		{
 			var adapter = new TestAdapter();
 			var calls = new List<Tuple<object, ITestAbstraction>>();
 
+			// ReSharper disable once ConvertToLocalFunction
 			EventHandler<ITestAbstraction> handler = (s, args) => calls.Add(new Tuple<object, ITestAbstraction>(s, args));
 
 			var mappedHandler = _lookup.MapForAttachment(handler, impl => adapter);
 			var mappedHandler2 = _lookup.MapForAttachment(handler, impl => adapter);
+
+			mappedHandler.Should().Be(mappedHandler2);
+		}
+
+		[Fact]
+		public void Should_return_same_handler_for_same_method()
+		{
+			var adapter = new TestAdapter();
+			var calls = new List<Tuple<object, ITestAbstraction>>();
+
+			void Handler(object s, ITestAbstraction args) => calls.Add(new Tuple<object, ITestAbstraction>(s, args));
+
+			var mappedHandler = _lookup.MapForAttachment(Handler, impl => adapter);
+			var mappedHandler2 = _lookup.MapForAttachment(Handler, impl => adapter);
 
 			mappedHandler.Should().Be(mappedHandler2);
 		}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Thinktecture.Collections.Generic;
 
 namespace Thinktecture
@@ -17,7 +18,10 @@ namespace Thinktecture
 		/// </summary>
 		public AbstractionEventHandlerLookup()
 		{
-			var comparer = new InstanceEqualityComparer<EventHandler<TAbstraction>>();
+			var comparer = new GenericEqualityComparer<EventHandler<TAbstraction>>(
+				(key, otherKey) => ReferenceEquals(key.Target, otherKey.Target) && ReferenceEquals(key.GetMethodInfo(), otherKey.GetMethodInfo()),
+				key => ((key.Target?.GetHashCode() ?? 0) * 397) ^ (key.GetMethodInfo()?.GetHashCode() ?? 0));
+
 			_lookup = new Dictionary<EventHandler<TAbstraction>, AbstractionEventHandlerContext<TImplementation>>(comparer);
 		}
 
