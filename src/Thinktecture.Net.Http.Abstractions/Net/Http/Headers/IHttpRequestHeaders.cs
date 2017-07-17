@@ -8,28 +8,28 @@ namespace Thinktecture.Net.Http.Headers
 	public interface IHttpRequestHeaders : IHttpHeaders, IAbstraction<HttpRequestHeaders>
 	{
 		/// <summary>Gets the value of the Accept header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Accept header for an HTTP request.</returns>
-		HttpHeaderValueCollection<MediaTypeWithQualityHeaderValue> Accept { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Accept header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<MediaTypeWithQualityHeaderValue> Accept { get; }
 
 		/// <summary>Gets the value of the Accept-Charset header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Accept-Charset header for an HTTP request.</returns>
-		HttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptCharset { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Accept-Charset header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptCharset { get; }
 
 		/// <summary>Gets the value of the Accept-Encoding header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Accept-Encoding header for an HTTP request.</returns>
-		HttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptEncoding { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Accept-Encoding header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptEncoding { get; }
 
 		/// <summary>Gets the value of the Accept-Language header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Accept-Language header for an HTTP request.</returns>
-		HttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptLanguage { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Accept-Language header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptLanguage { get; }
 
 		/// <summary>Gets or sets the value of the Authorization header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.AuthenticationHeaderValue" />.The value of the Authorization header for an HTTP request.</returns>
 		AuthenticationHeaderValue Authorization { get; set; }
 
 		/// <summary>Gets the value of the Expect header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Expect header for an HTTP request.</returns>
-		HttpHeaderValueCollection<NameValueWithParametersHeaderValue> Expect { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Expect header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<NameValueWithParametersHeaderValue> Expect { get; }
 
 		/// <summary>Gets or sets a value that indicates if the Expect header for an HTTP request contains Continue.</summary>
 		/// <returns>Returns <see cref="T:System.Boolean" />.true if the Expect header contains Continue, otherwise false.</returns>
@@ -44,16 +44,16 @@ namespace Thinktecture.Net.Http.Headers
 		string Host { get; set; }
 
 		/// <summary>Gets the value of the If-Match header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the If-Match header for an HTTP request.</returns>
-		HttpHeaderValueCollection<EntityTagHeaderValue> IfMatch { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the If-Match header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<EntityTagHeaderValue> IfMatch { get; }
 
 		/// <summary>Gets or sets the value of the If-Modified-Since header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.DateTimeOffset" />.The value of the If-Modified-Since header for an HTTP request.</returns>
 		DateTimeOffset? IfModifiedSince { get; set; }
 
 		/// <summary>Gets the value of the If-None-Match header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.Gets the value of the If-None-Match header for an HTTP request.</returns>
-		HttpHeaderValueCollection<EntityTagHeaderValue> IfNoneMatch { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.Gets the value of the If-None-Match header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<EntityTagHeaderValue> IfNoneMatch { get; }
 
 		/// <summary>Gets or sets the value of the If-Range header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.RangeConditionHeaderValue" />.The value of the If-Range header for an HTTP request.</returns>
@@ -80,21 +80,21 @@ namespace Thinktecture.Net.Http.Headers
 		Uri Referrer { get; set; }
 
 		/// <summary>Gets the value of the TE header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the TE header for an HTTP request.</returns>
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the TE header for an HTTP request.</returns>
 		// ReSharper disable once InconsistentNaming
-		HttpHeaderValueCollection<TransferCodingWithQualityHeaderValue> TE { get; }
+		IHttpHeaderValueCollection<TransferCodingWithQualityHeaderValue> TE { get; }
 
 		/// <summary>Gets the value of the User-Agent header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the User-Agent header for an HTTP request.</returns>
-		HttpHeaderValueCollection<ProductInfoHeaderValue> UserAgent { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the User-Agent header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<ProductInfoHeaderValue> UserAgent { get; }
 
 		/// <summary>Gets or sets the value of the Cache-Control header for an HTTP request.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" />.The value of the Cache-Control header for an HTTP request.</returns>
 		CacheControlHeaderValue CacheControl { get; set; }
 
 		/// <summary>Gets the value of the Connection header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Connection header for an HTTP request.</returns>
-		HttpHeaderValueCollection<string> Connection { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Connection header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<string> Connection { get; }
 
 		/// <summary>Gets or sets a value that indicates if the Connection header for an HTTP request contains Close.</summary>
 		/// <returns>Returns <see cref="T:System.Boolean" />.true if the Connection header contains Close, otherwise false.</returns>
@@ -105,31 +105,31 @@ namespace Thinktecture.Net.Http.Headers
 		DateTimeOffset? Date { get; set; }
 
 		/// <summary>Gets the value of the Pragma header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Pragma header for an HTTP request.</returns>
-		HttpHeaderValueCollection<NameValueHeaderValue> Pragma { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Pragma header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<NameValueHeaderValue> Pragma { get; }
 
 		/// <summary>Gets the value of the Trailer header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Trailer header for an HTTP request.</returns>
-		HttpHeaderValueCollection<string> Trailer { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Trailer header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<string> Trailer { get; }
 
 		/// <summary>Gets the value of the Transfer-Encoding header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Transfer-Encoding header for an HTTP request.</returns>
-		HttpHeaderValueCollection<TransferCodingHeaderValue> TransferEncoding { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Transfer-Encoding header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<TransferCodingHeaderValue> TransferEncoding { get; }
 
 		/// <summary>Gets or sets a value that indicates if the Transfer-Encoding header for an HTTP request contains chunked.</summary>
 		/// <returns>Returns <see cref="T:System.Boolean" />.true if the Transfer-Encoding header contains chunked, otherwise false.</returns>
 		bool? TransferEncodingChunked { get; set; }
 
 		/// <summary>Gets the value of the Upgrade header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Upgrade header for an HTTP request.</returns>
-		HttpHeaderValueCollection<ProductHeaderValue> Upgrade { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Upgrade header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<ProductHeaderValue> Upgrade { get; }
 
 		/// <summary>Gets the value of the Via header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Via header for an HTTP request.</returns>
-		HttpHeaderValueCollection<ViaHeaderValue> Via { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Via header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<ViaHeaderValue> Via { get; }
 
 		/// <summary>Gets the value of the Warning header for an HTTP request.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Warning header for an HTTP request.</returns>
-		HttpHeaderValueCollection<WarningHeaderValue> Warning { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Warning header for an HTTP request.</returns>
+		IHttpHeaderValueCollection<WarningHeaderValue> Warning { get; }
 	}
 }
