@@ -72,7 +72,7 @@ Provides interfaces for types in `System.Net.NetworkInformation`: `NetworkInterf
 **Nuget**: `Install-Package Thinktecture.Net.NetworkInformation.Abstractions`
 
 ### Thinktecture.Net.Http.Abstractions
-Provides interfaces for types in `System.Net.Http`: `HttpClient`, `HttpContent`, `HttpRequestMessage`, `HttpResponseMessage`, `HttpHeaders`, `DelegatingHandler`, `HttpClientHandler`, `HttpMessageHandler`, `HttpMessageInvoker`, `MessageProcessingHandler`, `MultipartContent`, `MultipartFormDataContent`, `HttpContentHeaders`, `HttpRequestHeaders`, `HttpResponseHeaders`.
+Provides interfaces for types in `System.Net.Http`: `HttpClient`, `HttpContent`, `HttpRequestMessage`, `HttpResponseMessage`, `HttpHeaders`, `HttpHeaderValueCollection`, `DelegatingHandler`, `HttpClientHandler`, `HttpMessageHandler`, `HttpMessageInvoker`, `MessageProcessingHandler`, `MultipartContent`, `MultipartFormDataContent`, `HttpContentHeaders`, `HttpRequestHeaders`, `HttpResponseHeaders`.
 
 **Nuget**: `Install-Package Thinktecture.Net.Http.Abstractions`
 
