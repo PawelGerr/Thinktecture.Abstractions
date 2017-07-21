@@ -8,8 +8,8 @@ namespace Thinktecture.Net.Http.Headers
 	public interface IHttpResponseHeaders : IHttpHeaders, IAbstraction<HttpResponseHeaders>
 	{
 		/// <summary>Gets the value of the Accept-Ranges header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Accept-Ranges header for an HTTP response.</returns>
-		HttpHeaderValueCollection<string> AcceptRanges { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Accept-Ranges header for an HTTP response.</returns>
+		IHttpHeaderValueCollection<string> AcceptRanges { get; }
 
 		/// <summary>Gets or sets the value of the Age header for an HTTP response.</summary>
 		/// <returns>Returns <see cref="T:System.TimeSpan" />.The value of the Age header for an HTTP response.</returns>
@@ -24,32 +24,32 @@ namespace Thinktecture.Net.Http.Headers
 		Uri Location { get; set; }
 
 		/// <summary>Gets the value of the Proxy-Authenticate header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Proxy-Authenticate header for an HTTP response.</returns>
-		HttpHeaderValueCollection<AuthenticationHeaderValue> ProxyAuthenticate { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Proxy-Authenticate header for an HTTP response.</returns>
+		IHttpHeaderValueCollection<AuthenticationHeaderValue> ProxyAuthenticate { get; }
 
 		/// <summary>Gets or sets the value of the Retry-After header for an HTTP response.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.RetryConditionHeaderValue" />.The value of the Retry-After header for an HTTP response.</returns>
 		RetryConditionHeaderValue RetryAfter { get; set; }
 
 		/// <summary>Gets the value of the Server header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Server header for an HTTP response.</returns>
-		HttpHeaderValueCollection<ProductInfoHeaderValue> Server { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Server header for an HTTP response.</returns>
+		IHttpHeaderValueCollection<ProductInfoHeaderValue> Server { get; }
 
 		/// <summary>Gets the value of the Vary header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Vary header for an HTTP response.</returns>
-		HttpHeaderValueCollection<string> Vary { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Vary header for an HTTP response.</returns>
+		IHttpHeaderValueCollection<string> Vary { get; }
 
 		/// <summary>Gets the value of the WWW-Authenticate header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the WWW-Authenticate header for an HTTP response.</returns>
-		HttpHeaderValueCollection<AuthenticationHeaderValue> WwwAuthenticate { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the WWW-Authenticate header for an HTTP response.</returns>
+		IHttpHeaderValueCollection<AuthenticationHeaderValue> WwwAuthenticate { get; }
 
 		/// <summary>Gets or sets the value of the Cache-Control header for an HTTP response.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.CacheControlHeaderValue" />.The value of the Cache-Control header for an HTTP response.</returns>
 		CacheControlHeaderValue CacheControl { get; set; }
 
 		/// <summary>Gets the value of the Connection header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Connection header for an HTTP response.</returns>
-		HttpHeaderValueCollection<string> Connection { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Connection header for an HTTP response.</returns>
+		IHttpHeaderValueCollection<string> Connection { get; }
 
 		/// <summary>Gets or sets a value that indicates if the Connection header for an HTTP response contains Close.</summary>
 		/// <returns>Returns <see cref="T:System.Boolean" />.true if the Connection header contains Close, otherwise false.</returns>
@@ -60,31 +60,31 @@ namespace Thinktecture.Net.Http.Headers
 		DateTimeOffset? Date { get; set; }
 
 		/// <summary>Gets the value of the Pragma header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Pragma header for an HTTP response.</returns>
-		HttpHeaderValueCollection<NameValueHeaderValue> Pragma { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Pragma header for an HTTP response.</returns>
+		IHttpHeaderValueCollection<NameValueHeaderValue> Pragma { get; }
 
 		/// <summary>Gets the value of the Trailer header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Trailer header for an HTTP response.</returns>
-		HttpHeaderValueCollection<string> Trailer { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Trailer header for an HTTP response.</returns>
+		IHttpHeaderValueCollection<string> Trailer { get; }
 
 		/// <summary>Gets the value of the Transfer-Encoding header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Transfer-Encoding header for an HTTP response.</returns>
-		HttpHeaderValueCollection<TransferCodingHeaderValue> TransferEncoding { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Transfer-Encoding header for an HTTP response.</returns>
+		IHttpHeaderValueCollection<TransferCodingHeaderValue> TransferEncoding { get; }
 
 		/// <summary>Gets or sets a value that indicates if the Transfer-Encoding header for an HTTP response contains chunked.</summary>
 		/// <returns>Returns <see cref="T:System.Boolean" />.true if the Transfer-Encoding header contains chunked, otherwise false.</returns>
 		bool? TransferEncodingChunked { get; set; }
 
 		/// <summary>Gets the value of the Upgrade header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Upgrade header for an HTTP response.</returns>
-		HttpHeaderValueCollection<ProductHeaderValue> Upgrade { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Upgrade header for an HTTP response.</returns>
+		IHttpHeaderValueCollection<ProductHeaderValue> Upgrade { get; }
 
 		/// <summary>Gets the value of the Via header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Via header for an HTTP response.</returns>
-		HttpHeaderValueCollection<ViaHeaderValue> Via { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Via header for an HTTP response.</returns>
+		IHttpHeaderValueCollection<ViaHeaderValue> Via { get; }
 
 		/// <summary>Gets the value of the Warning header for an HTTP response.</summary>
-		/// <returns>Returns <see cref="T:System.Net.Http.Headers.HttpHeaderValueCollection`1" />.The value of the Warning header for an HTTP response.</returns>
-		HttpHeaderValueCollection<WarningHeaderValue> Warning { get; }
+		/// <returns>Returns <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />.The value of the Warning header for an HTTP response.</returns>
+		IHttpHeaderValueCollection<WarningHeaderValue> Warning { get; }
 	}
 }

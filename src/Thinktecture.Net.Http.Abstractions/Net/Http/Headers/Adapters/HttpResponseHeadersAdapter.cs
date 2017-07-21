@@ -17,7 +17,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		}
 
 		/// <inheritdoc />
-		public HttpHeaderValueCollection<string> AcceptRanges => _headers.AcceptRanges;
+		public IHttpHeaderValueCollection<string> AcceptRanges => _headers.AcceptRanges.ToInterface();
 
 		/// <inheritdoc />
 		public TimeSpan? Age
@@ -41,7 +41,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		}
 
 		/// <inheritdoc />
-		public HttpHeaderValueCollection<AuthenticationHeaderValue> ProxyAuthenticate => _headers.ProxyAuthenticate;
+		public IHttpHeaderValueCollection<AuthenticationHeaderValue> ProxyAuthenticate => _headers.ProxyAuthenticate.ToInterface();
 
 		/// <inheritdoc />
 		public RetryConditionHeaderValue RetryAfter
@@ -51,13 +51,13 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		}
 
 		/// <inheritdoc />
-		public HttpHeaderValueCollection<ProductInfoHeaderValue> Server => _headers.Server;
+		public IHttpHeaderValueCollection<ProductInfoHeaderValue> Server => _headers.Server.ToInterface();
 
 		/// <inheritdoc />
-		public HttpHeaderValueCollection<string> Vary => _headers.Vary;
+		public IHttpHeaderValueCollection<string> Vary => _headers.Vary.ToInterface();
 
 		/// <inheritdoc />
-		public HttpHeaderValueCollection<AuthenticationHeaderValue> WwwAuthenticate => _headers.WwwAuthenticate;
+		public IHttpHeaderValueCollection<AuthenticationHeaderValue> WwwAuthenticate => _headers.WwwAuthenticate.ToInterface();
 
 		/// <inheritdoc />
 		public CacheControlHeaderValue CacheControl
@@ -67,7 +67,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		}
 
 		/// <inheritdoc />
-		public HttpHeaderValueCollection<string> Connection => _headers.Connection;
+		public IHttpHeaderValueCollection<string> Connection => _headers.Connection.ToInterface();
 
 		/// <inheritdoc />
 		public bool? ConnectionClose
@@ -84,13 +84,13 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		}
 
 		/// <inheritdoc />
-		public HttpHeaderValueCollection<NameValueHeaderValue> Pragma => _headers.Pragma;
+		public IHttpHeaderValueCollection<NameValueHeaderValue> Pragma => _headers.Pragma.ToInterface();
 
 		/// <inheritdoc />
-		public HttpHeaderValueCollection<string> Trailer => _headers.Trailer;
+		public IHttpHeaderValueCollection<string> Trailer => _headers.Trailer.ToInterface();
 
 		/// <inheritdoc />
-		public HttpHeaderValueCollection<TransferCodingHeaderValue> TransferEncoding => _headers.TransferEncoding;
+		public IHttpHeaderValueCollection<TransferCodingHeaderValue> TransferEncoding => _headers.TransferEncoding.ToInterface();
 
 		/// <inheritdoc />
 		public bool? TransferEncodingChunked
@@ -100,13 +100,13 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		}
 
 		/// <inheritdoc />
-		public HttpHeaderValueCollection<ProductHeaderValue> Upgrade => _headers.Upgrade;
+		public IHttpHeaderValueCollection<ProductHeaderValue> Upgrade => _headers.Upgrade.ToInterface();
 
 		/// <inheritdoc />
-		public HttpHeaderValueCollection<ViaHeaderValue> Via => _headers.Via;
+		public IHttpHeaderValueCollection<ViaHeaderValue> Via => _headers.Via.ToInterface();
 
 		/// <inheritdoc />
-		public HttpHeaderValueCollection<WarningHeaderValue> Warning => _headers.Warning;
+		public IHttpHeaderValueCollection<WarningHeaderValue> Warning => _headers.Warning.ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="HttpResponseHeaders" /> class.</summary>
 		/// <param name="headers">Http headers to be use by the adapter.</param>
