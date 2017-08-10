@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4860E453-E56B-4BED-BA8A-DDFA89A19B0D}"
 EndProject
@@ -45,6 +45,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.Net.NetworkInformation.Abstractions", "src\Thinktecture.Net.NetworkInformation.Abstractions\Thinktecture.Net.NetworkInformation.Abstractions.csproj", "{F927011A-CED0-4E14-82B5-789BEB1A044F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.Abstractions.Wpf.Example", "example\Thinktecture.Abstractions.Wpf.Example\Thinktecture.Abstractions.Wpf.Example.csproj", "{0A81E014-DC74-43B5-9D59-7AADFA25E628}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.Threading.Tasks.Examples", "example\Thinktecture.Threading.Tasks.Examples\Thinktecture.Threading.Tasks.Examples.csproj", "{DED0DF5D-025D-42C6-BA1F-2FAD7A3C4D18}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.Threading.Tasks.Abstractions", "src\Thinktecture.Threading.Tasks.Abstractions\Thinktecture.Threading.Tasks.Abstractions.csproj", "{05760CFD-C3A8-41D5-B214-BFA2E046FCD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -112,6 +116,14 @@ Global
 		{0A81E014-DC74-43B5-9D59-7AADFA25E628}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A81E014-DC74-43B5-9D59-7AADFA25E628}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A81E014-DC74-43B5-9D59-7AADFA25E628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DED0DF5D-025D-42C6-BA1F-2FAD7A3C4D18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DED0DF5D-025D-42C6-BA1F-2FAD7A3C4D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DED0DF5D-025D-42C6-BA1F-2FAD7A3C4D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DED0DF5D-025D-42C6-BA1F-2FAD7A3C4D18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05760CFD-C3A8-41D5-B214-BFA2E046FCD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05760CFD-C3A8-41D5-B214-BFA2E046FCD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05760CFD-C3A8-41D5-B214-BFA2E046FCD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05760CFD-C3A8-41D5-B214-BFA2E046FCD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,6 +144,8 @@ Global
 		{A7907887-601D-4B1D-9484-099F39C0FCEB} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 		{F927011A-CED0-4E14-82B5-789BEB1A044F} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 		{0A81E014-DC74-43B5-9D59-7AADFA25E628} = {F2F0BF55-C0C6-4325-98EB-CEC4E4A5EBC6}
+		{DED0DF5D-025D-42C6-BA1F-2FAD7A3C4D18} = {F2F0BF55-C0C6-4325-98EB-CEC4E4A5EBC6}
+		{05760CFD-C3A8-41D5-B214-BFA2E046FCD0} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B2E59FD-B86D-4BF3-9FAF-64EBC004FCDA}
