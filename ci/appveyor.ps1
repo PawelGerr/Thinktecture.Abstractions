@@ -9,6 +9,17 @@ function Dotnet-Pack([string]$dir)
     }
 }
 
+#calls dotnet test for all sub dirs of $dir
+function Dotnet-Test([string]$dir)
+{
+    $projDirs = Get-ChildItem $dir -Recurse -Filter *.csproj
+
+    foreach($projDir in $projDirs)
+    {
+        dotnet test --configuration Release --no-build $projDir.FullName;
+    }
+}
+
 # set version suffix if it is tag and the tag name contains a suffix like "beta1"
 function Set-VersionSuffixOnTag() 
 {
