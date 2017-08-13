@@ -12,8 +12,6 @@ before_build:
 - ps: >-
     dotnet --info
 
-    Get-ChildItem Env:
-
     Set-VersionSuffixOnTag
     
     dotnet restore ./Thinktecture.Abstractions.sln
@@ -26,7 +24,7 @@ test_script:
 - ps: Dotnet-Test("test")
 
 artifacts:
-- path: '**/*.symbols.nupkg'
+- path: '**/*.nupkg'
   name: Nuget Package
 
 deploy:
