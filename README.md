@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/m0lc5f37vwj0lpli/branch/release/1.x.x?svg=true&passingText=release/1.x.x%20-%20OK&pendingText=release/1.x.x%20-%20pending&failingText=release/1.x.x%20-%20failed)](https://ci.appveyor.com/project/PawelGerr/thinktecture-abstractions/branch/release/1.x.x)
+
 Interfaces for commonly used .NET types like `File`, `Directory`, `Stream`, `Path`, `Math`, `Environment`, etc. to be able to extend or to change the standard behavior and for better testability.
 
 * The interfaces have the same API like the .NET types
