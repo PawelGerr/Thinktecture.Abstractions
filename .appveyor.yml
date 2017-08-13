@@ -11,8 +11,11 @@ install:
 before_build:
 - ps: >-
     dotnet --info
+
     Get-ChildItem Env:
+
     Set-VersionSuffixOnTag
+    
     dotnet restore ./Thinktecture.Abstractions.sln
 build:
   project: Thinktecture.Abstractions.sln
