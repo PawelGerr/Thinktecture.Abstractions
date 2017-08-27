@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.IO;
+using JetBrains.Annotations;
 
 namespace Thinktecture.IO
 {
@@ -10,6 +11,7 @@ namespace Thinktecture.IO
 		/// <summary>Exposes access to the underlying stream of the <see cref="T:System.IO.BinaryReader" />.</summary>
 		/// <returns>The underlying stream associated with the BinaryReader.</returns>
 		/// <filterpriority>2</filterpriority>
+		[NotNull]
 		IStream BaseStream { get; }
 
 		/// <summary>Returns the next available character and does not advance the byte or character position.</summary>
@@ -39,7 +41,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>2</filterpriority>
-		int Read(byte[] buffer, int index, int count);
+		int Read([NotNull] byte[] buffer, int index, int count);
 
 		/// <summary>Reads the specified number of characters from the stream, starting from a specified point in the character array.</summary>
 		/// <returns>The total number of characters read into the buffer. This might be less than the number of characters requested if that many characters are not currently available, or it might be zero if the end of the stream is reached.</returns>
@@ -54,7 +56,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>2</filterpriority>
-		int Read(char[] buffer, int index, int count);
+		int Read([NotNull] char[] buffer, int index, int count);
 
 		/// <summary>Reads a Boolean value from the current stream and advances the current position of the stream by one byte.</summary>
 		/// <returns>true if the byte is nonzero; otherwise, false.</returns>
@@ -81,6 +83,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="count" /> is negative. </exception>
 		/// <filterpriority>2</filterpriority>
+		[NotNull]
 		byte[] ReadBytes(int count);
 
 		/// <summary>Reads the next character from the current stream and advances the current position of the stream in accordance with the Encoding used and the specific character being read from the stream.</summary>
@@ -101,6 +104,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="count" /> is negative. </exception>
 		/// <filterpriority>2</filterpriority>
+		[NotNull]
 		char[] ReadChars(int count);
 
 		/// <summary>Reads a decimal value from the current stream and advances the current position of the stream by sixteen bytes.</summary>
@@ -109,7 +113,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>2</filterpriority>
-		Decimal ReadDecimal();
+		decimal ReadDecimal();
 
 		/// <summary>Reads an 8-byte floating point value from the current stream and advances the current position of the stream by eight bytes.</summary>
 		/// <returns>An 8-byte floating point value read from the current stream.</returns>
@@ -165,6 +169,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>2</filterpriority>
+		[NotNull]
 		string ReadString();
 
 		/// <summary>Reads a 2-byte unsigned integer from the current stream using little-endian encoding and advances the position of the stream by two bytes.</summary>

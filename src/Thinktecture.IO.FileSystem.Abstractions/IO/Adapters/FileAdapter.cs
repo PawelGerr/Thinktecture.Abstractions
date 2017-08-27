@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Thinktecture.Text;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.IO.Adapters
 {

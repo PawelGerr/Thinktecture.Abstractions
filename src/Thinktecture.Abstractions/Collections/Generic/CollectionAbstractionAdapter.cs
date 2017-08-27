@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Collections.Generic
 {
@@ -11,11 +12,12 @@ namespace Thinktecture.Collections.Generic
 	/// <typeparam name="TItem">Item type.</typeparam>
 	/// <typeparam name="TImplementation">Type of the implementation.</typeparam>
 	public class CollectionAbstractionAdapter<TItem, TImplementation> : AbstractionAdapter, ICollectionAbstraction<TItem, TImplementation>
-		where TImplementation : ICollection<TItem>
+		where TImplementation : class, ICollection<TItem>
 	{
 		/// <summary>
 		/// Inner collection.
 		/// </summary>
+		[NotNull]
 		protected readonly TImplementation Collection;
 
 		/// <inheritdoc />
@@ -28,16 +30,14 @@ namespace Thinktecture.Collections.Generic
 		/// Initializes new instance of <see cref="CollectionAbstractionAdapter{TAbstractionItem,TImplementationItem,TImplementation}"/>.
 		/// </summary>
 		/// <param name="collection">Collection to be used by the adapter.</param>
-		public CollectionAbstractionAdapter(TImplementation collection)
+		public CollectionAbstractionAdapter([NotNull] TImplementation collection)
 			: base(collection)
 		{
-			if (collection == null)
-				throw new ArgumentNullException(nameof(collection));
-
-			Collection = collection;
+			Collection = collection ?? throw new ArgumentNullException(nameof(collection));
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc cref="ICollectionAbstraction{TAbstractionItem,TImplementationItem,TImplementation}.UnsafeConvert" />
+		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new TImplementation UnsafeConvert()
 		{
@@ -45,6 +45,7 @@ namespace Thinktecture.Collections.Generic
 		}
 
 		/// <inheritdoc />
+		[NotNull]
 		public IEnumerator<TItem> GetEnumerator()
 		{
 			foreach (var item in Collection)
@@ -54,13 +55,14 @@ namespace Thinktecture.Collections.Generic
 		}
 
 		/// <inheritdoc />
+		[NotNull]
 		IEnumerator IEnumerable.GetEnumerator()
 		{
 			return GetEnumerator();
 		}
 
-		/// <inheritdoc />
-		public void Add(TItem item)
+		/// <inheritdoc cref="ICollection{T}.Add" />
+		public void Add([CanBeNull] TItem item)
 		{
 			Collection.Add(item);
 		}
@@ -71,20 +73,20 @@ namespace Thinktecture.Collections.Generic
 			Collection.Clear();
 		}
 
-		/// <inheritdoc />
-		public bool Contains(TItem item)
+		/// <inheritdoc cref="ICollection{T}.Contains" />
+		public bool Contains([CanBeNull] TItem item)
 		{
 			return Collection.Contains(item);
 		}
 
-		/// <inheritdoc />
-		public void CopyTo(TItem[] array, int arrayIndex)
+		/// <inheritdoc cref="ICollection{T}.CopyTo" />
+		public void CopyTo([NotNull] TItem[] array, int arrayIndex)
 		{
 			Collection.CopyTo(array, arrayIndex);
 		}
 
-		/// <inheritdoc />
-		public bool Remove(TItem item)
+		/// <inheritdoc cref="ICollection{T}.Remove" />
+		public bool Remove([CanBeNull] TItem item)
 		{
 			return Collection.Remove(item);
 		}
@@ -98,13 +100,15 @@ namespace Thinktecture.Collections.Generic
 	/// <typeparam name="TImplementation">Type of the implementation.</typeparam>
 	public class CollectionAbstractionAdapter<TAbstractionItem, TImplementationItem, TImplementation> : AbstractionAdapter, ICollectionAbstraction<TAbstractionItem, TImplementationItem, TImplementation>
 		where TAbstractionItem : IAbstraction<TImplementationItem>
-		where TImplementation : ICollection<TImplementationItem>
+		where TImplementation : class, ICollection<TImplementationItem>
 	{
 		/// <summary>
 		/// Inner collection.
 		/// </summary>
+		[NotNull]
 		protected readonly TImplementation Collection;
 
+		[NotNull]
 		private readonly Func<TImplementationItem, TAbstractionItem> _toInterface;
 
 		/// <inheritdoc />
@@ -118,17 +122,15 @@ namespace Thinktecture.Collections.Generic
 		/// </summary>
 		/// <param name="collection">Collection to be used by the adapter.</param>
 		/// <param name="toInterface">Converts an item of <typeparamref name="TImplementation"/> to type <typeparamref name="TAbstractionItem"/>.</param>
-		public CollectionAbstractionAdapter(TImplementation collection, Func<TImplementationItem, TAbstractionItem> toInterface)
+		public CollectionAbstractionAdapter([NotNull] TImplementation collection, [NotNull] Func<TImplementationItem, TAbstractionItem> toInterface)
 			: base(collection)
 		{
-			if (collection == null)
-				throw new ArgumentNullException(nameof(collection));
-
-			Collection = collection;
+			Collection = collection ?? throw new ArgumentNullException(nameof(collection));
 			_toInterface = toInterface ?? throw new ArgumentNullException(nameof(toInterface));
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc cref="ICollectionAbstraction{TAbstractionItem,TImplementationItem,TImplementation}.UnsafeConvert" />
+		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new TImplementation UnsafeConvert()
 		{
@@ -136,6 +138,7 @@ namespace Thinktecture.Collections.Generic
 		}
 
 		/// <inheritdoc />
+		[NotNull]
 		public IEnumerator<TAbstractionItem> GetEnumerator()
 		{
 			foreach (var item in Collection)
@@ -145,19 +148,20 @@ namespace Thinktecture.Collections.Generic
 		}
 
 		/// <inheritdoc />
+		[NotNull]
 		IEnumerator IEnumerable.GetEnumerator()
 		{
 			return GetEnumerator();
 		}
 
 		/// <inheritdoc />
-		public void Add(TAbstractionItem item)
+		public void Add([CanBeNull] TAbstractionItem item)
 		{
 			Collection.Add(item.ToImplementation());
 		}
 
 		/// <inheritdoc />
-		public void Add(TImplementationItem item)
+		public void Add([CanBeNull] TImplementationItem item)
 		{
 			Collection.Add(item);
 		}
@@ -169,37 +173,37 @@ namespace Thinktecture.Collections.Generic
 		}
 
 		/// <inheritdoc />
-		public bool Contains(TAbstractionItem item)
+		public bool Contains([CanBeNull] TAbstractionItem item)
 		{
 			return Collection.Contains(item.ToImplementation());
 		}
 
 		/// <inheritdoc />
-		public bool Contains(TImplementationItem item)
+		public bool Contains([CanBeNull] TImplementationItem item)
 		{
 			return Collection.Contains(item);
 		}
 
 		/// <inheritdoc />
-		public void CopyTo(TAbstractionItem[] array, int arrayIndex)
+		public void CopyTo([NotNull] TAbstractionItem[] array, int arrayIndex)
 		{
 			Collection.CopyTo(array.ToImplementation<TAbstractionItem, TImplementationItem>(), arrayIndex);
 		}
 
 		/// <inheritdoc />
-		public void CopyTo(TImplementationItem[] array, int arrayIndex)
+		public void CopyTo([NotNull] TImplementationItem[] array, int arrayIndex)
 		{
 			Collection.CopyTo(array, arrayIndex);
 		}
 
 		/// <inheritdoc />
-		public bool Remove(TAbstractionItem item)
+		public bool Remove([CanBeNull] TAbstractionItem item)
 		{
 			return Collection.Remove(item.ToImplementation());
 		}
 
 		/// <inheritdoc />
-		public bool Remove(TImplementationItem item)
+		public bool Remove([CanBeNull] TImplementationItem item)
 		{
 			return Collection.Remove(item);
 		}

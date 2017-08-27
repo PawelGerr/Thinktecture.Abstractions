@@ -1,7 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.IO.Adapters
 {
@@ -11,13 +14,18 @@ namespace Thinktecture.IO.Adapters
 	public class DirectoryInfoAdapter : FileSystemInfoAdapter, IDirectoryInfo
 	{
 		/// <inheritdoc />
+		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new DirectoryInfo UnsafeConvert()
 		{
-			return _instance;
+			return Implementation;
 		}
 
-		private readonly DirectoryInfo _instance;
+		/// <summary>
+		/// Implementation used by the adapter.
+		/// </summary>
+		[NotNull]
+		protected new DirectoryInfo Implementation { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="DirectoryInfoAdapter" /> class on the specified path.</summary>
 		/// <param name="path">A string specifying the path on which to create the DirectoryInfo. </param>
@@ -27,7 +35,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="path" /> contains invalid characters such as ", &lt;, &gt;, or |. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. The specified path, file name, or both are too long.</exception>
-		public DirectoryInfoAdapter(string path)
+		public DirectoryInfoAdapter([NotNull] string path)
 			: this(new DirectoryInfo(path))
 		{
 		}
@@ -36,151 +44,152 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="DirectoryInfoAdapter" /> class
 		/// </summary>
 		/// <param name="directoryInfo">Directory info to be used by the adapter.</param>
-		public DirectoryInfoAdapter(DirectoryInfo directoryInfo)
+		public DirectoryInfoAdapter([NotNull] DirectoryInfo directoryInfo)
 			: base(directoryInfo)
 		{
-			_instance = directoryInfo ?? throw new ArgumentNullException(nameof(directoryInfo));
+			Implementation = directoryInfo ?? throw new ArgumentNullException(nameof(directoryInfo));
 		}
 
 		/// <inheritdoc />
-		public IDirectoryInfo Parent => _instance.Parent.ToInterface();
+		public IDirectoryInfo Parent => Implementation.Parent.ToInterface();
 
 		/// <inheritdoc />
-		public IDirectoryInfo Root => _instance.Root.ToInterface();
+		public IDirectoryInfo Root => Implementation.Root.ToInterface();
 
 		/// <inheritdoc />
 		public void Create()
 		{
-			_instance.Create();
+			Implementation.Create();
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo CreateSubdirectory(string path)
 		{
-			return _instance.CreateSubdirectory(path).ToInterface();
+			return Implementation.CreateSubdirectory(path).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public void Delete(bool recursive)
 		{
-			_instance.Delete(recursive);
+			Implementation.Delete(recursive);
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IDirectoryInfo> EnumerateDirectories()
 		{
-			return Convert(_instance.EnumerateDirectories());
+			return Convert(Implementation.EnumerateDirectories());
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IDirectoryInfo> EnumerateDirectories(string searchPattern)
 		{
-			return Convert(_instance.EnumerateDirectories(searchPattern));
+			return Convert(Implementation.EnumerateDirectories(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IDirectoryInfo> EnumerateDirectories(string searchPattern, SearchOption searchOption)
 		{
-			return Convert(_instance.EnumerateDirectories(searchPattern, searchOption));
+			return Convert(Implementation.EnumerateDirectories(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileInfo> EnumerateFiles()
 		{
-			return Convert(_instance.EnumerateFiles());
+			return Convert(Implementation.EnumerateFiles());
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileInfo> EnumerateFiles(string searchPattern)
 		{
-			return Convert(_instance.EnumerateFiles(searchPattern));
+			return Convert(Implementation.EnumerateFiles(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileInfo> EnumerateFiles(string searchPattern, SearchOption searchOption)
 		{
-			return Convert(_instance.EnumerateFiles(searchPattern, searchOption));
+			return Convert(Implementation.EnumerateFiles(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos()
 		{
-			return Convert(_instance.EnumerateFileSystemInfos());
+			return Convert(Implementation.EnumerateFileSystemInfos());
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos(string searchPattern)
 		{
-			return Convert(_instance.EnumerateFileSystemInfos(searchPattern));
+			return Convert(Implementation.EnumerateFileSystemInfos(searchPattern));
 		}
 
 		/// <inheritdoc />
 		public IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos(string searchPattern, SearchOption searchOption)
 		{
-			return Convert(_instance.EnumerateFileSystemInfos(searchPattern, searchOption));
+			return Convert(Implementation.EnumerateFileSystemInfos(searchPattern, searchOption));
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo[] GetDirectories()
 		{
-			return _instance.GetDirectories().ToInterface();
+			return Implementation.GetDirectories().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo[] GetDirectories(string searchPattern)
 		{
-			return _instance.GetDirectories(searchPattern).ToInterface();
+			return Implementation.GetDirectories(searchPattern).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IDirectoryInfo[] GetDirectories(string searchPattern, SearchOption searchOption)
 		{
-			return _instance.GetDirectories(searchPattern, searchOption).ToInterface();
+			return Implementation.GetDirectories(searchPattern, searchOption).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles()
 		{
-			return _instance.GetFiles().ToInterface();
+			return Implementation.GetFiles().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles(string searchPattern)
 		{
-			return _instance.GetFiles(searchPattern).ToInterface();
+			return Implementation.GetFiles(searchPattern).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles(string searchPattern, SearchOption searchOption)
 		{
-			return _instance.GetFiles(searchPattern, searchOption).ToInterface();
+			return Implementation.GetFiles(searchPattern, searchOption).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileSystemInfo[] GetFileSystemInfos()
 		{
-			return _instance.GetFileSystemInfos().ToInterface();
+			return Implementation.GetFileSystemInfos().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileSystemInfo[] GetFileSystemInfos(string searchPattern)
 		{
-			return _instance.GetFileSystemInfos(searchPattern).ToInterface();
+			return Implementation.GetFileSystemInfos(searchPattern).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileSystemInfo[] GetFileSystemInfos(string searchPattern, SearchOption searchOption)
 		{
-			return _instance.GetFileSystemInfos(searchPattern, searchOption).ToInterface();
+			return Implementation.GetFileSystemInfos(searchPattern, searchOption).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public void MoveTo(string destDirName)
 		{
-			_instance.MoveTo(destDirName);
+			Implementation.MoveTo(destDirName);
 		}
 
-		private IEnumerable<IDirectoryInfo> Convert(IEnumerable<DirectoryInfo> infos)
+		[NotNull, ItemNotNull]
+		private static IEnumerable<IDirectoryInfo> Convert([NotNull, ItemNotNull] IEnumerable<DirectoryInfo> infos)
 		{
 			foreach (var info in infos)
 			{
@@ -188,7 +197,8 @@ namespace Thinktecture.IO.Adapters
 			}
 		}
 
-		private IEnumerable<IFileInfo> Convert(IEnumerable<FileInfo> infos)
+		[NotNull, ItemNotNull]
+		private static IEnumerable<IFileInfo> Convert([NotNull, ItemNotNull] IEnumerable<FileInfo> infos)
 		{
 			foreach (var info in infos)
 			{
@@ -196,7 +206,8 @@ namespace Thinktecture.IO.Adapters
 			}
 		}
 
-		private IEnumerable<IFileSystemInfo> Convert(IEnumerable<FileSystemInfo> infos)
+		[NotNull, ItemNotNull]
+		private static IEnumerable<IFileSystemInfo> Convert([NotNull, ItemNotNull] IEnumerable<FileSystemInfo> infos)
 		{
 			foreach (var info in infos)
 			{

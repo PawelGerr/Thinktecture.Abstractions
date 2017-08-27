@@ -1,4 +1,4 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net;
 using System.Net.NetworkInformation;
@@ -13,6 +13,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		public IIPAddress this[int index] => Collection[index].ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="IPAddressCollectionAdapter" /> class.</summary>
+		/// <param name="collection">The implementation to use by the adapter.</param>
 		public IPAddressCollectionAdapter(IPAddressCollection collection)
 			: base(collection, address => address.ToInterface())
 		{

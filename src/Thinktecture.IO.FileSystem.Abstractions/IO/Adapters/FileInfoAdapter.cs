@@ -1,6 +1,9 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.IO;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.IO.Adapters
 {
@@ -10,13 +13,18 @@ namespace Thinktecture.IO.Adapters
 	public class FileInfoAdapter : FileSystemInfoAdapter, IFileInfo
 	{
 		/// <inheritdoc />
+		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new FileInfo UnsafeConvert()
 		{
-			return _instance;
+			return Implementation;
 		}
 
-		private readonly FileInfo _instance;
+		/// <summary>
+		/// Implementation used by the adapter.
+		/// </summary>
+		[NotNull]
+		protected new FileInfo Implementation { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="FileInfoAdapter" /> class, which acts as a wrapper for a file path.</summary>
 		/// <param name="fileName">The fully qualified name of the new file, or the relative file name. Do not end the path with the directory separator character.</param>
@@ -28,7 +36,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.NotSupportedException">
 		/// <paramref name="fileName" /> contains a colon (:) in the middle of the string. </exception>
-		public FileInfoAdapter(string fileName)
+		public FileInfoAdapter([NotNull] string fileName)
 			: this(new FileInfo(fileName))
 		{
 		}
@@ -37,98 +45,98 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="FileInfoAdapter" /> class.
 		/// </summary>
 		/// <param name="info">File info to be used by the adapter.</param>
-		public FileInfoAdapter(FileInfo info)
+		public FileInfoAdapter([NotNull] FileInfo info)
 			: base(info)
 		{
-			_instance = info ?? throw new ArgumentNullException(nameof(info));
+			Implementation = info ?? throw new ArgumentNullException(nameof(info));
 		}
 
 		/// <inheritdoc />
-		public IDirectoryInfo Directory => _instance.Directory.ToInterface();
+		public IDirectoryInfo Directory => Implementation.Directory.ToInterface();
 
 		/// <inheritdoc />
-		public string DirectoryName => _instance.DirectoryName;
+		public string DirectoryName => Implementation.DirectoryName;
 
 		/// <inheritdoc />
 		public bool IsReadOnly
 		{
-			get => _instance.IsReadOnly;
-			set => _instance.IsReadOnly = value;
+			get => Implementation.IsReadOnly;
+			set => Implementation.IsReadOnly = value;
 		}
 
 		/// <inheritdoc />
-		public long Length => _instance.Length;
+		public long Length => Implementation.Length;
 
 		/// <inheritdoc />
 		public IStreamWriter AppendText()
 		{
-			return _instance.AppendText().ToInterface();
+			return Implementation.AppendText().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileInfo CopyTo(string destFileName)
 		{
-			return _instance.CopyTo(destFileName).ToInterface();
+			return Implementation.CopyTo(destFileName).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileInfo CopyTo(string destFileName, bool overwrite)
 		{
-			return _instance.CopyTo(destFileName, overwrite).ToInterface();
+			return Implementation.CopyTo(destFileName, overwrite).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileStream Create()
 		{
-			return _instance.Create().ToInterface();
+			return Implementation.Create().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IStreamWriter CreateText()
 		{
-			return _instance.CreateText().ToInterface();
+			return Implementation.CreateText().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public void MoveTo(string destFileName)
 		{
-			_instance.MoveTo(destFileName);
+			Implementation.MoveTo(destFileName);
 		}
 
 		/// <inheritdoc />
 		public IFileStream Open(FileMode mode)
 		{
-			return _instance.Open(mode).ToInterface();
+			return Implementation.Open(mode).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileStream Open(FileMode mode, FileAccess access)
 		{
-			return _instance.Open(mode, access).ToInterface();
+			return Implementation.Open(mode, access).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileStream Open(FileMode mode, FileAccess access, FileShare share)
 		{
-			return _instance.Open(mode, access, share).ToInterface();
+			return Implementation.Open(mode, access, share).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileStream OpenRead()
 		{
-			return _instance.OpenRead().ToInterface();
+			return Implementation.OpenRead().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IStreamReader OpenText()
 		{
-			return _instance.OpenText().ToInterface();
+			return Implementation.OpenText().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IFileStream OpenWrite()
 		{
-			return _instance.OpenWrite().ToInterface();
+			return Implementation.OpenWrite().ToInterface();
 		}
 	}
 }

@@ -71,10 +71,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		public NetworkInterfaceAdapter(NetworkInterface nic)
 			: base(nic)
 		{
-			if (nic == null)
-				throw new ArgumentNullException(nameof(nic));
-
-			_nic = nic;
+			_nic = nic ?? throw new ArgumentNullException(nameof(nic));
 		}
 
 		/// <inheritdoc />

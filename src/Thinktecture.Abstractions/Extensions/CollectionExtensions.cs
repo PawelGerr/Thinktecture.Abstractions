@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using JetBrains.Annotations;
 using Thinktecture.Collections.Generic;
 
 // ReSharper disable once CheckNamespace
@@ -17,11 +18,12 @@ namespace Thinktecture
 		/// <typeparam name="TImplementationItem">Type of the item of the implementation.</typeparam>
 		/// <typeparam name="TImplementation">Type of the implementation.</typeparam>
 		/// <returns>Converted colletion.</returns>
-		public static TImplementation ToImplementation<TAbstractionItem, TImplementationItem, TImplementation>(this ICollectionAbstraction<TAbstractionItem, TImplementationItem, TImplementation> collection)
+		[CanBeNull]
+		public static TImplementation ToImplementation<TAbstractionItem, TImplementationItem, TImplementation>([CanBeNull] this ICollectionAbstraction<TAbstractionItem, TImplementationItem, TImplementation> collection)
 			where TAbstractionItem : IAbstraction<TImplementationItem>
 			where TImplementation : ICollection<TImplementationItem>
 		{
-			return collection == null ? default(TImplementation) : collection.UnsafeConvert();
+			return ReferenceEquals(collection, null) ? default : collection.UnsafeConvert();
 		}
 	}
 }

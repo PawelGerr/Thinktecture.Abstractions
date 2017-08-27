@@ -55,10 +55,7 @@ namespace Thinktecture.Net.Adapters
 		public DnsEndPointAdapter(DnsEndPoint endpoint)
 			: base(endpoint)
 		{
-			if (endpoint == null)
-				throw new ArgumentNullException(nameof(endpoint));
-
-			_endpoint = endpoint;
+			_endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 		}
 	}
 }

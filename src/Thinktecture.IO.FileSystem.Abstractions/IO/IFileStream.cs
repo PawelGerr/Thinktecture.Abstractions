@@ -1,4 +1,5 @@
-﻿using System.IO;
+using System.IO;
+using JetBrains.Annotations;
 using Thinktecture.Win32.SafeHandles;
 
 namespace Thinktecture.IO
@@ -21,11 +22,13 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[NotNull]
 		string Name { get; }
 
 		/// <summary>Gets a <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle" /> object that represents the operating system file handle for the file that the current <see cref="T:System.IO.FileStream" /> object encapsulates.</summary>
 		/// <returns>An object that represents the operating system file handle for the file that the current <see cref="T:System.IO.FileStream" /> object encapsulates.</returns>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		ISafeFileHandle SafeFileHandle { get; }
 
 		/// <summary>Clears buffers for this stream and causes any buffered data to be written to the file, and also clears all intermediate file buffers.</summary>

@@ -1,4 +1,5 @@
-﻿using System.IO;
+using System.IO;
+using JetBrains.Annotations;
 
 namespace Thinktecture.IO
 {
@@ -18,6 +19,7 @@ namespace Thinktecture.IO
 		/// <summary>Writes the stream contents to a byte array, regardless of the <see cref="P:System.IO.MemoryStream.Position" /> property.</summary>
 		/// <returns>A new byte array.</returns>
 		/// <filterpriority>2</filterpriority>
+		[NotNull]
 		byte[] ToArray();
 
 		/// <summary>Writes the entire contents of this memory stream to another stream.</summary>
@@ -26,7 +28,7 @@ namespace Thinktecture.IO
 		/// <paramref name="stream" /> is null. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The current or target stream is closed. </exception>
 		/// <filterpriority>2</filterpriority>
-		void WriteTo(IStream stream);
+		void WriteTo([NotNull] IStream stream);
 
 		/// <summary>Writes the entire contents of this memory stream to another stream.</summary>
 		/// <param name="stream">The stream to write this memory stream to. </param>
@@ -34,6 +36,6 @@ namespace Thinktecture.IO
 		/// <paramref name="stream" /> is null. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The current or target stream is closed. </exception>
 		/// <filterpriority>2</filterpriority>
-		void WriteTo(Stream stream);
+		void WriteTo([NotNull] Stream stream);
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System.IO;
+using System.IO;
+using JetBrains.Annotations;
 
 namespace Thinktecture.IO
 {
@@ -17,6 +18,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[CanBeNull]
 		IDirectoryInfo Directory { get; }
 
 		/// <summary>Gets a string representing the directory's full path.</summary>
@@ -28,6 +30,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[CanBeNull]
 		string DirectoryName { get; }
 
 		/// <summary>Gets or sets a value that determines if the current file is read only.</summary>
@@ -53,6 +56,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[NotNull]
 		IStreamWriter AppendText();
 
 		/// <summary>Copies an existing file to a new file, disallowing the overwriting of an existing file.</summary>
@@ -73,7 +77,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		IFileInfo CopyTo(string destFileName);
+		[NotNull]
+		IFileInfo CopyTo([NotNull] string destFileName);
 
 		/// <summary>Copies an existing file to a new file, allowing the overwriting of an existing file.</summary>
 		/// <returns>A new file, or an overwrite of an existing file if <paramref name="overwrite" /> is true. If the file exists and <paramref name="overwrite" /> is false, an <see cref="T:System.IO.IOException" /> is thrown.</returns>
@@ -94,7 +99,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		IFileInfo CopyTo(string destFileName, bool overwrite);
+		[NotNull]
+		IFileInfo CopyTo([NotNull] string destFileName, bool overwrite);
 
 		/// <summary>Creates a file.</summary>
 		/// <returns>A new file.</returns>
@@ -102,6 +108,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[NotNull]
 		IFileStream Create();
 
 		/// <summary>Creates a <see cref="T:System.IO.StreamWriter" /> that writes a new text file.</summary>
@@ -113,6 +120,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[NotNull]
 		IStreamWriter CreateText();
 
 		/// <summary>Moves a specified file to a new location, providing the option to specify a new file name.</summary>
@@ -134,7 +142,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void MoveTo(string destFileName);
+		void MoveTo([NotNull] string destFileName);
 
 		/// <summary>Opens a file in the specified mode.</summary>
 		/// <returns>A file opened in the specified mode, with read/write access and unshared.</returns>
@@ -147,6 +155,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[NotNull]
 		IFileStream Open(FileMode mode);
 
 #pragma warning disable 1584, 1734
@@ -164,6 +173,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[NotNull]
 		IFileStream Open(FileMode mode, FileAccess access);
 #pragma warning restore 1584, 1734
 
@@ -183,10 +193,9 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[NotNull]
 		IFileStream Open(FileMode mode, FileAccess access, FileShare share);
-#pragma warning restore 1584, 1734
 
-#pragma warning disable 1584, 1734
 		/// <summary>Creates a read-only <see cref="T:System.IO.FileStream" />.</summary>
 		/// <returns>A new read-only <see cref="T:System.IO.FileStream" /> object.</returns>
 		/// <exception cref="T:System.UnauthorizedAccessException">
@@ -197,10 +206,9 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[NotNull]
 		IFileStream OpenRead();
-#pragma warning restore 1584, 1734
 
-#pragma warning disable 1584, 1734
 		/// <summary>Creates a <see cref="T:System.IO.StreamReader" /> with UTF8 encoding that reads from an existing text file.</summary>
 		/// <returns>A new StreamReader with UTF8 encoding.</returns>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
@@ -212,6 +220,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[NotNull]
 		IStreamReader OpenText();
 #pragma warning restore 1584, 1734
 
@@ -223,6 +232,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[NotNull]
 		IFileStream OpenWrite();
 	}
 }

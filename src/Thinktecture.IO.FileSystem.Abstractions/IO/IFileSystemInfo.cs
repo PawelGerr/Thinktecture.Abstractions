@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.IO;
+using JetBrains.Annotations;
 
 namespace Thinktecture.IO
 {
@@ -58,6 +59,7 @@ namespace Thinktecture.IO
 		/// <summary>Gets the string representing the extension part of the file.</summary>
 		/// <returns>A string containing the <see cref="T:System.IO.FileSystemInfo" /> extension.</returns>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string Extension { get; }
 
 		/// <summary>Gets the full path of the directory or file.</summary>
@@ -68,6 +70,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
+		[NotNull]
 		string FullName { get; }
 
 		/// <summary>Gets or sets the time the current file or directory was last accessed.</summary>
@@ -121,6 +124,7 @@ namespace Thinktecture.IO
 		/// <summary>For files, gets the name of the file. For directories, gets the name of the last directory in the hierarchy if a hierarchy exists. Otherwise, the Name property gets the name of the directory.</summary>
 		/// <returns>A string that is the name of the parent directory, the name of the last directory in the hierarchy, or the name of a file, including the file name extension.</returns>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string Name { get; }
 
 		/// <summary>Deletes a file or directory.</summary>

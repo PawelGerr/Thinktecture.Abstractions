@@ -1,4 +1,5 @@
-﻿using System.IO;
+using System.IO;
+using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="info">File system info to convert.</param>
 		/// <returns>Converted file system info.</returns>
-		public static IFileSystemInfo ToInterface(this FileSystemInfo info)
+		[CanBeNull]
+		public static IFileSystemInfo ToInterface([CanBeNull] this FileSystemInfo info)
 		{
 			return (info == null) ? null : new FileSystemInfoAdapter(info);
 		}

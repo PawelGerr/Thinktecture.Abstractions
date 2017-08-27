@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.Net.Http.Headers;
 
@@ -25,7 +26,8 @@ namespace Thinktecture.Net.Http.Adapters
 		public IHttpContentHeaders Headers => _content.Headers.ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="HttpContentAdapter" /> class.</summary>
-		public HttpContentAdapter(HttpContent content)
+		/// <param name="content">The implementation to use by the adapter.</param>
+		public HttpContentAdapter([NotNull] HttpContent content)
 			: base(content)
 		{
 			_content = content ?? throw new ArgumentNullException(nameof(content));

@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Net;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.Adapters
 {
@@ -36,7 +37,8 @@ namespace Thinktecture.Net.Adapters
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="CookieCollectionAdapter" /> class.</summary>
-		public CookieCollectionAdapter(CookieCollection collection)
+		/// <param name="collection">The collection to be used by the adapter.</param>
+		public CookieCollectionAdapter([NotNull] CookieCollection collection)
 			: base(collection)
 		{
 			_collection = collection ?? throw new ArgumentNullException(nameof(collection));

@@ -1,7 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
+using Thinktecture.Text;
 
 namespace Thinktecture.IO
 {
@@ -14,16 +16,19 @@ namespace Thinktecture.IO
 		/// <summary>When overridden in a derived class, returns the character encoding in which the output is written.</summary>
 		/// <returns>The character encoding in which the output is written.</returns>
 		/// <filterpriority>1</filterpriority>
-		Encoding Encoding { get; }
+		[NotNull]
+		IEncoding Encoding { get; }
 
 		/// <summary>Gets an object that controls formatting.</summary>
 		/// <returns>An <see cref="T:System.IFormatProvider" /> object for a specific culture, or the formatting of the current culture if no other culture is specified.</returns>
 		/// <filterpriority>2</filterpriority>
+		[NotNull]
 		IFormatProvider FormatProvider { get; }
 
 		/// <summary>Gets or sets the line terminator string used by the current TextWriter.</summary>
 		/// <returns>The line terminator string for the current TextWriter.</returns>
 		/// <filterpriority>2</filterpriority>
+		[NotNull]
 		string NewLine { get; set; }
 
 		/// <summary>Clears all buffers for the current writer and causes any buffered data to be written to the underlying device.</summary>
@@ -34,6 +39,7 @@ namespace Thinktecture.IO
 		/// <returns>A task that represents the asynchronous flush operation. </returns>
 		/// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The writer is currently in use by a previous write operation. </exception>
+		[NotNull]
 		Task FlushAsync();
 
 		/// <summary>Writes the text representation of a Boolean value to the text string or stream.</summary>
@@ -55,7 +61,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(char[] buffer);
+		void Write([NotNull] char[] buffer);
 
 		/// <summary>Writes a subarray of characters to the text string or stream.</summary>
 		/// <param name="buffer">The character array to write data from. </param>
@@ -68,14 +74,14 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(char[] buffer, int index, int count);
+		void Write([NotNull] char[] buffer, int index, int count);
 
 		/// <summary>Writes the text representation of a decimal value to the text string or stream.</summary>
 		/// <param name="value">The decimal value to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(Decimal value);
+		void Write(decimal value);
 
 		/// <summary>Writes the text representation of an 8-byte floating-point value to the text string or stream.</summary>
 		/// <param name="value">The 8-byte floating-point value to write. </param>
@@ -103,7 +109,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(object value);
+		void Write([CanBeNull] object value);
 
 		/// <summary>Writes the text representation of a 4-byte floating-point value to the text string or stream.</summary>
 		/// <param name="value">The 4-byte floating-point value to write. </param>
@@ -117,7 +123,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(string value);
+		void Write([CanBeNull] string value);
 
 		/// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object[])" /> method.</summary>
 		/// <param name="format">A composite format string (see Remarks). </param>
@@ -129,7 +135,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.FormatException">
 		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the length of the <paramref name="arg" /> array. </exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(string format, params object[] arg);
+		void Write([NotNull] string format, [NotNull] params object[] arg);
 
 		/// <summary>Writes the text representation of a 4-byte unsigned integer to the text string or stream.</summary>
 		/// <param name="value">The 4-byte unsigned integer to write. </param>
@@ -150,6 +156,7 @@ namespace Thinktecture.IO
 		/// <param name="value">The character to write to the text stream.</param>
 		/// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
+		[NotNull]
 		Task WriteAsync(char value);
 
 		/// <summary>Writes a character array to the text string or stream asynchronously.</summary>
@@ -157,7 +164,8 @@ namespace Thinktecture.IO
 		/// <param name="buffer">The character array to write to the text stream. If <paramref name="buffer" /> is null, nothing is written.</param>
 		/// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
-		Task WriteAsync(char[] buffer);
+		[NotNull]
+		Task WriteAsync([NotNull] char[] buffer);
 
 		/// <summary>Writes a subarray of characters to the text string or stream asynchronously. </summary>
 		/// <returns>A task that represents the asynchronous write operation.</returns>
@@ -171,14 +179,16 @@ namespace Thinktecture.IO
 		/// <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
-		Task WriteAsync(char[] buffer, int index, int count);
+		[NotNull]
+		Task WriteAsync([NotNull] char[] buffer, int index, int count);
 
 		/// <summary>Writes a string to the text string or stream asynchronously.</summary>
 		/// <returns>A task that represents the asynchronous write operation. </returns>
 		/// <param name="value">The string to write. If <paramref name="value" /> is null, nothing is written to the text stream.</param>
 		/// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
-		Task WriteAsync(string value);
+		[NotNull]
+		Task WriteAsync([CanBeNull] string value);
 
 		/// <summary>Writes a line terminator to the text string or stream.</summary>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
@@ -205,7 +215,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>1</filterpriority>
-		void WriteLine(char[] buffer);
+		void WriteLine([NotNull] char[] buffer);
 
 		/// <summary>Writes a subarray of characters followed by a line terminator to the text string or stream.</summary>
 		/// <param name="buffer">The character array from which data is read. </param>
@@ -218,14 +228,14 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>1</filterpriority>
-		void WriteLine(char[] buffer, int index, int count);
+		void WriteLine([NotNull] char[] buffer, int index, int count);
 
 		/// <summary>Writes the text representation of a decimal value followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The decimal value to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>1</filterpriority>
-		void WriteLine(Decimal value);
+		void WriteLine(decimal value);
 
 		/// <summary>Writes the text representation of a 8-byte floating-point value followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The 8-byte floating-point value to write. </param>
@@ -253,7 +263,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>1</filterpriority>
-		void WriteLine(object value);
+		void WriteLine([CanBeNull] object value);
 
 		/// <summary>Writes the text representation of a 4-byte floating-point value followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The 4-byte floating-point value to write. </param>
@@ -267,7 +277,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>1</filterpriority>
-		void WriteLine(string value);
+		void WriteLine([CanBeNull] string value);
 
 		/// <summary>Writes out a formatted string and a new line, using the same semantics as <see cref="M:System.String.Format(System.String,System.Object)" />.</summary>
 		/// <param name="format">A composite format string (see Remarks).</param>
@@ -278,7 +288,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.FormatException">
 		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the length of the <paramref name="arg" /> array. </exception>
 		/// <filterpriority>1</filterpriority>
-		void WriteLine(string format, params object[] arg);
+		void WriteLine([NotNull] string format, [NotNull] params object[] arg);
 
 		/// <summary>Writes the text representation of a 4-byte unsigned integer followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The 4-byte unsigned integer to write. </param>
@@ -298,6 +308,7 @@ namespace Thinktecture.IO
 		/// <returns>A task that represents the asynchronous write operation. </returns>
 		/// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
+		[NotNull]
 		Task WriteLineAsync();
 
 		/// <summary>Writes a character followed by a line terminator asynchronously to the text string or stream.</summary>
@@ -305,6 +316,7 @@ namespace Thinktecture.IO
 		/// <param name="value">The character to write to the text stream.</param>
 		/// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
+		[NotNull]
 		Task WriteLineAsync(char value);
 
 		/// <summary>Writes an array of characters followed by a line terminator asynchronously to the text string or stream.</summary>
@@ -312,7 +324,8 @@ namespace Thinktecture.IO
 		/// <param name="buffer">The character array to write to the text stream. If the character array is null, only the line terminator is written. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
-		Task WriteLineAsync(char[] buffer);
+		[NotNull]
+		Task WriteLineAsync([NotNull] char[] buffer);
 
 		/// <summary>Writes a subarray of characters followed by a line terminator asynchronously to the text string or stream.</summary>
 		/// <returns>A task that represents the asynchronous write operation.</returns>
@@ -326,13 +339,15 @@ namespace Thinktecture.IO
 		/// <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
-		Task WriteLineAsync(char[] buffer, int index, int count);
+		[NotNull]
+		Task WriteLineAsync([NotNull] char[] buffer, int index, int count);
 
 		/// <summary>Writes a string followed by a line terminator asynchronously to the text string or stream. </summary>
 		/// <returns>A task that represents the asynchronous write operation.</returns>
 		/// <param name="value">The string to write. If the value is null, only a line terminator is written. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
-		Task WriteLineAsync(string value);
+		[NotNull]
+		Task WriteLineAsync([CanBeNull] string value);
 	}
 }

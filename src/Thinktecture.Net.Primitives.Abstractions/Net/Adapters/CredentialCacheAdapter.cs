@@ -1,4 +1,4 @@
-﻿#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
 
 using System;
 using System.Collections;
@@ -37,9 +37,7 @@ namespace Thinktecture.Net.Adapters
 		public CredentialCacheAdapter(CredentialCache cache)
 			: base(cache)
 		{
-			if (cache == null)
-				throw new ArgumentNullException(nameof(cache));
-			_cache = cache;
+			_cache = cache ?? throw new ArgumentNullException(nameof(cache));
 		}
 
 		/// <inheritdoc />

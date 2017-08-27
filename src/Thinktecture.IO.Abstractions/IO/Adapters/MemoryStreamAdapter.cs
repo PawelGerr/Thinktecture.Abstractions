@@ -1,6 +1,9 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.IO;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.IO.Adapters
 {
@@ -10,19 +13,24 @@ namespace Thinktecture.IO.Adapters
 	public class MemoryStreamAdapter : StreamAdapter, IMemoryStream
 	{
 		/// <inheritdoc />
+		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new MemoryStream UnsafeConvert()
 		{
-			return _instance;
+			return Implementation;
 		}
 
-		private readonly MemoryStream _instance;
+		/// <summary>
+		/// Implementation used by the adapter.
+		/// </summary>
+		[NotNull]
+		protected new MemoryStream Implementation { get; }
 
 		/// <inheritdoc />
 		public int Capacity
 		{
-			get => _instance.Capacity;
-			set => _instance.Capacity = value;
+			get => Implementation.Capacity;
+			set => Implementation.Capacity = value;
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="MemoryStreamAdapter" /> class with an expandable capacity initialized to zero.</summary>
@@ -35,7 +43,7 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="buffer">The array of unsigned bytes from which to create the current stream. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="buffer" /> is null. </exception>
-		public MemoryStreamAdapter(byte[] buffer)
+		public MemoryStreamAdapter([NotNull] byte[] buffer)
 			: this(new MemoryStream(buffer))
 		{
 		}
@@ -45,7 +53,7 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="writable">The setting of the <see cref="P:System.IO.MemoryStream.CanWrite" /> property, which determines whether the stream supports writing. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="buffer" /> is null. </exception>
-		public MemoryStreamAdapter(byte[] buffer, bool writable)
+		public MemoryStreamAdapter([NotNull] byte[] buffer, bool writable)
 			: this(new MemoryStream(buffer, writable))
 		{
 		}
@@ -59,7 +67,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> is less than zero. </exception>
 		/// <exception cref="T:System.ArgumentException">The buffer length minus <paramref name="index" /> is less than <paramref name="count" />.</exception>
-		public MemoryStreamAdapter(byte[] buffer, int index, int count)
+		public MemoryStreamAdapter([NotNull] byte[] buffer, int index, int count)
 			: this(new MemoryStream(buffer, index, count))
 		{
 		}
@@ -74,7 +82,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> are negative. </exception>
 		/// <exception cref="T:System.ArgumentException">The buffer length minus <paramref name="index" /> is less than <paramref name="count" />.</exception>
-		public MemoryStreamAdapter(byte[] buffer, int index, int count, bool writable)
+		public MemoryStreamAdapter([NotNull] byte[] buffer, int index, int count, bool writable)
 			: this(new MemoryStream(buffer, index, count, writable))
 		{
 		}
@@ -92,28 +100,28 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="MemoryStreamAdapter" /> class.
 		/// </summary>
 		/// <param name="stream">Stream to be used by the adapter.</param>
-		public MemoryStreamAdapter(MemoryStream stream)
+		public MemoryStreamAdapter([NotNull] MemoryStream stream)
 			: base(stream)
 		{
-			_instance = stream ?? throw new ArgumentNullException(nameof(stream));
+			Implementation = stream ?? throw new ArgumentNullException(nameof(stream));
 		}
 
 		/// <inheritdoc />
 		public byte[] ToArray()
 		{
-			return _instance.ToArray();
+			return Implementation.ToArray();
 		}
 
 		/// <inheritdoc />
 		public void WriteTo(IStream stream)
 		{
-			_instance.WriteTo(stream.ToImplementation());
+			Implementation.WriteTo(stream.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public void WriteTo(Stream stream)
 		{
-			_instance.WriteTo(stream);
+			Implementation.WriteTo(stream);
 		}
 	}
 }

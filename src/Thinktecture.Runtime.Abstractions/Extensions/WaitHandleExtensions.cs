@@ -1,4 +1,5 @@
-﻿using System.Threading;
+using System.Threading;
+using JetBrains.Annotations;
 using Thinktecture.Threading;
 using Thinktecture.Threading.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="handle"><see cref="WaitHandle"/> to convert.</param>
 		/// <returns>An instance of <see cref="IWaitHandle"/>.</returns>
-		public static IWaitHandle ToInterface(this WaitHandle handle)
+		[CanBeNull]
+		public static IWaitHandle ToInterface([CanBeNull] this WaitHandle handle)
 		{
 			return (handle == null) ? null : new WaitHandleAdapter(handle);
 		}

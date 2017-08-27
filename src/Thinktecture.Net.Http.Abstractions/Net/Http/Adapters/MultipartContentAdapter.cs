@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.Http;
@@ -36,6 +36,7 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <summary>Creates a new instance of the <see cref="MultipartContentAdapter" /> class.</summary>
+		/// <param name="content">The implementation to use by the adapter.</param>
 		public MultipartContentAdapter(MultipartContent content)
 			: base(content)
 		{

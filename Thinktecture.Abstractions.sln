@@ -1,19 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4860E453-E56B-4BED-BA8A-DDFA89A19B0D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3891EBEC-9FFC-45C2-A970-6D39415969BE}"
-	ProjectSection(SolutionItems) = preProject
-		LICENCE.md = LICENCE.md
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{C37A280D-0672-43EB-AA82-A7837C67FD0A}"
 	ProjectSection(SolutionItems) = preProject
+		LICENCE.md = LICENCE.md
 		doc\ReadingFiles.md = doc\ReadingFiles.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{F2F0BF55-C0C6-4325-98EB-CEC4E4A5EBC6}"
@@ -136,5 +132,8 @@ Global
 		{A7907887-601D-4B1D-9484-099F39C0FCEB} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 		{F927011A-CED0-4E14-82B5-789BEB1A044F} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 		{0A81E014-DC74-43B5-9D59-7AADFA25E628} = {F2F0BF55-C0C6-4325-98EB-CEC4E4A5EBC6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B2E59FD-B86D-4BF3-9FAF-64EBC004FCDA}
 	EndGlobalSection
 EndGlobal

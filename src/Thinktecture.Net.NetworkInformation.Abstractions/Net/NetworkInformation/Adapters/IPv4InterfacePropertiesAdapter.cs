@@ -42,10 +42,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		public IPv4InterfacePropertiesAdapter(IPv4InterfaceProperties props)
 			: base(props)
 		{
-			if (props == null)
-				throw new ArgumentNullException(nameof(props));
-
-			_props = props;
+			_props = props ?? throw new ArgumentNullException(nameof(props));
 		}
 
 		/// <inheritdoc />

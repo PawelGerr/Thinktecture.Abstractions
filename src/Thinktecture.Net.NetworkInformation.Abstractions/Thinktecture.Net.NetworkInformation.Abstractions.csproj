@@ -14,6 +14,8 @@
     <RepositoryUrl>git@github.com:PawelGerr/Thinktecture.Abstractions.git</RepositoryUrl>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <RootNamespace>Thinktecture</RootNamespace>
+    <LangVersion>7.1</LangVersion>
+    <CodeAnalysisRuleSet>..\..\Visual Studio.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Thinktecture.Net.Primitives.Abstractions\Thinktecture.Net.Primitives.Abstractions.csproj" />

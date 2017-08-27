@@ -1,4 +1,4 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
 using System.ComponentModel;
@@ -23,12 +23,11 @@ namespace Thinktecture.Security.Authentication.ExtendedProtection.Adapters
 		public int Size => _binding.Size;
 
 		/// <summary>Initializes a new instance of the <see cref="T:System.Security.Authentication.ExtendedProtection.ChannelBinding" /> class.</summary>
+		/// <param name="binding">The implementation to use by the adapter.</param>
 		public ChannelBindingAdapter(ChannelBinding binding)
 			: base(binding)
 		{
-			if (binding == null)
-				throw new ArgumentNullException(nameof(binding));
-			_binding = binding;
+			_binding = binding ?? throw new ArgumentNullException(nameof(binding));
 		}
 	}
 }

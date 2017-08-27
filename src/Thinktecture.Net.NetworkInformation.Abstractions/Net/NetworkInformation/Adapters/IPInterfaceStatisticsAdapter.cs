@@ -57,10 +57,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		public IPInterfaceStatisticsAdapter(IPInterfaceStatistics stats)
 			: base(stats)
 		{
-			if (stats == null)
-				throw new ArgumentNullException(nameof(stats));
-
-			_stats = stats;
+			_stats = stats ?? throw new ArgumentNullException(nameof(stats));
 		}
 
 		/// <inheritdoc />

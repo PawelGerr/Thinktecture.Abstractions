@@ -1,4 +1,4 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
 using System.ComponentModel;
@@ -25,8 +25,8 @@ namespace Thinktecture.Net.Adapters
 		/// <inheritdoc />
 		public byte this[int offset]
 		{
-			get { return _address[offset]; }
-			set { _address[offset] = value; }
+			get => _address[offset];
+			set => _address[offset] = value;
 		}
 
 		/// <inheritdoc />
@@ -54,10 +54,7 @@ namespace Thinktecture.Net.Adapters
 		public SocketAddressAdapter(SocketAddress address)
 			: base(address)
 		{
-			if (address == null)
-				throw new ArgumentNullException(nameof(address));
-
-			_address = address;
+			_address = address ?? throw new ArgumentNullException(nameof(address));
 		}
 	}
 }

@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Collections.Generic
 {
@@ -10,13 +11,13 @@ namespace Thinktecture.Collections.Generic
 	public class InstanceEqualityComparer<T> : IEqualityComparer<T>
 	{
 		/// <inheritdoc />
-		public bool Equals(T x, T y)
+		public bool Equals([CanBeNull] T x, [CanBeNull] T y)
 		{
 			return ReferenceEquals(x, y);
 		}
 
 		/// <inheritdoc />
-		public int GetHashCode(T obj)
+		public int GetHashCode([CanBeNull] T obj)
 		{
 			return obj?.GetHashCode() ?? 0;
 		}

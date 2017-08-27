@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+using System.Net.Http.Headers;
+using JetBrains.Annotations;
 using Thinktecture.Net.Http.Headers;
 using Thinktecture.Net.Http.Headers.Adapters;
 
@@ -11,14 +12,16 @@ namespace Thinktecture
 	public static class HttpHeaderValueCollectionExtensions
 	{
 		/// <summary>
-		/// Converts provided http header value collection to <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />/>.
+		/// Converts provided http header value collection to <see cref="IHttpHeaderValueCollection{T}" />/>.
 		/// </summary>
+		/// <typeparam name="T">The header collection type.</typeparam>
 		/// <param name="valueCollection">Http header value collection to convert.</param>
 		/// <returns>Converted http header value collection.</returns>
-		public static IHttpHeaderValueCollection<T> ToInterface<T>(this HttpHeaderValueCollection<T> valueCollection)
+		[CanBeNull]
+		public static IHttpHeaderValueCollection<T> ToInterface<T>([CanBeNull] this HttpHeaderValueCollection<T> valueCollection)
 			where T : class
 		{
-			return (valueCollection == null) ? null : new HttpHeaderValueCollectionAdapter<T>(valueCollection);
+			return valueCollection == null ? null : new HttpHeaderValueCollectionAdapter<T>(valueCollection);
 		}
 	}
 }

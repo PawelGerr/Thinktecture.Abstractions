@@ -1,4 +1,5 @@
-﻿using System.IO;
+using System.IO;
+using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="directoryInfo">Directory info to convert.</param>
 		/// <returns>Converted directory info.</returns>
-		public static IDirectoryInfo ToInterface(this DirectoryInfo directoryInfo)
+		[CanBeNull]
+		public static IDirectoryInfo ToInterface([CanBeNull] this DirectoryInfo directoryInfo)
 		{
 			return (directoryInfo == null) ? null : new DirectoryInfoAdapter(directoryInfo);
 		}
@@ -25,7 +27,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IDirectoryInfo"/> to convert.</param>
 		/// <returns>An instance of <see cref="DirectoryInfo"/>.</returns>
-		public static DirectoryInfo ToImplementation(this IDirectoryInfo abstraction)
+		[CanBeNull]
+		public static DirectoryInfo ToImplementation([CanBeNull] this IDirectoryInfo abstraction)
 		{
 			return ((IAbstraction<DirectoryInfo>)abstraction)?.UnsafeConvert();
 		}

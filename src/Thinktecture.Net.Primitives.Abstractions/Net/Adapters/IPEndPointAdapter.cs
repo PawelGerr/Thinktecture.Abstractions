@@ -30,15 +30,15 @@ namespace Thinktecture.Net.Adapters
 		/// <inheritdoc />
 		public IIPAddress Address
 		{
-			get { return _endpoint.Address.ToInterface(); }
-			set { _endpoint.Address = value.ToImplementation(); }
+			get => _endpoint.Address.ToInterface();
+			set => _endpoint.Address = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
 		public int Port
 		{
-			get { return _endpoint.Port; }
-			set { _endpoint.Port = value; }
+			get => _endpoint.Port;
+			set => _endpoint.Port = value;
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="IPEndPointAdapter" /> class with the specified address and port number.</summary>
@@ -80,10 +80,7 @@ namespace Thinktecture.Net.Adapters
 		public IPEndPointAdapter(IPEndPoint endpoint)
 			: base(endpoint)
 		{
-			if (endpoint == null)
-				throw new ArgumentNullException(nameof(endpoint));
-
-			_endpoint = endpoint;
+			_endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 		}
 	}
 }

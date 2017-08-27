@@ -1,39 +1,32 @@
 using System;
-using System.ComponentModel;
 using System.IO;
 using System.Text;
+using JetBrains.Annotations;
 using Thinktecture.Text;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.IO.Adapters
 {
 	/// <summary>
 	/// Adapter for <see cref="BinaryWriter"/>.
 	/// </summary>
-	public class BinaryWriterAdapter : AbstractionAdapter, IBinaryWriter
+	public class BinaryWriterAdapter : AbstractionAdapter<BinaryWriter>, IBinaryWriter
 	{
 		/// <summary>Specifies a <see cref="T:System.IO.BinaryWriter" /> with no backing store.</summary>
 		/// <filterpriority>1</filterpriority>
-		public static readonly IBinaryWriter Null = new BinaryWriterAdapter(BinaryWriter.Null);
+		public static readonly IBinaryWriter Null = BinaryWriter.Null.ToInterface();
 
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new BinaryWriter UnsafeConvert()
-		{
-			return _instance;
-		}
-
-		private readonly BinaryWriter _instance;
-
-		/// <inheritdoc />
-		public IStream BaseStream => _instance.BaseStream.ToInterface();
+		public IStream BaseStream => Implementation.BaseStream.ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class based on the specified stream and using UTF-8 encoding.</summary>
 		/// <param name="output">The output stream. </param>
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> is null. </exception>
-		public BinaryWriterAdapter(IStream output)
-			: this(new BinaryWriter(output.ToImplementation()))
+		public BinaryWriterAdapter([NotNull] IStream output)
+			: this(output.ToImplementation())
 		{
 		}
 
@@ -42,7 +35,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> is null. </exception>
-		public BinaryWriterAdapter(Stream output)
+		public BinaryWriterAdapter([NotNull] Stream output)
 			: this(new BinaryWriter(output))
 		{
 		}
@@ -53,8 +46,8 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter(IStream output, IEncoding encoding)
-			: this(new BinaryWriter(output.ToImplementation(), encoding.ToImplementation()))
+		public BinaryWriterAdapter([NotNull] IStream output, [NotNull] IEncoding encoding)
+			: this(output.ToImplementation(), encoding.ToImplementation())
 		{
 		}
 
@@ -64,8 +57,8 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter(Stream output, IEncoding encoding)
-			: this(new BinaryWriter(output, encoding.ToImplementation()))
+		public BinaryWriterAdapter([NotNull] Stream output, [NotNull] IEncoding encoding)
+			: this(output, encoding.ToImplementation())
 		{
 		}
 
@@ -75,8 +68,8 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter(IStream output, Encoding encoding)
-			: this(new BinaryWriter(output.ToImplementation(), encoding))
+		public BinaryWriterAdapter([NotNull] IStream output, [NotNull] Encoding encoding)
+			: this(output.ToImplementation(), encoding)
 		{
 		}
 
@@ -86,7 +79,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter(Stream output, Encoding encoding)
+		public BinaryWriterAdapter([NotNull] Stream output, [NotNull] Encoding encoding)
 			: this(new BinaryWriter(output, encoding))
 		{
 		}
@@ -98,8 +91,8 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter(IStream output, IEncoding encoding, bool leaveOpen)
-			: this(new BinaryWriter(output.ToImplementation(), encoding.ToImplementation(), leaveOpen))
+		public BinaryWriterAdapter([NotNull] IStream output, [NotNull] IEncoding encoding, bool leaveOpen)
+			: this(output.ToImplementation(), encoding.ToImplementation(), leaveOpen)
 		{
 		}
 
@@ -110,8 +103,8 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter(Stream output, IEncoding encoding, bool leaveOpen)
-			: this(new BinaryWriter(output, encoding.ToImplementation(), leaveOpen))
+		public BinaryWriterAdapter([NotNull] Stream output, [NotNull] IEncoding encoding, bool leaveOpen)
+			: this(output, encoding.ToImplementation(), leaveOpen)
 		{
 		}
 
@@ -122,8 +115,8 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter(IStream output, Encoding encoding, bool leaveOpen)
-			: this(new BinaryWriter(output.ToImplementation(), encoding, leaveOpen))
+		public BinaryWriterAdapter([NotNull] IStream output, [NotNull] Encoding encoding, bool leaveOpen)
+			: this(output.ToImplementation(), encoding, leaveOpen)
 		{
 		}
 
@@ -134,7 +127,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter(Stream output, Encoding encoding, bool leaveOpen)
+		public BinaryWriterAdapter([NotNull] Stream output, [NotNull] Encoding encoding, bool leaveOpen)
 			: this(new BinaryWriter(output, encoding, leaveOpen))
 		{
 		}
@@ -143,136 +136,135 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class
 		/// </summary>
 		/// <param name="writer">Writer to be used by the adapter.</param>
-		public BinaryWriterAdapter(BinaryWriter writer)
+		public BinaryWriterAdapter([NotNull] BinaryWriter writer)
 			: base(writer)
 		{
-			_instance = writer ?? throw new ArgumentNullException(nameof(writer));
 		}
 
 		/// <inheritdoc />
 		public void Flush()
 		{
-			_instance.Flush();
+			Implementation.Flush();
 		}
 
 		/// <inheritdoc />
 		public long Seek(int offset, SeekOrigin origin)
 		{
-			return _instance.Seek(offset, origin);
+			return Implementation.Seek(offset, origin);
 		}
 
 		/// <inheritdoc />
 		public void Write(bool value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(byte value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(byte[] buffer)
 		{
-			_instance.Write(buffer);
+			Implementation.Write(buffer);
 		}
 
 		/// <inheritdoc />
 		public void Write(byte[] buffer, int index, int count)
 		{
-			_instance.Write(buffer, index, count);
+			Implementation.Write(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public void Write(char ch)
 		{
-			_instance.Write(ch);
+			Implementation.Write(ch);
 		}
 
 		/// <inheritdoc />
 		public void Write(char[] chars)
 		{
-			_instance.Write(chars);
+			Implementation.Write(chars);
 		}
 
 		/// <inheritdoc />
 		public void Write(char[] chars, int index, int count)
 		{
-			_instance.Write(chars, index, count);
+			Implementation.Write(chars, index, count);
 		}
 
 		/// <inheritdoc />
 		public void Write(decimal value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(double value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(short value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(int value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(long value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(sbyte value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(float value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(string value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(ushort value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(uint value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(ulong value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			_instance.Dispose();
+			Implementation.Dispose();
 		}
 	}
 }

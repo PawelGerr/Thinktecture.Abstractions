@@ -1,4 +1,5 @@
-﻿using System.IO;
+using System.IO;
+using JetBrains.Annotations;
 using Thinktecture.IO;
 
 // ReSharper disable once CheckNamespace
@@ -14,7 +15,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="infos">Array to convert.</param>
 		/// <returns>An array of <see cref="IDirectoryInfo"/>.</returns>
-		public static IDirectoryInfo[] ToInterface(this DirectoryInfo[] infos)
+		[CanBeNull]
+		public static IDirectoryInfo[] ToInterface([CanBeNull] this DirectoryInfo[] infos)
 		{
 			if (infos == null)
 				return null;
@@ -34,7 +36,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="infos">Array to convert.</param>
 		/// <returns>An array of <see cref="IFileInfo"/>.</returns>
-		public static IFileInfo[] ToInterface(this FileInfo[] infos)
+		[CanBeNull]
+		public static IFileInfo[] ToInterface([CanBeNull] this FileInfo[] infos)
 		{
 			if (infos == null)
 				return null;
@@ -54,7 +57,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="infos">Array to convert.</param>
 		/// <returns>An array of <see cref="IFileSystemInfo"/>.</returns>
-		public static IFileSystemInfo[] ToInterface(this FileSystemInfo[] infos)
+		[CanBeNull]
+		public static IFileSystemInfo[] ToInterface([CanBeNull] this FileSystemInfo[] infos)
 		{
 			if (infos == null)
 				return null;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Net.Http;
 
@@ -25,6 +25,7 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <summary>Creates a new instance of the <see cref="T:System.Net.Http.DelegatingHandler" /> class.</summary>
+		/// <param name="handler">The implementation to use by the adapter.</param>
 		public DelegatingHandlerAdapter(DelegatingHandler handler)
 			: base(handler)
 		{

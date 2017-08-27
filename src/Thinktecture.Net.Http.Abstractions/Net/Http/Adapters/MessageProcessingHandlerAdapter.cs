@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Net.Http;
 
@@ -17,6 +17,7 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <summary>Creates an instance of a <see cref="MessageProcessingHandlerAdapter" /> class.</summary>
+		/// <param name="handler">The implementation to use by the adapter.</param>
 		public MessageProcessingHandlerAdapter(MessageProcessingHandler handler)
 			: base(handler)
 		{

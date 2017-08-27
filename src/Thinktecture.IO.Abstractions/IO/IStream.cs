@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Thinktecture.IO
 {
@@ -66,7 +67,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
-		void CopyTo(IStream destination);
+		void CopyTo([NotNull] IStream destination);
 
 		/// <summary>Reads the bytes from the current stream and writes them to another stream.</summary>
 		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
@@ -75,7 +76,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
-		void CopyTo(Stream destination);
+		void CopyTo([NotNull] Stream destination);
 
 		/// <summary>Reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
 		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
@@ -87,7 +88,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
-		void CopyTo(IStream destination, int bufferSize);
+		void CopyTo([NotNull] IStream destination, int bufferSize);
 
 		/// <summary>Reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
 		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
@@ -99,7 +100,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
-		void CopyTo(Stream destination, int bufferSize);
+		void CopyTo([NotNull] Stream destination, int bufferSize);
 
 		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream.</summary>
 		/// <returns>A task that represents the asynchronous copy operation.</returns>
@@ -108,7 +109,8 @@ namespace Thinktecture.IO
 		/// <paramref name="destination" /> is null.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
-		Task CopyToAsync(IStream destination);
+		[NotNull]
+		Task CopyToAsync([NotNull] IStream destination);
 
 		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream.</summary>
 		/// <returns>A task that represents the asynchronous copy operation.</returns>
@@ -117,7 +119,8 @@ namespace Thinktecture.IO
 		/// <paramref name="destination" /> is null.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
-		Task CopyToAsync(Stream destination);
+		[NotNull]
+		Task CopyToAsync([NotNull] Stream destination);
 
 		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
 		/// <returns>A task that represents the asynchronous copy operation.</returns>
@@ -129,7 +132,8 @@ namespace Thinktecture.IO
 		/// <paramref name="bufferSize" /> is negative or zero.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
-		Task CopyToAsync(IStream destination, int bufferSize);
+		[NotNull]
+		Task CopyToAsync([NotNull] IStream destination, int bufferSize);
 
 		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
 		/// <returns>A task that represents the asynchronous copy operation.</returns>
@@ -141,7 +145,8 @@ namespace Thinktecture.IO
 		/// <paramref name="bufferSize" /> is negative or zero.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
-		Task CopyToAsync(Stream destination, int bufferSize);
+		[NotNull]
+		Task CopyToAsync([NotNull] Stream destination, int bufferSize);
 
 		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size and cancellation token.</summary>
 		/// <returns>A task that represents the asynchronous copy operation.</returns>
@@ -154,7 +159,8 @@ namespace Thinktecture.IO
 		/// <paramref name="bufferSize" /> is negative or zero.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
-		Task CopyToAsync(IStream destination, int bufferSize, CancellationToken cancellationToken);
+		[NotNull]
+		Task CopyToAsync([NotNull] IStream destination, int bufferSize, CancellationToken cancellationToken);
 
 		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size and cancellation token.</summary>
 		/// <returns>A task that represents the asynchronous copy operation.</returns>
@@ -167,7 +173,8 @@ namespace Thinktecture.IO
 		/// <paramref name="bufferSize" /> is negative or zero.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
-		Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken);
+		[NotNull]
+		Task CopyToAsync([NotNull] Stream destination, int bufferSize, CancellationToken cancellationToken);
 
 		/// <summary>Clears all buffers for this stream and causes any buffered data to be written to the underlying device.</summary>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
@@ -178,12 +185,14 @@ namespace Thinktecture.IO
 		/// <summary>Asynchronously clears all buffers for this stream and causes any buffered data to be written to the underlying device.</summary>
 		/// <returns>A task that represents the asynchronous flush operation.</returns>
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
+		[NotNull]
 		Task FlushAsync();
 
 		/// <summary>Asynchronously clears all buffers for this stream, causes any buffered data to be written to the underlying device, and monitors cancellation requests. </summary>
 		/// <returns>A task that represents the asynchronous flush operation. </returns>
 		/// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
+		[NotNull]
 		Task FlushAsync(CancellationToken cancellationToken);
 
 		/// <summary>Reads a block of bytes from the stream and writes the data in a given buffer.</summary>
@@ -200,7 +209,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The stream does not support reading. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
 		/// <filterpriority>1</filterpriority>
-		int Read(byte[] buffer, int offset, int count);
+		int Read([NotNull] byte[] buffer, int offset, int count);
 
 #pragma warning disable 1584, 1734
 		/// <summary>Asynchronously reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.</summary>
@@ -216,7 +225,8 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The stream does not support reading.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous read operation. </exception>
-		Task<int> ReadAsync(byte[] buffer, int offset, int count);
+		[NotNull]
+		Task<int> ReadAsync([NotNull] byte[] buffer, int offset, int count);
 #pragma warning restore 1584, 1734
 
 #pragma warning disable 1584, 1734
@@ -234,7 +244,8 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The stream does not support reading.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous read operation. </exception>
-		Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken);
+		[NotNull]
+		Task<int> ReadAsync([NotNull] byte[] buffer, int offset, int count, CancellationToken cancellationToken);
 #pragma warning restore 1584, 1734
 
 		/// <summary>Reads a byte from the stream and advances the position within the stream by one byte, or returns -1 if at the end of the stream.</summary>
@@ -276,7 +287,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">
 		/// <see cref="M:System.IO.Stream.Write(System.Byte[],System.Int32,System.Int32)" /> was called after the stream was closed.</exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(byte[] buffer, int offset, int count);
+		void Write([NotNull] byte[] buffer, int offset, int count);
 
 		/// <summary>Asynchronously writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.</summary>
 		/// <returns>A task that represents the asynchronous write operation.</returns>
@@ -291,7 +302,8 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The stream does not support writing.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous write operation. </exception>
-		Task WriteAsync(byte[] buffer, int offset, int count);
+		[NotNull]
+		Task WriteAsync([NotNull] byte[] buffer, int offset, int count);
 
 		/// <summary>Asynchronously writes a sequence of bytes to the current stream, advances the current position within this stream by the number of bytes written, and monitors cancellation requests.</summary>
 		/// <returns>A task that represents the asynchronous write operation.</returns>
@@ -307,7 +319,8 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The stream does not support writing.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous write operation. </exception>
-		Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken);
+		[NotNull]
+		Task WriteAsync([NotNull] byte[] buffer, int offset, int count, CancellationToken cancellationToken);
 
 		/// <summary>Writes a byte to the current position in the stream and advances the position within the stream by one byte.</summary>
 		/// <param name="value">The byte to write to the stream. </param>

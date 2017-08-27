@@ -1,4 +1,6 @@
-﻿// ReSharper disable once CheckNamespace
+using JetBrains.Annotations;
+
+// ReSharper disable once CheckNamespace
 namespace Thinktecture
 {
 	/// <summary>
@@ -9,11 +11,13 @@ namespace Thinktecture
 		/// <summary>
 		/// Converts provided abstraction to implementation.
 		/// </summary>
+		/// <typeparam name="TImplementation">Type of the implementation.</typeparam>
 		/// <param name="abstraction">Abstraction to convert.</param>
 		/// <returns>Converted abstraction.</returns>
-		public static TImplementation ToImplementation<TImplementation>(this IAbstraction<TImplementation> abstraction)
+		[CanBeNull]
+		public static TImplementation ToImplementation<TImplementation>([CanBeNull] this IAbstraction<TImplementation> abstraction)
 		{
-			return abstraction != null ? abstraction.UnsafeConvert() : default(TImplementation);
+			return ReferenceEquals(abstraction, null) ? default : abstraction.UnsafeConvert();
 		}
 	}
 }

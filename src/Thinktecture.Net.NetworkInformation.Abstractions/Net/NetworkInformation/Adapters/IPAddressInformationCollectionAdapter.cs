@@ -24,10 +24,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		public IPAddressInformationCollectionAdapter(IPAddressInformationCollection collection)
 			: base(collection, information => information.ToInterface())
 		{
-			if (collection == null)
-				throw new ArgumentNullException(nameof(collection));
-
-			_collection = collection;
+			_collection = collection ?? throw new ArgumentNullException(nameof(collection));
 		}
 	}
 }

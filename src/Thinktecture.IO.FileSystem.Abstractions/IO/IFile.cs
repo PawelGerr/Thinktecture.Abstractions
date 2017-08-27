@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using JetBrains.Annotations;
 using Thinktecture.Text;
 
 namespace Thinktecture.IO
@@ -27,7 +28,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have permission to write to the file.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.</exception>
-		void AppendAllLines(string path, IEnumerable<string> contents);
+		void AppendAllLines([NotNull] string path, [NotNull] IEnumerable<string> contents);
 
 		/// <summary>Appends lines to a file by using a specified encoding, and then closes the file. If the specified file does not exist, this method creates a file, writes the specified lines to the file, and then closes the file.</summary>
 		/// <param name="path">The file to append the lines to. The file is created if it doesn't already exist.</param>
@@ -47,7 +48,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
-		void AppendAllLines(string path, IEnumerable<string> contents, IEncoding encoding);
+		void AppendAllLines([NotNull] string path, [NotNull] IEnumerable<string> contents, [NotNull] IEncoding encoding);
 
 		/// <summary>Appends lines to a file by using a specified encoding, and then closes the file. If the specified file does not exist, this method creates a file, writes the specified lines to the file, and then closes the file.</summary>
 		/// <param name="path">The file to append the lines to. The file is created if it doesn't already exist.</param>
@@ -67,7 +68,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
-		void AppendAllLines(string path, IEnumerable<string> contents, Encoding encoding);
+		void AppendAllLines([NotNull] string path, [NotNull] IEnumerable<string> contents, [NotNull] Encoding encoding);
 
 #pragma warning disable 618
 		/// <summary>Opens a file, appends the specified string to the file, and then closes the file. If the file does not exist, this method creates a file, writes the specified string to the file, then closes the file.</summary>
@@ -89,7 +90,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void AppendAllText(string path, string contents);
+		void AppendAllText([NotNull] string path, [NotNull] string contents);
 
 		/// <summary>Appends the specified string to the file, creating the file if it does not already exist.</summary>
 		/// <param name="path">The file to append the specified string to. </param>
@@ -111,7 +112,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void AppendAllText(string path, string contents, IEncoding encoding);
+		void AppendAllText([NotNull] string path, [NotNull] string contents, [NotNull] IEncoding encoding);
 
 		/// <summary>Appends the specified string to the file, creating the file if it does not already exist.</summary>
 		/// <param name="path">The file to append the specified string to. </param>
@@ -133,7 +134,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void AppendAllText(string path, string contents, Encoding encoding);
+		void AppendAllText([NotNull] string path, [NotNull] string contents, [NotNull] Encoding encoding);
 
 		/// <summary>Creates a <see cref="T:System.IO.StreamWriter" /> that appends UTF-8 encoded text to an existing file, or to a new file if the specified file does not exist.</summary>
 		/// <returns>A stream writer that appends UTF-8 encoded text to the specified file or to a new file.</returns>
@@ -151,7 +152,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		IStreamWriter AppendText(string path);
+		[NotNull]
+		IStreamWriter AppendText([NotNull] string path);
 
 		/// <summary>Copies an existing file to a new file. Overwriting a file of the same name is not allowed.</summary>
 		/// <param name="sourceFileName">The file to copy. </param>
@@ -173,7 +175,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void Copy(string sourceFileName, string destFileName);
+		void Copy([NotNull] string sourceFileName, [NotNull] string destFileName);
 
 		/// <summary>Copies an existing file to a new file. Overwriting a file of the same name is allowed.</summary>
 		/// <param name="sourceFileName">The file to copy. </param>
@@ -196,7 +198,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void Copy(string sourceFileName, string destFileName, bool overwrite);
+		void Copy([NotNull] string sourceFileName, [NotNull] string destFileName, bool overwrite);
 
 		/// <summary>Creates or overwrites a file in the specified path.</summary>
 		/// <returns>A <see cref="T:System.IO.FileStream" /> that provides read/write access to the file specified in <paramref name="path" />.</returns>
@@ -215,7 +217,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		IFileStream Create(string path);
+		[NotNull]
+		IFileStream Create([NotNull] string path);
 
 		/// <summary>Creates or overwrites the specified file.</summary>
 		/// <returns>A <see cref="T:System.IO.FileStream" /> with the specified buffer size that provides read/write access to the file specified in <paramref name="path" />.</returns>
@@ -235,7 +238,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		IFileStream Create(string path, int bufferSize);
+		[NotNull]
+		IFileStream Create([NotNull] string path, int bufferSize);
 
 		/// <summary>Creates or overwrites the specified file, specifying a buffer size and a <see cref="T:System.IO.FileOptions" /> value that describes how to create or overwrite the file.</summary>
 		/// <returns>A new file with the specified buffer size.</returns>
@@ -254,7 +258,8 @@ namespace Thinktecture.IO
 		/// <paramref name="path" /> is in an invalid format. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.-or- <paramref name="path" /> specified a file that is read-only. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.-or- <paramref name="path" /> specified a file that is read-only. </exception>
-		IFileStream Create(string path, int bufferSize, FileOptions options);
+		[NotNull]
+		IFileStream Create([NotNull] string path, int bufferSize, FileOptions options);
 
 		/// <summary>Creates or opens a file for writing UTF-8 encoded text.</summary>
 		/// <returns>A <see cref="T:System.IO.StreamWriter" /> that writes to the specified file using UTF-8 encoding.</returns>
@@ -272,7 +277,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		IStreamWriter CreateText(string path);
+		[NotNull]
+		IStreamWriter CreateText([NotNull] string path);
 
 		/// <summary>Deletes the specified file. </summary>
 		/// <param name="path">The name of the file to be deleted. Wildcard characters are not supported.</param>
@@ -290,7 +296,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void Delete(string path);
+		void Delete([NotNull] string path);
 
 		/// <summary>Determines whether the specified file exists.</summary>
 		/// <returns>true if the caller has the required permissions and <paramref name="path" /> contains the name of an existing file; otherwise, false. This method also returns false if <paramref name="path" /> is null, an invalid path, or a zero-length string. If the caller does not have sufficient permissions to read the specified file, no exception is thrown and the method returns false regardless of the existence of <paramref name="path" />.</returns>
@@ -299,7 +305,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		bool Exists(string path);
+		bool Exists([NotNull] string path);
 
 		/// <summary>Gets the <see cref="T:System.IO.FileAttributes" /> of the file on the path.</summary>
 		/// <returns>The <see cref="T:System.IO.FileAttributes" /> of the file on the path.</returns>
@@ -319,7 +325,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		FileAttributes GetAttributes(string path);
+		FileAttributes GetAttributes([NotNull] string path);
 
 		/// <summary>Returns the creation date and time of the specified file or directory.</summary>
 		/// <returns>A <see cref="T:System.DateTime" /> structure set to the creation date and time for the specified file or directory. This value is expressed in local time.</returns>
@@ -336,7 +342,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime GetCreationTime(string path);
+		DateTime GetCreationTime([NotNull] string path);
 
 		/// <summary>Returns the creation date and time, in coordinated universal time (UTC), of the specified file or directory.</summary>
 		/// <returns>A <see cref="T:System.DateTime" /> structure set to the creation date and time for the specified file or directory. This value is expressed in UTC time.</returns>
@@ -353,7 +359,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime GetCreationTimeUtc(string path);
+		DateTime GetCreationTimeUtc([NotNull] string path);
 
 		/// <summary>Returns the date and time the specified file or directory was last accessed.</summary>
 		/// <returns>A <see cref="T:System.DateTime" /> structure set to the date and time that the specified file or directory was last accessed. This value is expressed in local time.</returns>
@@ -370,7 +376,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime GetLastAccessTime(string path);
+		DateTime GetLastAccessTime([NotNull] string path);
 
 		/// <summary>Returns the date and time, in coordinated universal time (UTC), that the specified file or directory was last accessed.</summary>
 		/// <returns>A <see cref="T:System.DateTime" /> structure set to the date and time that the specified file or directory was last accessed. This value is expressed in UTC time.</returns>
@@ -387,7 +393,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime GetLastAccessTimeUtc(string path);
+		DateTime GetLastAccessTimeUtc([NotNull] string path);
 
 		/// <summary>Returns the date and time the specified file or directory was last written to.</summary>
 		/// <returns>A <see cref="T:System.DateTime" /> structure set to the date and time that the specified file or directory was last written to. This value is expressed in local time.</returns>
@@ -404,7 +410,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime GetLastWriteTime(string path);
+		DateTime GetLastWriteTime([NotNull] string path);
 
 		/// <summary>Returns the date and time, in coordinated universal time (UTC), that the specified file or directory was last written to.</summary>
 		/// <returns>A <see cref="T:System.DateTime" /> structure set to the date and time that the specified file or directory was last written to. This value is expressed in UTC time.</returns>
@@ -421,7 +427,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime GetLastWriteTimeUtc(string path);
+		DateTime GetLastWriteTimeUtc([NotNull] string path);
 
 		/// <summary>Moves a specified file to a new location, providing the option to specify a new file name.</summary>
 		/// <param name="sourceFileName">The name of the file to move. Can include a relative or absolute path.</param>
@@ -440,7 +446,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void Move(string sourceFileName, string destFileName);
+		void Move([NotNull] string sourceFileName, [NotNull] string destFileName);
 
 		/// <summary>Opens a <see cref="T:System.IO.FileStream" /> on the specified path with read/write access.</summary>
 		/// <returns>A <see cref="T:System.IO.FileStream" /> opened in the specified mode and path, with read/write access and not shared.</returns>
@@ -464,7 +470,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		IFileStream Open(string path, FileMode mode);
+		[NotNull]
+		IFileStream Open([NotNull] string path, FileMode mode);
 
 		/// <summary>Opens a <see cref="T:System.IO.FileStream" /> on the specified path, with the specified mode and access.</summary>
 		/// <returns>An unshared <see cref="T:System.IO.FileStream" /> that provides access to the specified file, with the specified mode and access.</returns>
@@ -489,7 +496,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		IFileStream Open(string path, FileMode mode, FileAccess access);
+		[NotNull]
+		IFileStream Open([NotNull] string path, FileMode mode, FileAccess access);
 
 		/// <summary>Opens a <see cref="T:System.IO.FileStream" /> on the specified path, having the specified mode with read, write, or read/write access and the specified sharing option.</summary>
 		/// <returns>A <see cref="T:System.IO.FileStream" /> on the specified path, having the specified mode with read, write, or read/write access and the specified sharing option.</returns>
@@ -515,7 +523,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		IFileStream Open(string path, FileMode mode, FileAccess access, FileShare share);
+		[NotNull]
+		IFileStream Open([NotNull] string path, FileMode mode, FileAccess access, FileShare share);
 
 		/// <summary>Opens an existing file for reading.</summary>
 		/// <returns>A read-only <see cref="T:System.IO.FileStream" /> on the specified path.</returns>
@@ -536,7 +545,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		IFileStream OpenRead(string path);
+		[NotNull]
+		IFileStream OpenRead([NotNull] string path);
 
 		/// <summary>Opens an existing UTF-8 encoded text file for reading.</summary>
 		/// <returns>A <see cref="T:System.IO.StreamReader" /> on the specified path.</returns>
@@ -555,7 +565,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		IStreamReader OpenText(string path);
+		[NotNull]
+		IStreamReader OpenText([NotNull] string path);
 
 		/// <summary>Opens an existing file or creates a new file for writing.</summary>
 		/// <returns>An unshared <see cref="T:System.IO.FileStream" /> object on the specified path with <see cref="F:System.IO.FileAccess.Write" /> access.</returns>
@@ -573,7 +584,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		IFileStream OpenWrite(string path);
+		[NotNull]
+		IFileStream OpenWrite([NotNull] string path);
 
 		/// <summary>Opens a binary file, reads the contents of the file into a byte array, and then closes the file.</summary>
 		/// <returns>A byte array containing the contents of the file.</returns>
@@ -594,7 +606,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		byte[] ReadAllBytes(string path);
+		[NotNull]
+		byte[] ReadAllBytes([NotNull] string path);
 
 		/// <summary>Opens a text file, reads all lines of the file, and then closes the file.</summary>
 		/// <returns>A string array containing all lines of the file.</returns>
@@ -616,7 +629,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		string[] ReadAllLines(string path);
+		[NotNull]
+		string[] ReadAllLines([NotNull] string path);
 
 		/// <summary>Opens a file, reads all lines of the file with the specified encoding, and then closes the file.</summary>
 		/// <returns>A string array containing all lines of the file.</returns>
@@ -639,7 +653,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		string[] ReadAllLines(string path, IEncoding encoding);
+		[NotNull]
+		string[] ReadAllLines([NotNull] string path, [NotNull] IEncoding encoding);
 
 		/// <summary>Opens a file, reads all lines of the file with the specified encoding, and then closes the file.</summary>
 		/// <returns>A string array containing all lines of the file.</returns>
@@ -662,7 +677,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		string[] ReadAllLines(string path, Encoding encoding);
+		[NotNull]
+		string[] ReadAllLines([NotNull] string path, [NotNull] Encoding encoding);
 
 		/// <summary>Opens a text file, reads all lines of the file, and then closes the file.</summary>
 		/// <returns>A string containing all lines of the file.</returns>
@@ -684,7 +700,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		string ReadAllText(string path);
+		[NotNull]
+		string ReadAllText([NotNull] string path);
 
 		/// <summary>Opens a file, reads all lines of the file with the specified encoding, and then closes the file.</summary>
 		/// <returns>A string containing all lines of the file.</returns>
@@ -707,7 +724,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		string ReadAllText(string path, IEncoding encoding);
+		[NotNull]
+		string ReadAllText([NotNull] string path, [NotNull] IEncoding encoding);
 
 		/// <summary>Opens a file, reads all lines of the file with the specified encoding, and then closes the file.</summary>
 		/// <returns>A string containing all lines of the file.</returns>
@@ -730,7 +748,8 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		string ReadAllText(string path, Encoding encoding);
+		[NotNull]
+		string ReadAllText([NotNull] string path, [NotNull] Encoding encoding);
 
 		/// <summary>Reads the lines of a file.</summary>
 		/// <returns>All the lines of the file, or the lines that are the result of a query.</returns>
@@ -748,7 +767,8 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
-		IEnumerable<string> ReadLines(string path);
+		[NotNull]
+		IEnumerable<string> ReadLines([NotNull] string path);
 
 		/// <summary>Read the lines of a file that has a specified encoding.</summary>
 		/// <returns>All the lines of the file, or the lines that are the result of a query.</returns>
@@ -767,7 +787,8 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
-		IEnumerable<string> ReadLines(string path, IEncoding encoding);
+		[NotNull]
+		IEnumerable<string> ReadLines([NotNull] string path, [NotNull] IEncoding encoding);
 
 		/// <summary>Read the lines of a file that has a specified encoding.</summary>
 		/// <returns>All the lines of the file, or the lines that are the result of a query.</returns>
@@ -786,7 +807,8 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
-		IEnumerable<string> ReadLines(string path, Encoding encoding);
+		[NotNull]
+		IEnumerable<string> ReadLines([NotNull] string path, [NotNull] Encoding encoding);
 
 		/// <summary>Sets the specified <see cref="T:System.IO.FileAttributes" /> of the file on the specified path.</summary>
 		/// <param name="path">The path to the file. </param>
@@ -804,7 +826,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetAttributes(string path, FileAttributes fileAttributes);
+		void SetAttributes([NotNull] string path, FileAttributes fileAttributes);
 
 		/// <summary>Sets the date and time the file was created.</summary>
 		/// <param name="path">The file for which to set the creation date and time information. </param>
@@ -825,7 +847,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetCreationTime(string path, DateTime creationTime);
+		void SetCreationTime([NotNull] string path, DateTime creationTime);
 
 		/// <summary>Sets the date and time, in coordinated universal time (UTC), that the file was created.</summary>
 		/// <param name="path">The file for which to set the creation date and time information. </param>
@@ -846,7 +868,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetCreationTimeUtc(string path, DateTime creationTimeUtc);
+		void SetCreationTimeUtc([NotNull] string path, DateTime creationTimeUtc);
 
 		/// <summary>Sets the date and time the specified file was last accessed.</summary>
 		/// <param name="path">The file for which to set the access date and time information. </param>
@@ -866,7 +888,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetLastAccessTime(string path, DateTime lastAccessTime);
+		void SetLastAccessTime([NotNull] string path, DateTime lastAccessTime);
 
 		/// <summary>Sets the date and time, in coordinated universal time (UTC), that the specified file was last accessed.</summary>
 		/// <param name="path">The file for which to set the access date and time information. </param>
@@ -886,7 +908,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetLastAccessTimeUtc(string path, DateTime lastAccessTimeUtc);
+		void SetLastAccessTimeUtc([NotNull] string path, DateTime lastAccessTimeUtc);
 
 		/// <summary>Sets the date and time that the specified file was last written to.</summary>
 		/// <param name="path">The file for which to set the date and time information. </param>
@@ -906,7 +928,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetLastWriteTime(string path, DateTime lastWriteTime);
+		void SetLastWriteTime([NotNull] string path, DateTime lastWriteTime);
 
 		/// <summary>Sets the date and time, in coordinated universal time (UTC), that the specified file was last written to.</summary>
 		/// <param name="path">The file for which to set the date and time information. </param>
@@ -926,7 +948,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetLastWriteTimeUtc(string path, DateTime lastWriteTimeUtc);
+		void SetLastWriteTimeUtc([NotNull] string path, DateTime lastWriteTimeUtc);
 
 		/// <summary>Creates a new file, writes the specified byte array to the file, and then closes the file. If the target file already exists, it is overwritten.</summary>
 		/// <param name="path">The file to write to. </param>
@@ -947,7 +969,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void WriteAllBytes(string path, byte[] bytes);
+		void WriteAllBytes([NotNull] string path, [NotNull] byte[] bytes);
 
 		/// <summary>Creates a new file, writes a collection of strings to the file, and then closes the file.</summary>
 		/// <param name="path">The file to write to.</param>
@@ -965,7 +987,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
-		void WriteAllLines(string path, IEnumerable<string> contents);
+		void WriteAllLines([NotNull] string path, [NotNull] IEnumerable<string> contents);
 
 		/// <summary>Creates a new file by using the specified encoding, writes a collection of strings to the file, and then closes the file.</summary>
 		/// <param name="path">The file to write to.</param>
@@ -984,7 +1006,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
-		void WriteAllLines(string path, IEnumerable<string> contents, IEncoding encoding);
+		void WriteAllLines([NotNull] string path, [NotNull] IEnumerable<string> contents, [NotNull] IEncoding encoding);
 
 		/// <summary>Creates a new file by using the specified encoding, writes a collection of strings to the file, and then closes the file.</summary>
 		/// <param name="path">The file to write to.</param>
@@ -1003,7 +1025,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> specifies a file that is read-only.-or-This operation is not supported on the current platform.-or-<paramref name="path" /> is a directory.-or-The caller does not have the required permission.</exception>
-		void WriteAllLines(string path, IEnumerable<string> contents, Encoding encoding);
+		void WriteAllLines([NotNull] string path, [NotNull] IEnumerable<string> contents, [NotNull] Encoding encoding);
 
 		/// <summary>Creates a new file, writes the specified string to the file, and then closes the file. If the target file already exists, it is overwritten.</summary>
 		/// <param name="path">The file to write to. </param>
@@ -1024,7 +1046,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void WriteAllText(string path, string contents);
+		void WriteAllText([NotNull] string path, [NotNull] string contents);
 
 		/// <summary>Creates a new file, writes the specified string to the file using the specified encoding, and then closes the file. If the target file already exists, it is overwritten.</summary>
 		/// <param name="path">The file to write to. </param>
@@ -1046,7 +1068,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void WriteAllText(string path, string contents, IEncoding encoding);
+		void WriteAllText([NotNull] string path, [NotNull] string contents, [NotNull] IEncoding encoding);
 
 		/// <summary>Creates a new file, writes the specified string to the file using the specified encoding, and then closes the file. If the target file already exists, it is overwritten.</summary>
 		/// <param name="path">The file to write to. </param>
@@ -1068,7 +1090,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void WriteAllText(string path, string contents, Encoding encoding);
+		void WriteAllText([NotNull] string path, [NotNull] string contents, [NotNull] Encoding encoding);
 #pragma warning restore 618
 	}
 }

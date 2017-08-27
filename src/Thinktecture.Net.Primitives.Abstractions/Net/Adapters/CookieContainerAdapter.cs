@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Net;
 
@@ -51,6 +51,7 @@ namespace Thinktecture.Net.Adapters
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CookieContainerAdapter" /> class.
 		/// </summary>
+		/// <param name="container">The implementation to use by the adapter.</param>
 		public CookieContainerAdapter(CookieContainer container)
 			: base(container)
 		{

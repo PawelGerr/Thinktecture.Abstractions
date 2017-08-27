@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.IO;
+using JetBrains.Annotations;
 
 namespace Thinktecture.IO
 {
@@ -10,6 +11,7 @@ namespace Thinktecture.IO
 		/// <summary>Gets the underlying stream of the <see cref="T:System.IO.BinaryWriter" />.</summary>
 		/// <returns>The underlying stream associated with the BinaryWriter.</returns>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		IStream BaseStream { get; }
 
 		/// <summary>Clears all buffers for the current writer and causes any buffered data to be written to the underlying device.</summary>
@@ -46,7 +48,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="buffer" /> is null. </exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(byte[] buffer);
+		void Write([NotNull] byte[] buffer);
 
 		/// <summary>Writes a region of a byte array to the current stream.</summary>
 		/// <param name="buffer">A byte array containing the data to write. </param>
@@ -60,7 +62,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(byte[] buffer, int index, int count);
+		void Write([NotNull] byte[] buffer, int index, int count);
 
 		/// <summary>Writes a Unicode character to the current stream and advances the current position of the stream in accordance with the Encoding used and the specific characters being written to the stream.</summary>
 		/// <param name="ch">The non-surrogate, Unicode character to write. </param>
@@ -78,7 +80,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(char[] chars);
+		void Write([NotNull] char[] chars);
 
 		/// <summary>Writes a section of a character array to the current stream, and advances the current position of the stream in accordance with the Encoding used and perhaps the specific characters being written to the stream.</summary>
 		/// <param name="chars">A character array containing the data to write. </param>
@@ -92,14 +94,14 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(char[] chars, int index, int count);
+		void Write([NotNull] char[] chars, int index, int count);
 
 		/// <summary>Writes a decimal value to the current stream and advances the stream position by sixteen bytes.</summary>
 		/// <param name="value">The decimal value to write. </param>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(Decimal value);
+		void Write(decimal value);
 
 		/// <summary>Writes an eight-byte floating-point value to the current stream and advances the stream position by eight bytes.</summary>
 		/// <param name="value">The eight-byte floating-point value to write. </param>
@@ -150,7 +152,7 @@ namespace Thinktecture.IO
 		/// <paramref name="value" /> is null. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		/// <filterpriority>1</filterpriority>
-		void Write(string value);
+		void Write([NotNull] string value);
 
 		/// <summary>Writes a two-byte unsigned integer to the current stream and advances the stream position by two bytes.</summary>
 		/// <param name="value">The two-byte unsigned integer to write. </param>

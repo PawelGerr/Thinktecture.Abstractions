@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Net.Http;
 
 namespace Thinktecture.Net.Http.Adapters
@@ -31,6 +31,7 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <summary>Creates a new instance of the <see cref="MultipartFormDataContentAdapter" /> class.</summary>
+		/// <param name="content">The implementation to use by the adapter.</param>
 		public MultipartFormDataContentAdapter(MultipartFormDataContent content)
 			: base(content)
 		{

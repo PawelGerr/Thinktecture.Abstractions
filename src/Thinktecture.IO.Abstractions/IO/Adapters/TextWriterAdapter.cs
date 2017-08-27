@@ -1,296 +1,289 @@
 using System;
-using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
+using Thinktecture.Text;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.IO.Adapters
 {
 	/// <summary>
 	/// Adapter for <see cref="TextWriter"/>.
 	/// </summary>
-	public class TextWriterAdapter : AbstractionAdapter, ITextWriter
+	public class TextWriterAdapter : AbstractionAdapter<TextWriter>, ITextWriter
 	{
 		/// <summary>Provides a TextWriter with no backing store that can be written to, but not read from.</summary>
 		/// <filterpriority>1</filterpriority>
-		public static readonly ITextWriter Null = new TextWriterAdapter(TextWriter.Null);
-
-		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new TextWriter UnsafeConvert()
-		{
-			return _instance;
-		}
-
-		private readonly TextWriter _instance;
+		public static readonly ITextWriter Null = TextWriter.Null.ToInterface();
 
 		/// <summary>
 		/// Creates an instance of <see cref="TextWriterAdapter"/>.
 		/// </summary>
 		/// <param name="writer">write to be used by the adapter.</param>
-		public TextWriterAdapter(TextWriter writer)
+		public TextWriterAdapter([NotNull] TextWriter writer)
 			: base(writer)
 		{
-			_instance = writer ?? throw new ArgumentNullException(nameof(writer));
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			_instance.Dispose();
+			Implementation.Dispose();
 		}
 
 		/// <inheritdoc />
-		public Encoding Encoding => _instance.Encoding;
+		public IEncoding Encoding => Implementation.Encoding.ToInterface();
 
 		/// <inheritdoc />
-		public IFormatProvider FormatProvider => _instance.FormatProvider;
+		public IFormatProvider FormatProvider => Implementation.FormatProvider;
 
 		/// <inheritdoc />
 		public string NewLine
 		{
-			get => _instance.NewLine;
-			set => _instance.NewLine = value;
+			get => Implementation.NewLine;
+			set => Implementation.NewLine = value;
 		}
 
 		/// <inheritdoc />
 		public void Flush()
 		{
-			_instance.Flush();
+			Implementation.Flush();
 		}
 
 		/// <inheritdoc />
 		public Task FlushAsync()
 		{
-			return _instance.FlushAsync();
+			return Implementation.FlushAsync();
 		}
 
 		/// <inheritdoc />
 		public void Write(bool value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(char value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(char[] buffer)
 		{
-			_instance.Write(buffer);
+			Implementation.Write(buffer);
 		}
 
 		/// <inheritdoc />
 		public void Write(char[] buffer, int index, int count)
 		{
-			_instance.Write(buffer, index, count);
+			Implementation.Write(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public void Write(decimal value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(double value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(int value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(long value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(object value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(float value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(string value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(string format, params object[] arg)
 		{
-			_instance.Write(format, arg);
+			Implementation.Write(format, arg);
 		}
 
 		/// <inheritdoc />
 		public void Write(uint value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public void Write(ulong value)
 		{
-			_instance.Write(value);
+			Implementation.Write(value);
 		}
 
 		/// <inheritdoc />
 		public Task WriteAsync(char value)
 		{
-			return _instance.WriteAsync(value);
+			return Implementation.WriteAsync(value);
 		}
 
 		/// <inheritdoc />
 		public Task WriteAsync(char[] buffer)
 		{
-			return _instance.WriteAsync(buffer);
+			return Implementation.WriteAsync(buffer);
 		}
 
 		/// <inheritdoc />
 		public Task WriteAsync(char[] buffer, int index, int count)
 		{
-			return _instance.WriteAsync(buffer, index, count);
+			return Implementation.WriteAsync(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public Task WriteAsync(string value)
 		{
-			return _instance.WriteAsync(value);
+			return Implementation.WriteAsync(value);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine()
 		{
-			_instance.WriteLine();
+			Implementation.WriteLine();
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(bool value)
 		{
-			_instance.WriteLine(value);
+			Implementation.WriteLine(value);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(char value)
 		{
-			_instance.WriteLine(value);
+			Implementation.WriteLine(value);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(char[] buffer)
 		{
-			_instance.WriteLine(buffer);
+			Implementation.WriteLine(buffer);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(char[] buffer, int index, int count)
 		{
-			_instance.WriteLine(buffer, index, count);
+			Implementation.WriteLine(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(decimal value)
 		{
-			_instance.WriteLine(value);
+			Implementation.WriteLine(value);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(double value)
 		{
-			_instance.WriteLine(value);
+			Implementation.WriteLine(value);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(int value)
 		{
-			_instance.WriteLine(value);
+			Implementation.WriteLine(value);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(long value)
 		{
-			_instance.WriteLine(value);
+			Implementation.WriteLine(value);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(object value)
 		{
-			_instance.WriteLine(value);
+			Implementation.WriteLine(value);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(float value)
 		{
-			_instance.WriteLine(value);
+			Implementation.WriteLine(value);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(string value)
 		{
-			_instance.WriteLine(value);
+			Implementation.WriteLine(value);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(string format, params object[] arg)
 		{
-			_instance.WriteLine(format, arg);
+			Implementation.WriteLine(format, arg);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(uint value)
 		{
-			_instance.WriteLine(value);
+			Implementation.WriteLine(value);
 		}
 
 		/// <inheritdoc />
 		public void WriteLine(ulong value)
 		{
-			_instance.WriteLine(value);
+			Implementation.WriteLine(value);
 		}
 
 		/// <inheritdoc />
 		public Task WriteLineAsync()
 		{
-			return _instance.WriteLineAsync();
+			return Implementation.WriteLineAsync();
 		}
 
 		/// <inheritdoc />
 		public Task WriteLineAsync(char value)
 		{
-			return _instance.WriteLineAsync(value);
+			return Implementation.WriteLineAsync(value);
 		}
 
 		/// <inheritdoc />
 		public Task WriteLineAsync(char[] buffer)
 		{
-			return _instance.WriteLineAsync(buffer);
+			return Implementation.WriteLineAsync(buffer);
 		}
 
 		/// <inheritdoc />
 		public Task WriteLineAsync(char[] buffer, int index, int count)
 		{
-			return _instance.WriteLineAsync(buffer, index, count);
+			return Implementation.WriteLineAsync(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public Task WriteLineAsync(string value)
 		{
-			return _instance.WriteLineAsync(value);
+			return Implementation.WriteLineAsync(value);
 		}
 	}
 }

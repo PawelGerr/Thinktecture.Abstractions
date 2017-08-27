@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using JetBrains.Annotations;
 
 namespace Thinktecture
 {
@@ -18,7 +19,8 @@ namespace Thinktecture
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="conversionType" /> is null.</exception>
 		/// <filterpriority>1</filterpriority>
-		object ChangeType(object value, Type conversionType);
+		[CanBeNull]
+		object ChangeType([CanBeNull] object value, [NotNull] Type conversionType);
 
 		/// <summary>Returns an object of the specified type whose value is equivalent to the specified object. A parameter supplies culture-specific formatting information.</summary>
 		/// <returns>An object whose type is <paramref name="conversionType" /> and whose value is equivalent to <paramref name="value" />.-or- <paramref name="value" />, if the <see cref="T:System.Type" /> of <paramref name="value" /> and <paramref name="conversionType" /> are equal.-or- A null reference (Nothing in Visual Basic), if <paramref name="value" /> is null and <paramref name="conversionType" /> is not a value type.</returns>
@@ -33,7 +35,8 @@ namespace Thinktecture
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="conversionType" /> is null.</exception>
 		/// <filterpriority>1</filterpriority>
-		object ChangeType(object value, Type conversionType, IFormatProvider provider);
+		[CanBeNull]
+		object ChangeType([CanBeNull] object value, [NotNull] Type conversionType, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts a subset of a Unicode character array, which encodes binary data as base-64 digits, to an equivalent 8-bit unsigned integer array. Parameters specify the subset in the input array and the number of elements to convert.</summary>
 		/// <returns>An array of 8-bit unsigned integers equivalent to <paramref name="length" /> elements at position <paramref name="offset" /> in <paramref name="inArray" />.</returns>
@@ -46,7 +49,8 @@ namespace Thinktecture
 		/// <paramref name="offset" /> or <paramref name="length" /> is less than 0.-or- <paramref name="offset" /> plus <paramref name="length" /> indicates a position not within <paramref name="inArray" />. </exception>
 		/// <exception cref="T:System.FormatException">The length of <paramref name="inArray" />, ignoring white-space characters, is not zero or a multiple of 4. -or-The format of <paramref name="inArray" /> is invalid. <paramref name="inArray" /> contains a non-base-64 character, more than two padding characters, or a non-white-space character among the padding characters. </exception>
 		/// <filterpriority>1</filterpriority>
-		byte[] FromBase64CharArray(char[] inArray, int offset, int length);
+		[NotNull]
+		byte[] FromBase64CharArray([NotNull] char[] inArray, int offset, int length);
 
 		/// <summary>Converts the specified string, which encodes binary data as base-64 digits, to an equivalent 8-bit unsigned integer array.</summary>
 		/// <returns>An array of 8-bit unsigned integers that is equivalent to <paramref name="s" />.</returns>
@@ -55,7 +59,8 @@ namespace Thinktecture
 		/// <paramref name="s" /> is null. </exception>
 		/// <exception cref="T:System.FormatException">The length of <paramref name="s" />, ignoring white-space characters, is not zero or a multiple of 4. -or-The format of <paramref name="s" /> is invalid. <paramref name="s" /> contains a non-base-64 character, more than two padding characters, or a non-white space-character among the padding characters.</exception>
 		/// <filterpriority>1</filterpriority>
-		byte[] FromBase64String(string s);
+		[NotNull]
+		byte[] FromBase64String([NotNull] string s);
 
 		/// <summary>Converts a subset of an 8-bit unsigned integer array to an equivalent subset of a Unicode character array encoded with base-64 digits. Parameters specify the subsets as offsets in the input and output arrays, and the number of elements in the input array to convert.</summary>
 		/// <returns>A 32-bit signed integer containing the number of bytes in <paramref name="outArray" />.</returns>
@@ -69,7 +74,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="offsetIn" />, <paramref name="offsetOut" />, or <paramref name="length" /> is negative.-or- <paramref name="offsetIn" /> plus <paramref name="length" /> is greater than the length of <paramref name="inArray" />.-or- <paramref name="offsetOut" /> plus the number of elements to return is greater than the length of <paramref name="outArray" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		int ToBase64CharArray(byte[] inArray, int offsetIn, int length, char[] outArray, int offsetOut);
+		int ToBase64CharArray([NotNull] byte[] inArray, int offsetIn, int length, [NotNull] char[] outArray, int offsetOut);
 
 		/// <summary>Converts an array of 8-bit unsigned integers to its equivalent string representation that is encoded with base-64 digits.</summary>
 		/// <returns>The string representation, in base 64, of the contents of <paramref name="inArray" />.</returns>
@@ -77,7 +82,8 @@ namespace Thinktecture
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="inArray" /> is null. </exception>
 		/// <filterpriority>1</filterpriority>
-		string ToBase64String(byte[] inArray);
+		[NotNull]
+		string ToBase64String([NotNull] byte[] inArray);
 
 		/// <summary>Converts a subset of an array of 8-bit unsigned integers to its equivalent string representation that is encoded with base-64 digits. Parameters specify the subset as an offset in the input array, and the number of elements in the array to convert.</summary>
 		/// <returns>The string representation in base 64 of <paramref name="length" /> elements of <paramref name="inArray" />, starting at position <paramref name="offset" />.</returns>
@@ -89,7 +95,8 @@ namespace Thinktecture
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="offset" /> or <paramref name="length" /> is negative.-or- <paramref name="offset" /> plus <paramref name="length" /> is greater than the length of <paramref name="inArray" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		string ToBase64String(byte[] inArray, int offset, int length);
+		[NotNull]
+		string ToBase64String([NotNull] byte[] inArray, int offset, int length);
 
 		/// <summary>Returns the specified Boolean value; no actual conversion is performed.</summary>
 		/// <returns>
@@ -108,7 +115,7 @@ namespace Thinktecture
 		/// <returns>true if <paramref name="value" /> is not zero; otherwise, false.</returns>
 		/// <param name="value">The number to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		bool ToBoolean(Decimal value);
+		bool ToBoolean(decimal value);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to an equivalent Boolean value.</summary>
 		/// <returns>true if <paramref name="value" /> is not zero; otherwise, false.</returns>
@@ -142,7 +149,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.InvalidCastException">
 		/// <paramref name="value" /> does not implement the <see cref="T:System.IConvertible" /> interface.-or-The conversion of <paramref name="value" /> to a <see cref="T:System.Boolean" /> is not supported.</exception>
 		/// <filterpriority>1</filterpriority>
-		bool ToBoolean(object value);
+		bool ToBoolean([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to an equivalent Boolean value, using the specified culture-specific formatting information.</summary>
 		/// <returns>true or false, which reflects the value returned by invoking the <see cref="M:System.IConvertible.ToBoolean(System.IFormatProvider)" /> method for the underlying type of <paramref name="value" />. If <paramref name="value" /> is null, the method returns false.</returns>
@@ -153,7 +160,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.InvalidCastException">
 		/// <paramref name="value" /> does not implement the <see cref="T:System.IConvertible" /> interface.-or-The conversion of <paramref name="value" /> to a <see cref="T:System.Boolean" /> is not supported. </exception>
 		/// <filterpriority>1</filterpriority>
-		bool ToBoolean(object value, IFormatProvider provider);
+		bool ToBoolean([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to an equivalent Boolean value.</summary>
 		/// <returns>true if <paramref name="value" /> is not zero; otherwise, false.</returns>
@@ -173,7 +180,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.FormatException">
 		/// <paramref name="value" /> is not equal to <see cref="F:System.Boolean.TrueString" /> or <see cref="F:System.Boolean.FalseString" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		bool ToBoolean(string value);
+		bool ToBoolean([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a logical value to its Boolean equivalent, using the specified culture-specific formatting information.</summary>
 		/// <returns>true if <paramref name="value" /> equals <see cref="F:System.Boolean.TrueString" />, or false if <paramref name="value" /> equals <see cref="F:System.Boolean.FalseString" /> or null.</returns>
@@ -182,7 +189,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.FormatException">
 		/// <paramref name="value" /> is not equal to <see cref="F:System.Boolean.TrueString" /> or <see cref="F:System.Boolean.FalseString" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		bool ToBoolean(string value, IFormatProvider provider);
+		bool ToBoolean([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to an equivalent Boolean value.</summary>
 		/// <returns>true if <paramref name="value" /> is not zero; otherwise, false.</returns>
@@ -230,7 +237,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> is greater than <see cref="F:System.Byte.MaxValue" /> or less than <see cref="F:System.Byte.MinValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		byte ToByte(Decimal value);
+		byte ToByte(decimal value);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to an equivalent 8-bit unsigned integer.</summary>
 		/// <returns>
@@ -275,7 +282,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Byte.MinValue" /> or greater than <see cref="F:System.Byte.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		byte ToByte(object value);
+		byte ToByte([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to an 8-bit unsigned integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>An 8-bit unsigned integer that is equivalent to <paramref name="value" />, or zero if <paramref name="value" /> is null.</returns>
@@ -288,7 +295,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Byte.MinValue" /> or greater than <see cref="F:System.Byte.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		byte ToByte(object value, IFormatProvider provider);
+		byte ToByte([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to an equivalent 8-bit unsigned integer.</summary>
 		/// <returns>An 8-bit unsigned integer that is equivalent to <paramref name="value" />.</returns>
@@ -315,7 +322,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Byte.MinValue" /> or greater than <see cref="F:System.Byte.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		byte ToByte(string value);
+		byte ToByte([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent 8-bit unsigned integer, using specified culture-specific formatting information.</summary>
 		/// <returns>An 8-bit unsigned integer that is equivalent to <paramref name="value" />, or zero if <paramref name="value" /> is null.</returns>
@@ -326,7 +333,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Byte.MinValue" /> or greater than <see cref="F:System.Byte.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		byte ToByte(string value, IFormatProvider provider);
+		byte ToByte([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the string representation of a number in a specified base to an equivalent 8-bit unsigned integer.</summary>
 		/// <returns>An 8-bit unsigned integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -341,7 +348,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" />, which represents a base 10 unsigned number, is prefixed with a negative sign.-or-<paramref name="value" /> represents a number that is less than <see cref="F:System.Byte.MinValue" /> or greater than <see cref="F:System.Byte.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		byte ToByte(string value, int fromBase);
+		byte ToByte([CanBeNull] string value, int fromBase);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to an equivalent 8-bit unsigned integer.</summary>
 		/// <returns>An 8-bit unsigned integer that is equivalent to <paramref name="value" />.</returns>
@@ -407,7 +414,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> is less than <see cref="F:System.Char.MinValue" /> or greater than <see cref="F:System.Char.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		char ToChar(object value);
+		char ToChar([NotNull] object value);
 
 		/// <summary>Converts the value of the specified object to its equivalent Unicode character, using the specified culture-specific formatting information.</summary>
 		/// <returns>A Unicode character that is equivalent to <paramref name="value" />, or <see cref="F:System.Char.MinValue" /> if <paramref name="value" /> is null.</returns>
@@ -420,7 +427,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> is less than <see cref="F:System.Char.MinValue" /> or greater than <see cref="F:System.Char.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		char ToChar(object value, IFormatProvider provider);
+		char ToChar([NotNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to its equivalent Unicode character.</summary>
 		/// <returns>A Unicode character that is equivalent to <paramref name="value" />.</returns>
@@ -437,7 +444,7 @@ namespace Thinktecture
 		/// <paramref name="value" /> is null. </exception>
 		/// <exception cref="T:System.FormatException">The length of <paramref name="value" /> is not 1. </exception>
 		/// <filterpriority>1</filterpriority>
-		char ToChar(string value);
+		char ToChar([NotNull] string value);
 
 		/// <summary>Converts the first character of a specified string to a Unicode character, using specified culture-specific formatting information.</summary>
 		/// <returns>A Unicode character that is equivalent to the first and only character in <paramref name="value" />.</returns>
@@ -447,7 +454,7 @@ namespace Thinktecture
 		/// <paramref name="value" /> is null. </exception>
 		/// <exception cref="T:System.FormatException">The length of <paramref name="value" /> is not 1. </exception>
 		/// <filterpriority>1</filterpriority>
-		char ToChar(string value, IFormatProvider provider);
+		char ToChar([NotNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to its equivalent Unicode character.</summary>
 		/// <returns>A Unicode character that is equivalent to <paramref name="value" />.</returns>
@@ -479,7 +486,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.InvalidCastException">
 		/// <paramref name="value" /> does not implement the <see cref="T:System.IConvertible" /> interface. -or-The conversion is not supported.</exception>
 		/// <filterpriority>1</filterpriority>
-		DateTime ToDateTime(object value);
+		DateTime ToDateTime([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to a <see cref="T:System.DateTime" /> object, using the specified culture-specific formatting information.</summary>
 		/// <returns>The date and time equivalent of the value of <paramref name="value" />, or the date and time equivalent of <see cref="F:System.DateTime.MinValue" /> if <paramref name="value" /> is null.</returns>
@@ -490,7 +497,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.InvalidCastException">
 		/// <paramref name="value" /> does not implement the <see cref="T:System.IConvertible" /> interface. -or-The conversion is not supported.</exception>
 		/// <filterpriority>1</filterpriority>
-		DateTime ToDateTime(object value, IFormatProvider provider);
+		DateTime ToDateTime([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the specified string representation of a date and time to an equivalent date and time value.</summary>
 		/// <returns>The date and time equivalent of the value of <paramref name="value" />, or the date and time equivalent of <see cref="F:System.DateTime.MinValue" /> if <paramref name="value" /> is null.</returns>
@@ -498,7 +505,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.FormatException">
 		/// <paramref name="value" /> is not a properly formatted date and time string. </exception>
 		/// <filterpriority>1</filterpriority>
-		DateTime ToDateTime(string value);
+		DateTime ToDateTime([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent date and time, using the specified culture-specific formatting information.</summary>
 		/// <returns>The date and time equivalent of the value of <paramref name="value" />, or the date and time equivalent of <see cref="F:System.DateTime.MinValue" /> if <paramref name="value" /> is null.</returns>
@@ -507,26 +514,26 @@ namespace Thinktecture
 		/// <exception cref="T:System.FormatException">
 		/// <paramref name="value" /> is not a properly formatted date and time string. </exception>
 		/// <filterpriority>1</filterpriority>
-		DateTime ToDateTime(string value, IFormatProvider provider);
+		DateTime ToDateTime([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the specified Boolean value to the equivalent decimal number.</summary>
 		/// <returns>The number 1 if <paramref name="value" /> is true; otherwise, 0.</returns>
 		/// <param name="value">The Boolean value to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(bool value);
+		decimal ToDecimal(bool value);
 
 		/// <summary>Converts the value of the specified 8-bit unsigned integer to the equivalent decimal number.</summary>
 		/// <returns>The decimal number that is equivalent to <paramref name="value" />.</returns>
 		/// <param name="value">The 8-bit unsigned integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(byte value);
+		decimal ToDecimal(byte value);
 
 		/// <summary>Returns the specified decimal number; no actual conversion is performed.</summary>
 		/// <returns>
 		/// <paramref name="value" /> is returned unchanged.</returns>
 		/// <param name="value">A decimal number. </param>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(Decimal value);
+		decimal ToDecimal(decimal value);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to an equivalent decimal number.</summary>
 		/// <returns>A decimal number that is equivalent to <paramref name="value" />. </returns>
@@ -534,25 +541,25 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> is greater than <see cref="F:System.Decimal.MaxValue" /> or less than <see cref="F:System.Decimal.MinValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(double value);
+		decimal ToDecimal(double value);
 
 		/// <summary>Converts the value of the specified 16-bit signed integer to an equivalent decimal number.</summary>
 		/// <returns>A decimal number that is equivalent to <paramref name="value" />.</returns>
 		/// <param name="value">The 16-bit signed integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(short value);
+		decimal ToDecimal(short value);
 
 		/// <summary>Converts the value of the specified 32-bit signed integer to an equivalent decimal number.</summary>
 		/// <returns>A decimal number that is equivalent to <paramref name="value" />.</returns>
 		/// <param name="value">The 32-bit signed integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(int value);
+		decimal ToDecimal(int value);
 
 		/// <summary>Converts the value of the specified 64-bit signed integer to an equivalent decimal number.</summary>
 		/// <returns>A decimal number that is equivalent to <paramref name="value" />.</returns>
 		/// <param name="value">The 64-bit signed integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(long value);
+		decimal ToDecimal(long value);
 
 		/// <summary>Converts the value of the specified object to an equivalent decimal number.</summary>
 		/// <returns>A decimal number that is equivalent to <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -564,7 +571,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Decimal.MinValue" /> or greater than <see cref="F:System.Decimal.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(object value);
+		decimal ToDecimal([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to an equivalent decimal number, using the specified culture-specific formatting information.</summary>
 		/// <returns>A decimal number that is equivalent to <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -577,13 +584,13 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Decimal.MinValue" /> or greater than <see cref="F:System.Decimal.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(object value, IFormatProvider provider);
+		decimal ToDecimal([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to the equivalent decimal number.</summary>
 		/// <returns>A decimal number that is equivalent to <paramref name="value" />.</returns>
 		/// <param name="value">The 8-bit signed integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(sbyte value);
+		decimal ToDecimal(sbyte value);
 
 		/// <summary>Converts the value of the specified single-precision floating-point number to the equivalent decimal number.</summary>
 		/// <returns>A decimal number that is equivalent to <paramref name="value" />. </returns>
@@ -591,7 +598,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> is greater than <see cref="F:System.Decimal.MaxValue" /> or less than <see cref="F:System.Decimal.MinValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(float value);
+		decimal ToDecimal(float value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent decimal number.</summary>
 		/// <returns>A decimal number that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -601,7 +608,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Decimal.MinValue" /> or greater than <see cref="F:System.Decimal.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(string value);
+		decimal ToDecimal([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent decimal number, using the specified culture-specific formatting information.</summary>
 		/// <returns>A decimal number that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -612,25 +619,25 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Decimal.MinValue" /> or greater than <see cref="F:System.Decimal.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(string value, IFormatProvider provider);
+		decimal ToDecimal([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to an equivalent decimal number.</summary>
 		/// <returns>The decimal number that is equivalent to <paramref name="value" />.</returns>
 		/// <param name="value">The 16-bit unsigned integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(ushort value);
+		decimal ToDecimal(ushort value);
 
 		/// <summary>Converts the value of the specified 32-bit unsigned integer to an equivalent decimal number.</summary>
 		/// <returns>A decimal number that is equivalent to <paramref name="value" />.</returns>
 		/// <param name="value">The 32-bit unsigned integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(uint value);
+		decimal ToDecimal(uint value);
 
 		/// <summary>Converts the value of the specified 64-bit unsigned integer to an equivalent decimal number.</summary>
 		/// <returns>A decimal number that is equivalent to <paramref name="value" />.</returns>
 		/// <param name="value">The 64-bit unsigned integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		Decimal ToDecimal(ulong value);
+		decimal ToDecimal(ulong value);
 
 		/// <summary>Converts the specified Boolean value to the equivalent double-precision floating-point number.</summary>
 		/// <returns>The number 1 if <paramref name="value" /> is true; otherwise, 0.</returns>
@@ -648,7 +655,7 @@ namespace Thinktecture
 		/// <returns>A double-precision floating-point number that is equivalent to <paramref name="value" />.</returns>
 		/// <param name="value">The decimal number to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		double ToDouble(Decimal value);
+		double ToDouble(decimal value);
 
 		/// <summary>Returns the specified double-precision floating-point number; no actual conversion is performed.</summary>
 		/// <returns>
@@ -685,7 +692,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Double.MinValue" /> or greater than <see cref="F:System.Double.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		double ToDouble(object value);
+		double ToDouble([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to an double-precision floating-point number, using the specified culture-specific formatting information.</summary>
 		/// <returns>A double-precision floating-point number that is equivalent to <paramref name="value" />, or zero if <paramref name="value" /> is null.</returns>
@@ -698,7 +705,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Double.MinValue" /> or greater than <see cref="F:System.Double.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		double ToDouble(object value, IFormatProvider provider);
+		double ToDouble([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to the equivalent double-precision floating-point number.</summary>
 		/// <returns>The 8-bit signed integer that is equivalent to <paramref name="value" />.</returns>
@@ -720,7 +727,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Double.MinValue" /> or greater than <see cref="F:System.Double.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		double ToDouble(string value);
+		double ToDouble([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent double-precision floating-point number, using the specified culture-specific formatting information.</summary>
 		/// <returns>A double-precision floating-point number that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -731,7 +738,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Double.MinValue" /> or greater than <see cref="F:System.Double.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		double ToDouble(string value, IFormatProvider provider);
+		double ToDouble([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to the equivalent double-precision floating-point number.</summary>
 		/// <returns>A double-precision floating-point number that is equivalent to <paramref name="value" />.</returns>
@@ -778,7 +785,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> is greater than <see cref="F:System.Int16.MaxValue" /> or less than <see cref="F:System.Int16.MinValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		short ToInt16(Decimal value);
+		short ToInt16(decimal value);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to an equivalent 16-bit signed integer.</summary>
 		/// <returns>
@@ -822,7 +829,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Int16.MinValue" /> or greater than <see cref="F:System.Int16.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		short ToInt16(object value);
+		short ToInt16([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to a 16-bit signed integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>A 16-bit signed integer that is equivalent to <paramref name="value" />, or zero if <paramref name="value" /> is null.</returns>
@@ -835,7 +842,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Int16.MinValue" /> or greater than <see cref="F:System.Int16.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		short ToInt16(object value, IFormatProvider provider);
+		short ToInt16([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to the equivalent 16-bit signed integer.</summary>
 		/// <returns>A 8-bit signed integer that is equivalent to <paramref name="value" />.</returns>
@@ -860,7 +867,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Int16.MinValue" /> or greater than <see cref="F:System.Int16.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		short ToInt16(string value);
+		short ToInt16([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent 16-bit signed integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>A 16-bit signed integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -871,7 +878,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Int16.MinValue" /> or greater than <see cref="F:System.Int16.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		short ToInt16(string value, IFormatProvider provider);
+		short ToInt16([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the string representation of a number in a specified base to an equivalent 16-bit signed integer.</summary>
 		/// <returns>A 16-bit signed integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -886,7 +893,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" />, which represents a non-base 10 signed number, is prefixed with a negative sign.-or-<paramref name="value" /> represents a number that is less than <see cref="F:System.Int16.MinValue" /> or greater than <see cref="F:System.Int16.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		short ToInt16(string value, int fromBase);
+		short ToInt16([CanBeNull] string value, int fromBase);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to the equivalent 16-bit signed integer.</summary>
 		/// <returns>A 16-bit signed integer that is equivalent to <paramref name="value" />.</returns>
@@ -937,7 +944,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> is greater than <see cref="F:System.Int32.MaxValue" /> or less than <see cref="F:System.Int32.MinValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		int ToInt32(Decimal value);
+		int ToInt32(decimal value);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to an equivalent 32-bit signed integer.</summary>
 		/// <returns>
@@ -979,7 +986,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Int32.MinValue" /> or greater than <see cref="F:System.Int32.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		int ToInt32(object value);
+		int ToInt32([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to a 32-bit signed integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>A 32-bit signed integer that is equivalent to <paramref name="value" />, or zero if <paramref name="value" /> is null.</returns>
@@ -992,7 +999,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Int32.MinValue" /> or greater than <see cref="F:System.Int32.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		int ToInt32(object value, IFormatProvider provider);
+		int ToInt32([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to the equivalent 32-bit signed integer.</summary>
 		/// <returns>A 8-bit signed integer that is equivalent to <paramref name="value" />.</returns>
@@ -1017,7 +1024,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Int32.MinValue" /> or greater than <see cref="F:System.Int32.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		int ToInt32(string value);
+		int ToInt32([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent 32-bit signed integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>A 32-bit signed integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -1028,7 +1035,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Int32.MinValue" /> or greater than <see cref="F:System.Int32.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		int ToInt32(string value, IFormatProvider provider);
+		int ToInt32([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the string representation of a number in a specified base to an equivalent 32-bit signed integer.</summary>
 		/// <returns>A 32-bit signed integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -1043,7 +1050,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" />, which represents a non-base 10 signed number, is prefixed with a negative sign.-or-<paramref name="value" /> represents a number that is less than <see cref="F:System.Int32.MinValue" /> or greater than <see cref="F:System.Int32.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		int ToInt32(string value, int fromBase);
+		int ToInt32([CanBeNull] string value, int fromBase);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to the equivalent 32-bit signed integer.</summary>
 		/// <returns>A 32-bit signed integer that is equivalent to <paramref name="value" />.</returns>
@@ -1092,7 +1099,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> is greater than <see cref="F:System.Int64.MaxValue" /> or less than <see cref="F:System.Int64.MinValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		long ToInt64(Decimal value);
+		long ToInt64(decimal value);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to an equivalent 64-bit signed integer.</summary>
 		/// <returns>
@@ -1132,7 +1139,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Int64.MinValue" /> or greater than <see cref="F:System.Int64.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		long ToInt64(object value);
+		long ToInt64([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to a 64-bit signed integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>A 64-bit signed integer that is equivalent to <paramref name="value" />, or zero if <paramref name="value" /> is null.</returns>
@@ -1145,7 +1152,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Int64.MinValue" /> or greater than <see cref="F:System.Int64.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		long ToInt64(object value, IFormatProvider provider);
+		long ToInt64([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to the equivalent 64-bit signed integer.</summary>
 		/// <returns>A 64-bit signed integer that is equivalent to <paramref name="value" />.</returns>
@@ -1170,7 +1177,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Int64.MinValue" /> or greater than <see cref="F:System.Int64.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		long ToInt64(string value);
+		long ToInt64([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent 64-bit signed integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>A 64-bit signed integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -1181,7 +1188,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Int64.MinValue" /> or greater than <see cref="F:System.Int64.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		long ToInt64(string value, IFormatProvider provider);
+		long ToInt64([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the string representation of a number in a specified base to an equivalent 64-bit signed integer.</summary>
 		/// <returns>A 64-bit signed integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -1196,7 +1203,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" />, which represents a non-base 10 signed number, is prefixed with a negative sign.-or-<paramref name="value" /> represents a number that is less than <see cref="F:System.Int64.MinValue" /> or greater than <see cref="F:System.Int64.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		long ToInt64(string value, int fromBase);
+		long ToInt64([CanBeNull] string value, int fromBase);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to the equivalent 64-bit signed integer.</summary>
 		/// <returns>A 64-bit signed integer that is equivalent to <paramref name="value" />.</returns>
@@ -1247,7 +1254,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> is greater than <see cref="F:System.SByte.MaxValue" /> or less than <see cref="F:System.SByte.MinValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		sbyte ToSByte(Decimal value);
+		sbyte ToSByte(decimal value);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to an equivalent 8-bit signed integer.</summary>
 		/// <returns>
@@ -1292,7 +1299,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.SByte.MinValue" /> or greater than <see cref="F:System.SByte.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		sbyte ToSByte(object value);
+		sbyte ToSByte([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to an 8-bit signed integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>An 8-bit signed integer that is equivalent to <paramref name="value" />, or zero if <paramref name="value" /> is null.</returns>
@@ -1305,7 +1312,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.SByte.MinValue" /> or greater than <see cref="F:System.SByte.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		sbyte ToSByte(object value, IFormatProvider provider);
+		sbyte ToSByte([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Returns the specified 8-bit signed integer; no actual conversion is performed.</summary>
 		/// <returns>
@@ -1331,7 +1338,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.SByte.MinValue" /> or greater than <see cref="F:System.SByte.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		sbyte ToSByte(string value);
+		sbyte ToSByte([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent 8-bit signed integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>An 8-bit signed integer that is equivalent to <paramref name="value" />.</returns>
@@ -1344,7 +1351,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.SByte.MinValue" /> or greater than <see cref="F:System.SByte.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		sbyte ToSByte(string value, IFormatProvider provider);
+		sbyte ToSByte([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the string representation of a number in a specified base to an equivalent 8-bit signed integer.</summary>
 		/// <returns>An 8-bit signed integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -1359,7 +1366,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" />, which represents a non-base 10 signed number, is prefixed with a negative sign.-or-<paramref name="value" /> represents a number that is less than <see cref="F:System.SByte.MinValue" /> or greater than <see cref="F:System.SByte.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		sbyte ToSByte(string value, int fromBase);
+		sbyte ToSByte([CanBeNull] string value, int fromBase);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to the equivalent 8-bit signed integer.</summary>
 		/// <returns>An 8-bit signed integer that is equivalent to <paramref name="value" />.</returns>
@@ -1401,7 +1408,7 @@ namespace Thinktecture
 		/// <returns>A single-precision floating-point number that is equivalent to <paramref name="value" />.<paramref name="value" /> is rounded using rounding to nearest. For example, when rounded to two decimals, the value 2.345 becomes 2.34 and the value 2.355 becomes 2.36.</returns>
 		/// <param name="value">The decimal number to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		float ToSingle(Decimal value);
+		float ToSingle(decimal value);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to an equivalent single-precision floating-point number.</summary>
 		/// <returns>A single-precision floating-point number that is equivalent to <paramref name="value" />.<paramref name="value" /> is rounded using rounding to nearest. For example, when rounded to two decimals, the value 2.345 becomes 2.34 and the value 2.355 becomes 2.36.</returns>
@@ -1437,7 +1444,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Single.MinValue" /> or greater than <see cref="F:System.Single.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		float ToSingle(object value);
+		float ToSingle([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to an single-precision floating-point number, using the specified culture-specific formatting information.</summary>
 		/// <returns>A single-precision floating-point number that is equivalent to <paramref name="value" />, or zero if <paramref name="value" /> is null.</returns>
@@ -1450,7 +1457,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Single.MinValue" /> or greater than <see cref="F:System.Single.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		float ToSingle(object value, IFormatProvider provider);
+		float ToSingle([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to the equivalent single-precision floating-point number.</summary>
 		/// <returns>An 8-bit signed integer that is equivalent to <paramref name="value" />.</returns>
@@ -1473,7 +1480,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Single.MinValue" /> or greater than <see cref="F:System.Single.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		float ToSingle(string value);
+		float ToSingle([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent single-precision floating-point number, using the specified culture-specific formatting information.</summary>
 		/// <returns>A single-precision floating-point number that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -1484,7 +1491,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.Single.MinValue" /> or greater than <see cref="F:System.Single.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		float ToSingle(string value, IFormatProvider provider);
+		float ToSingle([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to the equivalent single-precision floating-point number.</summary>
 		/// <returns>A single-precision floating-point number that is equivalent to <paramref name="value" />.</returns>
@@ -1508,6 +1515,7 @@ namespace Thinktecture
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The Boolean value to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(bool value);
 
 		/// <summary>Converts the specified Boolean value to its equivalent string representation.</summary>
@@ -1515,12 +1523,14 @@ namespace Thinktecture
 		/// <param name="value">The Boolean value to convert. </param>
 		/// <param name="provider">An instance of an object. This parameter is ignored.</param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(bool value, IFormatProvider provider);
+		[NotNull]
+		string ToString(bool value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit unsigned integer to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The 8-bit unsigned integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(byte value);
 
 		/// <summary>Converts the value of the specified 8-bit unsigned integer to its equivalent string representation, using the specified culture-specific formatting information.</summary>
@@ -1528,7 +1538,8 @@ namespace Thinktecture
 		/// <param name="value">The 8-bit unsigned integer to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(byte value, IFormatProvider provider);
+		[NotNull]
+		string ToString(byte value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of an 8-bit unsigned integer to its equivalent string representation in a specified base.</summary>
 		/// <returns>The string representation of <paramref name="value" /> in base <paramref name="toBase" />.</returns>
@@ -1537,12 +1548,14 @@ namespace Thinktecture
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="toBase" /> is not 2, 8, 10, or 16. </exception>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(byte value, int toBase);
 
 		/// <summary>Converts the value of the specified Unicode character to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The Unicode character to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(char value);
 
 		/// <summary>Converts the value of the specified Unicode character to its equivalent string representation, using the specified culture-specific formatting information.</summary>
@@ -1550,12 +1563,14 @@ namespace Thinktecture
 		/// <param name="value">The Unicode character to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. This parameter is ignored. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(char value, IFormatProvider provider);
+		[NotNull]
+		string ToString(char value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified <see cref="T:System.DateTime" /> to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The date and time value to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(DateTime value);
 
 		/// <summary>Converts the value of the specified <see cref="T:System.DateTime" /> to its equivalent string representation, using the specified culture-specific formatting information.</summary>
@@ -1563,25 +1578,29 @@ namespace Thinktecture
 		/// <param name="value">The date and time value to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(DateTime value, IFormatProvider provider);
+		[NotNull]
+		string ToString(DateTime value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified decimal number to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The decimal number to convert. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(Decimal value);
+		[NotNull]
+		string ToString(decimal value);
 
 		/// <summary>Converts the value of the specified decimal number to its equivalent string representation, using the specified culture-specific formatting information.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The decimal number to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(Decimal value, IFormatProvider provider);
+		[NotNull]
+		string ToString(decimal value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The double-precision floating-point number to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(double value);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to its equivalent string representation.</summary>
@@ -1589,12 +1608,14 @@ namespace Thinktecture
 		/// <param name="value">The double-precision floating-point number to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(double value, IFormatProvider provider);
+		[NotNull]
+		string ToString(double value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 16-bit signed integer to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The 16-bit signed integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(short value);
 
 		/// <summary>Converts the value of the specified 16-bit signed integer to its equivalent string representation, using the specified culture-specific formatting information.</summary>
@@ -1602,7 +1623,8 @@ namespace Thinktecture
 		/// <param name="value">The 16-bit signed integer to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(short value, IFormatProvider provider);
+		[NotNull]
+		string ToString(short value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of a 16-bit signed integer to its equivalent string representation in a specified base.</summary>
 		/// <returns>The string representation of <paramref name="value" /> in base <paramref name="toBase" />.</returns>
@@ -1611,12 +1633,14 @@ namespace Thinktecture
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="toBase" /> is not 2, 8, 10, or 16. </exception>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(short value, int toBase);
 
 		/// <summary>Converts the value of the specified 32-bit signed integer to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The 32-bit signed integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(int value);
 
 		/// <summary>Converts the value of the specified 32-bit signed integer to its equivalent string representation, using the specified culture-specific formatting information.</summary>
@@ -1624,7 +1648,8 @@ namespace Thinktecture
 		/// <param name="value">The 32-bit signed integer to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(int value, IFormatProvider provider);
+		[NotNull]
+		string ToString(int value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of a 32-bit signed integer to its equivalent string representation in a specified base.</summary>
 		/// <returns>The string representation of <paramref name="value" /> in base <paramref name="toBase" />.</returns>
@@ -1633,12 +1658,14 @@ namespace Thinktecture
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="toBase" /> is not 2, 8, 10, or 16. </exception>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(int value, int toBase);
 
 		/// <summary>Converts the value of the specified 64-bit signed integer to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The 64-bit signed integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(long value);
 
 		/// <summary>Converts the value of the specified 64-bit signed integer to its equivalent string representation, using the specified culture-specific formatting information.</summary>
@@ -1646,7 +1673,8 @@ namespace Thinktecture
 		/// <param name="value">The 64-bit signed integer to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(long value, IFormatProvider provider);
+		[NotNull]
+		string ToString(long value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of a 64-bit signed integer to its equivalent string representation in a specified base.</summary>
 		/// <returns>The string representation of <paramref name="value" /> in base <paramref name="toBase" />.</returns>
@@ -1655,25 +1683,29 @@ namespace Thinktecture
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="toBase" /> is not 2, 8, 10, or 16. </exception>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(long value, int toBase);
 
 		/// <summary>Converts the value of the specified object to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />, or <see cref="F:System.String.Empty" /> if <paramref name="value" /> is an object whose value is null. If <paramref name="value" /> is null, the method returns null.</returns>
 		/// <param name="value">An object that supplies the value to convert, or null. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(object value);
+		[CanBeNull]
+		string ToString([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to its equivalent string representation using the specified culture-specific formatting information.</summary>
 		/// <returns>The string representation of <paramref name="value" />, or <see cref="F:System.String.Empty" /> if <paramref name="value" /> is an object whose value is null. If <paramref name="value" /> is null, the method returns null. </returns>
 		/// <param name="value">An object that supplies the value to convert, or null. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(object value, IFormatProvider provider);
+		[CanBeNull]
+		string ToString([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The 8-bit signed integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(sbyte value);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to its equivalent string representation, using the specified culture-specific formatting information.</summary>
@@ -1681,12 +1713,14 @@ namespace Thinktecture
 		/// <param name="value">The 8-bit signed integer to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(sbyte value, IFormatProvider provider);
+		[NotNull]
+		string ToString(sbyte value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified single-precision floating-point number to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The single-precision floating-point number to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(float value);
 
 		/// <summary>Converts the value of the specified single-precision floating-point number to its equivalent string representation, using the specified culture-specific formatting information.</summary>
@@ -1694,12 +1728,14 @@ namespace Thinktecture
 		/// <param name="value">The single-precision floating-point number to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(float value, IFormatProvider provider);
+		[NotNull]
+		string ToString(float value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The 16-bit unsigned integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(ushort value);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to its equivalent string representation, using the specified culture-specific formatting information.</summary>
@@ -1707,12 +1743,14 @@ namespace Thinktecture
 		/// <param name="value">The 16-bit unsigned integer to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(ushort value, IFormatProvider provider);
+		[NotNull]
+		string ToString(ushort value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 32-bit unsigned integer to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The 32-bit unsigned integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(uint value);
 
 		/// <summary>Converts the value of the specified 32-bit unsigned integer to its equivalent string representation, using the specified culture-specific formatting information.</summary>
@@ -1720,12 +1758,14 @@ namespace Thinktecture
 		/// <param name="value">The 32-bit unsigned integer to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(uint value, IFormatProvider provider);
+		[NotNull]
+		string ToString(uint value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 64-bit unsigned integer to its equivalent string representation.</summary>
 		/// <returns>The string representation of <paramref name="value" />.</returns>
 		/// <param name="value">The 64-bit unsigned integer to convert. </param>
 		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		string ToString(ulong value);
 
 		/// <summary>Converts the value of the specified 64-bit unsigned integer to its equivalent string representation, using the specified culture-specific formatting information.</summary>
@@ -1733,7 +1773,8 @@ namespace Thinktecture
 		/// <param name="value">The 64-bit unsigned integer to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
 		/// <filterpriority>1</filterpriority>
-		string ToString(ulong value, IFormatProvider provider);
+		[NotNull]
+		string ToString(ulong value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the specified Boolean value to the equivalent 16-bit unsigned integer.</summary>
 		/// <returns>The number 1 if <paramref name="value" /> is true; otherwise, 0.</returns>
@@ -1760,7 +1801,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> is less than zero or greater than <see cref="F:System.UInt16.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		ushort ToUInt16(Decimal value);
+		ushort ToUInt16(decimal value);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to an equivalent 16-bit unsigned integer.</summary>
 		/// <returns>
@@ -1805,7 +1846,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.UInt16.MinValue" /> or greater than <see cref="F:System.UInt16.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		ushort ToUInt16(object value);
+		ushort ToUInt16([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to a 16-bit unsigned integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>A 16-bit unsigned integer that is equivalent to <paramref name="value" />, or zero if <paramref name="value" /> is null.</returns>
@@ -1818,7 +1859,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.UInt16.MinValue" /> or greater than <see cref="F:System.UInt16.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		ushort ToUInt16(object value, IFormatProvider provider);
+		ushort ToUInt16([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to the equivalent 16-bit unsigned integer.</summary>
 		/// <returns>A 16-bit unsigned integer that is equivalent to <paramref name="value" />.</returns>
@@ -1845,7 +1886,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.UInt16.MinValue" /> or greater than <see cref="F:System.UInt16.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		ushort ToUInt16(string value);
+		ushort ToUInt16([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent 16-bit unsigned integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>A 16-bit unsigned integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -1856,7 +1897,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.UInt16.MinValue" /> or greater than <see cref="F:System.UInt16.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		ushort ToUInt16(string value, IFormatProvider provider);
+		ushort ToUInt16([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the string representation of a number in a specified base to an equivalent 16-bit unsigned integer.</summary>
 		/// <returns>A 16-bit unsigned integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -1871,7 +1912,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" />, which represents a non-base 10 unsigned number, is prefixed with a negative sign.-or-<paramref name="value" /> represents a number that is less than <see cref="F:System.UInt16.MinValue" /> or greater than <see cref="F:System.UInt16.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		ushort ToUInt16(string value, int fromBase);
+		ushort ToUInt16([CanBeNull] string value, int fromBase);
 
 		/// <summary>Returns the specified 16-bit unsigned integer; no actual conversion is performed.</summary>
 		/// <returns>
@@ -1921,7 +1962,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> is less than zero or greater than <see cref="F:System.UInt32.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		uint ToUInt32(Decimal value);
+		uint ToUInt32(decimal value);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to an equivalent 32-bit unsigned integer.</summary>
 		/// <returns>
@@ -1966,7 +2007,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.UInt32.MinValue" /> or greater than <see cref="F:System.UInt32.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		uint ToUInt32(object value);
+		uint ToUInt32([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to a 32-bit unsigned integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>A 32-bit unsigned integer that is equivalent to <paramref name="value" />, or zero if <paramref name="value" /> is null.</returns>
@@ -1979,7 +2020,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.UInt32.MinValue" /> or greater than <see cref="F:System.UInt32.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		uint ToUInt32(object value, IFormatProvider provider);
+		uint ToUInt32([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to the equivalent 32-bit unsigned integer.</summary>
 		/// <returns>A 32-bit unsigned integer that is equivalent to <paramref name="value" />.</returns>
@@ -2006,7 +2047,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.UInt32.MinValue" /> or greater than <see cref="F:System.UInt32.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		uint ToUInt32(string value);
+		uint ToUInt32([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent 32-bit unsigned integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>A 32-bit unsigned integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -2017,7 +2058,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.UInt32.MinValue" /> or greater than <see cref="F:System.UInt32.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		uint ToUInt32(string value, IFormatProvider provider);
+		uint ToUInt32([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the string representation of a number in a specified base to an equivalent 32-bit unsigned integer.</summary>
 		/// <returns>A 32-bit unsigned integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -2032,7 +2073,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" />, which represents a non-base 10 unsigned number, is prefixed with a negative sign.-or-<paramref name="value" /> represents a number that is less than <see cref="F:System.UInt32.MinValue" /> or greater than <see cref="F:System.UInt32.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		uint ToUInt32(string value, int fromBase);
+		uint ToUInt32([CanBeNull] string value, int fromBase);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to the equivalent 32-bit unsigned integer.</summary>
 		/// <returns>A 32-bit unsigned integer that is equivalent to <paramref name="value" />.</returns>
@@ -2080,7 +2121,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> is less than zero or greater than <see cref="F:System.UInt64.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		ulong ToUInt64(Decimal value);
+		ulong ToUInt64(decimal value);
 
 		/// <summary>Converts the value of the specified double-precision floating-point number to an equivalent 64-bit unsigned integer.</summary>
 		/// <returns>
@@ -2125,7 +2166,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.UInt64.MinValue" /> or greater than <see cref="F:System.UInt64.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		ulong ToUInt64(object value);
+		ulong ToUInt64([CanBeNull] object value);
 
 		/// <summary>Converts the value of the specified object to a 64-bit unsigned integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>A 64-bit unsigned integer that is equivalent to <paramref name="value" />, or zero if <paramref name="value" /> is null.</returns>
@@ -2138,7 +2179,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.UInt64.MinValue" /> or greater than <see cref="F:System.UInt64.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		ulong ToUInt64(object value, IFormatProvider provider);
+		ulong ToUInt64([CanBeNull] object value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the value of the specified 8-bit signed integer to the equivalent 64-bit unsigned integer.</summary>
 		/// <returns>A 64-bit unsigned integer that is equivalent to <paramref name="value" />.</returns>
@@ -2165,7 +2206,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.UInt64.MinValue" /> or greater than <see cref="F:System.UInt64.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		ulong ToUInt64(string value);
+		ulong ToUInt64([CanBeNull] string value);
 
 		/// <summary>Converts the specified string representation of a number to an equivalent 64-bit unsigned integer, using the specified culture-specific formatting information.</summary>
 		/// <returns>A 64-bit unsigned integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -2176,7 +2217,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" /> represents a number that is less than <see cref="F:System.UInt64.MinValue" /> or greater than <see cref="F:System.UInt64.MaxValue" />. </exception>
 		/// <filterpriority>1</filterpriority>
-		ulong ToUInt64(string value, IFormatProvider provider);
+		ulong ToUInt64([CanBeNull] string value, [CanBeNull] IFormatProvider provider);
 
 		/// <summary>Converts the string representation of a number in a specified base to an equivalent 64-bit unsigned integer.</summary>
 		/// <returns>A 64-bit unsigned integer that is equivalent to the number in <paramref name="value" />, or 0 (zero) if <paramref name="value" /> is null.</returns>
@@ -2191,7 +2232,7 @@ namespace Thinktecture
 		/// <exception cref="T:System.OverflowException">
 		/// <paramref name="value" />, which represents a non-base 10 unsigned number, is prefixed with a negative sign.-or-<paramref name="value" /> represents a number that is less than <see cref="F:System.UInt64.MinValue" /> or greater than <see cref="F:System.UInt64.MaxValue" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		ulong ToUInt64(string value, int fromBase);
+		ulong ToUInt64([CanBeNull] string value, int fromBase);
 
 		/// <summary>Converts the value of the specified 16-bit unsigned integer to the equivalent 64-bit unsigned integer.</summary>
 		/// <returns>A 64-bit unsigned integer that is equivalent to <paramref name="value" />.</returns>

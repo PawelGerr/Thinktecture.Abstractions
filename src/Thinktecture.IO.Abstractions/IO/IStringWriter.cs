@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Thinktecture.Text;
 
 namespace Thinktecture.IO
@@ -14,6 +15,7 @@ namespace Thinktecture.IO
 		/// <summary>Returns the underlying <see cref="T:System.Text.StringBuilder" />.</summary>
 		/// <returns>The underlying StringBuilder.</returns>
 		/// <filterpriority>2</filterpriority>
+		[NotNull]
 		IStringBuilder GetStringBuilder();
 	}
 }

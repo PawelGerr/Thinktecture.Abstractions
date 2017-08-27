@@ -39,10 +39,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		public MulticastIPAddressInformationAdapter(MulticastIPAddressInformation info)
 			: base(info)
 		{
-			if (info == null)
-				throw new ArgumentNullException(nameof(info));
-
-			_info = info;
+			_info = info ?? throw new ArgumentNullException(nameof(info));
 		}
 
 		/// <inheritdoc />

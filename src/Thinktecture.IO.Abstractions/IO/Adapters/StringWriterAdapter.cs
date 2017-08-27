@@ -2,7 +2,10 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
+using JetBrains.Annotations;
 using Thinktecture.Text;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.IO.Adapters
 {
@@ -12,13 +15,18 @@ namespace Thinktecture.IO.Adapters
 	public class StringWriterAdapter : TextWriterAdapter, IStringWriter
 	{
 		/// <inheritdoc />
+		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new StringWriter UnsafeConvert()
 		{
-			return _instance;
+			return Implementation;
 		}
 
-		private readonly StringWriter _instance;
+		/// <summary>
+		/// Implementation used by the adapter.
+		/// </summary>
+		[NotNull]
+		protected new StringWriter Implementation { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="StringWriterAdapter" /> class.</summary>
 		public StringWriterAdapter()
@@ -28,7 +36,7 @@ namespace Thinktecture.IO.Adapters
 
 		/// <summary>Initializes a new instance of the <see cref="StringWriterAdapter" /> class with the specified format control.</summary>
 		/// <param name="formatProvider">An <see cref="T:System.IFormatProvider" /> object that controls formatting. </param>
-		public StringWriterAdapter(IFormatProvider formatProvider)
+		public StringWriterAdapter([CanBeNull] IFormatProvider formatProvider)
 			: this(new StringWriter(formatProvider))
 		{
 		}
@@ -37,8 +45,8 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="sb">The StringBuilder to write to. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="sb" /> is null. </exception>
-		public StringWriterAdapter(IStringBuilder sb)
-			: this(new StringWriter(sb.ToImplementation()))
+		public StringWriterAdapter([NotNull] IStringBuilder sb)
+			: this(sb.ToImplementation())
 		{
 		}
 
@@ -46,7 +54,7 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="sb">The StringBuilder to write to. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="sb" /> is null. </exception>
-		public StringWriterAdapter(StringBuilder sb)
+		public StringWriterAdapter([NotNull] StringBuilder sb)
 			: this(new StringWriter(sb))
 		{
 		}
@@ -56,8 +64,8 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="formatProvider">An <see cref="T:System.IFormatProvider" /> object that controls formatting. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="sb" /> is null. </exception>
-		public StringWriterAdapter(IStringBuilder sb, IFormatProvider formatProvider)
-			: this(new StringWriter(sb.ToImplementation(), formatProvider))
+		public StringWriterAdapter([NotNull] IStringBuilder sb, [CanBeNull] IFormatProvider formatProvider)
+			: this(sb.ToImplementation(), formatProvider)
 		{
 		}
 
@@ -66,7 +74,7 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="formatProvider">An <see cref="T:System.IFormatProvider" /> object that controls formatting. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="sb" /> is null. </exception>
-		public StringWriterAdapter(StringBuilder sb, IFormatProvider formatProvider)
+		public StringWriterAdapter([NotNull] StringBuilder sb, [CanBeNull] IFormatProvider formatProvider)
 			: this(new StringWriter(sb, formatProvider))
 		{
 		}
@@ -75,15 +83,16 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="StringWriterAdapter" /> class.
 		/// </summary>
 		/// <param name="writer">Writer to be used by the adapter.</param>
-		public StringWriterAdapter(StringWriter writer) : base(writer)
+		public StringWriterAdapter([NotNull] StringWriter writer)
+			: base(writer)
 		{
-			_instance = writer ?? throw new ArgumentNullException(nameof(writer));
+			Implementation = writer ?? throw new ArgumentNullException(nameof(writer));
 		}
 
 		/// <inheritdoc />
 		public IStringBuilder GetStringBuilder()
 		{
-			return _instance.GetStringBuilder().ToInterface();
+			return Implementation.GetStringBuilder().ToInterface();
 		}
 	}
 }

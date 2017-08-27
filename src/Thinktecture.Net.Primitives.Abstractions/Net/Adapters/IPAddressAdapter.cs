@@ -1,4 +1,4 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
 using System.ComponentModel;
@@ -120,8 +120,7 @@ namespace Thinktecture.Net.Adapters
 		/// <param name="address">The <see cref="T:System.Net.IPAddress" /> version of the string.</param>
 		public static bool TryParse(string ipString, out IIPAddress address)
 		{
-			IPAddress tempAddress;
-			var parsed = IPAddress.TryParse(ipString, out tempAddress);
+			var parsed = IPAddress.TryParse(ipString, out var tempAddress);
 			address = tempAddress.ToInterface();
 
 			return parsed;
@@ -155,8 +154,8 @@ namespace Thinktecture.Net.Adapters
 		/// <inheritdoc />
 		public long ScopeId
 		{
-			get { return _address.ScopeId; }
-			set { _address.ScopeId = value; }
+			get => _address.ScopeId;
+			set => _address.ScopeId = value;
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="T:System.Net.IPAddress" /> class with the address specified as a <see cref="T:System.Byte" /> array.</summary>
@@ -198,10 +197,7 @@ namespace Thinktecture.Net.Adapters
 		public IPAddressAdapter(IPAddress address)
 			: base(address)
 		{
-			if (address == null)
-				throw new ArgumentNullException(nameof(address));
-
-			_address = address;
+			_address = address ?? throw new ArgumentNullException(nameof(address));
 		}
 
 		/// <inheritdoc />

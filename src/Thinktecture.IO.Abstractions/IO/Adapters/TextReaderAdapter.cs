@@ -1,102 +1,93 @@
-﻿using System;
-using System.ComponentModel;
+using System;
 using System.IO;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.IO.Adapters
 {
 	/// <summary>
 	/// Adapter for <see cref="TextReader"/>.
 	/// </summary>
-	public class TextReaderAdapter : AbstractionAdapter, ITextReader
+	public class TextReaderAdapter : AbstractionAdapter<TextReader>, ITextReader
 	{
 		/// <summary>Provides a TextReader with no data to read from.</summary>
-		/// <filterpriority>1</filterpriority>
-		public static readonly ITextReader Null = new TextReaderAdapter(TextReader.Null);
-
-		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new TextReader UnsafeConvert()
-		{
-			return _instance;
-		}
-
-		private readonly TextReader _instance;
+		public static readonly ITextReader Null = TextReader.Null.ToInterface();
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="TextReaderAdapter" /> class.
 		/// </summary>
 		/// <param name="reader">Reader to be used by the adapter.</param>
-		public TextReaderAdapter(TextReader reader)
+		public TextReaderAdapter([NotNull] TextReader reader)
 			: base(reader)
 		{
-			_instance = reader ?? throw new ArgumentNullException(nameof(reader));
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			_instance.Dispose();
+			Implementation.Dispose();
 		}
 
 		/// <inheritdoc />
 		public int Peek()
 		{
-			return _instance.Peek();
+			return Implementation.Peek();
 		}
 
 		/// <inheritdoc />
 		public int Read()
 		{
-			return _instance.Read();
+			return Implementation.Read();
 		}
 
 		/// <inheritdoc />
 		public int Read(char[] buffer, int index, int count)
 		{
-			return _instance.Read(buffer, index, count);
+			return Implementation.Read(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public Task<int> ReadAsync(char[] buffer, int index, int count)
 		{
-			return _instance.ReadAsync(buffer, index, count);
+			return Implementation.ReadAsync(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public int ReadBlock(char[] buffer, int index, int count)
 		{
-			return _instance.ReadBlock(buffer, index, count);
+			return Implementation.ReadBlock(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public Task<int> ReadBlockAsync(char[] buffer, int index, int count)
 		{
-			return _instance.ReadBlockAsync(buffer, index, count);
+			return Implementation.ReadBlockAsync(buffer, index, count);
 		}
 
 		/// <inheritdoc />
 		public string ReadLine()
 		{
-			return _instance.ReadLine();
+			return Implementation.ReadLine();
 		}
 
 		/// <inheritdoc />
 		public Task<string> ReadLineAsync()
 		{
-			return _instance.ReadLineAsync();
+			return Implementation.ReadLineAsync();
 		}
 
 		/// <inheritdoc />
 		public string ReadToEnd()
 		{
-			return _instance.ReadToEnd();
+			return Implementation.ReadToEnd();
 		}
 
 		/// <inheritdoc />
 		public Task<string> ReadToEndAsync()
 		{
-			return _instance.ReadToEndAsync();
+			return Implementation.ReadToEndAsync();
 		}
 	}
 }

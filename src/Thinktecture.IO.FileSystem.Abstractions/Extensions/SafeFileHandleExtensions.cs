@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32.SafeHandles;
+using JetBrains.Annotations;
+using Microsoft.Win32.SafeHandles;
 using Thinktecture.Win32.SafeHandles;
 using Thinktecture.Win32.SafeHandles.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="handle">Safe file handle to convert.</param>
 		/// <returns>Converted safe file handle.</returns>
-		public static ISafeFileHandle ToInterface(this SafeFileHandle handle)
+		[CanBeNull]
+		public static ISafeFileHandle ToInterface([CanBeNull] this SafeFileHandle handle)
 		{
 			return (handle == null) ? null : new SafeFileHandleAdapter(handle);
 		}
@@ -25,7 +27,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="ISafeFileHandle"/> to convert.</param>
 		/// <returns>An instance of <see cref="SafeFileHandle"/>.</returns>
-		public static SafeFileHandle ToImplementation(this ISafeFileHandle abstraction)
+		[CanBeNull]
+		public static SafeFileHandle ToImplementation([CanBeNull] this ISafeFileHandle abstraction)
 		{
 			return ((IAbstraction<SafeFileHandle>)abstraction)?.UnsafeConvert();
 		}

@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.IO;
+using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -16,7 +17,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="stream">Stream to convert.</param>
 		/// <returns>Converted stream.</returns>
-		public static IMemoryStream ToInterface(this MemoryStream stream)
+		[CanBeNull]
+		public static IMemoryStream ToInterface([CanBeNull] this MemoryStream stream)
 		{
 			return (stream == null) ? null : new MemoryStreamAdapter(stream);
 		}
@@ -26,7 +28,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IMemoryStream"/> to convert.</param>
 		/// <returns>An instance of <see cref="MemoryStream"/>.</returns>
-		public static MemoryStream ToImplementation(this IMemoryStream abstraction)
+		[CanBeNull]
+		public static MemoryStream ToImplementation([CanBeNull] this IMemoryStream abstraction)
 		{
 			return ((IAbstraction<MemoryStream>)abstraction)?.UnsafeConvert();
 		}

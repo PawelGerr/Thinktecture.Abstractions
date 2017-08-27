@@ -44,10 +44,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		public PhysicalAddressAdapter(PhysicalAddress address)
 			: base(address)
 		{
-			if (address == null)
-				throw new ArgumentNullException(nameof(address));
-
-			_address = address;
+			_address = address ?? throw new ArgumentNullException(nameof(address));
 		}
 
 		/// <inheritdoc />

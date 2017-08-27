@@ -1,4 +1,5 @@
-﻿using System.IO;
+using System.IO;
+using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="file">File info to convert.</param>
 		/// <returns>Converted file info.</returns>
-		public static IFileInfo ToInterface(this FileInfo file)
+		[CanBeNull]
+		public static IFileInfo ToInterface([CanBeNull] this FileInfo file)
 		{
 			return (file == null) ? null : new FileInfoAdapter(file);
 		}
@@ -25,7 +27,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IDirectoryInfo"/> to convert.</param>
 		/// <returns>An instance of <see cref="FileInfo"/>.</returns>
-		public static FileInfo ToImplementation(this IFileInfo abstraction)
+		[CanBeNull]
+		public static FileInfo ToImplementation([CanBeNull] this IFileInfo abstraction)
 		{
 			return ((IAbstraction<FileInfo>)abstraction)?.UnsafeConvert();
 		}

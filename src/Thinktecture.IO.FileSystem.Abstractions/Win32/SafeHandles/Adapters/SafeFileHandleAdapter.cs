@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.ComponentModel;
+using JetBrains.Annotations;
 using Microsoft.Win32.SafeHandles;
 using Thinktecture.Runtime.InteropServices.Adapters;
 
@@ -11,13 +12,18 @@ namespace Thinktecture.Win32.SafeHandles.Adapters
 	public class SafeFileHandleAdapter : SafeHandleAdapter, ISafeFileHandle
 	{
 		/// <inheritdoc />
+		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new SafeFileHandle UnsafeConvert()
 		{
-			return _instance;
+			return Implementation;
 		}
 
-		private readonly SafeFileHandle _instance;
+		/// <summary>
+		/// Implementation used by the adapter.
+		/// </summary>
+		[NotNull]
+		protected new SafeFileHandle Implementation { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="SafeFileHandleAdapter" /> class.</summary>
 		/// <param name="preexistingHandle">An <see cref="T:System.IntPtr" /> object that represents the pre-existing handle to use.</param>
@@ -31,10 +37,10 @@ namespace Thinktecture.Win32.SafeHandles.Adapters
 		/// Initializes a new instance of the <see cref="SafeFileHandleAdapter" /> class.
 		/// </summary>
 		/// <param name="handle">Handle to be used by the adapter.</param>
-		public SafeFileHandleAdapter(SafeFileHandle handle)
+		public SafeFileHandleAdapter([NotNull] SafeFileHandle handle)
 			: base(handle)
 		{
-			_instance = handle ?? throw new ArgumentNullException(nameof(handle));
+			Implementation = handle ?? throw new ArgumentNullException(nameof(handle));
 		}
 	}
 }

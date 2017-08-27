@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.IO;
+using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -16,7 +17,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="writer">Writer to convert.</param>
 		/// <returns>Converted writer.</returns>
-		public static IStringWriter ToInterface(this StringWriter writer)
+		[CanBeNull]
+		public static IStringWriter ToInterface([CanBeNull] this StringWriter writer)
 		{
 			return (writer == null) ? null : new StringWriterAdapter(writer);
 		}
@@ -26,7 +28,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IStringWriter"/> to convert.</param>
 		/// <returns>An instance of <see cref="StringWriter"/>.</returns>
-		public static StringWriter ToImplementation(this IStringWriter abstraction)
+		[CanBeNull]
+		public static StringWriter ToImplementation([CanBeNull] this IStringWriter abstraction)
 		{
 			return ((IAbstraction<StringWriter>)abstraction)?.UnsafeConvert();
 		}
