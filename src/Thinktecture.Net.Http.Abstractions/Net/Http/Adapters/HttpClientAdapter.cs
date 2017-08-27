@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Net.Http;
 using System.Threading;
@@ -118,252 +118,252 @@ namespace Thinktecture.Net.Http.Adapters
 		public Task<IStream> GetStreamAsync(string requestUri)
 		{
 			return _client.GetStreamAsync(requestUri)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IStream> GetStreamAsync(Uri requestUri)
 		{
 			return _client.GetStreamAsync(requestUri)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> GetAsync(string requestUri)
 		{
 			return _client.GetAsync(requestUri)
-				.ContinueWith(task => task.Result.ToInterface());
+						.ContinueWith(task => task.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> GetAsync(Uri requestUri)
 		{
 			return _client.GetAsync(requestUri)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> GetAsync(string requestUri, HttpCompletionOption completionOption)
 		{
 			return _client.GetAsync(requestUri, completionOption)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> GetAsync(Uri requestUri, HttpCompletionOption completionOption)
 		{
 			return _client.GetAsync(requestUri, completionOption)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> GetAsync(string requestUri, CancellationToken cancellationToken)
 		{
 			return _client.GetAsync(requestUri, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> GetAsync(Uri requestUri, CancellationToken cancellationToken)
 		{
 			return _client.GetAsync(requestUri, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> GetAsync(string requestUri, HttpCompletionOption completionOption, CancellationToken cancellationToken)
 		{
 			return _client.GetAsync(requestUri, completionOption, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> GetAsync(Uri requestUri, HttpCompletionOption completionOption, CancellationToken cancellationToken)
 		{
 			return _client.GetAsync(requestUri, completionOption, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PostAsync(string requestUri, HttpContent content)
 		{
 			return _client.PostAsync(requestUri, content)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PostAsync(string requestUri, IHttpContent content)
 		{
 			return _client.PostAsync(requestUri, content.ToImplementation())
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PostAsync(Uri requestUri, HttpContent content)
 		{
 			return _client.PostAsync(requestUri, content)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PostAsync(Uri requestUri, IHttpContent content)
 		{
 			return _client.PostAsync(requestUri, content.ToImplementation())
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PostAsync(string requestUri, HttpContent content, CancellationToken cancellationToken)
 		{
 			return _client.PostAsync(requestUri, content, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PostAsync(string requestUri, IHttpContent content, CancellationToken cancellationToken)
 		{
 			return _client.PostAsync(requestUri, content.ToImplementation(), cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PostAsync(Uri requestUri, HttpContent content, CancellationToken cancellationToken)
 		{
 			return _client.PostAsync(requestUri, content, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PostAsync(Uri requestUri, IHttpContent content, CancellationToken cancellationToken)
 		{
 			return _client.PostAsync(requestUri, content.ToImplementation(), cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PutAsync(string requestUri, HttpContent content)
 		{
 			return _client.PutAsync(requestUri, content)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PutAsync(string requestUri, IHttpContent content)
 		{
 			return _client.PutAsync(requestUri, content.ToImplementation())
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PutAsync(Uri requestUri, HttpContent content)
 		{
 			return _client.PutAsync(requestUri, content)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PutAsync(Uri requestUri, IHttpContent content)
 		{
 			return _client.PutAsync(requestUri, content.ToImplementation())
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PutAsync(string requestUri, HttpContent content, CancellationToken cancellationToken)
 		{
 			return _client.PutAsync(requestUri, content, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PutAsync(string requestUri, IHttpContent content, CancellationToken cancellationToken)
 		{
 			return _client.PutAsync(requestUri, content.ToImplementation(), cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PutAsync(Uri requestUri, HttpContent content, CancellationToken cancellationToken)
 		{
 			return _client.PutAsync(requestUri, content, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> PutAsync(Uri requestUri, IHttpContent content, CancellationToken cancellationToken)
 		{
 			return _client.PutAsync(requestUri, content.ToImplementation(), cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> DeleteAsync(string requestUri)
 		{
 			return _client.DeleteAsync(requestUri)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> DeleteAsync(Uri requestUri)
 		{
 			return _client.DeleteAsync(requestUri)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> DeleteAsync(string requestUri, CancellationToken cancellationToken)
 		{
 			return _client.DeleteAsync(requestUri, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> DeleteAsync(Uri requestUri, CancellationToken cancellationToken)
 		{
 			return _client.DeleteAsync(requestUri, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> SendAsync(HttpRequestMessage request)
 		{
 			return _client.SendAsync(request)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> SendAsync(IHttpRequestMessage request)
 		{
 			return _client.SendAsync(request.ToImplementation())
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> SendAsync(HttpRequestMessage request, HttpCompletionOption completionOption)
 		{
 			return _client.SendAsync(request, completionOption)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> SendAsync(IHttpRequestMessage request, HttpCompletionOption completionOption)
 		{
 			return _client.SendAsync(request.ToImplementation(), completionOption)
-				.ContinueWith(t => t.Result.ToInterface());
+						.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> SendAsync(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken)
 		{
 			return _client.SendAsync(request, completionOption, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> SendAsync(IHttpRequestMessage request, HttpCompletionOption completionOption, CancellationToken cancellationToken)
 		{
 			return _client.SendAsync(request.ToImplementation(), completionOption, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+						.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />

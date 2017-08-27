@@ -28,7 +28,7 @@ namespace Thinktecture.AbstractionEventHandlerLookupTests
 		public void Should_throw_argnull_if_convert_callback_is_null()
 		{
 			_lookup.Invoking(l => l.MapForAttachment((sender, abstraction) => { }, null))
-				.ShouldThrow<ArgumentNullException>();
+					.ShouldThrow<ArgumentNullException>();
 		}
 
 		[Fact]

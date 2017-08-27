@@ -148,7 +148,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			((IDisposable) _client).Dispose();
+			((IDisposable)_client).Dispose();
 		}
 	}
 }

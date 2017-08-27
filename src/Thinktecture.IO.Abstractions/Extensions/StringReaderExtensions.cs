@@ -28,7 +28,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="StringReader"/>.</returns>
 		public static StringReader ToImplementation(this IStringReader abstraction)
 		{
-			return ((IAbstraction<StringReader>) abstraction)?.UnsafeConvert();
+			return ((IAbstraction<StringReader>)abstraction)?.UnsafeConvert();
 		}
 	}
 }

@@ -55,14 +55,14 @@ namespace Thinktecture.Net.Http.Adapters
 		public Task<IHttpResponseMessage> SendAsync(IHttpRequestMessage request, CancellationToken cancellationToken)
 		{
 			return _invoker.SendAsync(request.ToImplementation(), cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+							.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />
 		public Task<IHttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 		{
 			return _invoker.SendAsync(request, cancellationToken)
-				.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
+							.ContinueWith(t => t.Result.ToInterface(), cancellationToken);
 		}
 
 		/// <inheritdoc />

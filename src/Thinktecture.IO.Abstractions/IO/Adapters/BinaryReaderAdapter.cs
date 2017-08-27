@@ -135,7 +135,7 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="BinaryReaderAdapter" /> class.
 		/// </summary>
 		/// <param name="reader">Reader to use by the adapter.</param>
-		public BinaryReaderAdapter(BinaryReader reader) 
+		public BinaryReaderAdapter(BinaryReader reader)
 			: base(reader)
 		{
 			_instance = reader ?? throw new ArgumentNullException(nameof(reader));

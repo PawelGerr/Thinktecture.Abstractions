@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net;
 
 namespace Thinktecture.Net
@@ -6,7 +6,7 @@ namespace Thinktecture.Net
 	/// <summary>Provides credentials for password-based authentication schemes such as basic, digest, NTLM, and Kerberos authentication.</summary>
 	public interface INetworkCredential : IAbstraction<NetworkCredential>, ICredentials
 #if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
-			, ICredentialsByHost
+		, ICredentialsByHost
 #endif
 	{
 		/// <summary>Gets or sets the domain or computer name that verifies the credentials.</summary>
@@ -37,14 +37,12 @@ namespace Thinktecture.Net
 		new INetworkCredential GetCredential(Uri uri, string authType);
 
 #if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
-
 		/// <summary>Returns an instance of the NetworkCredential class for the specified host, port, and authentication type.</summary>
 		/// <param name="host">The host computer that authenticates the client.</param>
 		/// <param name="port">The port on the host that the client communicates with.</param>
 		/// <param name="authenticationType">The type of authentication requested, as defined in the IAuthenticationModule.AuthenticationType property.</param>
 		/// <returns>A NetworkCredential for the specified host, port, and authentication protocol, or null if there are no credentials available for the specified host, port, and authentication protocol.</returns>
 		new INetworkCredential GetCredential(string host, int port, string authenticationType);
-
 #endif
 	}
 }

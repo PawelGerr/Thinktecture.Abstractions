@@ -36,7 +36,7 @@ namespace Thinktecture.Collections.Generic
 
 			Collection = collection;
 		}
-		
+
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new TImplementation UnsafeConvert()
@@ -58,7 +58,7 @@ namespace Thinktecture.Collections.Generic
 		{
 			return GetEnumerator();
 		}
-		
+
 		/// <inheritdoc />
 		public void Add(TItem item)
 		{
@@ -76,20 +76,20 @@ namespace Thinktecture.Collections.Generic
 		{
 			return Collection.Contains(item);
 		}
-		
+
 		/// <inheritdoc />
 		public void CopyTo(TItem[] array, int arrayIndex)
 		{
 			Collection.CopyTo(array, arrayIndex);
 		}
-		
+
 		/// <inheritdoc />
 		public bool Remove(TItem item)
 		{
 			return Collection.Remove(item);
 		}
 	}
-	
+
 	/// <summary>
 	/// Adapter for collections.
 	/// </summary>
@@ -127,7 +127,7 @@ namespace Thinktecture.Collections.Generic
 			Collection = collection;
 			_toInterface = toInterface ?? throw new ArgumentNullException(nameof(toInterface));
 		}
-		
+
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new TImplementation UnsafeConvert()

@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="HttpContentHeaders"/>.</returns>
 		public static HttpContentHeaders ToImplementation(this IHttpContentHeaders abstraction)
 		{
-			return ((IAbstraction<HttpContentHeaders>) abstraction)?.UnsafeConvert();
+			return ((IAbstraction<HttpContentHeaders>)abstraction)?.UnsafeConvert();
 		}
 	}
 }

@@ -10,6 +10,5 @@ namespace Thinktecture.Abstractions.Wpf.Example
 	/// </summary>
 	public partial class App
 	{
-
 	}
 }

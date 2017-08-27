@@ -18,7 +18,7 @@ namespace Thinktecture.Net.Adapters
 		{
 			return WebUtility.HtmlDecode(value);
 		}
-		
+
 		/// <inheritdoc />
 		public string UrlEncode(string value)
 		{

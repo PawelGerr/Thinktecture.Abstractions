@@ -28,7 +28,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="MemoryStream"/>.</returns>
 		public static MemoryStream ToImplementation(this IMemoryStream abstraction)
 		{
-			return ((IAbstraction<MemoryStream>) abstraction)?.UnsafeConvert();
+			return ((IAbstraction<MemoryStream>)abstraction)?.UnsafeConvert();
 		}
 	}
 }

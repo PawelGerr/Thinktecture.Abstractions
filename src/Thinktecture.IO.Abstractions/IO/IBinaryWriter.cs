@@ -11,7 +11,7 @@ namespace Thinktecture.IO
 		/// <returns>The underlying stream associated with the BinaryWriter.</returns>
 		/// <filterpriority>1</filterpriority>
 		IStream BaseStream { get; }
-		
+
 		/// <summary>Clears all buffers for the current writer and causes any buffered data to be written to the underlying device.</summary>
 		/// <filterpriority>1</filterpriority>
 		void Flush();

@@ -27,7 +27,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="socket">The Socket that the NetworkStream will use to send and receive data.</param>
 		public NetworkStreamAdapter(Socket socket)
-			:this(new NetworkStream(socket))
+			: this(new NetworkStream(socket))
 		{
 		}
 
@@ -37,7 +37,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <param name="socket">The Socket that the NetworkStream will use to send and receive data.</param>
 		/// <param name="ownsSocket">Set to true to indicate that the NetworkStream will take ownership of the Socket; otherwise, false.</param>
 		public NetworkStreamAdapter(Socket socket, bool ownsSocket)
-			:this(new NetworkStream(socket, ownsSocket))
+			: this(new NetworkStream(socket, ownsSocket))
 		{
 		}
 
@@ -45,7 +45,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// Initializes new instance of <see cref="NetworkStreamAdapter"/>.
 		/// </summary>
 		/// <param name="stream">Stream to be used by the adapter.</param>
-		public NetworkStreamAdapter(NetworkStream stream) 
+		public NetworkStreamAdapter(NetworkStream stream)
 			: base(stream)
 		{
 			_stream = stream ?? throw new ArgumentNullException(nameof(stream));

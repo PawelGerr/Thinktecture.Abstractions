@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="SafeWaitHandle"/>.</returns>
 		public static SafeWaitHandle ToImplementation(this ISafeWaitHandle abstraction)
 		{
-			return ((IAbstraction<SafeWaitHandle>) abstraction)?.UnsafeConvert();
+			return ((IAbstraction<SafeWaitHandle>)abstraction)?.UnsafeConvert();
 		}
 	}
 }

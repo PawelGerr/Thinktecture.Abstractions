@@ -1,4 +1,4 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
 using System.ComponentModel;
@@ -42,7 +42,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// Initializes new instance of <see cref="UnicastIPAddressInformationAdapter"/>.
 		/// </summary>
 		/// <param name="info">Information to be used by the adapter.</param>
-		public UnicastIPAddressInformationAdapter(UnicastIPAddressInformation info) 
+		public UnicastIPAddressInformationAdapter(UnicastIPAddressInformation info)
 			: base(info)
 		{
 			if (info == null)

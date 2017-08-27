@@ -47,7 +47,7 @@ namespace Thinktecture.Net.Http.Adapters
 		public Task<IStream> ReadAsStreamAsync()
 		{
 			return _content.ReadAsStreamAsync()
-				.ContinueWith(t => t.Result.ToInterface());
+							.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />

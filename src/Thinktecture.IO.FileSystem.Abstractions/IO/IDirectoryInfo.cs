@@ -54,7 +54,7 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		IDirectoryInfo CreateSubdirectory(string path);
-		
+
 		/// <summary>Deletes this instance of a <see cref="T:System.IO.DirectoryInfo" />, specifying whether to delete subdirectories and files.</summary>
 		/// <param name="recursive">true to delete this directory, its subdirectories, and all files; otherwise, false. </param>
 		/// <exception cref="T:System.UnauthorizedAccessException">The directory contains a read-only file.</exception>

@@ -28,7 +28,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="StringWriter"/>.</returns>
 		public static StringWriter ToImplementation(this IStringWriter abstraction)
 		{
-			return ((IAbstraction<StringWriter>) abstraction)?.UnsafeConvert();
+			return ((IAbstraction<StringWriter>)abstraction)?.UnsafeConvert();
 		}
 	}
 }

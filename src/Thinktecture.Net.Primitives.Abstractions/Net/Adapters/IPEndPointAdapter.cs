@@ -1,4 +1,4 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
 using System.ComponentModel;
@@ -62,7 +62,7 @@ namespace Thinktecture.Net.Adapters
 			: this(new IPEndPoint(address, port))
 		{
 		}
-		
+
 		/// <summary>Initializes a new instance of the <see cref="IPEndPointAdapter" /> class with the specified address and port number.</summary>
 		/// <param name="address">An <see cref="T:System.Net.IPAddress" />. </param>
 		/// <param name="port">The port number associated with the <paramref name="address" />, or 0 to specify any available port. <paramref name="port" /> is in host order.</param>

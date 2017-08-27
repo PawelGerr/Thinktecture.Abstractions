@@ -30,7 +30,7 @@ namespace Thinktecture.IO
 		/// <returns>true if the stream supports writing; otherwise, false.</returns>
 		/// <filterpriority>1</filterpriority>
 		bool CanWrite { get; }
-		
+
 		/// <summary>Gets the length in bytes of the stream.</summary>
 		/// <returns>A long value representing the length of the stream in bytes.</returns>
 		/// <exception cref="T:System.NotSupportedException">A class derived from Stream does not support seeking. </exception>
@@ -168,18 +168,17 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
 		/// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
 		Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken);
-		
+
 		/// <summary>Clears all buffers for this stream and causes any buffered data to be written to the underlying device.</summary>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		/// <filterpriority>1</filterpriority>
 		void Flush();
-		
+
 		/// <summary>Asynchronously clears all buffers for this stream and causes any buffered data to be written to the underlying device.</summary>
 		/// <returns>A task that represents the asynchronous flush operation.</returns>
 		/// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
 		Task FlushAsync();
-
 
 		/// <summary>Asynchronously clears all buffers for this stream, causes any buffered data to be written to the underlying device, and monitors cancellation requests. </summary>
 		/// <returns>A task that represents the asynchronous flush operation. </returns>

@@ -5,7 +5,7 @@ namespace Thinktecture.Text
 {
 	/// <summary>Represents a mutable string of characters. This class cannot be inherited.To browse the .NET Framework source code for this type, see the Reference Source.</summary>
 	/// <filterpriority>1</filterpriority>
-	public interface IStringBuilder: IAbstraction<StringBuilder>
+	public interface IStringBuilder : IAbstraction<StringBuilder>
 	{
 		/// <summary>Gets or sets the maximum number of characters that can be contained in the memory allocated by the current instance.</summary>
 		/// <returns>The maximum number of characters that can be contained in the memory allocated by the current instance. Its value can range from <see cref="P:System.Text.StringBuilder.Length" /> to <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </returns>
@@ -487,7 +487,7 @@ namespace Thinktecture.Text
 		/// <paramref name="startIndex" /> or <paramref name="count" /> is less than zero.-or- <paramref name="startIndex" /> plus <paramref name="count" /> indicates a character position not within this instance.-or- Enlarging the value of this instance would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
 		/// <filterpriority>1</filterpriority>
 		IStringBuilder Replace(string oldValue, string newValue, int startIndex, int count);
-		
+
 		/// <summary>Converts the value of a substring of this instance to a <see cref="T:System.String" />.</summary>
 		/// <returns>A string whose value is the same as the specified substring of this instance.</returns>
 		/// <param name="startIndex">The starting position of the substring in this instance. </param>

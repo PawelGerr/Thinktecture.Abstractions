@@ -1,4 +1,4 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
 using System.ComponentModel;
@@ -36,7 +36,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// Initializes new instance of <see cref="MulticastIPAddressInformationAdapter"/>.
 		/// </summary>
 		/// <param name="info">Information to be used by the adapter.</param>
-		public MulticastIPAddressInformationAdapter(MulticastIPAddressInformation info) 
+		public MulticastIPAddressInformationAdapter(MulticastIPAddressInformation info)
 			: base(info)
 		{
 			if (info == null)

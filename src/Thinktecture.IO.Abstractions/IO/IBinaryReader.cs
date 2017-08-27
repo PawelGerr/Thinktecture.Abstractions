@@ -11,7 +11,7 @@ namespace Thinktecture.IO
 		/// <returns>The underlying stream associated with the BinaryReader.</returns>
 		/// <filterpriority>2</filterpriority>
 		IStream BaseStream { get; }
-		
+
 		/// <summary>Returns the next available character and does not advance the byte or character position.</summary>
 		/// <returns>The next available character, or -1 if no more characters are available or the stream does not support seeking.</returns>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>

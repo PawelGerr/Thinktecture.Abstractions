@@ -1,4 +1,4 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
 using System.ComponentModel;
@@ -39,7 +39,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// Initializes new instance of <see cref="IPv4InterfacePropertiesAdapter"/>.
 		/// </summary>
 		/// <param name="props">Properties to be used by the adapter.</param>
-		public IPv4InterfacePropertiesAdapter(IPv4InterfaceProperties props) 
+		public IPv4InterfacePropertiesAdapter(IPv4InterfaceProperties props)
 			: base(props)
 		{
 			if (props == null)

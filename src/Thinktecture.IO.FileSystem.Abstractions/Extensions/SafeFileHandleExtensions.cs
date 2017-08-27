@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="SafeFileHandle"/>.</returns>
 		public static SafeFileHandle ToImplementation(this ISafeFileHandle abstraction)
 		{
-			return ((IAbstraction<SafeFileHandle>) abstraction)?.UnsafeConvert();
+			return ((IAbstraction<SafeFileHandle>)abstraction)?.UnsafeConvert();
 		}
 	}
 }

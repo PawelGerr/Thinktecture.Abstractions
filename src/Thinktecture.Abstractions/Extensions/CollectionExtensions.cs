@@ -17,7 +17,7 @@ namespace Thinktecture
 		/// <typeparam name="TImplementationItem">Type of the item of the implementation.</typeparam>
 		/// <typeparam name="TImplementation">Type of the implementation.</typeparam>
 		/// <returns>Converted colletion.</returns>
-		public static TImplementation ToImplementation<TAbstractionItem, TImplementationItem, TImplementation>(this ICollectionAbstraction<TAbstractionItem, TImplementationItem, TImplementation> collection) 
+		public static TImplementation ToImplementation<TAbstractionItem, TImplementationItem, TImplementation>(this ICollectionAbstraction<TAbstractionItem, TImplementationItem, TImplementation> collection)
 			where TAbstractionItem : IAbstraction<TImplementationItem>
 			where TImplementation : ICollection<TImplementationItem>
 		{

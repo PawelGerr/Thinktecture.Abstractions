@@ -41,7 +41,7 @@ namespace Thinktecture.IO.Adapters
 		{
 			_instance = directoryInfo ?? throw new ArgumentNullException(nameof(directoryInfo));
 		}
-		
+
 		/// <inheritdoc />
 		public IDirectoryInfo Parent => _instance.Parent.ToInterface();
 

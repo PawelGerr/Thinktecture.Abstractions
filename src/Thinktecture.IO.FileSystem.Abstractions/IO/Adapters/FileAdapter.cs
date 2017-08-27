@@ -28,7 +28,7 @@ namespace Thinktecture.IO.Adapters
 		{
 			File.AppendAllLines(path, contents, encoding);
 		}
-		
+
 		/// <inheritdoc />
 		public void AppendAllText(string path, string contents)
 		{

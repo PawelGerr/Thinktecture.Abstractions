@@ -29,7 +29,7 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		string DirectoryName { get; }
-	
+
 		/// <summary>Gets or sets a value that determines if the current file is read only.</summary>
 		/// <returns>true if the current file is read only; otherwise, false.</returns>
 		/// <exception cref="T:System.IO.FileNotFoundException">The file described by the current <see cref="T:System.IO.FileInfo" /> object could not be found.</exception>
@@ -46,7 +46,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.FileNotFoundException">The file does not exist.-or- The Length property is called for a directory. </exception>
 		/// <filterpriority>1</filterpriority>
 		long Length { get; }
-	
+
 		/// <summary>Creates a <see cref="T:System.IO.StreamWriter" /> that appends text to the file represented by this instance of the <see cref="T:System.IO.FileInfo" />.</summary>
 		/// <returns>A new StreamWriter.</returns>
 		/// <filterpriority>1</filterpriority>
@@ -114,7 +114,7 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		IStreamWriter CreateText();
-		
+
 		/// <summary>Moves a specified file to a new location, providing the option to specify a new file name.</summary>
 		/// <param name="destFileName">The path to move the file to, which can specify a different file name. </param>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs, such as the destination file already exists or the destination device is not ready. </exception>

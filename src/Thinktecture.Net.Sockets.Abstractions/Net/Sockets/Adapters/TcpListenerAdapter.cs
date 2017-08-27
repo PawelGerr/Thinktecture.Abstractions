@@ -87,14 +87,14 @@ namespace Thinktecture.Net.Sockets.Adapters
 		public Task<ISocket> AcceptSocketAsync()
 		{
 			return _listener.AcceptSocketAsync()
-				.ContinueWith(t => t.Result.ToInterface());
+							.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />
 		public Task<ITcpClient> AcceptTcpClientAsync()
 		{
 			return _listener.AcceptTcpClientAsync()
-				.ContinueWith(t => t.Result.ToInterface());
+							.ContinueWith(t => t.Result.ToInterface());
 		}
 
 		/// <inheritdoc />

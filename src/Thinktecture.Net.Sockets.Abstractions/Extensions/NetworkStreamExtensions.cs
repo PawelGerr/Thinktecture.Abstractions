@@ -28,7 +28,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="NetworkStream"/>.</returns>
 		public static NetworkStream ToImplementation(this INetworkStream abstraction)
 		{
-			return ((IAbstraction<NetworkStream>) abstraction)?.UnsafeConvert();
+			return ((IAbstraction<NetworkStream>)abstraction)?.UnsafeConvert();
 		}
 	}
 }

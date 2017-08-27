@@ -1,5 +1,4 @@
-﻿
-namespace Thinktecture.IO
+﻿namespace Thinktecture.IO
 {
 	/// <summary>
 	/// Performs operations on <see cref="T:System.String" /> instances that contain file or directory path information. These operations are performed in a cross-platform manner.To browse the .NET Framework source code for this type, see the Reference Source.

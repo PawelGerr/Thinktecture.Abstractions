@@ -12,8 +12,8 @@ namespace Thinktecture.Collections.Generic
 	/// <typeparam name="T">Type of item to compare.</typeparam>
 	public class GenericEqualityComparer<T> : IEqualityComparer<T>
 	{
-		private readonly Func<T,T, bool> _equals;
-		private readonly Func<T,int> _getHashCode;
+		private readonly Func<T, T, bool> _equals;
+		private readonly Func<T, int> _getHashCode;
 
 		/// <summary>
 		/// Initializes new instance of <see cref="GenericEqualityComparer{T}"/>

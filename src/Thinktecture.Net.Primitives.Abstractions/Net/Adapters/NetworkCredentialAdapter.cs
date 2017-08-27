@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Net;
 
@@ -81,7 +81,6 @@ namespace Thinktecture.Net.Adapters
 		}
 
 #if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
-
 		/// <inheritdoc />
 		public INetworkCredential GetCredential(string host, int port, string authenticationType)
 		{

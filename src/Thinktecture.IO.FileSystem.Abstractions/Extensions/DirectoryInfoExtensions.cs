@@ -27,7 +27,7 @@ namespace Thinktecture
 		/// <returns>An instance of <see cref="DirectoryInfo"/>.</returns>
 		public static DirectoryInfo ToImplementation(this IDirectoryInfo abstraction)
 		{
-			return ((IAbstraction<DirectoryInfo>) abstraction)?.UnsafeConvert();
+			return ((IAbstraction<DirectoryInfo>)abstraction)?.UnsafeConvert();
 		}
 	}
 }

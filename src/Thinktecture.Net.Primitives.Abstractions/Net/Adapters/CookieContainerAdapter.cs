@@ -34,7 +34,6 @@ namespace Thinktecture.Net.Adapters
 		/// <inheritdoc />
 		public int Count => _container.Count;
 
-
 		/// <inheritdoc />
 		public int MaxCookieSize => _container.MaxCookieSize;
 

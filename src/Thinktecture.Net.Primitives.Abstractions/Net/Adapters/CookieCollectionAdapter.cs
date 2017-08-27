@@ -14,10 +14,10 @@ namespace Thinktecture.Net.Adapters
 		public int Count => _collection.Count;
 
 		/// <inheritdoc />
-		public object SyncRoot => ((ICollection) _collection).SyncRoot;
+		public object SyncRoot => ((ICollection)_collection).SyncRoot;
 
 		/// <inheritdoc />
-		public bool IsSynchronized => ((ICollection) _collection).IsSynchronized;
+		public bool IsSynchronized => ((ICollection)_collection).IsSynchronized;
 
 		/// <inheritdoc />
 		[EditorBrowsable(EditorBrowsableState.Never)]
@@ -36,7 +36,7 @@ namespace Thinktecture.Net.Adapters
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="CookieCollectionAdapter" /> class.</summary>
-		public CookieCollectionAdapter(CookieCollection collection) 
+		public CookieCollectionAdapter(CookieCollection collection)
 			: base(collection)
 		{
 			_collection = collection ?? throw new ArgumentNullException(nameof(collection));
@@ -69,7 +69,7 @@ namespace Thinktecture.Net.Adapters
 		/// <inheritdoc />
 		public void CopyTo(Array array, int index)
 		{
-			((ICollection) _collection).CopyTo(array, index);
+			((ICollection)_collection).CopyTo(array, index);
 		}
 
 		/// <inheritdoc />

@@ -10,12 +10,13 @@ namespace Thinktecture
 	/// </summary>
 	public static class HttpHeaderValueCollectionExtensions
 	{
-        /// <summary>
-        /// Converts provided http header value collection to <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />/>.
-        /// </summary>
-        /// <param name="valueCollection">Http header value collection to convert.</param>
-        /// <returns>Converted http header value collection.</returns>
-        public static IHttpHeaderValueCollection<T> ToInterface<T>(this HttpHeaderValueCollection<T> valueCollection) where T : class
+		/// <summary>
+		/// Converts provided http header value collection to <see cref="T:Thinktecture.Net.Http.Headers.IHttpHeaderValueCollection`1" />/>.
+		/// </summary>
+		/// <param name="valueCollection">Http header value collection to convert.</param>
+		/// <returns>Converted http header value collection.</returns>
+		public static IHttpHeaderValueCollection<T> ToInterface<T>(this HttpHeaderValueCollection<T> valueCollection)
+			where T : class
 		{
 			return (valueCollection == null) ? null : new HttpHeaderValueCollectionAdapter<T>(valueCollection);
 		}
