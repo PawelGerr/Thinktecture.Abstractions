@@ -4,7 +4,6 @@ using System.Threading;
 namespace Thinktecture.Threading
 {
 	/// <summary>Encapsulates operating system–specific objects that wait for exclusive access to shared resources.</summary>
-	/// <filterpriority>2</filterpriority>
 	public interface IWaitHandle : IAbstraction<WaitHandle>, IDisposable
 	{
 		/// <summary>Blocks the current thread until the current <see cref="T:System.Threading.WaitHandle" /> receives a signal.</summary>
@@ -12,7 +11,6 @@ namespace Thinktecture.Threading
 		/// <exception cref="T:System.ObjectDisposedException">The current instance has already been disposed. </exception>
 		/// <exception cref="T:System.Threading.AbandonedMutexException">The wait completed because a thread exited without releasing a mutex. This exception is not thrown on Windows 98 or Windows Millennium Edition.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The current instance is a transparent proxy for a <see cref="T:System.Threading.WaitHandle" /> in another application domain.</exception>
-		/// <filterpriority>2</filterpriority>
 		bool WaitOne();
 
 		/// <summary>Blocks the current thread until the current <see cref="T:System.Threading.WaitHandle" /> receives a signal, using a 32-bit signed integer to specify the time interval in milliseconds.</summary>

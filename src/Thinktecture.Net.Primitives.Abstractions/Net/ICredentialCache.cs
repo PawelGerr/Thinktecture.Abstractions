@@ -1,8 +1,9 @@
-﻿#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
 
 using System;
 using System.Collections;
 using System.Net;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net
 {
@@ -21,7 +22,7 @@ namespace Thinktecture.Net
 		/// <paramref name="authType" /> not an accepted value. See Remarks. </exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="port" /> is less than zero.</exception>
-		void Add(string host, int port, string authenticationType, NetworkCredential credential);
+		void Add([NotNull] string host, int port, [NotNull] string authenticationType, [CanBeNull] NetworkCredential credential);
 
 		/// <summary>Adds a <see cref="T:System.Net.NetworkCredential" /> instance for use with SMTP to the credential cache and associates it with a host computer, port, and authentication protocol. Credentials added using this method are valid for SMTP only. This method does not work for HTTP or FTP requests.</summary>
 		/// <param name="host">A <see cref="T:System.String" /> that identifies the host computer.</param>
@@ -34,7 +35,7 @@ namespace Thinktecture.Net
 		/// <paramref name="authType" /> not an accepted value. See Remarks. </exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="port" /> is less than zero.</exception>
-		void Add(string host, int port, string authenticationType, INetworkCredential credential);
+		void Add([NotNull] string host, int port, [NotNull] string authenticationType, [CanBeNull] INetworkCredential credential);
 #pragma warning restore 1584, 1711, 1572, 1581, 1580, CS1734
 
 		/// <summary>Adds a <see cref="T:System.Net.NetworkCredential" /> instance to the credential cache for use with protocols other than SMTP and associates it with a Uniform Resource Identifier (URI) prefix and authentication protocol. </summary>
@@ -44,7 +45,7 @@ namespace Thinktecture.Net
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="uriPrefix" /> is null. -or- <paramref name="authType" /> is null. </exception>
 		/// <exception cref="T:System.ArgumentException">The same credentials are added more than once. </exception>
-		void Add(Uri uriPrefix, string authType, NetworkCredential cred);
+		void Add([NotNull] Uri uriPrefix, [NotNull] string authType, [CanBeNull] NetworkCredential cred);
 
 		/// <summary>Adds a <see cref="T:System.Net.NetworkCredential" /> instance to the credential cache for use with protocols other than SMTP and associates it with a Uniform Resource Identifier (URI) prefix and authentication protocol. </summary>
 		/// <param name="uriPrefix">A <see cref="T:System.Uri" /> that specifies the URI prefix of the resources that the credential grants access to. </param>
@@ -53,7 +54,7 @@ namespace Thinktecture.Net
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="uriPrefix" /> is null. -or- <paramref name="authType" /> is null. </exception>
 		/// <exception cref="T:System.ArgumentException">The same credentials are added more than once. </exception>
-		void Add(Uri uriPrefix, string authType, INetworkCredential cred);
+		void Add([NotNull] Uri uriPrefix, [NotNull] string authType, [CanBeNull] INetworkCredential cred);
 
 #pragma warning disable 1584, 1711, 1572, 1581, 1580, CS1734
 		/// <summary>Returns the <see cref="T:System.Net.NetworkCredential" /> instance associated with the specified host, port, and authentication protocol.</summary>
@@ -67,7 +68,8 @@ namespace Thinktecture.Net
 		/// <paramref name="authType" /> not an accepted value. See Remarks. -or-<paramref name="host" /> is equal to the empty string ("").</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="port" /> is less than zero.</exception>
-		new INetworkCredential GetCredential(string host, int port, string authenticationType);
+		[CanBeNull]
+		new INetworkCredential GetCredential([NotNull] string host, int port, [NotNull] string authenticationType);
 
 		/// <summary>Returns the <see cref="T:System.Net.NetworkCredential" /> instance associated with the specified Uniform Resource Identifier (URI) and authentication type.</summary>
 		/// <returns>A <see cref="T:System.Net.NetworkCredential" /> or, if there is no matching credential in the cache, null.</returns>
@@ -75,19 +77,20 @@ namespace Thinktecture.Net
 		/// <param name="authType">The authentication scheme used by the resource named in <paramref name="uriPrefix" />. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="uriPrefix" /> or <paramref name="authType" /> is null. </exception>
-		new INetworkCredential GetCredential(Uri uriPrefix, string authType);
+		[CanBeNull]
+		new INetworkCredential GetCredential([NotNull] Uri uriPrefix, [NotNull] string authType);
 #pragma warning restore 1584, 1711, 1572, 1581, 1580, CS1734
 
 		/// <summary>Deletes a <see cref="T:System.Net.NetworkCredential" /> instance from the cache if it is associated with the specified host, port, and authentication protocol.</summary>
 		/// <param name="host">A <see cref="T:System.String" /> that identifies the host computer.</param>
 		/// <param name="port">A <see cref="T:System.Int32" /> that specifies the port to connect to on <paramref name="host" />.</param>
 		/// <param name="authenticationType">A <see cref="T:System.String" /> that identifies the authentication scheme used when connecting to <paramref name="host" />. See Remarks.</param>
-		void Remove(string host, int port, string authenticationType);
+		void Remove([CanBeNull] string host, int port, [CanBeNull] string authenticationType);
 
 		/// <summary>Deletes a <see cref="T:System.Net.NetworkCredential" /> instance from the cache if it is associated with the specified Uniform Resource Identifier (URI) prefix and authentication protocol.</summary>
 		/// <param name="uriPrefix">A <see cref="T:System.Uri" /> that specifies the URI prefix of the resources that the credential is used for. </param>
 		/// <param name="authType">The authentication scheme used by the host named in <paramref name="uriPrefix" />. </param>
-		void Remove(Uri uriPrefix, string authType);
+		void Remove([CanBeNull] Uri uriPrefix, [CanBeNull] string authType);
 	}
 }
 

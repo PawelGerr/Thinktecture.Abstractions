@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
+using JetBrains.Annotations;
 using Thinktecture.Runtime.InteropServices;
 using Thinktecture.Runtime.InteropServices.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="handle"><see cref="CriticalHandle"/> to convert.</param>
 		/// <returns>Instance of <see cref="ICriticalHandle"/>.</returns>
-		public static ICriticalHandle ToInterface(this CriticalHandle handle)
+		[CanBeNull]
+		public static ICriticalHandle ToInterface([CanBeNull] this CriticalHandle handle)
 		{
 			return (handle == null) ? null : new CriticalHandleAdapter(handle);
 		}

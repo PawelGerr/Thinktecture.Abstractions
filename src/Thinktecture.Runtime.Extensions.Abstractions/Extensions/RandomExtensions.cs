@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using JetBrains.Annotations;
 using Thinktecture.Adapters;
 
 // ReSharper disable once CheckNamespace
@@ -14,7 +15,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="random">Instance of <see cref="Random"/> to <see cref="IRandom"/>.</param>
 		/// <returns>Instance of <see cref="IRandom"/>.</returns>
-		public static IRandom ToInterface(this Random random)
+		[CanBeNull]
+		public static IRandom ToInterface([CanBeNull] this Random random)
 		{
 			return (random == null) ? null : new RandomAdapter(random);
 		}

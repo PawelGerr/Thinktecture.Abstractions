@@ -1,9 +1,9 @@
-﻿using System.Text;
+using System.Text;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Text
 {
 	/// <summary>Converts a sequence of encoded bytes into a set of characters.</summary>
-	/// <filterpriority>1</filterpriority>
 	public interface IDecoder : IAbstraction<Decoder>
 	{
 		/// <summary>Converts an array of encoded bytes to UTF-16 encoded characters and stores the result in a character array.</summary>
@@ -23,8 +23,7 @@ namespace Thinktecture.Text
 		/// <paramref name="charIndex" />, <paramref name="charCount" />, <paramref name="byteIndex" />, or <paramref name="byteCount" /> is less than zero.-or-The length of <paramref name="chars" /> - <paramref name="charIndex" /> is less than <paramref name="charCount" />.-or-The length of <paramref name="bytes" /> - <paramref name="byteIndex" /> is less than <paramref name="byteCount" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The output buffer is too small to contain any of the converted input. The output buffer should be greater than or equal to the size indicated by the <see cref="GetCharCount(byte[],int,int)" /> method.</exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Decoder.Fallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
-		/// <filterpriority>2</filterpriority>
-		void Convert(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex, int charCount, bool flush, out int bytesUsed, out int charsUsed, out bool completed);
+		void Convert([NotNull] byte[] bytes, int byteIndex, int byteCount, [NotNull] char[] chars, int charIndex, int charCount, bool flush, out int bytesUsed, out int charsUsed, out bool completed);
 
 		/// <summary>When overridden in a derived class, calculates the number of characters produced by decoding a sequence of bytes from the specified byte array.</summary>
 		/// <returns>The number of characters produced by decoding the specified sequence of bytes and any bytes in the internal buffer.</returns>
@@ -36,8 +35,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> is less than zero.-or- <paramref name="index" /> and <paramref name="count" /> do not denote a valid range in <paramref name="bytes" />. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Decoder.Fallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
-		/// <filterpriority>2</filterpriority>
-		int GetCharCount(byte[] bytes, int index, int count);
+		int GetCharCount([NotNull] byte[] bytes, int index, int count);
 
 		/// <summary>When overridden in a derived class, calculates the number of characters produced by decoding a sequence of bytes from the specified byte array. A parameter indicates whether to clear the internal state of the decoder after the calculation.</summary>
 		/// <returns>The number of characters produced by decoding the specified sequence of bytes and any bytes in the internal buffer.</returns>
@@ -50,8 +48,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> is less than zero.-or- <paramref name="index" /> and <paramref name="count" /> do not denote a valid range in <paramref name="bytes" />. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Decoder.Fallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
-		/// <filterpriority>2</filterpriority>
-		int GetCharCount(byte[] bytes, int index, int count, bool flush);
+		int GetCharCount([NotNull] byte[] bytes, int index, int count, bool flush);
 
 		/// <summary>When overridden in a derived class, decodes a sequence of bytes from the specified byte array and any bytes in the internal buffer into the specified character array.</summary>
 		/// <returns>The actual number of characters written into <paramref name="chars" />.</returns>
@@ -67,8 +64,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="chars" /> does not have enough capacity from <paramref name="charIndex" /> to the end of the array to accommodate the resulting characters. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Decoder.Fallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
-		/// <filterpriority>2</filterpriority>
-		int GetChars(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex);
+		int GetChars([NotNull] byte[] bytes, int byteIndex, int byteCount, [NotNull] char[] chars, int charIndex);
 
 		/// <summary>When overridden in a derived class, decodes a sequence of bytes from the specified byte array and any bytes in the internal buffer into the specified character array. A parameter indicates whether to clear the internal state of the decoder after the conversion.</summary>
 		/// <returns>The actual number of characters written into the <paramref name="chars" /> parameter.</returns>
@@ -85,11 +81,9 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="chars" /> does not have enough capacity from <paramref name="charIndex" /> to the end of the array to accommodate the resulting characters. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Decoder.Fallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
-		/// <filterpriority>2</filterpriority>
-		int GetChars(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex, bool flush);
+		int GetChars([NotNull] byte[] bytes, int byteIndex, int byteCount, [NotNull] char[] chars, int charIndex, bool flush);
 
 		/// <summary>When overridden in a derived class, sets the decoder back to its initial state.</summary>
-		/// <filterpriority>2</filterpriority>
 		void Reset();
 	}
 }

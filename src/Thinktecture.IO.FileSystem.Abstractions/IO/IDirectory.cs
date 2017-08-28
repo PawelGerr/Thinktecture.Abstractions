@@ -8,7 +8,6 @@ namespace Thinktecture.IO
 	/// <summary>
 	/// Exposes static methods for creating, moving, and enumerating through directories and subdirectories. This class cannot be inherited.To browse the .NET Framework source code for this type, see the Reference Source.
 	/// </summary>
-	/// <filterpriority>1</filterpriority>
 	public interface IDirectory
 	{
 		/// <summary>Creates all directories and subdirectories in the specified path unless they already exist.</summary>
@@ -24,7 +23,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.NotSupportedException">
 		/// <paramref name="path" /> contains a colon character (:) that is not part of a drive label ("C:\").</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -42,7 +40,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">
 		/// <paramref name="path" /> does not exist or could not be found.-or-The specified path is invalid (for example, it is on an unmapped drive). </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -60,7 +57,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">
 		/// <paramref name="path" /> does not exist or could not be found.-or-The specified path is invalid (for example, it is on an unmapped drive). </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -237,7 +233,6 @@ namespace Thinktecture.IO
 		/// <summary>Determines whether the given path refers to an existing directory on disk.</summary>
 		/// <returns>true if <paramref name="path" /> refers to an existing directory; false if the directory does not exist or an error occurs when trying to determine if the specified file exists.</returns>
 		/// <param name="path">The path to test. </param>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -252,7 +247,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="path" /> is null. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -267,7 +261,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="path" /> is null. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
-		/// <filterpriority>2</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -277,7 +270,6 @@ namespace Thinktecture.IO
 		/// <returns>A string that contains the path of the current working directory, and does not end with a backslash (\).</returns>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.NotSupportedException">The operating system is Windows CE, which does not have current directory functionality.This method is available in the .NET Compact Framework, but is not currently supported.</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -296,7 +288,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">
 		/// <paramref name="path" /> is a file name. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -316,7 +307,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">
 		/// <paramref name="path" /> is a file name. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -351,7 +341,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="path" /> is null. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -370,7 +359,6 @@ namespace Thinktecture.IO
 		/// <paramref name="path" /> is null. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is not found or is invalid (for example, it is on an unmapped drive). </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -390,7 +378,6 @@ namespace Thinktecture.IO
 		/// <paramref name="path" /> or <paramref name="searchPattern" /> is null. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is not found or is invalid (for example, it is on an unmapped drive). </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -428,7 +415,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">
 		/// <paramref name="path" /> is a file name. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -448,7 +434,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">
 		/// <paramref name="path" /> is a file name. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -486,7 +471,6 @@ namespace Thinktecture.IO
 		/// <paramref name="path" /> is null. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.NotSupportedException">The <paramref name="path" /> parameter is in an invalid format. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -502,7 +486,6 @@ namespace Thinktecture.IO
 		/// <paramref name="path" /> is null. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.NotSupportedException">The <paramref name="path" /> parameter is in an invalid format. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -517,7 +500,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="path" /> is null. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -532,7 +514,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="path" /> is null. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
-		/// <filterpriority>2</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -549,7 +530,6 @@ namespace Thinktecture.IO
 		/// <paramref name="path" /> is null. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path was not found. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -567,7 +547,6 @@ namespace Thinktecture.IO
 		/// <paramref name="sourceDirName" /> or <paramref name="destDirName" /> is null. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path specified by <paramref name="sourceDirName" /> is invalid (for example, it is on an unmapped drive). </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -586,7 +565,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="creationTime" /> specifies a value outside the range of dates or times permitted for this operation. </exception>
 		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -605,7 +583,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="creationTimeUtc" /> specifies a value outside the range of dates or times permitted for this operation. </exception>
 		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
-		/// <filterpriority>2</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -622,7 +599,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission to access unmanaged code. </exception>
 		/// <exception cref="T:System.IO.FileNotFoundException">The specified path was not found. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified directory was not found.</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
 		/// </PermissionSet>
@@ -641,7 +617,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="lastAccessTime" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -660,7 +635,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="lastAccessTimeUtc" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -679,7 +653,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="lastWriteTime" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -698,7 +671,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="lastWriteTimeUtc" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
-		/// <filterpriority>2</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>

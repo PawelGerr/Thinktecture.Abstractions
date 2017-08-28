@@ -1,6 +1,7 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net
 {
@@ -10,6 +11,7 @@ namespace Thinktecture.Net
 	{
 		/// <summary>Gets the host name or string representation of the Internet Protocol (IP) address of the host.</summary>
 		/// <returns>A host name or string representation of an IP address.</returns>
+		[NotNull]
 		string Host { get; }
 
 		/// <summary>Gets the port number of the <see cref="T:System.Net.DnsEndPoint" />.</summary>

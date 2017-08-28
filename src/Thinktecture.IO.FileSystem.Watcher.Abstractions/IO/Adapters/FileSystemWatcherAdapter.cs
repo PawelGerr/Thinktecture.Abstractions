@@ -1,98 +1,91 @@
-﻿using System;
-using System.ComponentModel;
+using System;
 using System.IO;
+using JetBrains.Annotations;
+
+// ReSharper disable InheritdocInvalidUsage
 
 namespace Thinktecture.IO.Adapters
 {
 	/// <summary>
 	/// Adapter for <see cref="FileSystemWatcher"/>.
 	/// </summary>
-	public class FileSystemWatcherAdapter : AbstractionAdapter, IFileSystemWatcher
+	public class FileSystemWatcherAdapter : AbstractionAdapter<FileSystemWatcher>, IFileSystemWatcher
 	{
-		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new FileSystemWatcher UnsafeConvert()
-		{
-			return _instance;
-		}
-
-		private readonly FileSystemWatcher _instance;
-
 		/// <inheritdoc />
 		public bool EnableRaisingEvents
 		{
-			get => _instance.EnableRaisingEvents;
-			set => _instance.EnableRaisingEvents = value;
+			get => Implementation.EnableRaisingEvents;
+			set => Implementation.EnableRaisingEvents = value;
 		}
 
 		/// <inheritdoc />
 		public string Filter
 		{
-			get => _instance.Filter;
-			set => _instance.Filter = value;
+			get => Implementation.Filter;
+			set => Implementation.Filter = value;
 		}
 
 		/// <inheritdoc />
 		public bool IncludeSubdirectories
 		{
-			get => _instance.IncludeSubdirectories;
-			set => _instance.IncludeSubdirectories = value;
+			get => Implementation.IncludeSubdirectories;
+			set => Implementation.IncludeSubdirectories = value;
 		}
 
 		/// <inheritdoc />
 		public int InternalBufferSize
 		{
-			get => _instance.InternalBufferSize;
-			set => _instance.InternalBufferSize = value;
+			get => Implementation.InternalBufferSize;
+			set => Implementation.InternalBufferSize = value;
 		}
 
 		/// <inheritdoc />
 		public NotifyFilters NotifyFilter
 		{
-			get => _instance.NotifyFilter;
-			set => _instance.NotifyFilter = value;
+			get => Implementation.NotifyFilter;
+			set => Implementation.NotifyFilter = value;
 		}
 
 		/// <inheritdoc />
 		public string Path
 		{
-			get => _instance.Path;
-			set => _instance.Path = value;
+			get => Implementation.Path;
+			set => Implementation.Path = value;
 		}
 
 		/// <inheritdoc />
 		public event FileSystemEventHandler Changed
 		{
-			add => _instance.Changed += value;
-			remove => _instance.Changed -= value;
+			add => Implementation.Changed += value;
+			remove => Implementation.Changed -= value;
 		}
 
 		/// <inheritdoc />
 		public event FileSystemEventHandler Created
 		{
-			add => _instance.Created += value;
-			remove => _instance.Created -= value;
+			add => Implementation.Created += value;
+			remove => Implementation.Created -= value;
 		}
 
 		/// <inheritdoc />
 		public event FileSystemEventHandler Deleted
 		{
-			add => _instance.Deleted += value;
-			remove => _instance.Deleted -= value;
+			add => Implementation.Deleted += value;
+			remove => Implementation.Deleted -= value;
 		}
 
 		/// <inheritdoc />
 		public event ErrorEventHandler Error
 		{
-			add => _instance.Error += value;
-			remove => _instance.Error -= value;
+			add => Implementation.Error += value;
+			remove => Implementation.Error -= value;
 		}
 
 		/// <inheritdoc />
 		public event RenamedEventHandler Renamed
 		{
-			add => _instance.Renamed += value;
-			remove => _instance.Renamed -= value;
+			add => Implementation.Renamed += value;
+			remove => Implementation.Renamed -= value;
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="FileSystemWatcherAdapter" /> class.</summary>
@@ -107,7 +100,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The <paramref name="path" /> parameter is an empty string ("").-or- The path specified through the <paramref name="path" /> parameter does not exist. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">
 		/// <paramref name="path" /> is too long.</exception>
-		public FileSystemWatcherAdapter(string path)
+		public FileSystemWatcherAdapter([NotNull] string path)
 			: this(new FileSystemWatcher(path))
 		{
 		}
@@ -119,7 +112,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The <paramref name="path" /> parameter is an empty string ("").-or- The path specified through the <paramref name="path" /> parameter does not exist. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">
 		/// <paramref name="path" /> is too long.</exception>
-		public FileSystemWatcherAdapter(string path, string filter)
+		public FileSystemWatcherAdapter([NotNull] string path, [NotNull] string filter)
 			: this(new FileSystemWatcher(path, filter))
 		{
 		}
@@ -128,28 +121,27 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="FileSystemWatcherAdapter" /> class.
 		/// </summary>
 		/// <param name="watcher">Watcher to be used by the adapter.</param>
-		public FileSystemWatcherAdapter(FileSystemWatcher watcher)
+		public FileSystemWatcherAdapter([NotNull] FileSystemWatcher watcher)
 			: base(watcher)
 		{
-			_instance = watcher ?? throw new ArgumentNullException(nameof(watcher));
 		}
 
 		/// <inheritdoc />
 		public WaitForChangedResult WaitForChanged(WatcherChangeTypes changeType)
 		{
-			return _instance.WaitForChanged(changeType);
+			return Implementation.WaitForChanged(changeType);
 		}
 
 		/// <inheritdoc />
 		public WaitForChangedResult WaitForChanged(WatcherChangeTypes changeType, int timeout)
 		{
-			return _instance.WaitForChanged(changeType, timeout);
+			return Implementation.WaitForChanged(changeType, timeout);
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			_instance.Dispose();
+			Implementation.Dispose();
 		}
 	}
 }

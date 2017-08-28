@@ -1,29 +1,37 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
 using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Represents a network endpoint as a host name or a string representation of an IP address and a port number.</summary>
 	public class DnsEndPointAdapter : EndPointAdapter, IDnsEndPoint
 	{
-		private readonly DnsEndPoint _endpoint;
+		/// <summary>
+		/// Implementation used by the adapter.
+		/// </summary>
+		[NotNull]
+		protected new DnsEndPoint Implementation { get; }
 
 		/// <inheritdoc />
+		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new DnsEndPoint UnsafeConvert()
 		{
-			return _endpoint;
+			return Implementation;
 		}
 
 		/// <inheritdoc />
-		public string Host => _endpoint.Host;
+		public string Host => Implementation.Host;
 
 		/// <inheritdoc />
-		public int Port => _endpoint.Port;
+		public int Port => Implementation.Port;
 
 		/// <summary>Initializes a new instance of the <see cref="DnsEndPointAdapter" /> class with the host name or string representation of an IP address and a port number.</summary>
 		/// <param name="host">The host name or a string representation of the IP address.</param>
@@ -32,7 +40,7 @@ namespace Thinktecture.Net.Adapters
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="host" /> parameter is a null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="port" /> is less than <see cref="F:System.Net.IPEndPoint.MinPort" />.-or- <paramref name="port" /> is greater than <see cref="F:System.Net.IPEndPoint.MaxPort" />. </exception>
-		public DnsEndPointAdapter(string host, int port)
+		public DnsEndPointAdapter([NotNull] string host, int port)
 			: this(new DnsEndPoint(host, port))
 		{
 		}
@@ -45,17 +53,17 @@ namespace Thinktecture.Net.Adapters
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="host" /> parameter is a null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="port" /> is less than <see cref="F:System.Net.IPEndPoint.MinPort" />.-or- <paramref name="port" /> is greater than <see cref="F:System.Net.IPEndPoint.MaxPort" />.</exception>
-		public DnsEndPointAdapter(string host, int port, AddressFamily addressFamily)
+		public DnsEndPointAdapter([NotNull] string host, int port, AddressFamily addressFamily)
 			: this(new DnsEndPoint(host, port, addressFamily))
 		{
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="DnsEndPointAdapter" /> class.</summary>
 		/// <param name="endpoint">Endpoint to be used by the adapter.</param>
-		public DnsEndPointAdapter(DnsEndPoint endpoint)
+		public DnsEndPointAdapter([NotNull] DnsEndPoint endpoint)
 			: base(endpoint)
 		{
-			_endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
+			Implementation = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 		}
 	}
 }

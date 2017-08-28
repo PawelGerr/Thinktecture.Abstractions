@@ -1,7 +1,8 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net;
 using System.Net.Sockets;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net
 {
@@ -23,7 +24,8 @@ namespace Thinktecture.Net
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
 		/// </PermissionSet>
-		IEndPoint Create(SocketAddress socketAddress);
+		[NotNull]
+		IEndPoint Create([NotNull] SocketAddress socketAddress);
 
 		/// <summary>Creates an <see cref="T:System.Net.EndPoint" /> instance from a <see cref="T:System.Net.SocketAddress" /> instance.</summary>
 		/// <returns>A new <see cref="T:System.Net.EndPoint" /> instance that is initialized from the specified <see cref="T:System.Net.SocketAddress" /> instance.</returns>
@@ -32,7 +34,8 @@ namespace Thinktecture.Net
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
 		/// </PermissionSet>
-		IEndPoint Create(ISocketAddress socketAddress);
+		[NotNull]
+		IEndPoint Create([NotNull] ISocketAddress socketAddress);
 
 		/// <summary>Serializes endpoint information into a <see cref="T:System.Net.SocketAddress" /> instance.</summary>
 		/// <returns>A <see cref="T:System.Net.SocketAddress" /> instance that contains the endpoint information.</returns>
@@ -40,6 +43,7 @@ namespace Thinktecture.Net
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
 		/// </PermissionSet>
+		[NotNull]
 		ISocketAddress Serialize();
 	}
 }

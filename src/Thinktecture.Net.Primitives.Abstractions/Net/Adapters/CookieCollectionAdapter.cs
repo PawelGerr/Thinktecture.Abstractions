@@ -1,34 +1,27 @@
 using System;
 using System.Collections;
-using System.ComponentModel;
 using System.Net;
 using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Provides a collection container for instances of the <see cref="T:System.Net.Cookie" /> class.</summary>
-	public class CookieCollectionAdapter : AbstractionAdapter, ICookieCollection
+	public class CookieCollectionAdapter : AbstractionAdapter<CookieCollection>, ICookieCollection
 	{
-		private readonly CookieCollection _collection;
+		/// <inheritdoc />
+		public int Count => Implementation.Count;
 
 		/// <inheritdoc />
-		public int Count => _collection.Count;
+		[NotNull]
+		public object SyncRoot => ((ICollection)Implementation).SyncRoot;
 
 		/// <inheritdoc />
-		public object SyncRoot => ((ICollection)_collection).SyncRoot;
+		public bool IsSynchronized => ((ICollection)Implementation).IsSynchronized;
 
 		/// <inheritdoc />
-		public bool IsSynchronized => ((ICollection)_collection).IsSynchronized;
-
-		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new CookieCollection UnsafeConvert()
-		{
-			return _collection;
-		}
-
-		/// <inheritdoc />
-		public ICookie this[string name] => _collection[name].ToInterface();
+		public ICookie this[string name] => Implementation[name].ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="CookieCollectionAdapter" /> class.</summary>
 		public CookieCollectionAdapter()
@@ -41,43 +34,43 @@ namespace Thinktecture.Net.Adapters
 		public CookieCollectionAdapter([NotNull] CookieCollection collection)
 			: base(collection)
 		{
-			_collection = collection ?? throw new ArgumentNullException(nameof(collection));
 		}
 
 		/// <inheritdoc />
 		public void Add(Cookie cookie)
 		{
-			_collection.Add(cookie);
+			Implementation.Add(cookie);
 		}
 
 		/// <inheritdoc />
 		public void Add(ICookie cookie)
 		{
-			_collection.Add(cookie.ToImplementation());
+			Implementation.Add(cookie.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public void Add(CookieCollection cookies)
 		{
-			_collection.Add(cookies);
+			Implementation.Add(cookies);
 		}
 
 		/// <inheritdoc />
 		public void Add(ICookieCollection cookies)
 		{
-			_collection.Add(cookies.ToImplementation());
+			Implementation.Add(cookies.ToImplementation());
 		}
 
 		/// <inheritdoc />
-		public void CopyTo(Array array, int index)
+		public void CopyTo([NotNull] Array array, int index)
 		{
-			((ICollection)_collection).CopyTo(array, index);
+			((ICollection)Implementation).CopyTo(array, index);
 		}
 
 		/// <inheritdoc />
+		[NotNull]
 		public IEnumerator GetEnumerator()
 		{
-			return _collection.GetEnumerator();
+			return Implementation.GetEnumerator();
 		}
 	}
 }

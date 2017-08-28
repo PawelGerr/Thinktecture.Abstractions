@@ -1,6 +1,7 @@
 #if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net;
+using JetBrains.Annotations;
 using Thinktecture.Net;
 using Thinktecture.Net.Adapters;
 
@@ -17,7 +18,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="address">Address to convert.</param>
 		/// <returns>Converted address.</returns>
-		public static ISocketAddress ToInterface(this SocketAddress address)
+		[CanBeNull]
+		public static ISocketAddress ToInterface([CanBeNull] this SocketAddress address)
 		{
 			return (address == null) ? null : new SocketAddressAdapter(address);
 		}

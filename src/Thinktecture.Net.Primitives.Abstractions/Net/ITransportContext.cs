@@ -1,7 +1,7 @@
-﻿#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
 
-using System.ComponentModel;
 using System.Net;
+using JetBrains.Annotations;
 using Thinktecture.Net.Adapters;
 #if NETSTANDARD1_3 || NET45 || NET46
 using System.Security.Authentication.ExtendedProtection;
@@ -21,6 +21,7 @@ namespace Thinktecture.Net
 		/// <param name="kind">The type of channel binding to retrieve.</param>
 		/// <exception cref="T:System.NotSupportedException">
 		/// <paramref name="kind" /> is must be <see cref="F:System.Security.Authentication.ExtendedProtection.ChannelBindingKind.Endpoint" /> for use with the <see cref="T:System.Net.TransportContext" /> retrieved from the <see cref="P:System.Net.HttpListenerRequest.TransportContext" /> property.</exception>
+		[CanBeNull]
 		IChannelBinding GetChannelBinding(ChannelBindingKind kind);
 #endif
 	}

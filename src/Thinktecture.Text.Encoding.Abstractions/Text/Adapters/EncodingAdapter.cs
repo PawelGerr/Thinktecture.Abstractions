@@ -1,27 +1,29 @@
-﻿using System;
-using System.ComponentModel;
+using System;
 using System.Text;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Text.Adapters
 {
 	/// <summary>
 	/// Adapter for <see cref="Encoding"/>.
 	/// </summary>
-	public class EncodingAdapter : AbstractionAdapter, IEncoding
+	public class EncodingAdapter : AbstractionAdapter<Encoding>, IEncoding
 	{
 		/// <summary>Gets an encoding for the UTF-16 format that uses the big endian byte order.</summary>
 		/// <returns>An encoding object for the UTF-16 format that uses the big endian byte order.</returns>
-		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		public static IEncoding BigEndianUnicode => Encoding.BigEndianUnicode.ToInterface();
 
 		/// <summary>Gets an encoding for the UTF-16 format using the little endian byte order.</summary>
 		/// <returns>An encoding for the UTF-16 format using the little endian byte order.</returns>
-		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		public static IEncoding Unicode => Encoding.Unicode.ToInterface();
 
 		/// <summary>Gets an encoding for the UTF-8 format.</summary>
 		/// <returns>An encoding for the UTF-8 format.</returns>
-		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		// ReSharper disable once InconsistentNaming
 		public static IEncoding UTF8 => Encoding.UTF8.ToInterface();
 
@@ -34,10 +36,10 @@ namespace Thinktecture.Text.Adapters
 		/// <paramref name="srcEncoding" /> is null.-or- <paramref name="dstEncoding" /> is null.-or- <paramref name="bytes" /> is null. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-srcEncoding.<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		public static byte[] Convert(IEncoding srcEncoding, IEncoding dstEncoding, byte[] bytes)
+		[NotNull]
+		public static byte[] Convert([NotNull] IEncoding srcEncoding, [NotNull] IEncoding dstEncoding, [NotNull] byte[] bytes)
 		{
-			return Encoding.Convert(srcEncoding.ToImplementation(), dstEncoding.ToImplementation(), bytes);
+			return Convert(srcEncoding.ToImplementation(), dstEncoding.ToImplementation(), bytes);
 		}
 
 		/// <summary>Converts an entire byte array from one encoding to another.</summary>
@@ -49,10 +51,10 @@ namespace Thinktecture.Text.Adapters
 		/// <paramref name="srcEncoding" /> is null.-or- <paramref name="dstEncoding" /> is null.-or- <paramref name="bytes" /> is null. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-srcEncoding.<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		public static byte[] Convert(IEncoding srcEncoding, Encoding dstEncoding, byte[] bytes)
+		[NotNull]
+		public static byte[] Convert([NotNull] IEncoding srcEncoding, [NotNull] Encoding dstEncoding, [NotNull] byte[] bytes)
 		{
-			return Encoding.Convert(srcEncoding.ToImplementation(), dstEncoding, bytes);
+			return Convert(srcEncoding.ToImplementation(), dstEncoding, bytes);
 		}
 
 		/// <summary>Converts an entire byte array from one encoding to another.</summary>
@@ -64,10 +66,10 @@ namespace Thinktecture.Text.Adapters
 		/// <paramref name="srcEncoding" /> is null.-or- <paramref name="dstEncoding" /> is null.-or- <paramref name="bytes" /> is null. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-srcEncoding.<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		public static byte[] Convert(Encoding srcEncoding, IEncoding dstEncoding, byte[] bytes)
+		[NotNull]
+		public static byte[] Convert([NotNull] Encoding srcEncoding, [NotNull] IEncoding dstEncoding, [NotNull] byte[] bytes)
 		{
-			return Encoding.Convert(srcEncoding, dstEncoding.ToImplementation(), bytes);
+			return Convert(srcEncoding, dstEncoding.ToImplementation(), bytes);
 		}
 
 		/// <summary>Converts an entire byte array from one encoding to another.</summary>
@@ -79,8 +81,8 @@ namespace Thinktecture.Text.Adapters
 		/// <paramref name="srcEncoding" /> is null.-or- <paramref name="dstEncoding" /> is null.-or- <paramref name="bytes" /> is null. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-srcEncoding.<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		public static byte[] Convert(Encoding srcEncoding, Encoding dstEncoding, byte[] bytes)
+		[NotNull]
+		public static byte[] Convert([NotNull] Encoding srcEncoding, [NotNull] Encoding dstEncoding, [NotNull] byte[] bytes)
 		{
 			return Encoding.Convert(srcEncoding, dstEncoding, bytes);
 		}
@@ -98,8 +100,8 @@ namespace Thinktecture.Text.Adapters
 		/// <paramref name="index" /> and <paramref name="count" /> do not specify a valid range in the byte array. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-srcEncoding.<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		public static byte[] Convert(IEncoding srcEncoding, IEncoding dstEncoding, byte[] bytes, int index, int count)
+		[NotNull]
+		public static byte[] Convert([NotNull] IEncoding srcEncoding, [NotNull] IEncoding dstEncoding, [NotNull] byte[] bytes, int index, int count)
 		{
 			return Encoding.Convert(srcEncoding.ToImplementation(), dstEncoding.ToImplementation(), bytes, index, count);
 		}
@@ -117,8 +119,8 @@ namespace Thinktecture.Text.Adapters
 		/// <paramref name="index" /> and <paramref name="count" /> do not specify a valid range in the byte array. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-srcEncoding.<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		public static byte[] Convert(IEncoding srcEncoding, Encoding dstEncoding, byte[] bytes, int index, int count)
+		[NotNull]
+		public static byte[] Convert([NotNull] IEncoding srcEncoding, [NotNull] Encoding dstEncoding, [NotNull] byte[] bytes, int index, int count)
 		{
 			return Encoding.Convert(srcEncoding.ToImplementation(), dstEncoding, bytes, index, count);
 		}
@@ -136,8 +138,8 @@ namespace Thinktecture.Text.Adapters
 		/// <paramref name="index" /> and <paramref name="count" /> do not specify a valid range in the byte array. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-srcEncoding.<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		public static byte[] Convert(Encoding srcEncoding, IEncoding dstEncoding, byte[] bytes, int index, int count)
+		[NotNull]
+		public static byte[] Convert([NotNull] Encoding srcEncoding, [NotNull] IEncoding dstEncoding, [NotNull] byte[] bytes, int index, int count)
 		{
 			return Encoding.Convert(srcEncoding, dstEncoding.ToImplementation(), bytes, index, count);
 		}
@@ -155,8 +157,8 @@ namespace Thinktecture.Text.Adapters
 		/// <paramref name="index" /> and <paramref name="count" /> do not specify a valid range in the byte array. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-srcEncoding.<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		public static byte[] Convert(Encoding srcEncoding, Encoding dstEncoding, byte[] bytes, int index, int count)
+		[NotNull]
+		public static byte[] Convert([NotNull] Encoding srcEncoding, [NotNull] Encoding dstEncoding, [NotNull] byte[] bytes, int index, int count)
 		{
 			return Encoding.Convert(srcEncoding, dstEncoding, bytes, index, count);
 		}
@@ -166,146 +168,136 @@ namespace Thinktecture.Text.Adapters
 		/// <param name="name">The code page name of the preferred encoding. Any value returned by the <see cref="P:System.Text.Encoding.WebName" /> property is valid. Possible values are listed in the Name column of the table that appears in the <see cref="T:System.Text.Encoding" /> class topic.</param>
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="name" /> is not a valid code page name.-or- The code page indicated by <paramref name="name" /> is not supported by the underlying platform. </exception>
-		/// <filterpriority>1</filterpriority>
-		public static IEncoding GetEncoding(string name)
+		[NotNull]
+		public static IEncoding GetEncoding([NotNull] string name)
 		{
 			return Encoding.GetEncoding(name).ToInterface();
 		}
 
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new Encoding UnsafeConvert()
-		{
-			return _instance;
-		}
-
-		private readonly Encoding _instance;
-
-		/// <inheritdoc />
-		public string WebName => _instance.WebName;
+		public string WebName => Implementation.WebName;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="EncodingAdapter" /> class.
 		/// </summary>
 		/// <param name="encoding">Encoding to be used by the adapter.</param>
-		public EncodingAdapter(Encoding encoding)
+		public EncodingAdapter([NotNull] Encoding encoding)
 			: base(encoding)
 		{
-			_instance = encoding ?? throw new ArgumentNullException(nameof(encoding));
 		}
 
 		/// <inheritdoc />
 		public int GetByteCount(char[] chars)
 		{
-			return _instance.GetByteCount(chars);
+			return Implementation.GetByteCount(chars);
 		}
 
 		/// <inheritdoc />
 		public int GetByteCount(char[] chars, int index, int count)
 		{
-			return _instance.GetByteCount(chars, index, count);
+			return Implementation.GetByteCount(chars, index, count);
 		}
 
 		/// <inheritdoc />
 		public int GetByteCount(string s)
 		{
-			return _instance.GetByteCount(s);
+			return Implementation.GetByteCount(s);
 		}
 
 		/// <inheritdoc />
 		public byte[] GetBytes(char[] chars)
 		{
-			return _instance.GetBytes(chars);
+			return Implementation.GetBytes(chars);
 		}
 
 		/// <inheritdoc />
 		public byte[] GetBytes(char[] chars, int index, int count)
 		{
-			return _instance.GetBytes(chars, index, count);
+			return Implementation.GetBytes(chars, index, count);
 		}
 
 		/// <inheritdoc />
 		public int GetBytes(char[] chars, int charIndex, int charCount, byte[] bytes, int byteIndex)
 		{
-			return _instance.GetBytes(chars, charIndex, charCount, bytes, byteIndex);
+			return Implementation.GetBytes(chars, charIndex, charCount, bytes, byteIndex);
 		}
 
 		/// <inheritdoc />
 		public byte[] GetBytes(string s)
 		{
-			return _instance.GetBytes(s);
+			return Implementation.GetBytes(s);
 		}
 
 		/// <inheritdoc />
 		public int GetBytes(string s, int charIndex, int charCount, byte[] bytes, int byteIndex)
 		{
-			return _instance.GetBytes(s, charIndex, charCount, bytes, byteIndex);
+			return Implementation.GetBytes(s, charIndex, charCount, bytes, byteIndex);
 		}
 
 		/// <inheritdoc />
 		public int GetCharCount(byte[] bytes)
 		{
-			return _instance.GetCharCount(bytes);
+			return Implementation.GetCharCount(bytes);
 		}
 
 		/// <inheritdoc />
 		public int GetCharCount(byte[] bytes, int index, int count)
 		{
-			return _instance.GetCharCount(bytes, index, count);
+			return Implementation.GetCharCount(bytes, index, count);
 		}
 
 		/// <inheritdoc />
 		public char[] GetChars(byte[] bytes)
 		{
-			return _instance.GetChars(bytes);
+			return Implementation.GetChars(bytes);
 		}
 
 		/// <inheritdoc />
 		public char[] GetChars(byte[] bytes, int index, int count)
 		{
-			return _instance.GetChars(bytes, index, count);
+			return Implementation.GetChars(bytes, index, count);
 		}
 
 		/// <inheritdoc />
 		public int GetChars(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex)
 		{
-			return _instance.GetChars(bytes, byteIndex, byteCount, chars, charIndex);
+			return Implementation.GetChars(bytes, byteIndex, byteCount, chars, charIndex);
 		}
 
 		/// <inheritdoc />
 		public IDecoder GetDecoder()
 		{
-			return _instance.GetDecoder().ToInterface();
+			return Implementation.GetDecoder().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IEncoder GetEncoder()
 		{
-			return _instance.GetEncoder().ToInterface();
+			return Implementation.GetEncoder().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public int GetMaxByteCount(int charCount)
 		{
-			return _instance.GetMaxByteCount(charCount);
+			return Implementation.GetMaxByteCount(charCount);
 		}
 
 		/// <inheritdoc />
 		public int GetMaxCharCount(int byteCount)
 		{
-			return _instance.GetMaxCharCount(byteCount);
+			return Implementation.GetMaxCharCount(byteCount);
 		}
 
 		/// <inheritdoc />
 		public byte[] GetPreamble()
 		{
-			return _instance.GetPreamble();
+			return Implementation.GetPreamble();
 		}
 
 		/// <inheritdoc />
 		public string GetString(byte[] bytes, int index, int count)
 		{
-			return _instance.GetString(bytes, index, count);
+			return Implementation.GetString(bytes, index, count);
 		}
 	}
 }

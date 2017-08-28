@@ -10,29 +10,24 @@ namespace Thinktecture.IO
 	/// <summary>
 	/// Represents a writer that can write a sequential series of characters. This class is abstract.
 	/// </summary>
-	/// <filterpriority>2</filterpriority>
 	public interface ITextWriter : IAbstraction<TextWriter>, IDisposable
 	{
 		/// <summary>When overridden in a derived class, returns the character encoding in which the output is written.</summary>
 		/// <returns>The character encoding in which the output is written.</returns>
-		/// <filterpriority>1</filterpriority>
 		[NotNull]
 		IEncoding Encoding { get; }
 
 		/// <summary>Gets an object that controls formatting.</summary>
 		/// <returns>An <see cref="T:System.IFormatProvider" /> object for a specific culture, or the formatting of the current culture if no other culture is specified.</returns>
-		/// <filterpriority>2</filterpriority>
 		[NotNull]
 		IFormatProvider FormatProvider { get; }
 
 		/// <summary>Gets or sets the line terminator string used by the current TextWriter.</summary>
 		/// <returns>The line terminator string for the current TextWriter.</returns>
-		/// <filterpriority>2</filterpriority>
 		[NotNull]
 		string NewLine { get; set; }
 
 		/// <summary>Clears all buffers for the current writer and causes any buffered data to be written to the underlying device.</summary>
-		/// <filterpriority>1</filterpriority>
 		void Flush();
 
 		/// <summary>Asynchronously clears all buffers for the current writer and causes any buffered data to be written to the underlying device. </summary>
@@ -46,21 +41,18 @@ namespace Thinktecture.IO
 		/// <param name="value">The Boolean value to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write(bool value);
 
 		/// <summary>Writes a character to the text string or stream.</summary>
 		/// <param name="value">The character to write to the text stream. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write(char value);
 
 		/// <summary>Writes a character array to the text string or stream.</summary>
 		/// <param name="buffer">The character array to write to the text stream. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write([NotNull] char[] buffer);
 
 		/// <summary>Writes a subarray of characters to the text string or stream.</summary>
@@ -73,56 +65,48 @@ namespace Thinktecture.IO
 		/// <paramref name="index" /> or <paramref name="count" /> is negative. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write([NotNull] char[] buffer, int index, int count);
 
 		/// <summary>Writes the text representation of a decimal value to the text string or stream.</summary>
 		/// <param name="value">The decimal value to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write(decimal value);
 
 		/// <summary>Writes the text representation of an 8-byte floating-point value to the text string or stream.</summary>
 		/// <param name="value">The 8-byte floating-point value to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write(double value);
 
 		/// <summary>Writes the text representation of a 4-byte signed integer to the text string or stream.</summary>
 		/// <param name="value">The 4-byte signed integer to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write(int value);
 
 		/// <summary>Writes the text representation of an 8-byte signed integer to the text string or stream.</summary>
 		/// <param name="value">The 8-byte signed integer to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write(long value);
 
 		/// <summary>Writes the text representation of an object to the text string or stream by calling the ToString method on that object.</summary>
 		/// <param name="value">The object to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write([CanBeNull] object value);
 
 		/// <summary>Writes the text representation of a 4-byte floating-point value to the text string or stream.</summary>
 		/// <param name="value">The 4-byte floating-point value to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write(float value);
 
 		/// <summary>Writes a string to the text string or stream.</summary>
 		/// <param name="value">The string to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write([CanBeNull] string value);
 
 		/// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object[])" /> method.</summary>
@@ -134,21 +118,18 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.FormatException">
 		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the length of the <paramref name="arg" /> array. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write([NotNull] string format, [NotNull] params object[] arg);
 
 		/// <summary>Writes the text representation of a 4-byte unsigned integer to the text string or stream.</summary>
 		/// <param name="value">The 4-byte unsigned integer to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write(uint value);
 
 		/// <summary>Writes the text representation of an 8-byte unsigned integer to the text string or stream.</summary>
 		/// <param name="value">The 8-byte unsigned integer to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Write(ulong value);
 
 		/// <summary>Writes a character to the text string or stream asynchronously.</summary>
@@ -193,28 +174,24 @@ namespace Thinktecture.IO
 		/// <summary>Writes a line terminator to the text string or stream.</summary>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine();
 
 		/// <summary>Writes the text representation of a Boolean value followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The Boolean value to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine(bool value);
 
 		/// <summary>Writes a character followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The character to write to the text stream. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine(char value);
 
 		/// <summary>Writes an array of characters followed by a line terminator to the text string or stream.</summary>
 		/// <param name="buffer">The character array from which data is read. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine([NotNull] char[] buffer);
 
 		/// <summary>Writes a subarray of characters followed by a line terminator to the text string or stream.</summary>
@@ -227,56 +204,48 @@ namespace Thinktecture.IO
 		/// <paramref name="index" /> or <paramref name="count" /> is negative. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine([NotNull] char[] buffer, int index, int count);
 
 		/// <summary>Writes the text representation of a decimal value followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The decimal value to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine(decimal value);
 
 		/// <summary>Writes the text representation of a 8-byte floating-point value followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The 8-byte floating-point value to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine(double value);
 
 		/// <summary>Writes the text representation of a 4-byte signed integer followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The 4-byte signed integer to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine(int value);
 
 		/// <summary>Writes the text representation of an 8-byte signed integer followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The 8-byte signed integer to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine(long value);
 
 		/// <summary>Writes the text representation of an object by calling the ToString method on that object, followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The object to write. If <paramref name="value" /> is null, only the line terminator is written. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine([CanBeNull] object value);
 
 		/// <summary>Writes the text representation of a 4-byte floating-point value followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The 4-byte floating-point value to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine(float value);
 
 		/// <summary>Writes a string followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The string to write. If <paramref name="value" /> is null, only the line terminator is written. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine([CanBeNull] string value);
 
 		/// <summary>Writes out a formatted string and a new line, using the same semantics as <see cref="M:System.String.Format(System.String,System.Object)" />.</summary>
@@ -287,21 +256,18 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.FormatException">
 		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the length of the <paramref name="arg" /> array. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine([NotNull] string format, [NotNull] params object[] arg);
 
 		/// <summary>Writes the text representation of a 4-byte unsigned integer followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The 4-byte unsigned integer to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine(uint value);
 
 		/// <summary>Writes the text representation of an 8-byte unsigned integer followed by a line terminator to the text string or stream.</summary>
 		/// <param name="value">The 8-byte unsigned integer to write. </param>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		/// <filterpriority>1</filterpriority>
 		void WriteLine(ulong value);
 
 		/// <summary>Writes a line terminator asynchronously to the text string or stream.</summary>

@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Net;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net
 {
@@ -8,10 +9,12 @@ namespace Thinktecture.Net
 	{
 		/// <summary>Gets or sets a comment that the server can add to a <see cref="T:System.Net.Cookie" />.</summary>
 		/// <returns>An optional comment to document intended usage for this <see cref="T:System.Net.Cookie" />.</returns>
-		string Comment { get; set; }
+		[CanBeNull]
+		string Comment { [NotNull] get; [CanBeNull] set; }
 
 		/// <summary>Gets or sets a URI comment that the server can provide with a <see cref="T:System.Net.Cookie" />.</summary>
 		/// <returns>An optional comment that represents the intended usage of the URI reference for this <see cref="T:System.Net.Cookie" />. The value must conform to URI format.</returns>
+		[CanBeNull]
 		Uri CommentUri { get; set; }
 
 		/// <summary>Gets or sets the discard flag set by the server.</summary>
@@ -20,7 +23,8 @@ namespace Thinktecture.Net
 
 		/// <summary>Gets or sets the URI for which the <see cref="T:System.Net.Cookie" /> is valid.</summary>
 		/// <returns>The URI for which the <see cref="T:System.Net.Cookie" /> is valid.</returns>
-		string Domain { get; set; }
+		[CanBeNull]
+		string Domain { [NotNull] get; [CanBeNull] set; }
 
 		/// <summary>Gets or sets the current state of the <see cref="T:System.Net.Cookie" />.</summary>
 		/// <returns>true if the <see cref="T:System.Net.Cookie" /> has expired; otherwise, false. The default is false.</returns>
@@ -37,16 +41,19 @@ namespace Thinktecture.Net
 		/// <summary>Gets or sets the name for the <see cref="T:System.Net.Cookie" />.</summary>
 		/// <returns>The name for the <see cref="T:System.Net.Cookie" />.</returns>
 		/// <exception cref="T:System.Net.CookieException">The value specified for a set operation is null or the empty string- or -The value specified for a set operation contained an illegal character. The following characters must not be used inside the <see cref="P:System.Net.Cookie.Name" /> property: equal sign, semicolon, comma, newline (\n), return (\r), tab (\t), and space character. The dollar sign character ("$") cannot be the first character.</exception>
+		[NotNull]
 		string Name { get; set; }
 
 		/// <summary>Gets or sets the URIs to which the <see cref="T:System.Net.Cookie" /> applies.</summary>
 		/// <returns>The URIs to which the <see cref="T:System.Net.Cookie" /> applies.</returns>
-		string Path { get; set; }
+		[CanBeNull]
+		string Path { [NotNull] get; [CanBeNull] set; }
 
 		/// <summary>Gets or sets a list of TCP ports that the <see cref="T:System.Net.Cookie" /> applies to.</summary>
 		/// <returns>The list of TCP ports that the <see cref="T:System.Net.Cookie" /> applies to.</returns>
 		/// <exception cref="T:System.Net.CookieException">The value specified for a set operation could not be parsed or is not enclosed in double quotes. </exception>
-		string Port { get; set; }
+		[CanBeNull]
+		string Port { [NotNull] get; [CanBeNull] set; }
 
 		/// <summary>Gets or sets the security level of a <see cref="T:System.Net.Cookie" />.</summary>
 		/// <returns>true if the client is only to return the cookie in subsequent requests if those requests use Secure Hypertext Transfer Protocol (HTTPS); otherwise, false. The default is false.</returns>
@@ -58,7 +65,8 @@ namespace Thinktecture.Net
 
 		/// <summary>Gets or sets the <see cref="P:System.Net.Cookie.Value" /> for the <see cref="T:System.Net.Cookie" />.</summary>
 		/// <returns>The <see cref="P:System.Net.Cookie.Value" /> for the <see cref="T:System.Net.Cookie" />.</returns>
-		string Value { get; set; }
+		[CanBeNull]
+		string Value { [NotNull] get; [CanBeNull] set; }
 
 		/// <summary>Gets or sets the version of HTTP state maintenance to which the cookie conforms.</summary>
 		/// <returns>The version of HTTP state maintenance to which the cookie conforms.</returns>

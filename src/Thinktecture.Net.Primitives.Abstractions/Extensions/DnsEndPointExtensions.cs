@@ -1,6 +1,7 @@
 #if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net;
+using JetBrains.Annotations;
 using Thinktecture.Net;
 using Thinktecture.Net.Adapters;
 
@@ -17,7 +18,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="endPoint">Endpoint to convert.</param>
 		/// <returns>Converted endpoint.</returns>
-		public static IDnsEndPoint ToInterface(this DnsEndPoint endPoint)
+		[CanBeNull]
+		public static IDnsEndPoint ToInterface([CanBeNull] this DnsEndPoint endPoint)
 		{
 			return (endPoint == null) ? null : new DnsEndPointAdapter(endPoint);
 		}
@@ -27,9 +29,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IDnsEndPoint"/> to convert.</param>
 		/// <returns>An instance of <see cref="DnsEndPoint"/>.</returns>
-		public static DnsEndPoint ToImplementation(this IDnsEndPoint abstraction)
+		[CanBeNull]
+		public static DnsEndPoint ToImplementation([CanBeNull] this IDnsEndPoint abstraction)
 		{
-			return ((IAbstraction<DnsEndPoint>) abstraction)?.UnsafeConvert();
+			return ((IAbstraction<DnsEndPoint>)abstraction)?.UnsafeConvert();
 		}
 	}
 }

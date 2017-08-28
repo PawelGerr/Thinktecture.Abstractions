@@ -1,7 +1,8 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net;
 using System.Net.Sockets;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net
 {
@@ -42,14 +43,17 @@ namespace Thinktecture.Net
 
 		/// <summary>Provides a copy of the <see cref="T:System.Net.IPAddress" /> as an array of bytes.</summary>
 		/// <returns>A <see cref="T:System.Byte" /> array.</returns>
+		[NotNull]
 		byte[] GetAddressBytes();
 
 		/// <summary>Maps the <see cref="T:System.Net.IPAddress" /> object to an IPv4 address.</summary>
 		/// <returns>Returns <see cref="T:System.Net.IPAddress" />.An IPv4 address.</returns>
+		[NotNull]
 		IIPAddress MapToIPv4();
 
 		/// <summary>Maps the <see cref="T:System.Net.IPAddress" /> object to an IPv6 address.</summary>
 		/// <returns>Returns <see cref="T:System.Net.IPAddress" />.An IPv6 address.</returns>
+		[NotNull]
 		IIPAddress MapToIPv6();
 	}
 }

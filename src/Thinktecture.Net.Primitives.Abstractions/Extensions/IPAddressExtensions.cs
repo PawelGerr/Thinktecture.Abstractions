@@ -1,6 +1,7 @@
 #if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net;
+using JetBrains.Annotations;
 using Thinktecture.Net;
 using Thinktecture.Net.Adapters;
 
@@ -18,7 +19,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="address">Address to convert.</param>
 		/// <returns>Converted address.</returns>
-		public static IIPAddress ToInterface(this IPAddress address)
+		[CanBeNull]
+		public static IIPAddress ToInterface([CanBeNull] this IPAddress address)
 		{
 			return (address == null) ? null : new IPAddressAdapter(address);
 		}

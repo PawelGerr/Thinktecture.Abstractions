@@ -9,34 +9,28 @@ namespace Thinktecture.IO
 	/// <summary>
 	/// Provides a generic view of a sequence of bytes. This is an abstract class.To browse the .NET Framework source code for this type, see the Reference Source.
 	/// </summary>
-	/// <filterpriority>2</filterpriority>
 	public interface IStream : IAbstraction<Stream>, IDisposable
 	{
 		/// <summary>Gets a value indicating whether the current stream supports reading.</summary>
 		/// <returns>true if the stream supports reading; otherwise, false.</returns>
-		/// <filterpriority>1</filterpriority>
 		bool CanRead { get; }
 
 		/// <summary>Gets a value indicating whether the current stream supports seeking.</summary>
 		/// <returns>true if the stream supports seeking; otherwise, false.</returns>
-		/// <filterpriority>1</filterpriority>
 		bool CanSeek { get; }
 
 		/// <summary>Gets a value that determines whether the current stream can time out.</summary>
 		/// <returns>A value that determines whether the current stream can time out.</returns>
-		/// <filterpriority>2</filterpriority>
 		bool CanTimeout { get; }
 
 		/// <summary>Gets a value indicating whether the current stream supports writing.</summary>
 		/// <returns>true if the stream supports writing; otherwise, false.</returns>
-		/// <filterpriority>1</filterpriority>
 		bool CanWrite { get; }
 
 		/// <summary>Gets the length in bytes of the stream.</summary>
 		/// <returns>A long value representing the length of the stream in bytes.</returns>
 		/// <exception cref="T:System.NotSupportedException">A class derived from Stream does not support seeking. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
-		/// <filterpriority>1</filterpriority>
 		long Length { get; }
 
 		/// <summary>Gets or sets the current position of this stream.</summary>
@@ -45,19 +39,16 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The stream does not support seeking. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">Attempted to set the position to a negative value. </exception>
-		/// <filterpriority>1</filterpriority>
 		long Position { get; set; }
 
 		/// <summary>Gets or sets a value, in miliseconds, that determines how long the stream will attempt to read before timing out. </summary>
 		/// <returns>A value, in miliseconds, that determines how long the stream will attempt to read before timing out.</returns>
 		/// <exception cref="T:System.InvalidOperationException">The <see cref="P:System.IO.Stream.ReadTimeout" /> method always throws an <see cref="T:System.InvalidOperationException" />. </exception>
-		/// <filterpriority>2</filterpriority>
 		int ReadTimeout { get; set; }
 
 		/// <summary>Gets or sets a value, in miliseconds, that determines how long the stream will attempt to write before timing out. </summary>
 		/// <returns>A value, in miliseconds, that determines how long the stream will attempt to write before timing out.</returns>
 		/// <exception cref="T:System.InvalidOperationException">The <see cref="P:System.IO.Stream.WriteTimeout" /> method always throws an <see cref="T:System.InvalidOperationException" />. </exception>
-		/// <filterpriority>2</filterpriority>
 		int WriteTimeout { get; set; }
 
 		/// <summary>Reads the bytes from the current stream and writes them to another stream.</summary>
@@ -179,7 +170,6 @@ namespace Thinktecture.IO
 		/// <summary>Clears all buffers for this stream and causes any buffered data to be written to the underlying device.</summary>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Flush();
 
 		/// <summary>Asynchronously clears all buffers for this stream and causes any buffered data to be written to the underlying device.</summary>
@@ -208,7 +198,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.NotSupportedException">The stream does not support reading. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
-		/// <filterpriority>1</filterpriority>
 		int Read([NotNull] byte[] buffer, int offset, int count);
 
 #pragma warning disable 1584, 1734
@@ -252,7 +241,6 @@ namespace Thinktecture.IO
 		/// <returns>The unsigned byte cast to an Int32, or -1 if at the end of the stream.</returns>
 		/// <exception cref="T:System.NotSupportedException">The stream does not support reading. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
-		/// <filterpriority>2</filterpriority>
 		int ReadByte();
 
 		/// <summary>Sets the current position of this stream to the given value.</summary>
@@ -262,7 +250,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.NotSupportedException">The stream does not support seeking, such as if the stream is constructed from a pipe or console output. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
-		/// <filterpriority>1</filterpriority>
 		long Seek(long offset, SeekOrigin origin);
 
 		/// <summary>Sets the length of this stream to the given value.</summary>
@@ -270,7 +257,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.NotSupportedException">The stream does not support both writing and seeking, such as if the stream is constructed from a pipe or console output. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
-		/// <filterpriority>2</filterpriority>
 		void SetLength(long value);
 
 		/// <summary>Writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.</summary>
@@ -286,7 +272,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The stream does not support writing.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">
 		/// <see cref="M:System.IO.Stream.Write(System.Byte[],System.Int32,System.Int32)" /> was called after the stream was closed.</exception>
-		/// <filterpriority>1</filterpriority>
 		void Write([NotNull] byte[] buffer, int offset, int count);
 
 		/// <summary>Asynchronously writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.</summary>
@@ -327,7 +312,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.NotSupportedException">The stream does not support writing, or the stream is already closed. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
-		/// <filterpriority>2</filterpriority>
 		void WriteByte(byte value);
 	}
 }

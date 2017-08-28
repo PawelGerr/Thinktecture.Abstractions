@@ -7,7 +7,6 @@ namespace Thinktecture.IO
 	/// <summary>
 	/// Provides the base class for both <see cref="T:System.IO.FileInfo" /> and <see cref="T:System.IO.DirectoryInfo" /> objects.
 	/// </summary>
-	/// <filterpriority>2</filterpriority>
 	public interface IFileSystemInfo : IAbstraction<FileSystemInfo>
 	{
 		/// <summary>Gets or sets the attributes for the current file or directory.</summary>
@@ -19,7 +18,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentException">The caller attempts to set an invalid file attribute. -or-The user attempts to set an attribute value but does not have write permission.</exception>
 		/// <exception cref="T:System.IO.IOException">
 		/// <see cref="M:System.IO.FileSystemInfo.Refresh" /> cannot initialize the data. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -32,7 +30,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid; for example, it is on an unmapped drive.</exception>
 		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The caller attempts to set an invalid creation time.</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -45,7 +42,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid; for example, it is on an unmapped drive.</exception>
 		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The caller attempts to set an invalid access time.</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -53,12 +49,10 @@ namespace Thinktecture.IO
 
 		/// <summary>Gets a value indicating whether the file or directory exists.</summary>
 		/// <returns>true if the file or directory exists; otherwise, false.</returns>
-		/// <filterpriority>1</filterpriority>
 		bool Exists { get; }
 
 		/// <summary>Gets the string representing the extension part of the file.</summary>
 		/// <returns>A string containing the <see cref="T:System.IO.FileSystemInfo" /> extension.</returns>
-		/// <filterpriority>1</filterpriority>
 		[NotNull]
 		string Extension { get; }
 
@@ -66,7 +60,6 @@ namespace Thinktecture.IO
 		/// <returns>A string containing the full path.</returns>
 		/// <exception cref="T:System.IO.PathTooLongException">The fully qualified path and file name is 260 or more characters.</exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -79,7 +72,6 @@ namespace Thinktecture.IO
 		/// <see cref="M:System.IO.FileSystemInfo.Refresh" /> cannot initialize the data. </exception>
 		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The caller attempts to set an invalid access time</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -91,7 +83,6 @@ namespace Thinktecture.IO
 		/// <see cref="M:System.IO.FileSystemInfo.Refresh" /> cannot initialize the data. </exception>
 		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The caller attempts to set an invalid access time.</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -103,7 +94,6 @@ namespace Thinktecture.IO
 		/// <see cref="M:System.IO.FileSystemInfo.Refresh" /> cannot initialize the data. </exception>
 		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The caller attempts to set an invalid write time.</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -115,7 +105,6 @@ namespace Thinktecture.IO
 		/// <see cref="M:System.IO.FileSystemInfo.Refresh" /> cannot initialize the data. </exception>
 		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The caller attempts to set an invalid write time.</exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -123,19 +112,16 @@ namespace Thinktecture.IO
 
 		/// <summary>For files, gets the name of the file. For directories, gets the name of the last directory in the hierarchy if a hierarchy exists. Otherwise, the Name property gets the name of the directory.</summary>
 		/// <returns>A string that is the name of the parent directory, the name of the last directory in the hierarchy, or the name of a file, including the file name extension.</returns>
-		/// <filterpriority>1</filterpriority>
 		[NotNull]
 		string Name { get; }
 
 		/// <summary>Deletes a file or directory.</summary>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid; for example, it is on an unmapped drive.</exception>
 		/// <exception cref="T:System.IO.IOException">There is an open handle on the file or directory, and the operating system is Windows XP or earlier. This open handle can result from enumerating directories and files. For more information, see How to: Enumerate Directories and Files.</exception>
-		/// <filterpriority>2</filterpriority>
 		void Delete();
 
 		/// <summary>Refreshes the state of the object.</summary>
 		/// <exception cref="T:System.IO.IOException">A device such as a disk drive is not ready. </exception>
-		/// <filterpriority>1</filterpriority>
 		void Refresh();
 	}
 }

@@ -1,6 +1,7 @@
 #if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
 using Thinktecture.Net.NetworkInformation;
 using Thinktecture.Net.NetworkInformation.Adapters;
 
@@ -18,7 +19,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="collection">Collection to convert.</param>
 		/// <returns>Converted collection.</returns>
-		public static IIPAddressCollection ToInterface(this IPAddressCollection collection)
+		[CanBeNull]
+		public static IIPAddressCollection ToInterface([CanBeNull] this IPAddressCollection collection)
 		{
 			return (collection == null) ? null : new IPAddressCollectionAdapter(collection);
 		}

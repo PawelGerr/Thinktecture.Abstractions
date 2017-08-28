@@ -1,22 +1,13 @@
-﻿using System;
-using System.ComponentModel;
+using System;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Adapters
 {
 	/// <summary>
 	/// Adapter for <see cref="Random"/>.
 	/// </summary>
-	public class RandomAdapter : AbstractionAdapter, IRandom
+	public class RandomAdapter : AbstractionAdapter<Random>, IRandom
 	{
-		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new Random UnsafeConvert()
-		{
-			return _instance;
-		}
-
-		private readonly Random _instance;
-
 		/// <summary>Initializes a new instance of the <see cref="RandomAdapter" /> class, using a time-dependent default seed value.</summary>
 		public RandomAdapter()
 			: this(new Random())
@@ -34,40 +25,39 @@ namespace Thinktecture.Adapters
 		/// Initializes a new instance of the <see cref="RandomAdapter" /> class.
 		/// </summary>
 		/// <param name="random">Random to be used by the adapter.</param>
-		public RandomAdapter(Random random)
+		public RandomAdapter([NotNull] Random random)
 			: base(random)
 		{
-			_instance = random ?? throw new ArgumentNullException(nameof(random));
 		}
 
 		/// <inheritdoc />
 		public int Next()
 		{
-			return _instance.Next();
+			return Implementation.Next();
 		}
 
 		/// <inheritdoc />
 		public int Next(int maxValue)
 		{
-			return _instance.Next(maxValue);
+			return Implementation.Next(maxValue);
 		}
 
 		/// <inheritdoc />
 		public int Next(int minValue, int maxValue)
 		{
-			return _instance.Next(minValue, maxValue);
+			return Implementation.Next(minValue, maxValue);
 		}
 
 		/// <inheritdoc />
 		public void NextBytes(byte[] buffer)
 		{
-			_instance.NextBytes(buffer);
+			Implementation.NextBytes(buffer);
 		}
 
 		/// <inheritdoc />
 		public double NextDouble()
 		{
-			return _instance.NextDouble();
+			return Implementation.NextDouble();
 		}
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
@@ -564,7 +564,7 @@ namespace Thinktecture.Net.Sockets
 		/// </summary>
 		/// <param name="e">The System.Net.Sockets.SocketAsyncEventArgs object to use for this asynchronous socket operation.</param>
 		/// <returns>
-		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation. 
+		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation.
 		/// Returns false if the I/O operation completed synchronously.In this case, The SocketAsyncEventArgs.Completed event on the e parameter will not be raised and the e object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.
 		/// </returns>
 		bool ReceiveMessageFromAsync(SocketAsyncEventArgs e);
@@ -574,7 +574,7 @@ namespace Thinktecture.Net.Sockets
 		/// </summary>
 		/// <param name="e">The System.Net.Sockets.SocketAsyncEventArgs object to use for this asynchronous socket operation.</param>
 		/// <returns>
-		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation. 
+		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation.
 		/// Returns false if the I/O operation completed synchronously.In this case, The SocketAsyncEventArgs.Completed event on the e parameter will not be raised and the e object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.
 		/// </returns>
 		bool ReceiveMessageFromAsync(ISocketAsyncEventArgs e);
@@ -673,7 +673,7 @@ namespace Thinktecture.Net.Sockets
 		/// </summary>
 		/// <param name="e">The System.Net.Sockets.SocketAsyncEventArgs object to use for this asynchronous socket operation.</param>
 		/// <returns>
-		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation. 
+		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation.
 		/// Returns false if the I/O operation completed synchronously.In this case, The SocketAsyncEventArgs.Completed event on the e parameter will not be raised and the e object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.
 		/// </returns>
 		bool SendPacketsAsync(SocketAsyncEventArgs e);
@@ -683,7 +683,7 @@ namespace Thinktecture.Net.Sockets
 		/// </summary>
 		/// <param name="e">The System.Net.Sockets.SocketAsyncEventArgs object to use for this asynchronous socket operation.</param>
 		/// <returns>
-		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation. 
+		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation.
 		/// Returns false if the I/O operation completed synchronously.In this case, The SocketAsyncEventArgs.Completed event on the e parameter will not be raised and the e object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.
 		/// </returns>
 		bool SendPacketsAsync(ISocketAsyncEventArgs e);

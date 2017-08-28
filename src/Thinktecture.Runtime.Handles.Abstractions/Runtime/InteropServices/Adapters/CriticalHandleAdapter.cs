@@ -1,49 +1,39 @@
-﻿using System;
-using System.ComponentModel;
+using System;
 using System.Runtime.InteropServices;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Runtime.InteropServices.Adapters
 {
 	/// <summary>
 	/// Adapter for <see cref="CriticalHandle"/>.
 	/// </summary>
-	public class CriticalHandleAdapter : AbstractionAdapter, ICriticalHandle
+	public class CriticalHandleAdapter : AbstractionAdapter<CriticalHandle>, ICriticalHandle
 	{
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new CriticalHandle UnsafeConvert()
-		{
-			return _instance;
-		}
-
-		private readonly CriticalHandle _instance;
+		public bool IsClosed => Implementation.IsClosed;
 
 		/// <inheritdoc />
-		public bool IsClosed => _instance.IsClosed;
-
-		/// <inheritdoc />
-		public bool IsInvalid => _instance.IsInvalid;
+		public bool IsInvalid => Implementation.IsInvalid;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CriticalHandleAdapter"/> class.
 		/// </summary>
 		/// <param name="handle">Handle to be used by the adapter.</param>
-		public CriticalHandleAdapter(CriticalHandle handle)
+		public CriticalHandleAdapter([NotNull] CriticalHandle handle)
 			: base(handle)
 		{
-			_instance = handle ?? throw new ArgumentNullException(nameof(handle));
 		}
 
 		/// <inheritdoc />
 		public void SetHandleAsInvalid()
 		{
-			_instance.SetHandleAsInvalid();
+			Implementation.SetHandleAsInvalid();
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			_instance.Dispose();
+			Implementation.Dispose();
 		}
 	}
 }

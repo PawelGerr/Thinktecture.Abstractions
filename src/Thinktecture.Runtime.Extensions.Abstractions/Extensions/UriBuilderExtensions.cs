@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using JetBrains.Annotations;
 using Thinktecture.Adapters;
 
 // ReSharper disable once CheckNamespace
@@ -14,7 +15,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="builder">Instance of <see cref="UriBuilder"/> to convert.</param>
 		/// <returns>An instance of <see cref="IUriBuilder"/>.</returns>
-		public static IUriBuilder ToInterface(this UriBuilder builder)
+		[CanBeNull]
+		public static IUriBuilder ToInterface([CanBeNull] this UriBuilder builder)
 		{
 			return (builder == null) ? null : new UriBuilderAdapter(builder);
 		}

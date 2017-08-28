@@ -1,4 +1,6 @@
-﻿using System.Net;
+using System.Net;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Adapters
 {

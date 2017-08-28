@@ -6,7 +6,6 @@ namespace Thinktecture.IO
 	/// <summary>
 	/// Provides properties and instance methods for the creation, copying, deletion, moving, and opening of files, and aids in the creation of <see cref="T:System.IO.FileStream" /> objects. This class cannot be inherited.To browse the .NET Framework source code for this type, see the Reference Source.
 	/// </summary>
-	/// <filterpriority>1</filterpriority>
 	// ReSharper disable once PossibleInterfaceMemberAmbiguity
 	public interface IFileInfo : IFileSystemInfo, IAbstraction<FileInfo>
 	{
@@ -14,7 +13,6 @@ namespace Thinktecture.IO
 		/// <returns>A <see cref="T:System.IO.DirectoryInfo" /> object representing the parent directory of this file.</returns>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive. </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -26,7 +24,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentNullException">null was passed in for the directory name. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The fully qualified path is 260 or more characters.</exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -39,7 +36,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file.</exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">This operation is not supported on the current platform.-or- The caller does not have the required permission.</exception>
 		/// <exception cref="T:System.ArgumentException">The user does not have write permission, but attempted to set this property to false.</exception>
-		/// <filterpriority>1</filterpriority>
 		bool IsReadOnly { get; set; }
 
 		/// <summary>Gets the size, in bytes, of the current file.</summary>
@@ -47,12 +43,10 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">
 		/// <see cref="M:System.IO.FileSystemInfo.Refresh" /> cannot update the state of the file or directory. </exception>
 		/// <exception cref="T:System.IO.FileNotFoundException">The file does not exist.-or- The Length property is called for a directory. </exception>
-		/// <filterpriority>1</filterpriority>
 		long Length { get; }
 
 		/// <summary>Creates a <see cref="T:System.IO.StreamWriter" /> that appends text to the file represented by this instance of the <see cref="T:System.IO.FileInfo" />.</summary>
 		/// <returns>A new StreamWriter.</returns>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -73,7 +67,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.NotSupportedException">
 		/// <paramref name="destFileName" /> contains a colon (:) within the string but does not specify the volume. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -95,7 +88,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.NotSupportedException">
 		/// <paramref name="destFileName" /> contains a colon (:) in the middle of the string. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -104,7 +96,6 @@ namespace Thinktecture.IO
 
 		/// <summary>Creates a file.</summary>
 		/// <returns>A new file.</returns>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -116,7 +107,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.UnauthorizedAccessException">The file name is a directory. </exception>
 		/// <exception cref="T:System.IO.IOException">The disk is read-only. </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -138,7 +128,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.NotSupportedException">
 		/// <paramref name="destFileName" /> contains a colon (:) in the middle of the string. </exception>
-		/// <filterpriority>1</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -151,7 +140,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.UnauthorizedAccessException">The file is read-only or is a directory. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive. </exception>
 		/// <exception cref="T:System.IO.IOException">The file is already open. </exception>
-		/// <filterpriority>2</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -169,7 +157,6 @@ namespace Thinktecture.IO
 		/// <paramref name="path" /> is read-only or is a directory. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive. </exception>
 		/// <exception cref="T:System.IO.IOException">The file is already open. </exception>
-		/// <filterpriority>2</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -189,7 +176,6 @@ namespace Thinktecture.IO
 		/// <paramref name="path" /> is read-only or is a directory. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive. </exception>
 		/// <exception cref="T:System.IO.IOException">The file is already open. </exception>
-		/// <filterpriority>2</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -202,7 +188,6 @@ namespace Thinktecture.IO
 		/// <paramref name="path" /> is read-only or is a directory. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive. </exception>
 		/// <exception cref="T:System.IO.IOException">The file is already open. </exception>
-		/// <filterpriority>2</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -216,7 +201,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.UnauthorizedAccessException">
 		/// <paramref name="path" /> is read-only or is a directory. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive. </exception>
-		/// <filterpriority>2</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
@@ -228,7 +212,6 @@ namespace Thinktecture.IO
 		/// <returns>A write-only unshared <see cref="T:System.IO.FileStream" /> object for a new or existing file.</returns>
 		/// <exception cref="T:System.UnauthorizedAccessException">The path specified when creating an instance of the <see cref="T:System.IO.FileInfo" /> object is read-only or is a directory.  </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path specified when creating an instance of the <see cref="T:System.IO.FileInfo" /> object is invalid, such as being on an unmapped drive. </exception>
-		/// <filterpriority>2</filterpriority>
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>

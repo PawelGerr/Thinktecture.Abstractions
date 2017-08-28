@@ -1,6 +1,7 @@
 #if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net
 {
@@ -10,6 +11,7 @@ namespace Thinktecture.Net
 	{
 		/// <summary>Gets or sets the IP address of the endpoint.</summary>
 		/// <returns>An <see cref="T:System.Net.IPAddress" /> instance containing the IP address of the endpoint.</returns>
+		[CanBeNull]
 		IIPAddress Address { get; set; }
 
 		/// <summary>Gets or sets the port number of the endpoint.</summary>

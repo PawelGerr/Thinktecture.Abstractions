@@ -1,18 +1,18 @@
 #if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
-using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Provides an Internet Protocol (IP) address.</summary>
 	// ReSharper disable once InconsistentNaming
-	public class IPAddressAdapter : AbstractionAdapter, IIPAddress
+	public class IPAddressAdapter : AbstractionAdapter<IPAddress>, IIPAddress
 	{
-		private readonly IPAddress _address;
-
 		/// <summary>Provides an IP address that indicates that the server must listen for client activity on all network interfaces. This field is read-only.</summary>
 		public static readonly IIPAddress Any = IPAddress.Any.ToInterface();
 
@@ -64,7 +64,7 @@ namespace Thinktecture.Net.Adapters
 		/// <summary>Indicates whether the specified IP address is the loopback address.</summary>
 		/// <returns>true if <paramref name="address" /> is the loopback address; otherwise, false.</returns>
 		/// <param name="address">An IP address. </param>
-		public static bool IsLoopback(IPAddress address)
+		public static bool IsLoopback([NotNull] IPAddress address)
 		{
 			return IPAddress.IsLoopback(address);
 		}
@@ -100,7 +100,8 @@ namespace Thinktecture.Net.Adapters
 		/// <paramref name="ipString" /> is null. </exception>
 		/// <exception cref="T:System.FormatException">
 		/// <paramref name="ipString" /> is not a valid IP address. </exception>
-		public static IIPAddress Parse(string ipString)
+		[NotNull]
+		public static IIPAddress Parse([NotNull] string ipString)
 		{
 			return IPAddress.Parse(ipString).ToInterface();
 		}
@@ -109,7 +110,7 @@ namespace Thinktecture.Net.Adapters
 		/// <returns>true if <paramref name="ipString" /> is a valid IP address; otherwise, false.</returns>
 		/// <param name="ipString">The string to validate.</param>
 		/// <param name="address">The <see cref="T:System.Net.IPAddress" /> version of the string.</param>
-		public static bool TryParse(string ipString, out IPAddress address)
+		public static bool TryParse([CanBeNull] string ipString, [CanBeNull] out IPAddress address)
 		{
 			return IPAddress.TryParse(ipString, out address);
 		}
@@ -118,7 +119,7 @@ namespace Thinktecture.Net.Adapters
 		/// <returns>true if <paramref name="ipString" /> is a valid IP address; otherwise, false.</returns>
 		/// <param name="ipString">The string to validate.</param>
 		/// <param name="address">The <see cref="T:System.Net.IPAddress" /> version of the string.</param>
-		public static bool TryParse(string ipString, out IIPAddress address)
+		public static bool TryParse([NotNull] string ipString, [CanBeNull] out IIPAddress address)
 		{
 			var parsed = IPAddress.TryParse(ipString, out var tempAddress);
 			address = tempAddress.ToInterface();
@@ -127,35 +128,28 @@ namespace Thinktecture.Net.Adapters
 		}
 
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new IPAddress UnsafeConvert()
-		{
-			return _address;
-		}
+		public AddressFamily AddressFamily => Implementation.AddressFamily;
 
 		/// <inheritdoc />
-		public AddressFamily AddressFamily => _address.AddressFamily;
+		public bool IsIPv4MappedToIPv6 => Implementation.IsIPv4MappedToIPv6;
 
 		/// <inheritdoc />
-		public bool IsIPv4MappedToIPv6 => _address.IsIPv4MappedToIPv6;
+		public bool IsIPv6LinkLocal => Implementation.IsIPv6LinkLocal;
 
 		/// <inheritdoc />
-		public bool IsIPv6LinkLocal => _address.IsIPv6LinkLocal;
+		public bool IsIPv6Multicast => Implementation.IsIPv6Multicast;
 
 		/// <inheritdoc />
-		public bool IsIPv6Multicast => _address.IsIPv6Multicast;
+		public bool IsIPv6SiteLocal => Implementation.IsIPv6SiteLocal;
 
 		/// <inheritdoc />
-		public bool IsIPv6SiteLocal => _address.IsIPv6SiteLocal;
-
-		/// <inheritdoc />
-		public bool IsIPv6Teredo => _address.IsIPv6Teredo;
+		public bool IsIPv6Teredo => Implementation.IsIPv6Teredo;
 
 		/// <inheritdoc />
 		public long ScopeId
 		{
-			get => _address.ScopeId;
-			set => _address.ScopeId = value;
+			get => Implementation.ScopeId;
+			set => Implementation.ScopeId = value;
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="T:System.Net.IPAddress" /> class with the address specified as a <see cref="T:System.Byte" /> array.</summary>
@@ -164,7 +158,7 @@ namespace Thinktecture.Net.Adapters
 		/// <paramref name="address" /> is null. </exception>
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="address" /> contains a bad IP address. </exception>
-		public IPAddressAdapter(byte[] address)
+		public IPAddressAdapter([NotNull] byte[] address)
 			: this(new IPAddress(address))
 		{
 		}
@@ -178,7 +172,7 @@ namespace Thinktecture.Net.Adapters
 		/// <paramref name="address" /> contains a bad IP address. </exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="scopeid" /> &lt; 0 or <paramref name="scopeid" /> &gt; 0x00000000FFFFFFFF </exception>
-		public IPAddressAdapter(byte[] address, long scopeid)
+		public IPAddressAdapter([NotNull] byte[] address, long scopeid)
 			: this(new IPAddress(address, scopeid))
 		{
 		}
@@ -194,28 +188,27 @@ namespace Thinktecture.Net.Adapters
 
 		/// <summary>Initializes a new instance of the <see cref="IPAddressAdapter" /> class.</summary>
 		/// <param name="address">Address to be used by the adapter</param>
-		public IPAddressAdapter(IPAddress address)
+		public IPAddressAdapter([NotNull] IPAddress address)
 			: base(address)
 		{
-			_address = address ?? throw new ArgumentNullException(nameof(address));
 		}
 
 		/// <inheritdoc />
 		public byte[] GetAddressBytes()
 		{
-			return _address.GetAddressBytes();
+			return Implementation.GetAddressBytes();
 		}
 
 		/// <inheritdoc />
 		public IIPAddress MapToIPv4()
 		{
-			return _address.MapToIPv4().ToInterface();
+			return Implementation.MapToIPv4().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IIPAddress MapToIPv6()
 		{
-			return _address.MapToIPv6().ToInterface();
+			return Implementation.MapToIPv6().ToInterface();
 		}
 	}
 }

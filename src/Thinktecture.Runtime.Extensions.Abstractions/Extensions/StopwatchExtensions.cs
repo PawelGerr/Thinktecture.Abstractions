@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
+using JetBrains.Annotations;
 using Thinktecture.Diagnostics;
 using Thinktecture.Diagnostics.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="stopwatch">Instance of <see cref="Stopwatch"/> to convert.</param>
 		/// <returns>An instance of <see cref="IStopwatch"/>.</returns>
-		public static IStopwatch ToInterface(this Stopwatch stopwatch)
+		[CanBeNull]
+		public static IStopwatch ToInterface([CanBeNull] this Stopwatch stopwatch)
 		{
 			return (stopwatch == null) ? null : new StopwatchAdapter(stopwatch);
 		}

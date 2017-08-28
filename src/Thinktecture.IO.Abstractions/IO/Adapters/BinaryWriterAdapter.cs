@@ -14,7 +14,6 @@ namespace Thinktecture.IO.Adapters
 	public class BinaryWriterAdapter : AbstractionAdapter<BinaryWriter>, IBinaryWriter
 	{
 		/// <summary>Specifies a <see cref="T:System.IO.BinaryWriter" /> with no backing store.</summary>
-		/// <filterpriority>1</filterpriority>
 		public static readonly IBinaryWriter Null = BinaryWriter.Null.ToInterface();
 
 		/// <inheritdoc />

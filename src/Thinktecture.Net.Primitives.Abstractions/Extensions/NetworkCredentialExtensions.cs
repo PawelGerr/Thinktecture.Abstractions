@@ -1,4 +1,5 @@
 using System.Net;
+using JetBrains.Annotations;
 using Thinktecture.Net;
 using Thinktecture.Net.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="credential">Credential to convert.</param>
 		/// <returns>Converted credential.</returns>
-		public static INetworkCredential ToInterface(this NetworkCredential credential)
+		[CanBeNull]
+		public static INetworkCredential ToInterface([CanBeNull] this NetworkCredential credential)
 		{
 			return (credential == null) ? null : new NetworkCredentialAdapter(credential);
 		}

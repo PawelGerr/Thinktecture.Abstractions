@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32.SafeHandles;
+using JetBrains.Annotations;
+using Microsoft.Win32.SafeHandles;
 using Thinktecture.Win32.SafeHandles;
 using Thinktecture.Win32.SafeHandles.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="handle"><see cref="SafeWaitHandle"/> to convert.</param>
 		/// <returns>Instance of <see cref="ISafeWaitHandle"/>.</returns>
-		public static ISafeWaitHandle ToInterface(this SafeWaitHandle handle)
+		[CanBeNull]
+		public static ISafeWaitHandle ToInterface([CanBeNull] this SafeWaitHandle handle)
 		{
 			return (handle == null) ? null : new SafeWaitHandleAdapter(handle);
 		}
@@ -25,7 +27,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="ISafeWaitHandle"/> to convert.</param>
 		/// <returns>An instance of <see cref="SafeWaitHandle"/>.</returns>
-		public static SafeWaitHandle ToImplementation(this ISafeWaitHandle abstraction)
+		[CanBeNull]
+		public static SafeWaitHandle ToImplementation([CanBeNull] this ISafeWaitHandle abstraction)
 		{
 			return ((IAbstraction<SafeWaitHandle>)abstraction)?.UnsafeConvert();
 		}

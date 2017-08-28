@@ -15,7 +15,6 @@ namespace Thinktecture.IO.Adapters
 	public class StreamReaderAdapter : TextReaderAdapter, IStreamReader
 	{
 		/// <summary>A <see cref="T:System.IO.StreamReader" /> object around an empty stream.</summary>
-		/// <filterpriority>1</filterpriority>
 		public new static readonly IStreamReader Null = StreamReader.Null.ToInterface();
 
 		/// <inheritdoc />

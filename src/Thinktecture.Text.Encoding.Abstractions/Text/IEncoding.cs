@@ -1,14 +1,14 @@
-﻿using System.Text;
+using System.Text;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Text
 {
 	/// <summary>Represents a character encoding.To browse the .NET Framework source code for this type, see the Reference Source.</summary>
-	/// <filterpriority>1</filterpriority>
 	public interface IEncoding : IAbstraction<Encoding>
 	{
 		/// <summary>When overridden in a derived class, gets the name registered with the Internet Assigned Numbers Authority (IANA) for the current encoding.</summary>
 		/// <returns>The IANA name for the current <see cref="T:System.Text.Encoding" />.</returns>
-		/// <filterpriority>2</filterpriority>
+		[NotNull]
 		string WebName { get; }
 
 		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding all the characters in the specified character array.</summary>
@@ -17,8 +17,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="chars" /> is null. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		int GetByteCount(char[] chars);
+		int GetByteCount([NotNull] char[] chars);
 
 		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding a set of characters from the specified character array.</summary>
 		/// <returns>The number of bytes produced by encoding the specified characters.</returns>
@@ -30,8 +29,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> is less than zero.-or- <paramref name="index" /> and <paramref name="count" /> do not denote a valid range in <paramref name="chars" />. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		int GetByteCount(char[] chars, int index, int count);
+		int GetByteCount([NotNull] char[] chars, int index, int count);
 
 		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding the characters in the specified string.</summary>
 		/// <returns>The number of bytes produced by encoding the specified characters.</returns>
@@ -39,8 +37,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="s" /> is null. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		int GetByteCount(string s);
+		int GetByteCount([NotNull] string s);
 
 		/// <summary>When overridden in a derived class, encodes all the characters in the specified character array into a sequence of bytes.</summary>
 		/// <returns>A byte array containing the results of encoding the specified set of characters.</returns>
@@ -48,8 +45,8 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="chars" /> is null. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		byte[] GetBytes(char[] chars);
+		[NotNull]
+		byte[] GetBytes([NotNull] char[] chars);
 
 		/// <summary>When overridden in a derived class, encodes a set of characters from the specified character array into a sequence of bytes.</summary>
 		/// <returns>A byte array containing the results of encoding the specified set of characters.</returns>
@@ -61,8 +58,8 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> is less than zero.-or- <paramref name="index" /> and <paramref name="count" /> do not denote a valid range in <paramref name="chars" />. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		byte[] GetBytes(char[] chars, int index, int count);
+		[NotNull]
+		byte[] GetBytes([NotNull] char[] chars, int index, int count);
 
 		/// <summary>When overridden in a derived class, encodes a set of characters from the specified character array into the specified byte array.</summary>
 		/// <returns>The actual number of bytes written into <paramref name="bytes" />.</returns>
@@ -78,8 +75,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="bytes" /> does not have enough capacity from <paramref name="byteIndex" /> to the end of the array to accommodate the resulting bytes. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		int GetBytes(char[] chars, int charIndex, int charCount, byte[] bytes, int byteIndex);
+		int GetBytes([NotNull] char[] chars, int charIndex, int charCount, [NotNull] byte[] bytes, int byteIndex);
 
 		/// <summary>When overridden in a derived class, encodes all the characters in the specified string into a sequence of bytes.</summary>
 		/// <returns>A byte array containing the results of encoding the specified set of characters.</returns>
@@ -87,8 +83,8 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="s" /> is null. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		byte[] GetBytes(string s);
+		[NotNull]
+		byte[] GetBytes([NotNull] string s);
 
 		/// <summary>When overridden in a derived class, encodes a set of characters from the specified string into the specified byte array.</summary>
 		/// <returns>The actual number of bytes written into <paramref name="bytes" />.</returns>
@@ -104,8 +100,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="bytes" /> does not have enough capacity from <paramref name="byteIndex" /> to the end of the array to accommodate the resulting bytes. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		int GetBytes(string s, int charIndex, int charCount, byte[] bytes, int byteIndex);
+		int GetBytes([NotNull] string s, int charIndex, int charCount, [NotNull] byte[] bytes, int byteIndex);
 
 		/// <summary>When overridden in a derived class, calculates the number of characters produced by decoding all the bytes in the specified byte array.</summary>
 		/// <returns>The number of characters produced by decoding the specified sequence of bytes.</returns>
@@ -113,8 +108,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="bytes" /> is null. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		int GetCharCount(byte[] bytes);
+		int GetCharCount([NotNull] byte[] bytes);
 
 		/// <summary>When overridden in a derived class, calculates the number of characters produced by decoding a sequence of bytes from the specified byte array.</summary>
 		/// <returns>The number of characters produced by decoding the specified sequence of bytes.</returns>
@@ -126,8 +120,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> is less than zero.-or- <paramref name="index" /> and <paramref name="count" /> do not denote a valid range in <paramref name="bytes" />. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		int GetCharCount(byte[] bytes, int index, int count);
+		int GetCharCount([NotNull] byte[] bytes, int index, int count);
 
 		/// <summary>When overridden in a derived class, decodes all the bytes in the specified byte array into a set of characters.</summary>
 		/// <returns>A character array containing the results of decoding the specified sequence of bytes.</returns>
@@ -135,8 +128,8 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="bytes" /> is null. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		char[] GetChars(byte[] bytes);
+		[NotNull]
+		char[] GetChars([NotNull] byte[] bytes);
 
 		/// <summary>When overridden in a derived class, decodes a sequence of bytes from the specified byte array into a set of characters.</summary>
 		/// <returns>A character array containing the results of decoding the specified sequence of bytes.</returns>
@@ -148,8 +141,8 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> is less than zero.-or- <paramref name="index" /> and <paramref name="count" /> do not denote a valid range in <paramref name="bytes" />. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		char[] GetChars(byte[] bytes, int index, int count);
+		[NotNull]
+		char[] GetChars([NotNull] byte[] bytes, int index, int count);
 
 		/// <summary>When overridden in a derived class, decodes a sequence of bytes from the specified byte array into the specified character array.</summary>
 		/// <returns>The actual number of characters written into <paramref name="chars" />.</returns>
@@ -165,17 +158,16 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="chars" /> does not have enough capacity from <paramref name="charIndex" /> to the end of the array to accommodate the resulting characters. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		int GetChars(byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex);
+		int GetChars([NotNull] byte[] bytes, int byteIndex, int byteCount, [NotNull] char[] chars, int charIndex);
 
 		/// <summary>When overridden in a derived class, obtains a decoder that converts an encoded sequence of bytes into a sequence of characters.</summary>
 		/// <returns>A <see cref="T:System.Text.Decoder" /> that converts an encoded sequence of bytes into a sequence of characters.</returns>
-		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		IDecoder GetDecoder();
 
 		/// <summary>When overridden in a derived class, obtains an encoder that converts a sequence of Unicode characters into an encoded sequence of bytes.</summary>
 		/// <returns>A <see cref="T:System.Text.Encoder" /> that converts a sequence of Unicode characters into an encoded sequence of bytes.</returns>
-		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		IEncoder GetEncoder();
 
 		/// <summary>When overridden in a derived class, calculates the maximum number of bytes produced by encoding the specified number of characters.</summary>
@@ -184,7 +176,6 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="charCount" /> is less than zero. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
 		int GetMaxByteCount(int charCount);
 
 		/// <summary>When overridden in a derived class, calculates the maximum number of characters produced by decoding the specified number of bytes.</summary>
@@ -193,12 +184,11 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="byteCount" /> is less than zero. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
 		int GetMaxCharCount(int byteCount);
 
 		/// <summary>When overridden in a derived class, returns a sequence of bytes that specifies the encoding used.</summary>
 		/// <returns>A byte array containing a sequence of bytes that specifies the encoding used.-or- A byte array of length zero, if a preamble is not required.</returns>
-		/// <filterpriority>1</filterpriority>
+		[NotNull]
 		byte[] GetPreamble();
 
 		/// <summary>When overridden in a derived class, decodes a sequence of bytes from the specified byte array into a string.</summary>
@@ -212,7 +202,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> is less than zero.-or- <paramref name="index" /> and <paramref name="count" /> do not denote a valid range in <paramref name="bytes" />. </exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
-		/// <filterpriority>1</filterpriority>
-		string GetString(byte[] bytes, int index, int count);
+		[NotNull]
+		string GetString([NotNull] byte[] bytes, int index, int count);
 	}
 }

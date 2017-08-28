@@ -1,40 +1,33 @@
 using System;
-using System.ComponentModel;
 using System.Net;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Provides credentials for password-based authentication schemes such as basic, digest, NTLM, and Kerberos authentication.</summary>
-	public class NetworkCredentialAdapter : AbstractionAdapter, INetworkCredential
+	public class NetworkCredentialAdapter : AbstractionAdapter<NetworkCredential>, INetworkCredential
 	{
-		private readonly NetworkCredential _credential;
-
-		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new NetworkCredential UnsafeConvert()
-		{
-			return _credential;
-		}
-
 		/// <inheritdoc />
 		public string Domain
 		{
-			get => _credential.Domain;
-			set => _credential.Domain = value;
+			get => Implementation.Domain;
+			set => Implementation.Domain = value;
 		}
 
 		/// <inheritdoc />
 		public string Password
 		{
-			get => _credential.Password;
-			set => _credential.Password = value;
+			get => Implementation.Password;
+			set => Implementation.Password = value;
 		}
 
 		/// <inheritdoc />
 		public string UserName
 		{
-			get => _credential.UserName;
-			set => _credential.UserName = value;
+			get => Implementation.UserName;
+			set => Implementation.UserName = value;
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="NetworkCredentialAdapter" /> class.</summary>
@@ -46,7 +39,7 @@ namespace Thinktecture.Net.Adapters
 		/// <summary>Initializes a new instance of the <see cref="NetworkCredentialAdapter" /> class with the specified user name and password.</summary>
 		/// <param name="userName">The user name associated with the credentials. </param>
 		/// <param name="password">The password for the user name associated with the credentials. </param>
-		public NetworkCredentialAdapter(string userName, string password)
+		public NetworkCredentialAdapter([CanBeNull] string userName, [CanBeNull] string password)
 			: this(new NetworkCredential(userName, password))
 		{
 		}
@@ -55,42 +48,43 @@ namespace Thinktecture.Net.Adapters
 		/// <param name="userName">The user name associated with the credentials. </param>
 		/// <param name="password">The password for the user name associated with the credentials. </param>
 		/// <param name="domain">The domain associated with these credentials. </param>
-		public NetworkCredentialAdapter(string userName, string password, string domain)
+		public NetworkCredentialAdapter([CanBeNull] string userName, [CanBeNull] string password, [CanBeNull] string domain)
 			: this(new NetworkCredential(userName, password, domain))
 		{
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="NetworkCredentialAdapter" /> class.</summary>
 		/// <param name="credential">Credentials to be used by the adapter. </param>
-		public NetworkCredentialAdapter(NetworkCredential credential)
+		public NetworkCredentialAdapter([NotNull] NetworkCredential credential)
 			: base(credential)
 		{
-			_credential = credential ?? throw new ArgumentNullException(nameof(credential));
 		}
 
 		/// <inheritdoc />
 		public INetworkCredential GetCredential(Uri uri, string authType)
 		{
-			return _credential.GetCredential(uri, authType).ToInterface();
+			return Implementation.GetCredential(uri, authType).ToInterface();
 		}
 
 		/// <inheritdoc />
-		NetworkCredential ICredentials.GetCredential(Uri uri, string authType)
+		[NotNull]
+		NetworkCredential ICredentials.GetCredential([CanBeNull] Uri uri, [CanBeNull] string authType)
 		{
-			return _credential.GetCredential(uri, authType);
+			return Implementation.GetCredential(uri, authType);
 		}
 
 #if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
 		/// <inheritdoc />
 		public INetworkCredential GetCredential(string host, int port, string authenticationType)
 		{
-			return _credential.GetCredential(host, port, authenticationType).ToInterface();
+			return Implementation.GetCredential(host, port, authenticationType).ToInterface();
 		}
 
 		/// <inheritdoc />
-		NetworkCredential ICredentialsByHost.GetCredential(string host, int port, string authenticationType)
+		[NotNull]
+		NetworkCredential ICredentialsByHost.GetCredential([CanBeNull] string host, int port, [CanBeNull] string authenticationType)
 		{
-			return _credential.GetCredential(host, port, authenticationType);
+			return Implementation.GetCredential(host, port, authenticationType);
 		}
 #endif
 	}

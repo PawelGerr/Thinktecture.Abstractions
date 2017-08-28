@@ -1,14 +1,14 @@
 using System;
-using System.ComponentModel;
 using System.Net;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Provides a container for a collection of <see cref="T:System.Net.CookieCollection" /> objects.</summary>
-	public class CookieContainerAdapter : AbstractionAdapter, ICookieContainer
+	public class CookieContainerAdapter : AbstractionAdapter<CookieContainer>, ICookieContainer
 	{
-		private readonly CookieContainer _container;
-
 		/// <summary>Represents the default maximum size, in bytes, of the <see cref="T:System.Net.Cookie" /> instances that the <see cref="T:System.Net.CookieContainer" /> can hold. This field is constant.</summary>
 		// ReSharper disable once InconsistentNaming
 		public const int DefaultCookieLengthLimit = CookieContainer.DefaultCookieLengthLimit;
@@ -22,23 +22,16 @@ namespace Thinktecture.Net.Adapters
 		public const int DefaultPerDomainCookieLimit = CookieContainer.DefaultPerDomainCookieLimit;
 
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new CookieContainer UnsafeConvert()
-		{
-			return _container;
-		}
+		public int Capacity => Implementation.Capacity;
 
 		/// <inheritdoc />
-		public int Capacity => _container.Capacity;
+		public int Count => Implementation.Count;
 
 		/// <inheritdoc />
-		public int Count => _container.Count;
+		public int MaxCookieSize => Implementation.MaxCookieSize;
 
 		/// <inheritdoc />
-		public int MaxCookieSize => _container.MaxCookieSize;
-
-		/// <inheritdoc />
-		public int PerDomainCapacity => _container.PerDomainCapacity;
+		public int PerDomainCapacity => Implementation.PerDomainCapacity;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CookieContainerAdapter" /> class.
@@ -52,52 +45,51 @@ namespace Thinktecture.Net.Adapters
 		/// Initializes a new instance of the <see cref="CookieContainerAdapter" /> class.
 		/// </summary>
 		/// <param name="container">The implementation to use by the adapter.</param>
-		public CookieContainerAdapter(CookieContainer container)
+		public CookieContainerAdapter([NotNull] CookieContainer container)
 			: base(container)
 		{
-			_container = container ?? throw new ArgumentNullException(nameof(container));
 		}
 
 		/// <inheritdoc />
 		public void Add(Uri uri, Cookie cookie)
 		{
-			_container.Add(uri, cookie);
+			Implementation.Add(uri, cookie);
 		}
 
 		/// <inheritdoc />
 		public void Add(Uri uri, ICookie cookie)
 		{
-			_container.Add(uri, cookie.ToImplementation());
+			Implementation.Add(uri, cookie.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public void Add(Uri uri, CookieCollection cookies)
 		{
-			_container.Add(uri, cookies);
+			Implementation.Add(uri, cookies);
 		}
 
 		/// <inheritdoc />
 		public void Add(Uri uri, ICookieCollection cookies)
 		{
-			_container.Add(uri, cookies.ToImplementation());
+			Implementation.Add(uri, cookies.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public string GetCookieHeader(Uri uri)
 		{
-			return _container.GetCookieHeader(uri);
+			return Implementation.GetCookieHeader(uri);
 		}
 
 		/// <inheritdoc />
 		public ICookieCollection GetCookies(Uri uri)
 		{
-			return _container.GetCookies(uri).ToInterface();
+			return Implementation.GetCookies(uri).ToInterface();
 		}
 
 		/// <inheritdoc />
 		public void SetCookies(Uri uri, string cookieHeader)
 		{
-			_container.SetCookies(uri, cookieHeader);
+			Implementation.SetCookies(uri, cookieHeader);
 		}
 	}
 }

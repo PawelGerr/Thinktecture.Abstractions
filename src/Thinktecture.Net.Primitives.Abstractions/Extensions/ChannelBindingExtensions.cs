@@ -1,6 +1,7 @@
 #if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Security.Authentication.ExtendedProtection;
+using JetBrains.Annotations;
 using Thinktecture.Security.Authentication.ExtendedProtection;
 using Thinktecture.Security.Authentication.ExtendedProtection.Adapters;
 
@@ -17,7 +18,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="binding">Binding to convert.</param>
 		/// <returns>Converted binding.</returns>
-		public static IChannelBinding ToInterface(this ChannelBinding binding)
+		[CanBeNull]
+		public static IChannelBinding ToInterface([CanBeNull] this ChannelBinding binding)
 		{
 			return (binding == null) ? null : new ChannelBindingAdapter(binding);
 		}
@@ -27,9 +29,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IChannelBinding"/> to convert.</param>
 		/// <returns>An instance of <see cref="ChannelBinding"/>.</returns>
-		public static ChannelBinding ToImplementation(this IChannelBinding abstraction)
+		[CanBeNull]
+		public static ChannelBinding ToImplementation([CanBeNull] this IChannelBinding abstraction)
 		{
-			return ((IAbstraction<ChannelBinding>) abstraction)?.UnsafeConvert();
+			return ((IAbstraction<ChannelBinding>)abstraction)?.UnsafeConvert();
 		}
 	}
 }

@@ -1,4 +1,5 @@
 using System.Text;
+using JetBrains.Annotations;
 using Thinktecture.Text;
 using Thinktecture.Text.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="encoder">Encoder to convert.</param>
 		/// <returns>Converted encoder.</returns>
-		public static IEncoder ToInterface(this Encoder encoder)
+		[CanBeNull]
+		public static IEncoder ToInterface([CanBeNull] this Encoder encoder)
 		{
 			return (encoder == null) ? null : new EncoderAdapter(encoder);
 		}

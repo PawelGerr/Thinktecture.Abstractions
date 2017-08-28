@@ -1,9 +1,9 @@
-﻿using System.Text;
+using System.Text;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Text
 {
 	/// <summary>Converts a set of characters into a sequence of bytes.</summary>
-	/// <filterpriority>1</filterpriority>
 	public interface IEncoder : IAbstraction<Encoder>
 	{
 		/// <summary>Converts an array of Unicode characters to an encoded byte sequence and stores the result in an array of bytes.</summary>
@@ -23,8 +23,7 @@ namespace Thinktecture.Text
 		/// <paramref name="charIndex" />, <paramref name="charCount" />, <paramref name="byteIndex" />, or <paramref name="byteCount" /> is less than zero.-or-The length of <paramref name="chars" /> - <paramref name="charIndex" /> is less than <paramref name="charCount" />.-or-The length of <paramref name="bytes" /> - <paramref name="byteIndex" /> is less than <paramref name="byteCount" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The output buffer is too small to contain any of the converted input. The output buffer should be greater than or equal to the size indicated by the <see cref="GetByteCount" /> method.</exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Encoder.Fallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>2</filterpriority>
-		void Convert(char[] chars, int charIndex, int charCount, byte[] bytes, int byteIndex, int byteCount, bool flush, out int charsUsed, out int bytesUsed, out bool completed);
+		void Convert([NotNull] char[] chars, int charIndex, int charCount, [NotNull] byte[] bytes, int byteIndex, int byteCount, bool flush, out int charsUsed, out int bytesUsed, out bool completed);
 
 		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding a set of characters from the specified character array. A parameter indicates whether to clear the internal state of the encoder after the calculation.</summary>
 		/// <returns>The number of bytes produced by encoding the specified characters and any characters in the internal buffer.</returns>
@@ -37,8 +36,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> is less than zero.-or- <paramref name="index" /> and <paramref name="count" /> do not denote a valid range in <paramref name="chars" />. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Encoder.Fallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>2</filterpriority>
-		int GetByteCount(char[] chars, int index, int count, bool flush);
+		int GetByteCount([NotNull] char[] chars, int index, int count, bool flush);
 
 		/// <summary>When overridden in a derived class, encodes a set of characters from the specified character array and any characters in the internal buffer into the specified byte array. A parameter indicates whether to clear the internal state of the encoder after the conversion.</summary>
 		/// <returns>The actual number of bytes written into <paramref name="bytes" />.</returns>
@@ -55,7 +53,6 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="bytes" /> does not have enough capacity from <paramref name="byteIndex" /> to the end of the array to accommodate the resulting bytes. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Encoder.Fallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		/// <filterpriority>2</filterpriority>
-		int GetBytes(char[] chars, int charIndex, int charCount, byte[] bytes, int byteIndex, bool flush);
+		int GetBytes([NotNull] char[] chars, int charIndex, int charCount, [NotNull] byte[] bytes, int byteIndex, bool flush);
 	}
 }

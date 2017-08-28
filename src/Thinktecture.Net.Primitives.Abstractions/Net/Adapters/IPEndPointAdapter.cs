@@ -3,6 +3,9 @@
 using System;
 using System.ComponentModel;
 using System.Net;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Adapters
 {
@@ -10,7 +13,11 @@ namespace Thinktecture.Net.Adapters
 	// ReSharper disable once InconsistentNaming
 	public class IPEndPointAdapter : EndPointAdapter, IIPEndPoint
 	{
-		private readonly IPEndPoint _endpoint;
+		/// <summary>
+		/// Implementation used by the adapter.
+		/// </summary>
+		[NotNull]
+		protected new IPEndPoint Implementation { get; }
 
 		/// <summary>Specifies the maximum value that can be assigned to the <see cref="P:System.Net.IPEndPoint.Port" /> property. The MaxPort value is set to 0x0000FFFF. This field is read-only.</summary>
 		// ReSharper disable once InconsistentNaming
@@ -21,24 +28,25 @@ namespace Thinktecture.Net.Adapters
 		public const int MinPort = 0;
 
 		/// <inheritdoc />
+		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new IPEndPoint UnsafeConvert()
 		{
-			return _endpoint;
+			return Implementation;
 		}
 
 		/// <inheritdoc />
 		public IIPAddress Address
 		{
-			get => _endpoint.Address.ToInterface();
-			set => _endpoint.Address = value.ToImplementation();
+			get => Implementation.Address.ToInterface();
+			set => Implementation.Address = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
 		public int Port
 		{
-			get => _endpoint.Port;
-			set => _endpoint.Port = value;
+			get => Implementation.Port;
+			set => Implementation.Port = value;
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="IPEndPointAdapter" /> class with the specified address and port number.</summary>
@@ -58,7 +66,7 @@ namespace Thinktecture.Net.Adapters
 		/// <paramref name="address" /> is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="port" /> is less than <see cref="F:System.Net.IPEndPoint.MinPort" />.-or- <paramref name="port" /> is greater than <see cref="F:System.Net.IPEndPoint.MaxPort" />.-or- <paramref name="address" /> is less than 0 or greater than 0x00000000FFFFFFFF. </exception>
-		public IPEndPointAdapter(IPAddress address, int port)
+		public IPEndPointAdapter([NotNull] IPAddress address, int port)
 			: this(new IPEndPoint(address, port))
 		{
 		}
@@ -70,17 +78,17 @@ namespace Thinktecture.Net.Adapters
 		/// <paramref name="address" /> is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="port" /> is less than <see cref="F:System.Net.IPEndPoint.MinPort" />.-or- <paramref name="port" /> is greater than <see cref="F:System.Net.IPEndPoint.MaxPort" />.-or- <paramref name="address" /> is less than 0 or greater than 0x00000000FFFFFFFF. </exception>
-		public IPEndPointAdapter(IIPAddress address, int port)
-			: this(new IPEndPoint(address.ToImplementation(), port))
+		public IPEndPointAdapter([NotNull] IIPAddress address, int port)
+			: this(address.ToImplementation(), port)
 		{
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="IPEndPointAdapter" /> class.</summary>
 		/// <param name="endpoint">Endpoint to be used by the adapter.</param>
-		public IPEndPointAdapter(IPEndPoint endpoint)
+		public IPEndPointAdapter([NotNull] IPEndPoint endpoint)
 			: base(endpoint)
 		{
-			_endpoint = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
+			Implementation = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 		}
 	}
 }

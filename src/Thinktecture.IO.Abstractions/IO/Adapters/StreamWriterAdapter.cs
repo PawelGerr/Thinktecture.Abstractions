@@ -15,7 +15,6 @@ namespace Thinktecture.IO.Adapters
 	public class StreamWriterAdapter : TextWriterAdapter, IStreamWriter
 	{
 		/// <summary>Provides a StreamWriter with no backing store that can be written to, but not read from.</summary>
-		/// <filterpriority>1</filterpriority>
 		public new static readonly IStreamWriter Null = StreamWriter.Null.ToInterface();
 
 		/// <inheritdoc />

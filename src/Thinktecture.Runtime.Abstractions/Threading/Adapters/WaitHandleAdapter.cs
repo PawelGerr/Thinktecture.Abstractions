@@ -5,11 +5,9 @@ using JetBrains.Annotations;
 namespace Thinktecture.Threading.Adapters
 {
 	/// <summary>Encapsulates operating system–specific objects that wait for exclusive access to shared resources.</summary>
-	/// <filterpriority>2</filterpriority>
 	public class WaitHandleAdapter : AbstractionAdapter<WaitHandle>, IWaitHandle
 	{
 		/// <summary>Indicates that a <see cref="M:System.Threading.WaitHandle.WaitAny(System.Threading.WaitHandle[],System.Int32,System.Boolean)" /> operation timed out before any of the wait handles were signaled. This field is constant.</summary>
-		/// <filterpriority>1</filterpriority>
 		// ReSharper disable once InconsistentNaming
 		public const int WaitTimeout = WaitHandle.WaitTimeout;
 
@@ -23,7 +21,6 @@ namespace Thinktecture.Threading.Adapters
 		/// <paramref name="waitHandles" /> is an array with no elements and the .NET Framework version is 1.0 or 1.1. </exception>
 		/// <exception cref="T:System.Threading.AbandonedMutexException">The wait terminated because a thread exited without releasing a mutex. This exception is not thrown on Windows 98 or Windows Millennium Edition.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The <paramref name="waitHandles" /> array contains a transparent proxy for a <see cref="T:System.Threading.WaitHandle" /> in another application domain.</exception>
-		/// <filterpriority>1</filterpriority>
 		public static bool WaitAll([NotNull] WaitHandle[] waitHandles)
 		{
 			return WaitHandle.WaitAll(waitHandles);
@@ -39,7 +36,6 @@ namespace Thinktecture.Threading.Adapters
 		/// <paramref name="waitHandles" /> is an array with no elements and the .NET Framework version is 1.0 or 1.1. </exception>
 		/// <exception cref="T:System.Threading.AbandonedMutexException">The wait terminated because a thread exited without releasing a mutex. This exception is not thrown on Windows 98 or Windows Millennium Edition.</exception>
 		/// <exception cref="T:System.InvalidOperationException">The <paramref name="waitHandles" /> array contains a transparent proxy for a <see cref="T:System.Threading.WaitHandle" /> in another application domain.</exception>
-		/// <filterpriority>1</filterpriority>
 		public static bool WaitAll([NotNull] IWaitHandle[] waitHandles)
 		{
 			return WaitHandle.WaitAll(waitHandles.ToImplementation<IWaitHandle, WaitHandle>());
@@ -120,7 +116,6 @@ namespace Thinktecture.Threading.Adapters
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="waitHandles" /> is an array with no elements, and the .NET Framework version is 2.0 or later. </exception>
 		/// <exception cref="T:System.InvalidOperationException">The <paramref name="waitHandles" /> array contains a transparent proxy for a <see cref="T:System.Threading.WaitHandle" /> in another application domain.</exception>
-		/// <filterpriority>1</filterpriority>
 		public static int WaitAny([NotNull] WaitHandle[] waitHandles)
 		{
 			return WaitHandle.WaitAny(waitHandles);
@@ -137,7 +132,6 @@ namespace Thinktecture.Threading.Adapters
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="waitHandles" /> is an array with no elements, and the .NET Framework version is 2.0 or later. </exception>
 		/// <exception cref="T:System.InvalidOperationException">The <paramref name="waitHandles" /> array contains a transparent proxy for a <see cref="T:System.Threading.WaitHandle" /> in another application domain.</exception>
-		/// <filterpriority>1</filterpriority>
 		public static int WaitAny([NotNull] IWaitHandle[] waitHandles)
 		{
 			return WaitHandle.WaitAny(waitHandles.ToImplementation<IWaitHandle, WaitHandle>());

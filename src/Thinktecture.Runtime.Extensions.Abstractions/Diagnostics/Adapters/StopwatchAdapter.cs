@@ -1,13 +1,15 @@
-﻿using System;
-using System.ComponentModel;
+using System;
 using System.Diagnostics;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Diagnostics.Adapters
 {
 	/// <summary>
 	/// Adapter for <see cref="Stopwatch"/>.
 	/// </summary>
-	public class StopwatchAdapter : AbstractionAdapter, IStopwatch
+	public class StopwatchAdapter : AbstractionAdapter<Stopwatch>, IStopwatch
 	{
 		/// <summary>
 		/// Gets the frequency of the timer as the number of ticks per second.This field is read-only.
@@ -32,31 +34,23 @@ namespace Thinktecture.Diagnostics.Adapters
 		/// Initializes a new Stopwatch instance, sets the elapsed time property to zero, and starts measuring elapsed time.
 		/// </summary>
 		/// <returns>A <see cref="IStopwatch"/> that has just begun measuring elapsed time.</returns>
+		[NotNull]
 		public static IStopwatch StartNew()
 		{
 			return Stopwatch.StartNew().ToInterface();
 		}
 
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new Stopwatch UnsafeConvert()
-		{
-			return _instance;
-		}
-
-		private readonly Stopwatch _instance;
+		public bool IsRunning => Implementation.IsRunning;
 
 		/// <inheritdoc />
-		public bool IsRunning => _instance.IsRunning;
+		public TimeSpan Elapsed => Implementation.Elapsed;
 
 		/// <inheritdoc />
-		public TimeSpan Elapsed => _instance.Elapsed;
+		public long ElapsedMilliseconds => Implementation.ElapsedMilliseconds;
 
 		/// <inheritdoc />
-		public long ElapsedMilliseconds => _instance.ElapsedMilliseconds;
-
-		/// <inheritdoc />
-		public long ElapsedTicks => _instance.ElapsedTicks;
+		public long ElapsedTicks => Implementation.ElapsedTicks;
 
 		/// <summary>
 		///	Initializes a new instance of the <see cref="StopwatchAdapter"/> class.
@@ -70,34 +64,33 @@ namespace Thinktecture.Diagnostics.Adapters
 		/// 	Initializes a new instance of the <see cref="StopwatchAdapter"/> class.
 		/// </summary>
 		/// <param name="stopwatch">Stopwatch to be use by the adapter.</param>
-		public StopwatchAdapter(Stopwatch stopwatch)
+		public StopwatchAdapter([NotNull] Stopwatch stopwatch)
 			: base(stopwatch)
 		{
-			_instance = stopwatch ?? throw new ArgumentNullException(nameof(stopwatch));
 		}
 
 		/// <inheritdoc />
 		public void Start()
 		{
-			_instance.Start();
+			Implementation.Start();
 		}
 
 		/// <inheritdoc />
 		public void Stop()
 		{
-			_instance.Stop();
+			Implementation.Stop();
 		}
 
 		/// <inheritdoc />
 		public void Reset()
 		{
-			_instance.Reset();
+			Implementation.Reset();
 		}
 
 		/// <inheritdoc />
 		public void Restart()
 		{
-			_instance.Reset();
+			Implementation.Reset();
 		}
 	}
 }
