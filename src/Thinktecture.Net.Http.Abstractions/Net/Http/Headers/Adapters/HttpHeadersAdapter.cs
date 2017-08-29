@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using JetBrains.Annotations;
 
-// ReSharper disable once AssignNullToNotNullAttribute
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Http.Headers.Adapters
 {
@@ -73,12 +73,14 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		}
 
 		/// <inheritdoc />
+		[NotNull]
 		public IEnumerator<KeyValuePair<string, IEnumerable<string>>> GetEnumerator()
 		{
 			return Implementation.GetEnumerator();
 		}
 
 		/// <inheritdoc />
+		[NotNull]
 		IEnumerator IEnumerable.GetEnumerator()
 		{
 			return GetEnumerator();
