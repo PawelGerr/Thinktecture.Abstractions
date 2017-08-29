@@ -1,8 +1,8 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
-using System.ComponentModel;
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
 {
@@ -10,61 +10,51 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 	/// Provides Internet Protocol (IP) statistical data for an network interface on the local computer.
 	/// </summary>
 	// ReSharper disable once InconsistentNaming
-	public class IPInterfaceStatisticsAdapter : AbstractionAdapter, IIPInterfaceStatistics
+	public class IPInterfaceStatisticsAdapter : AbstractionAdapter<IPInterfaceStatistics>, IIPInterfaceStatistics
 	{
-		private readonly IPInterfaceStatistics _stats;
+		/// <inheritdoc />
+		public long BytesReceived => Implementation.BytesReceived;
 
 		/// <inheritdoc />
-		public long BytesReceived => _stats.BytesReceived;
+		public long BytesSent => Implementation.BytesSent;
 
 		/// <inheritdoc />
-		public long BytesSent => _stats.BytesSent;
+		public long IncomingPacketsDiscarded => Implementation.IncomingPacketsDiscarded;
 
 		/// <inheritdoc />
-		public long IncomingPacketsDiscarded => _stats.IncomingPacketsDiscarded;
+		public long IncomingPacketsWithErrors => Implementation.IncomingPacketsWithErrors;
 
 		/// <inheritdoc />
-		public long IncomingPacketsWithErrors => _stats.IncomingPacketsWithErrors;
+		public long IncomingUnknownProtocolPackets => Implementation.IncomingUnknownProtocolPackets;
 
 		/// <inheritdoc />
-		public long IncomingUnknownProtocolPackets => _stats.IncomingUnknownProtocolPackets;
+		public long NonUnicastPacketsReceived => Implementation.NonUnicastPacketsReceived;
 
 		/// <inheritdoc />
-		public long NonUnicastPacketsReceived => _stats.NonUnicastPacketsReceived;
+		public long NonUnicastPacketsSent => Implementation.NonUnicastPacketsSent;
 
 		/// <inheritdoc />
-		public long NonUnicastPacketsSent => _stats.NonUnicastPacketsSent;
+		public long OutgoingPacketsDiscarded => Implementation.OutgoingPacketsDiscarded;
 
 		/// <inheritdoc />
-		public long OutgoingPacketsDiscarded => _stats.OutgoingPacketsDiscarded;
+		public long OutgoingPacketsWithErrors => Implementation.OutgoingPacketsWithErrors;
 
 		/// <inheritdoc />
-		public long OutgoingPacketsWithErrors => _stats.OutgoingPacketsWithErrors;
+		public long OutputQueueLength => Implementation.OutputQueueLength;
 
 		/// <inheritdoc />
-		public long OutputQueueLength => _stats.OutputQueueLength;
+		public long UnicastPacketsReceived => Implementation.UnicastPacketsReceived;
 
 		/// <inheritdoc />
-		public long UnicastPacketsReceived => _stats.UnicastPacketsReceived;
-
-		/// <inheritdoc />
-		public long UnicastPacketsSent => _stats.UnicastPacketsSent;
+		public long UnicastPacketsSent => Implementation.UnicastPacketsSent;
 
 		/// <summary>
 		/// Initializes new instance of <see cref="IPInterfaceStatisticsAdapter"/>.
 		/// </summary>
 		/// <param name="stats">Statistics to be used by the adapter.</param>
-		public IPInterfaceStatisticsAdapter(IPInterfaceStatistics stats)
+		public IPInterfaceStatisticsAdapter([NotNull] IPInterfaceStatistics stats)
 			: base(stats)
 		{
-			_stats = stats ?? throw new ArgumentNullException(nameof(stats));
-		}
-
-		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new IPInterfaceStatistics UnsafeConvert()
-		{
-			return _stats;
 		}
 	}
 }

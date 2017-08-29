@@ -1,16 +1,16 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
-using System.ComponentModel;
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
 {
 	/// <summary>Provides configuration and statistical information for a network interface.</summary>
-	public class NetworkInterfaceAdapter : AbstractionAdapter, INetworkInterface
+	public class NetworkInterfaceAdapter : AbstractionAdapter<NetworkInterface>, INetworkInterface
 	{
-		private readonly NetworkInterface _nic;
-
 		/// <summary>Gets the index of the IPv4 loopback interface.</summary>
 		/// <returns>A <see cref="T:System.Int32" /> that contains the index for the IPv4 loopback interface.</returns>
 		/// <exception cref="T:System.Net.NetworkInformation.NetworkInformationException">This property is not valid on computers running only Ipv6.</exception>
@@ -30,6 +30,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
 		///   <IPermission class="System.Net.NetworkInformation.NetworkInformationPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Access="Read" />
 		/// </PermissionSet>
+		[NotNull]
 		public static INetworkInterface[] GetAllNetworkInterfaces()
 		{
 			return NetworkInterface.GetAllNetworkInterfaces().ToInterface();
@@ -43,66 +44,58 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		}
 
 		/// <inheritdoc />
-		public string Id => _nic.Id;
+		public string Id => Implementation.Id;
 
 		/// <inheritdoc />
-		public string Name => _nic.Name;
+		public string Name => Implementation.Name;
 
 		/// <inheritdoc />
-		public string Description => _nic.Description;
+		public string Description => Implementation.Description;
 
 		/// <inheritdoc />
-		public OperationalStatus OperationalStatus => _nic.OperationalStatus;
+		public OperationalStatus OperationalStatus => Implementation.OperationalStatus;
 
 		/// <inheritdoc />
-		public long Speed => _nic.Speed;
+		public long Speed => Implementation.Speed;
 
 		/// <inheritdoc />
-		public bool IsReceiveOnly => _nic.IsReceiveOnly;
+		public bool IsReceiveOnly => Implementation.IsReceiveOnly;
 
 		/// <inheritdoc />
-		public bool SupportsMulticast => _nic.SupportsMulticast;
+		public bool SupportsMulticast => Implementation.SupportsMulticast;
 
 		/// <inheritdoc />
-		public NetworkInterfaceType NetworkInterfaceType => _nic.NetworkInterfaceType;
+		public NetworkInterfaceType NetworkInterfaceType => Implementation.NetworkInterfaceType;
 
 		/// <summary>Initializes a new instance of the <see cref="NetworkInterfaceAdapter" /> class.</summary>
 		/// <param name="nic">Network interface to be used by the adapter.</param>
-		public NetworkInterfaceAdapter(NetworkInterface nic)
+		public NetworkInterfaceAdapter([NotNull] NetworkInterface nic)
 			: base(nic)
 		{
-			_nic = nic ?? throw new ArgumentNullException(nameof(nic));
 		}
 
 		/// <inheritdoc />
 		public IIPInterfaceProperties GetIPProperties()
 		{
-			return _nic.GetIPProperties().ToInterface();
+			return Implementation.GetIPProperties().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IIPInterfaceStatistics GetIPStatistics()
 		{
-			return _nic.GetIPStatistics().ToInterface();
+			return Implementation.GetIPStatistics().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IPhysicalAddress GetPhysicalAddress()
 		{
-			return _nic.GetPhysicalAddress().ToInterface();
+			return Implementation.GetPhysicalAddress().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public bool Supports(NetworkInterfaceComponent networkInterfaceComponent)
 		{
-			return _nic.Supports(networkInterfaceComponent);
-		}
-
-		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new NetworkInterface UnsafeConvert()
-		{
-			return _nic;
+			return Implementation.Supports(networkInterfaceComponent);
 		}
 	}
 }

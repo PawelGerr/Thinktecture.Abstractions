@@ -2,6 +2,8 @@ using System;
 using System.Threading;
 using JetBrains.Annotations;
 
+// ReSharper disable AssignNullToNotNullAttribute
+
 namespace Thinktecture.Threading.Adapters
 {
 	/// <summary>Encapsulates operating system–specific objects that wait for exclusive access to shared resources.</summary>

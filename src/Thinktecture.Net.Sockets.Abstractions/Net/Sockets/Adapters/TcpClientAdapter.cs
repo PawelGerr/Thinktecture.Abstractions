@@ -1,85 +1,78 @@
-﻿using System;
-using System.ComponentModel;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Sockets.Adapters
 {
 	/// <summary>
 	/// Provides client connections for TCP network services.
 	/// </summary>
-	public class TcpClientAdapter : AbstractionAdapter, ITcpClient
+	public class TcpClientAdapter : AbstractionAdapter<TcpClient>, ITcpClient
 	{
-		private readonly TcpClient _client;
-
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new TcpClient UnsafeConvert()
-		{
-			return _client;
-		}
-
-		/// <inheritdoc />
-		public int Available => _client.Available;
+		public int Available => Implementation.Available;
 
 		/// <inheritdoc />
 		public ISocket Client
 		{
-			get => _client.Client.ToInterface();
-			set => _client.Client = value.ToImplementation();
+			get => Implementation.Client.ToInterface();
+			set => Implementation.Client = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
-		public bool Connected => _client.Connected;
+		public bool Connected => Implementation.Connected;
 
 		/// <inheritdoc />
 		public bool ExclusiveAddressUse
 		{
-			get => _client.ExclusiveAddressUse;
-			set => _client.ExclusiveAddressUse = value;
+			get => Implementation.ExclusiveAddressUse;
+			set => Implementation.ExclusiveAddressUse = value;
 		}
 
 		/// <inheritdoc />
 		public ILingerOption LingerState
 		{
-			get => _client.LingerState.ToInterface();
-			set => _client.LingerState = value.ToImplementation();
+			get => Implementation.LingerState.ToInterface();
+			set => Implementation.LingerState = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
 		public bool NoDelay
 		{
-			get => _client.NoDelay;
-			set => _client.NoDelay = value;
+			get => Implementation.NoDelay;
+			set => Implementation.NoDelay = value;
 		}
 
 		/// <inheritdoc />
 		public int ReceiveBufferSize
 		{
-			get => _client.ReceiveBufferSize;
-			set => _client.ReceiveBufferSize = value;
+			get => Implementation.ReceiveBufferSize;
+			set => Implementation.ReceiveBufferSize = value;
 		}
 
 		/// <inheritdoc />
 		public int ReceiveTimeout
 		{
-			get => _client.ReceiveTimeout;
-			set => _client.ReceiveTimeout = value;
+			get => Implementation.ReceiveTimeout;
+			set => Implementation.ReceiveTimeout = value;
 		}
 
 		/// <inheritdoc />
 		public int SendBufferSize
 		{
-			get => _client.SendBufferSize;
-			set => _client.SendBufferSize = value;
+			get => Implementation.SendBufferSize;
+			set => Implementation.SendBufferSize = value;
 		}
 
 		/// <inheritdoc />
 		public int SendTimeout
 		{
-			get => _client.SendTimeout;
-			set => _client.SendTimeout = value;
+			get => Implementation.SendTimeout;
+			set => Implementation.SendTimeout = value;
 		}
 
 		/// <summary>
@@ -103,52 +96,51 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// Initializes new instance of <see cref="TcpClientAdapter"/>.
 		/// </summary>
 		/// <param name="client">Client to be used by the adapter.</param>
-		public TcpClientAdapter(TcpClient client)
+		public TcpClientAdapter([NotNull] TcpClient client)
 			: base(client)
 		{
-			_client = client ?? throw new ArgumentNullException(nameof(client));
 		}
 
 		/// <inheritdoc />
 		public Task ConnectAsync(IPAddress address, int port)
 		{
-			return _client.ConnectAsync(address, port);
+			return Implementation.ConnectAsync(address, port);
 		}
 
 		/// <inheritdoc />
 		public Task ConnectAsync(IIPAddress address, int port)
 		{
-			return _client.ConnectAsync(address.ToImplementation(), port);
+			return Implementation.ConnectAsync(address.ToImplementation(), port);
 		}
 
 		/// <inheritdoc />
 		public Task ConnectAsync(IPAddress[] addresses, int port)
 		{
-			return _client.ConnectAsync(addresses, port);
+			return Implementation.ConnectAsync(addresses, port);
 		}
 
 		/// <inheritdoc />
 		public Task ConnectAsync(IIPAddress[] addresses, int port)
 		{
-			return _client.ConnectAsync(addresses.ToImplementation<IIPAddress, IPAddress>(), port);
+			return Implementation.ConnectAsync(addresses.ToImplementation<IIPAddress, IPAddress>(), port);
 		}
 
 		/// <inheritdoc />
 		public Task ConnectAsync(string host, int port)
 		{
-			return _client.ConnectAsync(host, port);
+			return Implementation.ConnectAsync(host, port);
 		}
 
 		/// <inheritdoc />
 		public INetworkStream GetStream()
 		{
-			return _client.GetStream().ToInterface();
+			return Implementation.GetStream().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			((IDisposable)_client).Dispose();
+			((IDisposable)Implementation).Dispose();
 		}
 	}
 }

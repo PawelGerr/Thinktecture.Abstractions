@@ -1,4 +1,6 @@
-﻿using System.IO;
+using System.IO;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.IO.Adapters
 {

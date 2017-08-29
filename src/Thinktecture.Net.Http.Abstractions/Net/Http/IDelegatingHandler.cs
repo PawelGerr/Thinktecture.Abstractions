@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+using System.Net.Http;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.Http
 {
@@ -8,6 +9,7 @@ namespace Thinktecture.Net.Http
 	{
 		/// <summary>Gets or sets the inner handler which processes the HTTP response messages.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.HttpMessageHandler" />.The inner handler for HTTP response messages.</returns>
+		[NotNull]
 		IHttpMessageHandler InnerHandler { get; set; }
 	}
 }

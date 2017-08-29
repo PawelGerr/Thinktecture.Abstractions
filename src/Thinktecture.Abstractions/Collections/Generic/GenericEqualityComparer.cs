@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 
+// ReSharper disable AnnotationRedundancyInHierarchy
+
 namespace Thinktecture.Collections.Generic
 {
 	/// <summary>

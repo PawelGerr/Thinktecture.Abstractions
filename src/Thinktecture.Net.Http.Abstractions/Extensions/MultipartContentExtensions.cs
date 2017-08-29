@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+using System.Net.Http;
+using JetBrains.Annotations;
 using Thinktecture.Net.Http;
 using Thinktecture.Net.Http.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="content">Content to convert.</param>
 		/// <returns>Converted content.</returns>
-		public static IMultipartContent ToInterface(this MultipartContent content)
+		[CanBeNull]
+		public static IMultipartContent ToInterface([CanBeNull] this MultipartContent content)
 		{
 			return (content == null) ? null : new MultipartContentAdapter(content);
 		}
@@ -25,7 +27,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IMultipartContent"/> to convert.</param>
 		/// <returns>An instance of <see cref="MultipartContent"/>.</returns>
-		public static MultipartContent ToImplementation(this IMultipartContent abstraction)
+		[CanBeNull]
+		public static MultipartContent ToImplementation([CanBeNull] this IMultipartContent abstraction)
 		{
 			return ((IAbstraction<MultipartContent>)abstraction)?.UnsafeConvert();
 		}

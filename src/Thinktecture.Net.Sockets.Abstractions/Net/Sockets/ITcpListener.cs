@@ -1,5 +1,6 @@
-﻿using System.Net.Sockets;
+using System.Net.Sockets;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.Sockets
 {
@@ -16,23 +17,27 @@ namespace Thinktecture.Net.Sockets
 		/// <summary>
 		/// Gets the underlying EndPoint of the current TcpListener.
 		/// </summary>
+		[NotNull]
 		IEndPoint LocalEndpoint { get; }
 
 		/// <summary>
 		/// Gets the underlying network Socket.
 		/// </summary>
+		[NotNull]
 		ISocket Server { get; }
 
 		/// <summary>
 		/// Accepts a pending connection request as an asynchronous operation.
 		/// </summary>
 		/// <returns>The task object representing the asynchronous operation. The Result property on the task object returns a Socket used to send and receive data.</returns>
+		[NotNull, ItemNotNull]
 		Task<ISocket> AcceptSocketAsync();
 
 		/// <summary>
 		/// Accepts a pending connection request as an asynchronous operation.
 		/// </summary>
 		/// <returns>The task object representing the asynchronous operation. The Result property on the task object returns a TcpClient used to send and receive data.</returns>
+		[NotNull, ItemNotNull]
 		Task<ITcpClient> AcceptTcpClientAsync();
 
 		/// <summary>

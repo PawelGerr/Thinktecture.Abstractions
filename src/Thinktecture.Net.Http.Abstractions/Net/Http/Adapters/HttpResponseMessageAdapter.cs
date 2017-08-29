@@ -1,63 +1,56 @@
-﻿using System;
-using System.ComponentModel;
+using System;
 using System.Net;
 using System.Net.Http;
+using JetBrains.Annotations;
 using Thinktecture.Net.Http.Headers;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Http.Adapters
 {
 	/// <summary>Represents a HTTP response message including the status code and data.</summary>
-	public class HttpResponseMessageAdapter : AbstractionAdapter, IHttpResponseMessage
+	public class HttpResponseMessageAdapter : AbstractionAdapter<HttpResponseMessage>, IHttpResponseMessage
 	{
-		private readonly HttpResponseMessage _message;
-
-		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new HttpResponseMessage UnsafeConvert()
-		{
-			return _message;
-		}
-
 		/// <inheritdoc />
 		public Version Version
 		{
-			get => _message.Version;
-			set => _message.Version = value;
+			get => Implementation.Version;
+			set => Implementation.Version = value;
 		}
 
 		/// <inheritdoc />
 		public IHttpContent Content
 		{
-			get => _message.Content.ToInterface();
-			set => _message.Content = value.ToImplementation();
+			get => Implementation.Content.ToInterface();
+			set => Implementation.Content = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
 		public HttpStatusCode StatusCode
 		{
-			get => _message.StatusCode;
-			set => _message.StatusCode = value;
+			get => Implementation.StatusCode;
+			set => Implementation.StatusCode = value;
 		}
 
 		/// <inheritdoc />
 		public string ReasonPhrase
 		{
-			get => _message.ReasonPhrase;
-			set => _message.ReasonPhrase = value;
+			get => Implementation.ReasonPhrase;
+			set => Implementation.ReasonPhrase = value;
 		}
 
 		/// <inheritdoc />
-		public IHttpResponseHeaders Headers => _message.Headers.ToInterface();
+		public IHttpResponseHeaders Headers => Implementation.Headers.ToInterface();
 
 		/// <inheritdoc />
 		public IHttpRequestMessage RequestMessage
 		{
-			get => _message.RequestMessage.ToInterface();
-			set => _message.RequestMessage = value.ToImplementation();
+			get => Implementation.RequestMessage.ToInterface();
+			set => Implementation.RequestMessage = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
-		public bool IsSuccessStatusCode => _message.IsSuccessStatusCode;
+		public bool IsSuccessStatusCode => Implementation.IsSuccessStatusCode;
 
 		/// <summary>Initializes a new instance of the <see cref="HttpResponseMessageAdapter" /> class.</summary>
 		public HttpResponseMessageAdapter()
@@ -76,22 +69,21 @@ namespace Thinktecture.Net.Http.Adapters
 		/// Initializes a new instance of the <see cref="HttpResponseMessageAdapter" /> class.
 		/// </summary>
 		/// <param name="message">Message to be used by the adapter.</param>
-		public HttpResponseMessageAdapter(HttpResponseMessage message)
+		public HttpResponseMessageAdapter([NotNull] HttpResponseMessage message)
 			: base(message)
 		{
-			_message = message ?? throw new ArgumentNullException(nameof(message));
 		}
 
 		/// <inheritdoc />
 		public IHttpResponseMessage EnsureSuccessStatusCode()
 		{
-			return _message.EnsureSuccessStatusCode().ToInterface();
+			return Implementation.EnsureSuccessStatusCode().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			_message.Dispose();
+			Implementation.Dispose();
 		}
 	}
 }

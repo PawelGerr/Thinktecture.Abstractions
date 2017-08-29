@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Thinktecture.IO.Adapters;
 using Thinktecture.IO.FileSystem.Examples.Factories;
 
@@ -9,7 +10,7 @@ namespace Thinktecture.IO.FileSystem.Examples
 {
 	public class Program
 	{
-		public static void Main(string[] args)
+		public static void Main([CanBeNull] string[] args)
 		{
 			ExecuteReadingFilesExample_Simple();
 			ExecuteReadingFilesExample_Recommended();

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,9 +16,9 @@ namespace Thinktecture.IO.FileSystem.Examples.ReadingFiles.Simple
 		{
 			IFileInfo fileInfo = new FileInfoAdapter(_EXAMPLE_FILE_PATH);
 
-			using (IStreamReader reader = fileInfo.OpenText())
+			using (var reader = fileInfo.OpenText())
 			{
-				string content = reader.ReadToEnd();
+				var content = reader.ReadToEnd();
 				Console.WriteLine("[ViaFileInfo.ReadFile_With_OpenText] File content: " + content);
 			}
 		}
@@ -27,10 +27,10 @@ namespace Thinktecture.IO.FileSystem.Examples.ReadingFiles.Simple
 		{
 			IFileInfo fileInfo = new FileInfoAdapter(_EXAMPLE_FILE_PATH);
 
-			using (IFileStream stream = fileInfo.OpenRead())
+			using (var stream = fileInfo.OpenRead())
 			using (IStreamReader reader = new StreamReaderAdapter(stream))
 			{
-				string content = reader.ReadToEnd();
+				var content = reader.ReadToEnd();
 				Console.WriteLine("[ViaFileInfo.ReadFile_With_OpenRead] File content: " + content);
 			}
 		}
@@ -39,10 +39,10 @@ namespace Thinktecture.IO.FileSystem.Examples.ReadingFiles.Simple
 		{
 			IFileInfo fileInfo = new FileInfoAdapter(_EXAMPLE_FILE_PATH);
 
-			using (IFileStream stream = fileInfo.Open(FileMode.Open, FileAccess.Read, FileShare.Read))
+			using (var stream = fileInfo.Open(FileMode.Open, FileAccess.Read, FileShare.Read))
 			using (IStreamReader reader = new StreamReaderAdapter(stream))
 			{
-				string content = reader.ReadToEnd();
+				var content = reader.ReadToEnd();
 				Console.WriteLine("[ViaFileInfo.ReadFile_With_Open] File content: " + content);
 			}
 		}

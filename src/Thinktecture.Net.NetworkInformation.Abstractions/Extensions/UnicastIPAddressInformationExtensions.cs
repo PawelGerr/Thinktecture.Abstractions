@@ -1,6 +1,7 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
 using Thinktecture.Net.NetworkInformation;
 using Thinktecture.Net.NetworkInformation.Adapters;
 
@@ -18,7 +19,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="info">Info to convert.</param>
 		/// <returns>Converted info.</returns>
-		public static IUnicastIPAddressInformation ToInterface(this UnicastIPAddressInformation info)
+		[CanBeNull]
+		public static IUnicastIPAddressInformation ToInterface([CanBeNull] this UnicastIPAddressInformation info)
 		{
 			return (info == null) ? null : new UnicastIPAddressInformationAdapter(info);
 		}
@@ -28,9 +30,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IUnicastIPAddressInformation"/> to convert.</param>
 		/// <returns>An instance of <see cref="UnicastIPAddressInformation"/>.</returns>
-		public static UnicastIPAddressInformation ToImplementation(this IUnicastIPAddressInformation abstraction)
+		[CanBeNull]
+		public static UnicastIPAddressInformation ToImplementation([CanBeNull] this IUnicastIPAddressInformation abstraction)
 		{
-			return ((IAbstraction<UnicastIPAddressInformation>) abstraction)?.UnsafeConvert();
+			return ((IAbstraction<UnicastIPAddressInformation>)abstraction)?.UnsafeConvert();
 		}
 	}
 }

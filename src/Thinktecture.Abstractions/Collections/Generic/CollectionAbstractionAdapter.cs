@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using JetBrains.Annotations;
 
+// ReSharper disable AnnotationRedundancyInHierarchy
+// ReSharper disable once AssignNullToNotNullAttribute
+
 namespace Thinktecture.Collections.Generic
 {
 	/// <summary>
@@ -30,7 +33,7 @@ namespace Thinktecture.Collections.Generic
 		/// Initializes new instance of <see cref="CollectionAbstractionAdapter{TAbstractionItem,TImplementationItem,TImplementation}"/>.
 		/// </summary>
 		/// <param name="collection">Collection to be used by the adapter.</param>
-		public CollectionAbstractionAdapter([NotNull] TImplementation collection)
+		protected CollectionAbstractionAdapter([NotNull] TImplementation collection)
 			: base(collection)
 		{
 			Collection = collection ?? throw new ArgumentNullException(nameof(collection));

@@ -2,6 +2,7 @@
 
 using System;
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
 using Thinktecture.Collections.Generic;
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
@@ -18,7 +19,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// Initializes new instance of <see cref="UnicastIpAddressInformationCollectionAdapter"/>.
 		/// </summary>
 		/// <param name="collection">Collection to be used by the adapter.</param>
-		public UnicastIpAddressInformationCollectionAdapter(UnicastIPAddressInformationCollection collection)
+		public UnicastIpAddressInformationCollectionAdapter([NotNull] UnicastIPAddressInformationCollection collection)
 			: base(collection, information => information.ToInterface())
 		{
 		}

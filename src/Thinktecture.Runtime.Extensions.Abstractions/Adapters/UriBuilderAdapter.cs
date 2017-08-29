@@ -1,6 +1,8 @@
 using System;
 using JetBrains.Annotations;
 
+// ReSharper disable AssignNullToNotNullAttribute
+
 namespace Thinktecture.Adapters
 {
 	/// <summary>

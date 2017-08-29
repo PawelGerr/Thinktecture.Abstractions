@@ -1,95 +1,102 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.Http.Headers;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Http.Headers.Adapters
 {
 	/// <summary>Represents the collection of Content Headers as defined in RFC 2616.</summary>
 	public class HttpContentHeadersAdapter : HttpHeadersAdapter, IHttpContentHeaders
 	{
-		private readonly HttpContentHeaders _headers;
+		/// <summary>
+		/// Implementation used by the adapter.
+		/// </summary>
+		[NotNull]
+		protected new HttpContentHeaders Implementation { get; }
 
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
+		[NotNull, EditorBrowsable(EditorBrowsableState.Never)]
 		public new HttpContentHeaders UnsafeConvert()
 		{
-			return _headers;
+			return Implementation;
 		}
 
 		/// <inheritdoc />
-		public ICollection<string> Allow => _headers.Allow;
+		public ICollection<string> Allow => Implementation.Allow;
 
 		/// <inheritdoc />
 		public ContentDispositionHeaderValue ContentDisposition
 		{
-			get => _headers.ContentDisposition;
-			set => _headers.ContentDisposition = value;
+			get => Implementation.ContentDisposition;
+			set => Implementation.ContentDisposition = value;
 		}
 
 		/// <inheritdoc />
-		public ICollection<string> ContentEncoding => _headers.ContentEncoding;
+		public ICollection<string> ContentEncoding => Implementation.ContentEncoding;
 
 		/// <inheritdoc />
-		public ICollection<string> ContentLanguage => _headers.ContentLanguage;
+		public ICollection<string> ContentLanguage => Implementation.ContentLanguage;
 
 		/// <inheritdoc />
 		public long? ContentLength
 		{
-			get => _headers.ContentLength;
-			set => _headers.ContentLength = value;
+			get => Implementation.ContentLength;
+			set => Implementation.ContentLength = value;
 		}
 
 		/// <inheritdoc />
 		public Uri ContentLocation
 		{
-			get => _headers.ContentLocation;
-			set => _headers.ContentLocation = value;
+			get => Implementation.ContentLocation;
+			set => Implementation.ContentLocation = value;
 		}
 
 		/// <inheritdoc />
 		public byte[] ContentMD5
 		{
-			get => _headers.ContentMD5;
-			set => _headers.ContentMD5 = value;
+			get => Implementation.ContentMD5;
+			set => Implementation.ContentMD5 = value;
 		}
 
 		/// <inheritdoc />
 		public ContentRangeHeaderValue ContentRange
 		{
-			get => _headers.ContentRange;
-			set => _headers.ContentRange = value;
+			get => Implementation.ContentRange;
+			set => Implementation.ContentRange = value;
 		}
 
 		/// <inheritdoc />
 		public MediaTypeHeaderValue ContentType
 		{
-			get => _headers.ContentType;
-			set => _headers.ContentType = value;
+			get => Implementation.ContentType;
+			set => Implementation.ContentType = value;
 		}
 
 		/// <inheritdoc />
 		public DateTimeOffset? Expires
 		{
-			get => _headers.Expires;
-			set => _headers.Expires = value;
+			get => Implementation.Expires;
+			set => Implementation.Expires = value;
 		}
 
 		/// <inheritdoc />
 		public DateTimeOffset? LastModified
 		{
-			get => _headers.LastModified;
-			set => _headers.LastModified = value;
+			get => Implementation.LastModified;
+			set => Implementation.LastModified = value;
 		}
 
 		/// <summary>
 		/// Initializes new instance of type <see cref="HttpContentHeadersAdapter"/>.
 		/// </summary>
 		/// <param name="headers">Headers to be used by the adapter.</param>
-		public HttpContentHeadersAdapter(HttpContentHeaders headers)
+		public HttpContentHeadersAdapter([NotNull] HttpContentHeaders headers)
 			: base(headers)
 		{
-			_headers = headers ?? throw new ArgumentNullException(nameof(headers));
+			Implementation = headers ?? throw new ArgumentNullException(nameof(headers));
 		}
 	}
 }

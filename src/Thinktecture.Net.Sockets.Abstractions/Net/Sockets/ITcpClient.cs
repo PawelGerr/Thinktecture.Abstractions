@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.Sockets
 {
@@ -18,6 +19,7 @@ namespace Thinktecture.Net.Sockets
 		/// <summary>
 		/// Gets or sets the underlying Socket.
 		/// </summary>
+		[CanBeNull]
 		ISocket Client { get; set; }
 
 		/// <summary>
@@ -33,6 +35,7 @@ namespace Thinktecture.Net.Sockets
 		/// <summary>
 		/// Gets or sets information about the linger state of the associated socket.
 		/// </summary>
+		[CanBeNull]
 		ILingerOption LingerState { get; set; }
 
 		/// <summary>
@@ -66,7 +69,8 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="address">The IPAddress of the host to which you intend to connect.</param>
 		/// <param name="port">The port number to which you intend to connect.</param>
 		/// <returns></returns>
-		Task ConnectAsync(IPAddress address, int port);
+		[NotNull]
+		Task ConnectAsync([NotNull] IPAddress address, int port);
 
 		/// <summary>
 		/// Connects the client to a remote TCP host using the specified IP address and port number as an asynchronous operation.
@@ -74,7 +78,8 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="address">The IPAddress of the host to which you intend to connect.</param>
 		/// <param name="port">The port number to which you intend to connect.</param>
 		/// <returns></returns>
-		Task ConnectAsync(IIPAddress address, int port);
+		[NotNull]
+		Task ConnectAsync([NotNull] IIPAddress address, int port);
 
 		/// <summary>
 		/// Connects the client to a remote TCP host using the specified IP addresses and port number as an asynchronous operation.
@@ -82,7 +87,8 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="addresses">The IPAddress array of the host to which you intend to connect.</param>
 		/// <param name="port">The port number to which you intend to connect.</param>
 		/// <returns></returns>
-		Task ConnectAsync(IPAddress[] addresses, int port);
+		[NotNull]
+		Task ConnectAsync([NotNull] IPAddress[] addresses, int port);
 
 		/// <summary>
 		/// Connects the client to a remote TCP host using the specified IP addresses and port number as an asynchronous operation.
@@ -90,7 +96,8 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="addresses">The IPAddress array of the host to which you intend to connect.</param>
 		/// <param name="port">The port number to which you intend to connect.</param>
 		/// <returns></returns>
-		Task ConnectAsync(IIPAddress[] addresses, int port);
+		[NotNull]
+		Task ConnectAsync([NotNull] IIPAddress[] addresses, int port);
 
 		/// <summary>
 		/// Connects the client to the specified TCP port on the specified host as an asynchronous operation.
@@ -98,12 +105,14 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="host">The DNS name of the remote host to which you intend to connect.</param>
 		/// <param name="port">The port number of the remote host to which you intend to connect.</param>
 		/// <returns></returns>
-		Task ConnectAsync(string host, int port);
+		[NotNull]
+		Task ConnectAsync([NotNull] string host, int port);
 
 		/// <summary>
 		/// Returns the NetworkStream used to send and receive data.
 		/// </summary>
 		/// <returns>The underlying NetworkStream.</returns>
+		[NotNull]
 		INetworkStream GetStream();
 	}
 }

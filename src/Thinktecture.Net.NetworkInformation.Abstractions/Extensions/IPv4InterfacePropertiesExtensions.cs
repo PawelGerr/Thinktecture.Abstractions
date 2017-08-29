@@ -1,6 +1,7 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
 using Thinktecture.Net.NetworkInformation;
 using Thinktecture.Net.NetworkInformation.Adapters;
 
@@ -18,7 +19,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="properties">Properties to convert.</param>
 		/// <returns>Converted properties.</returns>
-		public static IIPv4InterfaceProperties ToInterface(this IPv4InterfaceProperties properties)
+		[CanBeNull]
+		public static IIPv4InterfaceProperties ToInterface([CanBeNull] this IPv4InterfaceProperties properties)
 		{
 			return (properties == null) ? null : new IPv4InterfacePropertiesAdapter(properties);
 		}

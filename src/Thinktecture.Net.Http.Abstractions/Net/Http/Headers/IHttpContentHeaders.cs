@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.Http.Headers
 {
@@ -10,18 +11,22 @@ namespace Thinktecture.Net.Http.Headers
 	{
 		/// <summary>Gets the value of the Allow content header on an HTTP response. </summary>
 		/// <returns>Returns <see cref="T:System.Collections.Generic.ICollection`1" />.The value of the Allow header on an HTTP response.</returns>
+		[NotNull]
 		ICollection<string> Allow { get; }
 
 		/// <summary>Gets the value of the Content-Disposition content header on an HTTP response.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.ContentDispositionHeaderValue" />.The value of the Content-Disposition content header on an HTTP response.</returns>
+		[CanBeNull]
 		ContentDispositionHeaderValue ContentDisposition { get; set; }
 
 		/// <summary>Gets the value of the Content-Encoding content header on an HTTP response.</summary>
 		/// <returns>Returns <see cref="T:System.Collections.Generic.ICollection`1" />.The value of the Content-Encoding content header on an HTTP response.</returns>
+		[NotNull]
 		ICollection<string> ContentEncoding { get; }
 
 		/// <summary>Gets the value of the Content-Language content header on an HTTP response.</summary>
 		/// <returns>Returns <see cref="T:System.Collections.Generic.ICollection`1" />.The value of the Content-Language content header on an HTTP response.</returns>
+		[NotNull]
 		ICollection<string> ContentLanguage { get; }
 
 		/// <summary>Gets or sets the value of the Content-Length content header on an HTTP response.</summary>
@@ -30,19 +35,23 @@ namespace Thinktecture.Net.Http.Headers
 
 		/// <summary>Gets or sets the value of the Content-Location content header on an HTTP response.</summary>
 		/// <returns>Returns <see cref="T:System.Uri" />.The value of the Content-Location content header on an HTTP response.</returns>
+		[CanBeNull]
 		Uri ContentLocation { get; set; }
 
 		/// <summary>Gets or sets the value of the Content-MD5 content header on an HTTP response.</summary>
 		/// <returns>Returns <see cref="T:System.Byte" />.The value of the Content-MD5 content header on an HTTP response.</returns>
+		[CanBeNull]
 		// ReSharper disable once InconsistentNaming
 		byte[] ContentMD5 { get; set; }
 
 		/// <summary>Gets or sets the value of the Content-Range content header on an HTTP response.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.ContentRangeHeaderValue" />.The value of the Content-Range content header on an HTTP response.</returns>
+		[CanBeNull]
 		ContentRangeHeaderValue ContentRange { get; set; }
 
 		/// <summary>Gets or sets the value of the Content-Type content header on an HTTP response.</summary>
 		/// <returns>Returns <see cref="T:System.Net.Http.Headers.MediaTypeHeaderValue" />.The value of the Content-Type content header on an HTTP response.</returns>
+		[CanBeNull]
 		MediaTypeHeaderValue ContentType { get; set; }
 
 		/// <summary>Gets or sets the value of the Expires content header on an HTTP response.</summary>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.Sockets
 {
@@ -54,6 +55,7 @@ namespace Thinktecture.Net.Sockets
 		/// <summary>
 		/// Gets or sets a value that specifies whether the Socket will delay closing a socket in an attempt to send all pending data.
 		/// </summary>
+		[CanBeNull]
 		ILingerOption LingerState { get; set; }
 
 		/// <summary>Gets the local endpoint.</summary>
@@ -65,6 +67,7 @@ namespace Thinktecture.Net.Sockets
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
 		/// </PermissionSet>
+		[CanBeNull]
 		IEndPoint LocalEndPoint { get; }
 
 		/// <summary>
@@ -113,6 +116,7 @@ namespace Thinktecture.Net.Sockets
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
 		/// </PermissionSet>
+		[CanBeNull]
 		IEndPoint RemoteEndPoint { get; }
 
 		/// <summary>Gets or sets a value that specifies the size of the send buffer of the <see cref="T:System.Net.Sockets.Socket" />.</summary>
@@ -154,6 +158,7 @@ namespace Thinktecture.Net.Sockets
 		/// Creates a new Socket for a newly created connection.
 		/// </summary>
 		/// <returns></returns>
+		[NotNull]
 		ISocket Accept();
 
 		/// <summary>Begins an asynchronous operation to accept an incoming connection attempt.</summary>
@@ -165,7 +170,7 @@ namespace Thinktecture.Net.Sockets
 		/// <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
 		/// <exception cref="T:System.NotSupportedException">Windows XP or later is required for this method.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed. </exception>
-		bool AcceptAsync(SocketAsyncEventArgs e);
+		bool AcceptAsync([NotNull] SocketAsyncEventArgs e);
 
 		/// <summary>Begins an asynchronous operation to accept an incoming connection attempt.</summary>
 		/// <returns>Returns true if the I/O operation is pending. The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will be raised upon completion of the operation.Returns false if the I/O operation completed synchronously. The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will not be raised and the <paramref name="e" /> object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.</returns>
@@ -176,7 +181,7 @@ namespace Thinktecture.Net.Sockets
 		/// <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
 		/// <exception cref="T:System.NotSupportedException">Windows XP or later is required for this method.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed. </exception>
-		bool AcceptAsync(ISocketAsyncEventArgs e);
+		bool AcceptAsync([NotNull] ISocketAsyncEventArgs e);
 
 		/// <summary>Associates a <see cref="T:System.Net.Sockets.Socket" /> with a local endpoint.</summary>
 		/// <param name="localEP">The local <see cref="T:System.Net.EndPoint" /> to associate with the <see cref="T:System.Net.Sockets.Socket" />. </param>
@@ -192,7 +197,7 @@ namespace Thinktecture.Net.Sockets
 		///   <IPermission class="System.Net.SocketPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		// ReSharper disable once InconsistentNaming
-		void Bind(EndPoint localEP);
+		void Bind([NotNull] EndPoint localEP);
 
 		/// <summary>Associates a <see cref="T:System.Net.Sockets.Socket" /> with a local endpoint.</summary>
 		/// <param name="localEP">The local <see cref="T:System.Net.EndPoint" /> to associate with the <see cref="T:System.Net.Sockets.Socket" />. </param>
@@ -208,49 +213,56 @@ namespace Thinktecture.Net.Sockets
 		///   <IPermission class="System.Net.SocketPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		// ReSharper disable once InconsistentNaming
-		void Bind(IEndPoint localEP);
+		void Bind([NotNull] IEndPoint localEP);
 
 		/// <summary>
 		/// Establishes a connection to a remote host.
 		/// </summary>
 		/// <param name="remoteEP">An EndPoint that represents the remote device.</param>
 		// ReSharper disable once InconsistentNaming
-		void Connect(EndPoint remoteEP);
+		void Connect([NotNull] EndPoint remoteEP);
 
 		/// <summary>
 		/// Establishes a connection to a remote host.
 		/// </summary>
 		/// <param name="remoteEP">An EndPoint that represents the remote device.</param>
 		// ReSharper disable once InconsistentNaming
-		void Connect(IEndPoint remoteEP);
+		void Connect([NotNull] IEndPoint remoteEP);
 
 		/// <summary>
 		/// Establishes a connection to a remote host. The host is specified by an IP address and a port number.
 		/// </summary>
 		/// <param name="address">The IP address of the remote host.</param>
 		/// <param name="port">The port number of the remote host.</param>
-		void Connect(IPAddress address, int port);
+		void Connect([NotNull] IPAddress address, int port);
 
 		/// <summary>
 		/// Establishes a connection to a remote host. The host is specified by an IP address and a port number.
 		/// </summary>
 		/// <param name="address">The IP address of the remote host.</param>
 		/// <param name="port">The port number of the remote host.</param>
-		void Connect(IIPAddress address, int port);
+		void Connect([NotNull] IIPAddress address, int port);
 
 		/// <summary>
 		/// Establishes a connection to a remote host. The host is specified by an array of IP addresses and a port number.
 		/// </summary>
 		/// <param name="addresses">The IP addresses of the remote host.</param>
 		/// <param name="port">The port number of the remote host.</param>
-		void Connect(IPAddress[] addresses, int port);
+		void Connect([NotNull] IPAddress[] addresses, int port);
+
+		/// <summary>
+		/// Establishes a connection to a remote host. The host is specified by an array of IP addresses and a port number.
+		/// </summary>
+		/// <param name="addresses">The IP addresses of the remote host.</param>
+		/// <param name="port">The port number of the remote host.</param>
+		void Connect([NotNull] IIPAddress[] addresses, int port);
 
 		/// <summary>
 		/// Establishes a connection to a remote host. The host is specified by a host name and a port number.
 		/// </summary>
 		/// <param name="host">The name of the remote host.</param>
 		/// <param name="port">The port number of the remote host.</param>
-		void Connect(string host, int port);
+		void Connect([NotNull] string host, int port);
 
 		/// <summary>Begins an asynchronous request for a connection to a remote host.</summary>
 		/// <returns>Returns true if the I/O operation is pending. The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will be raised upon completion of the operation. Returns false if the I/O operation completed synchronously. In this case, The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will not be raised and the <paramref name="e" /> object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation. </returns>
@@ -262,7 +274,7 @@ namespace Thinktecture.Net.Sockets
 		/// <exception cref="T:System.NotSupportedException">Windows XP or later is required for this method. This exception also occurs if the local endpoint and the <see cref="P:System.Net.Sockets.SocketAsyncEventArgs.RemoteEndPoint" /> are not the same address family.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed. </exception>
 		/// <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation.</exception>
-		bool ConnectAsync(SocketAsyncEventArgs e);
+		bool ConnectAsync([NotNull] SocketAsyncEventArgs e);
 
 		/// <summary>Begins an asynchronous request for a connection to a remote host.</summary>
 		/// <returns>Returns true if the I/O operation is pending. The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will be raised upon completion of the operation. Returns false if the I/O operation completed synchronously. In this case, The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will not be raised and the <paramref name="e" /> object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation. </returns>
@@ -274,7 +286,7 @@ namespace Thinktecture.Net.Sockets
 		/// <exception cref="T:System.NotSupportedException">Windows XP or later is required for this method. This exception also occurs if the local endpoint and the <see cref="P:System.Net.Sockets.SocketAsyncEventArgs.RemoteEndPoint" /> are not the same address family.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed. </exception>
 		/// <exception cref="T:System.Security.SecurityException">A caller higher in the call stack does not have permission for the requested operation.</exception>
-		bool ConnectAsync(ISocketAsyncEventArgs e);
+		bool ConnectAsync([NotNull] ISocketAsyncEventArgs e);
 
 		/// <summary>
 		/// Returns the value of a specified Socket option, represented as an object.
@@ -282,6 +294,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="optionLevel">One of the SocketOptionLevel values.</param>
 		/// <param name="optionName">One of the SocketOptionName values.</param>
 		/// <returns>An object that represents the value of the option. When the optionName parameter is set to Linger the return value is an instance of the LingerOption class. When optionName is set to AddMembership or DropMembership, the return value is an instance of the MulticastOption class. When optionName is any other value, the return value is an integer.</returns>
+		[CanBeNull]
 		object GetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName);
 
 		/// <summary>
@@ -290,7 +303,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="optionLevel">One of the SocketOptionLevel values.</param>
 		/// <param name="optionName">One of the SocketOptionName values.</param>
 		/// <param name="optionValue">An array of type Byte that is to receive the option setting.</param>
-		void GetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName, byte[] optionValue);
+		void GetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName, [CanBeNull] byte[] optionValue);
 
 		/// <summary>
 		/// Returns the value of the specified Socket option in an array.
@@ -299,6 +312,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="optionName">One of the SocketOptionName values.</param>
 		/// <param name="optionLength">The length, in bytes, of the expected return value.</param>
 		/// <returns></returns>
+		[NotNull]
 		byte[] GetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName, int optionLength);
 
 		/// <summary>
@@ -309,7 +323,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="optionOutValue">A Byte array that contains the output data returned by the operation.</param>
 		/// <returns>The number of bytes in the optionOutValue parameter.</returns>
 		// ReSharper disable once InconsistentNaming
-		int IOControl(int ioControlCode, byte[] optionInValue, byte[] optionOutValue);
+		int IOControl(int ioControlCode, [CanBeNull] byte[] optionInValue, [CanBeNull] byte[] optionOutValue);
 
 		/// <summary>
 		/// Sets low-level operating modes for the Socket using the IOControlCode enumeration to specify control codes.
@@ -319,7 +333,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="optionOutValue">An array of type Byte that contains the output data returned by the operation.</param>
 		/// <returns>The number of bytes in the optionOutValue parameter.</returns>
 		// ReSharper disable once InconsistentNaming
-		int IOControl(IOControlCode ioControlCode, byte[] optionInValue, byte[] optionOutValue);
+		int IOControl(IOControlCode ioControlCode, [CanBeNull] byte[] optionInValue, [CanBeNull] byte[] optionOutValue);
 
 		/// <summary>Places a <see cref="T:System.Net.Sockets.Socket" /> in a listening state.</summary>
 		/// <param name="backlog">The maximum length of the pending connections queue. </param>
@@ -345,7 +359,7 @@ namespace Thinktecture.Net.Sockets
 		/// </summary>
 		/// <param name="buffer">An array of type Byte that is the storage location for the received data.</param>
 		/// <returns>The number of bytes received.</returns>
-		int Receive(byte[] buffer);
+		int Receive([NotNull] byte[] buffer);
 
 		/// <summary>
 		/// Receives the specified number of bytes from a bound Socket into the specified offset position of the receive buffer, using the specified SocketFlags.
@@ -355,7 +369,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="size">The number of bytes to receive.</param>
 		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
 		/// <returns>The number of bytes received.</returns>
-		int Receive(byte[] buffer, int offset, int size, SocketFlags socketFlags);
+		int Receive([NotNull] byte[] buffer, int offset, int size, SocketFlags socketFlags);
 
 		/// <summary>
 		/// Receives data from a bound Socket into a receive buffer, using the specified SocketFlags.
@@ -366,7 +380,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
 		/// <param name="errorCode">A SocketError object that stores the socket error.</param>
 		/// <returns>The number of bytes received.</returns>
-		int Receive(byte[] buffer, int offset, int size, SocketFlags socketFlags, out SocketError errorCode);
+		int Receive([NotNull] byte[] buffer, int offset, int size, SocketFlags socketFlags, out SocketError errorCode);
 
 		/// <summary>
 		/// Receives the specified number of bytes of data from a bound Socket into a receive buffer, using the specified SocketFlags.
@@ -375,7 +389,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="size">The number of bytes to receive.</param>
 		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
 		/// <returns>The number of bytes received.</returns>
-		int Receive(byte[] buffer, int size, SocketFlags socketFlags);
+		int Receive([NotNull] byte[] buffer, int size, SocketFlags socketFlags);
 
 		/// <summary>
 		/// Receives data from a bound Socket into a receive buffer, using the specified SocketFlags.
@@ -383,14 +397,14 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="buffer">An array of type Byte that is the storage location for the received data.</param>
 		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
 		/// <returns>The number of bytes received.</returns>
-		int Receive(byte[] buffer, SocketFlags socketFlags);
+		int Receive([NotNull] byte[] buffer, SocketFlags socketFlags);
 
 		/// <summary>
 		/// Receives data from a bound Socket into the list of receive buffers.
 		/// </summary>
 		/// <param name="buffers">A list of ArraySegments of type Byte that contains the received data.</param>
 		/// <returns>The number of bytes received.</returns>
-		int Receive(IList<ArraySegment<byte>> buffers);
+		int Receive([NotNull] IList<ArraySegment<byte>> buffers);
 
 		/// <summary>
 		/// Receives data from a bound Socket into the list of receive buffers, using the specified SocketFlags.
@@ -398,7 +412,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="buffers">A list of ArraySegments of type Byte that contains the received data.</param>
 		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
 		/// <returns>The number of bytes received.</returns>
-		int Receive(IList<ArraySegment<byte>> buffers, SocketFlags socketFlags);
+		int Receive([NotNull] IList<ArraySegment<byte>> buffers, SocketFlags socketFlags);
 
 		/// <summary>
 		/// Receives data from a bound Socket into the list of receive buffers, using the specified SocketFlags.
@@ -407,7 +421,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
 		/// <param name="errorCode">A SocketError object that stores the socket error.</param>
 		/// <returns>The number of bytes received.</returns>
-		int Receive(IList<ArraySegment<byte>> buffers, SocketFlags socketFlags, out SocketError errorCode);
+		int Receive([NotNull] IList<ArraySegment<byte>> buffers, SocketFlags socketFlags, out SocketError errorCode);
 
 		/// <summary>Begins an asynchronous request to receive data from a connected <see cref="T:System.Net.Sockets.Socket" /> object.</summary>
 		/// <returns>Returns true if the I/O operation is pending. The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will be raised upon completion of the operation. Returns false if the I/O operation completed synchronously. In this case, The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will not be raised and the <paramref name="e" /> object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.</returns>
@@ -417,7 +431,7 @@ namespace Thinktecture.Net.Sockets
 		/// <exception cref="T:System.NotSupportedException">Windows XP or later is required for this method.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed. </exception>
 		/// <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
-		bool ReceiveAsync(SocketAsyncEventArgs e);
+		bool ReceiveAsync([NotNull] SocketAsyncEventArgs e);
 
 		/// <summary>Begins an asynchronous request to receive data from a connected <see cref="T:System.Net.Sockets.Socket" /> object.</summary>
 		/// <returns>Returns true if the I/O operation is pending. The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will be raised upon completion of the operation. Returns false if the I/O operation completed synchronously. In this case, The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will not be raised and the <paramref name="e" /> object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.</returns>
@@ -427,7 +441,7 @@ namespace Thinktecture.Net.Sockets
 		/// <exception cref="T:System.NotSupportedException">Windows XP or later is required for this method.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed. </exception>
 		/// <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. See the Remarks section for more information. </exception>
-		bool ReceiveAsync(ISocketAsyncEventArgs e);
+		bool ReceiveAsync([NotNull] ISocketAsyncEventArgs e);
 
 		/// <summary>
 		/// Receives the specified number of bytes of data into the specified location of the data buffer, using the specified SocketFlags, and stores the endpoint.
@@ -439,7 +453,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">An EndPoint, passed by reference, that represents the remote server.</param>
 		/// <returns>The number of bytes received.</returns>
 		// ReSharper disable once InconsistentNaming
-		int ReceiveFrom(byte[] buffer, int offset, int size, SocketFlags socketFlags, ref EndPoint remoteEP);
+		int ReceiveFrom([NotNull] byte[] buffer, int offset, int size, SocketFlags socketFlags, [CanBeNull] ref EndPoint remoteEP);
 
 		/// <summary>
 		/// Receives the specified number of bytes of data into the specified location of the data buffer, using the specified SocketFlags, and stores the endpoint.
@@ -451,7 +465,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">An EndPoint, passed by reference, that represents the remote server.</param>
 		/// <returns>The number of bytes received.</returns>
 		// ReSharper disable once InconsistentNaming
-		int ReceiveFrom(byte[] buffer, int offset, int size, SocketFlags socketFlags, ref IEndPoint remoteEP);
+		int ReceiveFrom([NotNull] byte[] buffer, int offset, int size, SocketFlags socketFlags, [CanBeNull] ref IEndPoint remoteEP);
 
 		/// <summary>
 		/// Receives the specified number of bytes into the data buffer, using the specified SocketFlags, and stores the endpoint.
@@ -462,7 +476,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">An EndPoint, passed by reference, that represents the remote server.</param>
 		/// <returns>The number of bytes received.</returns>
 		// ReSharper disable once InconsistentNaming
-		int ReceiveFrom(byte[] buffer, int size, SocketFlags socketFlags, ref EndPoint remoteEP);
+		int ReceiveFrom([NotNull] byte[] buffer, int size, SocketFlags socketFlags, [CanBeNull] ref EndPoint remoteEP);
 
 		/// <summary>
 		/// Receives the specified number of bytes into the data buffer, using the specified SocketFlags, and stores the endpoint.
@@ -473,7 +487,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">An EndPoint, passed by reference, that represents the remote server.</param>
 		/// <returns>The number of bytes received.</returns>
 		// ReSharper disable once InconsistentNaming
-		int ReceiveFrom(byte[] buffer, int size, SocketFlags socketFlags, ref IEndPoint remoteEP);
+		int ReceiveFrom([NotNull] byte[] buffer, int size, SocketFlags socketFlags, [CanBeNull]  ref IEndPoint remoteEP);
 
 		/// <summary>
 		/// Receives a datagram into the data buffer and stores the endpoint.
@@ -482,7 +496,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">An EndPoint, passed by reference, that represents the remote server.</param>
 		/// <returns>The number of bytes received.</returns>
 		// ReSharper disable once InconsistentNaming
-		int ReceiveFrom(byte[] buffer, ref EndPoint remoteEP);
+		int ReceiveFrom([NotNull] byte[] buffer, [CanBeNull] ref EndPoint remoteEP);
 
 		/// <summary>
 		/// Receives a datagram into the data buffer and stores the endpoint.
@@ -491,7 +505,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">An EndPoint, passed by reference, that represents the remote server.</param>
 		/// <returns>The number of bytes received.</returns>
 		// ReSharper disable once InconsistentNaming
-		int ReceiveFrom(byte[] buffer, ref IEndPoint remoteEP);
+		int ReceiveFrom([NotNull] byte[] buffer, [CanBeNull] ref IEndPoint remoteEP);
 
 		/// <summary>
 		/// Receives a datagram into the data buffer, using the specified SocketFlags, and stores the endpoint.
@@ -501,7 +515,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">An EndPoint, passed by reference, that represents the remote server.</param>
 		/// <returns>The number of bytes received.</returns>
 		// ReSharper disable once InconsistentNaming
-		int ReceiveFrom(byte[] buffer, SocketFlags socketFlags, ref EndPoint remoteEP);
+		int ReceiveFrom([NotNull] byte[] buffer, SocketFlags socketFlags, [CanBeNull] ref EndPoint remoteEP);
 
 		/// <summary>
 		/// Receives a datagram into the data buffer, using the specified SocketFlags, and stores the endpoint.
@@ -511,7 +525,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">An EndPoint, passed by reference, that represents the remote server.</param>
 		/// <returns>The number of bytes received.</returns>
 		// ReSharper disable once InconsistentNaming
-		int ReceiveFrom(byte[] buffer, SocketFlags socketFlags, ref IEndPoint remoteEP);
+		int ReceiveFrom([NotNull] byte[] buffer, SocketFlags socketFlags, [CanBeNull] ref IEndPoint remoteEP);
 
 		/// <summary>Begins to asynchronously receive data from a specified network device.</summary>
 		/// <returns>Returns true if the I/O operation is pending. The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will be raised upon completion of the operation. Returns false if the I/O operation completed synchronously. In this case, The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will not be raised and the <paramref name="e" /> object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.</returns>
@@ -521,7 +535,7 @@ namespace Thinktecture.Net.Sockets
 		/// <exception cref="T:System.NotSupportedException">Windows XP or later is required for this method.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed. </exception>
 		/// <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. </exception>
-		bool ReceiveFromAsync(SocketAsyncEventArgs e);
+		bool ReceiveFromAsync([NotNull] SocketAsyncEventArgs e);
 
 		/// <summary>Begins to asynchronously receive data from a specified network device.</summary>
 		/// <returns>Returns true if the I/O operation is pending. The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will be raised upon completion of the operation. Returns false if the I/O operation completed synchronously. In this case, The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will not be raised and the <paramref name="e" /> object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.</returns>
@@ -531,7 +545,7 @@ namespace Thinktecture.Net.Sockets
 		/// <exception cref="T:System.NotSupportedException">Windows XP or later is required for this method.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed. </exception>
 		/// <exception cref="T:System.Net.Sockets.SocketException">An error occurred when attempting to access the socket. </exception>
-		bool ReceiveFromAsync(ISocketAsyncEventArgs e);
+		bool ReceiveFromAsync([NotNull] ISocketAsyncEventArgs e);
 
 		/// <summary>
 		/// Receives the specified number of bytes of data into the specified location of the data buffer, using the specified SocketFlags, and stores the endpoint and packet information.
@@ -544,7 +558,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="ipPacketInformation">An IPPacketInformation holding address and interface information.</param>
 		/// <returns>The number of bytes received.</returns>
 		// ReSharper disable once InconsistentNaming
-		int ReceiveMessageFrom(byte[] buffer, int offset, int size, ref SocketFlags socketFlags, ref EndPoint remoteEP, out IPPacketInformation ipPacketInformation);
+		int ReceiveMessageFrom([NotNull] byte[] buffer, int offset, int size, ref SocketFlags socketFlags, [CanBeNull] ref EndPoint remoteEP, out IPPacketInformation ipPacketInformation);
 
 		/// <summary>
 		/// Receives the specified number of bytes of data into the specified location of the data buffer, using the specified SocketFlags, and stores the endpoint and packet information.
@@ -557,7 +571,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="ipPacketInformation">An IPPacketInformation holding address and interface information.</param>
 		/// <returns>The number of bytes received.</returns>
 		// ReSharper disable once InconsistentNaming
-		int ReceiveMessageFrom(byte[] buffer, int offset, int size, ref SocketFlags socketFlags, ref IEndPoint remoteEP, out IPPacketInformation ipPacketInformation);
+		int ReceiveMessageFrom([NotNull] byte[] buffer, int offset, int size, ref SocketFlags socketFlags, [CanBeNull] ref IEndPoint remoteEP, out IPPacketInformation ipPacketInformation);
 
 		/// <summary>
 		/// Begins to asynchronously receive the specified number of bytes of data into the specified location in the data buffer, using the specified SocketAsyncEventArgs.SocketFlags, and stores the endpoint and packet information.
@@ -567,7 +581,7 @@ namespace Thinktecture.Net.Sockets
 		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation.
 		/// Returns false if the I/O operation completed synchronously.In this case, The SocketAsyncEventArgs.Completed event on the e parameter will not be raised and the e object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.
 		/// </returns>
-		bool ReceiveMessageFromAsync(SocketAsyncEventArgs e);
+		bool ReceiveMessageFromAsync([NotNull] SocketAsyncEventArgs e);
 
 		/// <summary>
 		/// Begins to asynchronously receive the specified number of bytes of data into the specified location in the data buffer, using the specified SocketAsyncEventArgs.SocketFlags, and stores the endpoint and packet information.
@@ -577,14 +591,14 @@ namespace Thinktecture.Net.Sockets
 		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation.
 		/// Returns false if the I/O operation completed synchronously.In this case, The SocketAsyncEventArgs.Completed event on the e parameter will not be raised and the e object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.
 		/// </returns>
-		bool ReceiveMessageFromAsync(ISocketAsyncEventArgs e);
+		bool ReceiveMessageFromAsync([NotNull] ISocketAsyncEventArgs e);
 
 		/// <summary>
 		/// Sends data to a connected Socket.
 		/// </summary>
 		/// <param name="buffer">An array of type Byte that contains the data to be sent.</param>
 		/// <returns>The number of bytes sent to the Socket.</returns>
-		int Send(byte[] buffer);
+		int Send([NotNull] byte[] buffer);
 
 		/// <summary>
 		/// Sends the specified number of bytes of data to a connected Socket, starting at the specified offset, and using the specified SocketFlags.
@@ -594,7 +608,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="size">The number of bytes to send.</param>
 		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
 		/// <returns>The number of bytes sent to the Socket.</returns>
-		int Send(byte[] buffer, int offset, int size, SocketFlags socketFlags);
+		int Send([NotNull] byte[] buffer, int offset, int size, SocketFlags socketFlags);
 
 		/// <summary>
 		/// Sends the specified number of bytes of data to a connected Socket, starting at the specified offset, and using the specified SocketFlags.
@@ -605,7 +619,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
 		/// <param name="errorCode">A SocketError object that stores the socket error.</param>
 		/// <returns>The number of bytes sent to the Socket.</returns>
-		int Send(byte[] buffer, int offset, int size, SocketFlags socketFlags, out SocketError errorCode);
+		int Send([NotNull] byte[] buffer, int offset, int size, SocketFlags socketFlags, out SocketError errorCode);
 
 		/// <summary>
 		/// Sends the specified number of bytes of data to a connected Socket, using the specified SocketFlags.
@@ -614,7 +628,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="size">The number of bytes to send.</param>
 		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
 		/// <returns>The number of bytes sent to the Socket.</returns>
-		int Send(byte[] buffer, int size, SocketFlags socketFlags);
+		int Send([NotNull] byte[] buffer, int size, SocketFlags socketFlags);
 
 		/// <summary>
 		/// Sends data to a connected Socket using the specified SocketFlags.
@@ -622,14 +636,14 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="buffer">An array of type Byte that contains the data to be sent.</param>
 		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
 		/// <returns>The number of bytes sent to the Socket.</returns>
-		int Send(byte[] buffer, SocketFlags socketFlags);
+		int Send([NotNull] byte[] buffer, SocketFlags socketFlags);
 
 		/// <summary>
 		/// Sends data to a connected Socket using the specified SocketFlags.
 		/// </summary>
 		/// <param name="buffers">A list of ArraySegments of type Byte that contains the data to be sent.</param>
 		/// <returns>The number of bytes sent to the Socket.</returns>
-		int Send(IList<ArraySegment<byte>> buffers);
+		int Send([NotNull] IList<ArraySegment<byte>> buffers);
 
 		/// <summary>
 		/// Sends the set of buffers in the list to a connected Socket, using the specified SocketFlags.
@@ -637,7 +651,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="buffers">A list of ArraySegments of type Byte that contains the data to be sent.</param>
 		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
 		/// <returns>The number of bytes sent to the Socket.</returns>
-		int Send(IList<ArraySegment<byte>> buffers, SocketFlags socketFlags);
+		int Send([NotNull] IList<ArraySegment<byte>> buffers, SocketFlags socketFlags);
 
 		/// <summary>
 		/// Sends the set of buffers in the list to a connected Socket, using the specified SocketFlags.
@@ -646,7 +660,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
 		/// <param name="errorCode">A SocketError object that stores the socket error.</param>
 		/// <returns>The number of bytes sent to the Socket.</returns>
-		int Send(IList<ArraySegment<byte>> buffers, SocketFlags socketFlags, out SocketError errorCode);
+		int Send([NotNull] IList<ArraySegment<byte>> buffers, SocketFlags socketFlags, out SocketError errorCode);
 
 		/// <summary>Sends data asynchronously to a connected <see cref="T:System.Net.Sockets.Socket" /> object.</summary>
 		/// <returns>Returns true if the I/O operation is pending. The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will be raised upon completion of the operation. Returns false if the I/O operation completed synchronously. In this case, The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will not be raised and the <paramref name="e" /> object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.</returns>
@@ -656,7 +670,7 @@ namespace Thinktecture.Net.Sockets
 		/// <exception cref="T:System.NotSupportedException">Windows XP or later is required for this method.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed. </exception>
 		/// <exception cref="T:System.Net.Sockets.SocketException">The <see cref="T:System.Net.Sockets.Socket" /> is not yet connected or was not obtained via an <see cref="M:System.Net.Sockets.Socket.Accept" />, <see cref="M:System.Net.Sockets.Socket.AcceptAsync(System.Net.Sockets.SocketAsyncEventArgs)" /> method.</exception>
-		bool SendAsync(SocketAsyncEventArgs e);
+		bool SendAsync([NotNull] SocketAsyncEventArgs e);
 
 		/// <summary>Sends data asynchronously to a connected <see cref="T:System.Net.Sockets.Socket" /> object.</summary>
 		/// <returns>Returns true if the I/O operation is pending. The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will be raised upon completion of the operation. Returns false if the I/O operation completed synchronously. In this case, The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will not be raised and the <paramref name="e" /> object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.</returns>
@@ -666,7 +680,7 @@ namespace Thinktecture.Net.Sockets
 		/// <exception cref="T:System.NotSupportedException">Windows XP or later is required for this method.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed. </exception>
 		/// <exception cref="T:System.Net.Sockets.SocketException">The <see cref="T:System.Net.Sockets.Socket" /> is not yet connected or was not obtained via an <see cref="M:System.Net.Sockets.Socket.Accept" />, <see cref="M:System.Net.Sockets.Socket.AcceptAsync(System.Net.Sockets.SocketAsyncEventArgs)" /> method.</exception>
-		bool SendAsync(ISocketAsyncEventArgs e);
+		bool SendAsync([NotNull] ISocketAsyncEventArgs e);
 
 		/// <summary>
 		/// Sends a collection of files or in memory data buffers asynchronously to a connected Socket object.
@@ -676,7 +690,7 @@ namespace Thinktecture.Net.Sockets
 		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation.
 		/// Returns false if the I/O operation completed synchronously.In this case, The SocketAsyncEventArgs.Completed event on the e parameter will not be raised and the e object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.
 		/// </returns>
-		bool SendPacketsAsync(SocketAsyncEventArgs e);
+		bool SendPacketsAsync([NotNull] SocketAsyncEventArgs e);
 
 		/// <summary>
 		/// Sends a collection of files or in memory data buffers asynchronously to a connected Socket object.
@@ -686,7 +700,7 @@ namespace Thinktecture.Net.Sockets
 		/// Returns true if the I/O operation is pending. The SocketAsyncEventArgs.Completed event on the e parameter will be raised upon completion of the operation.
 		/// Returns false if the I/O operation completed synchronously.In this case, The SocketAsyncEventArgs.Completed event on the e parameter will not be raised and the e object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.
 		/// </returns>
-		bool SendPacketsAsync(ISocketAsyncEventArgs e);
+		bool SendPacketsAsync([NotNull] ISocketAsyncEventArgs e);
 
 		/// <summary>
 		/// Sends the specified number of bytes of data to the specified endpoint, starting at the specified location in the buffer, and using the specified SocketFlags.
@@ -698,7 +712,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">The EndPoint that represents the destination location for the data.</param>
 		/// <returns>The number of bytes sent.</returns>
 		// ReSharper disable once InconsistentNaming
-		int SendTo(byte[] buffer, int offset, int size, SocketFlags socketFlags, EndPoint remoteEP);
+		int SendTo([NotNull] byte[] buffer, int offset, int size, SocketFlags socketFlags, [NotNull] EndPoint remoteEP);
 
 		/// <summary>
 		/// Sends the specified number of bytes of data to the specified endpoint, starting at the specified location in the buffer, and using the specified SocketFlags.
@@ -710,7 +724,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">The EndPoint that represents the destination location for the data.</param>
 		/// <returns>The number of bytes sent.</returns>
 		// ReSharper disable once InconsistentNaming
-		int SendTo(byte[] buffer, int offset, int size, SocketFlags socketFlags, IEndPoint remoteEP);
+		int SendTo([NotNull] byte[] buffer, int offset, int size, SocketFlags socketFlags, [NotNull] IEndPoint remoteEP);
 
 		/// <summary>
 		/// Sends the specified number of bytes of data to the specified endpoint using the specified SocketFlags.
@@ -721,7 +735,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">The EndPoint that represents the destination location for the data.</param>
 		/// <returns>The number of bytes sent.</returns>
 		// ReSharper disable once InconsistentNaming
-		int SendTo(byte[] buffer, int size, SocketFlags socketFlags, EndPoint remoteEP);
+		int SendTo([NotNull] byte[] buffer, int size, SocketFlags socketFlags, [NotNull] EndPoint remoteEP);
 
 		/// <summary>
 		/// Sends the specified number of bytes of data to the specified endpoint using the specified SocketFlags.
@@ -732,7 +746,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">The EndPoint that represents the destination location for the data.</param>
 		/// <returns>The number of bytes sent.</returns>
 		// ReSharper disable once InconsistentNaming
-		int SendTo(byte[] buffer, int size, SocketFlags socketFlags, IEndPoint remoteEP);
+		int SendTo([NotNull] byte[] buffer, int size, SocketFlags socketFlags, [NotNull] IEndPoint remoteEP);
 
 		/// <summary>
 		/// Sends data to the specified endpoint.
@@ -741,7 +755,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">The EndPoint that represents the destination for the data.</param>
 		/// <returns>The number of bytes sent.</returns>
 		// ReSharper disable once InconsistentNaming
-		int SendTo(byte[] buffer, EndPoint remoteEP);
+		int SendTo([NotNull] byte[] buffer, [NotNull] EndPoint remoteEP);
 
 		/// <summary>
 		/// Sends data to the specified endpoint.
@@ -750,7 +764,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">The EndPoint that represents the destination for the data.</param>
 		/// <returns>The number of bytes sent.</returns>
 		// ReSharper disable once InconsistentNaming
-		int SendTo(byte[] buffer, IEndPoint remoteEP);
+		int SendTo([NotNull] byte[] buffer, [NotNull] IEndPoint remoteEP);
 
 		/// <summary>
 		/// Sends data to a specific endpoint using the specified SocketFlags.
@@ -760,7 +774,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">The EndPoint that represents the destination location for the data.</param>
 		/// <returns>The number of bytes sent.</returns>
 		// ReSharper disable once InconsistentNaming
-		int SendTo(byte[] buffer, SocketFlags socketFlags, EndPoint remoteEP);
+		int SendTo([NotNull] byte[] buffer, SocketFlags socketFlags, [NotNull] EndPoint remoteEP);
 
 		/// <summary>
 		/// Sends data to a specific endpoint using the specified SocketFlags.
@@ -770,7 +784,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">The EndPoint that represents the destination location for the data.</param>
 		/// <returns>The number of bytes sent.</returns>
 		// ReSharper disable once InconsistentNaming
-		int SendTo(byte[] buffer, SocketFlags socketFlags, IEndPoint remoteEP);
+		int SendTo([NotNull] byte[] buffer, SocketFlags socketFlags, [NotNull] IEndPoint remoteEP);
 
 		/// <summary>Sends data asynchronously to a specific remote host.</summary>
 		/// <returns>Returns true if the I/O operation is pending. The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will be raised upon completion of the operation. Returns false if the I/O operation completed synchronously. In this case, The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will not be raised and the <paramref name="e" /> object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.</returns>
@@ -780,7 +794,7 @@ namespace Thinktecture.Net.Sockets
 		/// <exception cref="T:System.NotSupportedException">Windows XP or later is required for this method.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed. </exception>
 		/// <exception cref="T:System.Net.Sockets.SocketException">The protocol specified is connection-oriented, but the <see cref="T:System.Net.Sockets.Socket" /> is not yet connected.</exception>
-		bool SendToAsync(SocketAsyncEventArgs e);
+		bool SendToAsync([NotNull] SocketAsyncEventArgs e);
 
 		/// <summary>Sends data asynchronously to a specific remote host.</summary>
 		/// <returns>Returns true if the I/O operation is pending. The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will be raised upon completion of the operation. Returns false if the I/O operation completed synchronously. In this case, The <see cref="E:System.Net.Sockets.SocketAsyncEventArgs.Completed" /> event on the <paramref name="e" /> parameter will not be raised and the <paramref name="e" /> object passed as a parameter may be examined immediately after the method call returns to retrieve the result of the operation.</returns>
@@ -790,7 +804,7 @@ namespace Thinktecture.Net.Sockets
 		/// <exception cref="T:System.NotSupportedException">Windows XP or later is required for this method.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.Net.Sockets.Socket" /> has been closed. </exception>
 		/// <exception cref="T:System.Net.Sockets.SocketException">The protocol specified is connection-oriented, but the <see cref="T:System.Net.Sockets.Socket" /> is not yet connected.</exception>
-		bool SendToAsync(ISocketAsyncEventArgs e);
+		bool SendToAsync([NotNull] ISocketAsyncEventArgs e);
 
 		/// <summary>
 		/// Sets the specified Socket option to the specified Boolean value.
@@ -806,7 +820,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="optionLevel">One of the SocketOptionLevel values.</param>
 		/// <param name="optionName">One of the SocketOptionName values.</param>
 		/// <param name="optionValue">An array of type Byte that represents the value of the option.</param>
-		void SetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName, byte[] optionValue);
+		void SetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName, [CanBeNull] byte[] optionValue);
 
 		/// <summary>
 		/// Sets the specified Socket option to the specified integer value.
@@ -822,7 +836,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="optionLevel">One of the SocketOptionLevel values.</param>
 		/// <param name="optionName">One of the SocketOptionName values.</param>
 		/// <param name="optionValue">A LingerOption or MulticastOption that contains the value of the option.</param>
-		void SetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName, object optionValue);
+		void SetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName, [CanBeNull] object optionValue);
 
 		/// <summary>Disables sends and receives on a <see cref="T:System.Net.Sockets.Socket" />.</summary>
 		/// <param name="how">One of the <see cref="T:System.Net.Sockets.SocketShutdown" /> values that specifies the operation that will no longer be allowed. </param>

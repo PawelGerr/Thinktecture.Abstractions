@@ -24,6 +24,17 @@ namespace Thinktecture
 		{
 			return (endPoint == null) ? null : new IPEndPointAdapter(endPoint);
 		}
+
+		/// <summary>
+		/// Converts provided <see cref="IIPEndPoint"/> info to <see cref="IPEndPoint"/>.
+		/// </summary>
+		/// <param name="abstraction">Instance of <see cref="IIPEndPoint"/> to convert.</param>
+		/// <returns>An instance of <see cref="IPEndPoint"/>.</returns>
+		[CanBeNull]
+		public static IPEndPoint ToImplementation([CanBeNull] this IIPEndPoint abstraction)
+		{
+			return ((IAbstraction<IPEndPoint>)abstraction)?.UnsafeConvert();
+		}
 	}
 }
 

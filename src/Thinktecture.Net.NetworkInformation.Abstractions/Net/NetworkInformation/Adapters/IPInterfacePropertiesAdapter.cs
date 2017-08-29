@@ -1,75 +1,68 @@
 #if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
-using System.ComponentModel;
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
 {
 	/// <summary>
 	/// Provides information about network interfaces that support Internet Protocol version 4 (IPv4) or Internet Protocol version 6 (IPv6).
 	/// </summary>
-	public class IPInterfacePropertiesAdapter : AbstractionAdapter, IIPInterfaceProperties
+	// ReSharper disable once InconsistentNaming
+	public class IPInterfacePropertiesAdapter : AbstractionAdapter<IPInterfaceProperties>, IIPInterfaceProperties
 	{
-		private readonly IPInterfaceProperties _props;
+		/// <inheritdoc />
+		public IIPAddressInformationCollection AnycastAddresses => Implementation.AnycastAddresses.ToInterface();
 
 		/// <inheritdoc />
-		public IIPAddressInformationCollection AnycastAddresses => _props.AnycastAddresses.ToInterface();
+		public IIPAddressCollection DhcpServerAddresses => Implementation.DhcpServerAddresses.ToInterface();
 
 		/// <inheritdoc />
-		public IIPAddressCollection DhcpServerAddresses => _props.DhcpServerAddresses.ToInterface();
+		public IIPAddressCollection DnsAddresses => Implementation.DnsAddresses.ToInterface();
 
 		/// <inheritdoc />
-		public IIPAddressCollection DnsAddresses => _props.DnsAddresses.ToInterface();
+		public string DnsSuffix => Implementation.DnsSuffix;
 
 		/// <inheritdoc />
-		public string DnsSuffix => _props.DnsSuffix;
+		public IGatewayIPAddressInformationCollection GatewayAddresses => Implementation.GatewayAddresses.ToInterface();
 
 		/// <inheritdoc />
-		public IGatewayIPAddressInformationCollection GatewayAddresses => _props.GatewayAddresses.ToInterface();
+		public bool IsDnsEnabled => Implementation.IsDnsEnabled;
 
 		/// <inheritdoc />
-		public bool IsDnsEnabled => _props.IsDnsEnabled;
+		public bool IsDynamicDnsEnabled => Implementation.IsDynamicDnsEnabled;
 
 		/// <inheritdoc />
-		public bool IsDynamicDnsEnabled => _props.IsDynamicDnsEnabled;
+		public IMulticastIPAddressInformationCollection MulticastAddresses => Implementation.MulticastAddresses.ToInterface();
 
 		/// <inheritdoc />
-		public IMulticastIPAddressInformationCollection MulticastAddresses => _props.MulticastAddresses.ToInterface();
+		public IUnicastIPAddressInformationCollection UnicastAddresses => Implementation.UnicastAddresses.ToInterface();
 
 		/// <inheritdoc />
-		public IUnicastIPAddressInformationCollection UnicastAddresses => _props.UnicastAddresses.ToInterface();
-
-		/// <inheritdoc />
-		public IIPAddressCollection WinsServersAddresses => _props.WinsServersAddresses.ToInterface();
+		public IIPAddressCollection WinsServersAddresses => Implementation.WinsServersAddresses.ToInterface();
 
 		/// <summary>
 		/// Initializes new instance of <see cref="IPInterfacePropertiesAdapter"/>.
 		/// </summary>
 		/// <param name="props">Properties to be used by the adapter.</param>
-		public IPInterfacePropertiesAdapter(IPInterfaceProperties props)
+		public IPInterfacePropertiesAdapter([NotNull] IPInterfaceProperties props)
 			: base(props)
 		{
-			_props = props ?? throw new ArgumentNullException(nameof(props));
 		}
 
 		/// <inheritdoc />
 		public IIPv4InterfaceProperties GetIPv4Properties()
 		{
-			return _props.GetIPv4Properties().ToInterface();
+			return Implementation.GetIPv4Properties().ToInterface();
 		}
 
 		/// <inheritdoc />
 		public IIPv6InterfaceProperties GetIPv6Properties()
 		{
-			return _props.GetIPv6Properties().ToInterface();
-		}
-
-		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new IPInterfaceProperties UnsafeConvert()
-		{
-			return _props;
+			return Implementation.GetIPv6Properties().ToInterface();
 		}
 	}
 }

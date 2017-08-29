@@ -1,6 +1,7 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
 using Thinktecture.Net.NetworkInformation;
 using Thinktecture.Net.NetworkInformation.Adapters;
 
@@ -18,7 +19,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="collection">Collection to convert.</param>
 		/// <returns>Converted collection.</returns>
-		public static IGatewayIPAddressInformationCollection ToInterface(this GatewayIPAddressInformationCollection collection)
+		[CanBeNull]
+		public static IGatewayIPAddressInformationCollection ToInterface([CanBeNull] this GatewayIPAddressInformationCollection collection)
 		{
 			return (collection == null) ? null : new GatewayIPAddressInformationCollectionAdapter(collection);
 		}

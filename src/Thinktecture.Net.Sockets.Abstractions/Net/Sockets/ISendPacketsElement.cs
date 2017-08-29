@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Net.Sockets;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.Sockets
 {
@@ -11,6 +12,7 @@ namespace Thinktecture.Net.Sockets
 		/// <summary>
 		/// Gets the buffer to be sent if the SendPacketsElement class was initialized with a buffer parameter.
 		/// </summary>
+		[NotNull]
 		byte[] Buffer { get; }
 
 		/// <summary>
@@ -26,6 +28,7 @@ namespace Thinktecture.Net.Sockets
 		/// <summary>
 		/// Gets the filename of the file to send if the SendPacketsElement class was initialized with a filepath parameter.
 		/// </summary>
+		[CanBeNull]
 		string FilePath { get; }
 
 		/// <summary>

@@ -1,6 +1,7 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
 using Thinktecture.Collections.Generic;
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
@@ -18,7 +19,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// Initializes new instance <see cref="MulticastIPAddressInformationCollectionAdapter"/>.
 		/// </summary>
 		/// <param name="collection">Collection to be used by the adapter.</param>
-		public MulticastIPAddressInformationCollectionAdapter(MulticastIPAddressInformationCollection collection)
+		public MulticastIPAddressInformationCollectionAdapter([NotNull] MulticastIPAddressInformationCollection collection)
 			: base(collection, information => information.ToInterface())
 		{
 		}

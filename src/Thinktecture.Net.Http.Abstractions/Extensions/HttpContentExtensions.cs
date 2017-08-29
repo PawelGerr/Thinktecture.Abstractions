@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+using System.Net.Http;
+using JetBrains.Annotations;
 using Thinktecture.Net.Http;
 using Thinktecture.Net.Http.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="content">Content to convert.</param>
 		/// <returns>Converted content.</returns>
-		public static IHttpContent ToInterface(this HttpContent content)
+		[CanBeNull]
+		public static IHttpContent ToInterface([CanBeNull] this HttpContent content)
 		{
 			return (content == null) ? null : new HttpContentAdapter(content);
 		}

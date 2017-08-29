@@ -33,9 +33,11 @@ namespace Thinktecture
 		/// Returns a string that represents the current object.
 		/// </summary>
 		/// <returns>A string that represents the current object.</returns>
-		[CanBeNull]
+		// ReSharper disable once AnnotationRedundancyInHierarchy
+		[NotNull]
 		public override string ToString()
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			return _implementation.ToString();
 		}
 
@@ -44,6 +46,7 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="obj">The object to compare with the current object.</param>
 		/// <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+		// ReSharper disable once AnnotationRedundancyInHierarchy
 		public override bool Equals([CanBeNull] object obj)
 		{
 			// Use the inner implementation if and only if the other object is an adapter as well

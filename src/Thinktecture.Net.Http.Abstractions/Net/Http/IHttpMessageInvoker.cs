@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.Http
 {
@@ -13,13 +14,15 @@ namespace Thinktecture.Net.Http
 		/// <param name="request">The HTTP request message to send.</param>
 		/// <param name="cancellationToken">The cancellation token to cancel operation.</param>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="request" /> was null.</exception>
-		Task<IHttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken);
+		[NotNull, ItemNotNull]
+		Task<IHttpResponseMessage> SendAsync([NotNull] HttpRequestMessage request, CancellationToken cancellationToken);
 
 		/// <summary>Send an HTTP request as an asynchronous operation.</summary>
 		/// <returns>Returns <see cref="T:System.Threading.Tasks.Task`1" />.The task object representing the asynchronous operation.</returns>
 		/// <param name="request">The HTTP request message to send.</param>
 		/// <param name="cancellationToken">The cancellation token to cancel operation.</param>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="request" /> was null.</exception>
-		Task<IHttpResponseMessage> SendAsync(IHttpRequestMessage request, CancellationToken cancellationToken);
+		[NotNull, ItemNotNull]
+		Task<IHttpResponseMessage> SendAsync([NotNull] IHttpRequestMessage request, CancellationToken cancellationToken);
 	}
 }

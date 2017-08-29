@@ -1,44 +1,38 @@
-﻿using System;
-using System.ComponentModel;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
+// ReSharper disable PossibleNullReferenceException
 
 namespace Thinktecture.Net.Sockets.Adapters
 {
 	/// <summary>
 	/// Listens for connections from TCP network clients.
 	/// </summary>
-	public class TcpListenerAdapter : AbstractionAdapter, ITcpListener
+	public class TcpListenerAdapter : AbstractionAdapter<TcpListener>, ITcpListener
 	{
-		private readonly TcpListener _listener;
-
-		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new TcpListener UnsafeConvert()
-		{
-			return _listener;
-		}
-
 		/// <inheritdoc />
 		public bool ExclusiveAddressUse
 		{
-			get => _listener.ExclusiveAddressUse;
-			set => _listener.ExclusiveAddressUse = value;
+			get => Implementation.ExclusiveAddressUse;
+			set => Implementation.ExclusiveAddressUse = value;
 		}
 
 		/// <inheritdoc />
-		public IEndPoint LocalEndpoint => _listener.LocalEndpoint.ToInterface();
+		public IEndPoint LocalEndpoint => Implementation.LocalEndpoint.ToInterface();
 
 		/// <inheritdoc />
-		public ISocket Server => _listener.Server.ToInterface();
+		public ISocket Server => Implementation.Server.ToInterface();
 
 		/// <summary>
 		/// Initializes a new instance of the TcpListener class that listens for incoming connection attempts on the specified local IP address and port number.
 		/// </summary>
 		/// <param name="localaddr">An IPAddress that represents the local IP address.</param>
 		/// <param name="port">The port on which to listen for incoming connection attempts.</param>
-		public TcpListenerAdapter(IPAddress localaddr, int port)
+		public TcpListenerAdapter([NotNull] IPAddress localaddr, int port)
 			: this(new TcpListener(localaddr, port))
 		{
 		}
@@ -48,8 +42,8 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="localaddr">An IPAddress that represents the local IP address.</param>
 		/// <param name="port">The port on which to listen for incoming connection attempts.</param>
-		public TcpListenerAdapter(IIPAddress localaddr, int port)
-			: this(new TcpListener(localaddr.ToImplementation(), port))
+		public TcpListenerAdapter([NotNull] IIPAddress localaddr, int port)
+			: this(localaddr.ToImplementation(), port)
 		{
 		}
 
@@ -58,7 +52,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="localEP">An IPEndPoint that represents the local endpoint to which to bind the listener Socket.</param>
 		// ReSharper disable once InconsistentNaming
-		public TcpListenerAdapter(IPEndPoint localEP)
+		public TcpListenerAdapter([NotNull] IPEndPoint localEP)
 			: this(new TcpListener(localEP))
 		{
 		}
@@ -68,8 +62,8 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="localEP">An IPEndPoint that represents the local endpoint to which to bind the listener Socket.</param>
 		// ReSharper disable once InconsistentNaming
-		public TcpListenerAdapter(IIPEndPoint localEP)
-			: this(new TcpListener(localEP.ToImplementation<IPEndPoint>()))
+		public TcpListenerAdapter([NotNull] IIPEndPoint localEP)
+			: this(localEP.ToImplementation())
 		{
 		}
 
@@ -77,48 +71,47 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// Initializes new instance of <see cref="TcpListenerAdapter"/>.
 		/// </summary>
 		/// <param name="listener">Listener to be used by the adapter.</param>
-		public TcpListenerAdapter(TcpListener listener)
+		public TcpListenerAdapter([NotNull] TcpListener listener)
 			: base(listener)
 		{
-			_listener = listener ?? throw new ArgumentNullException(nameof(listener));
 		}
 
 		/// <inheritdoc />
-		public Task<ISocket> AcceptSocketAsync()
+		public async Task<ISocket> AcceptSocketAsync()
 		{
-			return _listener.AcceptSocketAsync()
-							.ContinueWith(t => t.Result.ToInterface());
+			var socket = await Implementation.AcceptSocketAsync().ConfigureAwait(false);
+			return socket.ToInterface();
 		}
 
 		/// <inheritdoc />
-		public Task<ITcpClient> AcceptTcpClientAsync()
+		public async Task<ITcpClient> AcceptTcpClientAsync()
 		{
-			return _listener.AcceptTcpClientAsync()
-							.ContinueWith(t => t.Result.ToInterface());
+			var socket = await Implementation.AcceptTcpClientAsync().ConfigureAwait(false);
+			return socket.ToInterface();
 		}
 
 		/// <inheritdoc />
 		public bool Pending()
 		{
-			return _listener.Pending();
+			return Implementation.Pending();
 		}
 
 		/// <inheritdoc />
 		public void Start()
 		{
-			_listener.Start();
+			Implementation.Start();
 		}
 
 		/// <inheritdoc />
 		public void Start(int backlog)
 		{
-			_listener.Start(backlog);
+			Implementation.Start(backlog);
 		}
 
 		/// <inheritdoc />
 		public void Stop()
 		{
-			_listener.Stop();
+			Implementation.Stop();
 		}
 	}
 }

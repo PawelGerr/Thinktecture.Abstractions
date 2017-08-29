@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+using System.Net.Http;
+using JetBrains.Annotations;
 using Thinktecture.Net.Http;
 using Thinktecture.Net.Http.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="invoker">Invoker to convert.</param>
 		/// <returns>Converted invoker.</returns>
-		public static IHttpMessageInvoker ToInterface(this HttpMessageInvoker invoker)
+		[CanBeNull]
+		public static IHttpMessageInvoker ToInterface([CanBeNull] this HttpMessageInvoker invoker)
 		{
 			return (invoker == null) ? null : new HttpMessageInvokerAdapter(invoker);
 		}

@@ -2,112 +2,120 @@ using System;
 using System.ComponentModel;
 using System.Net;
 using System.Net.Http;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Http.Adapters
 {
 	/// <summary>The default message handler used by <see cref="T:System.Net.Http.HttpClient" />.  </summary>
 	public class HttpClientHandlerAdapter : HttpMessageHandlerAdapter, IHttpClientHandler
 	{
-		private readonly HttpClientHandler _handler;
+		/// <summary>
+		/// Implementation used by the adapter.
+		/// </summary>
+		[NotNull]
+		protected new HttpClientHandler Implementation { get; }
 
 		/// <inheritdoc />
+		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new HttpClientHandler UnsafeConvert()
 		{
-			return _handler;
+			return Implementation;
 		}
 
 		/// <inheritdoc />
-		public virtual bool SupportsAutomaticDecompression => _handler.SupportsAutomaticDecompression;
+		public virtual bool SupportsAutomaticDecompression => Implementation.SupportsAutomaticDecompression;
 
 		/// <inheritdoc />
-		public bool SupportsProxy => _handler.SupportsProxy;
+		public bool SupportsProxy => Implementation.SupportsProxy;
 
 		/// <inheritdoc />
-		public bool SupportsRedirectConfiguration => _handler.SupportsRedirectConfiguration;
+		public bool SupportsRedirectConfiguration => Implementation.SupportsRedirectConfiguration;
 
 		/// <inheritdoc />
 		public bool UseCookies
 		{
-			get => _handler.UseCookies;
-			set => _handler.UseCookies = value;
+			get => Implementation.UseCookies;
+			set => Implementation.UseCookies = value;
 		}
 
 		/// <inheritdoc />
 		public ICookieContainer CookieContainer
 		{
-			get => _handler.CookieContainer.ToInterface();
-			set => _handler.CookieContainer = value.ToImplementation();
+			get => Implementation.CookieContainer.ToInterface();
+			set => Implementation.CookieContainer = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
 		public ClientCertificateOption ClientCertificateOptions
 		{
-			get => _handler.ClientCertificateOptions;
-			set => _handler.ClientCertificateOptions = value;
+			get => Implementation.ClientCertificateOptions;
+			set => Implementation.ClientCertificateOptions = value;
 		}
 
 		/// <inheritdoc />
 		public DecompressionMethods AutomaticDecompression
 		{
-			get => _handler.AutomaticDecompression;
-			set => _handler.AutomaticDecompression = value;
+			get => Implementation.AutomaticDecompression;
+			set => Implementation.AutomaticDecompression = value;
 		}
 
 		/// <inheritdoc />
 		public bool UseProxy
 		{
-			get => _handler.UseProxy;
-			set => _handler.UseProxy = value;
+			get => Implementation.UseProxy;
+			set => Implementation.UseProxy = value;
 		}
 
 		/// <inheritdoc />
 		public IWebProxy Proxy
 		{
-			get => _handler.Proxy;
-			set => _handler.Proxy = value;
+			get => Implementation.Proxy;
+			set => Implementation.Proxy = value;
 		}
 
 		/// <inheritdoc />
 		public bool PreAuthenticate
 		{
-			get => _handler.PreAuthenticate;
-			set => _handler.PreAuthenticate = value;
+			get => Implementation.PreAuthenticate;
+			set => Implementation.PreAuthenticate = value;
 		}
 
 		/// <inheritdoc />
 		public bool UseDefaultCredentials
 		{
-			get => _handler.UseDefaultCredentials;
-			set => _handler.UseDefaultCredentials = value;
+			get => Implementation.UseDefaultCredentials;
+			set => Implementation.UseDefaultCredentials = value;
 		}
 
 		/// <inheritdoc />
 		public ICredentials Credentials
 		{
-			get => _handler.Credentials;
-			set => _handler.Credentials = value;
+			get => Implementation.Credentials;
+			set => Implementation.Credentials = value;
 		}
 
 		/// <inheritdoc />
 		public bool AllowAutoRedirect
 		{
-			get => _handler.AllowAutoRedirect;
-			set => _handler.AllowAutoRedirect = value;
+			get => Implementation.AllowAutoRedirect;
+			set => Implementation.AllowAutoRedirect = value;
 		}
 
 		/// <inheritdoc />
 		public int MaxAutomaticRedirections
 		{
-			get => _handler.MaxAutomaticRedirections;
-			set => _handler.MaxAutomaticRedirections = value;
+			get => Implementation.MaxAutomaticRedirections;
+			set => Implementation.MaxAutomaticRedirections = value;
 		}
 
 		/// <inheritdoc />
 		public long MaxRequestContentBufferSize
 		{
-			get => _handler.MaxRequestContentBufferSize;
-			set => _handler.MaxRequestContentBufferSize = value;
+			get => Implementation.MaxRequestContentBufferSize;
+			set => Implementation.MaxRequestContentBufferSize = value;
 		}
 
 		/// <summary>Creates an instance of a <see cref="HttpClientHandlerAdapter" /> class.</summary>
@@ -118,10 +126,10 @@ namespace Thinktecture.Net.Http.Adapters
 
 		/// <summary>Creates an instance of a <see cref="HttpClientHandlerAdapter" /> class.</summary>
 		/// <param name="handler">The implementation to use by the adapter.</param>
-		public HttpClientHandlerAdapter(HttpClientHandler handler)
+		public HttpClientHandlerAdapter([NotNull] HttpClientHandler handler)
 			: base(handler)
 		{
-			_handler = handler ?? throw new ArgumentNullException(nameof(handler));
+			Implementation = handler ?? throw new ArgumentNullException(nameof(handler));
 		}
 	}
 }

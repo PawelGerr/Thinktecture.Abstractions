@@ -1,4 +1,6 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
+
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.NetworkInformation
 {
@@ -24,6 +26,7 @@ namespace Thinktecture.Net.NetworkInformation
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
 		///   <IPermission class="System.Net.NetworkInformation.NetworkInformationPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Access="Read" />
 		/// </PermissionSet>
+		[NotNull]
 		INetworkInterface[] GetAllNetworkInterfaces();
 
 		/// <summary>Indicates whether any network connection is available.</summary>

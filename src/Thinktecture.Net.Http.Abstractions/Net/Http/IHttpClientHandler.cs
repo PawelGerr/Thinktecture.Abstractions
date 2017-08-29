@@ -1,5 +1,6 @@
-﻿using System.Net;
+using System.Net;
 using System.Net.Http;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.Http
 {
@@ -25,6 +26,7 @@ namespace Thinktecture.Net.Http
 
 		/// <summary>Gets or sets the cookie container used to store server cookies by the handler.</summary>
 		/// <returns>Returns <see cref="T:System.Net.CookieContainer" />.The cookie container used to store server cookies by the handler.</returns>
+		[NotNull]
 		ICookieContainer CookieContainer { get; set; }
 
 		/// <summary>Gets or sets a value that indicates if the certificate is automatically picked from the certificate store or if the caller is allowed to pass in a specific client certificate.</summary>
@@ -41,6 +43,7 @@ namespace Thinktecture.Net.Http
 
 		/// <summary>Gets or sets proxy information used by the handler.</summary>
 		/// <returns>Returns <see cref="T:System.Net.IWebProxy" />.The proxy information used by the handler. The default value is null.</returns>
+		[CanBeNull]
 		IWebProxy Proxy { get; set; }
 
 		/// <summary>Gets or sets a value that indicates whether the handler sends an Authorization header with the request.</summary>
@@ -53,6 +56,7 @@ namespace Thinktecture.Net.Http
 
 		/// <summary>Gets or sets authentication information used by this handler.</summary>
 		/// <returns>Returns <see cref="T:System.Net.ICredentials" />.The authentication credentials associated with the handler. The default is null.</returns>
+		[CanBeNull]
 		ICredentials Credentials { get; set; }
 
 		/// <summary>Gets or sets a value that indicates whether the handler should follow redirection responses.</summary>

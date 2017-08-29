@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Thinktecture.Adapters
 {
@@ -14,6 +14,7 @@ namespace Thinktecture.Adapters
 		public bool HasShutdownStarted => Environment.HasShutdownStarted;
 
 		/// <inheritdoc />
+		// ReSharper disable once AssignNullToNotNullAttribute
 		public string NewLine => Environment.NewLine;
 
 		/// <inheritdoc />

@@ -1,6 +1,7 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
 using Thinktecture.Net.NetworkInformation;
 using Thinktecture.Net.NetworkInformation.Adapters;
 
@@ -18,7 +19,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="address">Address to convert.</param>
 		/// <returns>Converted address.</returns>
-		public static IPhysicalAddress ToInterface(this PhysicalAddress address)
+		[CanBeNull]
+		public static IPhysicalAddress ToInterface([CanBeNull] this PhysicalAddress address)
 		{
 			return (address == null) ? null : new PhysicalAddressAdapter(address);
 		}

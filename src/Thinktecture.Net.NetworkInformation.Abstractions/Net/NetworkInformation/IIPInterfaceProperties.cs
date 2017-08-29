@@ -1,6 +1,7 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.NetworkInformation
 {
@@ -13,26 +14,31 @@ namespace Thinktecture.Net.NetworkInformation
 		/// <summary>
 		/// Gets the anycast IP addresses assigned to this interface.
 		/// </summary>
+		[NotNull]
 		IIPAddressInformationCollection AnycastAddresses { get; }
 
 		/// <summary>
 		/// Gets the addresses of Dynamic Host Configuration Protocol (DHCP) servers for this interface.
 		/// </summary>
+		[NotNull]
 		IIPAddressCollection DhcpServerAddresses { get; }
 
 		/// <summary>
 		/// Gets the addresses of Domain Name System (DNS) servers for this interface.
 		/// </summary>
+		[NotNull]
 		IIPAddressCollection DnsAddresses { get; }
 
 		/// <summary>
 		/// Gets the Domain Name System (DNS) suffix associated with this interface.
 		/// </summary>
+		[NotNull]
 		string DnsSuffix { get; }
 
 		/// <summary>
 		/// Gets the IPv4 network gateway addresses for this interface.
 		/// </summary>
+		[NotNull]
 		IGatewayIPAddressInformationCollection GatewayAddresses { get; }
 
 		/// <summary>
@@ -48,28 +54,33 @@ namespace Thinktecture.Net.NetworkInformation
 		/// <summary>
 		/// Gets the multicast addresses assigned to this interface.
 		/// </summary>
+		[NotNull]
 		IMulticastIPAddressInformationCollection MulticastAddresses { get; }
 
 		/// <summary>
 		/// Gets the unicast addresses assigned to this interface.
 		/// </summary>
+		[NotNull]
 		IUnicastIPAddressInformationCollection UnicastAddresses { get; }
 
 		/// <summary>
 		/// Gets the addresses of Windows Internet Name Service (WINS) servers.
 		/// </summary>
+		[NotNull]
 		IIPAddressCollection WinsServersAddresses { get; }
 
 		/// <summary>
 		/// Provides Internet Protocol version 4 (IPv4) configuration data for this network interface.
 		/// </summary>
 		/// <returns>An IPv4InterfaceProperties object that contains IPv4 configuration data, or null if no data is available for the interface.</returns>
+		[NotNull]
 		IIPv4InterfaceProperties GetIPv4Properties();
 
 		/// <summary>
 		/// Provides Internet Protocol version 6 (IPv6) configuration data for this network interface.
 		/// </summary>
 		/// <returns>An IPv6InterfaceProperties object that contains IPv6 configuration data.</returns>
+		[NotNull]
 		IIPv6InterfaceProperties GetIPv6Properties();
 	}
 }

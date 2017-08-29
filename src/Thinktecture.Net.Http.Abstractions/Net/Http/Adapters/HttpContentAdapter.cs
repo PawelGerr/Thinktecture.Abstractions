@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -8,102 +7,94 @@ using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.Net.Http.Headers;
 
+// ReSharper disable AssignNullToNotNullAttribute
+
 namespace Thinktecture.Net.Http.Adapters
 {
 	/// <summary>A base class representing an HTTP entity body and content headers.</summary>
-	public class HttpContentAdapter : AbstractionAdapter, IHttpContent
+	public class HttpContentAdapter : AbstractionAdapter<HttpContent>, IHttpContent
 	{
-		private readonly HttpContent _content;
-
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new HttpContent UnsafeConvert()
-		{
-			return _content;
-		}
-
-		/// <inheritdoc />
-		public IHttpContentHeaders Headers => _content.Headers.ToInterface();
+		public IHttpContentHeaders Headers => Implementation.Headers.ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="HttpContentAdapter" /> class.</summary>
 		/// <param name="content">The implementation to use by the adapter.</param>
 		public HttpContentAdapter([NotNull] HttpContent content)
 			: base(content)
 		{
-			_content = content ?? throw new ArgumentNullException(nameof(content));
 		}
 
 		/// <inheritdoc />
 		public Task<string> ReadAsStringAsync()
 		{
-			return _content.ReadAsStringAsync();
+			return Implementation.ReadAsStringAsync();
 		}
 
 		/// <inheritdoc />
 		public Task<byte[]> ReadAsByteArrayAsync()
 		{
-			return _content.ReadAsByteArrayAsync();
+			return Implementation.ReadAsByteArrayAsync();
 		}
 
 		/// <inheritdoc />
-		public Task<IStream> ReadAsStreamAsync()
+		public async Task<IStream> ReadAsStreamAsync()
 		{
-			return _content.ReadAsStreamAsync()
-							.ContinueWith(t => t.Result.ToInterface());
+			var stream = await Implementation.ReadAsStreamAsync().ConfigureAwait(false);
+			return stream.ToInterface();
 		}
 
 		/// <inheritdoc />
 		public Task CopyToAsync(Stream stream, TransportContext context)
 		{
-			return _content.CopyToAsync(stream, context);
+			return Implementation.CopyToAsync(stream, context);
 		}
 
 		/// <inheritdoc />
 		public Task CopyToAsync(Stream stream, ITransportContext context)
 		{
-			return _content.CopyToAsync(stream, context.ToImplementation());
+			return Implementation.CopyToAsync(stream, context.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public Task CopyToAsync(IStream stream, TransportContext context)
 		{
-			return _content.CopyToAsync(stream.ToImplementation(), context);
+			return Implementation.CopyToAsync(stream.ToImplementation(), context);
 		}
 
 		/// <inheritdoc />
 		public Task CopyToAsync(IStream stream, ITransportContext context)
 		{
-			return _content.CopyToAsync(stream.ToImplementation(), context.ToImplementation());
+			return Implementation.CopyToAsync(stream.ToImplementation(), context.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public Task CopyToAsync(Stream stream)
 		{
-			return _content.CopyToAsync(stream);
+			return Implementation.CopyToAsync(stream);
 		}
 
 		/// <inheritdoc />
 		public Task CopyToAsync(IStream stream)
 		{
-			return _content.CopyToAsync(stream.ToImplementation());
+			return Implementation.CopyToAsync(stream.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public Task LoadIntoBufferAsync()
 		{
-			return _content.LoadIntoBufferAsync();
+			return Implementation.LoadIntoBufferAsync();
 		}
 
 		/// <inheritdoc />
 		public Task LoadIntoBufferAsync(long maxBufferSize)
 		{
-			return _content.LoadIntoBufferAsync(maxBufferSize);
+			return Implementation.LoadIntoBufferAsync(maxBufferSize);
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			_content.Dispose();
+			Implementation.Dispose();
 		}
 	}
 }

@@ -1,5 +1,6 @@
-﻿using System.IO;
+using System.IO;
 using System.Net.Sockets;
+using JetBrains.Annotations;
 using Thinktecture.Net.Sockets;
 using Thinktecture.Net.Sockets.Adapters;
 
@@ -16,7 +17,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="stream">Stream to convert.</param>
 		/// <returns>Converted stream.</returns>
-		public static INetworkStream ToInterface(this NetworkStream stream)
+		[CanBeNull]
+		public static INetworkStream ToInterface([CanBeNull] this NetworkStream stream)
 		{
 			return (stream == null) ? null : new NetworkStreamAdapter(stream);
 		}
@@ -26,7 +28,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="INetworkStream"/> to convert.</param>
 		/// <returns>An instance of <see cref="NetworkStream"/>.</returns>
-		public static NetworkStream ToImplementation(this INetworkStream abstraction)
+		[CanBeNull]
+		public static NetworkStream ToImplementation([CanBeNull] this INetworkStream abstraction)
 		{
 			return ((IAbstraction<NetworkStream>)abstraction)?.UnsafeConvert();
 		}

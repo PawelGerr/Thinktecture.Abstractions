@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+using System.Net.Http.Headers;
+using JetBrains.Annotations;
 using Thinktecture.Net.Http.Headers;
 using Thinktecture.Net.Http.Headers.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="headers">Headers to convert.</param>
 		/// <returns>Converted headers.</returns>
-		public static IHttpResponseHeaders ToInterface(this HttpResponseHeaders headers)
+		[CanBeNull]
+		public static IHttpResponseHeaders ToInterface([CanBeNull] this HttpResponseHeaders headers)
 		{
 			return (headers == null) ? null : new HttpResponseHeadersAdapter(headers);
 		}
@@ -25,7 +27,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IHttpResponseHeaders"/> to convert.</param>
 		/// <returns>An instance of <see cref="HttpResponseHeaders"/>.</returns>
-		public static HttpResponseHeaders ToImplementation(this IHttpResponseHeaders abstraction)
+		[CanBeNull]
+		public static HttpResponseHeaders ToImplementation([CanBeNull] this IHttpResponseHeaders abstraction)
 		{
 			return ((IAbstraction<HttpResponseHeaders>)abstraction)?.UnsafeConvert();
 		}

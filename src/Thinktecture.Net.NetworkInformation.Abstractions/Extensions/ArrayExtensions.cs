@@ -1,6 +1,7 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
 using Thinktecture.Net.NetworkInformation;
 
 // ReSharper disable once CheckNamespace
@@ -16,7 +17,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="elements">Array to convert.</param>
 		/// <returns>An array of <see cref="INetworkInterface"/>.</returns>
-		public static INetworkInterface[] ToInterface(this NetworkInterface[] elements)
+		[CanBeNull]
+		public static INetworkInterface[] ToInterface([CanBeNull] this NetworkInterface[] elements)
 		{
 			if (elements == null)
 				return null;

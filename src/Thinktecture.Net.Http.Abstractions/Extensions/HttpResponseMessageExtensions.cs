@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+using System.Net.Http;
+using JetBrains.Annotations;
 using Thinktecture.Net.Http;
 using Thinktecture.Net.Http.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="message">Message to convert.</param>
 		/// <returns>Converted message.</returns>
-		public static IHttpResponseMessage ToInterface(this HttpResponseMessage message)
+		[CanBeNull]
+		public static IHttpResponseMessage ToInterface([CanBeNull] this HttpResponseMessage message)
 		{
 			return (message == null) ? null : new HttpResponseMessageAdapter(message);
 		}

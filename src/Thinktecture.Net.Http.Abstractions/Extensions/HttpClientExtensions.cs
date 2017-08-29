@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+using System.Net.Http;
+using JetBrains.Annotations;
 using Thinktecture.Net.Http;
 using Thinktecture.Net.Http.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="client">Client to convert.</param>
 		/// <returns>Converted client.</returns>
-		public static IHttpClient ToInterface(this HttpClient client)
+		[CanBeNull]
+		public static IHttpClient ToInterface([CanBeNull] this HttpClient client)
 		{
 			return (client == null) ? null : new HttpClientAdapter(client);
 		}
@@ -25,7 +27,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IHttpClient"/> to convert.</param>
 		/// <returns>An instance of <see cref="HttpClient"/>.</returns>
-		public static HttpClient ToImplementation(this IHttpClient abstraction)
+		[CanBeNull]
+		public static HttpClient ToImplementation([CanBeNull] this IHttpClient abstraction)
 		{
 			return ((IAbstraction<HttpClient>)abstraction)?.UnsafeConvert();
 		}

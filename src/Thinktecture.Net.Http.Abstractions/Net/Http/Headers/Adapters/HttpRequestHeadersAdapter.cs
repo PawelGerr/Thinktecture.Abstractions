@@ -1,180 +1,187 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Net.Http.Headers;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Http.Headers.Adapters
 {
 	/// <summary>Represents the collection of Request Headers as defined in RFC 2616.</summary>
 	public class HttpRequestHeadersAdapter : HttpHeadersAdapter, IHttpRequestHeaders
 	{
-		private readonly HttpRequestHeaders _headers;
+		/// <summary>
+		/// Implementation used by the adapter.
+		/// </summary>
+		[NotNull]
+		protected new HttpRequestHeaders Implementation { get; }
 
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
+		[NotNull, EditorBrowsable(EditorBrowsableState.Never)]
 		public new HttpRequestHeaders UnsafeConvert()
 		{
-			return _headers;
+			return Implementation;
 		}
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<MediaTypeWithQualityHeaderValue> Accept => _headers.Accept.ToInterface();
+		public IHttpHeaderValueCollection<MediaTypeWithQualityHeaderValue> Accept => Implementation.Accept.ToInterface();
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptCharset => _headers.AcceptCharset.ToInterface();
+		public IHttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptCharset => Implementation.AcceptCharset.ToInterface();
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptEncoding => _headers.AcceptEncoding.ToInterface();
+		public IHttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptEncoding => Implementation.AcceptEncoding.ToInterface();
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptLanguage => _headers.AcceptLanguage.ToInterface();
+		public IHttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptLanguage => Implementation.AcceptLanguage.ToInterface();
 
 		/// <inheritdoc />
 		public AuthenticationHeaderValue Authorization
 		{
-			get => _headers.Authorization;
-			set => _headers.Authorization = value;
+			get => Implementation.Authorization;
+			set => Implementation.Authorization = value;
 		}
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<NameValueWithParametersHeaderValue> Expect => _headers.Expect.ToInterface();
+		public IHttpHeaderValueCollection<NameValueWithParametersHeaderValue> Expect => Implementation.Expect.ToInterface();
 
 		/// <inheritdoc />
 		public bool? ExpectContinue
 		{
-			get => _headers.ExpectContinue;
-			set => _headers.ExpectContinue = value;
+			get => Implementation.ExpectContinue;
+			set => Implementation.ExpectContinue = value;
 		}
 
 		/// <inheritdoc />
 		public string From
 		{
-			get => _headers.From;
-			set => _headers.From = value;
+			get => Implementation.From;
+			set => Implementation.From = value;
 		}
 
 		/// <inheritdoc />
 		public string Host
 		{
-			get => _headers.Host;
-			set => _headers.Host = value;
+			get => Implementation.Host;
+			set => Implementation.Host = value;
 		}
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<EntityTagHeaderValue> IfMatch => _headers.IfMatch.ToInterface();
+		public IHttpHeaderValueCollection<EntityTagHeaderValue> IfMatch => Implementation.IfMatch.ToInterface();
 
 		/// <inheritdoc />
 		public DateTimeOffset? IfModifiedSince
 		{
-			get => _headers.IfModifiedSince;
-			set => _headers.IfModifiedSince = value;
+			get => Implementation.IfModifiedSince;
+			set => Implementation.IfModifiedSince = value;
 		}
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<EntityTagHeaderValue> IfNoneMatch => _headers.IfNoneMatch.ToInterface();
+		public IHttpHeaderValueCollection<EntityTagHeaderValue> IfNoneMatch => Implementation.IfNoneMatch.ToInterface();
 
 		/// <inheritdoc />
 		public RangeConditionHeaderValue IfRange
 		{
-			get => _headers.IfRange;
-			set => _headers.IfRange = value;
+			get => Implementation.IfRange;
+			set => Implementation.IfRange = value;
 		}
 
 		/// <inheritdoc />
 		public DateTimeOffset? IfUnmodifiedSince
 		{
-			get => _headers.IfUnmodifiedSince;
-			set => _headers.IfUnmodifiedSince = value;
+			get => Implementation.IfUnmodifiedSince;
+			set => Implementation.IfUnmodifiedSince = value;
 		}
 
 		/// <inheritdoc />
 		public int? MaxForwards
 		{
-			get => _headers.MaxForwards;
-			set => _headers.MaxForwards = value;
+			get => Implementation.MaxForwards;
+			set => Implementation.MaxForwards = value;
 		}
 
 		/// <inheritdoc />
 		public AuthenticationHeaderValue ProxyAuthorization
 		{
-			get => _headers.ProxyAuthorization;
-			set => _headers.ProxyAuthorization = value;
+			get => Implementation.ProxyAuthorization;
+			set => Implementation.ProxyAuthorization = value;
 		}
 
 		/// <inheritdoc />
 		public RangeHeaderValue Range
 		{
-			get => _headers.Range;
-			set => _headers.Range = value;
+			get => Implementation.Range;
+			set => Implementation.Range = value;
 		}
 
 		/// <inheritdoc />
 		public Uri Referrer
 		{
-			get => _headers.Referrer;
-			set => _headers.Referrer = value;
+			get => Implementation.Referrer;
+			set => Implementation.Referrer = value;
 		}
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<TransferCodingWithQualityHeaderValue> TE => _headers.TE.ToInterface();
+		public IHttpHeaderValueCollection<TransferCodingWithQualityHeaderValue> TE => Implementation.TE.ToInterface();
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<ProductInfoHeaderValue> UserAgent => _headers.UserAgent.ToInterface();
+		public IHttpHeaderValueCollection<ProductInfoHeaderValue> UserAgent => Implementation.UserAgent.ToInterface();
 
 		/// <inheritdoc />
 		public CacheControlHeaderValue CacheControl
 		{
-			get => _headers.CacheControl;
-			set => _headers.CacheControl = value;
+			get => Implementation.CacheControl;
+			set => Implementation.CacheControl = value;
 		}
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<string> Connection => _headers.Connection.ToInterface();
+		public IHttpHeaderValueCollection<string> Connection => Implementation.Connection.ToInterface();
 
 		/// <inheritdoc />
 		public bool? ConnectionClose
 		{
-			get => _headers.ConnectionClose;
-			set => _headers.ConnectionClose = value;
+			get => Implementation.ConnectionClose;
+			set => Implementation.ConnectionClose = value;
 		}
 
 		/// <inheritdoc />
 		public DateTimeOffset? Date
 		{
-			get => _headers.Date;
-			set => _headers.Date = value;
+			get => Implementation.Date;
+			set => Implementation.Date = value;
 		}
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<NameValueHeaderValue> Pragma => _headers.Pragma.ToInterface();
+		public IHttpHeaderValueCollection<NameValueHeaderValue> Pragma => Implementation.Pragma.ToInterface();
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<string> Trailer => _headers.Trailer.ToInterface();
+		public IHttpHeaderValueCollection<string> Trailer => Implementation.Trailer.ToInterface();
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<TransferCodingHeaderValue> TransferEncoding => _headers.TransferEncoding.ToInterface();
+		public IHttpHeaderValueCollection<TransferCodingHeaderValue> TransferEncoding => Implementation.TransferEncoding.ToInterface();
 
 		/// <inheritdoc />
 		public bool? TransferEncodingChunked
 		{
-			get => _headers.TransferEncodingChunked;
-			set => _headers.TransferEncodingChunked = value;
+			get => Implementation.TransferEncodingChunked;
+			set => Implementation.TransferEncodingChunked = value;
 		}
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<ProductHeaderValue> Upgrade => _headers.Upgrade.ToInterface();
+		public IHttpHeaderValueCollection<ProductHeaderValue> Upgrade => Implementation.Upgrade.ToInterface();
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<ViaHeaderValue> Via => _headers.Via.ToInterface();
+		public IHttpHeaderValueCollection<ViaHeaderValue> Via => Implementation.Via.ToInterface();
 
 		/// <inheritdoc />
-		public IHttpHeaderValueCollection<WarningHeaderValue> Warning => _headers.Warning.ToInterface();
+		public IHttpHeaderValueCollection<WarningHeaderValue> Warning => Implementation.Warning.ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="HttpHeadersAdapter" /> class.</summary>
 		/// <param name="headers">Http headers to be use by the adapter.</param>
-		public HttpRequestHeadersAdapter(HttpRequestHeaders headers)
+		public HttpRequestHeadersAdapter([NotNull] HttpRequestHeaders headers)
 			: base(headers)
 		{
-			_headers = headers ?? throw new ArgumentNullException(nameof(headers));
+			Implementation = headers ?? throw new ArgumentNullException(nameof(headers));
 		}
 	}
 }

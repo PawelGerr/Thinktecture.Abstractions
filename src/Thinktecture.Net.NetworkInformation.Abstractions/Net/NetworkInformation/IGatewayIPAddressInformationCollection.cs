@@ -1,6 +1,7 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
 using Thinktecture.Collections.Generic;
 
 namespace Thinktecture.Net.NetworkInformation
@@ -16,6 +17,7 @@ namespace Thinktecture.Net.NetworkInformation
 		/// </summary>
 		/// <param name="index">The index of interest.</param>
 		/// <returns>The GatewayIPAddressInformation at the specific index in the collection.</returns>
+		[CanBeNull]
 		IGatewayIPAddressInformation this[int index] { get; }
 	}
 }

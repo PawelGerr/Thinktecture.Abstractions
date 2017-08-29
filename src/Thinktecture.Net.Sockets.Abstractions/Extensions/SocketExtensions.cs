@@ -1,4 +1,5 @@
 using System.Net.Sockets;
+using JetBrains.Annotations;
 using Thinktecture.Net.Sockets;
 using Thinktecture.Net.Sockets.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="socket">Socket to convert.</param>
 		/// <returns>Converted socket.</returns>
-		public static ISocket ToInterface(this Socket socket)
+		[CanBeNull]
+		public static ISocket ToInterface([CanBeNull] this Socket socket)
 		{
 			return (socket == null) ? null : new SocketAdapter(socket);
 		}

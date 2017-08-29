@@ -1,8 +1,10 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System;
-using System.ComponentModel;
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
 {
@@ -10,34 +12,24 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 	/// Provides information about a network interface address.
 	/// </summary>
 	// ReSharper disable once InconsistentNaming
-	public class IPAddressInformationAdapter : AbstractionAdapter, IIPAddressInformation
+	public class IPAddressInformationAdapter : AbstractionAdapter<IPAddressInformation>, IIPAddressInformation
 	{
-		private readonly IPAddressInformation _info;
+		/// <inheritdoc />
+		public IIPAddress Address => Implementation.Address.ToInterface();
 
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new IPAddressInformation UnsafeConvert()
-		{
-			return _info;
-		}
+		public bool IsDnsEligible => Implementation.IsDnsEligible;
 
 		/// <inheritdoc />
-		public IIPAddress Address => _info.Address.ToInterface();
-
-		/// <inheritdoc />
-		public bool IsDnsEligible => _info.IsDnsEligible;
-
-		/// <inheritdoc />
-		public bool IsTransient => _info.IsTransient;
+		public bool IsTransient => Implementation.IsTransient;
 
 		/// <summary>
 		/// Initializes new instance of <see cref="IPAddressInformationAdapter"/>.
 		/// </summary>
 		/// <param name="info">Information to be used by the adapter.</param>
-		public IPAddressInformationAdapter(IPAddressInformation info)
+		public IPAddressInformationAdapter([NotNull] IPAddressInformation info)
 			: base(info)
 		{
-			_info = info ?? throw new ArgumentNullException(nameof(info));
 		}
 	}
 }

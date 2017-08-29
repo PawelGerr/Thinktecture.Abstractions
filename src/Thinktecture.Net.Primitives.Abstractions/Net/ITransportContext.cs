@@ -1,9 +1,9 @@
 #if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net;
-using JetBrains.Annotations;
 using Thinktecture.Net.Adapters;
 #if NETSTANDARD1_3 || NET45 || NET46
+using JetBrains.Annotations;
 using System.Security.Authentication.ExtendedProtection;
 using Thinktecture.Security.Authentication.ExtendedProtection;
 

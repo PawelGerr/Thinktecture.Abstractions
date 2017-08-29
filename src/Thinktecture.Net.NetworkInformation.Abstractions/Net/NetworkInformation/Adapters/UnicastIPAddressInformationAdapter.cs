@@ -3,6 +3,9 @@
 using System;
 using System.ComponentModel;
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
 {
@@ -12,47 +15,51 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 	// ReSharper disable once InconsistentNaming
 	public class UnicastIPAddressInformationAdapter : IPAddressInformationAdapter, IUnicastIPAddressInformation
 	{
-		private readonly UnicastIPAddressInformation _info;
+		/// <summary>
+		/// Implementation used by the adapter.
+		/// </summary>
+		[NotNull]
+		protected new UnicastIPAddressInformation Implementation { get; }
 
 		/// <inheritdoc />
-		public long AddressPreferredLifetime => _info.AddressPreferredLifetime;
+		public long AddressPreferredLifetime => Implementation.AddressPreferredLifetime;
 
 		/// <inheritdoc />
-		public long AddressValidLifetime => _info.AddressValidLifetime;
+		public long AddressValidLifetime => Implementation.AddressValidLifetime;
 
 		/// <inheritdoc />
-		public long DhcpLeaseLifetime => _info.DhcpLeaseLifetime;
+		public long DhcpLeaseLifetime => Implementation.DhcpLeaseLifetime;
 
 		/// <inheritdoc />
-		public DuplicateAddressDetectionState DuplicateAddressDetectionState => _info.DuplicateAddressDetectionState;
+		public DuplicateAddressDetectionState DuplicateAddressDetectionState => Implementation.DuplicateAddressDetectionState;
 
 		/// <inheritdoc />
-		public IIPAddress IPv4Mask => _info.IPv4Mask.ToInterface();
+		public IIPAddress IPv4Mask => Implementation.IPv4Mask.ToInterface();
 
 		/// <inheritdoc />
-		public int PrefixLength => _info.PrefixLength;
+		public int PrefixLength => Implementation.PrefixLength;
 
 		/// <inheritdoc />
-		public PrefixOrigin PrefixOrigin => _info.PrefixOrigin;
+		public PrefixOrigin PrefixOrigin => Implementation.PrefixOrigin;
 
 		/// <inheritdoc />
-		public SuffixOrigin SuffixOrigin => _info.SuffixOrigin;
+		public SuffixOrigin SuffixOrigin => Implementation.SuffixOrigin;
 
 		/// <summary>
 		/// Initializes new instance of <see cref="UnicastIPAddressInformationAdapter"/>.
 		/// </summary>
 		/// <param name="info">Information to be used by the adapter.</param>
-		public UnicastIPAddressInformationAdapter(UnicastIPAddressInformation info)
+		public UnicastIPAddressInformationAdapter([NotNull] UnicastIPAddressInformation info)
 			: base(info)
 		{
-			_info = info ?? throw new ArgumentNullException(nameof(info));
+			Implementation = info ?? throw new ArgumentNullException(nameof(info));
 		}
 
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
+		[NotNull, EditorBrowsable(EditorBrowsableState.Never)]
 		public new UnicastIPAddressInformation UnsafeConvert()
 		{
-			return _info;
+			return Implementation;
 		}
 	}
 }

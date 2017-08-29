@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+using System.Net.Http.Headers;
+using JetBrains.Annotations;
 using Thinktecture.Collections.Generic;
 
 namespace Thinktecture.Net.Http.Headers
@@ -10,11 +11,11 @@ namespace Thinktecture.Net.Http.Headers
 	{
 		/// <summary>Parses and adds an entry to the <see cref="IHttpHeaderValueCollection{T}" />.</summary>
 		/// <param name="input">The entry to add.</param>
-		void ParseAdd(string input);
+		void ParseAdd([CanBeNull] string input);
 
 		/// <summary>Determines whether the input could be parsed and added to the <see cref="IHttpHeaderValueCollection{T}" />.</summary>
 		/// <returns>Returns <c>true</c> if the <paramref name="input" /> could be parsed and added to the <see cref="IHttpHeaderValueCollection{T}" /> instance; otherwise, <c>false</c>.</returns>
 		/// <param name="input">The entry to validate.</param>
-		bool TryParseAdd(string input);
+		bool TryParseAdd([CanBeNull] string input);
 	}
 }

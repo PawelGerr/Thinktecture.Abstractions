@@ -1,35 +1,26 @@
-﻿using System;
-using System.ComponentModel;
+using System;
 using System.Net.Sockets;
+using JetBrains.Annotations;
 
 namespace Thinktecture.Net.Sockets.Adapters
 {
 	/// <summary>
 	/// Specifies whether a Socket will remain connected after a call to the Close or Close methods and the length of time it will remain connected, if data remains to be sent.
 	/// </summary>
-	public class LingerOptionAdapter : AbstractionAdapter, ILingerOption
+	public class LingerOptionAdapter : AbstractionAdapter<LingerOption>, ILingerOption
 	{
-		private readonly LingerOption _options;
-
-		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new LingerOption UnsafeConvert()
-		{
-			return _options;
-		}
-
 		/// <inheritdoc />
 		public bool Enabled
 		{
-			get => _options.Enabled;
-			set => _options.Enabled = value;
+			get => Implementation.Enabled;
+			set => Implementation.Enabled = value;
 		}
 
 		/// <inheritdoc />
 		public int LingerTime
 		{
-			get => _options.LingerTime;
-			set => _options.LingerTime = value;
+			get => Implementation.LingerTime;
+			set => Implementation.LingerTime = value;
 		}
 
 		/// <summary>
@@ -46,10 +37,9 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// Initializes a new instance of the <see cref="LingerOptionAdapter"/> class.
 		/// </summary>
 		/// <param name="options">Options to be used by the adapter.</param>
-		public LingerOptionAdapter(LingerOption options)
+		public LingerOptionAdapter([NotNull] LingerOption options)
 			: base(options)
 		{
-			_options = options ?? throw new ArgumentNullException(nameof(options));
 		}
 	}
 }

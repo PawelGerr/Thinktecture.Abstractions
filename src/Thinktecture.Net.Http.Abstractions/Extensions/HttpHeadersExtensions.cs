@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+using System.Net.Http.Headers;
+using JetBrains.Annotations;
 using Thinktecture.Net.Http.Headers;
 using Thinktecture.Net.Http.Headers.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="headers">Headers to convert.</param>
 		/// <returns>Converted headers.</returns>
-		public static IHttpHeaders ToInterface(this HttpHeaders headers)
+		[CanBeNull]
+		public static IHttpHeaders ToInterface([CanBeNull] this HttpHeaders headers)
 		{
 			return (headers == null) ? null : new HttpHeadersAdapter(headers);
 		}

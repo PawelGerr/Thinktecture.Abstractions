@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+using System.Net.Http;
+using JetBrains.Annotations;
 using Thinktecture.Net.Http;
 using Thinktecture.Net.Http.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="handler">Handler to convert.</param>
 		/// <returns>Converted handler.</returns>
-		public static IMessageProcessingHandler ToInterface(this MessageProcessingHandler handler)
+		[CanBeNull]
+		public static IMessageProcessingHandler ToInterface([CanBeNull] this MessageProcessingHandler handler)
 		{
 			return (handler == null) ? null : new MessageProcessingHandlerAdapter(handler);
 		}
@@ -25,7 +27,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IMessageProcessingHandler"/> to convert.</param>
 		/// <returns>An instance of <see cref="MessageProcessingHandler"/>.</returns>
-		public static MessageProcessingHandler ToImplementation(this IMessageProcessingHandler abstraction)
+		[CanBeNull]
+		public static MessageProcessingHandler ToImplementation([CanBeNull] this IMessageProcessingHandler abstraction)
 		{
 			return ((IAbstraction<MessageProcessingHandler>)abstraction)?.UnsafeConvert();
 		}

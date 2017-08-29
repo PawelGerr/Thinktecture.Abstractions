@@ -2,6 +2,8 @@
 
 using System.Net.NetworkInformation;
 
+// ReSharper disable AssignNullToNotNullAttribute
+
 namespace Thinktecture.Net.NetworkInformation.Adapters
 {
 	/// <summary>Provides configuration and statistical information for network interfaces.</summary>

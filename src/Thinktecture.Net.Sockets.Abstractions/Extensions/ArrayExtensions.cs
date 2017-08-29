@@ -1,4 +1,5 @@
-﻿using System.Net.Sockets;
+using System.Net.Sockets;
+using JetBrains.Annotations;
 using Thinktecture.Net.Sockets;
 
 // ReSharper disable once CheckNamespace
@@ -14,7 +15,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="elements">Array to convert.</param>
 		/// <returns>An array of <see cref="ISendPacketsElement"/>.</returns>
-		public static ISendPacketsElement[] ToInterface(this SendPacketsElement[] elements)
+		[CanBeNull]
+		public static ISendPacketsElement[] ToInterface([CanBeNull] this SendPacketsElement[] elements)
 		{
 			if (elements == null)
 				return null;

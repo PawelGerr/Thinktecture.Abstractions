@@ -1,68 +1,61 @@
-﻿using System;
-using System.ComponentModel;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
+
+// ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Sockets.Adapters
 {
 	/// <summary>
 	/// Provides User Datagram Protocol (UDP) network services.
 	/// </summary>
-	public class UdpClientAdapter : AbstractionAdapter, IUdpClient
+	public class UdpClientAdapter : AbstractionAdapter<UdpClient>, IUdpClient
 	{
-		private readonly UdpClient _client;
-
 		/// <inheritdoc />
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new UdpClient UnsafeConvert()
-		{
-			return _client;
-		}
-
-		/// <inheritdoc />
-		public int Available => _client.Available;
+		public int Available => Implementation.Available;
 
 		/// <inheritdoc />
 		public ISocket Client
 		{
-			get => _client.Client.ToInterface();
-			set => _client.Client = value.ToImplementation();
+			get => Implementation.Client.ToInterface();
+			set => Implementation.Client = value.ToImplementation();
 		}
 
 		/// <inheritdoc />
 		public bool DontFragment
 		{
-			get => _client.DontFragment;
-			set => _client.DontFragment = value;
+			get => Implementation.DontFragment;
+			set => Implementation.DontFragment = value;
 		}
 
 		/// <inheritdoc />
 		public bool EnableBroadcast
 		{
-			get => _client.EnableBroadcast;
-			set => _client.EnableBroadcast = value;
+			get => Implementation.EnableBroadcast;
+			set => Implementation.EnableBroadcast = value;
 		}
 
 		/// <inheritdoc />
 		public bool ExclusiveAddressUse
 		{
-			get => _client.ExclusiveAddressUse;
-			set => _client.ExclusiveAddressUse = value;
+			get => Implementation.ExclusiveAddressUse;
+			set => Implementation.ExclusiveAddressUse = value;
 		}
 
 		/// <inheritdoc />
 		public bool MulticastLoopback
 		{
-			get => _client.MulticastLoopback;
-			set => _client.MulticastLoopback = value;
+			get => Implementation.MulticastLoopback;
+			set => Implementation.MulticastLoopback = value;
 		}
 
 		/// <inheritdoc />
 		public short Ttl
 		{
-			get => _client.Ttl;
-			set => _client.Ttl = value;
+			get => Implementation.Ttl;
+			set => Implementation.Ttl = value;
 		}
 
 		/// <summary>
@@ -97,7 +90,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="localEP">An IPEndPoint that respresents the local endpoint to which you bind the UDP connection.</param>
 		// ReSharper disable once InconsistentNaming
-		public UdpClientAdapter(IPEndPoint localEP)
+		public UdpClientAdapter([NotNull] IPEndPoint localEP)
 			: this(new UdpClient(localEP))
 		{
 		}
@@ -107,8 +100,8 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="localEP">An IPEndPoint that respresents the local endpoint to which you bind the UDP connection.</param>
 		// ReSharper disable once InconsistentNaming
-		public UdpClientAdapter(IIPEndPoint localEP)
-			: this(new UdpClient(localEP.ToImplementation<IPEndPoint>()))
+		public UdpClientAdapter([NotNull] IIPEndPoint localEP)
+			: this(localEP.ToImplementation<IPEndPoint>())
 		{
 		}
 
@@ -125,124 +118,123 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// Intializes new instance of <see cref="UdpClientAdapter"/>.
 		/// </summary>
 		/// <param name="client">Client to be used by the adapter.</param>
-		public UdpClientAdapter(UdpClient client)
+		public UdpClientAdapter([NotNull] UdpClient client)
 			: base(client)
 		{
-			_client = client ?? throw new ArgumentNullException(nameof(client));
 		}
 
 		/// <inheritdoc />
 		public void DropMulticastGroup(IPAddress multicastAddr)
 		{
-			_client.DropMulticastGroup(multicastAddr);
+			Implementation.DropMulticastGroup(multicastAddr);
 		}
 
 		/// <inheritdoc />
 		public void DropMulticastGroup(IIPAddress multicastAddr)
 		{
-			_client.DropMulticastGroup(multicastAddr.ToImplementation());
+			Implementation.DropMulticastGroup(multicastAddr.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public void DropMulticastGroup(IPAddress multicastAddr, int ifindex)
 		{
-			_client.DropMulticastGroup(multicastAddr, ifindex);
+			Implementation.DropMulticastGroup(multicastAddr, ifindex);
 		}
 
 		/// <inheritdoc />
 		public void DropMulticastGroup(IIPAddress multicastAddr, int ifindex)
 		{
-			_client.DropMulticastGroup(multicastAddr.ToImplementation(), ifindex);
+			Implementation.DropMulticastGroup(multicastAddr.ToImplementation(), ifindex);
 		}
 
 		/// <inheritdoc />
 		public void JoinMulticastGroup(int ifindex, IPAddress multicastAddr)
 		{
-			_client.JoinMulticastGroup(ifindex, multicastAddr);
+			Implementation.JoinMulticastGroup(ifindex, multicastAddr);
 		}
 
 		/// <inheritdoc />
 		public void JoinMulticastGroup(int ifindex, IIPAddress multicastAddr)
 		{
-			_client.JoinMulticastGroup(ifindex, multicastAddr.ToImplementation());
+			Implementation.JoinMulticastGroup(ifindex, multicastAddr.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public void JoinMulticastGroup(IPAddress multicastAddr)
 		{
-			_client.JoinMulticastGroup(multicastAddr);
+			Implementation.JoinMulticastGroup(multicastAddr);
 		}
 
 		/// <inheritdoc />
 		public void JoinMulticastGroup(IIPAddress multicastAddr)
 		{
-			_client.JoinMulticastGroup(multicastAddr.ToImplementation());
+			Implementation.JoinMulticastGroup(multicastAddr.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public void JoinMulticastGroup(IPAddress multicastAddr, int timeToLive)
 		{
-			_client.JoinMulticastGroup(multicastAddr, timeToLive);
+			Implementation.JoinMulticastGroup(multicastAddr, timeToLive);
 		}
 
 		/// <inheritdoc />
 		public void JoinMulticastGroup(IIPAddress multicastAddr, int timeToLive)
 		{
-			_client.JoinMulticastGroup(multicastAddr.ToImplementation(), timeToLive);
+			Implementation.JoinMulticastGroup(multicastAddr.ToImplementation(), timeToLive);
 		}
 
 		/// <inheritdoc />
 		public void JoinMulticastGroup(IPAddress multicastAddr, IPAddress localAddress)
 		{
-			_client.JoinMulticastGroup(multicastAddr, localAddress);
+			Implementation.JoinMulticastGroup(multicastAddr, localAddress);
 		}
 
 		/// <inheritdoc />
 		public void JoinMulticastGroup(IIPAddress multicastAddr, IPAddress localAddress)
 		{
-			_client.JoinMulticastGroup(multicastAddr.ToImplementation(), localAddress);
+			Implementation.JoinMulticastGroup(multicastAddr.ToImplementation(), localAddress);
 		}
 
 		/// <inheritdoc />
 		public void JoinMulticastGroup(IPAddress multicastAddr, IIPAddress localAddress)
 		{
-			_client.JoinMulticastGroup(multicastAddr, localAddress.ToImplementation());
+			Implementation.JoinMulticastGroup(multicastAddr, localAddress.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public void JoinMulticastGroup(IIPAddress multicastAddr, IIPAddress localAddress)
 		{
-			_client.JoinMulticastGroup(multicastAddr.ToImplementation(), localAddress.ToImplementation());
+			Implementation.JoinMulticastGroup(multicastAddr.ToImplementation(), localAddress.ToImplementation());
 		}
 
 		/// <inheritdoc />
 		public Task<UdpReceiveResult> ReceiveAsync()
 		{
-			return _client.ReceiveAsync();
+			return Implementation.ReceiveAsync();
 		}
 
 		/// <inheritdoc />
 		public Task<int> SendAsync(byte[] datagram, int bytes, IPEndPoint endPoint)
 		{
-			return _client.SendAsync(datagram, bytes, endPoint);
+			return Implementation.SendAsync(datagram, bytes, endPoint);
 		}
 
 		/// <inheritdoc />
 		public Task<int> SendAsync(byte[] datagram, int bytes, IIPEndPoint endPoint)
 		{
-			return _client.SendAsync(datagram, bytes, endPoint.ToImplementation<IPEndPoint>());
+			return Implementation.SendAsync(datagram, bytes, endPoint.ToImplementation<IPEndPoint>());
 		}
 
 		/// <inheritdoc />
 		public Task<int> SendAsync(byte[] datagram, int bytes, string hostname, int port)
 		{
-			return _client.SendAsync(datagram, bytes, hostname, port);
+			return Implementation.SendAsync(datagram, bytes, hostname, port);
 		}
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
-			((IDisposable)_client).Dispose();
+			((IDisposable)Implementation).Dispose();
 		}
 	}
 }

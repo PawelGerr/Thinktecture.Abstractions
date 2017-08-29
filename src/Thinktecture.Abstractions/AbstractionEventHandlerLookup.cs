@@ -71,17 +71,15 @@ namespace Thinktecture
 		[CanBeNull]
 		public EventHandler<TImplementation> TryMapForDetachment([CanBeNull] EventHandler<TAbstraction> handler)
 		{
-			if (handler != null && _lookup.TryGetValue(handler, out var ctx))
-			{
-				ctx.Count--;
+			if (handler == null || !_lookup.TryGetValue(handler, out var ctx))
+				return null;
 
-				if (ctx.Count <= 0)
-					_lookup.Remove(handler);
+			ctx.Count--;
 
-				return ctx.Handler;
-			}
+			if (ctx.Count <= 0)
+				_lookup.Remove(handler);
 
-			return null;
+			return ctx.Handler;
 		}
 	}
 }

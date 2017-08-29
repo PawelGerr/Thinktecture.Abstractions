@@ -1,6 +1,7 @@
-﻿#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45 || NET46
 
 using System.Net.NetworkInformation;
+using JetBrains.Annotations;
 using Thinktecture.Net.NetworkInformation;
 using Thinktecture.Net.NetworkInformation.Adapters;
 
@@ -18,7 +19,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="networkInterface">Network interface to convert.</param>
 		/// <returns>Converted network interface.</returns>
-		public static INetworkInterface ToInterface(this NetworkInterface networkInterface)
+		[CanBeNull]
+		public static INetworkInterface ToInterface([CanBeNull] this NetworkInterface networkInterface)
 		{
 			return (networkInterface == null) ? null : new NetworkInterfaceAdapter(networkInterface);
 		}

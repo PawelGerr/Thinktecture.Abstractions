@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+using System.Net.Http;
+using JetBrains.Annotations;
 using Thinktecture.Net.Http;
 using Thinktecture.Net.Http.Adapters;
 
@@ -15,7 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="handler">Handler to convert.</param>
 		/// <returns>Converted handler.</returns>
-		public static IHttpMessageHandler ToInterface(this HttpMessageHandler handler)
+		[CanBeNull]
+		public static IHttpMessageHandler ToInterface([CanBeNull] this HttpMessageHandler handler)
 		{
 			return (handler == null) ? null : new HttpMessageHandlerAdapter(handler);
 		}

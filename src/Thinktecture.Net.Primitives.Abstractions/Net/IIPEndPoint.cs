@@ -7,6 +7,7 @@ namespace Thinktecture.Net
 {
 	/// <summary>Represents a network endpoint as an IP address and a port number.</summary>
 	// ReSharper disable once InconsistentNaming
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
 	public interface IIPEndPoint : IEndPoint, IAbstraction<IPEndPoint>
 	{
 		/// <summary>Gets or sets the IP address of the endpoint.</summary>
