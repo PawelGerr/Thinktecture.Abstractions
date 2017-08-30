@@ -11,6 +11,7 @@ namespace Thinktecture.IO.FileSystem.Examples.Factories
 	{
 		[NotNull]
 		IStreamReader CreateReader([NotNull] IStream stream);
+
 		[NotNull]
 		IFileInfo CreateFileInfo([NotNull] string path);
 	}

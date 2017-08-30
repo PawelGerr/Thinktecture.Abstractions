@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.Net.Http.Headers;
+
 // ReSharper disable PossibleNullReferenceException
 
 // ReSharper disable AssignNullToNotNullAttribute

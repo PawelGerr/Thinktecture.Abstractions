@@ -11,6 +11,7 @@ namespace Thinktecture.AbstractionAdapterTests
 	{
 		[NotNull]
 		protected readonly TestComponent Implementation;
+
 		[NotNull]
 		protected readonly AbstractionAdapter Adapter;
 

@@ -50,7 +50,6 @@ namespace Thinktecture.Threading.Tasks.Examples
 			await task;
 		}
 
-
 		public static async ITask<int> GetGenericITask()
 		{
 			ITask<int> task = new TaskAdapter<int>(() =>

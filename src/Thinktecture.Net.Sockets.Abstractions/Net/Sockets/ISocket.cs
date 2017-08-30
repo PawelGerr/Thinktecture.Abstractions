@@ -487,7 +487,7 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="remoteEP">An EndPoint, passed by reference, that represents the remote server.</param>
 		/// <returns>The number of bytes received.</returns>
 		// ReSharper disable once InconsistentNaming
-		int ReceiveFrom([NotNull] byte[] buffer, int size, SocketFlags socketFlags, [CanBeNull]  ref IEndPoint remoteEP);
+		int ReceiveFrom([NotNull] byte[] buffer, int size, SocketFlags socketFlags, [CanBeNull] ref IEndPoint remoteEP);
 
 		/// <summary>
 		/// Receives a datagram into the data buffer and stores the endpoint.

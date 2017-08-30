@@ -1555,7 +1555,7 @@ namespace Thinktecture.Threading.Tasks.Adapters
 		/// <param name="creationOptions">The <see cref="TaskCreationOptions" /> used to customize the task's behavior.</param>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="creationOptions" /> argument specifies an invalid value for <see cref="TaskCreationOptions" />.</exception>
 		/// <exception cref="ArgumentNullException">The <paramref name="function" /> argument is null.</exception>
-		public TaskAdapter([NotNull]Func<TResult> function, TaskCreationOptions creationOptions)
+		public TaskAdapter([NotNull] Func<TResult> function, TaskCreationOptions creationOptions)
 			: this(new Task<TResult>(function, creationOptions))
 		{
 		}

@@ -15,6 +15,7 @@ namespace Thinktecture.IO.FileSystem.Examples.ReadingFiles.Recommended
 
 		[NotNull]
 		private readonly IFile _file;
+
 		[NotNull]
 		private readonly ICustomFactory _factory;
 
