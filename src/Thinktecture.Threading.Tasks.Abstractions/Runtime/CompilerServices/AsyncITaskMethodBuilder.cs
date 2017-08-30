@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
+using JetBrains.Annotations;
 using Thinktecture.Threading.Tasks;
 using Thinktecture.Threading.Tasks.Adapters;
 
@@ -16,6 +17,7 @@ namespace Thinktecture.Runtime.CompilerServices
 		private AsyncTaskMethodBuilder _methodBuilder;
 
 		/// <summary>Gets the task for this builder.</summary>
+		[NotNull]
 		public ITask Task => new TaskAdapter(_methodBuilder.Task);
 
 		/// <summary>Creates an instance of the <see cref="AsyncITaskMethodBuilder"/> struct.</summary>
@@ -92,6 +94,7 @@ namespace Thinktecture.Runtime.CompilerServices
 		private AsyncTaskMethodBuilder<TResult> _methodBuilder;
 
 		/// <summary>Gets the task for this builder.</summary>
+		[NotNull]
 		public ITask<TResult> Task => new TaskAdapter<TResult>(_methodBuilder.Task);
 
 		/// <summary>Creates an instance of the <see cref="AsyncITaskMethodBuilder"/> struct.</summary>

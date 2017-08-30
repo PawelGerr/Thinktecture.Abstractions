@@ -1,7 +1,7 @@
 **/.vs/**
+**/.idea/**
 **/bin/**
 **/obj/**
 **/packages/**
 *.xproj.user
 project.lock.json
-
