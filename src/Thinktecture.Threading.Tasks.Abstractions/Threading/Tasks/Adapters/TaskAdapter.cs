@@ -61,7 +61,8 @@ namespace Thinktecture.Threading.Tasks.Adapters
 
 		/// <summary>Provides access to factory methods for creating and configuring <see cref="Task" /> and <see cref="Task{TResult}" /> instances.</summary>
 		/// <returns>A factory object that can create a variety of <see cref="Task" /> and <see cref="Task{TResult}" /> objects. </returns>
-		public static TaskFactory Factory => Task.Factory;
+		[NotNull]
+		public static ITaskFactory Factory => Task.Factory.ToInterface();
 
 #if NETSTANDARD1_3
 		/// <summary>Gets a task that has already completed successfully. </summary>
@@ -1273,7 +1274,8 @@ namespace Thinktecture.Threading.Tasks.Adapters
 
 		/// <summary>Provides access to factory methods for creating and configuring <see cref="TaskAdapter{TResult}" /> instances.</summary>
 		/// <returns>A factory object that can create a variety of <see cref="TaskAdapter{TResult}" /> objects.</returns>
-		public new static TaskFactory<TResult> Factory => Task<TResult>.Factory;
+		[NotNull]
+		public new static ITaskFactory<TResult> Factory => Task<TResult>.Factory.ToInterface();
 
 		/// <summary>Initializes a new <see cref="TaskAdapter{TResult}" />.</summary>
 		/// <param name="task">Task to be used by adapter.</param>
