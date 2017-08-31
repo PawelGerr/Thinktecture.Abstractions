@@ -1,35 +1,37 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Thinktecture.Threading.Tasks.Adapters;
 
 namespace Thinktecture.Threading.Tasks.Examples
 {
-	class Program
+	// ReSharper disable once ArrangeTypeModifiers
+	public class Program
 	{
-		static void Main(string[] args)
+		// ReSharper disable once UnusedParameter.Local
+		public static void Main(string[] args)
 		{
-			Do().Wait();
+			DoAsync().Wait();
 
 			Console.WriteLine("END");
 			Console.ReadLine();
 		}
 
-		private static async Task Do()
+		private static async Task DoAsync()
 		{
-			await GetTaskAdapter();
-			await GetGenericTaskAdapter();
-			await GetITask();
-			await GetGenericITask();
+			await GetTaskAdapterAsync();
+			await GetGenericTaskAdapterAsync();
+			await GetITaskAsync();
+			await GetGenericITaskAsync();
 		}
 
-		private static async TaskAdapter GetTaskAdapter()
+		private static async TaskAdapter GetTaskAdapterAsync()
 		{
 			var taskAdapter = new TaskAdapter(() => Console.WriteLine("TaskAdapter"));
 			taskAdapter.Start();
 			await taskAdapter;
 		}
 
-		public static async TaskAdapter<int> GetGenericTaskAdapter()
+		public static async TaskAdapter<int> GetGenericTaskAdapterAsync()
 		{
 			var taskAdapter = new TaskAdapter<int>(() =>
 			{
@@ -43,14 +45,14 @@ namespace Thinktecture.Threading.Tasks.Examples
 			return result;
 		}
 
-		private static async ITask GetITask()
+		private static async ITask GetITaskAsync()
 		{
 			ITask task = new TaskAdapter(() => Console.WriteLine("ITask"));
 			task.Start();
 			await task;
 		}
 
-		public static async ITask<int> GetGenericITask()
+		public static async ITask<int> GetGenericITaskAsync()
 		{
 			ITask<int> task = new TaskAdapter<int>(() =>
 			{

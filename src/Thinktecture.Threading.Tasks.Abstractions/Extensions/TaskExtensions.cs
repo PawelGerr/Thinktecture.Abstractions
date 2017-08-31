@@ -26,6 +26,7 @@ namespace Thinktecture
 		/// Converts <see cref="Task{TResult}"/> to <see cref="ITask{TResult}"/>.
 		/// </summary>
 		/// <param name="task"><see cref="Task{TResult}"/> to convert.</param>
+		/// <typeparam name="TResult">Type of the result.</typeparam>
 		/// <returns>Instance of <see cref="ITask{TResult}"/>.</returns>
 		[CanBeNull]
 		public static ITask<TResult> ToInterface<TResult>([CanBeNull] this Task<TResult> task)
@@ -37,6 +38,7 @@ namespace Thinktecture
 		/// Converts provided <see cref="ITask{TResult}"/> info to <see cref="Task"/>.
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="ITask{TResult}"/> to convert.</param>
+		/// <typeparam name="TResult">Type of the result.</typeparam>
 		/// <returns>An instance of <see cref="Task"/>.</returns>
 		[CanBeNull]
 		public static Task<TResult> ToImplementation<TResult>([CanBeNull] this ITask<TResult> abstraction)

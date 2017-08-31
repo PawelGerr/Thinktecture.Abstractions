@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -169,6 +168,7 @@ namespace Thinktecture.Threading.Tasks.Adapters
 			return Implementation.StartNew(function, state, cancellationToken, creationOptions, scheduler).ToInterface();
 		}
 
+#pragma warning disable RCS1047 // Non-asynchronous method name should not end with 'Async'.
 		/// <inheritdoc />
 		public ITask FromAsync(IAsyncResult asyncResult, Action<IAsyncResult> endMethod)
 		{
@@ -300,6 +300,7 @@ namespace Thinktecture.Threading.Tasks.Adapters
 		{
 			return Implementation.FromAsync(beginMethod, endMethod, arg1, arg2, arg3, state, creationOptions).ToInterface();
 		}
+#pragma warning restore RCS1047 // Non-asynchronous method name should not end with 'Async'.
 
 		/// <inheritdoc />
 		public ITask ContinueWhenAll(Task[] tasks, Action<ITask[]> continuationAction)
@@ -687,14 +688,18 @@ namespace Thinktecture.Threading.Tasks.Adapters
 	}
 
 	/// <summary>Provides support for creating and scheduling <see cref="ITask{TResult}" /> objects. </summary>
+	/// <typeparam name="TResult">Type of the result.</typeparam>
 	public class TaskFactoryAdapter<TResult> : AbstractionAdapter<TaskFactory<TResult>>, ITaskFactory<TResult>
 	{
 		/// <inheritdoc />
 		public CancellationToken CancellationToken => Implementation.CancellationToken;
+
 		/// <inheritdoc />
 		public TaskContinuationOptions ContinuationOptions => Implementation.ContinuationOptions;
+
 		/// <inheritdoc />
 		public TaskCreationOptions CreationOptions => Implementation.CreationOptions;
+
 		/// <inheritdoc />
 		public TaskScheduler Scheduler => Implementation.Scheduler;
 
@@ -797,6 +802,7 @@ namespace Thinktecture.Threading.Tasks.Adapters
 			return Implementation.StartNew(function, state, cancellationToken, creationOptions, scheduler).ToInterface();
 		}
 
+#pragma warning disable RCS1047 // Non-asynchronous method name should not end with 'Async'.
 		/// <inheritdoc />
 		public ITask<TResult> FromAsync(IAsyncResult asyncResult, Func<IAsyncResult, TResult> endMethod)
 		{
@@ -862,6 +868,7 @@ namespace Thinktecture.Threading.Tasks.Adapters
 		{
 			return Implementation.FromAsync(beginMethod, endMethod, arg1, arg2, arg3, state, creationOptions).ToInterface();
 		}
+#pragma warning restore RCS1047 // Non-asynchronous method name should not end with 'Async'.
 
 		/// <inheritdoc />
 		public ITask<TResult> ContinueWhenAll(Task[] tasks, Func<ITask[], TResult> continuationFunction)

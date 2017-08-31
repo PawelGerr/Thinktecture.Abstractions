@@ -30,6 +30,8 @@ using System;
 // ReSharper disable MemberCanBeProtected.Global
 // ReSharper disable InconsistentNaming
 
+#pragma warning disable RCS1029 // Format binary operator on next line.
+
 // ReSharper disable once CheckNamespace
 namespace JetBrains.Annotations
 {
@@ -46,10 +48,12 @@ namespace JetBrains.Annotations
 	/// }
 	/// </code></example>
 	[AttributeUsage(
-	  AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-	  AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
-	  AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
-	internal sealed class CanBeNullAttribute : Attribute { }
+		AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+		AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
+		AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
+	internal sealed class CanBeNullAttribute : Attribute
+	{
+	}
 
 	/// <summary>
 	/// Indicates that the value of the marked element could never be <c>null</c>.
@@ -60,10 +64,12 @@ namespace JetBrains.Annotations
 	/// }
 	/// </code></example>
 	[AttributeUsage(
-	  AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-	  AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
-	  AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
-	internal sealed class NotNullAttribute : Attribute { }
+		AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+		AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
+		AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
+	internal sealed class NotNullAttribute : Attribute
+	{
+	}
 
 	/// <summary>
 	/// Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
@@ -71,9 +77,11 @@ namespace JetBrains.Annotations
 	/// or of the Lazy.Value property can never be null.
 	/// </summary>
 	[AttributeUsage(
-	  AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-	  AttributeTargets.Delegate | AttributeTargets.Field)]
-	internal sealed class ItemNotNullAttribute : Attribute { }
+		AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+		AttributeTargets.Delegate | AttributeTargets.Field)]
+	internal sealed class ItemNotNullAttribute : Attribute
+	{
+	}
 
 	/// <summary>
 	/// Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
@@ -81,7 +89,10 @@ namespace JetBrains.Annotations
 	/// or of the Lazy.Value property can be null.
 	/// </summary>
 	[AttributeUsage(
-	  AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-	  AttributeTargets.Delegate | AttributeTargets.Field)]
-	internal sealed class ItemCanBeNullAttribute : Attribute { }
+		AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+		AttributeTargets.Delegate | AttributeTargets.Field)]
+	internal sealed class ItemCanBeNullAttribute : Attribute
+	{
+	}
 }
+#pragma warning restore RCS1029 // Format binary operator on next line.

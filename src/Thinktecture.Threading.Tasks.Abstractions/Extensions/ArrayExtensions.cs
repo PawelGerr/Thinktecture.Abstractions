@@ -35,6 +35,7 @@ namespace Thinktecture
 		/// Converts an array of <see cref="Task{TResult}"/> to an array of <see cref="ITask{TResult}"/>.
 		/// </summary>
 		/// <param name="tasks">Array to convert.</param>
+		/// <typeparam name="TResult">Type of the result.</typeparam>
 		/// <returns>An array of <see cref="ITask{TResult}"/>.</returns>
 		[CanBeNull]
 		public static ITask<TResult>[] ToInterface<TResult>([CanBeNull] this Task<TResult>[] tasks)

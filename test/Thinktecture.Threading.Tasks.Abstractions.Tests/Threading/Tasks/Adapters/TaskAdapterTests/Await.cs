@@ -48,7 +48,6 @@ namespace Thinktecture.Threading.Tasks.Adapters.TaskAdapterTests
 			(await t).Should().Be(42);
 		}
 
-
 		[Fact]
 		public async Task Should_wait_for_continuation_task()
 		{

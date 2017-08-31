@@ -165,6 +165,7 @@ namespace Thinktecture.Runtime.CompilerServices
 	/// <summary>
 	/// Method builder for <see cref="ITask{TResult}"/>.
 	/// </summary>
+	/// <typeparam name="TResult">Type of the result.</typeparam>
 	[StructLayout(LayoutKind.Auto)]
 	public struct AsyncITaskMethodBuilder<TResult> : IAsyncTaskMethodBuilder<ITask<TResult>, TResult>
 	{
@@ -201,6 +202,7 @@ namespace Thinktecture.Runtime.CompilerServices
 		}
 
 		/// <summary>Marks the task as successfully completed.</summary>
+		/// <param name="result">The result to set.</param>
 		public void SetResult(TResult result)
 		{
 			_methodBuilder.SetResult(result);
@@ -242,6 +244,7 @@ namespace Thinktecture.Runtime.CompilerServices
 	/// <summary>
 	/// Method builder for <see cref="ITask{TResult}"/>.
 	/// </summary>
+	/// <typeparam name="TResult">Type of the result.</typeparam>
 	[StructLayout(LayoutKind.Auto)]
 	public struct AsyncTaskAdapterMethodBuilder<TResult> : IAsyncTaskMethodBuilder<TaskAdapter<TResult>, TResult>
 	{
@@ -278,6 +281,7 @@ namespace Thinktecture.Runtime.CompilerServices
 		}
 
 		/// <summary>Marks the task as successfully completed.</summary>
+		/// <param name="result">The result to set.</param>
 		public void SetResult(TResult result)
 		{
 			_methodBuilder.SetResult(result);

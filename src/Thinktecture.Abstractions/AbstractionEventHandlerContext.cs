@@ -6,7 +6,7 @@ namespace Thinktecture
 	/// <summary>
 	/// Event handler context of an abstraction.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="T">The type of the event arguments</typeparam>
 	public class AbstractionEventHandlerContext<T>
 	{
 		/// <summary>

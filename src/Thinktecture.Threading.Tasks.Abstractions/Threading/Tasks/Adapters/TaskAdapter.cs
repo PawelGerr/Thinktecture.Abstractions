@@ -205,8 +205,9 @@ namespace Thinktecture.Threading.Tasks.Adapters
 			Implementation.RunSynchronously(scheduler);
 		}
 
-#if NET45 /// <summary>Releases all resources used by the current instance of the <see cref="Task" /> class.</summary>
-/// <exception cref="T:System.InvalidOperationException">The task is not in one of the final states: <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion" />, <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" />, or <see cref="F:System.Threading.Tasks.TaskStatus.Canceled" />.</exception>
+#if NET45
+		/// <summary>Releases all resources used by the current instance of the <see cref="Task" /> class.</summary>
+		/// <exception cref="T:System.InvalidOperationException">The task is not in one of the final states: <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion" />, <see cref="F:System.Threading.Tasks.TaskStatus.Faulted" />, or <see cref="F:System.Threading.Tasks.TaskStatus.Canceled" />.</exception>
 		public void Dispose()
 		{
 			Implementation.Dispose();
@@ -1249,6 +1250,7 @@ namespace Thinktecture.Threading.Tasks.Adapters
 	/// <summary>
 	/// Represents an asynchronous operation.To browse the .NET Framework source code for this type, see the Reference Source.
 	/// </summary>
+	/// <typeparam name="TResult">Type of the result.</typeparam>
 	[AsyncMethodBuilder(typeof(AsyncTaskAdapterMethodBuilder<>))]
 	[SuppressMessage("ReSharper", "TaskOfTMethodsWithoutAsyncSuffix")]
 	[SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]

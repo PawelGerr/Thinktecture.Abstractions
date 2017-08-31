@@ -26,6 +26,7 @@ namespace Thinktecture
 		/// Converts <see cref="TaskFactory{TResult}"/> to <see cref="ITaskFactory{TResult}"/>.
 		/// </summary>
 		/// <param name="task"><see cref="TaskFactory{TResult}"/> to convert.</param>
+		/// <typeparam name="TResult">Type of the result.</typeparam>
 		/// <returns>Instance of <see cref="ITaskFactory{TResult}"/>.</returns>
 		[CanBeNull]
 		public static ITaskFactory<TResult> ToInterface<TResult>([CanBeNull] this TaskFactory<TResult> task)

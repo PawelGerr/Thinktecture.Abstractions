@@ -328,6 +328,7 @@ namespace Thinktecture.Threading.Tasks
 	/// <summary>
 	/// Represents an asynchronous operation.To browse the .NET Framework source code for this type, see the Reference Source.
 	/// </summary>
+	/// <typeparam name="TResult">Type of the result.</typeparam>
 	[AsyncMethodBuilder(typeof(AsyncITaskMethodBuilder<>))]
 	// ReSharper disable once PossibleInterfaceMemberAmbiguity
 	public interface ITask<TResult> : IAbstraction<Task<TResult>>, ITask

@@ -30,7 +30,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>The started task.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="action" /> argument is null.</exception>
 		[NotNull]
-		ITask StartNew(Action action);
+		ITask StartNew([NotNull] Action action);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task" />.</summary>
 		/// <param name="action">The action delegate to execute asynchronously.</param>
@@ -39,7 +39,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ObjectDisposedException">The provided <see cref="T:System.Threading.CancellationToken" /> has already been disposed.</exception>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="action" /> argument is null.</exception>
 		[NotNull]
-		ITask StartNew(Action action, CancellationToken cancellationToken);
+		ITask StartNew([NotNull] Action action, CancellationToken cancellationToken);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task" />.</summary>
 		/// <param name="action">The action delegate to execute asynchronously.</param>
@@ -48,7 +48,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="action" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value.</exception>
 		[NotNull]
-		ITask StartNew(Action action, TaskCreationOptions creationOptions);
+		ITask StartNew([NotNull] Action action, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task" />.</summary>
 		/// <param name="action">The action delegate to execute asynchronously.</param>
@@ -60,7 +60,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="action" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask StartNew(Action action, CancellationToken cancellationToken, TaskCreationOptions creationOptions, TaskScheduler scheduler);
+		ITask StartNew([NotNull] Action action, CancellationToken cancellationToken, TaskCreationOptions creationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task" />. </summary>
 		/// <param name="action">The action delegate to execute asynchronously. </param>
@@ -68,7 +68,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>The started <see cref="T:System.Threading.Tasks.Task" />. </returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="action" /> argument is <see langword="null" />. </exception>
 		[NotNull]
-		ITask StartNew(Action<object> action, object state);
+		ITask StartNew([NotNull] Action<object> action, object state);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task" />.</summary>
 		/// <param name="action">The action delegate to execute asynchronously.</param>
@@ -78,7 +78,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ObjectDisposedException">The provided <see cref="T:System.Threading.CancellationToken" /> has already been disposed.</exception>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="action" /> argument is null.</exception>
 		[NotNull]
-		ITask StartNew(Action<object> action, object state, CancellationToken cancellationToken);
+		ITask StartNew([NotNull] Action<object> action, object state, CancellationToken cancellationToken);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task" />.</summary>
 		/// <param name="action">The action delegate to execute asynchronously.</param>
@@ -88,7 +88,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="action" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value.</exception>
 		[NotNull]
-		ITask StartNew(Action<object> action, object state, TaskCreationOptions creationOptions);
+		ITask StartNew([NotNull] Action<object> action, object state, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task" />.</summary>
 		/// <param name="action">The action delegate to execute asynchronously.</param>
@@ -101,7 +101,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="action" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask StartNew(Action<object> action, object state, CancellationToken cancellationToken, TaskCreationOptions creationOptions, TaskScheduler scheduler);
+		ITask StartNew([NotNull] Action<object> action, object state, CancellationToken cancellationToken, TaskCreationOptions creationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task`1" />.</summary>
 		/// <param name="function">A function delegate that returns the future result to be available through the <see cref="T:System.Threading.Tasks.Task`1" />.</param>
@@ -109,7 +109,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>The started <see cref="T:System.Threading.Tasks.Task`1" />.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="function" /> argument is <see langword="null" />.</exception>
 		[NotNull]
-		ITask<TResult> StartNew<TResult>(Func<TResult> function);
+		ITask<TResult> StartNew<TResult>([NotNull] Func<TResult> function);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task`1" />.</summary>
 		/// <param name="function">A function delegate that returns the future result to be available through the <see cref="T:System.Threading.Tasks.Task`1" />.</param>
@@ -119,7 +119,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ObjectDisposedException">The provided <see cref="T:System.Threading.CancellationToken" /> has already been disposed.</exception>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="function" /> argument is null.</exception>
 		[NotNull]
-		ITask<TResult> StartNew<TResult>(Func<TResult> function, CancellationToken cancellationToken);
+		ITask<TResult> StartNew<TResult>([NotNull] Func<TResult> function, CancellationToken cancellationToken);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task`1" />.</summary>
 		/// <param name="function">A function delegate that returns the future result to be available through the <see cref="T:System.Threading.Tasks.Task`1" />.</param>
@@ -129,7 +129,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="function" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask<TResult> StartNew<TResult>(Func<TResult> function, TaskCreationOptions creationOptions);
+		ITask<TResult> StartNew<TResult>([NotNull] Func<TResult> function, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task`1" />.</summary>
 		/// <param name="function">A function delegate that returns the future result to be available through the <see cref="T:System.Threading.Tasks.Task`1" />.</param>
@@ -142,7 +142,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="function" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask<TResult> StartNew<TResult>(Func<TResult> function, CancellationToken cancellationToken, TaskCreationOptions creationOptions, TaskScheduler scheduler);
+		ITask<TResult> StartNew<TResult>([NotNull] Func<TResult> function, CancellationToken cancellationToken, TaskCreationOptions creationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task`1" />.</summary>
 		/// <param name="function">A function delegate that returns the future result to be available through the <see cref="T:System.Threading.Tasks.Task`1" />.</param>
@@ -151,7 +151,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>The started <see cref="T:System.Threading.Tasks.Task`1" />.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="function" /> argument is null.</exception>
 		[NotNull]
-		ITask<TResult> StartNew<TResult>(Func<object, TResult> function, object state);
+		ITask<TResult> StartNew<TResult>([NotNull] Func<object, TResult> function, object state);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task`1" />.</summary>
 		/// <param name="function">A function delegate that returns the future result to be available through the <see cref="T:System.Threading.Tasks.Task`1" />.</param>
@@ -162,7 +162,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ObjectDisposedException">The provided <see cref="T:System.Threading.CancellationToken" /> has already been disposed.</exception>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="function" /> argument is null.</exception>
 		[NotNull]
-		ITask<TResult> StartNew<TResult>(Func<object, TResult> function, object state, CancellationToken cancellationToken);
+		ITask<TResult> StartNew<TResult>([NotNull] Func<object, TResult> function, object state, CancellationToken cancellationToken);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task`1" />.</summary>
 		/// <param name="function">A function delegate that returns the future result to be available through the <see cref="T:System.Threading.Tasks.Task`1" />.</param>
@@ -173,7 +173,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="function" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask<TResult> StartNew<TResult>(Func<object, TResult> function, object state, TaskCreationOptions creationOptions);
+		ITask<TResult> StartNew<TResult>([NotNull] Func<object, TResult> function, object state, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates and starts a <see cref="T:System.Threading.Tasks.Task`1" />.</summary>
 		/// <param name="function">A function delegate that returns the future result to be available through the <see cref="T:System.Threading.Tasks.Task`1" />.</param>
@@ -187,7 +187,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="function" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask<TResult> StartNew<TResult>(Func<object, TResult> function, object state, CancellationToken cancellationToken, TaskCreationOptions creationOptions, TaskScheduler scheduler);
+		ITask<TResult> StartNew<TResult>([NotNull] Func<object, TResult> function, object state, CancellationToken cancellationToken, TaskCreationOptions creationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task" /> that executes an end method action when a specified <see cref="T:System.IAsyncResult" /> completes.</summary>
 		/// <param name="asyncResult">The IAsyncResult whose completion should trigger the processing of the <paramref name="endMethod" />.</param>
@@ -195,7 +195,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>A <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="asyncResult" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		[NotNull]
-		ITask FromAsync(IAsyncResult asyncResult, Action<IAsyncResult> endMethod);
+		ITask FromAsync([NotNull] IAsyncResult asyncResult, [NotNull] Action<IAsyncResult> endMethod);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task" /> that executes an end method action when a specified <see cref="T:System.IAsyncResult" /> completes.</summary>
 		/// <param name="asyncResult">The IAsyncResult whose completion should trigger the processing of the <paramref name="endMethod" />.</param>
@@ -205,7 +205,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="asyncResult" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask FromAsync(IAsyncResult asyncResult, Action<IAsyncResult> endMethod, TaskCreationOptions creationOptions);
+		ITask FromAsync([NotNull] IAsyncResult asyncResult, [NotNull] Action<IAsyncResult> endMethod, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task" /> that executes an end method action when a specified <see cref="T:System.IAsyncResult" /> completes.</summary>
 		/// <param name="asyncResult">The IAsyncResult whose completion should trigger the processing of the <paramref name="endMethod" />.</param>
@@ -216,7 +216,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="asyncResult" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask FromAsync(IAsyncResult asyncResult, Action<IAsyncResult> endMethod, TaskCreationOptions creationOptions, TaskScheduler scheduler);
+		ITask FromAsync([NotNull] IAsyncResult asyncResult, [NotNull] Action<IAsyncResult> endMethod, TaskCreationOptions creationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -225,7 +225,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>The created <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		[NotNull]
-		ITask FromAsync(Func<AsyncCallback, object, IAsyncResult> beginMethod, Action<IAsyncResult> endMethod, object state);
+		ITask FromAsync([NotNull] Func<AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Action<IAsyncResult> endMethod, object state);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -236,7 +236,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value.</exception>
 		[NotNull]
-		ITask FromAsync(Func<AsyncCallback, object, IAsyncResult> beginMethod, Action<IAsyncResult> endMethod, object state, TaskCreationOptions creationOptions);
+		ITask FromAsync([NotNull] Func<AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Action<IAsyncResult> endMethod, object state, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -247,7 +247,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>The created <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		[NotNull]
-		ITask FromAsync<TArg1>(Func<TArg1, AsyncCallback, object, IAsyncResult> beginMethod, Action<IAsyncResult> endMethod, TArg1 arg1, object state);
+		ITask FromAsync<TArg1>([NotNull] Func<TArg1, AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Action<IAsyncResult> endMethod, TArg1 arg1, object state);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -260,7 +260,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask FromAsync<TArg1>(Func<TArg1, AsyncCallback, object, IAsyncResult> beginMethod, Action<IAsyncResult> endMethod, TArg1 arg1, object state, TaskCreationOptions creationOptions);
+		ITask FromAsync<TArg1>([NotNull] Func<TArg1, AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Action<IAsyncResult> endMethod, TArg1 arg1, object state, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -273,7 +273,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>The created <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		[NotNull]
-		ITask FromAsync<TArg1, TArg2>(Func<TArg1, TArg2, AsyncCallback, object, IAsyncResult> beginMethod, Action<IAsyncResult> endMethod, TArg1 arg1, TArg2 arg2, object state);
+		ITask FromAsync<TArg1, TArg2>([NotNull] Func<TArg1, TArg2, AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Action<IAsyncResult> endMethod, TArg1 arg1, TArg2 arg2, object state);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -288,7 +288,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask FromAsync<TArg1, TArg2>(Func<TArg1, TArg2, AsyncCallback, object, IAsyncResult> beginMethod, Action<IAsyncResult> endMethod, TArg1 arg1, TArg2 arg2, object state, TaskCreationOptions creationOptions);
+		ITask FromAsync<TArg1, TArg2>([NotNull] Func<TArg1, TArg2, AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Action<IAsyncResult> endMethod, TArg1 arg1, TArg2 arg2, object state, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -303,7 +303,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>The created <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		[NotNull]
-		ITask FromAsync<TArg1, TArg2, TArg3>(Func<TArg1, TArg2, TArg3, AsyncCallback, object, IAsyncResult> beginMethod, Action<IAsyncResult> endMethod, TArg1 arg1, TArg2 arg2, TArg3 arg3, object state);
+		ITask FromAsync<TArg1, TArg2, TArg3>([NotNull] Func<TArg1, TArg2, TArg3, AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Action<IAsyncResult> endMethod, TArg1 arg1, TArg2 arg2, TArg3 arg3, object state);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -320,7 +320,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask FromAsync<TArg1, TArg2, TArg3>(Func<TArg1, TArg2, TArg3, AsyncCallback, object, IAsyncResult> beginMethod, Action<IAsyncResult> endMethod, TArg1 arg1, TArg2 arg2, TArg3 arg3, object state, TaskCreationOptions creationOptions);
+		ITask FromAsync<TArg1, TArg2, TArg3>([NotNull] Func<TArg1, TArg2, TArg3, AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Action<IAsyncResult> endMethod, TArg1 arg1, TArg2 arg2, TArg3 arg3, object state, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task`1" /> that executes an end method function when a specified <see cref="T:System.IAsyncResult" /> completes.</summary>
 		/// <param name="asyncResult">The IAsyncResult whose completion should trigger the processing of the <paramref name="endMethod" />.</param>
@@ -329,7 +329,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the asynchronous operation.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="asyncResult" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		[NotNull]
-		ITask<TResult> FromAsync<TResult>(IAsyncResult asyncResult, Func<IAsyncResult, TResult> endMethod);
+		ITask<TResult> FromAsync<TResult>([NotNull] IAsyncResult asyncResult, [NotNull] Func<IAsyncResult, TResult> endMethod);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task`1" /> that executes an end method function when a specified <see cref="T:System.IAsyncResult" /> completes.</summary>
 		/// <param name="asyncResult">The IAsyncResult whose completion should trigger the processing of the <paramref name="endMethod" />.</param>
@@ -340,7 +340,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="asyncResult" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask<TResult> FromAsync<TResult>(IAsyncResult asyncResult, Func<IAsyncResult, TResult> endMethod, TaskCreationOptions creationOptions);
+		ITask<TResult> FromAsync<TResult>([NotNull] IAsyncResult asyncResult, [NotNull] Func<IAsyncResult, TResult> endMethod, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task`1" /> that executes an end method function when a specified <see cref="T:System.IAsyncResult" /> completes.</summary>
 		/// <param name="asyncResult">The IAsyncResult whose completion should trigger the processing of the <paramref name="endMethod" />.</param>
@@ -352,7 +352,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="asyncResult" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask<TResult> FromAsync<TResult>(IAsyncResult asyncResult, Func<IAsyncResult, TResult> endMethod, TaskCreationOptions creationOptions, TaskScheduler scheduler);
+		ITask<TResult> FromAsync<TResult>([NotNull] IAsyncResult asyncResult, [NotNull] Func<IAsyncResult, TResult> endMethod, TaskCreationOptions creationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task`1" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -362,7 +362,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>The created <see cref="T:System.Threading.Tasks.Task`1" /> that represents the asynchronous operation.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		[NotNull]
-		ITask<TResult> FromAsync<TResult>(Func<AsyncCallback, object, IAsyncResult> beginMethod, Func<IAsyncResult, TResult> endMethod, object state);
+		ITask<TResult> FromAsync<TResult>([NotNull] Func<AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Func<IAsyncResult, TResult> endMethod, object state);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task`1" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -374,7 +374,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask<TResult> FromAsync<TResult>(Func<AsyncCallback, object, IAsyncResult> beginMethod, Func<IAsyncResult, TResult> endMethod, object state, TaskCreationOptions creationOptions);
+		ITask<TResult> FromAsync<TResult>([NotNull] Func<AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Func<IAsyncResult, TResult> endMethod, object state, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task`1" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -386,7 +386,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>The created <see cref="T:System.Threading.Tasks.Task`1" /> that represents the asynchronous operation.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		[NotNull]
-		ITask<TResult> FromAsync<TArg1, TResult>(Func<TArg1, AsyncCallback, object, IAsyncResult> beginMethod, Func<IAsyncResult, TResult> endMethod, TArg1 arg1, object state);
+		ITask<TResult> FromAsync<TArg1, TResult>([NotNull] Func<TArg1, AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Func<IAsyncResult, TResult> endMethod, TArg1 arg1, object state);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task`1" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -400,7 +400,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask<TResult> FromAsync<TArg1, TResult>(Func<TArg1, AsyncCallback, object, IAsyncResult> beginMethod, Func<IAsyncResult, TResult> endMethod, TArg1 arg1, object state, TaskCreationOptions creationOptions);
+		ITask<TResult> FromAsync<TArg1, TResult>([NotNull] Func<TArg1, AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Func<IAsyncResult, TResult> endMethod, TArg1 arg1, object state, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task`1" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -414,7 +414,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>The created <see cref="T:System.Threading.Tasks.Task`1" /> that represents the asynchronous operation.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		[NotNull]
-		ITask<TResult> FromAsync<TArg1, TArg2, TResult>(Func<TArg1, TArg2, AsyncCallback, object, IAsyncResult> beginMethod, Func<IAsyncResult, TResult> endMethod, TArg1 arg1, TArg2 arg2, object state);
+		ITask<TResult> FromAsync<TArg1, TArg2, TResult>([NotNull] Func<TArg1, TArg2, AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Func<IAsyncResult, TResult> endMethod, TArg1 arg1, TArg2 arg2, object state);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task`1" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -430,7 +430,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask<TResult> FromAsync<TArg1, TArg2, TResult>(Func<TArg1, TArg2, AsyncCallback, object, IAsyncResult> beginMethod, Func<IAsyncResult, TResult> endMethod, TArg1 arg1, TArg2 arg2, object state, TaskCreationOptions creationOptions);
+		ITask<TResult> FromAsync<TArg1, TArg2, TResult>([NotNull] Func<TArg1, TArg2, AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Func<IAsyncResult, TResult> endMethod, TArg1 arg1, TArg2 arg2, object state, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task`1" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -446,7 +446,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <returns>The created <see cref="T:System.Threading.Tasks.Task`1" /> that represents the asynchronous operation.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		[NotNull]
-		ITask<TResult> FromAsync<TArg1, TArg2, TArg3, TResult>(Func<TArg1, TArg2, TArg3, AsyncCallback, object, IAsyncResult> beginMethod, Func<IAsyncResult, TResult> endMethod, TArg1 arg1, TArg2 arg2, TArg3 arg3, object state);
+		ITask<TResult> FromAsync<TArg1, TArg2, TArg3, TResult>([NotNull] Func<TArg1, TArg2, TArg3, AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Func<IAsyncResult, TResult> endMethod, TArg1 arg1, TArg2 arg2, TArg3 arg3, object state);
 
 		/// <summary>Creates a <see cref="T:System.Threading.Tasks.Task`1" /> that represents a pair of begin and end methods that conform to the Asynchronous Programming Model pattern.</summary>
 		/// <param name="beginMethod">The delegate that begins the asynchronous operation.</param>
@@ -464,7 +464,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="beginMethod" /> argument is null.-or-The exception that is thrown when the <paramref name="endMethod" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. The exception that is thrown when the <paramref name="creationOptions" /> argument specifies an invalid TaskCreationOptions value. For more information, see the Remarks for <see cref="M:System.Threading.Tasks.TaskFactory.FromAsync(System.Func{System.AsyncCallback,System.Object,System.IAsyncResult},System.Action{System.IAsyncResult},System.Object,System.Threading.Tasks.TaskCreationOptions)" /></exception>
 		[NotNull]
-		ITask<TResult> FromAsync<TArg1, TArg2, TArg3, TResult>(Func<TArg1, TArg2, TArg3, AsyncCallback, object, IAsyncResult> beginMethod, Func<IAsyncResult, TResult> endMethod, TArg1 arg1, TArg2 arg2, TArg3 arg3, object state, TaskCreationOptions creationOptions);
+		ITask<TResult> FromAsync<TArg1, TArg2, TArg3, TResult>([NotNull] Func<TArg1, TArg2, TArg3, AsyncCallback, object, IAsyncResult> beginMethod, [NotNull] Func<IAsyncResult, TResult> endMethod, TArg1 arg1, TArg2 arg2, TArg3 arg3, object state, TaskCreationOptions creationOptions);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -474,7 +474,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationAction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll(Task[] tasks, Action<ITask[]> continuationAction);
+		ITask ContinueWhenAll([NotNull] Task[] tasks, [NotNull] Action<ITask[]> continuationAction);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -484,7 +484,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationAction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll(ITask[] tasks, Action<ITask[]> continuationAction);
+		ITask ContinueWhenAll([NotNull] ITask[] tasks, [NotNull] Action<ITask[]> continuationAction);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -495,7 +495,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationAction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll(Task[] tasks, Action<ITask[]> continuationAction, CancellationToken cancellationToken);
+		ITask ContinueWhenAll([NotNull] Task[] tasks, [NotNull] Action<ITask[]> continuationAction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -506,7 +506,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationAction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll(ITask[] tasks, Action<ITask[]> continuationAction, CancellationToken cancellationToken);
+		ITask ContinueWhenAll([NotNull] ITask[] tasks, [NotNull] Action<ITask[]> continuationAction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -518,7 +518,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="continuationOptions" /> argument specifies an invalid value. </exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll(Task[] tasks, Action<ITask[]> continuationAction, TaskContinuationOptions continuationOptions);
+		ITask ContinueWhenAll([NotNull] Task[] tasks, [NotNull] Action<ITask[]> continuationAction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -530,7 +530,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="continuationOptions" /> argument specifies an invalid value. </exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll(ITask[] tasks, Action<ITask[]> continuationAction, TaskContinuationOptions continuationOptions);
+		ITask ContinueWhenAll([NotNull] ITask[] tasks, [NotNull] Action<ITask[]> continuationAction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -542,7 +542,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationAction" /> argument is <see langword="null" />.-or-The <paramref name="scheduler" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll(Task[] tasks, Action<ITask[]> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask ContinueWhenAll([NotNull] Task[] tasks, [NotNull] Action<ITask[]> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -554,7 +554,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationAction" /> argument is <see langword="null" />.-or-The <paramref name="scheduler" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll(ITask[] tasks, Action<ITask[]> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask ContinueWhenAll([NotNull] ITask[] tasks, [NotNull] Action<ITask[]> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -565,7 +565,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationAction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll<TAntecedentResult>(Task<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>[]> continuationAction);
+		ITask ContinueWhenAll<TAntecedentResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>[]> continuationAction);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -576,7 +576,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationAction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll<TAntecedentResult>(ITask<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>[]> continuationAction);
+		ITask ContinueWhenAll<TAntecedentResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>[]> continuationAction);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -588,7 +588,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationAction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll<TAntecedentResult>(Task<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>[]> continuationAction, CancellationToken cancellationToken);
+		ITask ContinueWhenAll<TAntecedentResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>[]> continuationAction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -600,7 +600,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationAction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll<TAntecedentResult>(ITask<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>[]> continuationAction, CancellationToken cancellationToken);
+		ITask ContinueWhenAll<TAntecedentResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>[]> continuationAction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -613,7 +613,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="continuationOptions" /> argument specifies an invalid value. </exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll<TAntecedentResult>(Task<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>[]> continuationAction, TaskContinuationOptions continuationOptions);
+		ITask ContinueWhenAll<TAntecedentResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>[]> continuationAction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -626,7 +626,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="continuationOptions" /> argument specifies an invalid value. </exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll<TAntecedentResult>(ITask<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>[]> continuationAction, TaskContinuationOptions continuationOptions);
+		ITask ContinueWhenAll<TAntecedentResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>[]> continuationAction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -639,7 +639,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationAction" /> argument is <see langword="null" />.-or-The <paramref name="scheduler" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll<TAntecedentResult>(Task<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>[]> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask ContinueWhenAll<TAntecedentResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>[]> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -652,7 +652,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationAction" /> argument is <see langword="null" />.-or-The <paramref name="scheduler" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask ContinueWhenAll<TAntecedentResult>(ITask<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>[]> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask ContinueWhenAll<TAntecedentResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>[]> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -663,7 +663,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationFunction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TResult>(Task[] tasks, Func<ITask[], TResult> continuationFunction);
+		ITask<TResult> ContinueWhenAll<TResult>([NotNull] Task[] tasks, [NotNull] Func<ITask[], TResult> continuationFunction);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -674,7 +674,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationFunction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TResult>(ITask[] tasks, Func<ITask[], TResult> continuationFunction);
+		ITask<TResult> ContinueWhenAll<TResult>([NotNull] ITask[] tasks, [NotNull] Func<ITask[], TResult> continuationFunction);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -686,7 +686,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationFunction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TResult>(Task[] tasks, Func<ITask[], TResult> continuationFunction, CancellationToken cancellationToken);
+		ITask<TResult> ContinueWhenAll<TResult>([NotNull] Task[] tasks, [NotNull] Func<ITask[], TResult> continuationFunction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -698,7 +698,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationFunction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TResult>(ITask[] tasks, Func<ITask[], TResult> continuationFunction, CancellationToken cancellationToken);
+		ITask<TResult> ContinueWhenAll<TResult>([NotNull] ITask[] tasks, [NotNull] Func<ITask[], TResult> continuationFunction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -711,7 +711,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="continuationOptions" /> argument specifies an invalid value. </exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TResult>(Task[] tasks, Func<ITask[], TResult> continuationFunction, TaskContinuationOptions continuationOptions);
+		ITask<TResult> ContinueWhenAll<TResult>([NotNull] Task[] tasks, [NotNull] Func<ITask[], TResult> continuationFunction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -724,7 +724,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="continuationOptions" /> argument specifies an invalid value. </exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TResult>(ITask[] tasks, Func<ITask[], TResult> continuationFunction, TaskContinuationOptions continuationOptions);
+		ITask<TResult> ContinueWhenAll<TResult>([NotNull] ITask[] tasks, [NotNull] Func<ITask[], TResult> continuationFunction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -737,7 +737,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationFunction" /> argument is <see langword="null" />.-or-The <paramref name="scheduler" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TResult>(Task[] tasks, Func<ITask[], TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask<TResult> ContinueWhenAll<TResult>([NotNull] Task[] tasks, [NotNull] Func<ITask[], TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -750,7 +750,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationFunction" /> argument is <see langword="null" />.-or-The <paramref name="scheduler" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TResult>(ITask[] tasks, Func<ITask[], TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask<TResult> ContinueWhenAll<TResult>([NotNull] ITask[] tasks, [NotNull] Func<ITask[], TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -762,7 +762,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationFunction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>(Task<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>[], TResult> continuationFunction);
+		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>[], TResult> continuationFunction);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -774,7 +774,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationFunction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>(ITask<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>[], TResult> continuationFunction);
+		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>[], TResult> continuationFunction);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -787,7 +787,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationFunction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>(Task<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>[], TResult> continuationFunction, CancellationToken cancellationToken);
+		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>[], TResult> continuationFunction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -800,7 +800,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />.-or-The <paramref name="continuationFunction" /> argument is <see langword="null" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>(ITask<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>[], TResult> continuationFunction, CancellationToken cancellationToken);
+		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>[], TResult> continuationFunction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -814,7 +814,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="continuationOptions" /> argument specifies an invalid value.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>(Task<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>[], TResult> continuationFunction, TaskContinuationOptions continuationOptions);
+		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>[], TResult> continuationFunction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -828,7 +828,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="continuationOptions" /> argument specifies an invalid value.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array is empty or contains a null value.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>(ITask<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>[], TResult> continuationFunction, TaskContinuationOptions continuationOptions);
+		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>[], TResult> continuationFunction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -844,7 +844,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="continuationOptions" /> argument specifies an invalid value. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">An element in the <paramref name="tasks" /> array has been disposed.-or-The <see cref="T:System.Threading.CancellationTokenSource" /> that created <paramref name="cancellationToken" /> has already been disposed.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>(Task<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>[], TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>[], TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation task that starts when a set of specified tasks has completed.</summary>
 		/// <param name="tasks">The array of tasks from which to continue.</param>
@@ -860,7 +860,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="continuationOptions" /> argument specifies an invalid value. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">An element in the <paramref name="tasks" /> array has been disposed.-or-The <see cref="T:System.Threading.CancellationTokenSource" /> that created <paramref name="cancellationToken" /> has already been disposed.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>(ITask<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>[], TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask<TResult> ContinueWhenAll<TAntecedentResult, TResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>[], TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -870,7 +870,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />. -or-The <paramref name="continuationAction" /> argument is <see langword="null" />. </exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contains a <see langword="null" /> value. -or-The <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny(Task[] tasks, Action<ITask> continuationAction);
+		ITask ContinueWhenAny([NotNull] Task[] tasks, [NotNull] Action<ITask> continuationAction);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -880,7 +880,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />. -or-The <paramref name="continuationAction" /> argument is <see langword="null" />. </exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contains a <see langword="null" /> value. -or-The <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny(ITask[] tasks, Action<ITask> continuationAction);
+		ITask ContinueWhenAny([NotNull] ITask[] tasks, [NotNull] Action<ITask> continuationAction);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -892,7 +892,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />. -or-The <paramref name="continuationAction" /> argument is <see langword="null" />. </exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contains a <see langword="null" /> value. -or-The <paramref name="tasks" /> array is empty .</exception>
 		[NotNull]
-		ITask ContinueWhenAny(Task[] tasks, Action<ITask> continuationAction, CancellationToken cancellationToken);
+		ITask ContinueWhenAny([NotNull] Task[] tasks, [NotNull] Action<ITask> continuationAction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -904,7 +904,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="tasks" /> array is <see langword="null" />. -or-The <paramref name="continuationAction" /> argument is <see langword="null" />. </exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contains a <see langword="null" /> value. -or-The <paramref name="tasks" /> array is empty .</exception>
 		[NotNull]
-		ITask ContinueWhenAny(ITask[] tasks, Action<ITask> continuationAction, CancellationToken cancellationToken);
+		ITask ContinueWhenAny([NotNull] ITask[] tasks, [NotNull] Action<ITask> continuationAction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -916,7 +916,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="continuationOptions" /> argument specifies an invalid TaskContinuationOptions value.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny(Task[] tasks, Action<ITask> continuationAction, TaskContinuationOptions continuationOptions);
+		ITask ContinueWhenAny([NotNull] Task[] tasks, [NotNull] Action<ITask> continuationAction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -928,19 +928,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="continuationOptions" /> argument specifies an invalid TaskContinuationOptions value.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny(ITask[] tasks, Action<ITask> continuationAction, TaskContinuationOptions continuationOptions);
-
-		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
-		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
-		/// <param name="continuationAction">The action delegate to execute when one task in the <paramref name="tasks" /> array completes.</param>
-		/// <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken" /> that will be assigned to the new continuation task.</param>
-		/// <param name="continuationOptions">The <see cref="T:System.Threading.Tasks.TaskContinuationOptions" /> value that controls the behavior of the created continuation <see cref="T:System.Threading.Tasks.Task" />.</param>
-		/// <param name="scheduler">The <see cref="T:System.Threading.Tasks.TaskScheduler" /> that is used to schedule the created continuation <see cref="T:System.Threading.Tasks.Task" />.</param>
-		/// <returns>The new continuation <see cref="T:System.Threading.Tasks.Task" />.</returns>
-		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationAction" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
-		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
-		[NotNull]
-		ITask ContinueWhenAny(Task[] tasks, Action<ITask> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask ContinueWhenAny([NotNull] ITask[] tasks, [NotNull] Action<ITask> continuationAction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -952,7 +940,19 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationAction" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny(ITask[] tasks, Action<ITask> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask ContinueWhenAny([NotNull] Task[] tasks, [NotNull] Action<ITask> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
+
+		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
+		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
+		/// <param name="continuationAction">The action delegate to execute when one task in the <paramref name="tasks" /> array completes.</param>
+		/// <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken" /> that will be assigned to the new continuation task.</param>
+		/// <param name="continuationOptions">The <see cref="T:System.Threading.Tasks.TaskContinuationOptions" /> value that controls the behavior of the created continuation <see cref="T:System.Threading.Tasks.Task" />.</param>
+		/// <param name="scheduler">The <see cref="T:System.Threading.Tasks.TaskScheduler" /> that is used to schedule the created continuation <see cref="T:System.Threading.Tasks.Task" />.</param>
+		/// <returns>The new continuation <see cref="T:System.Threading.Tasks.Task" />.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationAction" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
+		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
+		[NotNull]
+		ITask ContinueWhenAny([NotNull] ITask[] tasks, [NotNull] Action<ITask> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -963,7 +963,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TResult>(Task[] tasks, Func<ITask, TResult> continuationFunction);
+		ITask<TResult> ContinueWhenAny<TResult>([NotNull] Task[] tasks, [NotNull] Func<ITask, TResult> continuationFunction);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -974,7 +974,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TResult>(ITask[] tasks, Func<ITask, TResult> continuationFunction);
+		ITask<TResult> ContinueWhenAny<TResult>([NotNull] ITask[] tasks, [NotNull] Func<ITask, TResult> continuationFunction);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -986,7 +986,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TResult>(Task[] tasks, Func<ITask, TResult> continuationFunction, CancellationToken cancellationToken);
+		ITask<TResult> ContinueWhenAny<TResult>([NotNull] Task[] tasks, [NotNull] Func<ITask, TResult> continuationFunction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -998,7 +998,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TResult>(ITask[] tasks, Func<ITask, TResult> continuationFunction, CancellationToken cancellationToken);
+		ITask<TResult> ContinueWhenAny<TResult>([NotNull] ITask[] tasks, [NotNull] Func<ITask, TResult> continuationFunction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1011,7 +1011,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="continuationOptions" /> argument specifies an invalid TaskContinuationOptions value.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TResult>(Task[] tasks, Func<ITask, TResult> continuationFunction, TaskContinuationOptions continuationOptions);
+		ITask<TResult> ContinueWhenAny<TResult>([NotNull] Task[] tasks, [NotNull] Func<ITask, TResult> continuationFunction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1024,7 +1024,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="continuationOptions" /> argument specifies an invalid TaskContinuationOptions value.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TResult>(ITask[] tasks, Func<ITask, TResult> continuationFunction, TaskContinuationOptions continuationOptions);
+		ITask<TResult> ContinueWhenAny<TResult>([NotNull] ITask[] tasks, [NotNull] Func<ITask, TResult> continuationFunction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1037,7 +1037,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TResult>(Task[] tasks, Func<ITask, TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask<TResult> ContinueWhenAny<TResult>([NotNull] Task[] tasks, [NotNull] Func<ITask, TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1050,7 +1050,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TResult>(ITask[] tasks, Func<ITask, TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask<TResult> ContinueWhenAny<TResult>([NotNull] ITask[] tasks, [NotNull] Func<ITask, TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1062,7 +1062,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>(Task<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>, TResult> continuationFunction);
+		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>, TResult> continuationFunction);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1074,7 +1074,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>(ITask<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>, TResult> continuationFunction);
+		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>, TResult> continuationFunction);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1087,7 +1087,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>(Task<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>, TResult> continuationFunction, CancellationToken cancellationToken);
+		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>, TResult> continuationFunction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1100,7 +1100,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>(ITask<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>, TResult> continuationFunction, CancellationToken cancellationToken);
+		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>, TResult> continuationFunction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1114,7 +1114,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="continuationOptions" /> argument specifies an invalid TaskContinuationOptions value.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>(Task<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>, TResult> continuationFunction, TaskContinuationOptions continuationOptions);
+		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>, TResult> continuationFunction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1128,21 +1128,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="continuationOptions" /> argument specifies an invalid TaskContinuationOptions value.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>(ITask<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>, TResult> continuationFunction, TaskContinuationOptions continuationOptions);
-
-		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
-		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
-		/// <param name="continuationFunction">The function delegate to execute asynchronously when one task in the <paramref name="tasks" /> array completes.</param>
-		/// <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken" /> that will be assigned to the new continuation task.</param>
-		/// <param name="continuationOptions">The <see cref="T:System.Threading.Tasks.TaskContinuationOptions" /> value that controls the behavior of the created continuation <see cref="T:System.Threading.Tasks.Task`1" />.</param>
-		/// <param name="scheduler">The <see cref="T:System.Threading.Tasks.TaskScheduler" /> that is used to schedule the created continuation <see cref="T:System.Threading.Tasks.Task`1" />.</param>
-		/// <typeparam name="TAntecedentResult">The type of the result of the antecedent <paramref name="tasks" />.</typeparam>
-		/// <typeparam name="TResult">The type of the result that is returned by the <paramref name="continuationFunction" /> delegate and associated with the created <see cref="T:System.Threading.Tasks.Task`1" />.</typeparam>
-		/// <returns>The new continuation <see cref="T:System.Threading.Tasks.Task`1" />.</returns>
-		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
-		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
-		[NotNull]
-		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>(Task<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>, TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>, TResult> continuationFunction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1156,7 +1142,21 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>(ITask<TAntecedentResult>[] tasks, Func<ITask<TAntecedentResult>, TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>, TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
+
+		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task`1" /> that will be started upon the completion of any Task in the provided set.</summary>
+		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
+		/// <param name="continuationFunction">The function delegate to execute asynchronously when one task in the <paramref name="tasks" /> array completes.</param>
+		/// <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken" /> that will be assigned to the new continuation task.</param>
+		/// <param name="continuationOptions">The <see cref="T:System.Threading.Tasks.TaskContinuationOptions" /> value that controls the behavior of the created continuation <see cref="T:System.Threading.Tasks.Task`1" />.</param>
+		/// <param name="scheduler">The <see cref="T:System.Threading.Tasks.TaskScheduler" /> that is used to schedule the created continuation <see cref="T:System.Threading.Tasks.Task`1" />.</param>
+		/// <typeparam name="TAntecedentResult">The type of the result of the antecedent <paramref name="tasks" />.</typeparam>
+		/// <typeparam name="TResult">The type of the result that is returned by the <paramref name="continuationFunction" /> delegate and associated with the created <see cref="T:System.Threading.Tasks.Task`1" />.</typeparam>
+		/// <returns>The new continuation <see cref="T:System.Threading.Tasks.Task`1" />.</returns>
+		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationFunction" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
+		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
+		[NotNull]
+		ITask<TResult> ContinueWhenAny<TAntecedentResult, TResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Func<ITask<TAntecedentResult>, TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1167,7 +1167,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationAction" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny<TAntecedentResult>(Task<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>> continuationAction);
+		ITask ContinueWhenAny<TAntecedentResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>> continuationAction);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1178,7 +1178,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationAction" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny<TAntecedentResult>(ITask<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>> continuationAction);
+		ITask ContinueWhenAny<TAntecedentResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>> continuationAction);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1190,7 +1190,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationAction" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny<TAntecedentResult>(Task<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>> continuationAction, CancellationToken cancellationToken);
+		ITask ContinueWhenAny<TAntecedentResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>> continuationAction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1202,7 +1202,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationAction" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny<TAntecedentResult>(ITask<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>> continuationAction, CancellationToken cancellationToken);
+		ITask ContinueWhenAny<TAntecedentResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>> continuationAction, CancellationToken cancellationToken);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1215,7 +1215,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="continuationOptions" /> argument specifies an invalid TaskContinuationOptions value.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny<TAntecedentResult>(Task<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>> continuationAction, TaskContinuationOptions continuationOptions);
+		ITask ContinueWhenAny<TAntecedentResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>> continuationAction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1228,7 +1228,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The exception that is thrown when the <paramref name="continuationOptions" /> argument specifies an invalid TaskContinuationOptions value.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny<TAntecedentResult>(ITask<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>> continuationAction, TaskContinuationOptions continuationOptions);
+		ITask ContinueWhenAny<TAntecedentResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>> continuationAction, TaskContinuationOptions continuationOptions);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1241,7 +1241,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationAction" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny<TAntecedentResult>(Task<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask ContinueWhenAny<TAntecedentResult>([NotNull] Task<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation <see cref="T:System.Threading.Tasks.Task" /> that will be started upon the completion of any Task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
@@ -1254,7 +1254,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown when the <paramref name="tasks" /> array is null.-or-The exception that is thrown when the <paramref name="continuationAction" /> argument is null.-or-The exception that is thrown when the <paramref name="scheduler" /> argument is null.</exception>
 		/// <exception cref="T:System.ArgumentException">The exception that is thrown when the <paramref name="tasks" /> array contains a null value.-or-The exception that is thrown when the <paramref name="tasks" /> array is empty.</exception>
 		[NotNull]
-		ITask ContinueWhenAny<TAntecedentResult>(ITask<TAntecedentResult>[] tasks, Action<ITask<TAntecedentResult>> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask ContinueWhenAny<TAntecedentResult>([NotNull] ITask<TAntecedentResult>[] tasks, [NotNull] Action<ITask<TAntecedentResult>> continuationAction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 	}
 
 	/// <summary>Provides support for creating and scheduling <see cref="T:System.Threading.Tasks.Task`1" /> objects.</summary>
@@ -1768,7 +1768,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="continuationOptions" /> argument specifies an invalid <see cref="T:System.Threading.Tasks.TaskContinuationOptions" /> value.</exception>
 		/// <exception cref="T:System.ObjectDisposedException">One of the elements in the <paramref name="tasks" /> array has been disposed.-or-The <see cref="T:System.Threading.CancellationTokenSource" /> that created<paramref name=" cancellationToken" /> has already been disposed. </exception>
 		[NotNull]
-		ITask<TResult> ContinueWhenAny([NotNull] Task[] tasks, [NotNull] Func<ITask, TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, TaskScheduler scheduler);
+		ITask<TResult> ContinueWhenAny([NotNull] Task[] tasks, [NotNull] Func<ITask, TResult> continuationFunction, CancellationToken cancellationToken, TaskContinuationOptions continuationOptions, [NotNull] TaskScheduler scheduler);
 
 		/// <summary>Creates a continuation task that will be started upon the completion of any task in the provided set.</summary>
 		/// <param name="tasks">The array of tasks from which to continue when one task completes.</param>
