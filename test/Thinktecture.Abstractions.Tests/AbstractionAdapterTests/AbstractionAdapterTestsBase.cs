@@ -13,12 +13,12 @@ namespace Thinktecture.AbstractionAdapterTests
 		protected readonly TestComponent Implementation;
 
 		[NotNull]
-		protected readonly AbstractionAdapter Adapter;
+		protected readonly AbstractionAdapter<TestComponent> Adapter;
 
 		protected AbstractionAdapterTestsBase()
 		{
 			Implementation = new TestComponent();
-			Adapter = new AbstractionAdapter(Implementation);
+			Adapter = new AbstractionAdapter<TestComponent>(Implementation);
 		}
 	}
 }

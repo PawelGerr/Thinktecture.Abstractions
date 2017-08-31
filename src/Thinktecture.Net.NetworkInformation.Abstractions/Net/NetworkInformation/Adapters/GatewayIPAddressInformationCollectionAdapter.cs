@@ -13,7 +13,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 	public class GatewayIPAddressInformationCollectionAdapter : CollectionAbstractionAdapter<IGatewayIPAddressInformation, GatewayIPAddressInformation, GatewayIPAddressInformationCollection>, IGatewayIPAddressInformationCollection
 	{
 		/// <inheritdoc/>
-		public IGatewayIPAddressInformation this[int index] => Collection[index].ToInterface();
+		public IGatewayIPAddressInformation this[int index] => Implementation[index].ToInterface();
 
 		/// <summary>
 		/// Initializes new instance of <see cref="GatewayIPAddressInformationCollectionAdapter"/>

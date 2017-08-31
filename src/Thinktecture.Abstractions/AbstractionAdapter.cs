@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel;
 using JetBrains.Annotations;
 
@@ -7,26 +6,38 @@ namespace Thinktecture
 	/// <summary>
 	/// Base class for all adapters.
 	/// </summary>
-	public class AbstractionAdapter : IAbstraction
+	/// <typeparam name="TImplementation">Type of the implementation.</typeparam>
+	public class AbstractionAdapter<TImplementation> : IAbstraction<TImplementation>
 	{
+		/// <summary>
+		/// Implementation used by the adapter.
+		/// </summary>
 		[NotNull]
-		private readonly object _implementation;
+		protected TImplementation Implementation { get; }
+
+		/// <summary>
+		/// Initializes new instance of <see cref="AbstractionAdapter{TImplementation}"/>.
+		/// </summary>
+		/// <param name="implementation">Implementation to be used by the adapter.</param>
+		public AbstractionAdapter([NotNull] TImplementation implementation)
+		{
+			Implementation = implementation;
+		}
 
 		/// <inheritdoc />
 		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public object UnsafeConvert()
+		public TImplementation UnsafeConvert()
 		{
-			return _implementation;
+			return Implementation;
 		}
 
-		/// <summary>
-		/// Initializes new instance of <see cref="AbstractionAdapter"/>.
-		/// </summary>
-		/// <param name="implementation">Implementation to be used by the adapter.</param>
-		public AbstractionAdapter([NotNull] object implementation)
+		/// <inheritdoc />
+		[NotNull]
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		object IAbstraction.UnsafeConvert()
 		{
-			_implementation = implementation ?? throw new ArgumentNullException(nameof(implementation));
+			return UnsafeConvert();
 		}
 
 		/// <summary>
@@ -38,7 +49,7 @@ namespace Thinktecture
 		public override string ToString()
 		{
 			// ReSharper disable once AssignNullToNotNullAttribute
-			return _implementation.ToString();
+			return Implementation.ToString();
 		}
 
 		/// <summary>
@@ -52,8 +63,11 @@ namespace Thinktecture
 			// Use the inner implementation if and only if the other object is an adapter as well
 			// because equality must be reflexive, symmetric and transitive.
 
-			if (obj is IAbstraction abstraction)
-				return _implementation.Equals(abstraction.UnsafeConvert());
+			if (obj is IAbstraction<TImplementation> abstraction)
+				return Implementation.Equals(abstraction.UnsafeConvert());
+
+			if (obj is IAbstraction nonGenericAbstraction)
+				return Implementation.Equals(nonGenericAbstraction.UnsafeConvert());
 
 			// ReSharper disable once BaseObjectEqualsIsObjectEquals
 			return base.Equals(obj);
@@ -65,38 +79,7 @@ namespace Thinktecture
 		/// <returns>A hash code for the current object.</returns>
 		public override int GetHashCode()
 		{
-			return _implementation.GetHashCode();
-		}
-	}
-
-	/// <summary>
-	/// Base class for all adapters.
-	/// </summary>
-	/// <typeparam name="TImplementation">Type of the implementation.</typeparam>
-	public class AbstractionAdapter<TImplementation> : AbstractionAdapter, IAbstraction<TImplementation>
-	{
-		/// <summary>
-		/// Implementation used by the adapter.
-		/// </summary>
-		[NotNull]
-		protected TImplementation Implementation { get; }
-
-		/// <summary>
-		/// Initializes new instance of <see cref="AbstractionAdapter{TImplementation}"/>.
-		/// </summary>
-		/// <param name="implementation">Implementation to be used by the adapter.</param>
-		public AbstractionAdapter([NotNull] TImplementation implementation)
-			: base(implementation)
-		{
-			Implementation = implementation;
-		}
-
-		/// <inheritdoc />
-		[NotNull]
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public new TImplementation UnsafeConvert()
-		{
-			return Implementation;
+			return Implementation.GetHashCode();
 		}
 	}
 }

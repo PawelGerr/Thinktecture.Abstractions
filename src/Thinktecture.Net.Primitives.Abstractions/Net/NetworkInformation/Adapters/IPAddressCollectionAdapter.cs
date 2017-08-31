@@ -14,7 +14,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 	public class IPAddressCollectionAdapter : CollectionAbstractionAdapter<IIPAddress, IPAddress, IPAddressCollection>, IIPAddressCollection
 	{
 		/// <inheritdoc />
-		public IIPAddress this[int index] => Collection[index].ToInterface();
+		public IIPAddress this[int index] => Implementation[index].ToInterface();
 
 		/// <summary>Initializes a new instance of the <see cref="IPAddressCollectionAdapter" /> class.</summary>
 		/// <param name="collection">The implementation to use by the adapter.</param>

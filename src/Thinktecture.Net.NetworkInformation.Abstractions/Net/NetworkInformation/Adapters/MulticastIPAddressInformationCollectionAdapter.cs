@@ -13,7 +13,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 	public class MulticastIPAddressInformationCollectionAdapter : CollectionAbstractionAdapter<IMulticastIPAddressInformation, MulticastIPAddressInformation, MulticastIPAddressInformationCollection>, IMulticastIPAddressInformationCollection
 	{
 		/// <inheritdoc />
-		public IMulticastIPAddressInformation this[int index] => Collection[index].ToInterface();
+		public IMulticastIPAddressInformation this[int index] => Implementation[index].ToInterface();
 
 		/// <summary>
 		/// Initializes new instance <see cref="MulticastIPAddressInformationCollectionAdapter"/>.

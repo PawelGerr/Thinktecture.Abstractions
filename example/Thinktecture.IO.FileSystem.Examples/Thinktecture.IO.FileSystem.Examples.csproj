@@ -11,6 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\src\Thinktecture.IO.FileSystem.Abstractions\Thinktecture.IO.FileSystem.Abstractions.csproj" />
   </ItemGroup>
 

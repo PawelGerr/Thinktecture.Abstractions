@@ -13,7 +13,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 	public class UnicastIpAddressInformationCollectionAdapter : CollectionAbstractionAdapter<IUnicastIPAddressInformation, UnicastIPAddressInformation, UnicastIPAddressInformationCollection>, IUnicastIPAddressInformationCollection
 	{
 		/// <inheritdoc />
-		public IUnicastIPAddressInformation this[int index] => Collection[index].ToInterface();
+		public IUnicastIPAddressInformation this[int index] => Implementation[index].ToInterface();
 
 		/// <summary>
 		/// Initializes new instance of <see cref="UnicastIpAddressInformationCollectionAdapter"/>.

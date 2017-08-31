@@ -20,13 +20,21 @@ namespace Thinktecture.AbstractionAdapterTests
 		[Fact]
 		public void Should_return_true_if_comparison_of_inner_objects_yields_true()
 		{
-			Adapter.Equals(new AbstractionAdapter(Implementation)).Should().BeTrue();
+			Adapter.Equals(new AbstractionAdapter<TestComponent>(Implementation)).Should().BeTrue();
+		}
+
+		[Fact]
+		public void Should_return_true_if_comparison_of_inner_objects_yields_true_despite_the_generic()
+		{
+			// ReSharper disable once SuspiciousTypeConversion.Global
+			Adapter.Equals(new AbstractionAdapter<object>(Implementation)).Should().BeTrue();
 		}
 
 		[Fact]
 		public void Should_return_false_if_comparison_of_inner_objects_yields_false()
 		{
-			Adapter.Equals(new AbstractionAdapter(new object())).Should().BeFalse();
+			// ReSharper disable once SuspiciousTypeConversion.Global
+			Adapter.Equals(new AbstractionAdapter<object>(new object())).Should().BeFalse();
 		}
 
 		[Fact]

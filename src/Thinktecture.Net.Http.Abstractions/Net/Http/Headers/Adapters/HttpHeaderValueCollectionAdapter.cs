@@ -20,13 +20,13 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <inheritdoc />
 		public void ParseAdd(string input)
 		{
-			Collection.ParseAdd(input);
+			Implementation.ParseAdd(input);
 		}
 
 		/// <inheritdoc />
 		public bool TryParseAdd(string input)
 		{
-			return Collection.TryParseAdd(input);
+			return Implementation.TryParseAdd(input);
 		}
 	}
 }
