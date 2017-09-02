@@ -117,3 +117,8 @@ Provides interfaces for types in `System.Runtime.Handles`: `SafeHandle`, `Critic
 Provides interfaces for types in `System.Runtime`: `StringBuilder`, `WaitHandle`, `EventArgs`.
 
 **Nuget**: `Install-Package Thinktecture.Runtime.Abstractions`
+
+### Thinktecture.Threading.Tasks.Abstractions
+Provides interfaces for types in `System.Threading.Tasks`: `Task`, `TaskFactory`.
+
+**Nuget**: `Install-Package Thinktecture.Threading.Tasks.Abstractions`
