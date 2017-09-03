@@ -1,30 +1,28 @@
 #if NETSTANDARD1_3 || NET45 || NET46
 
-using System.Net.NetworkInformation;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
 {
 	/// <summary>Provides configuration and statistical information for network interfaces.</summary>
-	public class NetworkInterfaceInformation : INetworkInterfaceInformation
+	public class NetworkInterfaceGlobals : INetworkInterfaceGlobals
 	{
 		/// <inheritdoc />
-		public int LoopbackInterfaceIndex => NetworkInterface.LoopbackInterfaceIndex;
+		public int LoopbackInterfaceIndex => NetworkInterfaceAdapter.LoopbackInterfaceIndex;
 
 		/// <inheritdoc />
-		public int IPv6LoopbackInterfaceIndex => NetworkInterface.IPv6LoopbackInterfaceIndex;
+		public int IPv6LoopbackInterfaceIndex => NetworkInterfaceAdapter.IPv6LoopbackInterfaceIndex;
 
 		/// <inheritdoc />
 		public INetworkInterface[] GetAllNetworkInterfaces()
 		{
-			return NetworkInterface.GetAllNetworkInterfaces().ToInterface();
+			return NetworkInterfaceAdapter.GetAllNetworkInterfaces();
 		}
 
 		/// <inheritdoc />
 		public bool GetIsNetworkAvailable()
 		{
-			return NetworkInterface.GetIsNetworkAvailable();
+			return NetworkInterfaceAdapter.GetIsNetworkAvailable();
 		}
 	}
 }

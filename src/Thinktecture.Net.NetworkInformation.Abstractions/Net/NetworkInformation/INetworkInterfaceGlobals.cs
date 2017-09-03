@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 namespace Thinktecture.Net.NetworkInformation
 {
 	/// <summary>Provides configuration and statistical information for network interfaces.</summary>
-	public interface INetworkInterfaceInformation
+	public interface INetworkInterfaceGlobals
 	{
 		/// <summary>Gets the index of the IPv4 loopback interface.</summary>
 		/// <returns>A <see cref="T:System.Int32" /> that contains the index for the IPv4 loopback interface.</returns>
