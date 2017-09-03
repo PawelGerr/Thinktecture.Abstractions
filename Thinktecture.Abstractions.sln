@@ -50,7 +50,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.Threading.Task
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.Threading.Tasks.Abstractions", "src\Thinktecture.Threading.Tasks.Abstractions\Thinktecture.Threading.Tasks.Abstractions.csproj", "{05760CFD-C3A8-41D5-B214-BFA2E046FCD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.Threading.Tasks.Abstractions.Tests", "test\Thinktecture.Threading.Tasks.Abstractions.Tests\Thinktecture.Threading.Tasks.Abstractions.Tests.csproj", "{F98E34E4-2E3E-413D-8272-14921250C4F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.Threading.Tasks.Abstractions.Tests", "test\Thinktecture.Threading.Tasks.Abstractions.Tests\Thinktecture.Threading.Tasks.Abstractions.Tests.csproj", "{F98E34E4-2E3E-413D-8272-14921250C4F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.IO.Abstractions.Tests", "test\Thinktecture.IO.Abstractions.Tests\Thinktecture.IO.Abstractions.Tests.csproj", "{2B46422A-03B3-4075-B755-895A4F252585}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.Net.NetworkInformation.Abstractions.Tests", "test\Thinktecture.Net.NetworkInformation.Abstractions.Tests\Thinktecture.Net.NetworkInformation.Abstractions.Tests.csproj", "{07E501DE-C1FC-4B38-8D6A-6A42091589CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.Net.Primitives.Abstractions.Tests", "test\Thinktecture.Net.Primitives.Abstractions.Tests\Thinktecture.Net.Primitives.Abstractions.Tests.csproj", "{15E24E06-47CB-4BDA-A97A-DB4D5B565F21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.Runtime.Abstractions.Tests", "test\Thinktecture.Runtime.Abstractions.Tests\Thinktecture.Runtime.Abstractions.Tests.csproj", "{7FB1AC3C-0A7B-4CE7-A4ED-0E67899B9428}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.Text.Encoding.Abstractions.Tests", "test\Thinktecture.Text.Encoding.Abstractions.Tests\Thinktecture.Text.Encoding.Abstractions.Tests.csproj", "{BC4A0946-13F6-4F16-8AF8-91039E4485F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -130,6 +140,26 @@ Global
 		{F98E34E4-2E3E-413D-8272-14921250C4F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F98E34E4-2E3E-413D-8272-14921250C4F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F98E34E4-2E3E-413D-8272-14921250C4F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B46422A-03B3-4075-B755-895A4F252585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B46422A-03B3-4075-B755-895A4F252585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B46422A-03B3-4075-B755-895A4F252585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B46422A-03B3-4075-B755-895A4F252585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07E501DE-C1FC-4B38-8D6A-6A42091589CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07E501DE-C1FC-4B38-8D6A-6A42091589CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07E501DE-C1FC-4B38-8D6A-6A42091589CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07E501DE-C1FC-4B38-8D6A-6A42091589CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15E24E06-47CB-4BDA-A97A-DB4D5B565F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15E24E06-47CB-4BDA-A97A-DB4D5B565F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15E24E06-47CB-4BDA-A97A-DB4D5B565F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15E24E06-47CB-4BDA-A97A-DB4D5B565F21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB1AC3C-0A7B-4CE7-A4ED-0E67899B9428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB1AC3C-0A7B-4CE7-A4ED-0E67899B9428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB1AC3C-0A7B-4CE7-A4ED-0E67899B9428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB1AC3C-0A7B-4CE7-A4ED-0E67899B9428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC4A0946-13F6-4F16-8AF8-91039E4485F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC4A0946-13F6-4F16-8AF8-91039E4485F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC4A0946-13F6-4F16-8AF8-91039E4485F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC4A0946-13F6-4F16-8AF8-91039E4485F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,6 +183,11 @@ Global
 		{DED0DF5D-025D-42C6-BA1F-2FAD7A3C4D18} = {F2F0BF55-C0C6-4325-98EB-CEC4E4A5EBC6}
 		{05760CFD-C3A8-41D5-B214-BFA2E046FCD0} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 		{F98E34E4-2E3E-413D-8272-14921250C4F7} = {C095C061-B87D-4C07-93E7-8CA0217ED68F}
+		{2B46422A-03B3-4075-B755-895A4F252585} = {C095C061-B87D-4C07-93E7-8CA0217ED68F}
+		{07E501DE-C1FC-4B38-8D6A-6A42091589CF} = {C095C061-B87D-4C07-93E7-8CA0217ED68F}
+		{15E24E06-47CB-4BDA-A97A-DB4D5B565F21} = {C095C061-B87D-4C07-93E7-8CA0217ED68F}
+		{7FB1AC3C-0A7B-4CE7-A4ED-0E67899B9428} = {C095C061-B87D-4C07-93E7-8CA0217ED68F}
+		{BC4A0946-13F6-4F16-8AF8-91039E4485F8} = {C095C061-B87D-4C07-93E7-8CA0217ED68F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B2E59FD-B86D-4BF3-9FAF-64EBC004FCDA}

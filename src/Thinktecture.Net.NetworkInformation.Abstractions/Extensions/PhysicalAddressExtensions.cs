@@ -22,7 +22,13 @@ namespace Thinktecture
 		[CanBeNull]
 		public static IPhysicalAddress ToInterface([CanBeNull] this PhysicalAddress address)
 		{
-			return (address == null) ? null : new PhysicalAddressAdapter(address);
+			if (address == null)
+				return null;
+
+			if (ReferenceEquals(address, PhysicalAddress.None))
+				return PhysicalAddressAdapter.None;
+
+			return new PhysicalAddressAdapter(address);
 		}
 	}
 }

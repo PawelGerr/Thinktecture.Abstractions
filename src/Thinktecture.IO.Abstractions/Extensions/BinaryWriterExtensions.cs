@@ -20,7 +20,13 @@ namespace Thinktecture
 		[CanBeNull]
 		public static IBinaryWriter ToInterface([CanBeNull] this BinaryWriter writer)
 		{
-			return (writer == null) ? null : new BinaryWriterAdapter(writer);
+			if (writer == null)
+				return null;
+
+			if (ReferenceEquals(writer, BinaryWriter.Null))
+				return BinaryWriterAdapter.Null;
+
+			return new BinaryWriterAdapter(writer);
 		}
 	}
 }

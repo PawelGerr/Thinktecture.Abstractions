@@ -15,7 +15,7 @@ namespace Thinktecture.IO.Adapters
 	{
 		/// <summary>A Stream with no backing store.</summary>
 		[NotNull]
-		public static readonly IStream Null = Stream.Null.ToInterface();
+		public static readonly IStream Null = new StreamAdapter(Stream.Null);
 
 		/// <inheritdoc />
 		public bool CanRead => Implementation.CanRead;

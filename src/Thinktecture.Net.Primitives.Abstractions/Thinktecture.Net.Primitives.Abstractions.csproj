@@ -24,12 +24,6 @@
     <ProjectReference Include="..\Thinktecture.Runtime.Handles.Abstractions\Thinktecture.Runtime.Handles.Abstractions.csproj" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <ProjectReference Include="..\Thinktecture.Runtime.Handles.Abstractions\Thinktecture.Runtime.Handles.Abstractions.csproj" />
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
-    <ProjectReference Include="..\Thinktecture.Runtime.Handles.Abstractions\Thinktecture.Runtime.Handles.Abstractions.csproj" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>

@@ -23,7 +23,7 @@ namespace Thinktecture.Net.Adapters
 		/// <summary>Gets the network credentials of the current security context.</summary>
 		/// <returns>An <see cref="T:System.Net.NetworkCredential" /> that represents the network credentials of the current user or application.</returns>
 		[NotNull]
-		public static INetworkCredential DefaultNetworkCredentials => CredentialCache.DefaultNetworkCredentials.ToInterface();
+		public static INetworkCredential DefaultNetworkCredentials => new NetworkCredentialAdapter(CredentialCache.DefaultNetworkCredentials);
 
 		/// <summary>
 		/// Initializes new instance of <see cref="CredentialCacheAdapter"/>.

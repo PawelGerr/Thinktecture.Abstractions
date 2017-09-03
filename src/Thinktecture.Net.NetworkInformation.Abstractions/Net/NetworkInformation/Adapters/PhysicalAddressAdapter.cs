@@ -16,10 +16,10 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// <summary>
 		/// Returns a new <see cref="IPhysicalAddress"/> instance with a zero length address. This field is read-only.
 		/// </summary>
-		public static readonly IPhysicalAddress None = PhysicalAddress.None.ToInterface();
+		public static readonly IPhysicalAddress None = new PhysicalAddressAdapter(PhysicalAddress.None);
 
 		/// <summary>
-		/// Parses the specified <see cref="string"/> and stores its contents as the address bytes of the <see cref="IPhysicalAddress"/> returned by this method.
+		/// Parses the specified <see cref="String"/> and stores its contents as the address bytes of the <see cref="IPhysicalAddress"/> returned by this method.
 		/// </summary>
 		/// <param name="address">A String containing the address that will be used to initialize the PhysicalAddress instance returned by this method.</param>
 		/// <returns>A <see cref="IPhysicalAddress"/> instance with the specified address.</returns>

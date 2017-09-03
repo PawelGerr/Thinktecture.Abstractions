@@ -18,7 +18,13 @@ namespace Thinktecture
 		[CanBeNull]
 		public static IEventArgs ToInterface([CanBeNull] this EventArgs args)
 		{
-			return (args == null) ? null : new EventArgsAdapter(args);
+			if (args == null)
+				return null;
+
+			if (ReferenceEquals(args, EventArgs.Empty))
+				return EventArgsAdapter.Empty;
+
+			return new EventArgsAdapter(args);
 		}
 	}
 }

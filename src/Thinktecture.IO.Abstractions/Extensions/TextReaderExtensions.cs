@@ -20,7 +20,13 @@ namespace Thinktecture
 		[CanBeNull]
 		public static ITextReader ToInterface([CanBeNull] this TextReader reader)
 		{
-			return (reader == null) ? null : new TextReaderAdapter(reader);
+			if (reader == null)
+				return null;
+
+			if (ReferenceEquals(reader, TextReader.Null))
+				return TextReaderAdapter.Null;
+
+			return new TextReaderAdapter(reader);
 		}
 	}
 }

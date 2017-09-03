@@ -19,7 +19,13 @@ namespace Thinktecture
 		[CanBeNull]
 		public static ITaskFactory ToInterface([CanBeNull] this TaskFactory task)
 		{
-			return (task == null) ? null : new TaskFactoryAdapter(task);
+			if (task == null)
+				return null;
+
+			if (ReferenceEquals(task, Task.Factory))
+				return TaskAdapter.Factory;
+
+			return new TaskFactoryAdapter(task);
 		}
 
 		/// <summary>
@@ -31,7 +37,13 @@ namespace Thinktecture
 		[CanBeNull]
 		public static ITaskFactory<TResult> ToInterface<TResult>([CanBeNull] this TaskFactory<TResult> task)
 		{
-			return (task == null) ? null : new TaskFactoryAdapter<TResult>(task);
+			if (task == null)
+				return null;
+
+			if (ReferenceEquals(task, Task<TResult>.Factory))
+				return TaskAdapter<TResult>.Factory;
+
+			return new TaskFactoryAdapter<TResult>(task);
 		}
 	}
 }

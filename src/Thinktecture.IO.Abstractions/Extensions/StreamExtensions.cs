@@ -20,7 +20,13 @@ namespace Thinktecture
 		[CanBeNull]
 		public static IStream ToInterface([CanBeNull] this Stream stream)
 		{
-			return (stream == null) ? null : new StreamAdapter(stream);
+			if (stream == null)
+				return null;
+
+			if (ReferenceEquals(stream, Stream.Null))
+				return StreamAdapter.Null;
+
+			return new StreamAdapter(stream);
 		}
 	}
 }

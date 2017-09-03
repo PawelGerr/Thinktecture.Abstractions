@@ -14,18 +14,18 @@ namespace Thinktecture.Text.Adapters
 		/// <summary>Gets an encoding for the UTF-16 format that uses the big endian byte order.</summary>
 		/// <returns>An encoding object for the UTF-16 format that uses the big endian byte order.</returns>
 		[NotNull]
-		public static IEncoding BigEndianUnicode => Encoding.BigEndianUnicode.ToInterface();
+		public static IEncoding BigEndianUnicode => new EncodingAdapter(Encoding.BigEndianUnicode);
 
 		/// <summary>Gets an encoding for the UTF-16 format using the little endian byte order.</summary>
 		/// <returns>An encoding for the UTF-16 format using the little endian byte order.</returns>
 		[NotNull]
-		public static IEncoding Unicode => Encoding.Unicode.ToInterface();
+		public static IEncoding Unicode => new EncodingAdapter(Encoding.Unicode);
 
 		/// <summary>Gets an encoding for the UTF-8 format.</summary>
 		/// <returns>An encoding for the UTF-8 format.</returns>
 		[NotNull]
 		// ReSharper disable once InconsistentNaming
-		public static IEncoding UTF8 => Encoding.UTF8.ToInterface();
+		public static IEncoding UTF8 => new EncodingAdapter(Encoding.UTF8);
 
 		/// <summary>Converts an entire byte array from one encoding to another.</summary>
 		/// <returns>An array of type <see cref="T:System.Byte" /> containing the results of converting <paramref name="bytes" /> from <paramref name="srcEncoding" /> to <paramref name="dstEncoding" />.</returns>

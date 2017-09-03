@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using JetBrains.Annotations;
 using Thinktecture.IO;
@@ -20,7 +19,13 @@ namespace Thinktecture
 		[CanBeNull]
 		public static IStreamWriter ToInterface([CanBeNull] this StreamWriter writer)
 		{
-			return (writer == null) ? null : new StreamWriterAdapter(writer);
+			if (writer == null)
+				return null;
+
+			if (ReferenceEquals(writer, StreamWriter.Null))
+				return StreamWriterAdapter.Null;
+
+			return new StreamWriterAdapter(writer);
 		}
 
 		/// <summary>

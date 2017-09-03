@@ -13,7 +13,7 @@ namespace Thinktecture.IO.Adapters
 	public class TextReaderAdapter : AbstractionAdapter<TextReader>, ITextReader
 	{
 		/// <summary>Provides a TextReader with no data to read from.</summary>
-		public static readonly ITextReader Null = TextReader.Null.ToInterface();
+		public static readonly ITextReader Null = new TextReaderAdapter(TextReader.Null);
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="TextReaderAdapter" /> class.

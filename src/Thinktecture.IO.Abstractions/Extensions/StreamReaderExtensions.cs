@@ -20,7 +20,13 @@ namespace Thinktecture
 		[CanBeNull]
 		public static IStreamReader ToInterface([CanBeNull] this StreamReader reader)
 		{
-			return (reader == null) ? null : new StreamReaderAdapter(reader);
+			if (reader == null)
+				return null;
+
+			if (ReferenceEquals(reader, StreamReader.Null))
+				return StreamReaderAdapter.Null;
+
+			return new StreamReaderAdapter(reader);
 		}
 
 		/// <summary>

@@ -20,7 +20,13 @@ namespace Thinktecture
 		[CanBeNull]
 		public static ITextWriter ToInterface([CanBeNull] this TextWriter writer)
 		{
-			return (writer == null) ? null : new TextWriterAdapter(writer);
+			if (writer == null)
+				return null;
+
+			if (ReferenceEquals(writer, TextWriter.Null))
+				return TextWriterAdapter.Null;
+
+			return new TextWriterAdapter(writer);
 		}
 	}
 }

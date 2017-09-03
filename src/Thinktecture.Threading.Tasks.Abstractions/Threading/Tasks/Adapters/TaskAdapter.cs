@@ -62,7 +62,7 @@ namespace Thinktecture.Threading.Tasks.Adapters
 		/// <summary>Provides access to factory methods for creating and configuring <see cref="Task" /> and <see cref="Task{TResult}" /> instances.</summary>
 		/// <returns>A factory object that can create a variety of <see cref="Task" /> and <see cref="Task{TResult}" /> objects. </returns>
 		[NotNull]
-		public static ITaskFactory Factory => Task.Factory.ToInterface();
+		public static ITaskFactory Factory => new TaskFactoryAdapter(Task.Factory);
 
 #if NETSTANDARD1_3
 		/// <summary>Gets a task that has already completed successfully. </summary>

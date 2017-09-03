@@ -14,28 +14,28 @@ namespace Thinktecture.Net.Adapters
 	public class IPAddressAdapter : AbstractionAdapter<IPAddress>, IIPAddress
 	{
 		/// <summary>Provides an IP address that indicates that the server must listen for client activity on all network interfaces. This field is read-only.</summary>
-		public static readonly IIPAddress Any = IPAddress.Any.ToInterface();
+		public static readonly IIPAddress Any = new IPAddressAdapter(IPAddress.Any);
 
 		/// <summary>Provides the IP broadcast address. This field is read-only.</summary>
-		public static readonly IIPAddress Broadcast = IPAddress.Broadcast.ToInterface();
+		public static readonly IIPAddress Broadcast = new IPAddressAdapter(IPAddress.Broadcast);
 
 		/// <summary>The <see cref="M:System.Net.Sockets.Socket.Bind(System.Net.EndPoint)" /> method uses the <see cref="F:System.Net.IPAddress.IPv6Any" /> field to indicate that a <see cref="T:System.Net.Sockets.Socket" /> must listen for client activity on all network interfaces.</summary>
 		// ReSharper disable once InconsistentNaming
-		public static readonly IIPAddress IPv6Any = IPAddress.IPv6Any.ToInterface();
+		public static readonly IIPAddress IPv6Any = new IPAddressAdapter(IPAddress.IPv6Any);
 
 		/// <summary>Provides the IP loopback address. This property is read-only.</summary>
 		// ReSharper disable once InconsistentNaming
-		public static readonly IIPAddress IPv6Loopback = IPAddress.IPv6Loopback.ToInterface();
+		public static readonly IIPAddress IPv6Loopback = new IPAddressAdapter(IPAddress.IPv6Loopback);
 
 		/// <summary>Provides an IP address that indicates that no network interface should be used. This property is read-only.</summary>
 		// ReSharper disable once InconsistentNaming
-		public static readonly IIPAddress IPv6None = IPAddress.IPv6None.ToInterface();
+		public static readonly IIPAddress IPv6None = new IPAddressAdapter(IPAddress.IPv6None);
 
 		/// <summary>Provides the IP loopback address. This field is read-only.</summary>
-		public static readonly IIPAddress Loopback = IPAddress.Loopback.ToInterface();
+		public static readonly IIPAddress Loopback = new IPAddressAdapter(IPAddress.Loopback);
 
 		/// <summary>Provides an IP address that indicates that no network interface should be used. This field is read-only.</summary>
-		public static readonly IIPAddress None = IPAddress.None.ToInterface();
+		public static readonly IIPAddress None = new IPAddressAdapter(IPAddress.None);
 
 		/// <summary>Converts a short value from host byte order to network byte order.</summary>
 		/// <returns>A short value, expressed in network byte order.</returns>

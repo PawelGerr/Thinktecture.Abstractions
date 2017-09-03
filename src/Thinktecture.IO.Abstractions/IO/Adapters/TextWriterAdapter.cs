@@ -15,7 +15,7 @@ namespace Thinktecture.IO.Adapters
 	public class TextWriterAdapter : AbstractionAdapter<TextWriter>, ITextWriter
 	{
 		/// <summary>Provides a TextWriter with no backing store that can be written to, but not read from.</summary>
-		public static readonly ITextWriter Null = TextWriter.Null.ToInterface();
+		public static readonly ITextWriter Null = new TextWriterAdapter(TextWriter.Null);
 
 		/// <summary>
 		/// Creates an instance of <see cref="TextWriterAdapter"/>.
