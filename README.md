@@ -119,6 +119,6 @@ Provides interfaces for types in `System.Runtime`: `StringBuilder`, `EventArgs`.
 **Nuget**: `Install-Package Thinktecture.Runtime.Abstractions`
 
 ### Thinktecture.Threading.Tasks.Abstractions
-Provides interfaces for types in `System.Threading.Tasks`: `Task`, `TaskFactory`.
+Provides interfaces for types in `System.Threading.Tasks`: `Task`, `Task<T>`, `TaskFactory`, `TaskFactory<T>`.
 
 **Nuget**: `Install-Package Thinktecture.Threading.Tasks.Abstractions`
