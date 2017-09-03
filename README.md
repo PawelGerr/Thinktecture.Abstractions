@@ -109,12 +109,12 @@ Provides interfaces for type in `System.Runtime.Extensions`: `Path`, `BitConvert
 **Nuget**: `Install-Package Thinktecture.Runtime.Extensions.Abstractions`
 
 ### Thinktecture.Runtime.Handles.Abstractions
-Provides interfaces for types in `System.Runtime.Handles`: `SafeHandle`, `CriticalHandle`, `SafeWaitHandle`
+Provides interfaces for types in `System.Runtime.Handles`: `SafeHandle`, `SafeWaitHandle`
 
 **Nuget**: `Install-Package Thinktecture.Runtime.Handles.Abstractions`
 
 ### Thinktecture.Runtime.Abstractions
-Provides interfaces for types in `System.Runtime`: `StringBuilder`, `WaitHandle`, `EventArgs`.
+Provides interfaces for types in `System.Runtime`: `StringBuilder`, `EventArgs`.
 
 **Nuget**: `Install-Package Thinktecture.Runtime.Abstractions`
 
