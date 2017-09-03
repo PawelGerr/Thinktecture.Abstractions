@@ -73,7 +73,7 @@ namespace Thinktecture.Net.Adapters
 			return Implementation.GetCredential(uri, authType);
 		}
 
-#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45
 		/// <inheritdoc />
 		public INetworkCredential GetCredential(string host, int port, string authenticationType)
 		{

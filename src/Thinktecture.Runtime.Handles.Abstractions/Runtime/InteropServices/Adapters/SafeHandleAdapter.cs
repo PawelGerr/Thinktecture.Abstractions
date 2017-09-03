@@ -16,7 +16,7 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 		public bool IsInvalid => Implementation.IsInvalid;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="CriticalHandleAdapter"/> class.
+		/// Initializes a new instance of the <see cref="SafeHandleAdapter"/> class.
 		/// </summary>
 		/// <param name="handle">Handle to be use by the adapter.</param>
 		public SafeHandleAdapter([NotNull] SafeHandle handle)

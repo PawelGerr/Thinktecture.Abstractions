@@ -1,4 +1,4 @@
-#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NET45
 
 using System.Net;
 using JetBrains.Annotations;
