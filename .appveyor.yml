@@ -12,7 +12,7 @@ before_build:
 - ps: >-
     dotnet --info
 
-    Set-VersionSuffixOnTag
+    Set-VersionSuffixOnTag("src")
     
     dotnet restore ./Thinktecture.Abstractions.sln
 build:
