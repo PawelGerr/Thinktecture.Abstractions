@@ -13,6 +13,7 @@ Just use the interface like `IFile` instead of `File`.
 More examples:
 
 * [Reading files](doc/ReadingFiles.md) 
+* [Usage of ITask and ITask&lt;T&gt;](https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/example/Thinktecture.Threading.Tasks.Examples/Program.cs)
 
 ```
 public class MyClass
