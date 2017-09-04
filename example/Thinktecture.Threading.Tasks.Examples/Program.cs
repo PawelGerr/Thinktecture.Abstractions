@@ -5,62 +5,43 @@ using Thinktecture.Threading.Tasks.Adapters;
 namespace Thinktecture.Threading.Tasks.Examples
 {
 	// ReSharper disable once ArrangeTypeModifiers
-	public class Program
+	public static class Program
 	{
 		// ReSharper disable once UnusedParameter.Local
-		public static void Main(string[] args)
+		public static async Task Main(string[] args)
 		{
-			DoAsync().Wait();
+			await DoAsync();
 
 			Console.WriteLine("END");
 			Console.ReadLine();
 		}
 
-		private static async Task DoAsync()
+		private static async ITask DoAsync()
 		{
-			await GetTaskAdapterAsync();
-			await GetGenericTaskAdapterAsync();
-			await GetITaskAsync();
-			await GetGenericITaskAsync();
+			var taskGlobals = new TaskGlobals();
+			await UseTaskGlobalsAsync(taskGlobals);
+
+			await UseITaskAsync();
+			await UseGenericITaskAsync();
 		}
 
-		private static async TaskAdapter GetTaskAdapterAsync()
+		private static async Task UseTaskGlobalsAsync(ITaskGlobals tasks)
 		{
-			var taskAdapter = new TaskAdapter(() => Console.WriteLine("TaskAdapter"));
-			taskAdapter.Start();
-			await taskAdapter;
+			await tasks.Run(() => Console.WriteLine("TaskGlobals.Run()"));
 		}
 
-		public static async TaskAdapter<int> GetGenericTaskAdapterAsync()
+		private static async ITask UseITaskAsync()
 		{
-			var taskAdapter = new TaskAdapter<int>(() =>
-			{
-				Console.WriteLine("TaskAdapter<int>");
-				return 42;
-			});
-			taskAdapter.Start();
-			var result = await taskAdapter;
-			Console.WriteLine($"TaskAdapter<int> returned {result}");
+			ITask task = TaskAdapter.Factory.StartNew(() => Console.WriteLine("ITask"));
 
-			return result;
-		}
-
-		private static async ITask GetITaskAsync()
-		{
-			ITask task = new TaskAdapter(() => Console.WriteLine("ITask"));
-			task.Start();
 			await task;
 		}
 
-		public static async ITask<int> GetGenericITaskAsync()
+		private static async ITask<int> UseGenericITaskAsync()
 		{
-			ITask<int> task = new TaskAdapter<int>(() =>
-			{
-				Console.WriteLine("ITask<int>");
-				return 43;
-			});
-			task.Start();
-			var result = await task;
+			ITask<int> task = TaskAdapter<int>.Factory.StartNew(() => 43);
+
+			var result = await task.ConfigureAwait(false);
 			Console.WriteLine($"ITask<int> returned {result}");
 
 			return result;
