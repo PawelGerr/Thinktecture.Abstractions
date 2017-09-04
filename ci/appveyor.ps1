@@ -45,7 +45,7 @@ function Extract-Suffix([string] $tagName)
         return $tagName.Substring($index + 1);
     }
 
-    return null
+    return $null
 }
 
 # Add xml element "VersionSuffix" to *.csproj files in $dir.
