@@ -8,7 +8,7 @@ using JetBrains.Annotations;
 namespace Thinktecture.Threading.Tasks
 {
 	/// <summary>
-	/// Statics fo <see cref="Task{TResult}"/>
+	/// Statics of <see cref="Task{TResult}"/>
 	/// </summary>
 	/// <typeparam name="TResult">Type of the result.</typeparam>
 	public interface ITaskGlobals<TResult> : ITaskGlobals
