@@ -1243,7 +1243,7 @@ namespace Thinktecture.Threading.Tasks.Adapters
 		}
 
 		[CanBeNull]
-		private static Action<Task, object> Convert([CanBeNull]Action<ITask, object> action)
+		private static Action<Task, object> Convert([CanBeNull] Action<ITask, object> action)
 		{
 			return action == null ? (Action<Task, object>)null : (t, s) => action(t.ToInterface(), s);
 		}
@@ -1261,7 +1261,7 @@ namespace Thinktecture.Threading.Tasks.Adapters
 		}
 
 		[CanBeNull]
-		private static Func<Task, object, TResult> Convert<TResult>([CanBeNull]Func<ITask, object, TResult> func)
+		private static Func<Task, object, TResult> Convert<TResult>([CanBeNull] Func<ITask, object, TResult> func)
 		{
 			return func == null ? (Func<Task, object, TResult>)null : (t, s) => func(t.ToInterface(), s);
 		}
@@ -1676,7 +1676,7 @@ namespace Thinktecture.Threading.Tasks.Adapters
 		}
 
 		[CanBeNull]
-		private static Action<Task<TResult>, object> Convert([CanBeNull]Action<ITask<TResult>, object> action)
+		private static Action<Task<TResult>, object> Convert([CanBeNull] Action<ITask<TResult>, object> action)
 		{
 			return action == null ? (Action<Task<TResult>, object>)null : (t, s) => action(t.ToInterface(), s);
 		}
@@ -1688,7 +1688,7 @@ namespace Thinktecture.Threading.Tasks.Adapters
 		}
 
 		[CanBeNull]
-		private static Func<Task<TResult>, object, TNewResult> Convert<TNewResult>([CanBeNull]Func<ITask<TResult>, object, TNewResult> func)
+		private static Func<Task<TResult>, object, TNewResult> Convert<TNewResult>([CanBeNull] Func<ITask<TResult>, object, TNewResult> func)
 		{
 			return func == null ? (Func<Task<TResult>, object, TNewResult>)null : (t, s) => func(t.ToInterface(), s);
 		}
