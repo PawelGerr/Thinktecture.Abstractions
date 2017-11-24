@@ -4,7 +4,6 @@ using System.IO;
 using JetBrains.Annotations;
 
 // ReSharper disable AssignNullToNotNullAttribute
-
 namespace Thinktecture.IO.Adapters
 {
 	/// <summary>
