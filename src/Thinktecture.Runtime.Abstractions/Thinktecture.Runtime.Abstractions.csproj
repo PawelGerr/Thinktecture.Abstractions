@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>Provides interfaces for types in System.Runtime: StringBuilder, WaitHandle, EventArgs.</Description>
-    <Copyright>(c) 2017, Pawel Gerr. All rights reserved.</Copyright>
+    <Copyright>(c) 2018, Pawel Gerr. All rights reserved.</Copyright>
     <VersionPrefix>2.2.0</VersionPrefix>
     <Authors>Pawel Gerr</Authors>
     <TargetFrameworks>netstandard1.0;netstandard1.2;netstandard1.3;netstandard1.5;net45;net462</TargetFrameworks>
@@ -14,7 +14,7 @@
     <RepositoryUrl>git@github.com:PawelGerr/Thinktecture.Abstractions.git</RepositoryUrl>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <RootNamespace>Thinktecture</RootNamespace>
-    <LangVersion>7.1</LangVersion>
+    <LangVersion>7.2</LangVersion>
     <CodeAnalysisRuleSet>..\..\Visual Studio.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>

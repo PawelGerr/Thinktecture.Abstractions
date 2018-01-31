@@ -3,5 +3,4 @@
 **/bin/**
 **/obj/**
 **/packages/**
-*.xproj.user
-project.lock.json
+Thinktecture\.Abstractions\.sln\.DotSettings\.user
