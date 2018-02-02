@@ -6,6 +6,7 @@ namespace Thinktecture
 	/// <summary>
 	/// Event handler context of an abstraction.
 	/// </summary>
+	/// <typeparam name="TImplementationDelegate">Type of the delegate.</typeparam>
 	public class AbstractionEventHandlerContext<TImplementationDelegate>
 		where TImplementationDelegate : class
 	{
