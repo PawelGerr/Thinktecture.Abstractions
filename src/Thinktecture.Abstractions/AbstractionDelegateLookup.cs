@@ -10,20 +10,20 @@ namespace Thinktecture
 	/// Allow mapping of event handlers.
 	/// </summary>
 	/// <typeparam name="TAbstraction">Type of the abstraction.</typeparam>
-	/// <typeparam name="TImplementation">Type of the implementation.</typeparam>
-	public class AbstractionEventHandlerLookup<TAbstraction, TImplementation>
-		where TAbstraction : IAbstraction<TImplementation>
+	/// <typeparam name="TImplementationDelegate">Type of delegate.</typeparam>
+	public class AbstractionDelegateLookup<TAbstraction, TImplementationDelegate>
+		where TImplementationDelegate : class
 	{
 		[NotNull]
-		private readonly Dictionary<EventHandler<TAbstraction>, AbstractionEventHandlerContext<EventHandler<TImplementation>>> _lookup;
+		private readonly Dictionary<EventHandler<TAbstraction>, AbstractionEventHandlerContext<TImplementationDelegate>> _lookup;
 
 		/// <summary>
-		/// Initializes new instance of <see cref="AbstractionEventHandlerLookup{TAbstraction,TImplementation}"/>.
+		/// Initializes new instance of <see cref="AbstractionDelegateLookup{TAbstraction,TImplementationDelegate}"/>.
 		/// </summary>
-		public AbstractionEventHandlerLookup()
+		public AbstractionDelegateLookup()
 		{
 			var comparer = new GenericEqualityComparer<EventHandler<TAbstraction>>(Equal, GetHashCode);
-			_lookup = new Dictionary<EventHandler<TAbstraction>, AbstractionEventHandlerContext<EventHandler<TImplementation>>>(comparer);
+			_lookup = new Dictionary<EventHandler<TAbstraction>, AbstractionEventHandlerContext<TImplementationDelegate>>(comparer);
 		}
 
 		private static int GetHashCode([CanBeNull] EventHandler<TAbstraction> key)
@@ -32,7 +32,7 @@ namespace Thinktecture
 					^ (key.GetMethodInfo()?.GetHashCode() ?? 0);
 		}
 
-		private static bool Equal([CanBeNull] EventHandler<TAbstraction> key, [CanBeNull] EventHandler<TAbstraction> otherKey)
+		private static bool Equal([CanBeNull] EventHandler<TAbstraction> key, [CanBeNull] Delegate otherKey)
 		{
 			return ReferenceEquals(key?.Target, otherKey?.Target)
 					&& ReferenceEquals(key.GetMethodInfo(), otherKey.GetMethodInfo());
@@ -42,19 +42,19 @@ namespace Thinktecture
 		/// Maps handler for attaching to an event.
 		/// </summary>
 		/// <param name="handler">Handler to map.</param>
-		/// <param name="toInterface">Function to convert an implementation to an abstraction.</param>
+		/// <param name="convertDelegate">Function to convert an implementation to an abstraction.</param>
 		/// <returns>Mapped handler</returns>
 		[CanBeNull]
-		public EventHandler<TImplementation> MapForAttachment([CanBeNull] EventHandler<TAbstraction> handler, [NotNull] Func<TImplementation, TAbstraction> toInterface)
+		public TImplementationDelegate MapForAttachment([CanBeNull] EventHandler<TAbstraction> handler, [NotNull] Func<EventHandler<TAbstraction>, TImplementationDelegate> convertDelegate)
 		{
-			if (toInterface == null)
-				throw new ArgumentNullException(nameof(toInterface));
 			if (handler == null)
 				return null;
+			if (convertDelegate == null)
+				throw new ArgumentNullException(nameof(convertDelegate));
 
 			if (!_lookup.TryGetValue(handler, out var ctx))
 			{
-				ctx = new AbstractionEventHandlerContext<EventHandler<TImplementation>>((sender, args) => handler(sender, toInterface(args)));
+				ctx = new AbstractionEventHandlerContext<TImplementationDelegate>(convertDelegate(handler));
 				_lookup.Add(handler, ctx);
 			}
 
@@ -69,10 +69,10 @@ namespace Thinktecture
 		/// <param name="handler">Handler to map.</param>
 		/// <returns>Mapped handler</returns>
 		[CanBeNull]
-		public EventHandler<TImplementation> TryMapForDetachment([CanBeNull] EventHandler<TAbstraction> handler)
+		public TImplementationDelegate TryMapForDetachment([CanBeNull] EventHandler<TAbstraction> handler)
 		{
 			if (handler == null || !_lookup.TryGetValue(handler, out var ctx))
-				return null;
+				return default;
 
 			ctx.Count--;
 

@@ -102,7 +102,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// <paramref name="pipeName" /> is set to "anonymous".-or-
 		/// <paramref name="direction" /> is not a valid <see cref="PipeDirection" /> value.-or-
-		/// <paramref name="maxNumberofServerInstances" /> is less than -1 or greater than 254 (-1 indicates <see cref="F:System.IO.Pipes.NamedPipeServerStream.MaxAllowedServerInstances" />)</exception>
+		/// <paramref name="maxNumberOfServerInstances" /> is less than -1 or greater than 254 (-1 indicates <see cref="F:System.IO.Pipes.NamedPipeServerStream.MaxAllowedServerInstances" />)</exception>
 		/// <exception cref="NotSupportedException">
 		/// <paramref name="pipeName" /> contains a colon (":").</exception>
 		/// <exception cref="PlatformNotSupportedException">The operating system is Windows Millennium Edition, Windows 98, or Windows 95, which are not supported.</exception>
@@ -125,7 +125,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// <paramref name="pipeName" /> is set to "anonymous".-or-
 		/// <paramref name="direction" /> is not a valid <see cref="PipeDirection" /> value.-or-
-		/// <paramref name="maxNumberofServerInstances" /> is less than -1 or greater than 254 (-1 indicates <see cref="F:System.IO.Pipes.NamedPipeServerStream.MaxAllowedServerInstances" />)-or-
+		/// <paramref name="maxNumberOfServerInstances" /> is less than -1 or greater than 254 (-1 indicates <see cref="F:System.IO.Pipes.NamedPipeServerStream.MaxAllowedServerInstances" />)-or-
 		/// <paramref name="options" /> is not a valid <see cref="PipeOptions" /> value.</exception>
 		/// <exception cref="NotSupportedException">
 		/// <paramref name="pipeName" /> contains a colon (":").</exception>
@@ -151,7 +151,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// <paramref name="pipeName" /> is set to "anonymous".-or-
 		/// <paramref name="direction" /> is not a valid <see cref="PipeDirection" /> value.-or-
-		/// <paramref name="maxNumberofServerInstances" /> is less than -1 or greater than 254 (-1 indicates <see cref="F:System.IO.Pipes.NamedPipeServerStream.MaxAllowedServerInstances" />)-or-
+		/// <paramref name="maxNumberOfServerInstances" /> is less than -1 or greater than 254 (-1 indicates <see cref="F:System.IO.Pipes.NamedPipeServerStream.MaxAllowedServerInstances" />)-or-
 		/// <paramref name="options" /> is not a valid <see cref="PipeOptions" /> value.-or-
 		/// <paramref name="inBufferSize" /> is negative.</exception>
 		/// <exception cref="NotSupportedException">
@@ -209,7 +209,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// <paramref name="pipeName" /> is set to "anonymous".-or-
 		/// <paramref name="direction" /> is not a valid <see cref="PipeDirection" /> value.-or-
-		/// <paramref name="maxNumberofServerInstances" /> is less than -1 or greater than 254 (-1 indicates <see cref="F:System.IO.Pipes.NamedPipeServerStream.MaxAllowedServerInstances" />)-or-
+		/// <paramref name="maxNumberOfServerInstances" /> is less than -1 or greater than 254 (-1 indicates <see cref="F:System.IO.Pipes.NamedPipeServerStream.MaxAllowedServerInstances" />)-or-
 		/// <paramref name="options" /> is not a valid <see cref="PipeOptions" /> value.-or-
 		/// <paramref name="inBufferSize" /> is negative.-or-
 		/// <paramref name="inheritability" /> is not a valid <see cref="HandleInheritability" /> value.</exception>

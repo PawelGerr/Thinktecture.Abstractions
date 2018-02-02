@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4860E453-E56B-4BED-BA8A-DDFA89A19B0D}"
 EndProject
@@ -62,7 +62,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.Runtime.Abstra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.Text.Encoding.Abstractions.Tests", "test\Thinktecture.Text.Encoding.Abstractions.Tests\Thinktecture.Text.Encoding.Abstractions.Tests.csproj", "{BC4A0946-13F6-4F16-8AF8-91039E4485F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.IO.Pipes.Abstractions", "src\Thinktecture.IO.Pipes.Abstractions\Thinktecture.IO.Pipes.Abstractions.csproj", "{F05B2976-6F6E-40AA-842C-86C7A7A3DC72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.IO.Pipes.Abstractions", "src\Thinktecture.IO.Pipes.Abstractions\Thinktecture.IO.Pipes.Abstractions.csproj", "{F05B2976-6F6E-40AA-842C-86C7A7A3DC72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.Console.Abstractions", "src\Thinktecture.Console.Abstractions\Thinktecture.Console.Abstractions.csproj", "{0305DA1D-50FB-4E3F-A135-3B43ED83D978}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -166,6 +168,10 @@ Global
 		{F05B2976-6F6E-40AA-842C-86C7A7A3DC72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F05B2976-6F6E-40AA-842C-86C7A7A3DC72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F05B2976-6F6E-40AA-842C-86C7A7A3DC72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0305DA1D-50FB-4E3F-A135-3B43ED83D978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0305DA1D-50FB-4E3F-A135-3B43ED83D978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0305DA1D-50FB-4E3F-A135-3B43ED83D978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0305DA1D-50FB-4E3F-A135-3B43ED83D978}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -195,6 +201,7 @@ Global
 		{7FB1AC3C-0A7B-4CE7-A4ED-0E67899B9428} = {C095C061-B87D-4C07-93E7-8CA0217ED68F}
 		{BC4A0946-13F6-4F16-8AF8-91039E4485F8} = {C095C061-B87D-4C07-93E7-8CA0217ED68F}
 		{F05B2976-6F6E-40AA-842C-86C7A7A3DC72} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
+		{0305DA1D-50FB-4E3F-A135-3B43ED83D978} = {4860E453-E56B-4BED-BA8A-DDFA89A19B0D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B2E59FD-B86D-4BF3-9FAF-64EBC004FCDA}
