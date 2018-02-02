@@ -13,13 +13,18 @@ before_build:
     dotnet --info
 
     Set-VersionSuffixOnTag("src")
+
+    Set-VersionSuffixOnTag("meta")
     
     dotnet restore ./Thinktecture.Abstractions.sln
 build:
   project: Thinktecture.Abstractions.sln
   verbosity: minimal
 after_build:
-- ps: Dotnet-Pack("src")
+- ps: >-
+    Dotnet-Pack("src")
+
+    Dotnet-Pack("meta")
 test_script:
 - ps: Dotnet-Test("test")
 
