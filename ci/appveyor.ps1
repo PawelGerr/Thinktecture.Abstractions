@@ -6,6 +6,10 @@ function Dotnet-Pack([string]$dir)
     foreach($projDir in $projDirs)
     {
         dotnet pack --configuration Release --no-build --include-symbols --output ./../../output $projDir.FullName;
+
+        if($LastExitCode -ne 0) {
+            exit $LastExitCode;
+        }
     }
 }
 
@@ -17,6 +21,10 @@ function Dotnet-Test([string]$dir)
     foreach($projDir in $projDirs)
     {
         dotnet test --configuration Release --no-build $projDir.FullName;
+        
+        if($LastExitCode -ne 0) {
+            exit $LastExitCode;
+        }
     }
 }
 
