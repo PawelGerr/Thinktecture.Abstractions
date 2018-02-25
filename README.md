@@ -1,4 +1,5 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)](https://ci.appveyor.com/project/PawelGerr/thinktecture-abstractions)
+[![Thinktecture.Abstractions](https://img.shields.io/nuget/v/Thinktecture.Abstractions.svg?maxAge=3600)](https://www.nuget.org/packages/Thinktecture.Abstractions/)
 
 Interfaces for commonly used .NET types like `File`, `Directory`, `Stream`, `Path`, `Math`, `Environment`, etc. to be able to extend or to change the standard behavior and for better testability.
 
