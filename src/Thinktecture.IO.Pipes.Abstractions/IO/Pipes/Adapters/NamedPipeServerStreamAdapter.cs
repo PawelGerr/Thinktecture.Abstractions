@@ -15,6 +15,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 	public class NamedPipeServerStreamAdapter : PipeStreamAdapter, INamedPipeServerStream
 	{
 		/// <summary>Represents the maximum number of server instances that the system resources allow.</summary>
+		// ReSharper disable once InconsistentNaming
 		public const int MaxAllowedServerInstances = -1;
 
 		/// <inheritdoc />
@@ -79,7 +80,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <paramref name="pipeName" /> is set to "anonymous".-or-
 		/// <paramref name="direction" /> is not a valid <see cref="PipeDirection" /> value.-or-A non-negative number is required.-or-
 		/// <paramref name="maxNumberOfServerInstances" /> is less than -1 or greater than 254 (-1 indicates <see cref="F:System.IO.Pipes.NamedPipeServerStream.MaxAllowedServerInstances" />)-or-
-		/// 
+		///
 		/// <see cref="F:System.IO.HandleInheritability.None" /> or <see cref="F:System.IO.HandleInheritability.Inheritable" /> is required.-or-Access rights is limited to the <see cref="F:System.IO.Pipes.PipeAccessRights.ChangePermissions" /> , <see cref="F:System.IO.Pipes.PipeAccessRights.TakeOwnership" /> , and <see cref="F:System.IO.Pipes.PipeAccessRights.AccessSystemSecurity" /> flags.</exception>
 		/// <exception cref="NotSupportedException">
 		/// <paramref name="pipeName" /> contains a colon (":").</exception>

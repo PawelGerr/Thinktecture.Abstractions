@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO.Pipes;
-using System.Text;
+﻿using System.IO.Pipes;
 using Microsoft.Win32.SafeHandles;
 using Thinktecture.IO.Pipes.Adapters;
 

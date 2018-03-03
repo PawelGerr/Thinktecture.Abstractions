@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.IO.Pipes;
 using System.Security.Principal;
@@ -6,6 +6,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.Win32.SafeHandles;
+
+#if NET46
+using System.IO;
+#endif
 
 namespace Thinktecture.IO.Pipes.Adapters
 {

@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel;
 using System.Net.Http;
 using JetBrains.Annotations;

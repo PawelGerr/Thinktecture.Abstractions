@@ -1,6 +1,5 @@
 #if NETSTANDARD1_3 || NET45
 
-using System;
 using System.Net;
 using System.Net.Sockets;
 using JetBrains.Annotations;

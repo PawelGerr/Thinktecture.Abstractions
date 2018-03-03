@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Net.Http.Headers;
 using JetBrains.Annotations;
 using Thinktecture.Collections.Generic;

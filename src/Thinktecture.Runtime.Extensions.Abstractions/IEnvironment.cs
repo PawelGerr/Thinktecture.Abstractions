@@ -1,6 +1,9 @@
 using System;
-using System.Collections;
 using JetBrains.Annotations;
+
+#if NET45 || NET462 || NETSTANDARD1_3 || NETSTANDARD1_5
+using System.Collections;
+#endif
 
 namespace Thinktecture
 {

@@ -1,6 +1,5 @@
 #if NETSTANDARD1_3 || NET45 || NET46
 
-using System;
 using System.Net.NetworkInformation;
 using JetBrains.Annotations;
 
