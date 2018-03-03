@@ -42,7 +42,7 @@ namespace Thinktecture.IO.Pipes
 		/// <exception cref="T:System.ArgumentException"><paramref name="safePipeHandle">safePipeHandle</paramref> is not a valid handle.</exception>
 		/// <exception cref="T:System.ArgumentNullException"><paramref name="safePipeHandle">safePipeHandle</paramref> is null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="direction">direction</paramref> is not a valid <see cref="T:System.IO.Pipes.PipeDirection"></see> value.</exception>
-		public NamedPipeClientStreamAdapter(PipeDirection direction, bool isAsync, bool isConnected, SafePipeHandle safePipeHandle)
+		public NamedPipeClientStreamAdapter(PipeDirection direction, bool isAsync, bool isConnected, [NotNull] SafePipeHandle safePipeHandle)
 			: this(new NamedPipeClientStream(direction, isAsync, isConnected, safePipeHandle))
 		{
 		}
@@ -52,7 +52,7 @@ namespace Thinktecture.IO.Pipes
 		/// <exception cref="T:System.ArgumentNullException"><paramref name="pipeName">pipeName</paramref> is null.</exception>
 		/// <exception cref="T:System.ArgumentException"><paramref name="pipeName">pipeName</paramref> is a zero-length string.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pipeName">pipeName</paramref> is set to "anonymous".</exception>
-		public NamedPipeClientStreamAdapter(string pipeName)
+		public NamedPipeClientStreamAdapter([NotNull] string pipeName)
 			: this(new NamedPipeClientStream(pipeName))
 		{
 		}
@@ -63,7 +63,7 @@ namespace Thinktecture.IO.Pipes
 		/// <exception cref="T:System.ArgumentNullException"><paramref name="pipeName">pipeName</paramref> or <paramref name="serverName">serverName</paramref> is null.</exception>
 		/// <exception cref="T:System.ArgumentException"><paramref name="pipeName">pipeName</paramref> or <paramref name="serverName">serverName</paramref> is a zero-length string.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pipeName">pipeName</paramref> is set to "anonymous".</exception>
-		public NamedPipeClientStreamAdapter(string serverName, string pipeName)
+		public NamedPipeClientStreamAdapter([NotNull] string serverName, [NotNull] string pipeName)
 			: this(new NamedPipeClientStream(serverName, pipeName))
 		{
 		}
@@ -75,7 +75,7 @@ namespace Thinktecture.IO.Pipes
 		/// <exception cref="T:System.ArgumentNullException"><paramref name="pipeName">pipeName</paramref> or <paramref name="serverName">serverName</paramref> is null.</exception>
 		/// <exception cref="T:System.ArgumentException"><paramref name="pipeName">pipeName</paramref> or <paramref name="serverName">serverName</paramref> is a zero-length string.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pipeName">pipeName</paramref> is set to "anonymous".   -or-  <paramref name="direction">direction</paramref> is not a valid <see cref="T:System.IO.Pipes.PipeDirection"></see> value.</exception>
-		public NamedPipeClientStreamAdapter(string serverName, string pipeName, PipeDirection direction)
+		public NamedPipeClientStreamAdapter([NotNull] string serverName, [NotNull] string pipeName, PipeDirection direction)
 			: this(new NamedPipeClientStream(serverName, pipeName, direction))
 		{
 		}
@@ -88,7 +88,7 @@ namespace Thinktecture.IO.Pipes
 		/// <exception cref="T:System.ArgumentNullException"><paramref name="pipeName">pipeName</paramref> or <paramref name="serverName">serverName</paramref> is null.</exception>
 		/// <exception cref="T:System.ArgumentException"><paramref name="pipeName">pipeName</paramref> or <paramref name="serverName">serverName</paramref> is a zero-length string.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pipeName">pipeName</paramref> is set to "anonymous".   -or-  <paramref name="direction">direction</paramref> is not a valid <see cref="T:System.IO.Pipes.PipeDirection"></see> value.   -or-  <paramref name="options">options</paramref> is not a valid <see cref="T:System.IO.Pipes.PipeOptions"></see> value.</exception>
-		public NamedPipeClientStreamAdapter(string serverName, string pipeName, PipeDirection direction, PipeOptions options)
+		public NamedPipeClientStreamAdapter([NotNull] string serverName, [NotNull] string pipeName, PipeDirection direction, PipeOptions options)
 			: this(new NamedPipeClientStream(serverName, pipeName, direction, options))
 		{
 		}
@@ -102,7 +102,7 @@ namespace Thinktecture.IO.Pipes
 		/// <exception cref="T:System.ArgumentNullException"><paramref name="pipeName">pipeName</paramref> or <paramref name="serverName">serverName</paramref> is null.</exception>
 		/// <exception cref="T:System.ArgumentException"><paramref name="pipeName">pipeName</paramref> or <paramref name="serverName">serverName</paramref> is a zero-length string.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pipeName">pipeName</paramref> is set to "anonymous".   -or-  <paramref name="direction">direction</paramref> is not a valid <see cref="T:System.IO.Pipes.PipeDirection"></see> value.   -or-  <paramref name="options">options</paramref> is not a valid <see cref="T:System.IO.Pipes.PipeOptions"></see> value.   -or-  <paramref name="impersonationLevel">impersonationLevel</paramref> is not a valid <see cref="T:System.Security.Principal.TokenImpersonationLevel"></see> value.</exception>
-		public NamedPipeClientStreamAdapter(string serverName, string pipeName, PipeDirection direction, PipeOptions options, TokenImpersonationLevel impersonationLevel)
+		public NamedPipeClientStreamAdapter([NotNull] string serverName, [NotNull] string pipeName, PipeDirection direction, PipeOptions options, TokenImpersonationLevel impersonationLevel)
 			: this(new NamedPipeClientStream(serverName, pipeName, direction, options, impersonationLevel))
 		{
 		}

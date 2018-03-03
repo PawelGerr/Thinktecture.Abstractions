@@ -1,9 +1,9 @@
 using System;
-using System.IO;
 
 namespace Thinktecture
 {
 	/// <summary>Provides data for the <see cref="E:System.Console.CancelKeyPress"></see> event. This class cannot be inherited.</summary>
+	// ReSharper disable once PossibleInterfaceMemberAmbiguity
 	public interface IConsoleCancelEventArgs : IEventArgs, IAbstraction<ConsoleCancelEventArgs>
 	{
 		/// <summary>Gets or sets a value that indicates whether simultaneously pressing the <see cref="F:System.ConsoleModifiers.Control"></see> modifier key and the <see cref="F:System.ConsoleKey.C"></see> console key (Ctrl+C) or the Ctrl+Break keys terminates the current process. The default is false, which terminates the current process.</summary>

@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.Text;
 

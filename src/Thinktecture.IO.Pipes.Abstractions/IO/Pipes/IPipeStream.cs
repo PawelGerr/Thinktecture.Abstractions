@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Pipes;
 using System.Text;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Microsoft.Win32.SafeHandles;
 
 namespace Thinktecture.IO.Pipes
@@ -54,6 +55,7 @@ namespace Thinktecture.IO.Pipes
 		/// <returns>A <see cref="SafePipeHandle" /> object for the pipe that is encapsulated by the current <see cref="IPipeStream" /> object.</returns>
 		/// <exception cref="InvalidOperationException">The pipe handle has not been set.</exception>
 		/// <exception cref="ObjectDisposedException">The pipe is closed.</exception>
+		[NotNull]
 		SafePipeHandle SafePipeHandle { get; }
 
 		/// <summary>Gets the pipe transmission mode supported by the current pipe.</summary>

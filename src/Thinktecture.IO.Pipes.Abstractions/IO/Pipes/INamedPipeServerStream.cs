@@ -5,6 +5,7 @@ using System.IO.Pipes;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Thinktecture.IO.Pipes
 {
@@ -48,6 +49,7 @@ namespace Thinktecture.IO.Pipes
 		/// <exception cref="InvalidOperationException">No pipe connections have been made yet.-or-The connected pipe has already disconnected.-or-The pipe handle has not been set.</exception>
 		/// <exception cref="ObjectDisposedException">The pipe is closed.</exception>
 		/// <exception cref="IOException">The pipe connection has been broken.-or-The user name of the client is longer than 19 characters.</exception>
+		[NotNull]
 		string GetImpersonationUserName();
 	}
 }

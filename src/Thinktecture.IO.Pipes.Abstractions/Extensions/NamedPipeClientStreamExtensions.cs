@@ -1,6 +1,7 @@
 using System.IO.Pipes;
 using JetBrains.Annotations;
 using Thinktecture.IO.Pipes;
+using Thinktecture.IO.Pipes.Adapters;
 
 // ReSharper disable once CheckNamespace
 namespace Thinktecture

@@ -1,8 +1,5 @@
 using System;
-using System.IO;
 using JetBrains.Annotations;
-using Thinktecture.IO;
-using Thinktecture.IO.Adapters;
 
 // ReSharper disable once CheckNamespace
 namespace Thinktecture

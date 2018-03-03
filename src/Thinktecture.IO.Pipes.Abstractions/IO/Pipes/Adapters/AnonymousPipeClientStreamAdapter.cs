@@ -30,7 +30,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <param name="pipeHandleAsString">A string that represents the pipe handle.</param>
 		/// <exception cref="IOException">
 		/// <paramref name="pipeHandleAsString" /> is not a valid pipe handle.</exception>
-		public AnonymousPipeClientStreamAdapter(string pipeHandleAsString)
+		public AnonymousPipeClientStreamAdapter([NotNull] string pipeHandleAsString)
 			: this(new AnonymousPipeClientStream(pipeHandleAsString))
 		{
 		}
@@ -44,7 +44,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <paramref name="pipeHandleAsString" /> is <see langword="null" />.</exception>
 		/// <exception cref="NotSupportedException">
 		/// <paramref name="direction" /> is set to <see cref="PipeDirection.InOut" />.</exception>
-		public AnonymousPipeClientStreamAdapter(PipeDirection direction, string pipeHandleAsString)
+		public AnonymousPipeClientStreamAdapter(PipeDirection direction, [NotNull] string pipeHandleAsString)
 			: this(new AnonymousPipeClientStream(direction, pipeHandleAsString))
 		{
 		}
@@ -59,7 +59,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <exception cref="NotSupportedException">
 		/// <paramref name="direction" /> is set to <see cref="PipeDirection.InOut" />.</exception>
 		/// <exception cref="IOException">An I/O error, such as a disk error, has occurred.-or-The stream has been closed.</exception>
-		public AnonymousPipeClientStreamAdapter(PipeDirection direction, SafePipeHandle safePipeHandle)
+		public AnonymousPipeClientStreamAdapter(PipeDirection direction, [NotNull] SafePipeHandle safePipeHandle)
 			: this(new AnonymousPipeClientStream(direction, safePipeHandle))
 		{
 		}

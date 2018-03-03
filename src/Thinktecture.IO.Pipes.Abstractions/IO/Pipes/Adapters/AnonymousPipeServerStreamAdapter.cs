@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.IO;
 using System.IO.Pipes;
@@ -97,7 +97,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <exception cref="T:System.NotSupportedException">
 		/// <paramref name="direction" /> is set to <see cref="F:System.IO.Pipes.PipeDirection.InOut" />.</exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error, such as a disk error, has occurred.-or-The stream has been closed.</exception>
-		public AnonymousPipeServerStreamAdapter(PipeDirection direction, SafePipeHandle serverSafePipeHandle, SafePipeHandle clientSafePipeHandle)
+		public AnonymousPipeServerStreamAdapter(PipeDirection direction, [NotNull] SafePipeHandle serverSafePipeHandle, [NotNull] SafePipeHandle clientSafePipeHandle)
 			: this(new AnonymousPipeServerStream(direction, serverSafePipeHandle, clientSafePipeHandle))
 		{
 		}

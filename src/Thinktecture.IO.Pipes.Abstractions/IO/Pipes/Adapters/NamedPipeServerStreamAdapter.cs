@@ -43,7 +43,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <paramref name="pipeName" /> contains a colon (":").</exception>
 		/// <exception cref="PlatformNotSupportedException">The operating system is Windows Millennium Edition, Windows 98, or Windows 95, which are not supported. </exception>
 		/// <exception cref="IOException">The maximum number of server instances has been exceeded.</exception>
-		public NamedPipeServerStreamAdapter(string pipeName)
+		public NamedPipeServerStreamAdapter([NotNull] string pipeName)
 			: this(new NamedPipeServerStream(pipeName))
 		{
 		}
@@ -62,7 +62,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <paramref name="pipeName" /> contains a colon (":").</exception>
 		/// <exception cref="PlatformNotSupportedException">The operating system is Windows Millennium Edition, Windows 98, or Windows 95, which are not supported.</exception>
 		/// <exception cref="IOException">The maximum number of server instances has been exceeded.</exception>
-		public NamedPipeServerStreamAdapter(string pipeName, PipeDirection direction)
+		public NamedPipeServerStreamAdapter([NotNull] string pipeName, PipeDirection direction)
 			: this(new NamedPipeServerStream(pipeName, direction))
 		{
 		}
@@ -85,7 +85,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <paramref name="pipeName" /> contains a colon (":").</exception>
 		/// <exception cref="PlatformNotSupportedException">The operating system is Windows Millennium Edition, Windows 98, or Windows 95, which are not supported.</exception>
 		/// <exception cref="IOException">The maximum number of server instances has been exceeded.</exception>
-		public NamedPipeServerStreamAdapter(string pipeName, PipeDirection direction, int maxNumberOfServerInstances)
+		public NamedPipeServerStreamAdapter([NotNull] string pipeName, PipeDirection direction, int maxNumberOfServerInstances)
 			: this(new NamedPipeServerStream(pipeName, direction, maxNumberOfServerInstances))
 		{
 		}
@@ -107,7 +107,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <paramref name="pipeName" /> contains a colon (":").</exception>
 		/// <exception cref="PlatformNotSupportedException">The operating system is Windows Millennium Edition, Windows 98, or Windows 95, which are not supported.</exception>
 		/// <exception cref="IOException">The maximum number of server instances has been exceeded.</exception>
-		public NamedPipeServerStreamAdapter(string pipeName, PipeDirection direction, int maxNumberOfServerInstances, PipeTransmissionMode transmissionMode)
+		public NamedPipeServerStreamAdapter([NotNull] string pipeName, PipeDirection direction, int maxNumberOfServerInstances, PipeTransmissionMode transmissionMode)
 			: this(new NamedPipeServerStream(pipeName, direction, maxNumberOfServerInstances, transmissionMode))
 		{
 		}
@@ -131,7 +131,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <paramref name="pipeName" /> contains a colon (":").</exception>
 		/// <exception cref="PlatformNotSupportedException">The operating system is Windows Millennium Edition, Windows 98, or Windows 95, which are not supported.</exception>
 		/// <exception cref="IOException">The maximum number of server instances has been exceeded.</exception>
-		public NamedPipeServerStreamAdapter(string pipeName, PipeDirection direction, int maxNumberOfServerInstances, PipeTransmissionMode transmissionMode, PipeOptions options)
+		public NamedPipeServerStreamAdapter([NotNull] string pipeName, PipeDirection direction, int maxNumberOfServerInstances, PipeTransmissionMode transmissionMode, PipeOptions options)
 			: this(new NamedPipeServerStream(pipeName, direction, maxNumberOfServerInstances, transmissionMode, options))
 		{
 		}
@@ -158,7 +158,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <paramref name="pipeName" /> contains a colon (":").</exception>
 		/// <exception cref="PlatformNotSupportedException">The operating system is Windows Millennium Edition, Windows 98, or Windows 95, which are not supported.</exception>
 		/// <exception cref="IOException">The maximum number of server instances has been exceeded.</exception>
-		public NamedPipeServerStreamAdapter(string pipeName, PipeDirection direction, int maxNumberOfServerInstances, PipeTransmissionMode transmissionMode, PipeOptions options, int inBufferSize, int outBufferSize)
+		public NamedPipeServerStreamAdapter([NotNull] string pipeName, PipeDirection direction, int maxNumberOfServerInstances, PipeTransmissionMode transmissionMode, PipeOptions options, int inBufferSize, int outBufferSize)
 			: this(new NamedPipeServerStream(pipeName, direction, maxNumberOfServerInstances, transmissionMode, options, inBufferSize, outBufferSize))
 		{
 		}
@@ -270,7 +270,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <paramref name="safePipeHandle" /> is an invalid handle.</exception>
 		/// <exception cref="IOException">
 		/// <paramref name="safePipeHandle" /> is not a valid pipe handle.-or-The maximum number of server instances has been exceeded.</exception>
-		public NamedPipeServerStreamAdapter(PipeDirection direction, bool isAsync, bool isConnected, SafePipeHandle safePipeHandle)
+		public NamedPipeServerStreamAdapter(PipeDirection direction, bool isAsync, bool isConnected, [NotNull] SafePipeHandle safePipeHandle)
 			: this(new NamedPipeServerStream(direction, isAsync, isConnected, safePipeHandle))
 		{
 		}
