@@ -17,6 +17,11 @@ namespace Thinktecture.Adapters
 		// ReSharper disable once AssignNullToNotNullAttribute
 		public string NewLine => Environment.NewLine;
 
+#if NET45 || NET462 || NETSTANDARD1_5
+		/// <inheritdoc />
+		public string MachineName => Environment.MachineName;
+#endif
+
 		/// <inheritdoc />
 		public int ProcessorCount => Environment.ProcessorCount;
 

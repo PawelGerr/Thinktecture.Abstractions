@@ -19,6 +19,13 @@ namespace Thinktecture
 		[NotNull]
 		string NewLine { get; }
 
+#if NET45 || NET462 || NETSTANDARD1_5
+		/// <summary>Gets the NetBIOS name of this local computer.</summary>
+		/// <returns>A string containing the name of this computer.</returns>
+		/// <exception cref="System.InvalidOperationException">The name of this computer cannot be obtained.</exception>
+		string MachineName { get; }
+#endif
+
 		/// <summary>Gets the number of processors on the current machine.</summary>
 		/// <returns>The 32-bit signed integer that specifies the number of processors on the current machine. There is no default. If the current machine contains multiple processor groups, this property returns the number of logical processors that are available for use by the common language runtime (CLR).</returns>
 		/// <PermissionSet>
