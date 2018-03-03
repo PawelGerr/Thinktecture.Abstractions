@@ -1,15 +1,13 @@
-﻿using System;
+using System;
 using System.ComponentModel;
-using System.IO;
 using System.IO.Pipes;
 using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.Win32.SafeHandles;
-using Thinktecture.IO.Pipes.Adapters;
 
-namespace Thinktecture.IO.Pipes
+namespace Thinktecture.IO.Pipes.Adapters
 {
 	/// <summary>
 	/// Exposes a <see cref="T:System.IO.Stream"></see> around a named pipe, which supports both synchronous and asynchronous read and write operations.
