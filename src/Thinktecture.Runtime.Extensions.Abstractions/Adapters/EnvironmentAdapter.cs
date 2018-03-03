@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 
 namespace Thinktecture.Adapters
 {
@@ -14,7 +15,6 @@ namespace Thinktecture.Adapters
 		public bool HasShutdownStarted => Environment.HasShutdownStarted;
 
 		/// <inheritdoc />
-		// ReSharper disable once AssignNullToNotNullAttribute
 		public string NewLine => Environment.NewLine;
 
 #if NET45 || NET462 || NETSTANDARD1_5
@@ -25,8 +25,29 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public int ProcessorCount => Environment.ProcessorCount;
 
+#if NET45 || NET462 || NETSTANDARD1_3 || NETSTANDARD1_5
+		/// <inheritdoc />
+		public string StackTrace => Environment.StackTrace;
+#endif
+
 		/// <inheritdoc />
 		public int TickCount => Environment.TickCount;
+
+#if NET45 || NET462 || NETSTANDARD1_3 || NETSTANDARD1_5
+		/// <inheritdoc />
+		public string ExpandEnvironmentVariables(string name)
+		{
+			return Environment.ExpandEnvironmentVariables(name);
+		}
+#endif
+
+#if NET45 || NET462 || NETSTANDARD1_5
+		/// <inheritdoc />
+		public void Exit(int exitCode)
+		{
+			Environment.Exit(exitCode);
+		}
+#endif
 
 		/// <inheritdoc />
 		public void FailFast(string message)
@@ -39,5 +60,37 @@ namespace Thinktecture.Adapters
 		{
 			Environment.FailFast(message, exception);
 		}
+
+#if NET45 || NET462 || NETSTANDARD1_3 || NETSTANDARD1_5
+		/// <inheritdoc />
+		public string GetEnvironmentVariable(string variable)
+		{
+			return Environment.GetEnvironmentVariable(variable);
+		}
+#endif
+
+#if NET45 || NET462 || NETSTANDARD1_3 || NETSTANDARD1_5
+		/// <inheritdoc />
+		public IDictionary GetEnvironmentVariables()
+		{
+			return Environment.GetEnvironmentVariables();
+		}
+#endif
+
+#if NET45 || NET462 || NETSTANDARD1_3 || NETSTANDARD1_5
+		/// <inheritdoc />
+		public void SetEnvironmentVariable(string variable, string value)
+		{
+			Environment.SetEnvironmentVariable(variable, value);
+		}
+#endif
+
+#if NET45 || NET462 || NETSTANDARD1_5
+		/// <inheritdoc />
+		public string[] GetCommandLineArgs()
+		{
+			return Environment.GetCommandLineArgs();
+		}
+#endif
 	}
 }
