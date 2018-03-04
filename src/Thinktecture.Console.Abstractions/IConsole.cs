@@ -219,7 +219,7 @@ namespace Thinktecture
 		[NotNull]
 		IStream OpenStandardError();
 
-#if NET46
+#if NET46 || NETSTANDARD2_0
 		/// <summary>Acquires the standard error stream, which is set to a specified buffer size.</summary>
 		/// <param name="bufferSize">The internal stream buffer size.</param>
 		/// <returns>The standard error stream.</returns>
@@ -233,7 +233,7 @@ namespace Thinktecture
 		[NotNull]
 		IStream OpenStandardInput();
 
-#if NET46
+#if NET46 || NETSTANDARD2_0
 		/// <summary>Acquires the standard input stream, which is set to a specified buffer size.</summary>
 		/// <param name="bufferSize">The internal stream buffer size.</param>
 		/// <returns>The standard input stream.</returns>
@@ -247,7 +247,7 @@ namespace Thinktecture
 		[NotNull]
 		IStream OpenStandardOutput();
 
-#if NET46
+#if NET46 || NETSTANDARD2_0
 		/// <summary>Acquires the standard output stream, which is set to a specified buffer size.</summary>
 		/// <param name="bufferSize">The internal stream buffer size.</param>
 		/// <returns>The standard output stream.</returns>

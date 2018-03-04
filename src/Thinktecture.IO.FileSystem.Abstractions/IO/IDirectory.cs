@@ -230,6 +230,18 @@ namespace Thinktecture.IO
 		[NotNull]
 		IEnumerable<string> EnumerateFileSystemEntries([NotNull] string path, [NotNull] string searchPattern, SearchOption searchOption);
 
+#if NET46 || NETSTANDARD2_0
+		/// <summary>Retrieves the names of the logical drives on this computer in the form "&lt;drive letter&gt;:\".</summary>
+		/// <returns>The logical drives on this computer.</returns>
+		/// <exception cref="T:System.IO.IOException">An I/O error occured (for example, a disk error). </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
+		/// </PermissionSet>
+		string[] GetLogicalDrives();
+#endif
+
 		/// <summary>Determines whether the given path refers to an existing directory on disk.</summary>
 		/// <returns>true if <paramref name="path" /> refers to an existing directory; false if the directory does not exist or an error occurs when trying to determine if the specified file exists.</returns>
 		/// <param name="path">The path to test. </param>

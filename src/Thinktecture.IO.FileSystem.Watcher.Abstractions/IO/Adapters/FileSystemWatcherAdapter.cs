@@ -1,5 +1,10 @@
+using System;
 using System.IO;
 using JetBrains.Annotations;
+
+#if NET46 || NETSTANDARD2_0
+using System.ComponentModel;
+#endif
 
 // ReSharper disable InheritdocInvalidUsage
 
@@ -136,6 +141,44 @@ namespace Thinktecture.IO.Adapters
 		{
 			return Implementation.WaitForChanged(changeType, timeout);
 		}
+
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public ISynchronizeInvoke SynchronizingObject
+		{
+			get => Implementation.SynchronizingObject;
+			set => Implementation.SynchronizingObject = value;
+		}
+
+		/// <inheritdoc />
+		public IContainer Container => Implementation.Container;
+
+		/// <inheritdoc />
+		ISite IComponent.Site
+		{
+			get => Implementation.Site;
+			set => Implementation.Site = value;
+		}
+
+		/// <inheritdoc />
+		event EventHandler IComponent.Disposed
+		{
+			add => Implementation.Disposed += value;
+			remove => Implementation.Disposed += value;
+		}
+
+		/// <inheritdoc />
+		public void BeginInit()
+		{
+			Implementation.BeginInit();
+		}
+
+		/// <inheritdoc />
+		public void EndInit()
+		{
+			Implementation.EndInit();
+		}
+#endif
 
 		/// <inheritdoc />
 		public void Dispose()

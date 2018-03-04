@@ -2,12 +2,19 @@ using System;
 using System.IO;
 using JetBrains.Annotations;
 
+#if NET46 || NETSTANDARD2_0
+using System.Runtime.Serialization;
+#endif
+
 namespace Thinktecture.IO
 {
 	/// <summary>
 	/// Provides the base class for both <see cref="T:System.IO.FileInfo" /> and <see cref="T:System.IO.DirectoryInfo" /> objects.
 	/// </summary>
 	public interface IFileSystemInfo : IAbstraction<FileSystemInfo>
+#if NET46 || NETSTANDARD2_0
+		, ISerializable
+#endif
 	{
 		/// <summary>Gets or sets the attributes for the current file or directory.</summary>
 		/// <returns>

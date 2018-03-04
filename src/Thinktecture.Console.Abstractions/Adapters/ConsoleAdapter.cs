@@ -206,7 +206,7 @@ namespace Thinktecture.Adapters
 			return Console.OpenStandardError().ToInterface();
 		}
 
-#if NET46
+#if NET46 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public IStream OpenStandardError(int bufferSize)
 		{
@@ -220,7 +220,7 @@ namespace Thinktecture.Adapters
 			return Console.OpenStandardInput().ToInterface();
 		}
 
-#if NET46
+#if NET46 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public IStream OpenStandardInput(int bufferSize)
 		{
@@ -234,7 +234,7 @@ namespace Thinktecture.Adapters
 			return Console.OpenStandardOutput().ToInterface();
 		}
 
-#if NET46
+#if NET46 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public IStream OpenStandardOutput(int bufferSize)
 		{

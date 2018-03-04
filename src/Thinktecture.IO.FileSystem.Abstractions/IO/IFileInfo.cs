@@ -113,6 +113,34 @@ namespace Thinktecture.IO
 		[NotNull]
 		IStreamWriter CreateText();
 
+#if NET46 || NETSTANDARD2_0
+		/// <summary>Decrypts a file that was encrypted by the current account using the <see cref="M:System.IO.FileInfo.Encrypt" /> method.</summary>
+		/// <exception cref="T:System.IO.DriveNotFoundException">An invalid drive was specified. </exception>
+		/// <exception cref="T:System.IO.FileNotFoundException">The file described by the current <see cref="T:System.IO.FileInfo" /> object could not be found.</exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file.</exception>
+		/// <exception cref="T:System.NotSupportedException">The file system is not NTFS.</exception>
+		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Microsoft Windows NT or later.</exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">The file described by the current <see cref="T:System.IO.FileInfo" /> object is read-only.-or- This operation is not supported on the current platform.-or- The caller does not have the required permission.</exception>
+		/// <filterpriority>2</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void Decrypt();
+
+		/// <summary>Encrypts a file so that only the account used to encrypt the file can decrypt it.</summary>
+		/// <exception cref="T:System.IO.DriveNotFoundException">An invalid drive was specified. </exception>
+		/// <exception cref="T:System.IO.FileNotFoundException">The file described by the current <see cref="T:System.IO.FileInfo" /> object could not be found.</exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file.</exception>
+		/// <exception cref="T:System.NotSupportedException">The file system is not NTFS.</exception>
+		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Microsoft Windows NT or later.</exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">The file described by the current <see cref="T:System.IO.FileInfo" /> object is read-only.-or- This operation is not supported on the current platform.-or- The caller does not have the required permission.</exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void Encrypt();
+#endif
+
 		/// <summary>Moves a specified file to a new location, providing the option to specify a new file name.</summary>
 		/// <param name="destFileName">The path to move the file to, which can specify a different file name. </param>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs, such as the destination file already exists or the destination device is not ready. </exception>
@@ -217,5 +245,36 @@ namespace Thinktecture.IO
 		/// </PermissionSet>
 		[NotNull]
 		IFileStream OpenWrite();
+
+#if NET46 || NETSTANDARD2_0
+		/// <summary>Replaces the contents of a specified file with the file described by the current <see cref="T:System.IO.FileInfo" /> object, deleting the original file, and creating a backup of the replaced file.</summary>
+		/// <returns>A <see cref="T:System.IO.FileInfo" /> object that encapsulates information about the file described by the <paramref name="destFileName" /> parameter.</returns>
+		/// <param name="destinationFileName">The name of a file to replace with the current file.</param>
+		/// <param name="destinationBackupFileName">The name of a file with which to create a backup of the file described by the <paramref name="destFileName" /> parameter.</param>
+		/// <exception cref="T:System.ArgumentException">The path described by the <paramref name="destFileName" /> parameter was not of a legal form.-or-The path described by the <paramref name="destBackupFileName" /> parameter was not of a legal form.</exception>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="destFileName" /> parameter is null.</exception>
+		/// <exception cref="T:System.IO.FileNotFoundException">The file described by the current <see cref="T:System.IO.FileInfo" /> object could not be found.-or-The file described by the <paramref name="destinationFileName" /> parameter could not be found. </exception>
+		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Microsoft Windows NT or later.</exception>
+		/// <filterpriority>2</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		IFileInfo Replace(string destinationFileName, string destinationBackupFileName);
+
+		/// <summary>Replaces the contents of a specified file with the file described by the current <see cref="T:System.IO.FileInfo" /> object, deleting the original file, and creating a backup of the replaced file.  Also specifies whether to ignore merge errors. </summary>
+		/// <returns>A <see cref="T:System.IO.FileInfo" /> object that encapsulates information about the file described by the <paramref name="destFileName" /> parameter.</returns>
+		/// <param name="destinationFileName">The name of a file to replace with the current file.</param>
+		/// <param name="destinationBackupFileName">The name of a file with which to create a backup of the file described by the <paramref name="destFileName" /> parameter.</param>
+		/// <param name="ignoreMetadataErrors">true to ignore merge errors (such as attributes and ACLs) from the replaced file to the replacement file; otherwise false. </param>
+		/// <exception cref="T:System.ArgumentException">The path described by the <paramref name="destFileName" /> parameter was not of a legal form.-or-The path described by the <paramref name="destBackupFileName" /> parameter was not of a legal form.</exception>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="destFileName" /> parameter is null.</exception>
+		/// <exception cref="T:System.IO.FileNotFoundException">The file described by the current <see cref="T:System.IO.FileInfo" /> object could not be found.-or-The file described by the <paramref name="destinationFileName" /> parameter could not be found. </exception>
+		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Microsoft Windows NT or later.</exception>
+		/// <filterpriority>2</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		IFileInfo Replace(string destinationFileName, string destinationBackupFileName, bool ignoreMetadataErrors);
+#endif
 	}
 }

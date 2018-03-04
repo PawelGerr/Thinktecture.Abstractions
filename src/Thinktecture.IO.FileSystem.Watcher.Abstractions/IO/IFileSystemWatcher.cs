@@ -1,11 +1,17 @@
-using System;
 using System.IO;
 using JetBrains.Annotations;
+
+#if NET46 || NETSTANDARD2_0
+using System.ComponentModel;
+#endif
 
 namespace Thinktecture.IO
 {
 	/// <summary>Listens to the file system change notifications and raises events when a directory, or file in a directory, changes.To browse the .NET Framework source code for this type, see the Reference Source.</summary>
-	public interface IFileSystemWatcher : IAbstraction<FileSystemWatcher>, IDisposable
+	public interface IFileSystemWatcher : IAbstraction<FileSystemWatcher>
+#if NET46 || NETSTANDARD2_0
+										  , IComponent, ISupportInitialize
+#endif
 	{
 		/// <summary>Gets or sets a value indicating whether the component is enabled.</summary>
 		/// <returns>true if the component is enabled; otherwise, false. The default is false. If you are using the component on a designer in Visual Studio 2005, the default is true.</returns>
@@ -76,5 +82,16 @@ namespace Thinktecture.IO
 		/// <param name="timeout">The time (in milliseconds) to wait before timing out.</param>
 		/// <returns>A <see cref="WaitForChangedResult"/> that contains specific information on the change that occurred.</returns>
 		WaitForChangedResult WaitForChanged(WatcherChangeTypes changeType, int timeout);
+
+#if NET46 || NETSTANDARD2_0
+		/// <summary>Gets or sets the object used to marshal the event handler calls issued as a result of a directory change.</summary>
+		/// <returns>The <see cref="T:System.ComponentModel.ISynchronizeInvoke" /> that represents the object used to marshal the event handler calls issued as a result of a directory change. The default is null.</returns>
+		/// <filterpriority>2</filterpriority>
+		ISynchronizeInvoke SynchronizingObject { get; set; }
+
+		/// <summary>Gets the <see cref="T:System.ComponentModel.IContainer" /> that contains the <see cref="T:System.ComponentModel.Component" />.</summary>
+		/// <returns>The <see cref="T:System.ComponentModel.IContainer" /> that contains the <see cref="T:System.ComponentModel.Component" />, if any, or <see langword="null" /> if the <see cref="T:System.ComponentModel.Component" /> is not encapsulated in an <see cref="T:System.ComponentModel.IContainer" />.</returns>
+		IContainer Container { get; }
+#endif
 	}
 }

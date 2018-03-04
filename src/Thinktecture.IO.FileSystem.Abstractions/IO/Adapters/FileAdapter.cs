@@ -97,6 +97,20 @@ namespace Thinktecture.IO.Adapters
 			File.Delete(path);
 		}
 
+	#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void Decrypt(string path)
+		{
+			File.Decrypt(path);
+		}
+
+		/// <inheritdoc />
+		public void Encrypt(string path)
+		{
+			File.Encrypt(path);
+		}
+#endif
+
 		/// <inheritdoc />
 		public bool Exists(string path)
 		{
@@ -296,6 +310,24 @@ namespace Thinktecture.IO.Adapters
 		}
 
 		/// <inheritdoc />
+		public void WriteAllLines(string path, string[] contents)
+		{
+			File.WriteAllLines(path, contents);
+		}
+
+		/// <inheritdoc />
+		public void WriteAllLines(string path, string[] contents, Encoding encoding)
+		{
+			File.WriteAllLines(path, contents, encoding);
+		}
+
+		/// <inheritdoc />
+		public void WriteAllLines(string path, string[] contents, IEncoding encoding)
+		{
+			File.WriteAllLines(path, contents, encoding.ToImplementation());
+		}
+
+		/// <inheritdoc />
 		public void WriteAllLines(string path, IEnumerable<string> contents)
 		{
 			File.WriteAllLines(path, contents);
@@ -330,5 +362,19 @@ namespace Thinktecture.IO.Adapters
 		{
 			File.WriteAllText(path, contents, encoding);
 		}
+
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void Replace(string sourceFileName, string destinationFileName, string destinationBackupFileName)
+		{
+			File.Replace(sourceFileName, destinationFileName, destinationBackupFileName);
+		}
+
+		/// <inheritdoc />
+		public void Replace(string sourceFileName, string destinationFileName, string destinationBackupFileName, bool ignoreMetadataErrors)
+		{
+			File.Replace(sourceFileName, destinationFileName, destinationBackupFileName, ignoreMetadataErrors);
+		}
+#endif
 	}
 }

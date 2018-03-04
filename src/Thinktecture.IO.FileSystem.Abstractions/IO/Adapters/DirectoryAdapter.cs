@@ -83,6 +83,14 @@ namespace Thinktecture.IO.Adapters
 			return Directory.EnumerateFileSystemEntries(path, searchPattern, searchOption);
 		}
 
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public string[] GetLogicalDrives()
+		{
+			return Directory.GetLogicalDrives();
+		}
+#endif
+
 		/// <inheritdoc />
 		public bool Exists(string path)
 		{

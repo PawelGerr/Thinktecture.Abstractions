@@ -97,6 +97,20 @@ namespace Thinktecture.IO.Adapters
 			return Implementation.CreateText().ToInterface();
 		}
 
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void Decrypt()
+		{
+			Implementation.Decrypt();
+		}
+
+		/// <inheritdoc />
+		public void Encrypt()
+		{
+			Implementation.Encrypt();
+		}
+#endif
+
 		/// <inheritdoc />
 		public void MoveTo(string destFileName)
 		{
@@ -138,5 +152,19 @@ namespace Thinktecture.IO.Adapters
 		{
 			return Implementation.OpenWrite().ToInterface();
 		}
+
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public IFileInfo Replace(string destinationFileName, string destinationBackupFileName)
+		{
+			return Implementation.Replace(destinationFileName, destinationBackupFileName).ToInterface();
+		}
+
+		/// <inheritdoc />
+		public IFileInfo Replace(string destinationFileName, string destinationBackupFileName, bool ignoreMetadataErrors)
+		{
+			return Implementation.Replace(destinationFileName, destinationBackupFileName, ignoreMetadataErrors).ToInterface();
+		}
+#endif
 	}
 }

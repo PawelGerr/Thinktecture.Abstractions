@@ -287,6 +287,42 @@ namespace Thinktecture.IO
 		/// </PermissionSet>
 		void Delete([NotNull] string path);
 
+#if NET46 || NETSTANDARD2_0
+		/// <summary>Decrypts a file that was encrypted by the current account using the <see cref="M:System.IO.File.Encrypt(System.String)" /> method.</summary>
+		/// <param name="path">A path that describes a file to decrypt.</param>
+		/// <exception cref="T:System.ArgumentException">The <paramref name="path" /> parameter is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="path" /> parameter is null.</exception>
+		/// <exception cref="T:System.IO.DriveNotFoundException">An invalid drive was specified. </exception>
+		/// <exception cref="T:System.IO.FileNotFoundException">The file described by the <paramref name="path" /> parameter could not be found.</exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file. For example, the encrypted file is already open. -or-This operation is not supported on the current platform.</exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
+		/// <exception cref="T:System.NotSupportedException">The file system is not NTFS.</exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="path" /> parameter specified a file that is read-only.-or- This operation is not supported on the current platform.-or- The <paramref name="path" /> parameter specified a directory.-or- The caller does not have the required permission.</exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void Decrypt(string path);
+
+		/// <summary>Encrypts a file so that only the account used to encrypt the file can decrypt it.</summary>
+		/// <param name="path">A path that describes a file to encrypt.</param>
+		/// <exception cref="T:System.ArgumentException">The <paramref name="path" /> parameter is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />.</exception>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="path" /> parameter is null.</exception>
+		/// <exception cref="T:System.IO.DriveNotFoundException">An invalid drive was specified. </exception>
+		/// <exception cref="T:System.IO.FileNotFoundException">The file described by the <paramref name="path" /> parameter could not be found.</exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file.-or-This operation is not supported on the current platform.</exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
+		/// <exception cref="T:System.NotSupportedException">The file system is not NTFS.</exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="path" /> parameter specified a file that is read-only.-or- This operation is not supported on the current platform.-or- The <paramref name="path" /> parameter specified a directory.-or- The caller does not have the required permission.</exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void Encrypt(string path);
+#endif
+
 		/// <summary>Determines whether the specified file exists.</summary>
 		/// <returns>true if the caller has the required permissions and <paramref name="path" /> contains the name of an existing file; otherwise, false. This method also returns false if <paramref name="path" /> is null, an invalid path, or a zero-length string. If the caller does not have sufficient permissions to read the specified file, no exception is thrown and the method returns false regardless of the existence of <paramref name="path" />.</returns>
 		/// <param name="path">The file to check. </param>
@@ -930,6 +966,69 @@ namespace Thinktecture.IO
 		/// </PermissionSet>
 		void WriteAllBytes([NotNull] string path, [NotNull] byte[] bytes);
 
+
+		/// <summary>Creates a new file, write the specified string array to the file, and then closes the file. </summary>
+		/// <param name="path">The file to write to. </param>
+		/// <param name="contents">The string array to write to the file. </param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />. </exception>
+		/// <exception cref="T:System.ArgumentNullException">Either <paramref name="path" /> or <paramref name="contents" /> is null.  </exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file. </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">
+		/// <paramref name="path" /> specified a file that is read-only.-or- This operation is not supported on the current platform.-or- <paramref name="path" /> specified a directory.-or- The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="path" /> is in an invalid format. </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void WriteAllLines(string path, string[] contents);
+
+		/// <summary>Creates a new file, writes the specified string array to the file by using the specified encoding, and then closes the file. </summary>
+		/// <param name="path">The file to write to. </param>
+		/// <param name="contents">The string array to write to the file. </param>
+		/// <param name="encoding">An <see cref="T:System.Text.Encoding" /> object that represents the character encoding applied to the string array.</param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />. </exception>
+		/// <exception cref="T:System.ArgumentNullException">Either <paramref name="path" /> or <paramref name="contents" /> is null.  </exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file. </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">
+		/// <paramref name="path" /> specified a file that is read-only.-or- This operation is not supported on the current platform.-or- <paramref name="path" /> specified a directory.-or- The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="path" /> is in an invalid format. </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void WriteAllLines(string path, string[] contents, Encoding encoding);
+
+		/// <summary>Creates a new file, writes the specified string array to the file by using the specified encoding, and then closes the file. </summary>
+		/// <param name="path">The file to write to. </param>
+		/// <param name="contents">The string array to write to the file. </param>
+		/// <param name="encoding">An <see cref="T:System.Text.Encoding" /> object that represents the character encoding applied to the string array.</param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />. </exception>
+		/// <exception cref="T:System.ArgumentNullException">Either <paramref name="path" /> or <paramref name="contents" /> is null.  </exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file. </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">
+		/// <paramref name="path" /> specified a file that is read-only.-or- This operation is not supported on the current platform.-or- <paramref name="path" /> specified a directory.-or- The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="path" /> is in an invalid format. </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void WriteAllLines(string path, string[] contents, IEncoding encoding);
+
 		/// <summary>Creates a new file, writes a collection of strings to the file, and then closes the file.</summary>
 		/// <param name="path">The file to write to.</param>
 		/// <param name="contents">The lines to write to the file.</param>
@@ -1048,5 +1147,44 @@ namespace Thinktecture.IO
 		/// </PermissionSet>
 		void WriteAllText([NotNull] string path, [NotNull] string contents, [NotNull] Encoding encoding);
 #pragma warning restore 618
+
+#if NET46 || NETSTANDARD2_0
+		/// <summary>Replaces the contents of a specified file with the contents of another file, deleting the original file, and creating a backup of the replaced file.</summary>
+		/// <param name="sourceFileName">The name of a file that replaces the file specified by <paramref name="destinationFileName" />.</param>
+		/// <param name="destinationFileName">The name of the file being replaced.</param>
+		/// <param name="destinationBackupFileName">The name of the backup file.</param>
+		/// <exception cref="T:System.ArgumentException">The path described by the <paramref name="destinationFileName" /> parameter was not of a legal form.-or-The path described by the <paramref name="destinationBackupFileName" /> parameter was not of a legal form.</exception>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="destinationFileName" /> parameter is null.</exception>
+		/// <exception cref="T:System.IO.DriveNotFoundException">An invalid drive was specified. </exception>
+		/// <exception cref="T:System.IO.FileNotFoundException">The file described by the current <see cref="T:System.IO.FileInfo" /> object could not be found.-or-The file described by the <paramref name="destinationBackupFileName" /> parameter could not be found. </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file.- or -The <paramref name="sourceFileName" /> and <paramref name="destinationFileName" /> parameters specify the same file.</exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.PlatformNotSupportedException">The operating system is Windows 98 Second Edition or earlier and the files system is not NTFS.</exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="sourceFileName" /> or <paramref name="destinationFileName" /> parameter specifies a file that is read-only.-or- This operation is not supported on the current platform.-or- Source or destination parameters specify a directory instead of a file.-or- The caller does not have the required permission.</exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void Replace(string sourceFileName, string destinationFileName, string destinationBackupFileName);
+
+		/// <summary>Replaces the contents of a specified file with the contents of another file, deleting the original file, and creating a backup of the replaced file and optionally ignores merge errors.</summary>
+		/// <param name="sourceFileName">The name of a file that replaces the file specified by <paramref name="destinationFileName" />.</param>
+		/// <param name="destinationFileName">The name of the file being replaced.</param>
+		/// <param name="destinationBackupFileName">The name of the backup file.</param>
+		/// <param name="ignoreMetadataErrors">true to ignore merge errors (such as attributes and access control lists (ACLs)) from the replaced file to the replacement file; otherwise, false. </param>
+		/// <exception cref="T:System.ArgumentException">The path described by the <paramref name="destinationFileName" /> parameter was not of a legal form.-or-The path described by the <paramref name="destinationBackupFileName" /> parameter was not of a legal form.</exception>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="destinationFileName" /> parameter is null.</exception>
+		/// <exception cref="T:System.IO.DriveNotFoundException">An invalid drive was specified. </exception>
+		/// <exception cref="T:System.IO.FileNotFoundException">The file described by the current <see cref="T:System.IO.FileInfo" /> object could not be found.-or-The file described by the <paramref name="destinationBackupFileName" /> parameter could not be found. </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the file.- or -The <paramref name="sourceFileName" /> and <paramref name="destinationFileName" /> parameters specify the same file.</exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.PlatformNotSupportedException">The operating system is Windows 98 Second Edition or earlier and the files system is not NTFS.</exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="sourceFileName" /> or <paramref name="destinationFileName" /> parameter specifies a file that is read-only.-or- This operation is not supported on the current platform.-or- Source or destination parameters specify a directory instead of a file.-or- The caller does not have the required permission.</exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void Replace(string sourceFileName, string destinationFileName, string destinationBackupFileName, bool ignoreMetadataErrors);
+#endif
 	}
 }
