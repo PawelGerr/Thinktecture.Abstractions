@@ -111,6 +111,22 @@ namespace Thinktecture.IO.Adapters
 			return Implementation.ToArray();
 		}
 
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public byte[] GetBuffer()
+		{
+			return Implementation.GetBuffer();
+		}
+#endif
+
+#if NET462 || NETSTANDARD1_3 || NETSTANDARD1_5 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public bool TryGetBuffer(out ArraySegment<byte> buffer)
+		{
+			return Implementation.TryGetBuffer(out buffer);
+		}
+#endif
+
 		/// <inheritdoc />
 		public void WriteTo(IStream stream)
 		{

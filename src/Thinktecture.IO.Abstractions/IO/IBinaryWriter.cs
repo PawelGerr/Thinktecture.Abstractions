@@ -153,5 +153,11 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		void Write(ulong value);
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <summary>Closes the current <see cref="T:System.IO.BinaryWriter" /> and the underlying stream.</summary>
+		/// <filterpriority>1</filterpriority>
+		void Close();
+#endif
 	}
 }

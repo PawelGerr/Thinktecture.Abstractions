@@ -26,6 +26,12 @@ namespace Thinktecture.IO
 		[NotNull]
 		string NewLine { get; set; }
 
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <summary>Closes the current writer and releases any system resources associated with the writer.</summary>
+		/// <filterpriority>1</filterpriority>
+		void Close();
+#endif
+
 		/// <summary>Clears all buffers for the current writer and causes any buffered data to be written to the underlying device.</summary>
 		void Flush();
 
@@ -107,6 +113,42 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		void Write([CanBeNull] string value);
+
+		/// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object)" /> method.</summary>
+		/// <param name="format">A composite format string (see Remarks). </param>
+		/// <param name="arg0">The object to format and write. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="format" /> is <see langword="null" />. </exception>
+		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the number of objects to be formatted (which, for this method overload, is one). </exception>
+		void Write(string format, object arg0);
+
+		/// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object,System.Object)" /> method.</summary>
+		/// <param name="format">A composite format string (see Remarks). </param>
+		/// <param name="arg0">The first object to format and write. </param>
+		/// <param name="arg1">The second object to format and write. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="format" /> is <see langword="null" />. </exception>
+		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero) or greater than or equal to the number of objects to be formatted (which, for this method overload, is two). </exception>
+		void Write(string format, object arg0, object arg1);
+
+		/// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object,System.Object,System.Object)" /> method.</summary>
+		/// <param name="format">A composite format string (see Remarks). </param>
+		/// <param name="arg0">The first object to format and write. </param>
+		/// <param name="arg1">The second object to format and write. </param>
+		/// <param name="arg2">The third object to format and write. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="format" /> is <see langword="null" />. </exception>
+		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the number of objects to be formatted (which, for this method overload, is three). </exception>
+		void Write(string format, object arg0, object arg1, object arg2);
 
 		/// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object[])" /> method.</summary>
 		/// <param name="format">A composite format string (see Remarks). </param>
@@ -246,6 +288,45 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		void WriteLine([CanBeNull] string value);
+
+		/// <summary>Writes a formatted string and a new line to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object)" /> method.</summary>
+		/// <param name="format">A composite format string (see Remarks).</param>
+		/// <param name="arg0">The object to format and write. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="format" /> is null. </exception>
+		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the number of objects to be formatted (which, for this method overload, is one). </exception>
+		/// <filterpriority>1</filterpriority>
+		void WriteLine(string format, object arg0);
+
+		/// <summary>Writes a formatted string and a new line to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object,System.Object)" /> method.</summary>
+		/// <param name="format">A composite format string (see Remarks).</param>
+		/// <param name="arg0">The first object to format and write. </param>
+		/// <param name="arg1">The second object to format and write. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="format" /> is null. </exception>
+		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the number of objects to be formatted (which, for this method overload, is two). </exception>
+		/// <filterpriority>1</filterpriority>
+		void WriteLine(string format, object arg0, object arg1);
+
+		/// <summary>Writes out a formatted string and a new line, using the same semantics as <see cref="M:System.String.Format(System.String,System.Object)" />.</summary>
+		/// <param name="format">A composite format string (see Remarks).</param>
+		/// <param name="arg0">The first object to format and write. </param>
+		/// <param name="arg1">The second object to format and write. </param>
+		/// <param name="arg2">The third object to format and write. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="format" /> is null. </exception>
+		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the number of objects to be formatted (which, for this method overload, is three). </exception>
+		/// <filterpriority>1</filterpriority>
+		void WriteLine(string format, object arg0, object arg1, object arg2);
 
 		/// <summary>Writes out a formatted string and a new line, using the same semantics as <see cref="M:System.String.Format(System.String,System.Object)" />.</summary>
 		/// <param name="format">A composite format string (see Remarks).</param>

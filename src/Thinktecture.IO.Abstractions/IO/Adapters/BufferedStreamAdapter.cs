@@ -1,4 +1,4 @@
-#if NETSTANDARD1_5
+#if NET45 || NET462 || NETSTANDARD1_5 || NETSTANDARD2_0
 using System.ComponentModel;
 using System.IO;
 using JetBrains.Annotations;
@@ -26,7 +26,7 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="stream">The current stream. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="stream" /> is <see langword="null" />. </exception>
-		public BufferedStreamAdapter(Stream stream)
+		public BufferedStreamAdapter([NotNull] Stream stream)
 			: this(new BufferedStream(stream))
 		{
 		}
@@ -38,7 +38,7 @@ namespace Thinktecture.IO.Adapters
 		/// <paramref name="stream" /> is <see langword="null" />. </exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="bufferSize" /> is negative. </exception>
-		public BufferedStreamAdapter(Stream stream, int bufferSize)
+		public BufferedStreamAdapter([NotNull] Stream stream, int bufferSize)
 			: this(new BufferedStream(stream, bufferSize))
 		{
 		}

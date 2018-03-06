@@ -32,6 +32,7 @@ namespace Thinktecture
 		[CanBeNull]
 		public static ChannelBinding ToImplementation([CanBeNull] this IChannelBinding abstraction)
 		{
+			// ReSharper disable once RedundantCast
 			return ((IAbstraction<ChannelBinding>)abstraction)?.UnsafeConvert();
 		}
 	}

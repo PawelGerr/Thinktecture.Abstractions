@@ -88,5 +88,13 @@ namespace Thinktecture.IO.Adapters
 		{
 			return Implementation.ReadToEndAsync();
 		}
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void Close()
+		{
+			Implementation.Close();
+		}
+#endif
 	}
 }

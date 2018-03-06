@@ -71,6 +71,7 @@ namespace Thinktecture.Adapters
 		}
 
 		/// <inheritdoc />
+		// ReSharper disable once AssignNullToNotNullAttribute
 		public ITextWriter Error => Console.Error.ToInterface();
 
 		/// <inheritdoc />
@@ -83,7 +84,9 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public IEncoding InputEncoding
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			get => Console.InputEncoding.ToInterface();
+			// ReSharper disable once AssignNullToNotNullAttribute
 			set => Console.InputEncoding = value.ToImplementation();
 		}
 
@@ -97,6 +100,7 @@ namespace Thinktecture.Adapters
 		public bool IsOutputRedirected => Console.IsOutputRedirected;
 
 		/// <inheritdoc />
+		// ReSharper disable once AssignNullToNotNullAttribute
 		public ITextReader In => Console.In.ToInterface();
 
 		/// <inheritdoc />
@@ -112,12 +116,15 @@ namespace Thinktecture.Adapters
 		public bool NumberLock => Console.NumberLock;
 
 		/// <inheritdoc />
+		// ReSharper disable once AssignNullToNotNullAttribute
 		public ITextWriter Out => Console.Out.ToInterface();
 
 		/// <inheritdoc />
 		public IEncoding OutputEncoding
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			get => Console.OutputEncoding.ToInterface();
+			// ReSharper disable once AssignNullToNotNullAttribute
 			set => Console.OutputEncoding = value.ToImplementation();
 		}
 
@@ -203,6 +210,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public IStream OpenStandardError()
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			return Console.OpenStandardError().ToInterface();
 		}
 
@@ -210,6 +218,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public IStream OpenStandardError(int bufferSize)
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			return Console.OpenStandardError(bufferSize).ToInterface();
 		}
 #endif
@@ -217,6 +226,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public IStream OpenStandardInput()
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			return Console.OpenStandardInput().ToInterface();
 		}
 
@@ -224,6 +234,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public IStream OpenStandardInput(int bufferSize)
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			return Console.OpenStandardInput(bufferSize).ToInterface();
 		}
 #endif
@@ -231,6 +242,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public IStream OpenStandardOutput()
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			return Console.OpenStandardOutput().ToInterface();
 		}
 
@@ -238,6 +250,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public IStream OpenStandardOutput(int bufferSize)
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			return Console.OpenStandardOutput(bufferSize).ToInterface();
 		}
 #endif
@@ -287,6 +300,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public void SetError(ITextWriter newError)
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			Console.SetError(newError.ToImplementation());
 		}
 
@@ -299,6 +313,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public void SetIn(ITextReader newIn)
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			Console.SetIn(newIn.ToImplementation());
 		}
 
@@ -311,6 +326,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public void SetOut(ITextWriter newOut)
 		{
+			// ReSharper disable once AssignNullToNotNullAttribute
 			Console.SetOut(newOut.ToImplementation());
 		}
 

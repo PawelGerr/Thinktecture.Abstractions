@@ -1,7 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Metadata;
+using System.Reflection.PortableExecutable;
 using FluentAssertions;
 
 namespace Thinktecture
@@ -14,6 +17,12 @@ namespace Thinktecture
 		protected Dictionary<Type, Type> CustomMappings { get; }
 		protected List<Type> ExcludedTypes { get; }
 		protected List<MemberInfo> ExcludedMembers { get; }
+		protected Func<Type, MemberInfo, bool> ExcludeCallback { get; set; }
+
+		protected IntegrityTestsBase(string assemblyName)
+			: this(GetAssembly($"System.{assemblyName}"), GetAssembly($"Thinktecture.{assemblyName}.Abstractions"))
+		{
+		}
 
 		protected IntegrityTestsBase(Type candidateFromOriginalAssembly, Type candidateFromAbstractions)
 			: this(candidateFromOriginalAssembly.GetTypeInfo().Assembly, candidateFromAbstractions.GetTypeInfo().Assembly)
@@ -26,31 +35,39 @@ namespace Thinktecture
 		}
 
 		protected IntegrityTestsBase(Assembly orignalAssembly, Assembly abstractionsAssembly)
+			: this(orignalAssembly, null, abstractionsAssembly)
 		{
-			_originalTypes = GetTypes(orignalAssembly);
-			_abstractionTypes = GetTypes(abstractionsAssembly);
+		}
+
+		protected IntegrityTestsBase(Assembly orignalAssembly, string rootNamespace, Assembly abstractionsAssembly)
+		{
+			_originalTypes = GetTypes(orignalAssembly, rootNamespace);
+			_abstractionTypes = GetAbstractionTypes(abstractionsAssembly);
 
 			CustomMappings = new Dictionary<Type, Type>();
 			ExcludedTypes = new List<Type>();
 			ExcludedMembers = new List<MemberInfo>();
 		}
 
-
-		protected void ExcludeStaticMember<T>(string name)
+		protected void ExcludeMember<T>(string name)
 		{
-			var members = typeof(T).GetMember(name, BindingFlags.Static | BindingFlags.Public);
+			var members = typeof(T).GetMember(name, BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public);
 
-			members.Should().HaveCount(1, $"static member \"{name}\" of type {typeof(T).FullName} should exist only once");
+			members.Should().HaveCount(1, $"member \"{name}\" of type {typeof(T).FullName} should exist only once");
 
 			ExcludedMembers.Add(members[0]);
 		}
 
-
-		protected void ExcludeStaticMembers(Type type, string name)
+		protected void ExcludeMembers<T>(string name)
 		{
-			var members = type.GetMember(name, BindingFlags.Static | BindingFlags.Public);
+			ExcludeMembers(typeof(T), name);
+		}
 
-			members.Should().HaveCountGreaterOrEqualTo(1, $"static member \"{name}\" of type {type.FullName} not found");
+		protected void ExcludeMembers(Type type, string name)
+		{
+			var members = type.GetMember(name, BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public);
+
+			members.Should().HaveCountGreaterOrEqualTo(1, $"member \"{name}\" of type {type.FullName} not found");
 
 			ExcludedMembers.AddRange(members);
 		}
@@ -71,15 +88,20 @@ namespace Thinktecture
 			var types = _originalTypes
 			            .Where(t => !ExcludedTypes.Contains(t))
 			            .ToList();
+			var abstractions = _abstractionTypes
+			                   .Where(t => !ExcludedTypes.Contains(t))
+			                   .ToList();
 
 			foreach (var t in GetTypes())
 			{
 				t.Abstraction.Should().NotBeNull($"abstraction for type {t.Original.FullName} not found");
 
 				types.Remove(t.Original);
+				abstractions.Remove(t.Abstraction);
 			}
 
 			types.Should().BeEmpty();
+			abstractions.Should().BeEmpty();
 		}
 
 		protected void CheckMembers()
@@ -93,7 +115,7 @@ namespace Thinktecture
 				{
 					var members = abstractionMembers.Where(m => m.Name == group.Key).ToList();
 
-					members.Should().HaveCountGreaterOrEqualTo(group.Count(), $"the type {types.Abstraction.FullName} should have {group.Count()} member(s) with the name \"{group.Key}\"");
+					members.Should().HaveCountGreaterOrEqualTo(group.Count(), $"the type {types.Abstraction.FullName} should have {group.Count()} member(s) with the name \"{group.Key}\" (reflected type {group.First().ReflectedType.FullName})");
 				}
 			}
 		}
@@ -108,6 +130,12 @@ namespace Thinktecture
 			return members
 			       .Where(m =>
 			       {
+				       if (ExcludedMembers.Contains(m))
+					       return false;
+
+				       if (ExcludeCallback?.Invoke(type, m) ?? false)
+					       return false;
+
 				       if (m is MethodInfo methodInfo)
 				       {
 					       if (IsObjectMethod(methodInfo))
@@ -137,13 +165,15 @@ namespace Thinktecture
 					AddMembers(allMembers, iface);
 			}
 
+			var currentType = type;
+
 			do
 			{
-				if (type != typeof(MarshalByRefObject))
-					AddMembers(allMembers, type);
+				if (currentType != typeof(MarshalByRefObject))
+					AddMembers(allMembers, currentType);
 
-				type = type.BaseType;
-			} while (type != null && type != typeof(object));
+				currentType = currentType.BaseType;
+			} while (currentType != null && currentType != typeof(object));
 
 			return allMembers;
 		}
@@ -151,7 +181,7 @@ namespace Thinktecture
 		private void AddMembers(List<MemberInfo> allMembers, Type type)
 		{
 			var members = type.GetMembers(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.DeclaredOnly)
-			                  .Where(m => !ExcludedMembers.Contains(m) && !(m is ConstructorInfo))
+			                  .Where(m => !(m is ConstructorInfo))
 			                  .Where(newMem => !allMembers.Any(m => AreEqual(newMem, m)));
 
 			allMembers.AddRange(members);
@@ -275,12 +305,53 @@ namespace Thinktecture
 			return String.Join(".", ns.Concat(new[] { $"I{originalType.Name}" }));
 		}
 
-		private IReadOnlyList<Type> GetTypes(Assembly assembly)
+		private IReadOnlyList<Type> GetAbstractionTypes(Assembly assembly)
 		{
-			return assembly
-			       .GetTypes()
-			       .Where(t => t.IsPublic && !t.IsEnum)
+			return GetTypes(assembly)
+			       .Where(t => t.IsInterface)
 			       .ToList().AsReadOnly();
+		}
+
+		private IReadOnlyList<Type> GetTypes(Assembly assembly, string rootNamespace = null)
+		{
+			var types = GetForwardedTypes(assembly)
+			            .Concat(assembly.GetTypes())
+			            .Where(t => t.IsPublic && !t.IsEnum && (rootNamespace == null || t.Namespace.StartsWith(rootNamespace)))
+			            .ToList().AsReadOnly();
+
+			types.Should().NotBeEmpty($"the assembly {assembly.GetName().Name} is empty");
+
+			return types;
+		}
+
+		private IReadOnlyList<Type> GetForwardedTypes(Assembly assembly)
+		{
+			var types = new List<Type>();
+
+			using (var stream = File.OpenRead(assembly.Location))
+			using (var peReader = new PEReader(stream))
+			{
+				var reader = peReader.GetMetadataReader();
+
+				foreach (var exportedType in reader.ExportedTypes)
+				{
+					var exported = reader.GetExportedType(exportedType);
+
+					if (exported.IsForwarder)
+					{
+						var name = reader.GetString(exported.Name);
+						var ns = reader.GetString(exported.Namespace);
+						var type = assembly.GetType($"{ns}.{name}");
+
+						if (type == null)
+							throw new Exception($"Forwarded type {ns}.{name} not found in assembly {assembly.GetName().Name}");
+
+						types.Add(type);
+					}
+				}
+			}
+
+			return types;
 		}
 	}
 }

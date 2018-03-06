@@ -13,6 +13,12 @@ namespace Thinktecture.IO
 		[NotNull]
 		IStream BaseStream { get; }
 
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <summary>Closes the current reader and the underlying stream.</summary>
+		/// <filterpriority>2</filterpriority>
+		void Close();
+#endif
+
 		/// <summary>Returns the next available character and does not advance the byte or character position.</summary>
 		/// <returns>The next available character, or -1 if no more characters are available or the stream does not support seeking.</returns>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>

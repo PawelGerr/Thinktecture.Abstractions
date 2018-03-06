@@ -121,5 +121,11 @@ namespace Thinktecture.IO
 		[NotNull]
 		Task<string> ReadToEndAsync();
 #pragma warning restore 1584, 1734
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <summary>Closes the <see cref="T:System.IO.TextReader" /> and releases any system resources associated with the TextReader.</summary>
+		/// <filterpriority>1</filterpriority>
+		void Close();
+#endif
 	}
 }

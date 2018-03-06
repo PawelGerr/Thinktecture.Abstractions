@@ -48,6 +48,14 @@ namespace Thinktecture.Runtime.InteropServices.Adapters
 			Implementation.SetHandleAsInvalid();
 		}
 
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void Close()
+		{
+			Implementation.Close();
+		}
+#endif
+
 		/// <inheritdoc />
 		public void Dispose()
 		{

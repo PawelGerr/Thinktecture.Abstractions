@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <RootNamespace>Thinktecture</RootNamespace>
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
@@ -8,8 +8,11 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="FluentAssertions" Version="5.0.0" />
     <PackageReference Include="Moq" Version="4.8.1" />
-    <PackageReference Include="System.Reflection.Metadata" Version="1.5.0" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Thinktecture.IO.Pipes.Abstractions\Thinktecture.IO.Pipes.Abstractions.csproj" />
+    <ProjectReference Include="..\Thinktecture.TestHelper\Thinktecture.TestHelper.csproj" />
   </ItemGroup>
 </Project>

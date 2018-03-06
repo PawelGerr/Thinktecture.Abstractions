@@ -44,6 +44,14 @@ namespace Thinktecture.IO.Adapters
 			set => Implementation.NewLine = value;
 		}
 
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void Close()
+		{
+			Implementation.Close();
+		}
+#endif
+
 		/// <inheritdoc />
 		public void Flush()
 		{
@@ -120,6 +128,25 @@ namespace Thinktecture.IO.Adapters
 		public void Write(string value)
 		{
 			Implementation.Write(value);
+		}
+
+		/// <inheritdoc />
+		public void Write(string format, object arg0)
+		{
+			Implementation.Write(format, arg0);
+
+		}
+
+		/// <inheritdoc />
+		public void Write(string format, object arg0, object arg1)
+		{
+			Implementation.Write(format, arg0, arg1);
+		}
+
+		/// <inheritdoc />
+		public void Write(string format, object arg0, object arg1, object arg2)
+		{
+			Implementation.Write(format, arg0, arg1, arg2);
 		}
 
 		/// <inheritdoc />
@@ -234,6 +261,24 @@ namespace Thinktecture.IO.Adapters
 		public void WriteLine(string value)
 		{
 			Implementation.WriteLine(value);
+		}
+
+		/// <inheritdoc />
+		public void WriteLine(string format, object arg0)
+		{
+			Implementation.WriteLine(format, arg0);
+		}
+
+		/// <inheritdoc />
+		public void WriteLine(string format, object arg0, object arg1)
+		{
+			Implementation.WriteLine(format, arg0, arg1);
+		}
+
+		/// <inheritdoc />
+		public void WriteLine(string format, object arg0, object arg1, object arg2)
+		{
+			Implementation.WriteLine(format, arg0, arg1, arg2);
 		}
 
 		/// <inheritdoc />

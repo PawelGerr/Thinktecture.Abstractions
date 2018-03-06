@@ -282,5 +282,19 @@ namespace Thinktecture.IO.Adapters
 		{
 			Implementation.Flush(flushToDisk);
 		}
+
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void Lock(long position, long length)
+		{
+			Implementation.Lock(position, length);
+		}
+
+		/// <inheritdoc />
+		public void Unlock(long position, long length)
+		{
+			Implementation.Unlock(position, length);
+		}
+#endif
 	}
 }

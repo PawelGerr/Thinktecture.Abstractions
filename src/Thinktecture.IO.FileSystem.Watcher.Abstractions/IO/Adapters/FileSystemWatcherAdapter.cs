@@ -1,8 +1,8 @@
-using System;
 using System.IO;
 using JetBrains.Annotations;
 
 #if NET46 || NETSTANDARD2_0
+using System;
 using System.ComponentModel;
 #endif
 

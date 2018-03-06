@@ -1,4 +1,4 @@
-#if NETSTANDARD1_5
+#if NETSTANDARD1_5 || NETSTANDARD2_0
 using System.IO;
 using JetBrains.Annotations;
 using Thinktecture.IO;

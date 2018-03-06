@@ -308,7 +308,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 			Implementation.Disconnect();
 		}
 
-#if NET46
+#if NET46 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public void RunAsClient(PipeStreamImpersonationWorker impersonationWorker)
 		{

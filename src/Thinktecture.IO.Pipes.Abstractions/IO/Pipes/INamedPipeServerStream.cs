@@ -33,7 +33,7 @@ namespace Thinktecture.IO.Pipes
 		/// <exception cref="ObjectDisposedException">The pipe is closed.</exception>
 		void Disconnect();
 
-#if NET46
+#if NET46 || NETSTANDARD2_0
 		/// <summary>Calls a delegate while impersonating the client.</summary>
 		/// <param name="impersonationWorker">The delegate that specifies a method to call.</param>
 		/// <exception cref="InvalidOperationException">No pipe connections have been made yet.-or-The connected pipe has already disconnected.-or-The pipe handle has not been set.</exception>

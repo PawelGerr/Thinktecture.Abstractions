@@ -313,5 +313,10 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.NotSupportedException">The stream does not support writing, or the stream is already closed. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
 		void WriteByte(byte value);
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <summary>Closes the current stream and releases any resources (such as sockets and file handles) associated with the current stream. Instead of calling this method, ensure that the stream is properly disposed.</summary>
+		void Close();
+#endif
 	}
 }

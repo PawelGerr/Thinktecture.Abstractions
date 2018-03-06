@@ -6,11 +6,11 @@ namespace Thinktecture
 	public class IntegrityTests : IntegrityTestsBase
 	{
 		public IntegrityTests()
-			: base(typeof(Console), typeof(IConsole))
+			: base("Console")
 		{
 			CustomMappings[typeof(ConsoleCancelEventHandler)] = typeof(EventHandler<IConsoleCancelEventArgs>);
 			ExcludedTypes.Add(typeof(ConsoleKeyInfo));
-			ExcludeStaticMember<EventArgs>(nameof(EventArgs.Empty));
+			ExcludeMember<EventArgs>(nameof(EventArgs.Empty));
 		}
 
 		[Fact]

@@ -1,4 +1,4 @@
-#if NETSTANDARD1_5
+#if NET45 || NET462 || NETSTANDARD1_5 || NETSTANDARD2_0
 using System.IO;
 
 namespace Thinktecture.IO

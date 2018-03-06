@@ -199,6 +199,14 @@ namespace Thinktecture.IO.Adapters
 			Implementation.WriteByte(value);
 		}
 
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void Close()
+		{
+			Implementation.Close();
+		}
+#endif
+
 		/// <inheritdoc />
 		public void Dispose()
 		{

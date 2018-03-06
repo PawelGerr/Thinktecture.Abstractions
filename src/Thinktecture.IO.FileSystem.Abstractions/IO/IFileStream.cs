@@ -30,5 +30,25 @@ namespace Thinktecture.IO
 		/// <summary>Clears buffers for this stream and causes any buffered data to be written to the file, and also clears all intermediate file buffers.</summary>
 		/// <param name="flushToDisk">true to flush all intermediate file buffers; otherwise, false. </param>
 		void Flush(bool flushToDisk);
+
+#if NET46 || NETSTANDARD2_0
+		/// <summary>Prevents other processes from reading from or writing to the <see cref="T:System.IO.FileStream" />.</summary>
+		/// <param name="position">The beginning of the range to lock. The value of this parameter must be equal to or greater than zero (0). </param>
+		/// <param name="length">The range to be locked. </param>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="position" /> or <paramref name="length" /> is negative. </exception>
+		/// <exception cref="T:System.ObjectDisposedException">The file is closed. </exception>
+		/// <exception cref="T:System.IO.IOException">The process cannot access the file because another process has locked a portion of the file.</exception>
+		/// <filterpriority>2</filterpriority>
+		void Lock(long position, long length);
+
+		/// <summary>Allows access by other processes to all or part of a file that was previously locked.</summary>
+		/// <param name="position">The beginning of the range to unlock. </param>
+		/// <param name="length">The range to be unlocked. </param>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="position" /> or <paramref name="length" /> is negative. </exception>
+		/// <filterpriority>2</filterpriority>
+		void Unlock(long position, long length);
+#endif
 	}
 }

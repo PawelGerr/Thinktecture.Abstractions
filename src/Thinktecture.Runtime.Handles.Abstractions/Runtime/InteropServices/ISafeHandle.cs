@@ -47,5 +47,13 @@ namespace Thinktecture.Runtime.InteropServices
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
 		/// </PermissionSet>
 		void SetHandleAsInvalid();
+
+#if NET46 || NETSTANDARD2_0
+		/// <summary>Marks the handle for releasing and freeing resources.</summary>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
+		/// </PermissionSet>
+		void Close();
+#endif
 	}
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.IO;
-using Thinktecture.IO;
+﻿using System.IO;
 using Xunit;
 
 namespace Thinktecture
@@ -9,7 +6,7 @@ namespace Thinktecture
 	public class IntegrityTests : IntegrityTestsBase
 	{
 		public IntegrityTests()
-			: base(GetAssembly("System.IO.FileSystem.Watcher"), typeof(IFileSystemWatcher))
+			: base("IO.FileSystem.Watcher")
 		{
 			ExcludedTypes.Add(typeof(ErrorEventArgs));
 			ExcludedTypes.Add(typeof(ErrorEventHandler));

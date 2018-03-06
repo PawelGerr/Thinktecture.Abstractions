@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using Thinktecture.IO;
+﻿using System.IO;
 using Xunit;
 
 namespace Thinktecture
@@ -8,16 +6,28 @@ namespace Thinktecture
 	public class IntegrityTests : IntegrityTestsBase
 	{
 		public IntegrityTests()
-			: base(GetAssembly("System.IO.FileSystem"), typeof(IFile))
+			: base("IO.FileSystem")
 		{
-			ExcludeStaticMembers(typeof(File), nameof(File.ReadAllTextAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeStaticMembers(typeof(File), nameof(File.WriteAllTextAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeStaticMembers(typeof(File), nameof(File.ReadAllBytesAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeStaticMembers(typeof(File), nameof(File.WriteAllBytesAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeStaticMembers(typeof(File), nameof(File.ReadAllLinesAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeStaticMembers(typeof(File), nameof(File.WriteAllLinesAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeStaticMembers(typeof(File), nameof(File.AppendAllLinesAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeStaticMembers(typeof(File), nameof(File.AppendAllTextAsync)); // exists in netcoreapp only (not in netstandard)
+			ExcludeMembers(typeof(File), nameof(File.ReadAllTextAsync)); // exists in netcoreapp only (not in netstandard)
+			ExcludeMembers(typeof(File), nameof(File.WriteAllTextAsync)); // exists in netcoreapp only (not in netstandard)
+			ExcludeMembers(typeof(File), nameof(File.ReadAllBytesAsync)); // exists in netcoreapp only (not in netstandard)
+			ExcludeMembers(typeof(File), nameof(File.WriteAllBytesAsync)); // exists in netcoreapp only (not in netstandard)
+			ExcludeMembers(typeof(File), nameof(File.ReadAllLinesAsync)); // exists in netcoreapp only (not in netstandard)
+			ExcludeMembers(typeof(File), nameof(File.WriteAllLinesAsync)); // exists in netcoreapp only (not in netstandard)
+			ExcludeMembers(typeof(File), nameof(File.AppendAllLinesAsync)); // exists in netcoreapp only (not in netstandard)
+			ExcludeMembers(typeof(File), nameof(File.AppendAllTextAsync)); // exists in netcoreapp only (not in netstandard)
+
+			ExcludeMembers(typeof(FileStream), nameof(FileStream.BeginRead));
+			ExcludeMembers(typeof(FileStream), nameof(FileStream.EndRead));
+			ExcludeMembers(typeof(FileStream), nameof(FileStream.BeginWrite));
+			ExcludeMembers(typeof(FileStream), nameof(FileStream.EndWrite));
+
+			ExcludeMembers(typeof(Stream), nameof(Stream.Synchronized));
+			ExcludeMembers(typeof(Stream), nameof(Stream.Null));
+
+#pragma warning disable 618
+			ExcludeMembers(typeof(FileStream), nameof(FileStream.Handle)); // deprecated
+#pragma warning restore 618
 		}
 
 		[Fact]
