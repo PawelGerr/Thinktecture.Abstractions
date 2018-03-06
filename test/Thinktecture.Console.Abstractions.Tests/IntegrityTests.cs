@@ -8,7 +8,7 @@ namespace Thinktecture
 		public IntegrityTests()
 			: base("Console")
 		{
-			CustomMappings[typeof(ConsoleCancelEventHandler)] = typeof(EventHandler<IConsoleCancelEventArgs>);
+			CustomTypeMappings.Add(typeof(ConsoleCancelEventHandler), typeof(EventHandler<IConsoleCancelEventArgs>));
 			ExcludedTypes.Add(typeof(ConsoleKeyInfo));
 			ExcludeMember<EventArgs>(nameof(EventArgs.Empty));
 		}

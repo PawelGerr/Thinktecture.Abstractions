@@ -14,10 +14,10 @@ namespace Thinktecture
 		private readonly IReadOnlyList<Type> _originalTypes;
 		private readonly IReadOnlyList<Type> _abstractionTypes;
 
-		protected Dictionary<Type, Type> CustomMappings { get; }
+		protected CustomMappings CustomTypeMappings { get; }
 		protected List<Type> ExcludedTypes { get; }
 		protected List<MemberInfo> ExcludedMembers { get; }
-		protected Func<Type, MemberInfo, bool> ExcludeCallback { get; set; }
+		protected Func<Type, Type, MemberInfo, bool> ExcludeCallback { get; set; }
 
 		protected IntegrityTestsBase(string assemblyName)
 			: this(GetAssembly($"System.{assemblyName}"), GetAssembly($"Thinktecture.{assemblyName}.Abstractions"))
@@ -44,7 +44,7 @@ namespace Thinktecture
 			_originalTypes = GetTypes(orignalAssembly, rootNamespace);
 			_abstractionTypes = GetAbstractionTypes(abstractionsAssembly);
 
-			CustomMappings = new Dictionary<Type, Type>();
+			CustomTypeMappings = new CustomMappings();
 			ExcludedTypes = new List<Type>();
 			ExcludedMembers = new List<MemberInfo>();
 		}
@@ -108,8 +108,8 @@ namespace Thinktecture
 		{
 			foreach (var types in GetTypes().Where(t => t.Abstraction != null))
 			{
-				var originalMembers = GetMembers(types.Original);
-				var abstractionMembers = GetMembers(types.Abstraction);
+				var originalMembers = GetMembers(types.Original, types.Abstraction);
+				var abstractionMembers = GetMembers(types.Abstraction, types.Original);
 
 				foreach (var group in originalMembers.GroupBy(m => m.Name))
 				{
@@ -120,7 +120,7 @@ namespace Thinktecture
 			}
 		}
 
-		private IReadOnlyList<MemberInfo> GetMembers(Type type)
+		private IReadOnlyList<MemberInfo> GetMembers(Type type, Type otherType)
 		{
 			if (type == null)
 				throw new ArgumentNullException(nameof(type));
@@ -133,7 +133,7 @@ namespace Thinktecture
 				       if (ExcludedMembers.Contains(m))
 					       return false;
 
-				       if (ExcludeCallback?.Invoke(type, m) ?? false)
+				       if (ExcludeCallback?.Invoke(type, otherType, m) ?? false)
 					       return false;
 
 				       if (m is MethodInfo methodInfo)
@@ -282,13 +282,20 @@ namespace Thinktecture
 				if (ExcludedTypes.Contains(originalType))
 					continue;
 
-				if (!CustomMappings.TryGetValue(originalType, out var abstractionType))
+				if (CustomTypeMappings.TryGet(originalType, out var abstractionTypes))
+				{
+					foreach (var abstractionType in abstractionTypes)
+					{
+						yield return (originalType, abstractionType);
+					}
+				}
+				else
 				{
 					var abstractionTypeName = BuildAbstractionTypeName(originalType);
-					abstractionType = _abstractionTypes.FirstOrDefault(t => t.FullName == abstractionTypeName);
-				}
+					var abstractionType = _abstractionTypes.FirstOrDefault(t => t.FullName == abstractionTypeName);
 
-				yield return (originalType, abstractionType);
+					yield return (originalType, abstractionType);
+				}
 			}
 		}
 

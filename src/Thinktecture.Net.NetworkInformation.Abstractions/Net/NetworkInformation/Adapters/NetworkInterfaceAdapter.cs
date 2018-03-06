@@ -1,4 +1,4 @@
-#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
 
 using System.Net.NetworkInformation;
 using JetBrains.Annotations;
@@ -84,6 +84,14 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		{
 			return Implementation.GetIPStatistics().ToInterface();
 		}
+
+#if NETSTANDARD2_0 || NET45 || NET46
+		/// <inheritdoc />
+		public IPv4InterfaceStatistics GetIPv4Statistics()
+		{
+			return Implementation.GetIPv4Statistics();
+		}
+#endif
 
 		/// <inheritdoc />
 		public IPhysicalAddress GetPhysicalAddress()

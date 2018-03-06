@@ -1,4 +1,4 @@
-#if NETSTANDARD1_3 || NET45 || NET46
+#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
 
 using System.Net.NetworkInformation;
 using JetBrains.Annotations;
@@ -56,6 +56,12 @@ namespace Thinktecture.Net.NetworkInformation
 		[NotNull]
 		// ReSharper disable once InconsistentNaming
 		IIPInterfaceStatistics GetIPStatistics();
+
+#if NETSTANDARD2_0 || NET45 || NET46
+		/// <summary>Gets the IPv4 statistics for this <see cref="T:System.Net.NetworkInformation.NetworkInterface" /> instance.</summary>
+		/// <returns>An <see cref="T:System.Net.NetworkInformation.IPv4InterfaceStatistics" /> object.</returns>
+		IPv4InterfaceStatistics GetIPv4Statistics();
+#endif
 
 		/// <summary>Returns the Media Access Control (MAC) or physical address for this adapter.</summary>
 		/// <returns>A <see cref="T:System.Net.NetworkInformation.PhysicalAddress" /> object that contains the physical address.</returns>

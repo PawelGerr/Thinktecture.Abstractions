@@ -37,7 +37,7 @@ namespace Thinktecture
 			ExcludeCallback = Exlude;
 		}
 
-		private bool Exlude(Type type, MemberInfo member)
+		private bool Exlude(Type type, Type otherType, MemberInfo member)
 		{
 			if (member.Name == "Null")
 			{
