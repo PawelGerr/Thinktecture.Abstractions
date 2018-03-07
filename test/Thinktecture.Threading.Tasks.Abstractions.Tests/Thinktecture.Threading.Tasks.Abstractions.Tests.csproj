@@ -1,12 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>2.2.0</VersionPrefix>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <RootNamespace>Thinktecture</RootNamespace>
     <LangVersion>7.2</LangVersion>
-    <CodeAnalysisRuleSet>..\..\Visual Studio.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>

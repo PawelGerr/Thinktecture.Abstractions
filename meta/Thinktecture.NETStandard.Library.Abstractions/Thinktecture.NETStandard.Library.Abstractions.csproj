@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<Description>Meta package with abstractions for types in NETStandard.Library.</Description>
 		<Copyright>(c) 2018, Pawel Gerr. All rights reserved.</Copyright>
-		<VersionPrefix>2.2.0</VersionPrefix>
+		<VersionPrefix>2.3.0</VersionPrefix>
 		<Authors>Pawel Gerr</Authors>
 		<TargetFrameworks>netstandard1.0;netstandard1.1;netstandard1.2;netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6;netstandard2.0;net45;net451;net46;net461</TargetFrameworks>
 		<GenerateDocumentationFile>false</GenerateDocumentationFile>

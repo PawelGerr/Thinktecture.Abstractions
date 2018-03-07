@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Description>Provides interfaces for type in System.Runtime.Extensions: Path, BitConverter, Convert, Environment, Math, Random, UriBuilder, Stopwatch, WebUtility.</Description>
     <Copyright>(c) 2018, Pawel Gerr. All rights reserved.</Copyright>
-    <VersionPrefix>2.2.0</VersionPrefix>
+    <VersionPrefix>2.3.0</VersionPrefix>
     <Authors>Pawel Gerr</Authors>
     <TargetFrameworks>netstandard1.0;netstandard1.3;netstandard1.5;net45;net462</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
