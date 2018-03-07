@@ -20,6 +20,11 @@ namespace Thinktecture.Net.Adapters
 		/// <inheritdoc />
 		public bool IsSynchronized => ((ICollection)Implementation).IsSynchronized;
 
+#if NET45 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public bool IsReadOnly => Implementation.IsReadOnly;
+#endif
+
 		/// <inheritdoc />
 		public ICookie this[string name] => Implementation[name].ToInterface();
 
@@ -59,6 +64,14 @@ namespace Thinktecture.Net.Adapters
 		{
 			Implementation.Add(cookies.ToImplementation());
 		}
+
+#if NET45 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void CopyTo(Cookie[] array, int index)
+		{
+			Implementation.CopyTo(array, index);
+		}
+#endif
 
 		/// <inheritdoc />
 		public void CopyTo([NotNull] Array array, int index)

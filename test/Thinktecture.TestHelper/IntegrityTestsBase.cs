@@ -24,24 +24,9 @@ namespace Thinktecture
 		{
 		}
 
-		protected IntegrityTestsBase(Type candidateFromOriginalAssembly, Type candidateFromAbstractions)
-			: this(candidateFromOriginalAssembly.GetTypeInfo().Assembly, candidateFromAbstractions.GetTypeInfo().Assembly)
-		{
-		}
-
-		protected IntegrityTestsBase(Assembly originalAssembly, Type candidateFromAbstractions)
-			: this(originalAssembly, candidateFromAbstractions.GetTypeInfo().Assembly)
-		{
-		}
-
 		protected IntegrityTestsBase(Assembly orignalAssembly, Assembly abstractionsAssembly)
-			: this(orignalAssembly, null, abstractionsAssembly)
 		{
-		}
-
-		protected IntegrityTestsBase(Assembly orignalAssembly, string rootNamespace, Assembly abstractionsAssembly)
-		{
-			_originalTypes = GetTypes(orignalAssembly, rootNamespace);
+			_originalTypes = GetOriginalTypes(orignalAssembly);
 			_abstractionTypes = GetAbstractionTypes(abstractionsAssembly);
 
 			CustomTypeMappings = new CustomMappings();
@@ -312,6 +297,13 @@ namespace Thinktecture
 			return String.Join(".", ns.Concat(new[] { $"I{originalType.Name}" }));
 		}
 
+		private IReadOnlyList<Type> GetOriginalTypes(Assembly assembly)
+		{
+			return GetTypes(assembly)
+			       .Where(t => !t.IsInterface)
+			       .ToList().AsReadOnly();
+		}
+
 		private IReadOnlyList<Type> GetAbstractionTypes(Assembly assembly)
 		{
 			return GetTypes(assembly)
@@ -319,11 +311,11 @@ namespace Thinktecture
 			       .ToList().AsReadOnly();
 		}
 
-		private IReadOnlyList<Type> GetTypes(Assembly assembly, string rootNamespace = null)
+		private IReadOnlyList<Type> GetTypes(Assembly assembly)
 		{
 			var types = GetForwardedTypes(assembly)
 			            .Concat(assembly.GetTypes())
-			            .Where(t => t.IsPublic && !t.IsEnum && (rootNamespace == null || t.Namespace.StartsWith(rootNamespace)))
+			            .Where(t => t.IsPublic && !t.IsEnum)
 			            .ToList().AsReadOnly();
 
 			types.Should().NotBeEmpty($"the assembly {assembly.GetName().Name} is empty");

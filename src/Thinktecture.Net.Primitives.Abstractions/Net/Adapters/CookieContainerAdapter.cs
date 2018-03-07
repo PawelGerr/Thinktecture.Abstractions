@@ -50,6 +50,32 @@ namespace Thinktecture.Net.Adapters
 		{
 		}
 
+#if NET45 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void Add(Cookie cookie)
+		{
+			Implementation.Add(cookie);
+		}
+
+		/// <inheritdoc />
+		public void Add(ICookie cookie)
+		{
+			Implementation.Add(cookie.ToImplementation());
+		}
+
+		/// <inheritdoc />
+		public void Add(CookieCollection cookies)
+		{
+			Implementation.Add(cookies);
+		}
+
+		/// <inheritdoc />
+		public void Add(ICookieCollection cookies)
+		{
+			Implementation.Add(cookies.ToImplementation());
+		}
+#endif
+
 		/// <inheritdoc />
 		public void Add(Uri uri, Cookie cookie)
 		{
@@ -93,3 +119,4 @@ namespace Thinktecture.Net.Adapters
 		}
 	}
 }
+

@@ -2,8 +2,11 @@ using System;
 using System.Net;
 using JetBrains.Annotations;
 
-// ReSharper disable AssignNullToNotNullAttribute
+#if NET45 || NETSTANDARD2_0
+using System.Security;
+#endif
 
+// ReSharper disable AssignNullToNotNullAttribute
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Provides credentials for password-based authentication schemes such as basic, digest, NTLM, and Kerberos authentication.</summary>
@@ -15,6 +18,15 @@ namespace Thinktecture.Net.Adapters
 			get => Implementation.Domain;
 			set => Implementation.Domain = value;
 		}
+
+#if NET45 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public SecureString SecurePassword
+		{
+			get => Implementation.SecurePassword;
+			set => Implementation.SecurePassword = value;
+		}
+#endif
 
 		/// <inheritdoc />
 		public string Password
@@ -73,7 +85,7 @@ namespace Thinktecture.Net.Adapters
 			return Implementation.GetCredential(uri, authType);
 		}
 
-#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45
+#if NETSTANDARD1_1 || NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
 		/// <inheritdoc />
 		public INetworkCredential GetCredential(string host, int port, string authenticationType)
 		{

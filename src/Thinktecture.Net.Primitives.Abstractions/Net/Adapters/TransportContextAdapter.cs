@@ -1,9 +1,9 @@
-#if NETSTANDARD1_1 || NETSTANDARD1_3 || NET45
+#if NETSTANDARD1_1 || NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
 
 using System.Net;
 using JetBrains.Annotations;
 
-#if NETSTANDARD1_3 || NET45
+#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
 using System.Security.Authentication.ExtendedProtection;
 using Thinktecture.Security.Authentication.ExtendedProtection;
 
@@ -14,7 +14,7 @@ namespace Thinktecture.Net.Adapters
 	/// <summary>The <see cref="TransportContextAdapter" /> class provides additional context about the underlying transport layer.</summary>
 	public class TransportContextAdapter : AbstractionAdapter<TransportContext>, ITransportContext
 	{
-#if NETSTANDARD1_3 || NET45
+#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
 
 		/// <inheritdoc />
 		public IChannelBinding GetChannelBinding(ChannelBindingKind kind)

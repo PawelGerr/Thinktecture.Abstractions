@@ -29,6 +29,50 @@ namespace Thinktecture.Net
 		/// <see name="PerDomainCapacity" /> is less than or equal to zero. (-or- <see name="PerDomainCapacity" /> is greater than the maximum allowable number of cookies instances, 300, and is not equal to <see cref="F:System.Int32.MaxValue" />). </exception>
 		int PerDomainCapacity { get; }
 
+#if NET45 || NETSTANDARD2_0
+		/// <summary>Adds a <see cref="T:System.Net.Cookie" /> to a <see cref="T:System.Net.CookieContainer" />. This method uses the domain from the <see cref="T:System.Net.Cookie" /> to determine which domain collection to associate the <see cref="T:System.Net.Cookie" /> with.</summary>
+		/// <param name="cookie">The <see cref="T:System.Net.Cookie" /> to be added to the <see cref="T:System.Net.CookieContainer" />. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="cookie" /> is null. </exception>
+		/// <exception cref="T:System.ArgumentException">The domain for <paramref name="cookie" /> is null or the empty string (""). </exception>
+		/// <exception cref="T:System.Net.CookieException">
+		/// <paramref name="cookie" /> is larger than <see name="MaxCookieSize" />. -or- the domain for <paramref name="cookie" /> is not a valid URI. </exception>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void Add(Cookie cookie);
+
+		/// <summary>Adds a <see cref="T:System.Net.Cookie" /> to a <see cref="T:System.Net.CookieContainer" />. This method uses the domain from the <see cref="T:System.Net.Cookie" /> to determine which domain collection to associate the <see cref="T:System.Net.Cookie" /> with.</summary>
+		/// <param name="cookie">The <see cref="T:System.Net.Cookie" /> to be added to the <see cref="T:System.Net.CookieContainer" />. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="cookie" /> is null. </exception>
+		/// <exception cref="T:System.ArgumentException">The domain for <paramref name="cookie" /> is null or the empty string (""). </exception>
+		/// <exception cref="T:System.Net.CookieException">
+		/// <paramref name="cookie" /> is larger than <see name="MaxCookieSize" />. -or- the domain for <paramref name="cookie" /> is not a valid URI. </exception>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void Add(ICookie cookie);
+
+		/// <summary>Adds the contents of a <see cref="T:System.Net.CookieCollection" /> to the <see cref="T:System.Net.CookieContainer" />.</summary>
+		/// <param name="cookies">The <see cref="T:System.Net.CookieCollection" /> to be added to the <see cref="T:System.Net.CookieContainer" />. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="cookies" /> is null. </exception>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void Add(CookieCollection cookies);
+
+		/// <summary>Adds the contents of a <see cref="T:System.Net.CookieCollection" /> to the <see cref="T:System.Net.CookieContainer" />.</summary>
+		/// <param name="cookies">The <see cref="T:System.Net.CookieCollection" /> to be added to the <see cref="T:System.Net.CookieContainer" />. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="cookies" /> is null. </exception>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		void Add(ICookieCollection cookies);
+#endif
+
 		/// <summary>Adds a <see cref="T:System.Net.Cookie" /> to the <see cref="T:System.Net.CookieContainer" /> for a particular URI.</summary>
 		/// <param name="uri">The URI of the <see cref="T:System.Net.Cookie" /> to be added to the <see cref="T:System.Net.CookieContainer" />. </param>
 		/// <param name="cookie">The <see cref="T:System.Net.Cookie" /> to be added to the <see cref="T:System.Net.CookieContainer" />. </param>
