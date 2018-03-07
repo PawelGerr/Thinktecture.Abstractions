@@ -55,5 +55,13 @@ namespace Thinktecture.Net.Sockets.Adapters
 		{
 			Implementation = stream ?? throw new ArgumentNullException(nameof(stream));
 		}
+
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void Close(int timeout)
+		{
+			Implementation.Close(timeout);
+		}
+#endif
 	}
 }

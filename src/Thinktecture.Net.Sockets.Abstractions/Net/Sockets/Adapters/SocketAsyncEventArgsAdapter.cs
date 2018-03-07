@@ -144,6 +144,22 @@ namespace Thinktecture.Net.Sockets.Adapters
 			Implementation.SetBuffer(offset, count);
 		}
 
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public TransmitFileOptions SendPacketsFlags
+		{
+			get => Implementation.SendPacketsFlags;
+			set => Implementation.SendPacketsFlags = value;
+		}
+
+		/// <inheritdoc />
+		public bool DisconnectReuseSocket
+		{
+			get => Implementation.DisconnectReuseSocket;
+			set => Implementation.DisconnectReuseSocket = value;
+		}
+#endif
+
 		/// <inheritdoc />
 		public void Dispose()
 		{

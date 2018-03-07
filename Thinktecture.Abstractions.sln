@@ -80,6 +80,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.IO.FileSystem.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.IO.Pipes.Abstractions.Tests", "test\Thinktecture.IO.Pipes.Abstractions.Tests\Thinktecture.IO.Pipes.Abstractions.Tests.csproj", "{FC251F73-332C-458D-B35D-CDEFEE486F99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.Net.Sockets.Abstractions.Tests", "test\Thinktecture.Net.Sockets.Abstractions.Tests\Thinktecture.Net.Sockets.Abstractions.Tests.csproj", "{DD9C990F-53CA-4DC1-942E-E2D7B4368618}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -210,6 +212,10 @@ Global
 		{FC251F73-332C-458D-B35D-CDEFEE486F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC251F73-332C-458D-B35D-CDEFEE486F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC251F73-332C-458D-B35D-CDEFEE486F99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD9C990F-53CA-4DC1-942E-E2D7B4368618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD9C990F-53CA-4DC1-942E-E2D7B4368618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD9C990F-53CA-4DC1-942E-E2D7B4368618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD9C990F-53CA-4DC1-942E-E2D7B4368618}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -246,6 +252,7 @@ Global
 		{DEF59E86-125F-47DA-B896-7BA737330760} = {C095C061-B87D-4C07-93E7-8CA0217ED68F}
 		{F411F6DF-6EA3-42F8-AC25-8FAC0EBDE5F5} = {C095C061-B87D-4C07-93E7-8CA0217ED68F}
 		{FC251F73-332C-458D-B35D-CDEFEE486F99} = {C095C061-B87D-4C07-93E7-8CA0217ED68F}
+		{DD9C990F-53CA-4DC1-942E-E2D7B4368618} = {C095C061-B87D-4C07-93E7-8CA0217ED68F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B2E59FD-B86D-4BF3-9FAF-64EBC004FCDA}

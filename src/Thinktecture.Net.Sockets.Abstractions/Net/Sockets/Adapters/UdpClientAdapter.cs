@@ -231,6 +231,96 @@ namespace Thinktecture.Net.Sockets.Adapters
 			return Implementation.SendAsync(datagram, bytes, hostname, port);
 		}
 
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public Task<int> SendAsync(byte[] datagram, int bytes)
+		{
+			return Implementation.SendAsync(datagram, bytes);
+		}
+
+		/// <inheritdoc />
+		public void AllowNatTraversal(bool allowed)
+		{
+			Implementation.AllowNatTraversal(allowed);
+		}
+
+		/// <inheritdoc />
+		public void Close()
+		{
+			Implementation.Close();
+		}
+
+		/// <inheritdoc />
+		public void Connect(string hostname, int port)
+		{
+			Implementation.Connect(hostname, port);
+		}
+
+		/// <inheritdoc />
+		public void Connect(IPAddress addr, int port)
+		{
+			Implementation.Connect(addr, port);
+		}
+
+		/// <inheritdoc />
+		public void Connect(IIPAddress addr, int port)
+		{
+			Implementation.Connect(addr.ToImplementation(), port);
+		}
+
+		/// <inheritdoc />
+		public void Connect(IPEndPoint endPoint)
+		{
+			Implementation.Connect(endPoint);
+		}
+
+		/// <inheritdoc />
+		public void Connect(IIPEndPoint endPoint)
+		{
+			Implementation.Connect(endPoint.ToImplementation());
+		}
+
+		/// <inheritdoc />
+		public byte[] Receive(ref IPEndPoint remoteEp)
+		{
+			return Implementation.Receive(ref remoteEp);
+		}
+
+		/// <inheritdoc />
+		public byte[] Receive(ref IIPEndPoint remoteEp)
+		{
+			var ep = remoteEp.ToImplementation();
+			var bytes = Implementation.Receive(ref ep);
+			remoteEp = ep.ToInterface();
+
+			return bytes;
+		}
+
+		/// <inheritdoc />
+		public int Send(byte[] dgram, int bytes, IPEndPoint endPoint)
+		{
+			return Implementation.Send(dgram, bytes, endPoint);
+		}
+
+		/// <inheritdoc />
+		public int Send(byte[] dgram, int bytes, IIPEndPoint endPoint)
+		{
+			return Implementation.Send(dgram, bytes, endPoint.ToImplementation());
+		}
+
+		/// <inheritdoc />
+		public int Send(byte[] dgram, int bytes, string hostname, int port)
+		{
+			return Implementation.Send(dgram, bytes, hostname, port);
+		}
+
+		/// <inheritdoc />
+		public int Send(byte[] dgram, int bytes)
+		{
+			return Implementation.Send(dgram, bytes);
+		}
+#endif
+
 		/// <inheritdoc />
 		public void Dispose()
 		{

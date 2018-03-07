@@ -112,5 +112,25 @@ namespace Thinktecture.Net.Sockets.Adapters
 		{
 			Implementation.Stop();
 		}
+
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void AllowNatTraversal(bool allowed)
+		{
+			Implementation.AllowNatTraversal(allowed);
+		}
+
+		/// <inheritdoc />
+		public ISocket AcceptSocket()
+		{
+			return Implementation.AcceptSocket().ToInterface();
+		}
+
+		/// <inheritdoc />
+		public ITcpClient AcceptTcpClient()
+		{
+			return Implementation.AcceptTcpClient().ToInterface();
+		}
+#endif
 	}
 }

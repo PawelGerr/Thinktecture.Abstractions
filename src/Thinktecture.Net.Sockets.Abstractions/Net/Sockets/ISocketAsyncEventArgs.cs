@@ -102,5 +102,15 @@ namespace Thinktecture.Net.Sockets
 		/// <param name="count">The maximum amount of data, in bytes, to send or receive in the buffer.</param>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">An argument was out of range. This exception occurs if the <paramref name="offset" /> parameter is less than zero or greater than the length of the array in the <see cref="P:System.Net.Sockets.SocketAsyncEventArgs.Buffer" /> property. This exception also occurs if the <paramref name="count" /> parameter is less than zero or greater than the length of the array in the <see cref="P:System.Net.Sockets.SocketAsyncEventArgs.Buffer" /> property minus the <paramref name="offset" /> parameter.</exception>
 		void SetBuffer(int offset, int count);
+
+#if NET46 || NETSTANDARD2_0
+		/// <summary>Gets or sets a bitwise combination of <see cref="T:System.Net.Sockets.TransmitFileOptions" /> values for an asynchronous operation used by the <see cref="M:System.Net.Sockets.Socket.SendPacketsAsync(System.Net.Sockets.SocketAsyncEventArgs)" /> method.</summary>
+		/// <returns>A <see cref="T:System.Net.Sockets.TransmitFileOptions" /> that contains a bitwise combination of values that are used with an asynchronous operation.</returns>
+		TransmitFileOptions SendPacketsFlags { get; set; }
+
+		/// <summary>Gets or sets a value that specifies if socket can be reused after a disconnect operation.</summary>
+		/// <returns>A <see cref="T:System.Boolean" /> that specifies if socket can be reused after a disconnect operation.</returns>
+		bool DisconnectReuseSocket { get; set; }
+#endif
 	}
 }

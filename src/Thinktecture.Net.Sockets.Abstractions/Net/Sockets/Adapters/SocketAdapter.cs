@@ -322,6 +322,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		}
 
 		/// <inheritdoc />
+		[NotNull]
 		public object GetSocketOption(SocketOptionLevel optionLevel, SocketOptionName optionName)
 		{
 			return Implementation.GetSocketOption(optionLevel, optionName);
@@ -716,5 +717,71 @@ namespace Thinktecture.Net.Sockets.Adapters
 		{
 			Implementation.Shutdown(how);
 		}
+
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public bool DisconnectAsync(SocketAsyncEventArgs e)
+		{
+			return Implementation.DisconnectAsync(e);
+		}
+
+		/// <inheritdoc />
+		public bool DisconnectAsync(ISocketAsyncEventArgs e)
+		{
+			return Implementation.DisconnectAsync(e.ToImplementation());
+		}
+
+		/// <inheritdoc />
+		public void Close()
+		{
+			Implementation.Close();
+		}
+
+		/// <inheritdoc />
+		public void Close(int timeout)
+		{
+			Implementation.Close(timeout);
+		}
+
+		/// <inheritdoc />
+		public void SendFile(string fileName)
+		{
+			Implementation.SendFile(fileName);
+		}
+
+		/// <inheritdoc />
+		public void SendFile(string fileName, byte[] preBuffer, byte[] postBuffer, TransmitFileOptions flags)
+		{
+			Implementation.SendFile(fileName, preBuffer, postBuffer, flags);
+		}
+
+		/// <inheritdoc />
+		public void SetIPProtectionLevel(IPProtectionLevel level)
+		{
+			Implementation.SetIPProtectionLevel(level);
+		}
+
+		/// <inheritdoc />
+		public SocketInformation DuplicateAndClose(int targetProcessId)
+		{
+			return Implementation.DuplicateAndClose(targetProcessId);
+		}
+
+		/// <inheritdoc />
+		public void Disconnect(bool reuseSocket)
+		{
+			Implementation.Disconnect(reuseSocket);
+		}
+
+		/// <inheritdoc />
+		public IntPtr Handle => Implementation.Handle;
+
+		/// <inheritdoc />
+		public bool UseOnlyOverlappedIO
+		{
+			get => Implementation.UseOnlyOverlappedIO;
+			set => Implementation.UseOnlyOverlappedIO = value;
+		}
+#endif
 	}
 }

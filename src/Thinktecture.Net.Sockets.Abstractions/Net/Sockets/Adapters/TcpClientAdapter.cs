@@ -137,6 +137,56 @@ namespace Thinktecture.Net.Sockets.Adapters
 			return Implementation.GetStream().ToInterface();
 		}
 
+#if NET46 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void Connect(string hostname, int port)
+		{
+			Implementation.Connect(hostname, port);
+		}
+
+		/// <inheritdoc />
+		public void Connect(IPAddress address, int port)
+		{
+			Implementation.Connect(address, port);
+		}
+
+		/// <inheritdoc />
+		public void Connect(IIPAddress address, int port)
+		{
+			Implementation.Connect(address.ToImplementation(), port);
+		}
+
+		/// <inheritdoc />
+		public void Connect(IPEndPoint remoteEp)
+		{
+			Implementation.Connect(remoteEp);
+		}
+
+		/// <inheritdoc />
+		public void Connect(IIPEndPoint remoteEp)
+		{
+			Implementation.Connect(remoteEp.ToImplementation());
+		}
+
+		/// <inheritdoc />
+		public void Connect(IPAddress[] ipAddresses, int port)
+		{
+			Implementation.Connect(ipAddresses, port);
+		}
+
+		/// <inheritdoc />
+		public void Connect(IIPAddress[] ipAddresses, int port)
+		{
+			Implementation.Connect(ipAddresses.ToImplementation<IIPAddress, IPAddress>(), port);
+		}
+
+		/// <inheritdoc />
+		public void Close()
+		{
+			Implementation.Close();
+		}
+#endif
+
 		/// <inheritdoc />
 		public void Dispose()
 		{
@@ -144,3 +194,4 @@ namespace Thinktecture.Net.Sockets.Adapters
 		}
 	}
 }
+
