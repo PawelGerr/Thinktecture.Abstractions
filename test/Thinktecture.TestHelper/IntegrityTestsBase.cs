@@ -17,7 +17,8 @@ namespace Thinktecture
 		protected CustomMappings CustomTypeMappings { get; }
 		protected List<Type> ExcludedTypes { get; }
 		protected List<MemberInfo> ExcludedMembers { get; }
-		protected Func<Type, Type, MemberInfo, bool> ExcludeCallback { get; set; }
+		protected Func<Type, bool> ExcludeTypeCallback { get; set; }
+		protected Func<Type, Type, MemberInfo, bool> ExcludeMemberCallback { get; set; }
 
 		protected IntegrityTestsBase(string assemblyName)
 			: this(GetAssembly($"System.{assemblyName}"), GetAssembly($"Thinktecture.{assemblyName}.Abstractions"))
@@ -71,20 +72,29 @@ namespace Thinktecture
 		protected void CheckTypes()
 		{
 			var types = _originalTypes
-			            .Where(t => !ExcludedTypes.Contains(t))
+			            .Where(t => !ExcludedTypes.Contains(t) && !(ExcludeTypeCallback?.Invoke(t) ?? false))
 			            .ToList();
 			var abstractions = _abstractionTypes
-			                   .Where(t => !ExcludedTypes.Contains(t))
+			                   .Where(t => !ExcludedTypes.Contains(t) && !(ExcludeTypeCallback?.Invoke(t) ?? false))
 			                   .ToList();
+
+			var missingAbstractions = new List<Type>();
 
 			foreach (var t in GetTypes())
 			{
-				t.Abstraction.Should().NotBeNull($"abstraction for type {t.Original.FullName} not found");
-
 				types.Remove(t.Original);
-				abstractions.Remove(t.Abstraction);
+
+				if (t.Abstraction == null)
+				{
+					missingAbstractions.Add(t.Original);
+				}
+				else
+				{
+					abstractions.Remove(t.Abstraction);
+				}
 			}
 
+			missingAbstractions.Should().BeEmpty($"abstraction for following {missingAbstractions.Count} type(s) not found: {String.Join(", ", missingAbstractions.Select(t => t.FullName))}");
 			types.Should().BeEmpty();
 			abstractions.Should().BeEmpty();
 		}
@@ -118,7 +128,7 @@ namespace Thinktecture
 				       if (ExcludedMembers.Contains(m))
 					       return false;
 
-				       if (ExcludeCallback?.Invoke(type, otherType, m) ?? false)
+				       if (ExcludeMemberCallback?.Invoke(type, otherType, m) ?? false)
 					       return false;
 
 				       if (m is MethodInfo methodInfo)
@@ -264,9 +274,6 @@ namespace Thinktecture
 		{
 			foreach (var originalType in _originalTypes)
 			{
-				if (ExcludedTypes.Contains(originalType))
-					continue;
-
 				if (CustomTypeMappings.TryGet(originalType, out var abstractionTypes))
 				{
 					foreach (var abstractionType in abstractionTypes)
@@ -276,6 +283,12 @@ namespace Thinktecture
 				}
 				else
 				{
+					if (ExcludedTypes.Contains(originalType))
+						continue;
+
+					if (ExcludeTypeCallback?.Invoke(originalType) == true)
+						continue;
+
 					var abstractionTypeName = BuildAbstractionTypeName(originalType);
 					var abstractionType = _abstractionTypes.FirstOrDefault(t => t.FullName == abstractionTypeName);
 
@@ -315,7 +328,7 @@ namespace Thinktecture
 		{
 			var types = GetForwardedTypes(assembly)
 			            .Concat(assembly.GetTypes())
-			            .Where(t => t.IsPublic && !t.IsEnum)
+			            .Where(t => t.IsPublic && !t.IsEnum && !typeof(Exception).IsAssignableFrom(t))
 			            .ToList().AsReadOnly();
 
 			types.Should().NotBeEmpty($"the assembly {assembly.GetName().Name} is empty");

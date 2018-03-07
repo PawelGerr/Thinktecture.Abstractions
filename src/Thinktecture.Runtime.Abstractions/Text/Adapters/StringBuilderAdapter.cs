@@ -3,9 +3,12 @@ using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text;
 using JetBrains.Annotations;
+#if NET45 || NET462 || NETSTANDARD2_0
+using System.Runtime.Serialization;
+
+#endif
 
 // ReSharper disable AssignNullToNotNullAttribute
-
 namespace Thinktecture.Text.Adapters
 {
 	/// <summary>
@@ -254,6 +257,48 @@ namespace Thinktecture.Text.Adapters
 		}
 
 		/// <inheritdoc />
+		public IStringBuilder AppendFormat(string format, object arg0)
+		{
+			Implementation.AppendFormat(format, arg0);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder AppendFormat(string format, object arg0, object arg1)
+		{
+			Implementation.AppendFormat(format, arg0, arg1);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder AppendFormat(string format, object arg0, object arg1, object arg2)
+		{
+			Implementation.AppendFormat(format, arg0, arg1, arg2);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder AppendFormat(IFormatProvider provider, string format, object arg0)
+		{
+			Implementation.AppendFormat(provider, format, arg0);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder AppendFormat(IFormatProvider provider, string format, object arg0, object arg1)
+		{
+			Implementation.AppendFormat(provider, format, arg0, arg1);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder AppendFormat(IFormatProvider provider, string format, object arg0, object arg1, object arg2)
+		{
+			Implementation.AppendFormat(provider, format, arg0, arg1, arg2);
+			return this;
+		}
+
+		/// <inheritdoc />
 		public IStringBuilder AppendLine()
 		{
 			Implementation.AppendLine();
@@ -469,5 +514,23 @@ namespace Thinktecture.Text.Adapters
 		{
 			return Implementation.ToString(startIndex, length);
 		}
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void GetObjectData(SerializationInfo info, StreamingContext context)
+		{
+			((ISerializable)Implementation).GetObjectData(info, context);
+		}
+
+#endif
+
+#if NET462 || NETSTANDARD1_3 || NETSTANDARD1_5 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public unsafe IStringBuilder Append(char* value, int valueCount)
+		{
+			Implementation.Append(value, valueCount);
+			return this;
+		}
+#endif
 	}
 }

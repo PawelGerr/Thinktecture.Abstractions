@@ -136,5 +136,20 @@ namespace Thinktecture.Adapters
 		{
 			return DateTime.TryParseExact(s, formats, provider, style, out result);
 		}
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public DateTime FromOADate(double d)
+		{
+			return DateTime.FromOADate(d);
+		}
+
+#endif
+
+		/// <inheritdoc />
+		public bool IsLeapYear(int year)
+		{
+			return DateTime.IsLeapYear(year);
+		}
 	}
 }

@@ -1,11 +1,19 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Text;
 using JetBrains.Annotations;
+#if NET45 || NET462 || NETSTANDARD2_0
+using System.Runtime.Serialization;
+
+#endif
 
 namespace Thinktecture.Text
 {
 	/// <summary>Represents a mutable string of characters. This class cannot be inherited.To browse the .NET Framework source code for this type, see the Reference Source.</summary>
 	public interface IStringBuilder : IAbstraction<StringBuilder>
+#if NET45 || NET462 || NETSTANDARD2_0
+	                                  , ISerializable
+#endif
 	{
 		/// <summary>Gets or sets the maximum number of characters that can be contained in the memory allocated by the current instance.</summary>
 		/// <returns>The maximum number of characters that can be contained in the memory allocated by the current instance. Its value can range from <see cref="P:System.Text.StringBuilder.Length" /> to <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </returns>
@@ -28,6 +36,7 @@ namespace Thinktecture.Text
 		/// <paramref name="index" /> is outside the bounds of this instance while setting a character. </exception>
 		/// <exception cref="T:System.IndexOutOfRangeException">
 		/// <paramref name="index" /> is outside the bounds of this instance while getting a character. </exception>
+		[IndexerName("Chars")]
 		char this[int index] { get; set; }
 
 		/// <summary>Appends the string representation of a specified Boolean value to this instance.</summary>
@@ -200,6 +209,85 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The length of the expanded string would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
 		[NotNull]
 		IStringBuilder AppendFormat([NotNull] string format, [NotNull] params object[] args);
+
+
+		/// <summary>Appends the string returned by processing a composite format string, which contains zero or more format items, to this instance. Each format item is replaced by the string representation of a single argument.</summary>
+		/// <returns>A reference to this instance with <paramref name="format" /> appended. Each format item in <paramref name="format" /> is replaced by the string representation of <paramref name="arg0" />.</returns>
+		/// <param name="format">A composite format string (see Remarks). </param>
+		/// <param name="arg0">An object to format. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="format" /> is null. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="format" /> is invalid. -or-The index of a format item is less than 0 (zero), or greater than or equal to 1.</exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">The length of the expanded string would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
+		/// <filterpriority>2</filterpriority>
+		IStringBuilder AppendFormat(string format, object arg0);
+
+		/// <summary>Appends the string returned by processing a composite format string, which contains zero or more format items, to this instance. Each format item is replaced by the string representation of either of two arguments.</summary>
+		/// <returns>A reference to this instance with <paramref name="format" /> appended. Each format item in <paramref name="format" /> is replaced by the string representation of the corresponding object argument.</returns>
+		/// <param name="format">A composite format string (see Remarks). </param>
+		/// <param name="arg0">The first object to format. </param>
+		/// <param name="arg1">The second object to format. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="format" /> is null. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="format" /> is invalid.-or-The index of a format item is less than 0 (zero), or greater than or equal to 2. </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">The length of the expanded string would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
+		/// <filterpriority>2</filterpriority>
+		IStringBuilder AppendFormat(string format, object arg0, object arg1);
+
+		/// <summary>Appends the string returned by processing a composite format string, which contains zero or more format items, to this instance. Each format item is replaced by the string representation of either of three arguments.</summary>
+		/// <returns>A reference to this instance with <paramref name="format" /> appended. Each format item in <paramref name="format" /> is replaced by the string representation of the corresponding object argument.</returns>
+		/// <param name="format">A composite format string (see Remarks). </param>
+		/// <param name="arg0">The first object to format. </param>
+		/// <param name="arg1">The second object to format. </param>
+		/// <param name="arg2">The third object to format. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="format" /> is null. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="format" /> is invalid.-or-The index of a format item is less than 0 (zero), or greater than or equal to 3.</exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">The length of the expanded string would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
+		/// <filterpriority>2</filterpriority>
+		IStringBuilder AppendFormat(string format, object arg0, object arg1, object arg2);
+
+		/// <summary>Appends the string returned by processing a composite format string, which contains zero or more format items, to this instance. Each format item is replaced by the string representation of a single argument using a specified format provider. </summary>
+		/// <returns>A reference to this instance after the append operation has completed. After the append operation, this instance contains any data that existed before the operation, suffixed by a copy of <paramref name="format" /> in which any format specification is replaced by the string representation of <paramref name="arg0" />. </returns>
+		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
+		/// <param name="format">A composite format string (see Remarks). </param>
+		/// <param name="arg0">The object to format. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="format" /> is null. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="format" /> is invalid. -or-The index of a format item is less than 0 (zero), or greater than or equal to one (1). </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">The length of the expanded string would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
+		IStringBuilder AppendFormat(IFormatProvider provider, string format, object arg0);
+
+		/// <summary>Appends the string returned by processing a composite format string, which contains zero or more format items, to this instance. Each format item is replaced by the string representation of either of two arguments using a specified format provider.</summary>
+		/// <returns>A reference to this instance after the append operation has completed. After the append operation, this instance contains any data that existed before the operation, suffixed by a copy of <paramref name="format" /> where any format specification is replaced by the string representation of the corresponding object argument. </returns>
+		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
+		/// <param name="format">A composite format string (see Remarks). </param>
+		/// <param name="arg0">The first object to format. </param>
+		/// <param name="arg1">The second object to format. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="format" /> is null. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="format" /> is invalid. -or-The index of a format item is less than 0 (zero), or greater than or equal to 2 (two). </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">The length of the expanded string would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
+		IStringBuilder AppendFormat(IFormatProvider provider, string format, object arg0, object arg1);
+
+		/// <summary>Appends the string returned by processing a composite format string, which contains zero or more format items, to this instance. Each format item is replaced by the string representation of either of three arguments using a specified format provider.</summary>
+		/// <returns>A reference to this instance after the append operation has completed. After the append operation, this instance contains any data that existed before the operation, suffixed by a copy of <paramref name="format" /> where any format specification is replaced by the string representation of the corresponding object argument. </returns>
+		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
+		/// <param name="format">A composite format string (see Remarks). </param>
+		/// <param name="arg0">The first object to format. </param>
+		/// <param name="arg1">The second object to format. </param>
+		/// <param name="arg2">The third object to format. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="format" /> is null. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="format" /> is invalid. -or-The index of a format item is less than 0 (zero), or greater than or equal to 3 (three). </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">The length of the expanded string would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
+		IStringBuilder AppendFormat(IFormatProvider provider, string format, object arg0, object arg1, object arg2);
 
 		/// <summary>Appends the default line terminator to the end of the current <see cref="T:System.Text.StringBuilder" /> object.</summary>
 		/// <returns>A reference to this instance after the append operation has completed.</returns>
@@ -489,5 +577,17 @@ namespace Thinktecture.Text
 		/// <paramref name="startIndex" /> or <paramref name="length" /> is less than zero.-or- The sum of <paramref name="startIndex" /> and <paramref name="length" /> is greater than the length of the current instance. </exception>
 		[NotNull]
 		string ToString(int startIndex, int length);
+
+#if NET462 || NETSTANDARD1_3 || NETSTANDARD1_5 || NETSTANDARD2_0
+		/// <summary>Appends an array of Unicode characters starting at a specified address to this instance. </summary>
+		/// <returns>A reference to this instance after the append operation has completed. </returns>
+		/// <param name="value">A pointer to an array of characters. </param>
+		/// <param name="valueCount">The number of characters in the array. </param>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="valueCount" /> is less than zero. -or-Enlarging the value of this instance would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
+		/// <exception cref="T:System.NullReferenceException">
+		/// <paramref name="value" /> is a null pointer. </exception>
+		unsafe IStringBuilder Append(char* value, int valueCount);
+#endif
 	}
 }

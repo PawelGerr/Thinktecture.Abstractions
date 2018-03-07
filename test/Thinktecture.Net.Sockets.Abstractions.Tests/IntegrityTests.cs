@@ -72,7 +72,7 @@ namespace Thinktecture
 
 			ExcludeMember<EventArgs>(nameof(EventArgs.Empty));
 
-			ExcludeCallback = Exclude;
+			ExcludeMemberCallback = Exclude;
 		}
 
 		private bool Exclude(Type type, Type otherType, MemberInfo member)

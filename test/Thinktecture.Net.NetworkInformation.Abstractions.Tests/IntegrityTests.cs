@@ -32,7 +32,7 @@ namespace Thinktecture
 			ExcludeMember<EventArgs>(nameof(EventArgs.Empty));
 			ExcludeMember<NetworkChange>("RegisterNetworkChange"); // deprecated
 
-			ExcludeCallback = ExcludeMember;
+			ExcludeMemberCallback = ExcludeMember;
 		}
 
 		private bool ExcludeMember(Type type, Type otherType, MemberInfo memberInfo)

@@ -205,5 +205,23 @@ namespace Thinktecture
 		/// <paramref name="style" /> is not a valid <see cref="T:System.Globalization.DateTimeStyles" /> value.-or-<paramref name="style" /> contains an invalid combination of <see cref="T:System.Globalization.DateTimeStyles" /> values (for example, both <see cref="F:System.Globalization.DateTimeStyles.AssumeLocal" /> and <see cref="F:System.Globalization.DateTimeStyles.AssumeUniversal" />).</exception>
 		/// <filterpriority>1</filterpriority>
 		bool TryParseExact(string s, string[] formats, IFormatProvider provider, DateTimeStyles style, out DateTime result);
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <summary>Returns a <see cref="T:System.DateTime" /> equivalent to the specified OLE Automation Date.</summary>
+		/// <returns>An object that represents the same date and time as <paramref name="d" />.</returns>
+		/// <param name="d">An OLE Automation Date value. </param>
+		/// <exception cref="T:System.ArgumentException">The date is not a valid OLE Automation Date value. </exception>
+		/// <filterpriority>1</filterpriority>
+		// ReSharper disable once InconsistentNaming
+		DateTime FromOADate(double d);
+#endif
+
+		/// <summary>Returns an indication whether the specified year is a leap year.</summary>
+		/// <returns>true if <paramref name="year" /> is a leap year; otherwise, false.</returns>
+		/// <param name="year">A 4-digit year. </param>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="year" /> is less than 1 or greater than 9999.</exception>
+		/// <filterpriority>1</filterpriority>
+		bool IsLeapYear(int year);
 	}
 }

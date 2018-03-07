@@ -36,7 +36,7 @@ namespace Thinktecture
 			ExcludeMember<IPAddress>(nameof(IPAddress.Address)); // deprecated
 #pragma warning restore 618
 
-			ExcludeCallback = Exclude;
+			ExcludeMemberCallback = Exclude;
 		}
 
 		private bool Exclude(Type type, Type otherType, MemberInfo member)
