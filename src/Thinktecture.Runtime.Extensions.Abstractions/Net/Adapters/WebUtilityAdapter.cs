@@ -1,7 +1,10 @@
 using System.Net;
+#if NET45 || NET462 || NETSTANDARD2_0
+using System.IO;
+
+#endif
 
 // ReSharper disable AssignNullToNotNullAttribute
-
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>
@@ -44,5 +47,19 @@ namespace Thinktecture.Net.Adapters
 		{
 			return WebUtility.UrlDecodeToBytes(encodedValue, offset, count);
 		}
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void HtmlEncode(string value, TextWriter output)
+		{
+			WebUtility.HtmlEncode(value, output);
+		}
+
+		/// <inheritdoc />
+		public void HtmlDecode(string value, TextWriter output)
+		{
+			WebUtility.HtmlDecode(value, output);
+		}
+#endif
 	}
 }

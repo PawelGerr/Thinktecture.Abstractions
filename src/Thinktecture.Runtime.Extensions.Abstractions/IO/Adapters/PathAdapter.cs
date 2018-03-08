@@ -9,6 +9,20 @@ namespace Thinktecture.IO.Adapters
 	/// </summary>
 	public class PathAdapter : IPath
 	{
+#if !NETSTANDARD1_0
+		/// <inheritdoc />
+		public char DirectorySeparatorChar => Path.DirectorySeparatorChar;
+
+		/// <inheritdoc />
+		public char AltDirectorySeparatorChar => Path.AltDirectorySeparatorChar;
+
+		/// <inheritdoc />
+		public char VolumeSeparatorChar => Path.VolumeSeparatorChar;
+
+		/// <inheritdoc />
+		public char PathSeparator => Path.PathSeparator;
+#endif
+
 		/// <inheritdoc />
 		public string ChangeExtension(string path, string extension)
 		{
@@ -80,5 +94,43 @@ namespace Thinktecture.IO.Adapters
 		{
 			return Path.IsPathRooted(path);
 		}
+
+		/// <inheritdoc />
+		public string Combine(string path1, string path2)
+		{
+			return Path.Combine(path1, path2);
+		}
+
+		/// <inheritdoc />
+		public string Combine(string path1, string path2, string path3)
+		{
+			return Path.Combine(path1, path2, path3);
+		}
+
+		/// <inheritdoc />
+		public string Combine(string path1, string path2, string path3, string path4)
+		{
+			return Path.Combine(path1, path2, path3, path4);
+		}
+
+#if !NETSTANDARD1_0
+		/// <inheritdoc />
+		public string GetFullPath(string path)
+		{
+			return Path.GetFullPath(path);
+		}
+
+		/// <inheritdoc />
+		public string GetTempPath()
+		{
+			return Path.GetTempPath();
+		}
+
+		/// <inheritdoc />
+		public string GetTempFileName()
+		{
+			return Path.GetTempFileName();
+		}
+#endif
 	}
 }

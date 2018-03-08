@@ -415,5 +415,34 @@ namespace Thinktecture
 		/// <returns>The integral part of <paramref name="d" />; that is, the number that remains after any fractional digits have been discarded, or one of the values listed in the following table. <paramref name="d" />Return value<see cref="F:System.Double.NaN" /><see cref="F:System.Double.NaN" /><see cref="F:System.Double.NegativeInfinity" /><see cref="F:System.Double.NegativeInfinity" /><see cref="F:System.Double.PositiveInfinity" /><see cref="F:System.Double.PositiveInfinity" /></returns>
 		/// <param name="d">A number to truncate.</param>
 		double Truncate(double d);
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <summary>Produces the full product of two 32-bit numbers.</summary>
+		/// <returns>The number containing the product of the specified numbers.</returns>
+		/// <param name="a">The first number to multiply. </param>
+		/// <param name="b">The second number to multiply. </param>
+		/// <filterpriority>1</filterpriority>
+		long BigMul(int a, int b);
+
+		/// <summary>Calculates the quotient of two 32-bit signed integers and also returns the remainder in an output parameter.</summary>
+		/// <returns>The quotient of the specified numbers.</returns>
+		/// <param name="a">The dividend. </param>
+		/// <param name="b">The divisor. </param>
+		/// <param name="result">The remainder. </param>
+		/// <exception cref="T:System.DivideByZeroException">
+		/// <paramref name="b" /> is zero.</exception>
+		/// <filterpriority>1</filterpriority>
+		int DivRem(int a, int b, out int result);
+
+		/// <summary>Calculates the quotient of two 64-bit signed integers and also returns the remainder in an output parameter.</summary>
+		/// <returns>The quotient of the specified numbers.</returns>
+		/// <param name="a">The dividend. </param>
+		/// <param name="b">The divisor. </param>
+		/// <param name="result">The remainder. </param>
+		/// <exception cref="T:System.DivideByZeroException">
+		/// <paramref name="b" /> is zero.</exception>
+		/// <filterpriority>1</filterpriority>
+		long DivRem(long a, long b, out long result);
+#endif
 	}
 }

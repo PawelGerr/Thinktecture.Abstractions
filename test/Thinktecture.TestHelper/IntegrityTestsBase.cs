@@ -125,6 +125,9 @@ namespace Thinktecture
 			return members
 			       .Where(m =>
 			       {
+				       if (m is Type)
+					       return false;
+
 				       if (ExcludedMembers.Contains(m))
 					       return false;
 

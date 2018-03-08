@@ -7,6 +7,24 @@ namespace Thinktecture.IO
 	/// </summary>
 	public interface IPath
 	{
+#if !NETSTANDARD1_0
+		/// <summary>Provides a platform-specific character used to separate directory levels in a path string that reflects a hierarchical file system organization.</summary>
+		/// <filterpriority>1</filterpriority>
+		char DirectorySeparatorChar { get; }
+
+		/// <summary>Provides a platform-specific alternate character used to separate directory levels in a path string that reflects a hierarchical file system organization.</summary>
+		/// <filterpriority>1</filterpriority>
+		char AltDirectorySeparatorChar { get; }
+
+		/// <summary>Provides a platform-specific volume separator character.</summary>
+		/// <filterpriority>1</filterpriority>
+		char VolumeSeparatorChar { get; }
+
+		/// <summary>A platform-specific separator character used to separate path strings in environment variables.</summary>
+		/// <filterpriority>1</filterpriority>
+		char PathSeparator { get; }
+#endif
+
 		/// <summary>Changes the extension of a path string.</summary>
 		/// <returns>The modified path information.On Windows-based desktop platforms, if <paramref name="path" /> is null or an empty string (""), the path information is returned unmodified. If <paramref name="extension" /> is null, the returned string contains the specified path with its extension removed. If <paramref name="path" /> has no extension, and <paramref name="extension" /> is not null, the returned path string contains <paramref name="extension" /> appended to the end of <paramref name="path" />.</returns>
 		/// <param name="path">The path information to modify. The path cannot contain any of the characters defined in <see cref="M:System.IO.Path.GetInvalidPathChars" />. </param>
@@ -92,5 +110,77 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="path" /> contains one or more of the invalid characters defined in <see cref="M:System.IO.Path.GetInvalidPathChars" />. </exception>
 		bool IsPathRooted([CanBeNull] string path);
+
+		/// <summary>Combines two strings into a path.</summary>
+		/// <returns>The combined paths. If one of the specified paths is a zero-length string, this method returns the other path. If <paramref name="path2" /> contains an absolute path, this method returns <paramref name="path2" />.</returns>
+		/// <param name="path1">The first path to combine. </param>
+		/// <param name="path2">The second path to combine. </param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path1" /> or <paramref name="path2" /> contains one or more of the invalid characters defined in <see cref="M:System.IO.Path.GetInvalidPathChars" />. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="path1" /> or <paramref name="path2" /> is null. </exception>
+		/// <filterpriority>1</filterpriority>
+		string Combine(string path1, string path2);
+
+		/// <summary>Combines three strings into a path.</summary>
+		/// <returns>The combined paths.</returns>
+		/// <param name="path1">The first path to combine. </param>
+		/// <param name="path2">The second path to combine. </param>
+		/// <param name="path3">The third path to combine.</param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path1" />, <paramref name="path2" />, or <paramref name="path3" /> contains one or more of the invalid characters defined in <see cref="M:System.IO.Path.GetInvalidPathChars" />. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="path1" />, <paramref name="path2" />, or <paramref name="path3" /> is null. </exception>
+		string Combine(string path1, string path2, string path3);
+
+		/// <summary>Combines four strings into a path.</summary>
+		/// <returns>The combined paths.</returns>
+		/// <param name="path1">The first path to combine. </param>
+		/// <param name="path2">The second path to combine. </param>
+		/// <param name="path3">The third path to combine.</param>
+		/// <param name="path4">The fourth path to combine.</param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path1" />, <paramref name="path2" />, <paramref name="path3" />, or <paramref name="path4" /> contains one or more of the invalid characters defined in <see cref="M:System.IO.Path.GetInvalidPathChars" />. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="path1" />, <paramref name="path2" />, <paramref name="path3" />, or <paramref name="path4" /> is null. </exception>
+		string Combine(string path1, string path2, string path3, string path4);
+
+#if !NETSTANDARD1_0
+		/// <summary>Returns the absolute path for the specified path string.</summary>
+		/// <returns>The fully qualified location of <paramref name="path" />, such as "C:\MyFile.txt".</returns>
+		/// <param name="path">The file or directory for which to obtain absolute path information. </param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more of the invalid characters defined in <see cref="M:System.IO.Path.GetInvalidPathChars" />.-or- The system could not retrieve the absolute path. </exception>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permissions. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="path" /> is null. </exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="path" /> contains a colon (":") that is not part of a volume identifier (for example, "c:\"). </exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+		/// </PermissionSet>
+		string GetFullPath(string path);
+
+		/// <summary>Returns the path of the current user's temporary folder.</summary>
+		/// <returns>The path to the temporary folder, ending with a backslash.</returns>
+		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permissions. </exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		string GetTempPath();
+
+		/// <summary>Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.</summary>
+		/// <returns>The full path of the temporary file.</returns>
+		/// <exception cref="T:System.IO.IOException">An I/O error occurs, such as no unique temporary file name is available.- or -This method was unable to create a temporary file.</exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		string GetTempFileName();
+#endif
 	}
 }

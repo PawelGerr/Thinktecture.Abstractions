@@ -35,6 +35,37 @@ namespace Thinktecture
 		[CanBeNull]
 		object ChangeType([CanBeNull] object value, [NotNull] Type conversionType, [CanBeNull] IFormatProvider provider);
 
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <summary>Returns an object of the specified type whose value is equivalent to the specified object.</summary>
+		/// <returns>An object whose underlying type is <paramref name="typeCode" /> and whose value is equivalent to <paramref name="value" />.-or-A null reference (Nothing in Visual Basic), if <paramref name="value" /> is null and <paramref name="typeCode" /> is <see cref="F:System.TypeCode.Empty" />, <see cref="F:System.TypeCode.String" />, or <see cref="F:System.TypeCode.Object" />.</returns>
+		/// <param name="value">An object that implements the <see cref="T:System.IConvertible" /> interface. </param>
+		/// <param name="typeCode">The type of object to return. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported.  -or-<paramref name="value" /> is null and <paramref name="typeCode" /> specifies a value type.-or-<paramref name="value" /> does not implement the <see cref="T:System.IConvertible" /> interface.</exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="value" /> is not in a format recognized by the <paramref name="typeCode" /> type.</exception>
+		/// <exception cref="T:System.OverflowException">
+		/// <paramref name="value" /> represents a number that is out of the range of the <paramref name="typeCode" /> type.</exception>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="typeCode" /> is invalid. </exception>
+		/// <filterpriority>1</filterpriority>
+		object ChangeType(object value, TypeCode typeCode);
+
+		/// <summary>Returns an object of the specified type whose value is equivalent to the specified object. A parameter supplies culture-specific formatting information.</summary>
+		/// <returns>An object whose underlying type is <paramref name="typeCode" /> and whose value is equivalent to <paramref name="value" />.-or- A null reference (Nothing in Visual Basic), if <paramref name="value" /> is null and <paramref name="typeCode" /> is <see cref="F:System.TypeCode.Empty" />, <see cref="F:System.TypeCode.String" />, or <see cref="F:System.TypeCode.Object" />.</returns>
+		/// <param name="value">An object that implements the <see cref="T:System.IConvertible" /> interface. </param>
+		/// <param name="typeCode">The type of object to return. </param>
+		/// <param name="provider">An object that supplies culture-specific formatting information. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported.  -or-<paramref name="value" /> is null and <paramref name="typeCode" /> specifies a value type.-or-<paramref name="value" /> does not implement the <see cref="T:System.IConvertible" /> interface.</exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="value" /> is not in a format for the <paramref name="typeCode" /> type recognized by <paramref name="provider" />.</exception>
+		/// <exception cref="T:System.OverflowException">
+		/// <paramref name="value" /> represents a number that is out of the range of the <paramref name="typeCode" /> type.</exception>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="typeCode" /> is invalid. </exception>
+		/// <filterpriority>1</filterpriority>
+		object ChangeType(object value, TypeCode typeCode, IFormatProvider provider);
+#endif
+
 		/// <summary>Converts a subset of a Unicode character array, which encodes binary data as base-64 digits, to an equivalent 8-bit unsigned integer array. Parameters specify the subset in the input array and the number of elements to convert.</summary>
 		/// <returns>An array of 8-bit unsigned integers equivalent to <paramref name="length" /> elements at position <paramref name="offset" /> in <paramref name="inArray" />.</returns>
 		/// <param name="inArray">A Unicode character array. </param>
@@ -1986,5 +2017,340 @@ namespace Thinktecture
 		/// <paramref name="value" /> is returned unchanged.</returns>
 		/// <param name="value">The 64-bit unsigned integer to return. </param>
 		ulong ToUInt64(ulong value);
+
+#if !NETSTANDARD1_0
+		/// <summary>Returns the <see cref="T:System.TypeCode" /> for the specified object.</summary>
+		/// <returns>The <see cref="T:System.TypeCode" /> for <paramref name="value" />, or <see cref="F:System.TypeCode.Empty" /> if <paramref name="value" /> is null.</returns>
+		/// <param name="value">An object that implements the <see cref="T:System.IConvertible" /> interface. </param>
+		/// <filterpriority>1</filterpriority>
+		TypeCode GetTypeCode(object value);
+#endif
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The Unicode character to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		bool ToBoolean(char value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		bool ToBoolean(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		byte ToByte(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The Boolean value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		char ToChar(bool value);
+
+		/// <summary>Returns the specified Unicode character value; no actual conversion is performed.</summary>
+		/// <returns>
+		/// <paramref name="value" /> is returned unchanged.</returns>
+		/// <param name="value">The Unicode character to return. </param>
+		/// <filterpriority>1</filterpriority>
+		char ToChar(char value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The single-precision floating-point number to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		char ToChar(float value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The double-precision floating-point number to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		char ToChar(double value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The decimal number to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		char ToChar(Decimal value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		char ToChar(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		short ToInt16(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert.</param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		int ToInt32(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		long ToInt64(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		sbyte ToSByte(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		ushort ToUInt16(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		uint ToUInt32(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		ulong ToUInt64(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The Unicode character to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		float ToSingle(char value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		float ToSingle(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The Unicode character to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		double ToDouble(char value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		double ToDouble(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The Unicode character to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		decimal ToDecimal(char value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The date and time value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		decimal ToDecimal(DateTime value);
+
+		/// <summary>Returns the specified <see cref="T:System.DateTime" /> object; no actual conversion is performed.</summary>
+		/// <returns>
+		/// <paramref name="value" /> is returned unchanged.</returns>
+		/// <param name="value">A date and time value. </param>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(DateTime value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The 8-bit signed integer to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(sbyte value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The 8-bit unsigned integer to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(byte value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The 16-bit signed integer to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(short value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The 16-bit unsigned integer to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(ushort value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The 32-bit signed integer to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(int value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The 32-bit unsigned integer to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(uint value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The 64-bit signed integer to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(long value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The 64-bit unsigned integer to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(ulong value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The Boolean value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(bool value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The Unicode character to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(char value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The single-precision floating-point value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(float value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The double-precision floating-point value to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(double value);
+
+		/// <summary>Calling this method always throws <see cref="T:System.InvalidCastException" />.</summary>
+		/// <returns>This conversion is not supported. No value is returned.</returns>
+		/// <param name="value">The number to convert. </param>
+		/// <exception cref="T:System.InvalidCastException">This conversion is not supported. </exception>
+		/// <filterpriority>1</filterpriority>
+		DateTime ToDateTime(decimal value);
+
+		/// <summary>Returns the specified string instance; no actual conversion is performed.</summary>
+		/// <returns>
+		/// <paramref name="value" /> is returned unchanged.</returns>
+		/// <param name="value">The string to return. </param>
+		/// <filterpriority>1</filterpriority>
+		string ToString(string value);
+
+		/// <summary>Returns the specified string instance; no actual conversion is performed.</summary>
+		/// <returns>
+		/// <paramref name="value" /> is returned unchanged.</returns>
+		/// <param name="value">The string to return. </param>
+		/// <param name="provider">An object that supplies culture-specific formatting information. This parameter is ignored.</param>
+		/// <filterpriority>1</filterpriority>
+		string ToString(string value, IFormatProvider provider);
+
+		/// <summary>Converts an array of 8-bit unsigned integers to its equivalent string representation that is encoded with base-64 digits. A parameter specifies whether to insert line breaks in the return value.</summary>
+		/// <returns>The string representation in base 64 of the elements in <paramref name="inArray" />.</returns>
+		/// <param name="inArray">An array of 8-bit unsigned integers. </param>
+		/// <param name="options">
+		/// <see cref="F:System.Base64FormattingOptions.InsertLineBreaks" /> to insert a line break every 76 characters, or <see cref="F:System.Base64FormattingOptions.None" /> to not insert line breaks.</param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="inArray" /> is null. </exception>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="options" /> is not a valid <see cref="T:System.Base64FormattingOptions" /> value. </exception>
+		/// <filterpriority>1</filterpriority>
+		string ToBase64String(byte[] inArray, Base64FormattingOptions options);
+
+		/// <summary>Converts a subset of an array of 8-bit unsigned integers to its equivalent string representation that is encoded with base-64 digits. Parameters specify the subset as an offset in the input array, the number of elements in the array to convert, and whether to insert line breaks in the return value.</summary>
+		/// <returns>The string representation in base 64 of <paramref name="length" /> elements of <paramref name="inArray" />, starting at position <paramref name="offset" />.</returns>
+		/// <param name="inArray">An array of 8-bit unsigned integers. </param>
+		/// <param name="offset">An offset in <paramref name="inArray" />. </param>
+		/// <param name="length">The number of elements of <paramref name="inArray" /> to convert. </param>
+		/// <param name="options">
+		/// <see cref="F:System.Base64FormattingOptions.InsertLineBreaks" /> to insert a line break every 76 characters, or <see cref="F:System.Base64FormattingOptions.None" /> to not insert line breaks.</param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="inArray" /> is null. </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="offset" /> or <paramref name="length" /> is negative.-or- <paramref name="offset" /> plus <paramref name="length" /> is greater than the length of <paramref name="inArray" />. </exception>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="options" /> is not a valid <see cref="T:System.Base64FormattingOptions" /> value. </exception>
+		/// <filterpriority>1</filterpriority>
+		string ToBase64String(byte[] inArray, int offset, int length, Base64FormattingOptions options);
+
+		/// <summary>Converts a subset of an 8-bit unsigned integer array to an equivalent subset of a Unicode character array encoded with base-64 digits. Parameters specify the subsets as offsets in the input and output arrays, the number of elements in the input array to convert, and whether line breaks are inserted in the output array.</summary>
+		/// <returns>A 32-bit signed integer containing the number of bytes in <paramref name="outArray" />.</returns>
+		/// <param name="inArray">An input array of 8-bit unsigned integers. </param>
+		/// <param name="offsetIn">A position within <paramref name="inArray" />. </param>
+		/// <param name="length">The number of elements of <paramref name="inArray" /> to convert. </param>
+		/// <param name="outArray">An output array of Unicode characters. </param>
+		/// <param name="offsetOut">A position within <paramref name="outArray" />. </param>
+		/// <param name="options">
+		/// <see cref="F:System.Base64FormattingOptions.InsertLineBreaks" /> to insert a line break every 76 characters, or <see cref="F:System.Base64FormattingOptions.None" /> to not insert line breaks.</param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="inArray" /> or <paramref name="outArray" /> is null. </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="offsetIn" />, <paramref name="offsetOut" />, or <paramref name="length" /> is negative.-or- <paramref name="offsetIn" /> plus <paramref name="length" /> is greater than the length of <paramref name="inArray" />.-or- <paramref name="offsetOut" /> plus the number of elements to return is greater than the length of <paramref name="outArray" />. </exception>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="options" /> is not a valid <see cref="T:System.Base64FormattingOptions" /> value. </exception>
+		/// <filterpriority>1</filterpriority>
+		int ToBase64CharArray(byte[] inArray, int offsetIn, int length, char[] outArray, int offsetOut, Base64FormattingOptions options);
+
+		/// <summary>A constant that represents a database column that is absent of data; that is, database null.</summary>
+		/// <filterpriority>1</filterpriority>
+		// ReSharper disable once InconsistentNaming
+		object DBNull { get; }
+
+		/// <summary>Returns an indication whether the specified object is of type <see cref="T:System.DBNull" />.</summary>
+		/// <returns>true if <paramref name="value" /> is of type <see cref="T:System.DBNull" />; otherwise, false.</returns>
+		/// <param name="value">An object. </param>
+		/// <filterpriority>1</filterpriority>
+		// ReSharper disable once InconsistentNaming
+		bool IsDBNull(object value);
+#endif
 	}
 }

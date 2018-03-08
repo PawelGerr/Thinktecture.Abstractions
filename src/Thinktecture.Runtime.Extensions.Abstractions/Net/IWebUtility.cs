@@ -1,4 +1,8 @@
 using JetBrains.Annotations;
+#if NET45 || NET462 || NETSTANDARD2_0
+using System.IO;
+
+#endif
 
 namespace Thinktecture.Net
 {
@@ -58,5 +62,19 @@ namespace Thinktecture.Net
 		/// <returns>A decoded Byte array.</returns>
 		[NotNull]
 		byte[] UrlDecodeToBytes([NotNull] byte[] encodedValue, int offset, int count);
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <summary>Converts a string into an HTML-encoded string, and returns the output as a <see cref="T:System.IO.TextWriter" /> stream of output.</summary>
+		/// <param name="value">The string to encode.</param>
+		/// <param name="output">A <see cref="T:System.IO.TextWriter" /> output stream.</param>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="output" /> parameter cannot be null if the <paramref name="value" /> parameter is not null.  </exception>
+		void HtmlEncode(string value, TextWriter output);
+
+		/// <summary>Converts a string that has been HTML-encoded into a decoded string, and sends the decoded string to a <see cref="T:System.IO.TextWriter" /> output stream.</summary>
+		/// <param name="value">The string to decode.</param>
+		/// <param name="output">A <see cref="T:System.IO.TextWriter" /> stream of output.</param>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="output" /> parameter cannot be null if the <paramref name="value" /> parameter is not null.  </exception>
+		void HtmlDecode(string value, TextWriter output);
+#endif
 	}
 }

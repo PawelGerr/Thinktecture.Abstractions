@@ -414,5 +414,25 @@ namespace Thinktecture.Adapters
 		{
 			return Math.Truncate(d);
 		}
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public long BigMul(int a, int b)
+		{
+			return Math.BigMul(a, b);
+		}
+
+		/// <inheritdoc />
+		public int DivRem(int a, int b, out int result)
+		{
+			return Math.DivRem(a, b, out result);
+		}
+
+		/// <inheritdoc />
+		public long DivRem(long a, long b, out long result)
+		{
+			return Math.DivRem(a, b, out result);
+		}
+#endif
 	}
 }

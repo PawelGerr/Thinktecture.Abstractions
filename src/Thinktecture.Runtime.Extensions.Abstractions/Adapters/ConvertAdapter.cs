@@ -21,6 +21,20 @@ namespace Thinktecture.Adapters
 			return Convert.ChangeType(value, conversionType, provider);
 		}
 
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public object ChangeType(object value, TypeCode typeCode)
+		{
+			return Convert.ChangeType(value, typeCode);
+		}
+
+		/// <inheritdoc />
+		public object ChangeType(object value, TypeCode typeCode, IFormatProvider provider)
+		{
+			return Convert.ChangeType(value, typeCode, provider);
+		}
+#endif
+
 		/// <inheritdoc />
 		public byte[] FromBase64CharArray(char[] inArray, int offset, int length)
 		{
@@ -1602,5 +1616,270 @@ namespace Thinktecture.Adapters
 		{
 			return Convert.ToUInt64(value);
 		}
+
+#if !NETSTANDARD1_0
+		/// <inheritdoc />
+		public TypeCode GetTypeCode(object value)
+		{
+			return Convert.GetTypeCode(value);
+		}
+#endif
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public bool ToBoolean(char value)
+		{
+			return Convert.ToBoolean(value);
+		}
+
+		/// <inheritdoc />
+		public bool ToBoolean(DateTime value)
+		{
+			return Convert.ToBoolean(value);
+		}
+
+		/// <inheritdoc />
+		public byte ToByte(DateTime value)
+		{
+			return Convert.ToByte(value);
+		}
+
+		/// <inheritdoc />
+		public char ToChar(bool value)
+		{
+			return Convert.ToChar(value);
+		}
+
+		/// <inheritdoc />
+		public char ToChar(char value)
+		{
+			return Convert.ToChar(value);
+		}
+
+		/// <inheritdoc />
+		public char ToChar(float value)
+		{
+			return Convert.ToChar(value);
+		}
+
+		/// <inheritdoc />
+		public char ToChar(double value)
+		{
+			return Convert.ToChar(value);
+		}
+
+		/// <inheritdoc />
+		public char ToChar(decimal value)
+		{
+			return Convert.ToChar(value);
+		}
+
+		/// <inheritdoc />
+		public char ToChar(DateTime value)
+		{
+			return Convert.ToChar(value);
+		}
+
+		/// <inheritdoc />
+		public short ToInt16(DateTime value)
+		{
+			return Convert.ToInt16(value);
+		}
+
+		/// <inheritdoc />
+		public int ToInt32(DateTime value)
+		{
+			return Convert.ToInt32(value);
+		}
+
+		/// <inheritdoc />
+		public long ToInt64(DateTime value)
+		{
+			return Convert.ToInt64(value);
+		}
+
+		/// <inheritdoc />
+		public sbyte ToSByte(DateTime value)
+		{
+			return Convert.ToSByte(value);
+		}
+
+		/// <inheritdoc />
+		public ushort ToUInt16(DateTime value)
+		{
+			return Convert.ToUInt16(value);
+		}
+
+		/// <inheritdoc />
+		public uint ToUInt32(DateTime value)
+		{
+			return Convert.ToUInt32(value);
+		}
+
+		/// <inheritdoc />
+		public ulong ToUInt64(DateTime value)
+		{
+			return Convert.ToUInt64(value);
+		}
+
+		/// <inheritdoc />
+		public float ToSingle(char value)
+		{
+			return Convert.ToSingle(value);
+		}
+
+		/// <inheritdoc />
+		public float ToSingle(DateTime value)
+		{
+			return Convert.ToSingle(value);
+		}
+
+		/// <inheritdoc />
+		public double ToDouble(char value)
+		{
+			return Convert.ToDouble(value);
+		}
+
+		/// <inheritdoc />
+		public double ToDouble(DateTime value)
+		{
+			return Convert.ToDouble(value);
+		}
+
+		/// <inheritdoc />
+		public decimal ToDecimal(char value)
+		{
+			return Convert.ToDecimal(value);
+		}
+
+		/// <inheritdoc />
+		public decimal ToDecimal(DateTime value)
+		{
+			return Convert.ToDecimal(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(DateTime value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(sbyte value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(byte value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(short value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(ushort value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(int value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(uint value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(long value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(ulong value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(bool value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(char value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(float value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(double value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public DateTime ToDateTime(decimal value)
+		{
+			return Convert.ToDateTime(value);
+		}
+
+		/// <inheritdoc />
+		public string ToString(string value)
+		{
+			return Convert.ToString(value);
+		}
+
+		/// <inheritdoc />
+		public string ToString(string value, IFormatProvider provider)
+		{
+			return Convert.ToString(value, provider);
+		}
+
+		/// <inheritdoc />
+		public string ToBase64String(byte[] inArray, Base64FormattingOptions options)
+		{
+			return Convert.ToBase64String(inArray, options);
+		}
+
+		/// <inheritdoc />
+		public string ToBase64String(byte[] inArray, int offset, int length, Base64FormattingOptions options)
+		{
+			return Convert.ToBase64String(inArray, offset, length, options);
+		}
+
+		/// <inheritdoc />
+		public int ToBase64CharArray(byte[] inArray, int offsetIn, int length, char[] outArray, int offsetOut, Base64FormattingOptions options)
+		{
+			return Convert.ToBase64CharArray(inArray, offsetIn, length, outArray, offsetOut, options);
+		}
+
+		/// <inheritdoc />
+		public object DBNull => Convert.DBNull;
+
+		/// <inheritdoc />
+		public bool IsDBNull(object value)
+		{
+			return Convert.IsDBNull(value);
+		}
+#endif
 	}
 }
