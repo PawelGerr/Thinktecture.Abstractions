@@ -14,7 +14,12 @@ namespace Thinktecture
 
 		public void Add(Type originalType, Type abstraction)
 		{
-			Add(originalType, new List<Type>() { abstraction });
+			Add(originalType, new List<Type> { abstraction });
+		}
+
+		public void Add(Type originalType, Type abstraction, Type anotherAbstraction)
+		{
+			Add(originalType, new List<Type> { abstraction, anotherAbstraction });
 		}
 
 		public void Add(Type originalType, List<Type> abstractions)

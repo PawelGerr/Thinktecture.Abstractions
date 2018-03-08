@@ -33,9 +33,9 @@ namespace Thinktecture.Threading.Tasks
 		[NotNull]
 		ITaskFactory Factory { get; }
 
-#if NETSTANDARD1_3
-		/// <summary>Gets a task that has already completed successfully. </summary>
-		/// <returns>The successfully completed task. </returns>
+#if NETSTANDARD1_3 || NETSTANDARD2_0
+/// <summary>Gets a task that has already completed successfully. </summary>
+/// <returns>The successfully completed task. </returns>
 		[NotNull]
 		ITask CompletedTask { get; }
 #endif
@@ -269,10 +269,10 @@ namespace Thinktecture.Threading.Tasks
 		[NotNull]
 		ITask<TResult> FromResult<TResult>(TResult result);
 
-#if NETSTANDARD1_3
-		/// <summary>Creates a <see cref="Task" /> that has completed with a specified exception. </summary>
-		/// <param name="exception">The exception with which to complete the task. </param>
-		/// <returns>The faulted task. </returns>
+#if NETSTANDARD1_3 || NETSTANDARD2_0
+/// <summary>Creates a <see cref="Task" /> that has completed with a specified exception. </summary>
+/// <param name="exception">The exception with which to complete the task. </param>
+/// <returns>The faulted task. </returns>
 		[NotNull]
 		ITask FromException([NotNull] Exception exception);
 
@@ -482,7 +482,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> collection contained a null task. </exception>
 		[NotNull]
-		Task<TResult[]> WhenAll<TResult>([NotNull, ItemNotNull] IEnumerable<Task<TResult>> tasks);
+		ITask<TResult[]> WhenAll<TResult>([NotNull, ItemNotNull] IEnumerable<Task<TResult>> tasks);
 
 		/// <summary>Creates a task that will complete when all of the <see cref="Task{TResult}" /> objects in an enumerable collection have completed. </summary>
 		/// <param name="tasks">The tasks to wait on for completion. </param>
@@ -491,7 +491,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> collection contained a null task. </exception>
 		[NotNull]
-		Task<TResult[]> WhenAll<TResult>([NotNull, ItemNotNull] IEnumerable<ITask<TResult>> tasks);
+		ITask<TResult[]> WhenAll<TResult>([NotNull, ItemNotNull] IEnumerable<ITask<TResult>> tasks);
 
 		/// <summary>Creates a task that will complete when all of the <see cref="Task{TResult}" /> objects in an array have completed. </summary>
 		/// <param name="tasks">The tasks to wait on for completion.</param>
@@ -500,7 +500,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contained a null task.</exception>
 		[NotNull]
-		Task<TResult[]> WhenAll<TResult>([NotNull, ItemNotNull] params Task<TResult>[] tasks);
+		ITask<TResult[]> WhenAll<TResult>([NotNull, ItemNotNull] params Task<TResult>[] tasks);
 
 		/// <summary>Creates a task that will complete when all of the <see cref="Task{TResult}" /> objects in an array have completed. </summary>
 		/// <param name="tasks">The tasks to wait on for completion.</param>
@@ -509,7 +509,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contained a null task.</exception>
 		[NotNull]
-		Task<TResult[]> WhenAll<TResult>([NotNull, ItemNotNull] params ITask<TResult>[] tasks);
+		ITask<TResult[]> WhenAll<TResult>([NotNull, ItemNotNull] params ITask<TResult>[] tasks);
 
 		/// <summary>Creates a task that will complete when any of the supplied tasks have completed.</summary>
 		/// <param name="tasks">The tasks to wait on for completion.</param>
@@ -517,7 +517,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contained a null task, or was empty.</exception>
 		[NotNull]
-		Task<Task> WhenAny([NotNull, ItemNotNull] params Task[] tasks);
+		ITask<Task> WhenAny([NotNull, ItemNotNull] params Task[] tasks);
 
 		/// <summary>Creates a task that will complete when any of the supplied tasks have completed.</summary>
 		/// <param name="tasks">The tasks to wait on for completion.</param>
@@ -525,7 +525,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contained a null task, or was empty.</exception>
 		[NotNull]
-		Task<Task> WhenAny([NotNull, ItemNotNull] params ITask[] tasks);
+		ITask<Task> WhenAny([NotNull, ItemNotNull] params ITask[] tasks);
 
 		/// <summary>Creates a task that will complete when any of the supplied tasks have completed.</summary>
 		/// <param name="tasks">The tasks to wait on for completion.</param>
@@ -533,7 +533,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contained a null task, or was empty.</exception>
 		[NotNull]
-		Task<Task> WhenAny([NotNull, ItemNotNull] IEnumerable<Task> tasks);
+		ITask<Task> WhenAny([NotNull, ItemNotNull] IEnumerable<Task> tasks);
 
 		/// <summary>Creates a task that will complete when any of the supplied tasks have completed.</summary>
 		/// <param name="tasks">The tasks to wait on for completion.</param>
@@ -541,16 +541,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contained a null task, or was empty.</exception>
 		[NotNull]
-		Task<Task> WhenAny([NotNull, ItemNotNull] IEnumerable<ITask> tasks);
-
-		/// <summary>Creates a task that will complete when any of the supplied tasks have completed.</summary>
-		/// <param name="tasks">The tasks to wait on for completion.</param>
-		/// <typeparam name="TResult">The type of the completed task.</typeparam>
-		/// <returns>A task that represents the completion of one of the supplied tasks.  The return task's Result is the task that completed.</returns>
-		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
-		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contained a null task, or was empty.</exception>
-		[NotNull]
-		Task<Task<TResult>> WhenAny<TResult>([NotNull, ItemNotNull] params Task<TResult>[] tasks);
+		ITask<Task> WhenAny([NotNull, ItemNotNull] IEnumerable<ITask> tasks);
 
 		/// <summary>Creates a task that will complete when any of the supplied tasks have completed.</summary>
 		/// <param name="tasks">The tasks to wait on for completion.</param>
@@ -559,7 +550,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contained a null task, or was empty.</exception>
 		[NotNull]
-		Task<Task<TResult>> WhenAny<TResult>([NotNull, ItemNotNull] params ITask<TResult>[] tasks);
+		ITask<Task<TResult>> WhenAny<TResult>([NotNull, ItemNotNull] params Task<TResult>[] tasks);
 
 		/// <summary>Creates a task that will complete when any of the supplied tasks have completed.</summary>
 		/// <param name="tasks">The tasks to wait on for completion.</param>
@@ -568,7 +559,7 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contained a null task, or was empty.</exception>
 		[NotNull]
-		Task<Task<TResult>> WhenAny<TResult>([NotNull, ItemNotNull] IEnumerable<Task<TResult>> tasks);
+		ITask<Task<TResult>> WhenAny<TResult>([NotNull, ItemNotNull] params ITask<TResult>[] tasks);
 
 		/// <summary>Creates a task that will complete when any of the supplied tasks have completed.</summary>
 		/// <param name="tasks">The tasks to wait on for completion.</param>
@@ -577,6 +568,15 @@ namespace Thinktecture.Threading.Tasks
 		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contained a null task, or was empty.</exception>
 		[NotNull]
-		Task<Task<TResult>> WhenAny<TResult>([NotNull, ItemNotNull] IEnumerable<ITask<TResult>> tasks);
+		ITask<Task<TResult>> WhenAny<TResult>([NotNull, ItemNotNull] IEnumerable<Task<TResult>> tasks);
+
+		/// <summary>Creates a task that will complete when any of the supplied tasks have completed.</summary>
+		/// <param name="tasks">The tasks to wait on for completion.</param>
+		/// <typeparam name="TResult">The type of the completed task.</typeparam>
+		/// <returns>A task that represents the completion of one of the supplied tasks.  The return task's Result is the task that completed.</returns>
+		/// <exception cref="ArgumentNullException">The <paramref name="tasks" /> argument was null.</exception>
+		/// <exception cref="T:System.ArgumentException">The <paramref name="tasks" /> array contained a null task, or was empty.</exception>
+		[NotNull]
+		ITask<Task<TResult>> WhenAny<TResult>([NotNull, ItemNotNull] IEnumerable<ITask<TResult>> tasks);
 	}
 }

@@ -45,5 +45,28 @@ namespace Thinktecture
 		{
 			return ((IAbstraction<Task<TResult>>)abstraction)?.UnsafeConvert();
 		}
+
+		/// <summary>
+		/// Creates a proxy Task that represents the asynchronous operation of a <see cref="TaskScheduler.TryExecuteTaskInline"/>.
+		/// </summary>
+		/// <param name="task">The Task to unwrap.</param>
+		/// <returns>A Task that represents the asynchronous operation of the provided Task.</returns>
+		public static ITask Unwrap(this ITask<Task> task)
+		{
+			// ReSharper disable once AssignNullToNotNullAttribute
+			return task.ToImplementation().Unwrap().ToInterface();
+		}
+
+		/// <summary>Creates a proxy <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation of a Task&lt;Task&lt;T&gt;&gt; (C#) or Task (Of Task(Of T)) (Visual Basic).</summary>
+		/// <returns>A <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation of the provided Task&lt;Task&lt;T&gt;&gt; (C#) or Task (Of Task(Of T)) (Visual Basic).</returns>
+		/// <param name="task">The Task&lt;Task&lt;T&gt;&gt; (C#) or Task (Of Task(Of T)) (Visual Basic) to unwrap.</param>
+		/// <typeparam name="TResult">The type of the task's result.</typeparam>
+		/// <exception cref="T:System.ArgumentNullException">The exception that is thrown if the <paramref name="task" /> argument is null.</exception>
+
+		public static ITask<TResult> Unwrap<TResult>(this ITask<Task<TResult>> task)
+		{
+			// ReSharper disable once AssignNullToNotNullAttribute
+			return task.ToImplementation().Unwrap().ToInterface();
+		}
 	}
 }

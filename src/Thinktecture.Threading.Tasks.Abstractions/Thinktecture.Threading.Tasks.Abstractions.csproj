@@ -4,7 +4,7 @@
     <Copyright>(c) 2018, Pawel Gerr. All rights reserved.</Copyright>
     <VersionPrefix>2.3.0</VersionPrefix>
     <Authors>Pawel Gerr</Authors>
-    <TargetFrameworks>netstandard1.0;netstandard1.3;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard1.0;netstandard1.3;netstandard2.0;net45</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageTags>abstraction;threading;task</PackageTags>
     <PackageIconUrl>http://thinktecture.com/images/Logo_T_Nontransparent.png</PackageIconUrl>
