@@ -143,5 +143,81 @@ namespace Thinktecture.Text
 		/// <paramref name="name" /> is not a valid code page name.-or- The code page indicated by <paramref name="name" /> is not supported by the underlying platform. </exception>
 		[NotNull]
 		IEncoding GetEncoding([NotNull] string name);
+
+#if NET45 || NETSTANDARD1_3 || NETSTANDARD2_0
+		/// <summary>Returns the encoding associated with the specified code page identifier.</summary>
+		/// <returns>The encoding that is associated with the specified code page.</returns>
+		/// <param name="codepage">The code page identifier of the preferred encoding. Possible values are listed in the Code Page column of the table that appears in the <see cref="T:System.Text.Encoding" /> class topic.-or- 0 (zero), to use the default encoding. </param>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="codepage" /> is less than zero or greater than 65535. </exception>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="codepage" /> is not supported by the underlying platform. </exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="codepage" /> is not supported by the underlying platform. </exception>
+		/// <filterpriority>1</filterpriority>
+		IEncoding GetEncoding(int codepage);
+
+		/// <summary>Returns the encoding associated with the specified code page identifier. Parameters specify an error handler for characters that cannot be encoded and byte sequences that cannot be decoded.</summary>
+		/// <returns>The encoding that is associated with the specified code page.</returns>
+		/// <param name="codepage">The code page identifier of the preferred encoding. Possible values are listed in the Code Page column of the table that appears in the <see cref="T:System.Text.Encoding" /> class topic.-or- 0 (zero), to use the default encoding. </param>
+		/// <param name="encoderFallback">An object that provides an error-handling procedure when a character cannot be encoded with the current encoding. </param>
+		/// <param name="decoderFallback">An object that provides an error-handling procedure when a byte sequence cannot be decoded with the current encoding. </param>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="codepage" /> is less than zero or greater than 65535. </exception>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="codepage" /> is not supported by the underlying platform. </exception>
+		/// <exception cref="T:System.NotSupportedException">
+		/// <paramref name="codepage" /> is not supported by the underlying platform. </exception>
+		/// <filterpriority>1</filterpriority>
+		IEncoding GetEncoding(int codepage, EncoderFallback encoderFallback, DecoderFallback decoderFallback);
+
+		/// <summary>Returns the encoding associated with the specified code page name. Parameters specify an error handler for characters that cannot be encoded and byte sequences that cannot be decoded.</summary>
+		/// <returns>The encoding that is associated with the specified code page.</returns>
+		/// <param name="name">The code page name of the preferred encoding. Any value returned by the <see cref="P:System.Text.Encoding.WebName" /> property is valid. Possible values are listed in the Name column of the table that appears in the <see cref="T:System.Text.Encoding" /> class topic.</param>
+		/// <param name="encoderFallback">An object that provides an error-handling procedure when a character cannot be encoded with the current encoding. </param>
+		/// <param name="decoderFallback">An object that provides an error-handling procedure when a byte sequence cannot be decoded with the current encoding. </param>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="name" /> is not a valid code page name.-or- The code page indicated by <paramref name="name" /> is not supported by the underlying platform. </exception>
+		/// <filterpriority>1</filterpriority>
+		IEncoding GetEncoding(string name, EncoderFallback encoderFallback, DecoderFallback decoderFallback);
+#endif
+
+#if NET45 || NETSTANDARD2_0
+		/// <summary>Returns an array that contains all encodings.</summary>
+		/// <returns>An array that contains all encodings.</returns>
+		/// <filterpriority>1</filterpriority>
+		EncodingInfo[] GetEncodings();
+
+		/// <summary>Gets an encoding for the operating system's current ANSI code page.</summary>
+		/// <returns>An encoding for the operating system's current ANSI code page.</returns>
+		/// <filterpriority>1</filterpriority>
+		IEncoding Default { get; }
+
+		/// <summary>Gets an encoding for the ASCII (7-bit) character set.</summary>
+		/// <returns>An  encoding for the ASCII (7-bit) character set.</returns>
+		/// <filterpriority>1</filterpriority>
+		// ReSharper disable once InconsistentNaming
+		IEncoding ASCII { get; }
+
+		/// <summary>Gets an encoding for the UTF-7 format.</summary>
+		/// <returns>An encoding for the UTF-7 format.</returns>
+		/// <filterpriority>1</filterpriority>
+		// ReSharper disable once InconsistentNaming
+		IEncoding UTF7 { get; }
+
+		/// <summary>Gets an encoding for the UTF-32 format using the little endian byte order.</summary>
+		/// <returns>An  encoding object for the UTF-32 format using the little endian byte order.</returns>
+		/// <filterpriority>1</filterpriority>
+		// ReSharper disable once InconsistentNaming
+		IEncoding UTF32 { get; }
+#endif
+
+#if NETSTANDARD1_3 || NETSTANDARD2_0
+		/// <summary>Registers an encoding provider. </summary>
+		/// <param name="provider">A subclass of <see cref="T:System.Text.EncodingProvider" /> that provides access to additional character encodings. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="provider" /> is null. </exception>
+		void RegisterProvider(EncodingProvider provider);
+#endif
 	}
 }

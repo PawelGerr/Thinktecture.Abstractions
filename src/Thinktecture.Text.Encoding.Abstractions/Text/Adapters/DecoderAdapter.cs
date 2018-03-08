@@ -52,5 +52,35 @@ namespace Thinktecture.Text.Adapters
 		{
 			Implementation.Reset();
 		}
+
+#if NET45 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public unsafe int GetCharCount(byte* bytes, int count, bool flush)
+		{
+			return Implementation.GetCharCount(bytes, count, flush);
+		}
+
+		/// <inheritdoc />
+		public unsafe int GetChars(byte* bytes, int byteCount, char* chars, int charCount, bool flush)
+		{
+			return Implementation.GetChars(bytes, byteCount, chars, charCount, flush);
+		}
+
+		/// <inheritdoc />
+		public unsafe void Convert(byte* bytes, int byteCount, char* chars, int charCount, bool flush, out int bytesUsed, out int charsUsed, out bool completed)
+		{
+			Implementation.Convert(bytes, byteCount, chars, charCount, flush, out bytesUsed, out charsUsed, out completed);
+		}
+
+		/// <inheritdoc />
+		public DecoderFallback Fallback
+		{
+			get => Implementation.Fallback;
+			set => Implementation.Fallback = value;
+		}
+
+		/// <inheritdoc />
+		public DecoderFallbackBuffer FallbackBuffer => Implementation.FallbackBuffer;
+#endif
 	}
 }

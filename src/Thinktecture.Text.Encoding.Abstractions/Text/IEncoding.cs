@@ -1,10 +1,17 @@
 using System.Text;
 using JetBrains.Annotations;
 
+#if NET45 || NETSTANDARD2_0
+using System;
+#endif
+
 namespace Thinktecture.Text
 {
 	/// <summary>Represents a character encoding.To browse the .NET Framework source code for this type, see the Reference Source.</summary>
 	public interface IEncoding : IAbstraction<Encoding>
+#if NET45 || NETSTANDARD2_0
+	                             , ICloneable
+#endif
 	{
 		/// <summary>When overridden in a derived class, gets the name registered with the Internet Assigned Numbers Authority (IANA) for the current encoding.</summary>
 		/// <returns>The IANA name for the current <see cref="T:System.Text.Encoding" />.</returns>
@@ -204,5 +211,168 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
 		[NotNull]
 		string GetString([NotNull] byte[] bytes, int index, int count);
+
+#if NET45 || NETSTANDARD1_3 || NETSTANDARD2_0
+		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding a set of characters starting at the specified character pointer.</summary>
+		/// <returns>The number of bytes produced by encoding the specified characters.</returns>
+		/// <param name="chars">A pointer to the first character to encode. </param>
+		/// <param name="count">The number of characters to encode. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="chars" /> is null. </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="count" /> is less than zero. </exception>
+		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
+		/// <filterpriority>1</filterpriority>
+		unsafe int GetByteCount(char* chars, int count);
+
+		/// <summary>When overridden in a derived class, encodes a set of characters starting at the specified character pointer into a sequence of bytes that are stored starting at the specified byte pointer.</summary>
+		/// <returns>The actual number of bytes written at the location indicated by the <paramref name="bytes" /> parameter.</returns>
+		/// <param name="chars">A pointer to the first character to encode. </param>
+		/// <param name="charCount">The number of characters to encode. </param>
+		/// <param name="bytes">A pointer to the location at which to start writing the resulting sequence of bytes. </param>
+		/// <param name="byteCount">The maximum number of bytes to write. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="chars" /> is null.-or- <paramref name="bytes" /> is null. </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="charCount" /> or <paramref name="byteCount" /> is less than zero. </exception>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="byteCount" /> is less than the resulting number of bytes. </exception>
+		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
+		/// <filterpriority>1</filterpriority>
+		unsafe int GetBytes(char* chars, int charCount, byte* bytes, int byteCount);
+
+		/// <summary>When overridden in a derived class, calculates the number of characters produced by decoding a sequence of bytes starting at the specified byte pointer.</summary>
+		/// <returns>The number of characters produced by decoding the specified sequence of bytes.</returns>
+		/// <param name="bytes">A pointer to the first byte to decode. </param>
+		/// <param name="count">The number of bytes to decode. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="bytes" /> is null. </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="count" /> is less than zero. </exception>
+		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
+		/// <filterpriority>1</filterpriority>
+		unsafe int GetCharCount(byte* bytes, int count);
+
+		/// <summary>When overridden in a derived class, decodes a sequence of bytes starting at the specified byte pointer into a set of characters that are stored starting at the specified character pointer.</summary>
+		/// <returns>The actual number of characters written at the location indicated by the <paramref name="chars" /> parameter.</returns>
+		/// <param name="bytes">A pointer to the first byte to decode. </param>
+		/// <param name="byteCount">The number of bytes to decode. </param>
+		/// <param name="chars">A pointer to the location at which to start writing the resulting set of characters. </param>
+		/// <param name="charCount">The maximum number of characters to write. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="bytes" /> is null.-or- <paramref name="chars" /> is null. </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="byteCount" /> or <paramref name="charCount" /> is less than zero. </exception>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="charCount" /> is less than the resulting number of characters. </exception>
+		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
+		/// <filterpriority>1</filterpriority>
+		unsafe int GetChars(byte* bytes, int byteCount, char* chars, int charCount);
+
+		/// <summary>When overridden in a derived class, decodes all the bytes in the specified byte array into a string.</summary>
+		/// <returns>A string that contains the results of decoding the specified sequence of bytes.</returns>
+		/// <param name="bytes">The byte array containing the sequence of bytes to decode. </param>
+		/// <exception cref="T:System.ArgumentException">The byte array contains invalid Unicode code points.</exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="bytes" /> is null. </exception>
+		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
+		/// <filterpriority>1</filterpriority>
+		string GetString(byte[] bytes);
+#endif
+
+#if NETSTANDARD1_3 || NETSTANDARD2_0
+		/// <summary>When overridden in a derived class, decodes a specified number of bytes starting at a specified address into a string. </summary>
+		/// <returns>A string that contains the results of decoding the specified sequence of bytes. </returns>
+		/// <param name="bytes">A pointer to a byte array. </param>
+		/// <param name="byteCount">The number of bytes to decode. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="bytes" /> is a null pointer. </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="byteCount" /> is less than zero. </exception>
+		/// <exception cref="T:System.Text.DecoderFallbackException">A   fallback occurred (see Character Encoding in the .NET Framework for a complete explanation)-and-<see cref="P:System.Text.Encoding.DecoderFallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />. </exception>
+		unsafe string GetString(byte* bytes, int byteCount);
+#endif
+
+#if NET45 || NETSTANDARD2_0
+		/// <summary>Gets a value indicating whether the current encoding is always normalized, using the default normalization form.</summary>
+		/// <returns>true if the current <see cref="T:System.Text.Encoding" /> is always normalized; otherwise, false. The default is false.</returns>
+		/// <filterpriority>2</filterpriority>
+		bool IsAlwaysNormalized();
+
+		/// <summary>When overridden in a derived class, gets a value indicating whether the current encoding is always normalized, using the specified normalization form.</summary>
+		/// <returns>true if the current <see cref="T:System.Text.Encoding" /> object is always normalized using the specified <see cref="T:System.Text.NormalizationForm" /> value; otherwise, false. The default is false.</returns>
+		/// <param name="form">One of the <see cref="T:System.Text.NormalizationForm" /> values. </param>
+		/// <filterpriority>2</filterpriority>
+		bool IsAlwaysNormalized(NormalizationForm form);
+
+		/// <summary>When overridden in a derived class, gets a name for the current encoding that can be used with mail agent body tags.</summary>
+		/// <returns>A name for the current <see cref="T:System.Text.Encoding" /> that can be used with mail agent body tags.-or- An empty string (""), if the current <see cref="T:System.Text.Encoding" /> cannot be used.</returns>
+		/// <filterpriority>2</filterpriority>
+		string BodyName { get; }
+
+		/// <summary>When overridden in a derived class, gets the human-readable description of the current encoding.</summary>
+		/// <returns>The human-readable description of the current <see cref="T:System.Text.Encoding" />.</returns>
+		/// <filterpriority>2</filterpriority>
+		string EncodingName { get; }
+
+		/// <summary>When overridden in a derived class, gets a name for the current encoding that can be used with mail agent header tags.</summary>
+		/// <returns>A name for the current <see cref="T:System.Text.Encoding" /> to use with mail agent header tags.-or- An empty string (""), if the current <see cref="T:System.Text.Encoding" /> cannot be used.</returns>
+		/// <filterpriority>2</filterpriority>
+		string HeaderName { get; }
+
+		/// <summary>When overridden in a derived class, gets the Windows operating system code page that most closely corresponds to the current encoding.</summary>
+		/// <returns>The Windows operating system code page that most closely corresponds to the current <see cref="T:System.Text.Encoding" />.</returns>
+		/// <filterpriority>2</filterpriority>
+		int WindowsCodePage { get; }
+
+		/// <summary>When overridden in a derived class, gets a value indicating whether the current encoding can be used by browser clients for displaying content.</summary>
+		/// <returns>true if the current <see cref="T:System.Text.Encoding" /> can be used by browser clients for displaying content; otherwise, false.</returns>
+		/// <filterpriority>2</filterpriority>
+		bool IsBrowserDisplay { get; }
+
+		/// <summary>When overridden in a derived class, gets a value indicating whether the current encoding can be used by browser clients for saving content.</summary>
+		/// <returns>true if the current <see cref="T:System.Text.Encoding" /> can be used by browser clients for saving content; otherwise, false.</returns>
+		/// <filterpriority>2</filterpriority>
+		bool IsBrowserSave { get; }
+
+		/// <summary>When overridden in a derived class, gets a value indicating whether the current encoding can be used by mail and news clients for displaying content.</summary>
+		/// <returns>true if the current <see cref="T:System.Text.Encoding" /> can be used by mail and news clients for displaying content; otherwise, false.</returns>
+		/// <filterpriority>2</filterpriority>
+		bool IsMailNewsDisplay { get; }
+
+		/// <summary>When overridden in a derived class, gets a value indicating whether the current encoding can be used by mail and news clients for saving content.</summary>
+		/// <returns>true if the current <see cref="T:System.Text.Encoding" /> can be used by mail and news clients for saving content; otherwise, false.</returns>
+		/// <filterpriority>2</filterpriority>
+		bool IsMailNewsSave { get; }
+
+		/// <summary>When overridden in a derived class, gets a value indicating whether the current encoding uses single-byte code points.</summary>
+		/// <returns>true if the current <see cref="T:System.Text.Encoding" /> uses single-byte code points; otherwise, false.</returns>
+		/// <filterpriority>2</filterpriority>
+		bool IsSingleByte { get; }
+
+		/// <summary>Gets or sets the <see cref="T:System.Text.EncoderFallback" /> object for the current <see cref="T:System.Text.Encoding" /> object.</summary>
+		/// <returns>The encoder fallback object for the current <see cref="T:System.Text.Encoding" /> object. </returns>
+		/// <exception cref="T:System.ArgumentNullException">The value in a set operation is null.</exception>
+		/// <exception cref="T:System.InvalidOperationException">A value cannot be assigned in a set operation because the current <see cref="T:System.Text.Encoding" /> object is read-only.</exception>
+		/// <filterpriority>2</filterpriority>
+		EncoderFallback EncoderFallback { get; set; }
+
+		/// <summary>Gets or sets the <see cref="T:System.Text.DecoderFallback" /> object for the current <see cref="T:System.Text.Encoding" /> object.</summary>
+		/// <returns>The decoder fallback object for the current <see cref="T:System.Text.Encoding" /> object. </returns>
+		/// <exception cref="T:System.ArgumentNullException">The value in a set operation is null.</exception>
+		/// <exception cref="T:System.InvalidOperationException">A value cannot be assigned in a set operation because the current <see cref="T:System.Text.Encoding" /> object is read-only.</exception>
+		/// <filterpriority>2</filterpriority>
+		DecoderFallback DecoderFallback { get; set; }
+
+		/// <summary>When overridden in a derived class, gets a value indicating whether the current encoding is read-only.</summary>
+		/// <returns>true if the current <see cref="T:System.Text.Encoding" /> is read-only; otherwise, false. The default is true.</returns>
+		/// <filterpriority>2</filterpriority>
+		bool IsReadOnly { get; }
+
+		/// <summary>When overridden in a derived class, gets the code page identifier of the current <see cref="T:System.Text.Encoding" />.</summary>
+		/// <returns>The code page identifier of the current <see cref="T:System.Text.Encoding" />.</returns>
+		/// <filterpriority>2</filterpriority>
+		int CodePage { get; }
+#endif
 	}
 }

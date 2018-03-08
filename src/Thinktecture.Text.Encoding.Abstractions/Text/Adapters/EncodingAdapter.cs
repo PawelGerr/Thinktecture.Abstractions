@@ -298,5 +298,112 @@ namespace Thinktecture.Text.Adapters
 		{
 			return Implementation.GetString(bytes, index, count);
 		}
+
+#if NET45 || NETSTANDARD1_3 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public unsafe int GetByteCount(char* chars, int count)
+		{
+			return Implementation.GetByteCount(chars, count);
+		}
+
+		/// <inheritdoc />
+		public unsafe int GetBytes(char* chars, int charCount, byte* bytes, int byteCount)
+		{
+			return Implementation.GetBytes(chars, charCount, bytes, byteCount);
+		}
+
+		/// <inheritdoc />
+		public unsafe int GetCharCount(byte* bytes, int count)
+		{
+			return Implementation.GetCharCount(bytes, count);
+		}
+
+		/// <inheritdoc />
+		public unsafe int GetChars(byte* bytes, int byteCount, char* chars, int charCount)
+		{
+			return Implementation.GetChars(bytes, byteCount, chars, charCount);
+		}
+
+		/// <inheritdoc />
+		public string GetString(byte[] bytes)
+		{
+			return Implementation.GetString(bytes);
+		}
+#endif
+
+#if NETSTANDARD1_3 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public unsafe string GetString(byte* bytes, int byteCount)
+		{
+			return Implementation.GetString(bytes, byteCount);
+		}
+#endif
+
+#if NET45 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public object Clone()
+		{
+			return Implementation.Clone();
+		}
+
+		/// <inheritdoc />
+		public bool IsAlwaysNormalized()
+		{
+			return Implementation.IsAlwaysNormalized();
+		}
+
+		/// <inheritdoc />
+		public bool IsAlwaysNormalized(NormalizationForm form)
+		{
+			return Implementation.IsAlwaysNormalized(form);
+		}
+
+		/// <inheritdoc />
+		public string BodyName => Implementation.BodyName;
+
+		/// <inheritdoc />
+		public string EncodingName => Implementation.EncodingName;
+
+		/// <inheritdoc />
+		public string HeaderName => Implementation.HeaderName;
+
+		/// <inheritdoc />
+		public int WindowsCodePage => Implementation.WindowsCodePage;
+
+		/// <inheritdoc />
+		public bool IsBrowserDisplay => Implementation.IsBrowserDisplay;
+
+		/// <inheritdoc />
+		public bool IsBrowserSave => Implementation.IsBrowserSave;
+
+		/// <inheritdoc />
+		public bool IsMailNewsDisplay => Implementation.IsMailNewsDisplay;
+
+		/// <inheritdoc />
+		public bool IsMailNewsSave => Implementation.IsMailNewsSave;
+
+		/// <inheritdoc />
+		public bool IsSingleByte => Implementation.IsSingleByte;
+
+		/// <inheritdoc />
+		public EncoderFallback EncoderFallback
+		{
+			get => Implementation.EncoderFallback;
+			set => Implementation.EncoderFallback = value;
+		}
+
+		/// <inheritdoc />
+		public DecoderFallback DecoderFallback
+		{
+			get => Implementation.DecoderFallback;
+			set => Implementation.DecoderFallback = value;
+		}
+
+		/// <inheritdoc />
+		public bool IsReadOnly => Implementation.IsReadOnly;
+
+		/// <inheritdoc />
+		public int CodePage => Implementation.CodePage;
+#endif
 	}
 }

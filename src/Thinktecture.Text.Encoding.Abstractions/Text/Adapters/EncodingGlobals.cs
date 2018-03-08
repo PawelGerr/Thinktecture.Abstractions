@@ -11,16 +11,16 @@ namespace Thinktecture.Text.Adapters
 	{
 		/// <summary>Gets an encoding for the UTF-16 format that uses the big endian byte order.</summary>
 		/// <returns>An encoding object for the UTF-16 format that uses the big endian byte order.</returns>
-		public IEncoding BigEndianUnicode => EncodingAdapter.BigEndianUnicode;
+		public IEncoding BigEndianUnicode { get; } = Encoding.BigEndianUnicode.ToInterface();
 
 		/// <summary>Gets an encoding for the UTF-16 format using the little endian byte order.</summary>
 		/// <returns>An encoding for the UTF-16 format using the little endian byte order.</returns>
-		public IEncoding Unicode => EncodingAdapter.Unicode;
+		public IEncoding Unicode { get; } = Encoding.Unicode.ToInterface();
 
 		/// <summary>Gets an encoding for the UTF-8 format.</summary>
 		/// <returns>An encoding for the UTF-8 format.</returns>
 		// ReSharper disable once InconsistentNaming
-		public IEncoding UTF8 => EncodingAdapter.UTF8;
+		public IEncoding UTF8 { get; } = Encoding.UTF8.ToInterface();
 
 		/// <summary>Converts an entire byte array from one encoding to another.</summary>
 		/// <returns>An array of type <see cref="T:System.Byte" /> containing the results of converting <paramref name="bytes" /> from <paramref name="srcEncoding" /> to <paramref name="dstEncoding" />.</returns>
@@ -33,7 +33,7 @@ namespace Thinktecture.Text.Adapters
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
 		public byte[] Convert(IEncoding srcEncoding, IEncoding dstEncoding, byte[] bytes)
 		{
-			return EncodingAdapter.Convert(srcEncoding, dstEncoding, bytes);
+			return Encoding.Convert(srcEncoding.ToImplementation(), dstEncoding.ToImplementation(), bytes);
 		}
 
 		/// <summary>Converts an entire byte array from one encoding to another.</summary>
@@ -47,7 +47,7 @@ namespace Thinktecture.Text.Adapters
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
 		public byte[] Convert(IEncoding srcEncoding, Encoding dstEncoding, byte[] bytes)
 		{
-			return EncodingAdapter.Convert(srcEncoding, dstEncoding, bytes);
+			return Encoding.Convert(srcEncoding.ToImplementation(), dstEncoding, bytes);
 		}
 
 		/// <summary>Converts an entire byte array from one encoding to another.</summary>
@@ -61,7 +61,7 @@ namespace Thinktecture.Text.Adapters
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
 		public byte[] Convert(Encoding srcEncoding, IEncoding dstEncoding, byte[] bytes)
 		{
-			return EncodingAdapter.Convert(srcEncoding, dstEncoding, bytes);
+			return Encoding.Convert(srcEncoding, dstEncoding.ToImplementation(), bytes);
 		}
 
 		/// <summary>Converts an entire byte array from one encoding to another.</summary>
@@ -75,7 +75,7 @@ namespace Thinktecture.Text.Adapters
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
 		public byte[] Convert(Encoding srcEncoding, Encoding dstEncoding, byte[] bytes)
 		{
-			return EncodingAdapter.Convert(srcEncoding, dstEncoding, bytes);
+			return Encoding.Convert(srcEncoding, dstEncoding, bytes);
 		}
 
 		/// <summary>Converts a range of bytes in a byte array from one encoding to another.</summary>
@@ -93,7 +93,7 @@ namespace Thinktecture.Text.Adapters
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
 		public byte[] Convert(IEncoding srcEncoding, IEncoding dstEncoding, byte[] bytes, int index, int count)
 		{
-			return EncodingAdapter.Convert(srcEncoding, dstEncoding, bytes, index, count);
+			return Encoding.Convert(srcEncoding.ToImplementation(), dstEncoding.ToImplementation(), bytes, index, count);
 		}
 
 		/// <summary>Converts a range of bytes in a byte array from one encoding to another.</summary>
@@ -111,7 +111,7 @@ namespace Thinktecture.Text.Adapters
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
 		public byte[] Convert(IEncoding srcEncoding, Encoding dstEncoding, byte[] bytes, int index, int count)
 		{
-			return EncodingAdapter.Convert(srcEncoding, dstEncoding, bytes, index, count);
+			return Encoding.Convert(srcEncoding.ToImplementation(), dstEncoding, bytes, index, count);
 		}
 
 		/// <summary>Converts a range of bytes in a byte array from one encoding to another.</summary>
@@ -129,7 +129,7 @@ namespace Thinktecture.Text.Adapters
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
 		public byte[] Convert(Encoding srcEncoding, IEncoding dstEncoding, byte[] bytes, int index, int count)
 		{
-			return EncodingAdapter.Convert(srcEncoding, dstEncoding, bytes, index, count);
+			return Encoding.Convert(srcEncoding, dstEncoding.ToImplementation(), bytes, index, count);
 		}
 
 		/// <summary>Converts a range of bytes in a byte array from one encoding to another.</summary>
@@ -147,7 +147,7 @@ namespace Thinktecture.Text.Adapters
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for complete explanation)-and-dstEncoding.<see cref="P:System.Text.Encoding.EncoderFallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
 		public byte[] Convert(Encoding srcEncoding, Encoding dstEncoding, byte[] bytes, int index, int count)
 		{
-			return EncodingAdapter.Convert(srcEncoding, dstEncoding, bytes, index, count);
+			return Encoding.Convert(srcEncoding, dstEncoding, bytes, index, count);
 		}
 
 		/// <summary>Returns the encoding associated with the specified code page name.</summary>
@@ -157,7 +157,55 @@ namespace Thinktecture.Text.Adapters
 		/// <paramref name="name" /> is not a valid code page name.-or- The code page indicated by <paramref name="name" /> is not supported by the underlying platform. </exception>
 		public IEncoding GetEncoding(string name)
 		{
-			return EncodingAdapter.GetEncoding(name);
+			return Encoding.GetEncoding(name).ToInterface();
 		}
+
+#if NET45 || NETSTANDARD1_3 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public IEncoding GetEncoding(int codepage)
+		{
+			return Encoding.GetEncoding(codepage).ToInterface();
+		}
+
+		/// <inheritdoc />
+		public IEncoding GetEncoding(int codepage, EncoderFallback encoderFallback, DecoderFallback decoderFallback)
+		{
+			return Encoding.GetEncoding(codepage, encoderFallback, decoderFallback).ToInterface();
+		}
+
+		/// <inheritdoc />
+		public IEncoding GetEncoding(string name, EncoderFallback encoderFallback, DecoderFallback decoderFallback)
+		{
+			return Encoding.GetEncoding(name, encoderFallback, decoderFallback).ToInterface();
+		}
+#endif
+
+#if NET45 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public EncodingInfo[] GetEncodings()
+		{
+			return Encoding.GetEncodings();
+		}
+
+		/// <inheritdoc />
+		public IEncoding Default => Encoding.Default.ToInterface();
+
+		/// <inheritdoc />
+		public IEncoding ASCII { get; } = Encoding.ASCII.ToInterface();
+
+		/// <inheritdoc />
+		public IEncoding UTF7 { get; } = Encoding.UTF7.ToInterface();
+
+		/// <inheritdoc />
+		public IEncoding UTF32 { get; } = Encoding.UTF32.ToInterface();
+#endif
+
+#if NETSTANDARD1_3 || NETSTANDARD2_0
+		/// <inheritdoc />
+		public void RegisterProvider(EncodingProvider provider)
+		{
+			Encoding.RegisterProvider(provider);
+		}
+#endif
 	}
 }
