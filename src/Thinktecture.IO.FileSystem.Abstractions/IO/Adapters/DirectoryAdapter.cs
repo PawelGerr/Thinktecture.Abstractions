@@ -139,6 +139,44 @@ namespace Thinktecture.IO.Adapters
 			return Directory.GetDirectoryRoot(path);
 		}
 
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public string[] GetFiles(string path, string searchPattern, EnumerationOptions enumerationOptions)
+		{
+			return Directory.GetFiles(path, searchPattern, enumerationOptions);
+		}
+
+		/// <inheritdoc />
+		public string[] GetDirectories(string path, string searchPattern, EnumerationOptions enumerationOptions)
+		{
+			return Directory.GetDirectories(path, searchPattern, enumerationOptions);
+		}
+
+		/// <inheritdoc />
+		public string[] GetFileSystemEntries(string path, string searchPattern, EnumerationOptions enumerationOptions)
+		{
+			return Directory.GetFileSystemEntries(path, searchPattern, enumerationOptions);
+		}
+
+		/// <inheritdoc />
+		public IEnumerable<string> EnumerateDirectories(string path, string searchPattern, EnumerationOptions enumerationOptions)
+		{
+			return Directory.EnumerateDirectories(path, searchPattern, enumerationOptions);
+		}
+
+		/// <inheritdoc />
+		public IEnumerable<string> EnumerateFiles(string path, string searchPattern, EnumerationOptions enumerationOptions)
+		{
+			return Directory.EnumerateFiles(path, searchPattern, enumerationOptions);
+		}
+
+		/// <inheritdoc />
+		public IEnumerable<string> EnumerateFileSystemEntries(string path, string searchPattern, EnumerationOptions enumerationOptions)
+		{
+			return Directory.EnumerateFileSystemEntries(path, searchPattern, enumerationOptions);
+		}
+#endif
+
 		/// <inheritdoc />
 		public string[] GetFiles(string path)
 		{

@@ -12,6 +12,128 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public bool IsLittleEndian => BitConverter.IsLittleEndian;
 
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public bool TryWriteBytes(Span<byte> destination, bool value)
+		{
+			return BitConverter.TryWriteBytes(destination, value);
+		}
+
+		/// <inheritdoc />
+		public bool TryWriteBytes(Span<byte> destination, char value)
+		{
+			return BitConverter.TryWriteBytes(destination, value);
+		}
+
+		/// <inheritdoc />
+		public bool TryWriteBytes(Span<byte> destination, double value)
+		{
+			return BitConverter.TryWriteBytes(destination, value);
+		}
+
+		/// <inheritdoc />
+		public bool TryWriteBytes(Span<byte> destination, float value)
+		{
+			return BitConverter.TryWriteBytes(destination, value);
+		}
+
+		/// <inheritdoc />
+		public bool TryWriteBytes(Span<byte> destination, int value)
+		{
+			return BitConverter.TryWriteBytes(destination, value);
+		}
+
+		/// <inheritdoc />
+		public bool TryWriteBytes(Span<byte> destination, long value)
+		{
+			return BitConverter.TryWriteBytes(destination, value);
+		}
+
+		/// <inheritdoc />
+		public bool TryWriteBytes(Span<byte> destination, short value)
+		{
+			return BitConverter.TryWriteBytes(destination, value);
+		}
+
+		/// <inheritdoc />
+		public bool TryWriteBytes(Span<byte> destination, ushort value)
+		{
+			return BitConverter.TryWriteBytes(destination, value);
+		}
+
+		/// <inheritdoc />
+		public bool TryWriteBytes(Span<byte> destination, uint value)
+		{
+			return BitConverter.TryWriteBytes(destination, value);
+		}
+
+		/// <inheritdoc />
+		public bool TryWriteBytes(Span<byte> destination, ulong value)
+		{
+			return BitConverter.TryWriteBytes(destination, value);
+		}
+
+		/// <inheritdoc />
+		public char ToChar(ReadOnlySpan<byte> value)
+		{
+			return BitConverter.ToChar(value);
+		}
+
+		/// <inheritdoc />
+		public short ToInt16(ReadOnlySpan<byte> value)
+		{
+			return BitConverter.ToInt16(value);
+		}
+
+		/// <inheritdoc />
+		public bool ToBoolean(ReadOnlySpan<byte> value)
+		{
+			return BitConverter.ToBoolean(value);
+		}
+
+		/// <inheritdoc />
+		public double ToDouble(ReadOnlySpan<byte> value)
+		{
+			return BitConverter.ToDouble(value);
+		}
+
+		/// <inheritdoc />
+		public int ToInt32(ReadOnlySpan<byte>  value)
+		{
+			return BitConverter.ToInt32(value);
+		}
+
+		/// <inheritdoc />
+		public long ToInt64(ReadOnlySpan<byte> value)
+		{
+			return BitConverter.ToInt64(value);
+		}
+
+		/// <inheritdoc />
+		public float ToSingle(ReadOnlySpan<byte> value)
+		{
+			return BitConverter.ToSingle(value);
+		}
+
+		/// <inheritdoc />
+		public ushort ToUInt16(ReadOnlySpan<byte> value)
+		{
+			return BitConverter.ToUInt16(value);
+		}
+
+		/// <inheritdoc />
+		public uint ToUInt32(ReadOnlySpan<byte> value)
+		{
+			return BitConverter.ToUInt32(value);
+		}
+
+		/// <inheritdoc />
+		public ulong ToUInt64(ReadOnlySpan<byte> value)
+		{
+			return BitConverter.ToUInt64(value);
+		}
+#endif
+
 		/// <inheritdoc />
 		public long DoubleToInt64Bits(double value)
 		{

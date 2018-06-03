@@ -359,9 +359,78 @@ namespace Thinktecture.IO
 		[NotNull]
 		string GetDirectoryRoot([NotNull] string path);
 
+#if NETCOREAPP2_1
 		/// <summary>Returns the names of files (including their paths) in the specified directory.</summary>
 		/// <returns>An array of the full names (including paths) for the files in the specified directory, or an empty array if no files are found.</returns>
 		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive.</param>
+		/// <param name="searchPattern"></param>
+		/// <param name="enumerationOptions">Enumeration options.</param>
+		[NotNull]
+		string[] GetFiles(string path, string searchPattern, EnumerationOptions enumerationOptions);
+
+		/// <summary>Returns the names of subdirectories (including their paths) that match the specified search pattern in the specified directory.</summary>
+		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive.</param>
+		/// <param name="searchPattern">The search string to match against the names of subdirectories in <paramref name="path" />. This parameter can contain a combination of valid literal and wildcard characters (see Remarks), but doesn't support regular expressions. </param>
+		/// <param name="enumerationOptions">Enumeration options.</param>
+		/// <returns>An array of the full names (including paths) of the subdirectories that match the search pattern in the specified directory, or an empty array if no directories are found.</returns>
+		[NotNull]
+		string[] GetDirectories(string path, string searchPattern, EnumerationOptions enumerationOptions);
+
+		/// <summary>Returns an array of file names and directory names that that match a search pattern in a specified path.</summary>
+		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive.</param>
+		/// <param name="searchPattern">The search string to match against the names of file and directories in <paramref name="path" />.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions.</param>
+		/// <param name="enumerationOptions">Enumeration options.</param>
+		/// <returns>An array of file names and directory names that match the specified search criteria, or an empty array if no files or directories are found.</returns>
+		[NotNull]
+		string[] GetFileSystemEntries(string path, string searchPattern, EnumerationOptions enumerationOptions);
+
+		/// <summary>Returns an enumerable collection of directory names that match a search pattern in a specified path.</summary>
+		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive.</param>
+		/// <param name="searchPattern">The search string to match against the names of directories in <paramref name="path" />.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions.</param>
+		/// <param name="enumerationOptions">Enumeration options.</param>
+		/// <returns>An enumerable collection of the full names (including paths) for the directories in the directory specified by <paramref name="path" /> and that match the specified search pattern.</returns>
+		[NotNull]
+		IEnumerable<string> EnumerateDirectories([NotNull] string path, string searchPattern, [NotNull] EnumerationOptions enumerationOptions);
+
+		/// <summary>Returns an enumerable collection of file names that match a search pattern in a specified path, and optionally searches subdirectories.</summary>
+		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive.</param>
+		/// <param name="searchPattern">The search string to match against the names of files in <paramref name="path" />.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions.  </param>
+		/// <param name="enumerationOptions">Enumeration options.</param>
+		/// <returns>An enumerable collection of the full names (including paths) for the files in the directory specified by <paramref name="path" /> and that match the specified search pattern and option.</returns>
+		[NotNull]
+		IEnumerable<string> EnumerateFiles([NotNull] string path, [NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+
+		/// <summary>Returns an enumerable collection of file names and directory names that  match a search pattern in a specified path.</summary>
+		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive. </param>
+		/// <param name="searchPattern">The search string to match against the names of file-system entries in <paramref name="path" />.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions.  </param>
+		/// <param name="enumerationOptions">Enumeration options.</param>
+		/// <returns>An enumerable collection of file-system entries in the directory specified by <paramref name="path" /> and that match the specified search pattern.</returns>
+		[NotNull]
+		IEnumerable<string> EnumerateFileSystemEntries([NotNull] string path, [NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+#endif
+
+		/// <summary>Returns the names of files (including their paths) in the specified directory.</summary>
+		/// <returns>An array of the full names (including paths) for the files in the specified directory, or an empty array if no files are found.</returns>
+		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive.</param>
+		/// <exception cref="T:System.IO.IOException">
+		/// <paramref name="path" /> is a file name.-or-A network error has occurred. </exception>
+		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
+		/// <exception cref="T:System.ArgumentException">
+		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="path" /> is null. </exception>
+		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
+		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is not found or is invalid (for example, it is on an unmapped drive). </exception>
+		/// <filterpriority>1</filterpriority>
+		/// <PermissionSet>
+		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+		/// </PermissionSet>
+		string[] GetFiles(string path);
+
+		/// <summary>Returns the names of files (including their paths) in the specified directory.</summary>
+		/// <returns>An array of the full names (including paths) for the files in the specified directory, or an empty array if no files are found.</returns>
+		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive.</param>
+		/// <param name="searchPattern"></param>
 		/// <exception cref="T:System.IO.IOException">
 		/// <paramref name="path" /> is a file name.-or-A network error has occurred. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
@@ -375,26 +444,7 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		[NotNull]
-		string[] GetFiles([NotNull] string path);
-
-		/// <summary>Returns the names of files (including their paths) that match the specified search pattern in the specified directory.</summary>
-		/// <returns>An array of the full names (including paths) for the files in the specified directory that match the specified search pattern, or an empty array if no files are found.</returns>
-		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive.</param>
-		/// <param name="searchPattern">The search string to match against the names of files in <paramref name="path" />.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions.</param>
-		/// <exception cref="T:System.IO.IOException">
-		/// <paramref name="path" /> is a file name.-or-A network error has occurred. </exception>
-		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
-		/// <exception cref="T:System.ArgumentException">
-		/// <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters. You can query for invalid characters by using <see cref="M:System.IO.Path.GetInvalidPathChars" />.-or- <paramref name="searchPattern" /> doesn't contain a valid pattern. </exception>
-		/// <exception cref="T:System.ArgumentNullException">
-		/// <paramref name="path" /> or <paramref name="searchPattern" /> is null. </exception>
-		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
-		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is not found or is invalid (for example, it is on an unmapped drive). </exception>
-		/// <PermissionSet>
-		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
-		/// </PermissionSet>
-		[NotNull]
-		string[] GetFiles([NotNull] string path, [NotNull] string searchPattern);
+		string[] GetFiles([NotNull] string path, string searchPattern);
 
 		/// <summary>Returns the names of files (including their paths) that match the specified search pattern in the specified directory, using a value to determine whether to search subdirectories.</summary>
 		/// <returns>An array of the full names (including paths) for the files in the specified directory that match the specified search pattern and option, or an empty array if no files are found.</returns>

@@ -1,5 +1,6 @@
 #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
 
+using System;
 using System.Net;
 
 // ReSharper disable AssignNullToNotNullAttribute
@@ -103,6 +104,20 @@ namespace Thinktecture.Net.Adapters
 		{
 			return IPAddressAdapter.Parse(ipString);
 		}
+
+#if NETCOREAPP2_1
+		/// <summary>Converts an IP address span to an <see cref="T:System.Net.IPAddress" /> instance.</summary>
+		/// <returns>An <see cref="T:System.Net.IPAddress" /> instance.</returns>
+		/// <param name="ipString">A span that contains an IP address in dotted-quad notation for IPv4 and in colon-hexadecimal notation for IPv6. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="ipString" /> is null. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="ipString" /> is not a valid IP address. </exception>
+		public IIPAddress Parse(ReadOnlySpan<char> ipString)
+		{
+			return IPAddressAdapter.Parse(ipString);
+		}
+#endif
 
 		/// <summary>Determines whether a string is a valid IP address.</summary>
 		/// <returns>true if <paramref name="ipString" /> is a valid IP address; otherwise, false.</returns>

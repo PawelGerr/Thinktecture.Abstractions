@@ -1,5 +1,6 @@
 #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
 
+using System;
 using System.Net;
 using System.Net.Sockets;
 using JetBrains.Annotations;
@@ -55,6 +56,24 @@ namespace Thinktecture.Net
 		/// <returns>Returns <see cref="T:System.Net.IPAddress" />.An IPv6 address.</returns>
 		[NotNull]
 		IIPAddress MapToIPv6();
+
+#if NETCOREAPP2_1
+		/// <summary>
+		/// Write the address into <paramref name="destination"/>.
+		/// </summary>
+		/// <param name="destination">Span to write the bytes into.</param>
+		/// <param name="charsWritten">Number of chars written into <paramref name="destination"/>.</param>
+		/// <returns><c>true</c> if the address has been written successfully; otherweise <c>false</c>.</returns>
+		bool TryFormat(Span<char> destination, out int charsWritten);
+
+		/// <summary>
+		/// Write the address bytes into <paramref name="destination"/>.
+		/// </summary>
+		/// <param name="destination">Span to write the bytes into.</param>
+		/// <param name="bytesWritten">Number of bytes written into <paramref name="destination"/>.</param>
+		/// <returns><c>true</c> if the address has been written successfully; otherweise <c>false</c>.</returns>
+		bool TryWriteBytes(Span<byte> destination, out int bytesWritten);
+#endif
 	}
 }
 

@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 
 namespace Thinktecture
 {
@@ -9,6 +10,138 @@ namespace Thinktecture
 	{
 		/// <summary>Indicates the byte order ("endianness") in which data is stored in this computer architecture.</summary>
 		bool IsLittleEndian { get; }
+
+#if NETCOREAPP2_1
+		/// <summary>
+		/// Writes the <paramref name="value"/> into <paramref name="destination"/>.
+		/// </summary>
+		/// <param name="destination">Destination to write the <paramref name="value"/> into.</param>
+		/// <param name="value">Value to write into <paramref name="destination"/>.</param>
+		/// <returns><c>true</c> if <paramref name="value"/> has been written successfully; otherwise <c>false</c>.</returns>
+		bool TryWriteBytes(Span<byte> destination, bool value);
+
+		/// <summary>
+		/// Writes the <paramref name="value"/> into <paramref name="destination"/>.
+		/// </summary>
+		/// <param name="destination">Destination to write the <paramref name="value"/> into.</param>
+		/// <param name="value">Value to write into <paramref name="destination"/>.</param>
+		/// <returns><c>true</c> if <paramref name="value"/> has been written successfully; otherwise <c>false</c>.</returns>
+		bool TryWriteBytes(Span<byte> destination, char value);
+
+		/// <summary>
+		/// Writes the <paramref name="value"/> into <paramref name="destination"/>.
+		/// </summary>
+		/// <param name="destination">Destination to write the <paramref name="value"/> into.</param>
+		/// <param name="value">Value to write into <paramref name="destination"/>.</param>
+		/// <returns><c>true</c> if <paramref name="value"/> has been written successfully; otherwise <c>false</c>.</returns>
+		bool TryWriteBytes(Span<byte> destination, double value);
+
+		/// <summary>
+		/// Writes the <paramref name="value"/> into <paramref name="destination"/>.
+		/// </summary>
+		/// <param name="destination">Destination to write the <paramref name="value"/> into.</param>
+		/// <param name="value">Value to write into <paramref name="destination"/>.</param>
+		/// <returns><c>true</c> if <paramref name="value"/> has been written successfully; otherwise <c>false</c>.</returns>
+		bool TryWriteBytes(Span<byte> destination, float value);
+
+		/// <summary>
+		/// Writes the <paramref name="value"/> into <paramref name="destination"/>.
+		/// </summary>
+		/// <param name="destination">Destination to write the <paramref name="value"/> into.</param>
+		/// <param name="value">Value to write into <paramref name="destination"/>.</param>
+		/// <returns><c>true</c> if <paramref name="value"/> has been written successfully; otherwise <c>false</c>.</returns>
+		bool TryWriteBytes(Span<byte> destination, int value);
+
+		/// <summary>
+		/// Writes the <paramref name="value"/> into <paramref name="destination"/>.
+		/// </summary>
+		/// <param name="destination">Destination to write the <paramref name="value"/> into.</param>
+		/// <param name="value">Value to write into <paramref name="destination"/>.</param>
+		/// <returns><c>true</c> if <paramref name="value"/> has been written successfully; otherwise <c>false</c>.</returns>
+		bool TryWriteBytes(Span<byte> destination, long value);
+
+		/// <summary>
+		/// Writes the <paramref name="value"/> into <paramref name="destination"/>.
+		/// </summary>
+		/// <param name="destination">Destination to write the <paramref name="value"/> into.</param>
+		/// <param name="value">Value to write into <paramref name="destination"/>.</param>
+		/// <returns><c>true</c> if <paramref name="value"/> has been written successfully; otherwise <c>false</c>.</returns>
+		bool TryWriteBytes(Span<byte> destination, short value);
+
+		/// <summary>
+		/// Writes the <paramref name="value"/> into <paramref name="destination"/>.
+		/// </summary>
+		/// <param name="destination">Destination to write the <paramref name="value"/> into.</param>
+		/// <param name="value">Value to write into <paramref name="destination"/>.</param>
+		/// <returns><c>true</c> if <paramref name="value"/> has been written successfully; otherwise <c>false</c>.</returns>
+		bool TryWriteBytes(Span<byte> destination, ushort value);
+
+		/// <summary>
+		/// Writes the <paramref name="value"/> into <paramref name="destination"/>.
+		/// </summary>
+		/// <param name="destination">Destination to write the <paramref name="value"/> into.</param>
+		/// <param name="value">Value to write into <paramref name="destination"/>.</param>
+		/// <returns><c>true</c> if <paramref name="value"/> has been written successfully; otherwise <c>false</c>.</returns>
+		bool TryWriteBytes(Span<byte> destination, uint value);
+
+		/// <summary>
+		/// Writes the <paramref name="value"/> into <paramref name="destination"/>.
+		/// </summary>
+		/// <param name="destination">Destination to write the <paramref name="value"/> into.</param>
+		/// <param name="value">Value to write into <paramref name="destination"/>.</param>
+		/// <returns><c>true</c> if <paramref name="value"/> has been written successfully; otherwise <c>false</c>.</returns>
+		bool TryWriteBytes(Span<byte> destination, ulong value);
+
+		/// <summary>Returns a Unicode character converted from two bytes in span.</summary>
+		/// <param name="value">A span of characters.</param>
+		/// <returns>A character formed by two bytes.</returns>
+		char ToChar(ReadOnlySpan<byte> value);
+
+		/// <summary>Returns a 16-bit signed integer converted from two bytes in span.</summary>
+		/// <param name="value">A span of bytes. </param>
+		/// <returns>A 16-bit signed integer formed by two bytes.</returns>
+		short ToInt16(ReadOnlySpan<byte> value);
+
+		/// <summary>Returns a Boolean value converted from one byte at a specified position in a byte array.</summary>
+		/// <param name="value">A span of bytes. </param>
+		/// <returns>true if the byte in <paramref name="value" /> is nonzero; otherwise, false.</returns>
+		bool ToBoolean(ReadOnlySpan<byte> value);
+
+		/// <summary>Returns a double-precision floating point number converted from eight bytes.</summary>
+		/// <param name="value">A span of bytes. </param>
+		/// <returns>A double precision floating point number formed by eight bytes.</returns>
+		double ToDouble(ReadOnlySpan<byte> value);
+
+		/// <summary>Returns a 32-bit signed integer converted from four bytes.</summary>
+		/// <param name="value">An array of bytes.</param>
+		/// <returns>A 32-bit signed integer formed by four bytes.</returns>
+		int ToInt32(ReadOnlySpan<byte> value);
+
+		/// <summary>Returns a 64-bit signed integer converted from eight bytes.</summary>
+		/// <param name="value">A span of bytes. </param>
+		/// <returns>A 64-bit signed integer formed by eight bytes.</returns>
+		long ToInt64(ReadOnlySpan<byte> value);
+
+		/// <summary>Returns a single-precision floating point number converted from four bytes.</summary>
+		/// <param name="value">A span of bytes.</param>
+		/// <returns>A single-precision floating point number formed by four bytes.</returns>
+		float ToSingle(ReadOnlySpan<byte> value);
+
+		/// <summary>Returns a 16-bit unsigned integer converted from two bytes.</summary>
+		/// <param name="value">The span of bytes.</param>
+		/// <returns>A 16-bit unsigned integer formed by two bytes.</returns>
+		ushort ToUInt16(ReadOnlySpan<byte> value);
+
+		/// <summary>Returns a 32-bit unsigned integer converted from four bytes.</summary>
+		/// <param name="value">A span of bytes.</param>
+		/// <returns>A 32-bit unsigned integer formed by four bytes.</returns>
+		uint ToUInt32(ReadOnlySpan<byte> value);
+
+		/// <summary>Returns a 64-bit unsigned integer converted from eight bytes.</summary>
+		/// <param name="value">A span of bytes.</param>
+		/// <returns>A 64-bit unsigned integer formed by the eight bytes.</returns>
+		ulong ToUInt64(ReadOnlySpan<byte> value);
+#endif
 
 		/// <summary>Converts the specified double-precision floating point number to a 64-bit signed integer.</summary>
 		/// <returns>A 64-bit signed integer whose value is equivalent to <paramref name="value" />.</returns>

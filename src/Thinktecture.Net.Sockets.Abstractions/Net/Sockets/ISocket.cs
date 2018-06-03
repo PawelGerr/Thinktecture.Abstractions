@@ -593,6 +593,56 @@ namespace Thinktecture.Net.Sockets
 		/// </returns>
 		bool ReceiveMessageFromAsync([NotNull] ISocketAsyncEventArgs e);
 
+#if NETCOREAPP2_1
+		/// <summary>
+		/// Sends data to a connected Socket.
+		/// </summary>
+		/// <param name="buffer">A span of type Byte that contains the data to be sent.</param>
+		/// <returns>The number of bytes sent to the Socket.</returns>
+		int Send(ReadOnlySpan<byte> buffer);
+
+		/// <summary>
+		/// Sends data to a connected Socket using the specified SocketFlags.
+		/// </summary>
+		/// <param name="buffer">A span of bytes that contains the data to be sent.</param>
+		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
+		/// <returns>The number of bytes sent to the Socket.</returns>
+		int Send(ReadOnlySpan<byte> buffer, SocketFlags socketFlags);
+
+		/// <summary>
+		/// Sends the specified number of bytes of data to a connected Socket, starting at the specified offset, and using the specified SocketFlags.
+		/// </summary>
+		/// <param name="buffer">A span of bytes that contains the data to be sent.</param>
+		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
+		/// <param name="errorCode">A SocketError object that stores the socket error.</param>
+		/// <returns>The number of bytes sent to the Socket.</returns>
+		int Send(ReadOnlySpan<byte> buffer, SocketFlags socketFlags, out SocketError errorCode);
+
+		/// <summary>
+		/// Receives data from a bound Socket into a receive buffer, using the specified SocketFlags.
+		/// </summary>
+		/// <param name="buffer">A span of bytes that is the storage location for the received data.</param>
+		/// <returns>The number of bytes received.</returns>
+		int Receive(Span<byte> buffer);
+
+		/// <summary>
+		/// Receives data from a bound Socket into a receive buffer, using the specified SocketFlags.
+		/// </summary>
+		/// <param name="buffer">A span of bytes that is the storage location for the received data.</param>
+		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
+		/// <returns>The number of bytes received.</returns>
+		int Receive(Span<byte> buffer, SocketFlags socketFlags);
+
+		/// <summary>
+		/// Receives data from a bound Socket into a receive buffer, using the specified SocketFlags.
+		/// </summary>
+		/// <param name="buffer">A span of bytes that is the storage location for the received data.</param>
+		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
+		/// <param name="errorCode">A SocketError object that stores the socket error.</param>
+		/// <returns>The number of bytes received.</returns>
+		int Receive(Span<byte> buffer, SocketFlags socketFlags, out SocketError errorCode);
+#endif
+
 		/// <summary>
 		/// Sends data to a connected Socket.
 		/// </summary>

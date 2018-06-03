@@ -1,8 +1,8 @@
 using System.Text;
 using JetBrains.Annotations;
-
 #if NET45 || NETSTANDARD2_0
 using System;
+
 #endif
 
 namespace Thinktecture.Text
@@ -10,13 +10,47 @@ namespace Thinktecture.Text
 	/// <summary>Represents a character encoding.To browse the .NET Framework source code for this type, see the Reference Source.</summary>
 	public interface IEncoding : IAbstraction<Encoding>
 #if NET45 || NETSTANDARD2_0
-	                             , ICloneable
+										, ICloneable
 #endif
 	{
 		/// <summary>When overridden in a derived class, gets the name registered with the Internet Assigned Numbers Authority (IANA) for the current encoding.</summary>
 		/// <returns>The IANA name for the current <see cref="T:System.Text.Encoding" />.</returns>
 		[NotNull]
 		string WebName { get; }
+
+#if NETCOREAPP2_1
+		/// <summary>
+		/// The preamble.
+		/// </summary>
+		ReadOnlySpan<byte> Preamble { get; }
+
+		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding all the characters in the specified span of characters.</summary>
+		/// <param name="chars">The span of characters containing the characters to encode.</param>
+		/// <returns>The number of bytes produced by encoding all the characters in the specified span of character.</returns>
+		int GetByteCount(ReadOnlySpan<char> chars);
+
+		/// <summary>When overridden in a derived class, encodes all the characters in the specified span of character into a sequence of bytes.</summary>
+		/// <param name="chars">The character array containing the characters to encode.</param>
+		/// <param name="bytes">Span to write into.</param>
+		/// <returns>Number of bytes writtenn to <paramref name="bytes"/>.</returns>
+		int GetBytes(ReadOnlySpan<char> chars, Span<byte> bytes);
+
+		/// <summary>When overridden in a derived class, calculates the number of characters produced by decoding all the bytes in the specified span of bytes.</summary>
+		/// <param name="bytes">The span of bytes containing the sequence of bytes to decode. </param>
+		/// <returns>The number of characters produced by decoding the specified sequence of bytes.</returns>
+		int GetCharCount(ReadOnlySpan<byte> bytes);
+
+		/// <summary>When overridden in a derived class, decodes all the bytes in the specified span of bytes into a set of characters.</summary>
+		/// <param name="bytes">The span of byts containing the sequence of bytes to decode. </param>
+		/// <param name="chars">Span to write into.</param>
+		/// <returns>Number of characters written into chars.</returns>
+		int GetChars(ReadOnlySpan<byte> bytes, Span<char> chars);
+
+		/// <summary>When overridden in a derived class, decodes a sequence of bytes from the specified span into a string.</summary>
+		/// <param name="bytes">The span containing the sequence of bytes to decode. </param>
+		/// <returns>A string that contains the results of decoding the specified sequence of bytes.</returns>
+		string GetString(ReadOnlySpan<byte> bytes);
+#endif
 
 		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding all the characters in the specified character array.</summary>
 		/// <returns>The number of bytes produced by encoding all the characters in the specified character array.</returns>

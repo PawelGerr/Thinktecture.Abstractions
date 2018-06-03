@@ -1,6 +1,11 @@
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
+#if NETCOREAPP2_1
+using System.Threading;
+
+#endif
 
 // ReSharper disable AssignNullToNotNullAttribute
 
@@ -34,6 +39,32 @@ namespace Thinktecture.IO.Adapters
 		{
 			return Implementation.Peek();
 		}
+
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public int Read(Span<char> buffer)
+		{
+			return Implementation.Read(buffer);
+		}
+
+		/// <inheritdoc />
+		public ValueTask<int> ReadAsync(Memory<char> buffer, CancellationToken cancellationToken = default)
+		{
+			return Implementation.ReadAsync(buffer, cancellationToken);
+		}
+
+		/// <inheritdoc />
+		public int ReadBlock(Span<char> buffer)
+		{
+			return Implementation.ReadBlock(buffer);
+		}
+
+		/// <inheritdoc />
+		public ValueTask<int> ReadBlockAsync(Memory<char> buffer, CancellationToken cancellationToken = default)
+		{
+			return Implementation.ReadBlockAsync(buffer, cancellationToken);
+		}
+#endif
 
 		/// <inheritdoc />
 		public int Read()

@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using JetBrains.Annotations;
 
@@ -184,6 +185,42 @@ namespace Thinktecture.Text.Adapters
 			: base(encoding)
 		{
 		}
+
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public ReadOnlySpan<byte> Preamble => Implementation.Preamble;
+
+		/// <inheritdoc />
+		public int GetByteCount(ReadOnlySpan<char> chars)
+		{
+			return Implementation.GetByteCount(chars);
+		}
+
+		/// <inheritdoc />
+		public int GetBytes(ReadOnlySpan<char> chars, Span<byte> bytes)
+		{
+			return Implementation.GetBytes(chars, bytes);
+		}
+
+		/// <inheritdoc />
+		public int GetCharCount(ReadOnlySpan<byte> bytes)
+		{
+			return Implementation.GetCharCount(bytes);
+		}
+
+		/// <inheritdoc />
+		public int GetChars(ReadOnlySpan<byte> bytes, Span<char> chars)
+		{
+			return Implementation.GetChars(bytes, chars);
+		}
+
+		/// <inheritdoc />
+		public string GetString(ReadOnlySpan<byte> bytes)
+		{
+			return Implementation.GetString(bytes);
+		}
+
+#endif
 
 		/// <inheritdoc />
 		public int GetByteCount(char[] chars)

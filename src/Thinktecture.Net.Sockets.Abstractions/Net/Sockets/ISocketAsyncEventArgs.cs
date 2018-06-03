@@ -19,6 +19,12 @@ namespace Thinktecture.Net.Sockets
 		[CanBeNull]
 		byte[] Buffer { get; }
 
+#if NETCOREAPP2_1
+		/// <summary>Gets the data buffer to use with an asynchronous socket method.</summary>
+		/// <returns>A <see cref="Memory{T}" /> of bytes that represents the data buffer to use with an asynchronous socket method.</returns>
+		Memory<byte> MemoryBuffer { get; }
+#endif
+
 		/// <summary>Gets or sets an array of data buffers to use with an asynchronous socket method.</summary>
 		/// <returns>An <see cref="T:System.Collections.IList" /> that represents an array of data buffers to use with an asynchronous socket method.</returns>
 		/// <exception cref="T:System.ArgumentException">There are ambiguous buffers specified on a set operation. This exception occurs if the <see cref="P:System.Net.Sockets.SocketAsyncEventArgs.Buffer" /> property has been set to a non-null value and an attempt was made to set the <see cref="P:System.Net.Sockets.SocketAsyncEventArgs.BufferList" /> property to a non-null value.</exception>
@@ -88,6 +94,12 @@ namespace Thinktecture.Net.Sockets
 
 		/// <summary>The event used to complete an asynchronous operation.</summary>
 		event EventHandler<ISocketAsyncEventArgs> Completed;
+
+#if NETCOREAPP2_1
+		/// <summary>Sets the data buffer to use with an asynchronous socket method.</summary>
+		/// <param name="buffer">The data buffer to use with an asynchronous socket method.</param>
+		void SetBuffer(Memory<byte> buffer);
+#endif
 
 		/// <summary>Sets the data buffer to use with an asynchronous socket method.</summary>
 		/// <param name="buffer">The data buffer to use with an asynchronous socket method.</param>

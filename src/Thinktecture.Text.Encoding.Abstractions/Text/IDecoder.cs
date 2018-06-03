@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using JetBrains.Annotations;
 
@@ -24,6 +25,30 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentException">The output buffer is too small to contain any of the converted input. The output buffer should be greater than or equal to the size indicated by the <see cref="GetCharCount(byte[],int,int)" /> method.</exception>
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Decoder.Fallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
 		void Convert([NotNull] byte[] bytes, int byteIndex, int byteCount, [NotNull] char[] chars, int charIndex, int charCount, bool flush, out int bytesUsed, out int charsUsed, out bool completed);
+
+#if NETCOREAPP2_1
+		/// <summary>When overridden in a derived class, calculates the number of characters produced by decoding a sequence of bytes from the specified span of bytes.</summary>
+		/// <param name="bytes">The span of byte containing the sequence of bytes to decode. </param>
+		/// <param name="flush">true to simulate clearing the internal state of the encoder after the calculation; otherwise, false. </param>
+		/// <returns>The number of characters produced by decoding the specified sequence of bytes and any bytes in the internal buffer.</returns>
+		int GetCharCount(ReadOnlySpan<byte> bytes, bool flush);
+
+		/// <summary>When overridden in a derived class, decodes a sequence of bytes from the specified span of bytes and any bytes in the internal buffer into the specified character span of characters. A parameter indicates whether to clear the internal state of the decoder after the conversion.</summary>
+		/// <param name="bytes">The span of array containing the sequence of bytes to decode. </param>
+		/// <param name="chars">The span of character to contain the resulting set of characters. </param>
+		/// <param name="flush">true to clear the internal state of the decoder after the conversion; otherwise, false. </param>
+		/// <returns>The actual number of characters written into the <paramref name="chars" /> parameter.</returns>
+		int GetChars(ReadOnlySpan<byte> bytes, Span<char> chars, bool flush);
+
+		/// <summary>Converts a buffer of encoded bytes to UTF-16 encoded characters and stores the result in another buffer.</summary>
+		/// <param name="bytes">The buffer that contains the byte sequences to convert.</param>
+		/// <param name="chars">The buffer to store the converted characters.</param>
+		/// <param name="flush">true to indicate no further data is to be converted; otherwise, false.</param>
+		/// <param name="bytesUsed">When this method returns, contains the number of bytes that were produced by the conversion. This parameter is passed uninitialized.</param>
+		/// <param name="charsUsed">When this method returns, contains the number of characters from <paramref name="chars" /> that were used in the conversion. This parameter is passed uninitialized.</param>
+		/// <param name="completed">When this method returns, contains true if all the characters were converted; otherwise, false. This parameter is passed uninitialized.</param>
+		void Convert(ReadOnlySpan<byte> bytes, Span<char> chars, bool flush, out int bytesUsed, out int charsUsed, out bool completed);
+#endif
 
 		/// <summary>When overridden in a derived class, calculates the number of characters produced by decoding a sequence of bytes from the specified byte array.</summary>
 		/// <returns>The number of characters produced by decoding the specified sequence of bytes and any bytes in the internal buffer.</returns>

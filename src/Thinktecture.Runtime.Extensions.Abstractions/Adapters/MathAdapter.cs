@@ -13,6 +13,32 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public double E => Math.E;
 
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public double Acosh(double value)
+		{
+			return Math.Acosh(value);
+		}
+
+		/// <inheritdoc />
+		public double Asinh(double value)
+		{
+			return Math.Asinh(value);
+		}
+
+		/// <inheritdoc />
+		public double Atanh(double value)
+		{
+			return Math.Atanh(value);
+		}
+
+		/// <inheritdoc />
+		public double Cbrt(double value)
+		{
+			return Math.Cbrt(value);
+		}
+#endif
+
 		/// <inheritdoc />
 		public decimal Abs(decimal value)
 		{

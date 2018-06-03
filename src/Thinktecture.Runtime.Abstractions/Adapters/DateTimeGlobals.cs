@@ -9,31 +9,24 @@ namespace Thinktecture.Adapters
 	public class DateTimeGlobals : IDateTimeGlobals
 	{
 		/// <inheritdoc />
-		public DateTime MaxValue { get; }
+		public DateTime MaxValue => DateTime.MaxValue;
 
 		/// <inheritdoc />
-		public DateTime MinValue { get; }
+		public DateTime MinValue => DateTime.MinValue;
 
 		/// <inheritdoc />
-		public DateTime Now { get; }
+		public DateTime Now => DateTime.Now;
 
 		/// <inheritdoc />
-		public DateTime Today { get; }
+		public DateTime Today => DateTime.Today;
 
 		/// <inheritdoc />
-		public DateTime UtcNow { get; }
+		public DateTime UtcNow => DateTime.UtcNow;
 
-		/// <summary>
-		/// Initializes a new instance of <see cref="DateTimeGlobals"/>.
-		/// </summary>
-		public DateTimeGlobals()
-		{
-			MaxValue = DateTime.MaxValue;
-			MinValue = DateTime.MinValue;
-			Now = DateTime.Now;
-			Today = DateTime.Today;
-			UtcNow = DateTime.UtcNow;
-		}
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public DateTime UnixEpoch => DateTime.UnixEpoch;
+#endif
 
 		/// <inheritdoc />
 		public int Compare(DateTime t1, DateTime t2)
@@ -70,6 +63,50 @@ namespace Thinktecture.Adapters
 		{
 			return DateTime.FromFileTimeUtc(fileTime);
 		}
+
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public DateTime Parse(ReadOnlySpan<char> s, IFormatProvider provider = null, DateTimeStyles styles = DateTimeStyles.None)
+		{
+			return DateTime.Parse(s, provider, styles);
+		}
+
+		/// <inheritdoc />
+		public DateTime ParseExact(ReadOnlySpan<char> s, ReadOnlySpan<char> format, IFormatProvider provider, DateTimeStyles style = DateTimeStyles.None)
+		{
+			return DateTime.ParseExact(s, format, provider, style);
+		}
+
+		/// <inheritdoc />
+		public DateTime ParseExact(ReadOnlySpan<char> s, string[] formats, IFormatProvider provider, DateTimeStyles style = DateTimeStyles.None)
+		{
+			return DateTime.ParseExact(s, formats, provider, style);
+		}
+
+		/// <inheritdoc />
+		public bool TryParse(ReadOnlySpan<char> s, IFormatProvider provider, DateTimeStyles styles, out DateTime result)
+		{
+			return DateTime.TryParse(s, provider, styles, out result);
+		}
+
+		/// <inheritdoc />
+		public bool TryParse(ReadOnlySpan<char> s, out DateTime result)
+		{
+			return DateTime.TryParse(s, out result);
+		}
+
+		/// <inheritdoc />
+		public bool TryParseExact(ReadOnlySpan<char> s, ReadOnlySpan<char> format, IFormatProvider provider, DateTimeStyles style, out DateTime result)
+		{
+			return DateTime.TryParseExact(s, format, provider, style, out result);
+		}
+
+		/// <inheritdoc />
+		public bool TryParseExact(ReadOnlySpan<char> s, string[] formats, IFormatProvider provider, DateTimeStyles style, out DateTime result)
+		{
+			return DateTime.TryParseExact(s, formats, provider, style, out result);
+		}
+#endif
 
 		/// <inheritdoc />
 		public DateTime Parse(string s)

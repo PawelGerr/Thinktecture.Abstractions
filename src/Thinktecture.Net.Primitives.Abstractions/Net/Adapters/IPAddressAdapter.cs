@@ -1,5 +1,6 @@
 #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
 
+using System;
 using System.Net;
 using System.Net.Sockets;
 using JetBrains.Annotations;
@@ -105,6 +106,21 @@ namespace Thinktecture.Net.Adapters
 			return IPAddress.Parse(ipString).ToInterface();
 		}
 
+#if NETCOREAPP2_1
+		/// <summary>Converts an IP address span to an <see cref="T:System.Net.IPAddress" /> instance.</summary>
+		/// <returns>An <see cref="T:System.Net.IPAddress" /> instance.</returns>
+		/// <param name="ipString">A span that contains an IP address in dotted-quad notation for IPv4 and in colon-hexadecimal notation for IPv6. </param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="ipString" /> is null. </exception>
+		/// <exception cref="T:System.FormatException">
+		/// <paramref name="ipString" /> is not a valid IP address. </exception>
+		[NotNull]
+		public static IIPAddress Parse(ReadOnlySpan<char> ipString)
+		{
+			return IPAddress.Parse(ipString).ToInterface();
+		}
+#endif
+
 		/// <summary>Determines whether a string is a valid IP address.</summary>
 		/// <returns>true if <paramref name="ipString" /> is a valid IP address; otherwise, false.</returns>
 		/// <param name="ipString">The string to validate.</param>
@@ -209,6 +225,20 @@ namespace Thinktecture.Net.Adapters
 		{
 			return Implementation.MapToIPv6().ToInterface();
 		}
+
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public bool TryFormat(Span<char> destination, out int charsWritten)
+		{
+			return Implementation.TryFormat(destination, out charsWritten);
+		}
+
+		/// <inheritdoc />
+		public bool TryWriteBytes(Span<byte> destination, out int bytesWritten)
+		{
+			return Implementation.TryWriteBytes(destination, out bytesWritten);
+		}
+#endif
 	}
 }
 

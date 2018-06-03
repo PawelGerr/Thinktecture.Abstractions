@@ -4,8 +4,11 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Thinktecture.Text;
 
-// ReSharper disable AssignNullToNotNullAttribute
+#if NETCOREAPP2_1
+using System.Threading;
+#endif
 
+// ReSharper disable AssignNullToNotNullAttribute
 namespace Thinktecture.IO.Adapters
 {
 	/// <summary>
@@ -63,6 +66,32 @@ namespace Thinktecture.IO.Adapters
 		{
 			return Implementation.FlushAsync();
 		}
+
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public void Write(ReadOnlySpan<char> value)
+		{
+			Implementation.Write(value);
+		}
+
+		/// <inheritdoc />
+		public void WriteLine(ReadOnlySpan<char> value)
+		{
+			Implementation.WriteLine(value);
+		}
+
+		/// <inheritdoc />
+		public Task WriteAsync(ReadOnlyMemory<char> buffer, CancellationToken cancellationToken = default)
+		{
+			return Implementation.WriteAsync(buffer, cancellationToken);
+		}
+
+		/// <inheritdoc />
+		public Task WriteLineAsync(ReadOnlyMemory<char> buffer, CancellationToken cancellationToken = default)
+		{
+			return Implementation.WriteLineAsync(buffer, cancellationToken);
+		}
+#endif
 
 		/// <inheritdoc />
 		public void Write(bool value)
@@ -134,7 +163,6 @@ namespace Thinktecture.IO.Adapters
 		public void Write(string format, object arg0)
 		{
 			Implementation.Write(format, arg0);
-
 		}
 
 		/// <inheritdoc />

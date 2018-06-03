@@ -14,6 +14,22 @@ namespace Thinktecture
 		/// <summary>Represents the natural logarithmic base, specified by the constant, e.</summary>
 		double E { get; }
 
+#if NETCOREAPP2_1
+		/// <summary>Returns hyperbolic arc-cosine of the given number.</summary>
+		double Acosh(double value);
+
+		/// <summary>Returns hyperbolic arc-sine of the given number.</summary>
+		double Asinh(double value);
+
+		/// <summary>Returns hyperbolic arc-tangent of the given number.</summary>
+		double Atanh(double value);
+
+		/// <summary>
+		/// Returns the cube root of a number.
+		/// </summary>
+		double Cbrt(double value);
+#endif
+
 		/// <summary>Returns the absolute value of a <see cref="T:System.Decimal" /> number.</summary>
 		/// <returns>A decimal number, x, such that 0 ≤ x ≤<see cref="F:System.Decimal.MaxValue" />.</returns>
 		/// <param name="value">A number that is greater than or equal to <see cref="F:System.Decimal.MinValue" />, but less than or equal to <see cref="F:System.Decimal.MaxValue" />. </param>

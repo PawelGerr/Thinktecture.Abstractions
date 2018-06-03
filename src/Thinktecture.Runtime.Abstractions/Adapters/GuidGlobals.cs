@@ -24,6 +24,32 @@ namespace Thinktecture.Adapters
 			return Guid.NewGuid();
 		}
 
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public Guid Parse(ReadOnlySpan<char> input)
+		{
+			return Guid.Parse(input);
+		}
+
+		/// <inheritdoc />
+		public bool TryParse(ReadOnlySpan<char> input, out Guid result)
+		{
+			return Guid.TryParse(input, out result);
+		}
+
+		/// <inheritdoc />
+		public Guid ParseExact(ReadOnlySpan<char> input, ReadOnlySpan<char> format)
+		{
+			return Guid.ParseExact(input, format);
+		}
+
+		/// <inheritdoc />
+		public bool TryParseExact(ReadOnlySpan<char> input, ReadOnlySpan<char> format, out Guid result)
+		{
+			return Guid.TryParseExact(input, format, out result);
+		}
+#endif
+
 		/// <inheritdoc />
 		public Guid Parse(string input)
 		{

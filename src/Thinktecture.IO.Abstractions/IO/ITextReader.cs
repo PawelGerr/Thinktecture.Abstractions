@@ -3,6 +3,10 @@ using System.IO;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 
+#if NETCOREAPP2_1
+using System.Threading;
+#endif
+
 namespace Thinktecture.IO
 {
 	/// <summary>
@@ -15,6 +19,34 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextReader" /> is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		int Peek();
+
+#if NETCOREAPP2_1
+		/// <summary>
+		/// Reads from the current reader and writes the data to a buffer.
+		/// </summary>
+		/// <param name="buffer">Buffer to write into.</param>
+		/// <returns>he maximum number of characters to read.</returns>
+		int Read(Span<char> buffer);
+
+		/// <summary>
+		/// Reads from the current reader and writes the data to a buffer.
+		/// </summary>
+		/// <param name="buffer">Buffer to write into.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>he maximum number of characters to read.</returns>
+		ValueTask<int> ReadAsync(Memory<char> buffer, CancellationToken cancellationToken = default);
+
+		/// <summary>Reads characters from the current text reader and writes the data to a buffer.</summary>
+		/// <param name="buffer">Buffer to read into. </param>
+		/// <returns>The number of characters that have been read.</returns>
+		int ReadBlock(Span<char> buffer);
+
+		/// <summary>Reads characters from the current text reader and writes the data to a buffer.</summary>
+		/// <param name="buffer">Buffer to read into. </param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The number of characters that have been read.</returns>
+		ValueTask<int> ReadBlockAsync(Memory<char> buffer, CancellationToken cancellationToken = default);
+#endif
 
 		/// <summary>Reads the next character from the text reader and advances the character position by one character.</summary>
 		/// <returns>The next character from the text reader, or -1 if no more characters are available. The default implementation returns -1.</returns>

@@ -25,6 +25,18 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentException">The current character cannot be decoded into the internal character buffer by using the <see cref="T:System.Text.Encoding" /> selected for the stream.</exception>
 		int PeekChar();
 
+#if NETCOREAPP2_1
+		/// <summary>Reads from the stream from info buffer. </summary>
+		/// <param name="buffer">The buffer to read data into. </param>
+		/// <returns>The number of bytes read into <paramref name="buffer" />.</returns>
+		int Read(Span<byte> buffer);
+
+		/// <summary>Reads from the stream from info buffer. </summary>
+		/// <param name="buffer">The buffer to read data into. </param>
+		/// <returns>The number of bytes read into <paramref name="buffer" />.</returns>
+		int Read(Span<char> buffer);
+#endif
+
 		/// <summary>Reads characters from the underlying stream and advances the current position of the stream in accordance with the Encoding used and the specific character being read from the stream.</summary>
 		/// <returns>The next character from the input stream, or -1 if no characters are currently available.</returns>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>

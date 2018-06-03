@@ -185,6 +185,42 @@ namespace Thinktecture.IO
 		[NotNull]
 		Task FlushAsync(CancellationToken cancellationToken);
 
+#if NETCOREAPP2_1
+		/// <summary>Reads from the stream and writes the data in a given buffer.</summary>
+		/// <param name="buffer">An span of bytes.</param>
+		/// <returns>The total number of bytes read into the buffer.</returns>
+		int Read(Span<byte> buffer);
+
+		/// <summary>Reads from the stream and writes the data in a given buffer.</summary>
+		/// <param name="buffer">An collection of bytes.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The total number of bytes read into the buffer.</returns>
+		ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default);
+
+		/// <summary>Writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.</summary>
+		/// <param name="buffer">An sequence of bytes. This method copies bytes from <paramref name="buffer" /> to the current stream.</param>
+		void Write(ReadOnlySpan<byte> buffer);
+
+		/// <summary>Writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.</summary>
+		/// <param name="buffer">An sequence of bytes. This method copies bytes from <paramref name="buffer" /> to the current stream.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default);
+
+		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size and cancellation token.</summary>
+		/// <returns>A task that represents the asynchronous copy operation.</returns>
+		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+		/// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="P:System.Threading.CancellationToken.None" />.</param>
+		[NotNull]
+		Task CopyToAsync([NotNull] IStream destination, CancellationToken cancellationToken);
+
+		/// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size and cancellation token.</summary>
+		/// <returns>A task that represents the asynchronous copy operation.</returns>
+		/// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+		/// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="P:System.Threading.CancellationToken.None" />.</param>
+		[NotNull]
+		Task CopyToAsync([NotNull] Stream destination, CancellationToken cancellationToken);
+#endif
+
 		/// <summary>Reads a block of bytes from the stream and writes the data in a given buffer.</summary>
 		/// <returns>The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached.</returns>
 		/// <param name="buffer">An array of bytes. When this method returns, the buffer contains the specified byte array with the values between <paramref name="offset" /> and (<paramref name="offset" /> + <paramref name="count" /> - 1) replaced by the bytes read from the current source. </param>

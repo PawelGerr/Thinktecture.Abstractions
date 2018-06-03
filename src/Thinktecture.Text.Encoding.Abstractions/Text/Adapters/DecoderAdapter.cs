@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using JetBrains.Annotations;
 
@@ -22,6 +23,27 @@ namespace Thinktecture.Text.Adapters
 		{
 			Implementation.Convert(bytes, byteIndex, byteCount, chars, charIndex, charCount, flush, out bytesUsed, out charsUsed, out completed);
 		}
+
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public int GetCharCount(ReadOnlySpan<byte> bytes, bool flush)
+		{
+			return Implementation.GetCharCount(bytes, flush);
+		}
+
+		/// <inheritdoc />
+		public int GetChars(ReadOnlySpan<byte> bytes, Span<char> chars, bool flush)
+		{
+			return Implementation.GetChars(bytes, chars, flush);
+		}
+
+		/// <inheritdoc />
+		public void Convert(ReadOnlySpan<byte> bytes, Span<char> chars, bool flush, out int bytesUsed, out int charsUsed, out bool completed)
+		{
+			Implementation.Convert(bytes, chars, flush, out bytesUsed, out charsUsed, out completed);
+		}
+
+#endif
 
 		/// <inheritdoc />
 		public int GetCharCount(byte[] bytes, int index, int count)

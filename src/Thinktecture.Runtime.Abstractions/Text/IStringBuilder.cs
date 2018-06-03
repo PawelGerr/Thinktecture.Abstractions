@@ -39,6 +39,52 @@ namespace Thinktecture.Text
 		[IndexerName("Chars")]
 		char this[int index] { get; set; }
 
+#if NETCOREAPP2_1
+		/// <summary>Appends the value to this instance.</summary>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		/// <param name="value">The span of characters to append. </param>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">Enlarging the value of this instance would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
+		[NotNull]
+		IStringBuilder Append(ReadOnlySpan<char> value);
+
+		/// <summary>Appends the content of the provided <paramref name="value"/> to this instance.</summary>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		/// <param name="value">A <see cref="StringBuilder"/> to append. </param>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">Enlarging the value of this instance would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
+		[NotNull]
+		IStringBuilder Append(StringBuilder value);
+
+		/// <summary>Appends the content of the provided <paramref name="value"/> to this instance.</summary>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		/// <param name="value">A <see cref="StringBuilder"/> to append. </param>
+		/// <param name="startIndex">Index to start from.</param>
+		/// <param name="count">Number of characters to append.</param>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">Enlarging the value of this instance would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
+		[NotNull]
+		IStringBuilder Append(StringBuilder value, int startIndex, int count);
+
+		/// <summary>Copies the characters from a specified segment of this instance to a specified segment of a destination <see cref="T:System.Char" /> array.</summary>
+		/// <param name="sourceIndex">The starting position in this instance where characters will be copied from. The index is zero-based.</param>
+		/// <param name="destination">The span where characters will be copied.</param>
+		/// <param name="count">The number of characters to be copied.</param>
+		void CopyTo(int sourceIndex, Span<char> destination, int count);
+
+		/// <summary>Inserts the value into this instance at the specified character position.</summary>
+		/// <returns>A reference to this instance after the insert operation has completed.</returns>
+		/// <param name="index">The position in this instance where insertion begins. </param>
+		/// <param name="value">The value to insert. </param>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="index" /> is less than zero or greater than the length of this instance.</exception>
+		/// <exception cref="T:System.OutOfMemoryException">Enlarging the value of this instance would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />.</exception>
+		[NotNull]
+		IStringBuilder Insert(int index, ReadOnlySpan<char> value);
+
+		/// <summary>Returns a value indicating whether this instance is equal to a specified object.</summary>
+		/// <returns>true if this instance and <paramref name="span" /> have equal string, <see cref="P:System.Text.StringBuilder.Capacity" />, and <see cref="P:System.Text.StringBuilder.MaxCapacity" /> values; otherwise, false.</returns>
+		/// <param name="span">An object to compare with this instance, or null. </param>
+		bool Equals(ReadOnlySpan<char> span);
+#endif
+
 		/// <summary>Appends the string representation of a specified Boolean value to this instance.</summary>
 		/// <returns>A reference to this instance after the append operation has completed.</returns>
 		/// <param name="value">The Boolean value to append. </param>

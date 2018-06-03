@@ -24,6 +24,16 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentException">The <see cref="T:System.IO.SeekOrigin" /> value is invalid. </exception>
 		long Seek(int offset, SeekOrigin origin);
 
+#if NETCOREAPP2_1
+		/// <summary>Writes the buffer to the underlying stream.</summary>
+		/// <param name="buffer">A buffer containing the data to write. </param>
+		void Write(ReadOnlySpan<byte> buffer);
+
+		/// <summary>Writes the buffer to the underlying stream.</summary>
+		/// <param name="buffer">A buffer containing the data to write. </param>
+		void Write(ReadOnlySpan<char> buffer);
+#endif
+
 		/// <summary>Writes a one-byte Boolean value to the current stream, with 0 representing false and 1 representing true.</summary>
 		/// <param name="value">The Boolean value to write (0 or 1). </param>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>

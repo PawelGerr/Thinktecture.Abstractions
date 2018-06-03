@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Thinktecture.Text;
 
+#if NETCOREAPP2_1
+using System.Threading;
+#endif
+
 namespace Thinktecture.IO
 {
 	/// <summary>
@@ -41,6 +45,34 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.InvalidOperationException">The writer is currently in use by a previous write operation. </exception>
 		[NotNull]
 		Task FlushAsync();
+
+#if NETCOREAPP2_1
+		/// <summary>
+		/// Writes a buffer to the text string or stream.
+		/// </summary>
+		/// <param name="buffer">The buffer to write to the text stream.</param>
+		void Write(ReadOnlySpan<char> buffer);
+
+		/// <summary>
+		/// Writes a buffer to the text string or stream.
+		/// </summary>
+		/// <param name="buffer">The buffer to write to the text stream.</param>
+		void WriteLine(ReadOnlySpan<char> buffer);
+
+		/// <summary>
+		/// Writes a buffer to the text string or stream.
+		/// </summary>
+		/// <param name="buffer">The buffer to write to the text stream.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task WriteAsync(ReadOnlyMemory<char> buffer, CancellationToken cancellationToken = default(CancellationToken));
+
+		/// <summary>
+		/// Writes a buffer to the text string or stream.
+		/// </summary>
+		/// <param name="buffer">The buffer to write to the text stream.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task WriteLineAsync(ReadOnlyMemory<char> buffer, CancellationToken cancellationToken = default(CancellationToken));
+#endif
 
 		/// <summary>Writes the text representation of a Boolean value to the text string or stream.</summary>
 		/// <param name="value">The Boolean value to write. </param>
@@ -123,7 +155,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.FormatException">
 		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the number of objects to be formatted (which, for this method overload, is one). </exception>
-		void Write(string format, object arg0);
+		void Write([NotNull] string format, object arg0);
 
 		/// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object,System.Object)" /> method.</summary>
 		/// <param name="format">A composite format string (see Remarks). </param>
@@ -135,7 +167,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.FormatException">
 		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero) or greater than or equal to the number of objects to be formatted (which, for this method overload, is two). </exception>
-		void Write(string format, object arg0, object arg1);
+		void Write([NotNull] string format, object arg0, object arg1);
 
 		/// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object,System.Object,System.Object)" /> method.</summary>
 		/// <param name="format">A composite format string (see Remarks). </param>
@@ -148,7 +180,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.FormatException">
 		/// <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the number of objects to be formatted (which, for this method overload, is three). </exception>
-		void Write(string format, object arg0, object arg1, object arg2);
+		void Write([NotNull] string format, object arg0, object arg1, object arg2);
 
 		/// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object[])" /> method.</summary>
 		/// <param name="format">A composite format string (see Remarks). </param>

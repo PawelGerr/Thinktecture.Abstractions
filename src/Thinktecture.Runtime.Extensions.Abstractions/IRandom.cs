@@ -33,6 +33,12 @@ namespace Thinktecture
 		/// <paramref name="buffer" /> is null. </exception>
 		void NextBytes([NotNull] byte[] buffer);
 
+#if NETCOREAPP2_1
+		/// <summary>Fills the elements of a specified span of bytes with random numbers.</summary>
+		/// <param name="buffer">A span of bytes to contain random numbers. </param>
+		void NextBytes(Span<byte> buffer);
+#endif
+
 		/// <summary>Returns a random floating-point number that is greater than or equal to 0.0, and less than 1.0.</summary>
 		/// <returns>A double-precision floating point number that is greater than or equal to 0.0, and less than 1.0.</returns>
 		double NextDouble();

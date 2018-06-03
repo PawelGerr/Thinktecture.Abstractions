@@ -101,6 +101,41 @@ namespace Thinktecture
 		/// <paramref name="offsetIn" />, <paramref name="offsetOut" />, or <paramref name="length" /> is negative.-or- <paramref name="offsetIn" /> plus <paramref name="length" /> is greater than the length of <paramref name="inArray" />.-or- <paramref name="offsetOut" /> plus the number of elements to return is greater than the length of <paramref name="outArray" />. </exception>
 		int ToBase64CharArray([NotNull] byte[] inArray, int offsetIn, int length, [NotNull] char[] outArray, int offsetOut);
 
+#if NETCOREAPP2_1
+		/// <summary>Converts a span of 8-bit unsigned integers to its equivalent string representation that is encoded with base-64 digits.</summary>
+		/// <param name="bytes">An array of 8-bit unsigned integers. </param>
+		/// <param name="options">Options.</param>
+		/// <returns>The string representation, in base 64, of the contents of <paramref name="bytes" />.</returns>
+		[NotNull]
+		string ToBase64String(ReadOnlySpan<byte> bytes, Base64FormattingOptions options = Base64FormattingOptions.None);
+
+		/// <summary>Converts a span of 8-bit unsigned integers to its equivalent string representation that is encoded with base-64 digits and writes it into <paramref name="chars"/>.</summary>
+		/// <param name="bytes">An array of 8-bit unsigned integers. </param>
+		/// <param name="charsWritten">Number of chars written into <paramref name="chars"/>.</param>
+		/// <param name="options">Options.</param>
+		/// <param name="chars">Span to write into.</param>
+		/// <returns><c>true</c> if successfully written; otherwise <c>false</c>.</returns>
+		bool TryToBase64Chars(ReadOnlySpan<byte> bytes, Span<char> chars, out int charsWritten, Base64FormattingOptions options = Base64FormattingOptions.None);
+
+		/// <summary>
+		/// Converts base-64 string to bytes and writes them to <paramref name="bytes"/>.
+		/// </summary>
+		/// <param name="s">String to convert.</param>
+		/// <param name="bytes">Destination to write bytes into.</param>
+		/// <param name="bytesWritten">Number of bytes written into <paramref name="bytes"/>.</param>
+		/// <returns><c>true</c> if successfully written; otherwise <c>false</c>.</returns>
+		bool TryFromBase64String(string s, Span<byte> bytes, out int bytesWritten);
+
+		/// <summary>
+		/// Converts base-64 string to bytes and writes them to <paramref name="bytes"/>.
+		/// </summary>
+		/// <param name="chars">Characters to convert.</param>
+		/// <param name="bytes">Destination to write bytes into.</param>
+		/// <param name="bytesWritten">Number of bytes written into <paramref name="bytes"/>.</param>
+		/// <returns><c>true</c> if successfully written; otherwise <c>false</c>.</returns>
+		bool TryFromBase64Chars(ReadOnlySpan<char> chars, Span<byte> bytes, out int bytesWritten);
+#endif
+
 		/// <summary>Converts an array of 8-bit unsigned integers to its equivalent string representation that is encoded with base-64 digits.</summary>
 		/// <returns>The string representation, in base 64, of the contents of <paramref name="inArray" />.</returns>
 		/// <param name="inArray">An array of 8-bit unsigned integers. </param>

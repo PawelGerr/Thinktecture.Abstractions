@@ -48,6 +48,14 @@ namespace Thinktecture.Adapters
 			return Implementation.Next(minValue, maxValue);
 		}
 
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public void NextBytes(Span<byte> buffer)
+		{
+			Implementation.NextBytes(buffer);
+		}
+#endif
+
 		/// <inheritdoc />
 		public void NextBytes(byte[] buffer)
 		{

@@ -1,14 +1,15 @@
 using System.Net.Sockets;
+using System.Threading;
 using JetBrains.Annotations;
 using Thinktecture.Net.Sockets;
 using Thinktecture.Net.Sockets.Adapters;
-
 #if NETSTANDARD1_3 || NETSTANDARD2_0
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Thinktecture.Net;
+
 #endif
 
 // ReSharper disable once CheckNamespace
@@ -145,6 +146,34 @@ namespace Thinktecture
 			return socket.ToImplementation().ConnectAsync(host, port);
 		}
 
+#if NETCOREAPP2_1
+		/// <summary>
+		/// Receives data from a connected socket.
+		/// </summary>
+		/// <param name="socket">The socket to perform the receive operation on.</param>
+		/// <param name="buffer">Storage location for the received data.</param>
+		/// <param name="socketFlags">A bitwise combination of the <see cref="SocketFlags"/> values.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>A task that represents the asynchronous receive operation. The value of the TResult parameter contains the number of bytes received.</returns>
+		public static ValueTask<int> ReceiveAsync(this ISocket socket, Memory<byte> buffer, SocketFlags socketFlags, CancellationToken cancellationToken)
+		{
+			return socket.ToImplementation().ReceiveAsync(buffer, socketFlags, cancellationToken);
+		}
+
+		/// <summary>
+		/// Sends data to a connected socket.
+		/// </summary>
+		/// <param name="socket">The socket to perform the operation on.</param>
+		/// <param name="buffer">Bytes to send.</param>
+		/// <param name="socketFlags">A bitwise combination of the SocketFlags values.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>An asynchronous task that completes with number of bytes sent to the socket if the operation was successful. Otherwise, the task will complete with an invalid socket error.</returns>
+		public static ValueTask<int> SendAsync(this ISocket socket, ReadOnlyMemory<byte> buffer, SocketFlags socketFlags, CancellationToken cancellationToken)
+		{
+			return socket.ToImplementation().SendAsync(buffer, socketFlags, cancellationToken);
+		}
+#endif
+
 		/// <summary>
 		/// Receives data from a connected socket.
 		/// </summary>
@@ -194,6 +223,7 @@ namespace Thinktecture
 		{
 			return socket.ToImplementation().ReceiveFromAsync(buffer, socketFlags, remoteEndPoint.ToImplementation());
 		}
+
 		/// <summary>
 		/// Receives the specified number of bytes of data into the specified location of the data buffer, using the specified SocketFlags, and stores the endpoint and packet information.
 		/// </summary>
@@ -272,4 +302,3 @@ namespace Thinktecture
 #endif
 	}
 }
-

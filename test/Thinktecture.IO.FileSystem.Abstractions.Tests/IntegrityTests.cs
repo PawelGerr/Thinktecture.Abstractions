@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.IO.Enumeration;
 using Xunit;
 
 namespace Thinktecture
@@ -8,6 +9,11 @@ namespace Thinktecture
 		public IntegrityTests()
 			: base("IO.FileSystem")
 		{
+			ExcludedTypes.Add(typeof(EnumerationOptions));
+			ExcludedTypes.Add(typeof(FileSystemEntry)); // struct
+			ExcludedTypes.Add(typeof(FileSystemEnumerable<>)); // IEnumerable
+			ExcludedTypes.Add(typeof(FileSystemEnumerator<>)); // Enumerator
+
 			ExcludeMembers(typeof(File), nameof(File.ReadAllTextAsync)); // exists in netcoreapp only (not in netstandard)
 			ExcludeMembers(typeof(File), nameof(File.WriteAllTextAsync)); // exists in netcoreapp only (not in netstandard)
 			ExcludeMembers(typeof(File), nameof(File.ReadAllBytesAsync)); // exists in netcoreapp only (not in netstandard)

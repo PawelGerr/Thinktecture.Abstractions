@@ -548,6 +548,44 @@ namespace Thinktecture.Net.Sockets.Adapters
 			return Implementation.ReceiveMessageFromAsync(e.ToImplementation<SocketAsyncEventArgs>());
 		}
 
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public int Send(ReadOnlySpan<byte> buffer)
+		{
+			return Implementation.Send(buffer);
+		}
+
+		/// <inheritdoc />
+		public int Send(ReadOnlySpan<byte> buffer, SocketFlags socketFlags)
+		{
+			return Implementation.Send(buffer, socketFlags);
+		}
+
+		/// <inheritdoc />
+		public int Send(ReadOnlySpan<byte> buffer, SocketFlags socketFlags, out SocketError errorCode)
+		{
+			return Implementation.Send(buffer, socketFlags, out errorCode);
+		}
+
+		/// <inheritdoc />
+		public int Receive(Span<byte> buffer)
+		{
+			return Implementation.Receive(buffer);
+		}
+
+		/// <inheritdoc />
+		public int Receive(Span<byte> buffer, SocketFlags socketFlags)
+		{
+			return Implementation.Receive(buffer, socketFlags);
+		}
+
+		/// <inheritdoc />
+		public int Receive(Span<byte> buffer, SocketFlags socketFlags, out SocketError errorCode)
+		{
+			return Implementation.Receive(buffer, socketFlags, out errorCode);
+		}
+#endif
+
 		/// <inheritdoc />
 		public int Send(byte[] buffer)
 		{

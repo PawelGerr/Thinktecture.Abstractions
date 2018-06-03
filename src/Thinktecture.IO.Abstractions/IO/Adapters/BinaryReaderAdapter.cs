@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text;
 using JetBrains.Annotations;
@@ -151,6 +152,20 @@ namespace Thinktecture.IO.Adapters
 		{
 			return Implementation.Read();
 		}
+
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public int Read(Span<byte> buffer)
+		{
+			return Implementation.Read(buffer);
+		}
+
+		/// <inheritdoc />
+		public int Read(Span<char> buffer)
+		{
+			return Implementation.Read(buffer);
+		}
+#endif
 
 		/// <inheritdoc />
 		public int Read(byte[] buffer, int index, int count)

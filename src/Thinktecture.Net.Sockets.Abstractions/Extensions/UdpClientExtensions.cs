@@ -14,12 +14,12 @@ namespace Thinktecture
 		/// <summary>
 		/// Converts provided client to <see cref="IUdpClient"/>.
 		/// </summary>
-		/// <param name="socket">Client to convert.</param>
+		/// <param name="client">Client to convert.</param>
 		/// <returns>Converted client.</returns>
 		[CanBeNull]
-		public static IUdpClient ToInterface([CanBeNull] this UdpClient socket)
+		public static IUdpClient ToInterface([CanBeNull] this UdpClient client)
 		{
-			return (socket == null) ? null : new UdpClientAdapter(socket);
+			return (client == null) ? null : new UdpClientAdapter(client);
 		}
 	}
 }

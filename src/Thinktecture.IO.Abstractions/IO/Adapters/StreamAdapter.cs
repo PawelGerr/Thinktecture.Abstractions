@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -138,6 +139,44 @@ namespace Thinktecture.IO.Adapters
 		{
 			return Implementation.FlushAsync(cancellationToken);
 		}
+
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public int Read(Span<byte> buffer)
+		{
+			return Implementation.Read(buffer);
+		}
+
+		/// <inheritdoc />
+		public ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
+		{
+			return Implementation.ReadAsync(buffer, cancellationToken);
+		}
+
+		/// <inheritdoc />
+		public void Write(ReadOnlySpan<byte> buffer)
+		{
+			Implementation.Write(buffer);
+		}
+
+		/// <inheritdoc />
+		public ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default)
+		{
+			return Implementation.WriteAsync(buffer, cancellationToken);
+		}
+
+		/// <inheritdoc />
+		public Task CopyToAsync(IStream destination, CancellationToken cancellationToken)
+		{
+			return Implementation.CopyToAsync(destination.ToImplementation(), cancellationToken);
+		}
+
+		/// <inheritdoc />
+		public Task CopyToAsync(Stream destination, CancellationToken cancellationToken)
+		{
+			return Implementation.CopyToAsync(destination, cancellationToken);
+		}
+#endif
 
 		/// <inheritdoc />
 		public int Read(byte[] buffer, int offset, int count)

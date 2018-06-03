@@ -53,6 +53,32 @@ namespace Thinktecture.Adapters
 			return Convert.ToBase64CharArray(inArray, offsetIn, length, outArray, offsetOut);
 		}
 
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public string ToBase64String(ReadOnlySpan<byte> bytes, Base64FormattingOptions options = Base64FormattingOptions.None)
+		{
+			return Convert.ToBase64String(bytes, options);
+		}
+
+		/// <inheritdoc />
+		public bool TryToBase64Chars(ReadOnlySpan<byte> bytes, Span<char> chars, out int charsWritten, Base64FormattingOptions options = Base64FormattingOptions.None)
+		{
+			return Convert.TryToBase64Chars(bytes, chars, out charsWritten, options);
+		}
+
+		/// <inheritdoc />
+		public bool TryFromBase64String(string s, Span<byte> bytes, out int bytesWritten)
+		{
+			return Convert.TryFromBase64String(s, bytes, out bytesWritten);
+		}
+
+		/// <inheritdoc />
+		public bool TryFromBase64Chars(ReadOnlySpan<char> chars, Span<byte> bytes, out int bytesWritten)
+		{
+			return Convert.TryFromBase64Chars(chars, bytes, out bytesWritten);
+		}
+#endif
+
 		/// <inheritdoc />
 		public string ToBase64String(byte[] inArray)
 		{

@@ -196,6 +196,50 @@ namespace Thinktecture.IO
 		[NotNull]
 		IDirectoryInfo[] GetDirectories([NotNull] string searchPattern, SearchOption searchOption);
 
+#if NETCOREAPP2_1
+		/// <summary>Returns a file list from the current directory matching the given search pattern and using a value to determine whether to search subdirectories.</summary>
+		/// <returns>An array of type <see cref="T:System.IO.FileInfo" />.</returns>
+		/// <param name="searchPattern">The search string to match against the names of files.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
+		/// <param name="enumerationOptions">Enumeration options.</param>
+		[NotNull]
+		IFileInfo[] GetFiles([NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+
+		/// <summary>Retrieves an array of <see cref="T:System.IO.FileSystemInfo" /> objects that represent the files and subdirectories matching the specified search criteria.</summary>
+		/// <returns>An array of file system entries that match the search criteria.</returns>
+		/// <param name="searchPattern">The search string to match against the names of directories and filesa.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
+		/// <param name="enumerationOptions">Enumeration options.</param>
+		[NotNull]
+		IFileSystemInfo[] GetFileSystemInfos([NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+
+		/// <summary>Returns an array of directories in the current <see cref="T:System.IO.DirectoryInfo" /> matching the given search criteria and using a value to determine whether to search subdirectories.</summary>
+		/// <returns>An array of type DirectoryInfo matching <paramref name="searchPattern" />.</returns>
+		/// <param name="searchPattern">The search string to match against the names of directories.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
+		/// <param name="enumerationOptions">Enumeration options.</param>
+		[NotNull]
+		IDirectoryInfo[] GetDirectories([NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+
+		/// <summary>Returns an enumerable collection of directory information that matches a specified search pattern and search subdirectory option. </summary>
+		/// <param name="searchPattern">The search string to match against the names of directories.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
+		/// <param name="enumerationOptions">Enumeration options.</param>
+		/// <returns>An enumerable collection of directories that matches <paramref name="searchPattern" />.</returns>
+		[NotNull]
+		IEnumerable<IDirectoryInfo> EnumerateDirectories([NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+
+		/// <summary>Returns an enumerable collection of file information that matches a search pattern.</summary>
+		/// <param name="searchPattern">The search string to match against the names of files.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
+		/// <param name="enumerationOptions">Enumeration options.</param>
+		/// <returns>An enumerable collection of files that matches <paramref name="searchPattern" />.</returns>
+		[NotNull]
+		IEnumerable<IFileInfo> EnumerateFiles([NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+
+		/// <summary>Returns an enumerable collection of file system information that matches a specified search pattern.</summary>
+		/// <param name="searchPattern">The search string to match against the names of directories.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
+		/// <param name="enumerationOptions">Enumeration options.</param>
+		/// <returns>An enumerable collection of file system information objects that matches <paramref name="searchPattern" />.</returns>
+		[NotNull]
+		IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos([NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+#endif
+
 		/// <summary>Returns a file list from the current directory.</summary>
 		/// <returns>An array of type <see cref="T:System.IO.FileInfo" />.</returns>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path is invalid, such as being on an unmapped drive. </exception>

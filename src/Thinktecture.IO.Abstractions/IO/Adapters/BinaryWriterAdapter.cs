@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text;
 using JetBrains.Annotations;
@@ -150,6 +151,20 @@ namespace Thinktecture.IO.Adapters
 		{
 			return Implementation.Seek(offset, origin);
 		}
+
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public void Write(ReadOnlySpan<byte> buffer)
+		{
+			Implementation.Write(buffer);
+		}
+
+		/// <inheritdoc />
+		public void Write(ReadOnlySpan<char> buffer)
+		{
+			Implementation.Write(buffer);
+		}
+#endif
 
 		/// <inheritdoc />
 		public void Write(bool value)

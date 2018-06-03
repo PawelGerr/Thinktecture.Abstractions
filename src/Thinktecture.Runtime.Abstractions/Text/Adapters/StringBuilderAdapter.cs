@@ -105,6 +105,48 @@ namespace Thinktecture.Text.Adapters
 		{
 		}
 
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public IStringBuilder Append(ReadOnlySpan<char> value)
+		{
+			Implementation.Append(value);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder Append( StringBuilder value)
+		{
+			Implementation.Append(value);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder Append( StringBuilder value, int startIndex, int count)
+		{
+			Implementation.Append(value, startIndex, count);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public void CopyTo(int sourceIndex, Span<char> destination, int count)
+		{
+			Implementation.CopyTo(sourceIndex, destination, count);
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder Insert(int index, ReadOnlySpan<char> value)
+		{
+			Implementation.Insert(index, value);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public bool Equals(ReadOnlySpan<char> span)
+		{
+			return Implementation.Equals(span);
+		}
+#endif
+
 		/// <inheritdoc />
 		public IStringBuilder Append(bool value)
 		{

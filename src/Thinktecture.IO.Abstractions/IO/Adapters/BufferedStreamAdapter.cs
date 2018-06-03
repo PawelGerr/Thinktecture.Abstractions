@@ -1,4 +1,5 @@
 #if NET45 || NET462 || NETSTANDARD1_5 || NETSTANDARD2_0
+using System;
 using System.ComponentModel;
 using System.IO;
 using JetBrains.Annotations;

@@ -36,6 +36,11 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public byte[] Buffer => Implementation.Buffer;
 
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public Memory<byte> MemoryBuffer => Implementation.MemoryBuffer;
+#endif
+
 		/// <inheritdoc />
 		public IList<ArraySegment<byte>> BufferList
 		{
@@ -131,6 +136,14 @@ namespace Thinktecture.Net.Sockets.Adapters
 			Implementation = args ?? throw new ArgumentNullException(nameof(args));
 			_completedLookup = new AbstractionEventHandlerLookup<ISocketAsyncEventArgs, SocketAsyncEventArgs>();
 		}
+
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public void SetBuffer(Memory<byte> buffer)
+		{
+			Implementation.SetBuffer(buffer);
+		}
+#endif
 
 		/// <inheritdoc />
 		public void SetBuffer(byte[] buffer, int offset, int count)

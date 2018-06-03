@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using JetBrains.Annotations;
 
@@ -6,6 +7,30 @@ namespace Thinktecture.Text
 	/// <summary>Converts a set of characters into a sequence of bytes.</summary>
 	public interface IEncoder : IAbstraction<Encoder>
 	{
+#if NETCOREAPP2_1
+		/// <summary>Converts a span of Unicode characters to an encoded byte sequence and stores the result in an span of bytes.</summary>
+		/// <param name="chars">A span of characters to convert.</param>
+		/// <param name="bytes">A span where the converted bytes are stored.</param>
+		/// <param name="flush">true to indicate no further data is to be converted; otherwise, false.</param>
+		/// <param name="charsUsed">When this method returns, contains the number of characters from <paramref name="chars" /> that were used in the conversion. This parameter is passed uninitialized.</param>
+		/// <param name="bytesUsed">When this method returns, contains the number of bytes that were produced by the conversion. This parameter is passed uninitialized.</param>
+		/// <param name="completed">When this method returns, contains true if all the characters were converted; otherwise, false. This parameter is passed uninitialized.</param>
+		void Convert(ReadOnlySpan<char> chars, Span<byte> bytes, bool flush, out int charsUsed, out int bytesUsed, out bool completed);
+
+		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding a set of characters from the specified span of characters. A parameter indicates whether to clear the internal state of the encoder after the calculation.</summary>
+		/// <returns>The number of bytes produced by encoding the specified characters and any characters in the internal buffer.</returns>
+		/// <param name="chars">The span of character containing the set of characters to encode. </param>
+		/// <param name="flush">true to simulate clearing the internal state of the encoder after the calculation; otherwise, false. </param>
+		int GetByteCount(ReadOnlySpan<char> chars, bool flush);
+
+		/// <summary>When overridden in a derived class, encodes a set of characters from the specified span of character and any characters in the internal buffer into the specified span of bytes. A parameter indicates whether to clear the internal state of the encoder after the conversion.</summary>
+		/// <returns>The actual number of bytes written into <paramref name="bytes" />.</returns>
+		/// <param name="chars">The span of character containing the set of characters to encode. </param>
+		/// <param name="bytes">The span of bytes to contain the resulting sequence of bytes. </param>
+		/// <param name="flush">true to clear the internal state of the encoder after the conversion; otherwise, false. </param>
+		int GetBytes(ReadOnlySpan<char> chars, Span<byte> bytes, bool flush);
+#endif
+
 		/// <summary>Converts an array of Unicode characters to an encoded byte sequence and stores the result in an array of bytes.</summary>
 		/// <param name="chars">An array of characters to convert.</param>
 		/// <param name="charIndex">The first element of <paramref name="chars" /> to convert.</param>

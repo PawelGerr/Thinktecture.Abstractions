@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -167,17 +168,19 @@ namespace Thinktecture
 			ExcludedTypes.Add(typeof(ThaiBuddhistCalendar));
 			ExcludedTypes.Add(typeof(UmAlQuraCalendar));
 
-			ExcludedTypes.Add(typeof(Task)); // Threading.Tasks
-			ExcludedTypes.Add(typeof(Task<>)); // Threading.Tasks
-			ExcludedTypes.Add(typeof(TaskFactory)); // Threading.Tasks
-			ExcludedTypes.Add(typeof(TaskFactory<>)); // Threading.Tasks
-			ExcludedTypes.Add(typeof(FileStream)); // IO.FileSystem
-			ExcludedTypes.Add(typeof(Stream)); // IO
+			ExcludedTypes.Add(typeof(Task));           // Threading.Tasks
+			ExcludedTypes.Add(typeof(Task<>));         // Threading.Tasks
+			ExcludedTypes.Add(typeof(TaskFactory));    // Threading.Tasks
+			ExcludedTypes.Add(typeof(TaskFactory<>));  // Threading.Tasks
+			ExcludedTypes.Add(typeof(FileStream));     // IO.FileSystem
+			ExcludedTypes.Add(typeof(Stream));         // IO
 			ExcludedTypes.Add(typeof(SafeFileHandle)); // IO.FileSystem
 			ExcludedTypes.Add(typeof(SafeWaitHandle)); // Runtime.Handles
 			ExcludedTypes.Add(typeof(SafeHandle));
 			ExcludedTypes.Add(typeof(Encoding)); // Text.Encoding
-			ExcludedTypes.Add(typeof(Encoder)); // Text.Encoding
+			ExcludedTypes.Add(typeof(Encoder));  // Text.Encoding
+
+			ExcludedTypes.Add(typeof(MemoryManager<>));
 
 			CustomTypeMappings.Add(typeof(DateTime), typeof(IDateTimeGlobals));
 			CustomTypeMappings.Add(typeof(Guid), typeof(IGuidGlobals));
@@ -214,7 +217,7 @@ namespace Thinktecture
 			if (otherType == typeof(IDateTimeGlobals) || otherType == typeof(IGuidGlobals))
 			{
 				return member is MethodInfo methodInfo && (!methodInfo.IsStatic || methodInfo.Name.StartsWith("op_")) ||
-				       member is PropertyInfo propertyInfo && !propertyInfo.GetMethod.IsStatic;
+						member is PropertyInfo propertyInfo && !propertyInfo.GetMethod.IsStatic;
 			}
 
 			return false;

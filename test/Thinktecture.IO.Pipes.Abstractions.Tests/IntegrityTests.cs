@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.IO.Pipes;
 using Microsoft.Win32.SafeHandles;
 using Xunit;
@@ -12,6 +13,11 @@ namespace Thinktecture
 		{
 			ExcludedTypes.Add(typeof(PipeStreamImpersonationWorker));
 			ExcludedTypes.Add(typeof(SafePipeHandle));
+
+			ExcludeTypeCallback = type => type.FullName == "System.IO.Pipes.PipeAccessRule"
+													|| type.FullName == "System.IO.Pipes.PipeAuditRule"
+													|| type.FullName == "System.IO.Pipes.PipesAclExtensions"
+													|| type.FullName == "System.IO.Pipes.PipeSecurity";
 
 			ExcludeMembers<PipeStream>(nameof(PipeStream.BeginRead));
 			ExcludeMembers<PipeStream>(nameof(PipeStream.EndRead));
