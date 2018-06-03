@@ -15,6 +15,72 @@ namespace Thinktecture.Adapters
 
 #if NETCOREAPP2_1
 		/// <inheritdoc />
+		public byte Clamp(byte value, byte min, byte max)
+		{
+			return Math.Clamp(value, min, max);
+		}
+
+		/// <inheritdoc />
+		public decimal Clamp(decimal value, decimal min, decimal max)
+		{
+			return Math.Clamp(value, min, max);
+		}
+
+		/// <inheritdoc />
+		public double Clamp(double value, double min, double max)
+		{
+			return Math.Clamp(value, min, max);
+		}
+
+		/// <inheritdoc />
+		public float Clamp(float value, float min, float max)
+		{
+			return Math.Clamp(value, min, max);
+		}
+
+		/// <inheritdoc />
+		public int Clamp(int value, int min, int max)
+		{
+			return Math.Clamp(value, min, max);
+		}
+
+		/// <inheritdoc />
+		public long Clamp(long value, long min, long max)
+		{
+			return Math.Clamp(value, min, max);
+		}
+
+		/// <inheritdoc />
+		public sbyte Clamp(sbyte value, sbyte min, sbyte max)
+		{
+			return Math.Clamp(value, min, max);
+		}
+
+		/// <inheritdoc />
+		public short Clamp(short value, short min, short max)
+		{
+			return Math.Clamp(value, min, max);
+		}
+
+		/// <inheritdoc />
+		public uint Clamp(uint value, uint min, uint max)
+		{
+			return Math.Clamp(value, min, max);
+		}
+
+		/// <inheritdoc />
+		public ulong Clamp(ulong value, ulong min, ulong max)
+		{
+			return Math.Clamp(value, min, max);
+		}
+
+		/// <inheritdoc />
+		public ushort Clamp(ushort value, ushort min, ushort max)
+		{
+			return Math.Clamp(value, min, max);
+		}
+
+		/// <inheritdoc />
 		public double Acosh(double value)
 		{
 			return Math.Acosh(value);

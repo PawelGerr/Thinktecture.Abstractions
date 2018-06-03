@@ -187,8 +187,6 @@ namespace Thinktecture
 
 			ExcludeMember<EventArgs>(nameof(EventArgs.Empty));
 
-			ExcludeMembers<StringBuilder>(nameof(StringBuilder.AppendJoin)); // netcoreapp only
-
 			ExcludeTypeCallback = ExcludeType;
 			ExcludeMemberCallback = ExcludeMember;
 		}

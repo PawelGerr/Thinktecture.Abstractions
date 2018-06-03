@@ -16,6 +16,13 @@ namespace Thinktecture.Threading.Tasks
 		, IDisposable
 #endif
 	{
+#if NETCOREAPP2_1
+		/// <summary>
+		/// Indication whether task completted successfully or not.
+		/// </summary>
+		bool IsCompletedSuccessfully { get; }
+#endif
+
 		/// <summary>Gets an ID for this <see cref="T:System.Threading.Tasks.Task" /> instance.</summary>
 		/// <returns>The identifier that is assigned by the system to this <see cref="T:System.Threading.Tasks.Task" /> instance. </returns>
 		int Id { get; }

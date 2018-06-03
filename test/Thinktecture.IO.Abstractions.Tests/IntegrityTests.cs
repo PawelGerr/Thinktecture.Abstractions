@@ -31,9 +31,6 @@ namespace Thinktecture
 			ExcludeMember<BufferedStream>(nameof(BufferedStream.BeginWrite));
 			ExcludeMember<BufferedStream>(nameof(BufferedStream.EndWrite));
 
-			ExcludeMember<BufferedStream>(nameof(BufferedStream.UnderlyingStream)); // is public in netcoreapp only (not netstandard)
-			ExcludeMember<BufferedStream>(nameof(BufferedStream.BufferSize)); // is public in netcoreapp only (not netstandard)
-
 			ExcludeMemberCallback = Exlude;
 		}
 

@@ -191,6 +191,12 @@ namespace Thinktecture.Text.Adapters
 		public ReadOnlySpan<byte> Preamble => Implementation.Preamble;
 
 		/// <inheritdoc />
+		public int GetByteCount(string s, int index, int count)
+		{
+			return Implementation.GetByteCount(s, index, count);
+		}
+
+		/// <inheritdoc />
 		public int GetByteCount(ReadOnlySpan<char> chars)
 		{
 			return Implementation.GetByteCount(chars);
@@ -200,6 +206,12 @@ namespace Thinktecture.Text.Adapters
 		public int GetBytes(ReadOnlySpan<char> chars, Span<byte> bytes)
 		{
 			return Implementation.GetBytes(chars, bytes);
+		}
+
+		/// <inheritdoc />
+		public byte[] GetBytes(string s, int index, int count)
+		{
+			return Implementation.GetBytes(s, index, count);
 		}
 
 		/// <inheritdoc />

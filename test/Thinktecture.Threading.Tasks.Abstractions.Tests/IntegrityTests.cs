@@ -37,8 +37,6 @@ namespace Thinktecture
 			CustomTypeMappings.Add(typeof(Task), typeof(ITask), typeof(ITaskGlobals));
 			CustomTypeMappings.Add(typeof(Task<>), typeof(ITask<>), typeof(ITaskGlobals<>));
 
-			ExcludeMember<Task>(nameof(Task.IsCompletedSuccessfully)); // netcoreapp only
-
 			ExcludeMemberCallback = ExcludeMember;
 		}
 

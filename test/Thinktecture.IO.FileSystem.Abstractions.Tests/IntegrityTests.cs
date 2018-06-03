@@ -14,15 +14,6 @@ namespace Thinktecture
 			ExcludedTypes.Add(typeof(FileSystemEnumerable<>)); // IEnumerable
 			ExcludedTypes.Add(typeof(FileSystemEnumerator<>)); // Enumerator
 
-			ExcludeMembers(typeof(File), nameof(File.ReadAllTextAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeMembers(typeof(File), nameof(File.WriteAllTextAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeMembers(typeof(File), nameof(File.ReadAllBytesAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeMembers(typeof(File), nameof(File.WriteAllBytesAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeMembers(typeof(File), nameof(File.ReadAllLinesAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeMembers(typeof(File), nameof(File.WriteAllLinesAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeMembers(typeof(File), nameof(File.AppendAllLinesAsync)); // exists in netcoreapp only (not in netstandard)
-			ExcludeMembers(typeof(File), nameof(File.AppendAllTextAsync)); // exists in netcoreapp only (not in netstandard)
-
 			ExcludeMembers(typeof(FileStream), nameof(FileStream.BeginRead));
 			ExcludeMembers(typeof(FileStream), nameof(FileStream.EndRead));
 			ExcludeMembers(typeof(FileStream), nameof(FileStream.BeginWrite));

@@ -18,6 +18,11 @@ namespace Thinktecture.Threading.Tasks.Adapters
 	[SuppressMessage("ReSharper", "TaskOfTMethodsWithoutAsyncSuffix")]
 	public class TaskAdapter : AbstractionAdapter<Task>, ITask
 	{
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public bool IsCompletedSuccessfully => Implementation.IsCompletedSuccessfully;
+#endif
+
 		/// <summary>Gets an ID for this <see cref="Task" /> instance.</summary>
 		/// <returns>The identifier that is assigned by the system to this <see cref="Task" /> instance. </returns>
 		public int Id => Implementation.Id;

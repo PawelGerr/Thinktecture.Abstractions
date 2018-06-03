@@ -24,6 +24,20 @@ namespace Thinktecture.Text
 		/// </summary>
 		ReadOnlySpan<byte> Preamble { get; }
 
+		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding a set of characters from the specified string.</summary>
+		/// <returns>The number of bytes produced by encoding the specified characters.</returns>
+		/// <param name="s">The string to encode. </param>
+		/// <param name="index">The index of the first character to encode. </param>
+		/// <param name="count">The number of characters to encode. </param>
+		int GetByteCount(string s, int index, int count);
+
+		/// <summary>When overridden in a derived class, encodes all the characters in the specified string into a sequence of bytes.</summary>
+		/// <param name="s">The string to encode. </param>
+		/// <param name="index">The index of the first character to encode. </param>
+		/// <param name="count">The number of characters to encode. </param>
+		/// <returns>Encoded string.</returns>
+		byte[] GetBytes(string s, int index, int count);
+
 		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding all the characters in the specified span of characters.</summary>
 		/// <param name="chars">The span of characters containing the characters to encode.</param>
 		/// <returns>The number of bytes produced by encoding all the characters in the specified span of character.</returns>

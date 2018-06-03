@@ -14,6 +14,18 @@ namespace Thinktecture.Adapters
 
 #if NETCOREAPP2_1
 		/// <inheritdoc />
+		public int SingleToInt32Bits(float value)
+		{
+			return BitConverter.SingleToInt32Bits(value);
+		}
+
+		/// <inheritdoc />
+		public float Int32BitsToSingle(int value)
+		{
+			return BitConverter.Int32BitsToSingle(value);
+		}
+
+		/// <inheritdoc />
 		public bool TryWriteBytes(Span<byte> destination, bool value)
 		{
 			return BitConverter.TryWriteBytes(destination, value);

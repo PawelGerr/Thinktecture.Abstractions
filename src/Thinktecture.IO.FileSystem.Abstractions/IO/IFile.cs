@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Thinktecture.Text;
 
@@ -10,6 +12,179 @@ namespace Thinktecture.IO
 	/// <summary>Provides static methods for the creation, copying, deletion, moving, and opening of a single file, and aids in the creation of <see cref="T:System.IO.FileStream" /> objects.To browse the .NET Framework source code for this type, see the Reference Source.</summary>
 	public interface IFile
 	{
+#if NETCOREAPP2_1
+		/// <summary>
+		/// Reads all text from file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>Text read from file.</returns>
+		Task<string> ReadAllTextAsync(string path, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Reads all text from file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="encoding">Encoding.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>Text read from file.</returns>
+		Task<string> ReadAllTextAsync(string path, IEncoding encoding, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Reads all text from file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="encoding">Encoding.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>Text read from file.</returns>
+		Task<string> ReadAllTextAsync(string path, Encoding encoding, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Writes text to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="content">Content to write.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task WriteAllTextAsync(string path, string content, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Writes text to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="content">Content to write.</param>
+		/// <param name="encoding">Encoding.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task WriteAllTextAsync(string path, string content, IEncoding encoding, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Writes text to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="content">Content to write.</param>
+		/// <param name="encoding">Encoding.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task WriteAllTextAsync(string path, string content, Encoding encoding, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Reads bytes from file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>Bytes read from file.</returns>
+		Task<byte[]> ReadAllBytesAsync(string path, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Writes bytes to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="bytes">Bytes to write.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task WriteAllBytesAsync(string path, byte[] bytes, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Reads all lines from file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>Lines read from file.</returns>
+		Task<string[]> ReadAllLinesAsync(string path, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Reads all lines from file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="encoding">Encoding</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>Lines read from file.</returns>
+		Task<string[]> ReadAllLinesAsync(string path, IEncoding encoding, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Reads all lines from file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="encoding">Encoding</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>Lines read from file.</returns>
+		Task<string[]> ReadAllLinesAsync(string path, Encoding encoding, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Writes all lines to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="contents">Content to write.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task WriteAllLinesAsync(string path, IEnumerable<string> contents, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Writes all lines to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="contents">Content to write.</param>
+		/// <param name="encoding">Encoding.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task WriteAllLinesAsync(string path, IEnumerable<string> contents, IEncoding encoding, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Writes all lines to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="contents">Content to write.</param>
+		/// <param name="encoding">Encoding.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task WriteAllLinesAsync(string path, IEnumerable<string> contents, Encoding encoding, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Appends all lines to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="contents">Contents to write.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task AppendAllLinesAsync(string path, IEnumerable<string> contents, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Appends all lines to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="contents">Content to write.</param>
+		/// <param name="encoding">Encoding.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task AppendAllLinesAsync(string path, IEnumerable<string> contents, IEncoding encoding, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Appends all lines to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="contents">Content to write.</param>
+		/// <param name="encoding">Encoding.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task AppendAllLinesAsync(string path, IEnumerable<string> contents, Encoding encoding, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Appends all text to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="content">Content to write.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task AppendAllTextAsync(string path, string content, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Appends all text to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="content">Content to write.</param>
+		/// <param name="encoding">Encoding.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task AppendAllTextAsync(string path, string content, IEncoding encoding, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Appends all text to file.
+		/// </summary>
+		/// <param name="path">File path.</param>
+		/// <param name="content">Content to write.</param>
+		/// <param name="encoding">Encoding.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		Task AppendAllTextAsync(string path, string content, Encoding encoding, CancellationToken cancellationToken = default);
+#endif
 		/// <summary>Appends lines to a file, and then closes the file. If the specified file does not exist, this method creates a file, writes the specified lines to the file, and then closes the file.</summary>
 		/// <param name="path">The file to append the lines to. The file is created if it doesn't already exist.</param>
 		/// <param name="contents">The lines to append to the file.</param>
@@ -965,7 +1140,6 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		void WriteAllBytes([NotNull] string path, [NotNull] byte[] bytes);
-
 
 		/// <summary>Creates a new file, write the specified string array to the file, and then closes the file. </summary>
 		/// <param name="path">The file to write to. </param>

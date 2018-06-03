@@ -44,6 +44,14 @@ namespace Thinktecture.IO
 		string Combine([NotNull, ItemNotNull] params string[] paths);
 
 #if NETCOREAPP2_1
+		/// <summary>
+		/// Gets a path that is relative to <paramref name="relativeTo"/>.
+		/// </summary>
+		/// <param name="relativeTo">Path to make the <paramref name="path"/> relative to.</param>
+		/// <param name="path">Path to make relative to <paramref name="relativeTo"/>.</param>
+		/// <returns>Relative path.</returns>
+		string GetRelativePath(string relativeTo, string path);
+
 		/// <summary>Returns the directory information for the specified path string.</summary>
 		/// <param name="path">The path of a file or directory. </param>
 		/// <returns>Directory information for <paramref name="path" />, or null if <paramref name="path" /> denotes a root directory or is null. Returns <see cref="F:System.String.Empty" /> if <paramref name="path" /> does not contain directory information.</returns>

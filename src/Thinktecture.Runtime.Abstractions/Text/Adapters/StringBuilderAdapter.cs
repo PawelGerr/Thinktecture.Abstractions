@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text;
@@ -106,6 +107,48 @@ namespace Thinktecture.Text.Adapters
 		}
 
 #if NETCOREAPP2_1
+		/// <inheritdoc />
+		public IStringBuilder AppendJoin<T>(char separator, IEnumerable<T> values)
+		{
+			Implementation.AppendJoin(separator, values);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder AppendJoin(char separator, object[] values)
+		{
+			Implementation.AppendJoin(separator, values);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder AppendJoin(char separator, string[] values)
+		{
+			Implementation.AppendJoin(separator, values);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder AppendJoin<T>(string separator, IEnumerable<T> values)
+		{
+			Implementation.AppendJoin(separator, values);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder AppendJoin(string separator, object[] values)
+		{
+			Implementation.AppendJoin(separator, values);
+			return this;
+		}
+
+		/// <inheritdoc />
+		public IStringBuilder AppendJoin(string separator, string[] values)
+		{
+			Implementation.AppendJoin(separator, values);
+			return this;
+		}
+
 		/// <inheritdoc />
 		public IStringBuilder Append(ReadOnlySpan<char> value)
 		{

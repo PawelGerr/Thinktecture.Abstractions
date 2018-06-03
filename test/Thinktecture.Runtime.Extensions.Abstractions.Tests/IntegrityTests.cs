@@ -62,12 +62,6 @@ namespace Thinktecture
 
 			CustomTypeMappings.Add(typeof(Stopwatch), new List<Type> { typeof(IStopwatch), typeof(IStopwatchGlobals) });
 
-			ExcludeMembers(typeof(BitConverter), nameof(BitConverter.SingleToInt32Bits));
-			ExcludeMembers(typeof(BitConverter), nameof(BitConverter.Int32BitsToSingle));
-
-			ExcludeMembers(typeof(Math), nameof(Math.Clamp)); // netcoreapp only
-
-			ExcludeMembers(typeof(Path), nameof(Path.GetRelativePath));
 #pragma warning disable 618
 			ExcludeMembers(typeof(Path), nameof(Path.InvalidPathChars)); // deprecated
 #pragma warning restore 618

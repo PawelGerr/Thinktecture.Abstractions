@@ -33,12 +33,6 @@ namespace Thinktecture
 		{
 			if (otherType == typeof(IEncoding))
 			{
-				if (member.Name == nameof(Encoding.GetByteCount) || member.Name == nameof(Encoding.GetBytes))
-				{
-					var parameters = ((MethodInfo)member).GetParameters();
-					return parameters.Length == 3 && parameters.First().ParameterType == typeof(string); // in netcoreapp only
-				}
-
 				return member is MethodInfo methodInfo && methodInfo.IsStatic ||
 				       member is PropertyInfo propInfo && propInfo.GetMethod.IsStatic ||
 				       member is FieldInfo fieldInfo && fieldInfo.IsStatic;

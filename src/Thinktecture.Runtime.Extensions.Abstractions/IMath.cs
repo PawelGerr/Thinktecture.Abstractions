@@ -15,6 +15,149 @@ namespace Thinktecture
 		double E { get; }
 
 #if NETCOREAPP2_1
+		/// <summary>
+		/// Returns the <paramref name="value"/> that is betweend <paramref name="min"/> and <paramref name="max"/>.
+		/// </summary>
+		/// <param name="value">The value to check.</param>
+		/// <param name="min">Lower boundary.</param>
+		/// <param name="max">Upper boundary.</param>
+		/// <returns>
+		/// <paramref name="value"/> if it is between <paramref name="min"/> and <paramref name="max"/>;
+		/// <paramref name="min"/> if <paramref name="value"/> is less than <paramref name="min"/>;
+		/// <paramref name="max"/> if <paramref name="value"/> is greater than <paramref name="max"/>;
+		/// </returns>
+		byte Clamp(byte value, byte min, byte max);
+
+		/// <summary>
+		/// Returns the <paramref name="value"/> that is betweend <paramref name="min"/> and <paramref name="max"/>.
+		/// </summary>
+		/// <param name="value">The value to check.</param>
+		/// <param name="min">Lower boundary.</param>
+		/// <param name="max">Upper boundary.</param>
+		/// <returns>
+		/// <paramref name="value"/> if it is between <paramref name="min"/> and <paramref name="max"/>;
+		/// <paramref name="min"/> if <paramref name="value"/> is less than <paramref name="min"/>;
+		/// <paramref name="max"/> if <paramref name="value"/> is greater than <paramref name="max"/>;
+		/// </returns>
+		decimal Clamp(decimal value, decimal min, decimal max);
+
+		/// <summary>
+		/// Returns the <paramref name="value"/> that is betweend <paramref name="min"/> and <paramref name="max"/>.
+		/// </summary>
+		/// <param name="value">The value to check.</param>
+		/// <param name="min">Lower boundary.</param>
+		/// <param name="max">Upper boundary.</param>
+		/// <returns>
+		/// <paramref name="value"/> if it is between <paramref name="min"/> and <paramref name="max"/>;
+		/// <paramref name="min"/> if <paramref name="value"/> is less than <paramref name="min"/>;
+		/// <paramref name="max"/> if <paramref name="value"/> is greater than <paramref name="max"/>;
+		/// </returns>
+		double Clamp(double value, double min, double max);
+
+		/// <summary>
+		/// Returns the <paramref name="value"/> that is betweend <paramref name="min"/> and <paramref name="max"/>.
+		/// </summary>
+		/// <param name="value">The value to check.</param>
+		/// <param name="min">Lower boundary.</param>
+		/// <param name="max">Upper boundary.</param>
+		/// <returns>
+		/// <paramref name="value"/> if it is between <paramref name="min"/> and <paramref name="max"/>;
+		/// <paramref name="min"/> if <paramref name="value"/> is less than <paramref name="min"/>;
+		/// <paramref name="max"/> if <paramref name="value"/> is greater than <paramref name="max"/>;
+		/// </returns>
+		float Clamp(float value, float min, float max);
+
+		/// <summary>
+		/// Returns the <paramref name="value"/> that is betweend <paramref name="min"/> and <paramref name="max"/>.
+		/// </summary>
+		/// <param name="value">The value to check.</param>
+		/// <param name="min">Lower boundary.</param>
+		/// <param name="max">Upper boundary.</param>
+		/// <returns>
+		/// <paramref name="value"/> if it is between <paramref name="min"/> and <paramref name="max"/>;
+		/// <paramref name="min"/> if <paramref name="value"/> is less than <paramref name="min"/>;
+		/// <paramref name="max"/> if <paramref name="value"/> is greater than <paramref name="max"/>;
+		/// </returns>
+		int Clamp(int value, int min, int max);
+
+		/// <summary>
+		/// Returns the <paramref name="value"/> that is betweend <paramref name="min"/> and <paramref name="max"/>.
+		/// </summary>
+		/// <param name="value">The value to check.</param>
+		/// <param name="min">Lower boundary.</param>
+		/// <param name="max">Upper boundary.</param>
+		/// <returns>
+		/// <paramref name="value"/> if it is between <paramref name="min"/> and <paramref name="max"/>;
+		/// <paramref name="min"/> if <paramref name="value"/> is less than <paramref name="min"/>;
+		/// <paramref name="max"/> if <paramref name="value"/> is greater than <paramref name="max"/>;
+		/// </returns>
+		long Clamp(long value, long min, long max);
+
+		/// <summary>
+		/// Returns the <paramref name="value"/> that is betweend <paramref name="min"/> and <paramref name="max"/>.
+		/// </summary>
+		/// <param name="value">The value to check.</param>
+		/// <param name="min">Lower boundary.</param>
+		/// <param name="max">Upper boundary.</param>
+		/// <returns>
+		/// <paramref name="value"/> if it is between <paramref name="min"/> and <paramref name="max"/>;
+		/// <paramref name="min"/> if <paramref name="value"/> is less than <paramref name="min"/>;
+		/// <paramref name="max"/> if <paramref name="value"/> is greater than <paramref name="max"/>;
+		/// </returns>
+		sbyte Clamp(sbyte value, sbyte min, sbyte max);
+
+		/// <summary>
+		/// Returns the <paramref name="value"/> that is betweend <paramref name="min"/> and <paramref name="max"/>.
+		/// </summary>
+		/// <param name="value">The value to check.</param>
+		/// <param name="min">Lower boundary.</param>
+		/// <param name="max">Upper boundary.</param>
+		/// <returns>
+		/// <paramref name="value"/> if it is between <paramref name="min"/> and <paramref name="max"/>;
+		/// <paramref name="min"/> if <paramref name="value"/> is less than <paramref name="min"/>;
+		/// <paramref name="max"/> if <paramref name="value"/> is greater than <paramref name="max"/>;
+		/// </returns>
+		short Clamp(short value, short min, short max);
+
+		/// <summary>
+		/// Returns the <paramref name="value"/> that is betweend <paramref name="min"/> and <paramref name="max"/>.
+		/// </summary>
+		/// <param name="value">The value to check.</param>
+		/// <param name="min">Lower boundary.</param>
+		/// <param name="max">Upper boundary.</param>
+		/// <returns>
+		/// <paramref name="value"/> if it is between <paramref name="min"/> and <paramref name="max"/>;
+		/// <paramref name="min"/> if <paramref name="value"/> is less than <paramref name="min"/>;
+		/// <paramref name="max"/> if <paramref name="value"/> is greater than <paramref name="max"/>;
+		/// </returns>
+		uint Clamp(uint value, uint min, uint max);
+
+		/// <summary>
+		/// Returns the <paramref name="value"/> that is betweend <paramref name="min"/> and <paramref name="max"/>.
+		/// </summary>
+		/// <param name="value">The value to check.</param>
+		/// <param name="min">Lower boundary.</param>
+		/// <param name="max">Upper boundary.</param>
+		/// <returns>
+		/// <paramref name="value"/> if it is between <paramref name="min"/> and <paramref name="max"/>;
+		/// <paramref name="min"/> if <paramref name="value"/> is less than <paramref name="min"/>;
+		/// <paramref name="max"/> if <paramref name="value"/> is greater than <paramref name="max"/>;
+		/// </returns>
+		ulong Clamp(ulong value, ulong min, ulong max);
+
+		/// <summary>
+		/// Returns the <paramref name="value"/> that is betweend <paramref name="min"/> and <paramref name="max"/>.
+		/// </summary>
+		/// <param name="value">The value to check.</param>
+		/// <param name="min">Lower boundary.</param>
+		/// <param name="max">Upper boundary.</param>
+		/// <returns>
+		/// <paramref name="value"/> if it is between <paramref name="min"/> and <paramref name="max"/>;
+		/// <paramref name="min"/> if <paramref name="value"/> is less than <paramref name="min"/>;
+		/// <paramref name="max"/> if <paramref name="value"/> is greater than <paramref name="max"/>;
+		/// </returns>
+		ushort Clamp(ushort value, ushort min, ushort max);
+
 		/// <summary>Returns hyperbolic arc-cosine of the given number.</summary>
 		double Acosh(double value);
 

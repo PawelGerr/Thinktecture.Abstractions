@@ -13,6 +13,20 @@ namespace Thinktecture
 
 #if NETCOREAPP2_1
 		/// <summary>
+		/// Converts <paramref name="value"/> to int.
+		/// </summary>
+		/// <param name="value">Value to convert.</param>
+		/// <returns>An integer.</returns>
+		int SingleToInt32Bits(float value);
+
+		/// <summary>
+		/// Converts <paramref name="value"/> to float.
+		/// </summary>
+		/// <param name="value">Values to convert.</param>
+		/// <returns>A float.</returns>
+		float Int32BitsToSingle(int value);
+
+		/// <summary>
 		/// Writes the <paramref name="value"/> into <paramref name="destination"/>.
 		/// </summary>
 		/// <param name="destination">Destination to write the <paramref name="value"/> into.</param>

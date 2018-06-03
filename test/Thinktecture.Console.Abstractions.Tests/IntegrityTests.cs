@@ -9,7 +9,7 @@ namespace Thinktecture
 			: base("Console")
 		{
 			CustomTypeMappings.Add(typeof(ConsoleCancelEventHandler), typeof(EventHandler<IConsoleCancelEventArgs>));
-			ExcludedTypes.Add(typeof(ConsoleKeyInfo));
+			ExcludedTypes.Add(typeof(ConsoleKeyInfo)); // struct
 			ExcludeMember<EventArgs>(nameof(EventArgs.Empty));
 		}
 

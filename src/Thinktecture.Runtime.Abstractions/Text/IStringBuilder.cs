@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 using JetBrains.Annotations;
@@ -12,7 +13,7 @@ namespace Thinktecture.Text
 	/// <summary>Represents a mutable string of characters. This class cannot be inherited.To browse the .NET Framework source code for this type, see the Reference Source.</summary>
 	public interface IStringBuilder : IAbstraction<StringBuilder>
 #if NET45 || NET462 || NETSTANDARD2_0
-	                                  , ISerializable
+											, ISerializable
 #endif
 	{
 		/// <summary>Gets or sets the maximum number of characters that can be contained in the memory allocated by the current instance.</summary>
@@ -40,6 +41,56 @@ namespace Thinktecture.Text
 		char this[int index] { get; set; }
 
 #if NETCOREAPP2_1
+		/// <summary>
+		/// Appends the <paramref name="values"/> after joining them using the <paramref name="separator"/>.
+		/// </summary>
+		/// <param name="separator">Separator to use for joining.</param>
+		/// <param name="values">Values to join and append.</param>
+		/// <typeparam name="T">Type of the values.</typeparam>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		IStringBuilder AppendJoin<T>(char separator, IEnumerable<T> values);
+
+		/// <summary>
+		/// Appends the <paramref name="values"/> after joining them using the <paramref name="separator"/>.
+		/// </summary>
+		/// <param name="separator">Separator to use for joining.</param>
+		/// <param name="values">Values to join and append.</param>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		IStringBuilder AppendJoin(char separator, object[] values);
+
+		/// <summary>
+		/// Appends the <paramref name="values"/> after joining them using the <paramref name="separator"/>.
+		/// </summary>
+		/// <param name="separator">Separator to use for joining.</param>
+		/// <param name="values">Values to join and append.</param>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		IStringBuilder AppendJoin(char separator, string[] values);
+
+		/// <summary>
+		/// Appends the <paramref name="values"/> after joining them using the <paramref name="separator"/>.
+		/// </summary>
+		/// <param name="separator">Separator to use for joining.</param>
+		/// <param name="values">Values to join and append.</param>
+		/// <typeparam name="T">Type of the values.</typeparam>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		IStringBuilder AppendJoin<T>(string separator, IEnumerable<T> values);
+
+		/// <summary>
+		/// Appends the <paramref name="values"/> after joining them using the <paramref name="separator"/>.
+		/// </summary>
+		/// <param name="separator">Separator to use for joining.</param>
+		/// <param name="values">Values to join and append.</param>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		IStringBuilder AppendJoin(string separator, object[] values);
+
+		/// <summary>
+		/// Appends the <paramref name="values"/> after joining them using the <paramref name="separator"/>.
+		/// </summary>
+		/// <param name="separator">Separator to use for joining.</param>
+		/// <param name="values">Values to join and append.</param>
+		/// <returns>A reference to this instance after the append operation has completed.</returns>
+		IStringBuilder AppendJoin(string separator, string[] values);
+
 		/// <summary>Appends the value to this instance.</summary>
 		/// <returns>A reference to this instance after the append operation has completed.</returns>
 		/// <param name="value">The span of characters to append. </param>
@@ -255,7 +306,6 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">The length of the expanded string would exceed <see cref="P:System.Text.StringBuilder.MaxCapacity" />. </exception>
 		[NotNull]
 		IStringBuilder AppendFormat([NotNull] string format, [NotNull] params object[] args);
-
 
 		/// <summary>Appends the string returned by processing a composite format string, which contains zero or more format items, to this instance. Each format item is replaced by the string representation of a single argument.</summary>
 		/// <returns>A reference to this instance with <paramref name="format" /> appended. Each format item in <paramref name="format" /> is replaced by the string representation of <paramref name="arg0" />.</returns>

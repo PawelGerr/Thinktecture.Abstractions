@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Thinktecture.Text;
 
 // ReSharper disable AssignNullToNotNullAttribute
@@ -13,6 +15,108 @@ namespace Thinktecture.IO.Adapters
 	/// </summary>
 	public class FileAdapter : IFile
 	{
+#if NETCOREAPP2_1
+		public Task<string> ReadAllTextAsync(string path, CancellationToken cancellationToken = default)
+		{
+			return File.ReadAllTextAsync(path, cancellationToken);
+		}
+
+		public Task<string> ReadAllTextAsync(string path, IEncoding encoding, CancellationToken cancellationToken = default)
+		{
+			return File.ReadAllTextAsync(path, encoding.ToImplementation(), cancellationToken);
+		}
+
+		public Task<string> ReadAllTextAsync(string path, Encoding encoding, CancellationToken cancellationToken = default)
+		{
+			return File.ReadAllTextAsync(path, encoding, cancellationToken);
+		}
+
+		public Task WriteAllTextAsync(string path, string content, CancellationToken cancellationToken = default)
+		{
+			return File.WriteAllTextAsync(path, content, cancellationToken);
+		}
+
+		public Task WriteAllTextAsync(string path, string content, IEncoding encoding, CancellationToken cancellationToken = default)
+		{
+			return File.WriteAllTextAsync(path, content, encoding.ToImplementation(), cancellationToken);
+		}
+
+		public Task WriteAllTextAsync(string path, string content, Encoding encoding, CancellationToken cancellationToken = default)
+		{
+			return File.WriteAllTextAsync(path, content, encoding, cancellationToken);
+		}
+
+		public Task<byte[]> ReadAllBytesAsync(string path, CancellationToken cancellationToken = default)
+		{
+			return File.ReadAllBytesAsync(path, cancellationToken);
+		}
+
+		public Task WriteAllBytesAsync(string path, byte[] bytes, CancellationToken cancellationToken = default)
+		{
+			return File.WriteAllBytesAsync(path, bytes, cancellationToken);
+		}
+
+		public Task<string[]> ReadAllLinesAsync(string path, CancellationToken cancellationToken = default)
+		{
+			return File.ReadAllLinesAsync(path, cancellationToken);
+		}
+
+		public Task<string[]> ReadAllLinesAsync(string path, IEncoding encoding, CancellationToken cancellationToken = default)
+		{
+			return File.ReadAllLinesAsync(path, encoding.ToImplementation(), cancellationToken);
+		}
+
+		public Task<string[]> ReadAllLinesAsync(string path, Encoding encoding, CancellationToken cancellationToken = default)
+		{
+			return File.ReadAllLinesAsync(path, cancellationToken);
+		}
+
+		public Task WriteAllLinesAsync(string path, IEnumerable<string> contents, CancellationToken cancellationToken = default)
+		{
+			return File.WriteAllLinesAsync(path, contents, cancellationToken);
+		}
+
+		public Task WriteAllLinesAsync(string path, IEnumerable<string> contents, IEncoding encoding, CancellationToken cancellationToken = default)
+		{
+			return File.WriteAllLinesAsync(path, contents, encoding.ToImplementation(), cancellationToken);
+		}
+
+		public Task WriteAllLinesAsync(string path, IEnumerable<string> contents, Encoding encoding, CancellationToken cancellationToken = default)
+		{
+			return File.WriteAllLinesAsync(path, contents, encoding, cancellationToken);
+		}
+
+		public Task AppendAllLinesAsync(string path, IEnumerable<string> contents, CancellationToken cancellationToken = default)
+		{
+			return File.AppendAllLinesAsync(path, contents, cancellationToken);
+		}
+
+		public Task AppendAllLinesAsync(string path, IEnumerable<string> contents, IEncoding encoding, CancellationToken cancellationToken = default)
+		{
+			return File.AppendAllLinesAsync(path, contents, encoding.ToImplementation(), cancellationToken);
+		}
+
+		public Task AppendAllLinesAsync(string path, IEnumerable<string> contents, Encoding encoding, CancellationToken cancellationToken = default)
+		{
+			return File.AppendAllLinesAsync(path, contents, encoding, cancellationToken);
+		}
+
+		public Task AppendAllTextAsync(string path, string content, CancellationToken cancellationToken = default)
+		{
+			return File.AppendAllTextAsync(path, content, cancellationToken);
+		}
+
+		public Task AppendAllTextAsync(string path, string content, IEncoding encoding, CancellationToken cancellationToken = default)
+		{
+			return File.AppendAllTextAsync(path, content, encoding.ToImplementation(), cancellationToken);
+		}
+
+		public Task AppendAllTextAsync(string path, string content, Encoding encoding, CancellationToken cancellationToken = default)
+		{
+			return File.AppendAllTextAsync(path, content, encoding, cancellationToken);
+		}
+#endif
+
 		/// <inheritdoc />
 		public void AppendAllLines(string path, IEnumerable<string> contents)
 		{
@@ -97,7 +201,7 @@ namespace Thinktecture.IO.Adapters
 			File.Delete(path);
 		}
 
-	#if NET46 || NETSTANDARD2_0
+#if NET46 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public void Decrypt(string path)
 		{

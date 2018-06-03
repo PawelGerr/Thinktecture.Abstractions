@@ -23,6 +23,14 @@ namespace Thinktecture.IO.Adapters
 		[NotNull]
 		protected new BufferedStream Implementation { get; }
 
+#if NETCOREAPP2_1
+		/// <inheritdoc />
+		public Stream UnderlyingStream => Implementation.UnderlyingStream;
+
+		/// <inheritdoc />
+		public long BufferSize => Implementation.BufferSize;
+#endif
+
 		/// <summary>Initializes a new instance of the <see cref="BufferedStreamAdapter" /> class with a default buffer size of 4096 bytes.</summary>
 		/// <param name="stream">The current stream. </param>
 		/// <exception cref="T:System.ArgumentNullException">

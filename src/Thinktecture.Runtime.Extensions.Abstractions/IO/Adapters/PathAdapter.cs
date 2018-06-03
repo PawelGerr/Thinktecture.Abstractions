@@ -38,6 +38,12 @@ namespace Thinktecture.IO.Adapters
 
 #if NETCOREAPP2_1
 		/// <inheritdoc />
+		public string GetRelativePath(string relativeTo, string path)
+		{
+			return Path.GetRelativePath(relativeTo,path);
+		}
+
+		/// <inheritdoc />
 		public ReadOnlySpan<char> GetDirectoryName(ReadOnlySpan<char> path)
 		{
 			return Path.GetDirectoryName(path);

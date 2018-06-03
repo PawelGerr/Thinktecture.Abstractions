@@ -7,6 +7,17 @@ namespace Thinktecture.IO
 	// ReSharper disable once PossibleInterfaceMemberAmbiguity
 	public interface IBufferedStream : IStream, IAbstraction<BufferedStream>
 	{
+#if NETCOREAPP2_1
+		/// <summary>
+		/// Underlying stream.
+		/// </summary>
+		Stream UnderlyingStream { get; }
+
+		/// <summary>
+		/// Buffer size.
+		/// </summary>
+		long BufferSize { get; }
+#endif
 	}
 }
 #endif
