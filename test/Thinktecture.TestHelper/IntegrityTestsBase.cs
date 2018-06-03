@@ -13,6 +13,7 @@ namespace Thinktecture
 	{
 		private readonly IReadOnlyList<Type> _originalTypes;
 		private readonly IReadOnlyList<Type> _abstractionTypes;
+		private readonly IReadOnlyList<Type> _adapterTypes;
 
 		protected CustomMappings CustomTypeMappings { get; }
 		protected List<Type> ExcludedTypes { get; }
@@ -29,6 +30,7 @@ namespace Thinktecture
 		{
 			_originalTypes = GetOriginalTypes(orignalAssembly);
 			_abstractionTypes = GetAbstractionTypes(abstractionsAssembly);
+			_adapterTypes = GetAdapterTypes(abstractionsAssembly, _abstractionTypes);
 
 			CustomTypeMappings = new CustomMappings();
 			ExcludedTypes = new List<Type>();
@@ -72,11 +74,11 @@ namespace Thinktecture
 		protected void CheckTypes()
 		{
 			var types = _originalTypes
-			            .Where(t => !ExcludedTypes.Contains(t) && !(ExcludeTypeCallback?.Invoke(t) ?? false))
-			            .ToList();
+							.Where(t => !ExcludedTypes.Contains(t) && !(ExcludeTypeCallback?.Invoke(t) ?? false))
+							.ToList();
 			var abstractions = _abstractionTypes
-			                   .Where(t => !ExcludedTypes.Contains(t) && !(ExcludeTypeCallback?.Invoke(t) ?? false))
-			                   .ToList();
+									.Where(t => !ExcludedTypes.Contains(t) && !(ExcludeTypeCallback?.Invoke(t) ?? false))
+									.ToList();
 
 			var missingAbstractions = new List<Type>();
 
@@ -99,12 +101,48 @@ namespace Thinktecture
 			abstractions.Should().BeEmpty();
 		}
 
+		protected void CheckAdapters()
+		{
+			var abstractions = _abstractionTypes
+									.Where(t => !ExcludedTypes.Contains(t) && !(ExcludeTypeCallback?.Invoke(t) ?? false))
+									.ToList();
+			var adapterTypes = _adapterTypes
+									.Where(t => !ExcludedTypes.Contains(t) && !(ExcludeTypeCallback?.Invoke(t) ?? false))
+									.ToList();
+
+			foreach (var abstractionType in abstractions)
+			{
+				var adapters = FindAdapters(adapterTypes, abstractionType);
+
+				adapters.Should().HaveCount(1, $"abstraction {abstractionType.Name} must have an adapter.");
+			}
+		}
+
+		private static IReadOnlyList<Type> FindAdapters(IEnumerable<Type> adapterTypes, Type abstractionType)
+		{
+			if (abstractionType.IsGenericType && !abstractionType.IsGenericTypeDefinition)
+				abstractionType = abstractionType.GetGenericTypeDefinition();
+
+			return adapterTypes
+					.Where(adapter =>
+							{
+								foreach (var adapterInterface in GetInterfaces(adapter).Except(GetInterfaces(adapter.BaseType)))
+								{
+									if (abstractionType == adapterInterface)
+										return true;
+								}
+
+								return false;
+							})
+					.ToList().AsReadOnly();
+		}
+
 		protected void CheckMembers()
 		{
 			foreach (var types in GetTypes().Where(t => t.Abstraction != null))
 			{
-				var originalMembers = GetMembers(types.Original, types.Abstraction);
-				var abstractionMembers = GetMembers(types.Abstraction, types.Original);
+				var originalMembers = GetMembers(types.Original, types.Abstraction).Where(m => !(m is ConstructorInfo));
+				var abstractionMembers = GetMembers(types.Abstraction, types.Original).Where(m => !(m is ConstructorInfo));
 
 				foreach (var group in originalMembers.GroupBy(m => m.Name))
 				{
@@ -123,29 +161,29 @@ namespace Thinktecture
 			var members = GetAllMembers(type);
 
 			return members
-			       .Where(m =>
-			       {
-				       if (m is Type)
-					       return false;
+					.Where(m =>
+							{
+								if (m is Type)
+									return false;
 
-				       if (ExcludedMembers.Contains(m))
-					       return false;
+								if (ExcludedMembers.Contains(m))
+									return false;
 
-				       if (ExcludeMemberCallback?.Invoke(type, otherType, m) ?? false)
-					       return false;
+								if (ExcludeMemberCallback?.Invoke(type, otherType, m) ?? false)
+									return false;
 
-				       if (m is MethodInfo methodInfo)
-				       {
-					       if (IsObjectMethod(methodInfo))
-						       return false;
+								if (m is MethodInfo methodInfo)
+								{
+									if (IsObjectMethod(methodInfo))
+										return false;
 
-					       if (IsPropertyAccessor(members, methodInfo))
-						       return false;
-				       }
+									if (IsPropertyAccessor(members, methodInfo))
+										return false;
+								}
 
-				       return true;
-			       })
-			       .ToList().AsReadOnly();
+								return true;
+							})
+					.ToList().AsReadOnly();
 		}
 
 		private List<MemberInfo> GetAllMembers(Type type)
@@ -171,7 +209,8 @@ namespace Thinktecture
 					AddMembers(allMembers, currentType);
 
 				currentType = currentType.BaseType;
-			} while (currentType != null && currentType != typeof(object));
+			}
+			while (currentType != null && currentType != typeof(object));
 
 			return allMembers;
 		}
@@ -179,8 +218,7 @@ namespace Thinktecture
 		private void AddMembers(List<MemberInfo> allMembers, Type type)
 		{
 			var members = type.GetMembers(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.DeclaredOnly)
-			                  .Where(m => !(m is ConstructorInfo))
-			                  .Where(newMem => !allMembers.Any(m => AreEqual(newMem, m)));
+									.Where(newMem => !allMembers.Any(m => AreEqual(newMem, m)));
 
 			allMembers.AddRange(members);
 		}
@@ -240,12 +278,12 @@ namespace Thinktecture
 				var propName = methodInfo.Name.Substring(4);
 
 				return members.Any(mem =>
-				{
-					if (mem is PropertyInfo propInfo)
-						return propInfo.Name == propName;
+										{
+											if (mem is PropertyInfo propInfo)
+												return propInfo.Name == propName;
 
-					return false;
-				});
+											return false;
+										});
 			}
 
 			return false;
@@ -316,23 +354,46 @@ namespace Thinktecture
 		private IReadOnlyList<Type> GetOriginalTypes(Assembly assembly)
 		{
 			return GetTypes(assembly)
-			       .Where(t => !t.IsInterface)
-			       .ToList().AsReadOnly();
+					.Where(t => !t.IsInterface)
+					.ToList().AsReadOnly();
 		}
 
 		private IReadOnlyList<Type> GetAbstractionTypes(Assembly assembly)
 		{
 			return GetTypes(assembly)
-			       .Where(t => t.IsInterface)
-			       .ToList().AsReadOnly();
+					.Where(t => t.IsInterface)
+					.ToList().AsReadOnly();
+		}
+
+		private IReadOnlyList<Type> GetAdapterTypes(Assembly abstractionsAssembly, IReadOnlyList<Type> abstractionTypes)
+		{
+			return GetTypes(abstractionsAssembly)
+					.Where(t => !t.IsAbstract)
+					.Where(t => abstractionTypes.Any(a => GetInterfaces(t).Contains(TryGetGenericTypeDefinition(a))))
+					.ToList().AsReadOnly();
+		}
+
+		private static IReadOnlyList<Type> GetInterfaces(Type type)
+		{
+			return type.GetInterfaces()
+							.Select(TryGetGenericTypeDefinition)
+							.ToList().AsReadOnly();
+		}
+
+		private static Type TryGetGenericTypeDefinition(Type i)
+		{
+			if (i.IsGenericType && !i.IsGenericTypeDefinition)
+				return i.GetGenericTypeDefinition();
+
+			return i;
 		}
 
 		private IReadOnlyList<Type> GetTypes(Assembly assembly)
 		{
 			var types = GetForwardedTypes(assembly)
-			            .Concat(assembly.GetTypes())
-			            .Where(t => t.IsPublic && !t.IsEnum && !typeof(Exception).IsAssignableFrom(t))
-			            .ToList().AsReadOnly();
+							.Concat(assembly.GetTypes())
+							.Where(t => t.IsPublic && !t.IsEnum && !typeof(Exception).IsAssignableFrom(t))
+							.ToList().AsReadOnly();
 
 			types.Should().NotBeEmpty($"the assembly {assembly.GetName().Name} is empty");
 
