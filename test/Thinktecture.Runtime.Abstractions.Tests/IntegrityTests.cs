@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Win32.SafeHandles;
+using Thinktecture.Adapters;
 using Xunit;
 
 namespace Thinktecture
@@ -231,6 +232,12 @@ namespace Thinktecture
 		public void Should_contain_all_adapters()
 		{
 			CheckAdapters();
+		}
+
+		[Fact]
+		public void Should_contain_all_adapters_constructors()
+		{
+			CheckConstructors(typeof(DateTimeGlobals), typeof(GuidGlobals));
 		}
 
 		[Fact]

@@ -83,6 +83,27 @@ namespace Thinktecture.Net.Sockets.Adapters
 		{
 		}
 
+#if NET46 || NETSTANDARD2_0
+		/// <summary>Initializes a new instance of the <see cref="TcpClientAdapter"></see> class and binds it to the specified local endpoint.</summary>
+		/// <param name="localEP">The <see cref="T:System.Net.IPEndPoint"></see> to which you bind the TCP <see cref="T:System.Net.Sockets.Socket"></see>.</param>
+		/// <exception cref="T:System.ArgumentNullException">The  <paramref name="localEP">localEP</paramref> parameter is null.</exception>
+		public TcpClientAdapter([NotNull] IPEndPoint localEP)
+			: this(new TcpClient(localEP))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="TcpClientAdapter"></see> class and connects to the specified port on the specified host.</summary>
+		/// <param name="hostname">The DNS name of the remote host to which you intend to connect.</param>
+		/// <param name="port">The port number of the remote host to which you intend to connect.</param>
+		/// <exception cref="T:System.ArgumentNullException">The <paramref name="hostname">hostname</paramref> parameter is null.</exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">The <paramref name="port">port</paramref> parameter is not between <see cref="System.Net.IPEndPoint.MinPort"></see> and <see cref="System.Net.IPEndPoint.MaxPort"></see>.</exception>
+		/// <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing the socket.</exception>
+		public TcpClientAdapter(string hostname, int port)
+			: this(new TcpClient(hostname, port))
+		{
+		}
+#endif
+
 		/// <summary>
 		/// Initializes a new instance of the TcpClient class with the specified family.
 		/// </summary>
@@ -194,4 +215,3 @@ namespace Thinktecture.Net.Sockets.Adapters
 		}
 	}
 }
-

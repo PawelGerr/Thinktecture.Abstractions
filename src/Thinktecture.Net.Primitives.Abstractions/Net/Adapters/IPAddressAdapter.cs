@@ -167,6 +167,23 @@ namespace Thinktecture.Net.Adapters
 			set => Implementation.ScopeId = value;
 		}
 
+#if NETCOREAPP2_1
+		/// <summary>Initializes a new instance of the <see cref="T:System.Net.IPAddress" /> class with the address specified as a <see cref="T:System.Byte" /> array.</summary>
+		/// <param name="address">The byte array value of the IP address. </param>
+		public IPAddressAdapter(ReadOnlySpan<byte> address)
+			: this(new IPAddress(address))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="T:System.Net.IPAddress" /> class with the address specified as a <see cref="T:System.Byte" /> array.</summary>
+		/// <param name="address">The byte array value of the IP address. </param>
+		/// <param name="scopeid">The long value of the scope identifier. </param>
+		public IPAddressAdapter(ReadOnlySpan<byte> address, long scopeid)
+			: this(new IPAddress(address, scopeid))
+		{
+		}
+#endif
+
 		/// <summary>Initializes a new instance of the <see cref="T:System.Net.IPAddress" /> class with the address specified as a <see cref="T:System.Byte" /> array.</summary>
 		/// <param name="address">The byte array value of the IP address. </param>
 		/// <exception cref="T:System.ArgumentNullException">

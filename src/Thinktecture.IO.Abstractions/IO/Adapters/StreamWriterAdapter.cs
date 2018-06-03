@@ -209,6 +209,67 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using the specified encoding and buffer size, and optionally leaves the stream open.</summary>
+		/// <param name="path">The file path to write to.</param>
+		/// <exception cref="T:System.ArgumentNullException"> <paramref name="path" /> is null. </exception>
+		public StreamWriterAdapter([NotNull] string path)
+			: this(new StreamWriter(path))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using the specified encoding and buffer size, and optionally leaves the stream open.</summary>
+		/// <param name="path">The file path to write to.</param>
+		/// <param name="append">Indication whether the content should be appended to file.</param>
+		/// <exception cref="T:System.ArgumentNullException"> <paramref name="path" /> is null. </exception>
+		public StreamWriterAdapter([NotNull] string path, bool append)
+			: this(new StreamWriter(path, append))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using the specified encoding and buffer size, and optionally leaves the stream open.</summary>
+		/// <param name="path">The file path to write to.</param>
+		/// <param name="append">Indication whether the content should be appended to file.</param>
+		/// <param name="encoding">The character encoding to use.</param>
+		/// <exception cref="T:System.ArgumentNullException"> <paramref name="path" /> is null. </exception>
+		public StreamWriterAdapter([NotNull] string path, bool append, [NotNull] Encoding encoding)
+			: this(new StreamWriter(path, append, encoding))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using the specified encoding and buffer size, and optionally leaves the stream open.</summary>
+		/// <param name="path">The file path to write to.</param>
+		/// <param name="append">Indication whether the content should be appended to file.</param>
+		/// <param name="encoding">The character encoding to use.</param>
+		/// <exception cref="T:System.ArgumentNullException"> <paramref name="path" /> is null. </exception>
+		public StreamWriterAdapter([NotNull] string path, bool append, [NotNull] IEncoding encoding)
+			: this(new StreamWriter(path, append, encoding.ToImplementation()))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using the specified encoding and buffer size, and optionally leaves the stream open.</summary>
+		/// <param name="path">The file path to write to.</param>
+		/// <param name="append">Indication whether the content should be appended to file.</param>
+		/// <param name="encoding">The character encoding to use.</param>
+		/// <param name="bufferSize">The buffer size, in bytes.</param>
+		/// <exception cref="T:System.ArgumentNullException"> <paramref name="path" /> is null. </exception>
+		public StreamWriterAdapter([NotNull] string path, bool append, [NotNull] Encoding encoding, int bufferSize)
+			: this(new StreamWriter(path, append, encoding, bufferSize))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using the specified encoding and buffer size, and optionally leaves the stream open.</summary>
+		/// <param name="path">The file path to write to.</param>
+		/// <param name="append">Indication whether the content should be appended to file.</param>
+		/// <param name="encoding">The character encoding to use.</param>
+		/// <param name="bufferSize">The buffer size, in bytes.</param>
+		/// <exception cref="T:System.ArgumentNullException"> <paramref name="path" /> is null. </exception>
+		public StreamWriterAdapter([NotNull] string path, bool append, [NotNull] IEncoding encoding, int bufferSize)
+			: this(new StreamWriter(path, append, encoding.ToImplementation(), bufferSize))
+		{
+		}
+#endif
+
 		/// <summary>Initializes a new instance of the <see cref="StreamWriterAdapter" /> class for the specified stream by using the specified encoding and buffer size, and optionally leaves the stream open.</summary>
 		/// <param name="stream">The stream to write to.</param>
 		/// <param name="encoding">The character encoding to use.</param>

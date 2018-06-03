@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using Thinktecture.Net.NetworkInformation;
+using Thinktecture.Net.NetworkInformation.Adapters;
 using Xunit;
 
 namespace Thinktecture
@@ -73,6 +74,18 @@ namespace Thinktecture
 		public void Should_contain_all_types()
 		{
 			CheckTypes();
+		}
+
+		[Fact]
+		public void Should_contain_all_adapters()
+		{
+			CheckAdapters();
+		}
+
+		[Fact]
+		public void Should_contain_all_adapters_constructors()
+		{
+			CheckConstructors(typeof(NetworkChange), typeof(NetworkInterfaceGlobals), typeof(PhysicalAddressGlobals));
 		}
 
 		[Fact]

@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using Thinktecture.Net;
+using Thinktecture.Net.Adapters;
 using Xunit;
 
 namespace Thinktecture
@@ -61,6 +62,18 @@ namespace Thinktecture
 		public void Should_contain_all_types()
 		{
 			CheckTypes();
+		}
+
+		[Fact]
+		public void Should_contain_all_adapters()
+		{
+			CheckAdapters();
+		}
+
+		[Fact]
+		public void Should_contain_all_adapters_constructors()
+		{
+			CheckConstructors(typeof(IPAddressGlobals));
 		}
 
 		[Fact]

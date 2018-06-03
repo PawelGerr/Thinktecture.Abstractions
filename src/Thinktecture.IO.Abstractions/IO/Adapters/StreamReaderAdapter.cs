@@ -177,6 +177,127 @@ namespace Thinktecture.IO.Adapters
 		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
 		/// <param name="stream">The stream to be read. </param>
 		/// <param name="encoding">The character encoding to use. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>
+		/// <exception cref="T:System.ArgumentNullException"> <paramref name="stream" /> or <paramref name="encoding" /> is null. </exception>
+		public StreamReaderAdapter([NotNull] Stream stream, [NotNull] Encoding encoding)
+			: this(new StreamReader(stream, encoding))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <param name="stream">The stream to be read. </param>
+		/// <param name="encoding">The character encoding to use. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>
+		/// <exception cref="T:System.ArgumentNullException"> <paramref name="stream" /> or <paramref name="encoding" /> is null. </exception>
+		public StreamReaderAdapter([NotNull] Stream stream, [NotNull] IEncoding encoding)
+			: this(new StreamReader(stream, encoding.ToImplementation()))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <param name="stream">The stream to be read. </param>
+		/// <param name="encoding">The character encoding to use. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="stream" /> or <paramref name="encoding" /> is null. </exception>
+		public StreamReaderAdapter([NotNull] IStream stream, [NotNull] Encoding encoding)
+			: this(new StreamReader(stream.ToImplementation(), encoding))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <param name="stream">The stream to be read. </param>
+		/// <param name="encoding">The character encoding to use. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="stream" /> or <paramref name="encoding" /> is null. </exception>
+		public StreamReaderAdapter([NotNull] IStream stream, [NotNull] IEncoding encoding)
+			: this(new StreamReader(stream.ToImplementation(), encoding.ToImplementation()))
+		{
+		}
+
+#if NET45 || NET462 || NETSTANDARD2_0
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <param name="path">The file path to be read. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>
+		public StreamReaderAdapter([NotNull] string path)
+			: this(new StreamReader(path))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <param name="path">The file path to be read. </param>
+		/// <param name="detectEncodingFromByteOrderMarks">Indicates whether to look for byte order marks at the beginning of the file. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>
+		public StreamReaderAdapter([NotNull] string path, bool detectEncodingFromByteOrderMarks)
+			: this(new StreamReader(path, detectEncodingFromByteOrderMarks))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <param name="path">The file path to be read. </param>
+		/// <param name="encoding">The character encoding to use. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>
+		public StreamReaderAdapter([NotNull] string path, [NotNull] Encoding encoding)
+			: this(new StreamReader(path, encoding))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <param name="path">The file path to be read. </param>
+		/// <param name="encoding">The character encoding to use. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>
+		public StreamReaderAdapter([NotNull] string path, [NotNull] IEncoding encoding)
+			: this(new StreamReader(path, encoding.ToImplementation()))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <param name="path">The file path to be read. </param>
+		/// <param name="encoding">The character encoding to use. </param>
+		/// <param name="detectEncodingFromByteOrderMarks">Indicates whether to look for byte order marks at the beginning of the file. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>
+		public StreamReaderAdapter([NotNull] string path, [NotNull] Encoding encoding, bool detectEncodingFromByteOrderMarks)
+			: this(new StreamReader(path, encoding, detectEncodingFromByteOrderMarks))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <param name="path">The file path to be read. </param>
+		/// <param name="encoding">The character encoding to use. </param>
+		/// <param name="detectEncodingFromByteOrderMarks">Indicates whether to look for byte order marks at the beginning of the file. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>
+		public StreamReaderAdapter([NotNull] string path, [NotNull] IEncoding encoding, bool detectEncodingFromByteOrderMarks)
+			: this(new StreamReader(path, encoding.ToImplementation(), detectEncodingFromByteOrderMarks))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <param name="path">The file path to be read. </param>
+		/// <param name="encoding">The character encoding to use. </param>
+		/// <param name="detectEncodingFromByteOrderMarks">Indicates whether to look for byte order marks at the beginning of the file. </param>
+		/// <param name="bufferSize">The minimum buffer size. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>
+		public StreamReaderAdapter([NotNull] string path, [NotNull] Encoding encoding, bool detectEncodingFromByteOrderMarks, int bufferSize)
+			: this(new StreamReader(path, encoding, detectEncodingFromByteOrderMarks, bufferSize))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <param name="path">The file path to be read. </param>
+		/// <param name="encoding">The character encoding to use. </param>
+		/// <param name="detectEncodingFromByteOrderMarks">Indicates whether to look for byte order marks at the beginning of the file. </param>
+		/// <param name="bufferSize">The minimum buffer size. </param>
+		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>
+		public StreamReaderAdapter([NotNull] string path, [NotNull] IEncoding encoding, bool detectEncodingFromByteOrderMarks, int bufferSize)
+			: this(new StreamReader(path, encoding.ToImplementation(), detectEncodingFromByteOrderMarks, bufferSize))
+		{
+		}
+#endif
+
+		/// <summary>Initializes a new instance of the <see cref="StreamReaderAdapter" /> class for the specified stream, with the specified character encoding, byte order mark detection option, and buffer size.</summary>
+		/// <param name="stream">The stream to be read. </param>
+		/// <param name="encoding">The character encoding to use. </param>
 		/// <param name="detectEncodingFromByteOrderMarks">Indicates whether to look for byte order marks at the beginning of the file. </param>
 		/// <param name="bufferSize">The minimum buffer size. </param>
 		/// <exception cref="T:System.ArgumentException">The stream does not support reading. </exception>

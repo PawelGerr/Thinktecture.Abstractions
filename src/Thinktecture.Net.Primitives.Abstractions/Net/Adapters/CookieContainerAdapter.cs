@@ -41,6 +41,28 @@ namespace Thinktecture.Net.Adapters
 		{
 		}
 
+#if NET45 || NETSTANDARD2_0
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CookieContainerAdapter" /> class.
+		/// </summary>
+		/// <param name="capacity">The number of <see cref="T:System.Net.Cookie"></see> instances that the <see cref="T:System.Net.CookieContainer"></see> can hold.</param>
+		public CookieContainerAdapter(int capacity)
+			: this(new CookieContainer(capacity))
+		{
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CookieContainerAdapter" /> class.
+		/// </summary>
+		/// <param name="capacity">The number of <see cref="T:System.Net.Cookie"></see> instances that the <see cref="T:System.Net.CookieContainer"></see> can hold.</param>
+		/// <param name="perDomainCapacity">The number of <see cref="T:System.Net.Cookie"></see> instances per domain.</param>
+		/// <param name="maxCookieSize">The maximum size in bytes for any single <see cref="T:System.Net.Cookie"></see> in a <see cref="T:System.Net.CookieContainer"></see>.</param>
+		public CookieContainerAdapter(int capacity, int perDomainCapacity, int maxCookieSize)
+			: this(new CookieContainer(capacity, perDomainCapacity, maxCookieSize))
+		{
+		}
+#endif
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CookieContainerAdapter" /> class.
 		/// </summary>
@@ -119,4 +141,3 @@ namespace Thinktecture.Net.Adapters
 		}
 	}
 }
-

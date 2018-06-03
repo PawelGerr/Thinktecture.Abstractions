@@ -66,6 +66,18 @@ namespace Thinktecture.Net.Sockets.Adapters
 		{
 		}
 
+#if NET46 || NETSTANDARD2_0
+		/// <summary>
+		/// Initializes a new instance of the UdpClient class.
+		/// </summary>
+		/// <param name="hostname"></param>
+		/// <param name="port"></param>
+		public UdpClientAdapter(string hostname, int port)
+			: this(new UdpClient(hostname, port))
+		{
+		}
+#endif
+
 		/// <summary>
 		/// Initializes a new instance of the UdpClient class and binds it to the local port number provided.
 		/// </summary>

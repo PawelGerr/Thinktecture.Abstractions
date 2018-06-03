@@ -201,6 +201,15 @@ namespace Thinktecture.Net.Sockets.Adapters
 			set => Implementation.Ttl = value;
 		}
 
+#if NET46 || NETSTANDARD2_0
+		/// <summary>Initializes a new instance of the <see cref="T:System.Net.Sockets.Socket"></see> class using the specified value returned from <see cref="M:System.Net.Sockets.Socket.DuplicateAndClose(System.Int32)"></see>.</summary>
+		/// <param name="socketInformation">The socket information returned by <see cref="M:System.Net.Sockets.Socket.DuplicateAndClose(System.Int32)"></see>.</param>
+		public SocketAdapter(SocketInformation socketInformation)
+			: this(new Socket(socketInformation))
+		{
+		}
+#endif
+
 		/// <summary>Initializes a new instance of the <see cref="SocketAdapter" /> class using the specified address family, socket type and protocol.</summary>
 		/// <param name="addressFamily">One of the <see cref="T:System.Net.Sockets.AddressFamily" /> values. </param>
 		/// <param name="socketType">One of the <see cref="T:System.Net.Sockets.SocketType" /> values. </param>

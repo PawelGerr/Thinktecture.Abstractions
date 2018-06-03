@@ -1,9 +1,9 @@
 using System;
 using System.Net;
 using JetBrains.Annotations;
-
 #if NET45 || NETSTANDARD2_0
 using System.Security;
+
 #endif
 
 // ReSharper disable AssignNullToNotNullAttribute
@@ -47,6 +47,25 @@ namespace Thinktecture.Net.Adapters
 			: this(new NetworkCredential())
 		{
 		}
+
+#if NET45 || NETSTANDARD2_0
+		/// <summary>Initializes a new instance of the <see cref="NetworkCredentialAdapter" /> class.</summary>
+		/// <param name="userName">The user name associated with the credentials. </param>
+		/// <param name="password">The password for the user name associated with the credentials. </param>
+		public NetworkCredentialAdapter(string userName, SecureString password)
+			: this(new NetworkCredential(userName, password))
+		{
+		}
+
+		/// <summary>Initializes a new instance of the <see cref="NetworkCredentialAdapter" /> class.</summary>
+		/// <param name="userName">The user name associated with the credentials. </param>
+		/// <param name="password">The password for the user name associated with the credentials. </param>
+		/// <param name="domain">The domain associated with these credentials. </param>
+		public NetworkCredentialAdapter(string userName, SecureString password, string domain)
+			: this(new NetworkCredential(userName, password, domain))
+		{
+		}
+#endif
 
 		/// <summary>Initializes a new instance of the <see cref="NetworkCredentialAdapter" /> class with the specified user name and password.</summary>
 		/// <param name="userName">The user name associated with the credentials. </param>

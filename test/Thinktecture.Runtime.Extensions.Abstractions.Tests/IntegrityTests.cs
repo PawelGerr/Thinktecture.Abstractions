@@ -10,6 +10,7 @@ using System.Runtime.Versioning;
 using System.Security;
 using System.Security.Permissions;
 using Thinktecture.Diagnostics;
+using Thinktecture.Diagnostics.Adapters;
 using Xunit;
 
 namespace Thinktecture
@@ -97,6 +98,12 @@ namespace Thinktecture
 		public void Should_contain_all_adapters()
 		{
 			CheckAdapters();
+		}
+
+		[Fact]
+		public void Should_contain_all_adapters_constructors()
+		{
+			CheckConstructors(typeof(StopwatchGlobals));
 		}
 
 		[Fact]

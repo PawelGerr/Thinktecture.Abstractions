@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Reflection;
 using Thinktecture.Net.Sockets;
+using Thinktecture.Net.Sockets.Adapters;
 using Xunit;
 
 namespace Thinktecture
@@ -109,6 +110,12 @@ namespace Thinktecture
 		public void Should_contain_all_adapters()
 		{
 			CheckAdapters();
+		}
+
+		[Fact]
+		public void Should_contain_all_adapters_constructors()
+		{
+			CheckConstructors(typeof(SocketGlobals));
 		}
 
 		[Fact]

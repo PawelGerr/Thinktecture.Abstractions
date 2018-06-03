@@ -9,7 +9,7 @@ using Thinktecture.IO.Adapters;
 namespace Thinktecture.CodeDom.Compiler.Adapters
 {
 	/// <summary>Provides a text writer that can indent new lines by a tab string token.</summary>
-	public class IndentedTextWriterAdapter :  TextWriterAdapter , IIndentedTextWriter
+	public class IndentedTextWriterAdapter : TextWriterAdapter, IIndentedTextWriter
 	{
 		/// <inheritdoc />
 		[NotNull]
@@ -28,7 +28,6 @@ namespace Thinktecture.CodeDom.Compiler.Adapters
 		/// <summary>Specifies the default tab string. This field is constant. </summary>
 		// ReSharper disable once InconsistentNaming
 		public const string DefaultTabString = IndentedTextWriter.DefaultTabString;
-
 
 		/// <inheritdoc />
 		public int Indent

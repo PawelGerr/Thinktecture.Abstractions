@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Thinktecture.Runtime.CompilerServices;
 using Thinktecture.Threading.Tasks;
+using Thinktecture.Threading.Tasks.Adapters;
 using Xunit;
 
 namespace Thinktecture
@@ -69,6 +70,12 @@ namespace Thinktecture
 		public void Should_contain_all_adapters()
 		{
 			CheckAdapters();
+		}
+
+		[Fact]
+		public void Should_contain_all_adapters_constructors()
+		{
+			CheckConstructors(typeof(TaskGlobals), typeof(TaskGlobals<>));
 		}
 
 		[Fact]

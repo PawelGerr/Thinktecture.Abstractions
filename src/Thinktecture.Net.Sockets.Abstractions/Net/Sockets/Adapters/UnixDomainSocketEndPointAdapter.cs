@@ -24,7 +24,19 @@ namespace Thinktecture.Net.Sockets.Adapters
 			return Implementation;
 		}
 
-		/// <inheritdoc />
+		/// <summary>
+		/// Initializes new instance of <see cref="UnixDomainSocketEndPointAdapter"/>.
+		/// </summary>
+		/// <param name="path">Path.</param>
+		public UnixDomainSocketEndPointAdapter(string path)
+			:this(new UnixDomainSocketEndPoint(path))
+		{
+
+		}
+
+		/// <summary>
+		/// Initializes new instance of <see cref="UnixDomainSocketEndPointAdapter"/>.
+		/// </summary>
 		public UnixDomainSocketEndPointAdapter([NotNull] UnixDomainSocketEndPoint implementation)
 			: base(implementation)
 		{

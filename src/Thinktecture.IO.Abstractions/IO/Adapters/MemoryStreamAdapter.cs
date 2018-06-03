@@ -86,6 +86,24 @@ namespace Thinktecture.IO.Adapters
 		{
 		}
 
+#if !NETSTANDARD1_0
+		/// <summary>Initializes a new non-resizable instance of the <see cref="MemoryStreamAdapter" /> class based on the specified region of a byte array, with the <see cref="P:System.IO.MemoryStream.CanWrite" /> property set as specified.</summary>
+		/// <param name="buffer">The array of unsigned bytes from which to create this stream. </param>
+		/// <param name="index">The index in <paramref name="buffer" /> at which the stream begins. </param>
+		/// <param name="count">The length of the stream in bytes. </param>
+		/// <param name="writable">The setting of the <see cref="P:System.IO.MemoryStream.CanWrite" /> property, which determines whether the stream supports writing. </param>
+		/// <param name="publiclyVisible">true to enable <see cref="M:System.IO.MemoryStream.GetBuffer"></see>, which returns the unsigned byte array from which the stream was created; otherwise, false.</param>
+		/// <exception cref="T:System.ArgumentNullException">
+		/// <paramref name="buffer" /> is null. </exception>
+		/// <exception cref="T:System.ArgumentOutOfRangeException">
+		/// <paramref name="index" /> or <paramref name="count" /> are negative. </exception>
+		/// <exception cref="T:System.ArgumentException">The buffer length minus <paramref name="index" /> is less than <paramref name="count" />.</exception>
+		public MemoryStreamAdapter([NotNull] byte[] buffer, int index, int count, bool writable, bool publiclyVisible)
+			: this(new MemoryStream(buffer, index, count, writable, publiclyVisible))
+		{
+		}
+#endif
+
 		/// <summary>Initializes a new instance of the <see cref="MemoryStreamAdapter" /> class with an expandable capacity initialized as specified.</summary>
 		/// <param name="capacity">The initial size of the internal array in bytes. </param>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">

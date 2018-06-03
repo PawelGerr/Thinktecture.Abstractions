@@ -26,6 +26,12 @@ namespace Thinktecture
 		}
 
 		[Fact]
+		public void Should_contain_all_adapters_constructors()
+		{
+			CheckConstructors();
+		}
+
+		[Fact]
 		public void Should_contain_all_members()
 		{
 			CheckMembers();

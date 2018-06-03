@@ -153,6 +153,93 @@ namespace Thinktecture
 			}
 		}
 
+		protected void CheckConstructors(params Type[] skipTypes)
+		{
+			var adapterTypes = _adapterTypes
+									.Where(t => !ExcludedTypes.Contains(t) && !(ExcludeTypeCallback?.Invoke(t) ?? false))
+									.ToList();
+
+			foreach (var types in GetTypes().Where(t => t.Abstraction != null))
+			{
+				if (types.Abstraction != null && types.Original != null && !IsStatic(types.Original) && !skipTypes.Contains(types.Original))
+				{
+					var adapter = FindAdapters(adapterTypes, types.Abstraction).FirstOrDefault();
+
+					if (adapter != null && !skipTypes.Contains(adapter))
+					{
+						var adapterConstructors = adapter.GetConstructors();
+						var wrapperConstructor = FindConstructor(adapterConstructors, types.Original);
+
+						wrapperConstructor.Should().NotBeNull($"The adapter {adapter.Name} of abstraction {types.Abstraction.Name} must have a ctor({types.Original.Name})");
+
+						var originalConstructors = types.Original.GetConstructors();
+
+						foreach (var originalCtor in originalConstructors)
+						{
+							if(originalCtor.GetCustomAttribute<ObsoleteAttribute>() == null)
+							{
+								var orginalParams = originalCtor.GetParameters().Select(p => p.ParameterType).ToArray();
+								var adapterCtor = FindConstructor(adapterConstructors, orginalParams);
+
+								adapterCtor.Should().NotBeNull($"The adapter {adapter.Name} of abstraction {types.Abstraction.Name} must have a ctor({String.Join(", ", orginalParams.Select(p => p.Name))})");
+							}
+						}
+					}
+				}
+			}
+		}
+
+		private static bool IsStatic(Type type)
+		{
+			return type.IsAbstract && type.IsSealed;
+		}
+
+		private static ConstructorInfo FindConstructor(IList<ConstructorInfo> constructors, params Type[] args)
+		{
+			foreach (var ctor in constructors)
+			{
+				if (IsMatch(ctor, args))
+					return ctor;
+			}
+
+			return null;
+		}
+
+		private static bool IsMatch(ConstructorInfo ctor, Type[] args)
+		{
+			if (ctor == null)
+				throw new ArgumentNullException(nameof(ctor));
+			if (args == null)
+				throw new ArgumentNullException(nameof(args));
+
+			var parameters = ctor.GetParameters();
+
+			if (parameters.Length != args.Length)
+				return false;
+
+			for (var i = 0; i < args.Length; i++)
+			{
+				var paramType = parameters[i].ParameterType;
+				var argType = args[i];
+
+				if (!AreCtorArgTypesEqual(paramType, argType))
+					return false;
+			}
+
+			return true;
+		}
+
+		private static bool AreCtorArgTypesEqual(Type type, Type otherType)
+		{
+			if (type.IsGenericType && !type.IsGenericTypeDefinition)
+				type = type.GetGenericTypeDefinition();
+
+			if (otherType.IsGenericType && !otherType.IsGenericTypeDefinition)
+				otherType = otherType.GetGenericTypeDefinition();
+
+			return type == otherType;
+		}
+
 		private IReadOnlyList<MemberInfo> GetMembers(Type type, Type otherType)
 		{
 			if (type == null)

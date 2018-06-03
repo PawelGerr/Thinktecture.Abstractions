@@ -28,6 +28,14 @@ namespace Thinktecture.Net.Adapters
 		/// <summary>
 		/// Initializes new instance of <see cref="CredentialCacheAdapter"/>.
 		/// </summary>
+		public CredentialCacheAdapter()
+			: base(new CredentialCache())
+		{
+		}
+
+		/// <summary>
+		/// Initializes new instance of <see cref="CredentialCacheAdapter"/>.
+		/// </summary>
 		/// <param name="cache">Cache to be used by the adapter.</param>
 		public CredentialCacheAdapter([NotNull] CredentialCache cache)
 			: base(cache)

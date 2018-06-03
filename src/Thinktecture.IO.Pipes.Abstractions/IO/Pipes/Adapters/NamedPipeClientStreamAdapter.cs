@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.IO.Pipes;
 using System.Security.Principal;
 using System.Threading;
@@ -109,17 +110,17 @@ namespace Thinktecture.IO.Pipes.Adapters
 		{
 		}
 
-#if NET46
-		/// <summary>Initializes a new instance of the <see cref="NamedPipeClientStreamAdapter"></see> class with the specified pipe and server names, and the specified pipe direction, pipe options, security impersonation level, and inheritability mode.</summary>
-		/// <param name="serverName">The name of the remote computer to connect to, or "." to specify the local computer.</param>
-		/// <param name="pipeName">The name of the pipe.</param>
-		/// <param name="direction">One of the enumeration values that determines the direction of the pipe.</param>
-		/// <param name="options">One of the enumeration values that determines how to open or create the pipe.</param>
-		/// <param name="impersonationLevel">One of the enumeration values that determines the security impersonation level.</param>
-		/// <param name="inheritability">One of the enumeration values that determines whether the underlying handle will be inheritable by child processes.</param>
-		/// <exception cref="T:System.ArgumentNullException"><paramref name="pipeName">pipeName</paramref> or <paramref name="serverName">serverName</paramref> is null.</exception>
-		/// <exception cref="T:System.ArgumentException"><paramref name="pipeName">pipeName</paramref> or <paramref name="serverName">serverName</paramref> is a zero-length string.</exception>
-		/// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pipeName">pipeName</paramref> is set to "anonymous".   -or-  <paramref name="direction">direction</paramref> is not a valid <see cref="T:System.IO.Pipes.PipeDirection"></see> value.   -or-  <paramref name="options">options</paramref> is not a valid <see cref="T:System.IO.Pipes.PipeOptions"></see> value.   -or-  <paramref name="impersonationLevel">impersonationLevel</paramref> is not a valid <see cref="T:System.Security.Principal.TokenImpersonationLevel"></see> value.   -or-  <paramref name="inheritability">inheritability</paramref> is not a valid <see cref="T:System.IO.HandleInheritability"></see> value.</exception>
+#if NET46 || NETSTANDARD2_0
+/// <summary>Initializes a new instance of the <see cref="NamedPipeClientStreamAdapter"></see> class with the specified pipe and server names, and the specified pipe direction, pipe options, security impersonation level, and inheritability mode.</summary>
+/// <param name="serverName">The name of the remote computer to connect to, or "." to specify the local computer.</param>
+/// <param name="pipeName">The name of the pipe.</param>
+/// <param name="direction">One of the enumeration values that determines the direction of the pipe.</param>
+/// <param name="options">One of the enumeration values that determines how to open or create the pipe.</param>
+/// <param name="impersonationLevel">One of the enumeration values that determines the security impersonation level.</param>
+/// <param name="inheritability">One of the enumeration values that determines whether the underlying handle will be inheritable by child processes.</param>
+/// <exception cref="T:System.ArgumentNullException"><paramref name="pipeName">pipeName</paramref> or <paramref name="serverName">serverName</paramref> is null.</exception>
+/// <exception cref="T:System.ArgumentException"><paramref name="pipeName">pipeName</paramref> or <paramref name="serverName">serverName</paramref> is a zero-length string.</exception>
+/// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="pipeName">pipeName</paramref> is set to "anonymous".   -or-  <paramref name="direction">direction</paramref> is not a valid <see cref="T:System.IO.Pipes.PipeDirection"></see> value.   -or-  <paramref name="options">options</paramref> is not a valid <see cref="T:System.IO.Pipes.PipeOptions"></see> value.   -or-  <paramref name="impersonationLevel">impersonationLevel</paramref> is not a valid <see cref="T:System.Security.Principal.TokenImpersonationLevel"></see> value.   -or-  <paramref name="inheritability">inheritability</paramref> is not a valid <see cref="T:System.IO.HandleInheritability"></see> value.</exception>
 		public NamedPipeClientStreamAdapter(string serverName, string pipeName, PipeDirection direction, PipeOptions options, TokenImpersonationLevel impersonationLevel, HandleInheritability inheritability)
 			: this(new NamedPipeClientStream(serverName, pipeName, direction, options, impersonationLevel, inheritability))
 		{
