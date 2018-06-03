@@ -21,7 +21,7 @@
     <ProjectReference Include="..\Thinktecture.Net.Primitives.Abstractions\Thinktecture.Net.Primitives.Abstractions.csproj" />
     <ProjectReference Include="..\Thinktecture.Runtime.Abstractions\Thinktecture.Runtime.Abstractions.csproj" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.0' OR '$(TargetFramework)' == 'netstandard1.3' ">
     <PackageReference Include="System.Net.NetworkInformation" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
