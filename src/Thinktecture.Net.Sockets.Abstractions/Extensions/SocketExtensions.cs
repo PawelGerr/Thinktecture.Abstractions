@@ -146,7 +146,7 @@ namespace Thinktecture
 			return socket.ToImplementation().ConnectAsync(host, port);
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// Receives data from a connected socket.
 		/// </summary>

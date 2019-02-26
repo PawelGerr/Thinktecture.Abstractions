@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.IO;
 using System.IO.Pipes;
 using System.Security.Principal;
 using System.Threading;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.Win32.SafeHandles;
 
-#if NET46
+#if NET46 || NETSTANDARD2_0
 using System.IO;
 #endif
 

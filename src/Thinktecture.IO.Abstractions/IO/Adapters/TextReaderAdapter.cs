@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 using System.Threading;
 
 #endif
@@ -40,7 +40,7 @@ namespace Thinktecture.IO.Adapters
 			return Implementation.Peek();
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public int Read(Span<char> buffer)
 		{

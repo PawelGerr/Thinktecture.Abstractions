@@ -48,7 +48,7 @@ namespace Thinktecture.Adapters
 			return Implementation.Next(minValue, maxValue);
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public void NextBytes(Span<byte> buffer)
 		{

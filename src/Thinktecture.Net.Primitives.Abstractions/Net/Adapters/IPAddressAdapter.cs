@@ -106,7 +106,7 @@ namespace Thinktecture.Net.Adapters
 			return IPAddress.Parse(ipString).ToInterface();
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Converts an IP address span to an <see cref="T:System.Net.IPAddress" /> instance.</summary>
 		/// <returns>An <see cref="T:System.Net.IPAddress" /> instance.</returns>
 		/// <param name="ipString">A span that contains an IP address in dotted-quad notation for IPv4 and in colon-hexadecimal notation for IPv6. </param>
@@ -167,7 +167,7 @@ namespace Thinktecture.Net.Adapters
 			set => Implementation.ScopeId = value;
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Initializes a new instance of the <see cref="T:System.Net.IPAddress" /> class with the address specified as a <see cref="T:System.Byte" /> array.</summary>
 		/// <param name="address">The byte array value of the IP address. </param>
 		public IPAddressAdapter(ReadOnlySpan<byte> address)
@@ -243,7 +243,7 @@ namespace Thinktecture.Net.Adapters
 			return Implementation.MapToIPv6().ToInterface();
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public bool TryFormat(Span<char> destination, out int charsWritten)
 		{

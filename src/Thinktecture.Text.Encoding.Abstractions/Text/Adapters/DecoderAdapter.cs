@@ -24,7 +24,7 @@ namespace Thinktecture.Text.Adapters
 			Implementation.Convert(bytes, byteIndex, byteCount, chars, charIndex, charCount, flush, out bytesUsed, out charsUsed, out completed);
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public int GetCharCount(ReadOnlySpan<byte> bytes, bool flush)
 		{

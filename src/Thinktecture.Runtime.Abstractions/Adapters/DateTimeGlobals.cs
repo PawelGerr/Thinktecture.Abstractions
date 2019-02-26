@@ -23,7 +23,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public DateTime UtcNow => DateTime.UtcNow;
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public DateTime UnixEpoch => DateTime.UnixEpoch;
 #endif
@@ -64,7 +64,7 @@ namespace Thinktecture.Adapters
 			return DateTime.FromFileTimeUtc(fileTime);
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public DateTime Parse(ReadOnlySpan<char> s, IFormatProvider provider = null, DateTimeStyles styles = DateTimeStyles.None)
 		{

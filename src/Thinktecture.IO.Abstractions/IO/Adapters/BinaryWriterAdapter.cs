@@ -152,7 +152,7 @@ namespace Thinktecture.IO.Adapters
 			return Implementation.Seek(offset, origin);
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public void Write(ReadOnlySpan<byte> buffer)
 		{

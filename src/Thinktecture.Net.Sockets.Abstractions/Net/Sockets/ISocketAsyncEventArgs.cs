@@ -19,7 +19,7 @@ namespace Thinktecture.Net.Sockets
 		[CanBeNull]
 		byte[] Buffer { get; }
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Gets the data buffer to use with an asynchronous socket method.</summary>
 		/// <returns>A <see cref="Memory{T}" /> of bytes that represents the data buffer to use with an asynchronous socket method.</returns>
 		Memory<byte> MemoryBuffer { get; }
@@ -95,7 +95,7 @@ namespace Thinktecture.Net.Sockets
 		/// <summary>The event used to complete an asynchronous operation.</summary>
 		event EventHandler<ISocketAsyncEventArgs> Completed;
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Sets the data buffer to use with an asynchronous socket method.</summary>
 		/// <param name="buffer">The data buffer to use with an asynchronous socket method.</param>
 		void SetBuffer(Memory<byte> buffer);

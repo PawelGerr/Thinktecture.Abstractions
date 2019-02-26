@@ -33,7 +33,7 @@ namespace Thinktecture
 		/// <paramref name="buffer" /> is null. </exception>
 		void NextBytes([NotNull] byte[] buffer);
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Fills the elements of a specified span of bytes with random numbers.</summary>
 		/// <param name="buffer">A span of bytes to contain random numbers. </param>
 		void NextBytes(Span<byte> buffer);

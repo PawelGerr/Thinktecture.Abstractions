@@ -16,7 +16,7 @@ namespace Thinktecture
 		/// <filterpriority>1</filterpriority>
 		Guid NewGuid();
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Converts the string representation of a GUID to the equivalent <see cref="T:System.Guid" /> structure.</summary>
 		/// <returns>A structure that contains the value that was parsed.</returns>
 		/// <param name="input">The string to convert.</param>

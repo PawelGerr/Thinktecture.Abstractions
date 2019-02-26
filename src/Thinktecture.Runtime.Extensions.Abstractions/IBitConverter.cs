@@ -11,7 +11,7 @@ namespace Thinktecture
 		/// <summary>Indicates the byte order ("endianness") in which data is stored in this computer architecture.</summary>
 		bool IsLittleEndian { get; }
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// Converts <paramref name="value"/> to int.
 		/// </summary>

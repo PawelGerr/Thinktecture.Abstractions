@@ -31,7 +31,7 @@ namespace Thinktecture
 		/// <filterpriority>1</filterpriority>
 		DateTime UtcNow { get; }
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// Start of the unix epoch.
 		/// </summary>
@@ -85,7 +85,7 @@ namespace Thinktecture
 		/// <filterpriority>1</filterpriority>
 		DateTime FromFileTimeUtc(long fileTime);
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Converts the string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent by using culture-specific format information and formatting style.</summary>
 		/// <param name="s">A string that contains a date and time to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information about <paramref name="s" />. </param>

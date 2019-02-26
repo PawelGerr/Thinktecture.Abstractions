@@ -146,7 +146,7 @@ namespace Thinktecture.IO.Adapters
 			return Implementation.GetDirectories(searchPattern, searchOption).ToInterface();
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles(string searchPattern, EnumerationOptions enumerationOptions)
 		{

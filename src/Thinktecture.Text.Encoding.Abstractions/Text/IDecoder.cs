@@ -26,7 +26,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.Text.DecoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Decoder.Fallback" /> is set to <see cref="T:System.Text.DecoderExceptionFallback" />.</exception>
 		void Convert([NotNull] byte[] bytes, int byteIndex, int byteCount, [NotNull] char[] chars, int charIndex, int charCount, bool flush, out int bytesUsed, out int charsUsed, out bool completed);
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>When overridden in a derived class, calculates the number of characters produced by decoding a sequence of bytes from the specified span of bytes.</summary>
 		/// <param name="bytes">The span of byte containing the sequence of bytes to decode. </param>
 		/// <param name="flush">true to simulate clearing the internal state of the encoder after the calculation; otherwise, false. </param>

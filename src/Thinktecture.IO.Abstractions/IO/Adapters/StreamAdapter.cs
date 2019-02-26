@@ -140,7 +140,7 @@ namespace Thinktecture.IO.Adapters
 			return Implementation.FlushAsync(cancellationToken);
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public int Read(Span<byte> buffer)
 		{

@@ -185,7 +185,7 @@ namespace Thinktecture.IO
 		[NotNull]
 		Task FlushAsync(CancellationToken cancellationToken);
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Reads from the stream and writes the data in a given buffer.</summary>
 		/// <param name="buffer">An span of bytes.</param>
 		/// <returns>The total number of bytes read into the buffer.</returns>

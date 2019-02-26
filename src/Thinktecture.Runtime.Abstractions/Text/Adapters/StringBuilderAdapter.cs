@@ -106,7 +106,7 @@ namespace Thinktecture.Text.Adapters
 		{
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public IStringBuilder AppendJoin<T>(char separator, IEnumerable<T> values)
 		{

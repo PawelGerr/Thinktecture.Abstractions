@@ -18,7 +18,7 @@ namespace Thinktecture.Threading.Tasks.Adapters
 	[SuppressMessage("ReSharper", "TaskOfTMethodsWithoutAsyncSuffix")]
 	public class TaskAdapter : AbstractionAdapter<Task>, ITask
 	{
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public bool IsCompletedSuccessfully => Implementation.IsCompletedSuccessfully;
 #endif

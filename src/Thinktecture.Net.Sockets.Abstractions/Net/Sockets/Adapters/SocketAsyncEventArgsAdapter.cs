@@ -36,7 +36,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <inheritdoc />
 		public byte[] Buffer => Implementation.Buffer;
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public Memory<byte> MemoryBuffer => Implementation.MemoryBuffer;
 #endif
@@ -137,7 +137,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 			_completedLookup = new AbstractionEventHandlerLookup<ISocketAsyncEventArgs, SocketAsyncEventArgs>();
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public void SetBuffer(Memory<byte> buffer)
 		{

@@ -1,37 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>Provides interfaces for types in System.Net.Http: HttpClient, HttpContent, HttpRequestMessage, HttpResponseMessage, HttpHeaders, DelegatingHandler, HttpClientHandler, HttpMessageHandler, HttpMessageInvoker, MessageProcessingHandler, MultipartContent, MultipartFormDataContent, HttpContentHeaders, HttpRequestHeaders, HttpResponseHeaders.</Description>
-    <Copyright>(c) 2018, Pawel Gerr. All rights reserved.</Copyright>
-    <VersionPrefix>2.4.0</VersionPrefix>
-    <Authors>Pawel Gerr</Authors>
     <TargetFrameworks>netstandard1.1;netstandard1.3;netstandard1.6;netstandard2.0;net45;net46</TargetFrameworks>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageTags>http;net;abstraction</PackageTags>
-    <PackageIconUrl>http://thinktecture.com/images/Logo_T_Nontransparent.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/PawelGerr/Thinktecture.Abstractions</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md</PackageLicenseUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git@github.com:PawelGerr/Thinktecture.Abstractions.git</RepositoryUrl>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <RootNamespace>Thinktecture</RootNamespace>
-    <LangVersion>7.3</LangVersion>
-    <CodeAnalysisRuleSet>..\..\Visual Studio.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Thinktecture.IO.Abstractions\Thinktecture.IO.Abstractions.csproj" />
     <ProjectReference Include="..\Thinktecture.Net.Primitives.Abstractions\Thinktecture.Net.Primitives.Abstractions.csproj" />
   </ItemGroup>
-   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
-    <PackageReference Include="System.Net.Http" Version="4.3.3" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <Reference Include="System" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' OR '$(TargetFramework)' == 'net46' ">
     <Reference Include="System.Net.Http" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
-    <Reference Include="System" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 </Project>

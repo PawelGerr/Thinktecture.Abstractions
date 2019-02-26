@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Thinktecture.Text;
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 using System.Threading;
 #endif
 
@@ -67,7 +67,7 @@ namespace Thinktecture.IO.Adapters
 			return Implementation.FlushAsync();
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public void Write(ReadOnlySpan<char> value)
 		{

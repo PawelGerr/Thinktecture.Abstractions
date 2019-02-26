@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 using System.Threading;
 #endif
 
@@ -20,7 +20,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		int Peek();
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// Reads from the current reader and writes the data to a buffer.
 		/// </summary>

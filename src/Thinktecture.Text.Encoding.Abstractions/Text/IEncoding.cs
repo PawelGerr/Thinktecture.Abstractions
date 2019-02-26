@@ -18,7 +18,7 @@ namespace Thinktecture.Text
 		[NotNull]
 		string WebName { get; }
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// The preamble.
 		/// </summary>

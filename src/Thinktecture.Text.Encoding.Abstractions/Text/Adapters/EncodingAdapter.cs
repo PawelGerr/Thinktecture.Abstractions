@@ -186,7 +186,7 @@ namespace Thinktecture.Text.Adapters
 		{
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public ReadOnlySpan<byte> Preamble => Implementation.Preamble;
 

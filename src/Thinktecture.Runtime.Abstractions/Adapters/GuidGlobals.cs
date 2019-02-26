@@ -24,7 +24,7 @@ namespace Thinktecture.Adapters
 			return Guid.NewGuid();
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public Guid Parse(ReadOnlySpan<char> input)
 		{

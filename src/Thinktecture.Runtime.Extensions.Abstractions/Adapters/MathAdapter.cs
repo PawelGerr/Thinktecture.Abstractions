@@ -13,7 +13,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public double E => Math.E;
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public byte Clamp(byte value, byte min, byte max)
 		{

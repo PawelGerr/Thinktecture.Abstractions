@@ -16,7 +16,7 @@ namespace Thinktecture.Threading.Tasks
 		, IDisposable
 #endif
 	{
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// Indication whether task completted successfully or not.
 		/// </summary>

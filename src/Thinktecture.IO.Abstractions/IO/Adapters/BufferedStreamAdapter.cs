@@ -23,7 +23,7 @@ namespace Thinktecture.IO.Adapters
 		[NotNull]
 		protected new BufferedStream Implementation { get; }
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public Stream UnderlyingStream => Implementation.UnderlyingStream;
 

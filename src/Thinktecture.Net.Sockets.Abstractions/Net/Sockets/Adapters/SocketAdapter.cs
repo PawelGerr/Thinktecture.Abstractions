@@ -557,7 +557,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 			return Implementation.ReceiveMessageFromAsync(e.ToImplementation<SocketAsyncEventArgs>());
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public int Send(ReadOnlySpan<byte> buffer)
 		{

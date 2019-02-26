@@ -359,7 +359,7 @@ namespace Thinktecture.IO
 		[NotNull]
 		string GetDirectoryRoot([NotNull] string path);
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Returns the names of files (including their paths) in the specified directory.</summary>
 		/// <returns>An array of the full names (including paths) for the files in the specified directory, or an empty array if no files are found.</returns>
 		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive.</param>

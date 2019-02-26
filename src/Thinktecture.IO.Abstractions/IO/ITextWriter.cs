@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Thinktecture.Text;
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 using System.Threading;
 #endif
 
@@ -46,7 +46,7 @@ namespace Thinktecture.IO
 		[NotNull]
 		Task FlushAsync();
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// Writes a buffer to the text string or stream.
 		/// </summary>

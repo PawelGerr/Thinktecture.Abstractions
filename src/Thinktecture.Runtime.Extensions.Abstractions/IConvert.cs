@@ -101,7 +101,7 @@ namespace Thinktecture
 		/// <paramref name="offsetIn" />, <paramref name="offsetOut" />, or <paramref name="length" /> is negative.-or- <paramref name="offsetIn" /> plus <paramref name="length" /> is greater than the length of <paramref name="inArray" />.-or- <paramref name="offsetOut" /> plus the number of elements to return is greater than the length of <paramref name="outArray" />. </exception>
 		int ToBase64CharArray([NotNull] byte[] inArray, int offsetIn, int length, [NotNull] char[] outArray, int offsetOut);
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Converts a span of 8-bit unsigned integers to its equivalent string representation that is encoded with base-64 digits.</summary>
 		/// <param name="bytes">An array of 8-bit unsigned integers. </param>
 		/// <param name="options">Options.</param>

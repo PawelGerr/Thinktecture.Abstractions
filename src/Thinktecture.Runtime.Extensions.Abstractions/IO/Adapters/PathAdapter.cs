@@ -36,7 +36,7 @@ namespace Thinktecture.IO.Adapters
 			return Path.Combine(paths);
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public string GetRelativePath(string relativeTo, string path)
 		{

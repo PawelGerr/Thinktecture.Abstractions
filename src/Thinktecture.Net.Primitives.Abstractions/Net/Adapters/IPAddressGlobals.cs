@@ -105,7 +105,7 @@ namespace Thinktecture.Net.Adapters
 			return IPAddressAdapter.Parse(ipString);
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Converts an IP address span to an <see cref="T:System.Net.IPAddress" /> instance.</summary>
 		/// <returns>An <see cref="T:System.Net.IPAddress" /> instance.</returns>
 		/// <param name="ipString">A span that contains an IP address in dotted-quad notation for IPv4 and in colon-hexadecimal notation for IPv6. </param>

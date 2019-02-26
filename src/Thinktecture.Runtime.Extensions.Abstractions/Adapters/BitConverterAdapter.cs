@@ -12,7 +12,7 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public bool IsLittleEndian => BitConverter.IsLittleEndian;
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public int SingleToInt32Bits(float value)
 		{

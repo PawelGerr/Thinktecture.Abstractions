@@ -25,7 +25,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentException">The current character cannot be decoded into the internal character buffer by using the <see cref="T:System.Text.Encoding" /> selected for the stream.</exception>
 		int PeekChar();
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Reads from the stream from info buffer. </summary>
 		/// <param name="buffer">The buffer to read data into. </param>
 		/// <returns>The number of bytes read into <paramref name="buffer" />.</returns>

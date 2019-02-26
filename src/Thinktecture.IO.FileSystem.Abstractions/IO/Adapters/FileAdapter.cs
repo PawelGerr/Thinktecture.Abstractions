@@ -15,7 +15,7 @@ namespace Thinktecture.IO.Adapters
 	/// </summary>
 	public class FileAdapter : IFile
 	{
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		public Task<string> ReadAllTextAsync(string path, CancellationToken cancellationToken = default)
 		{
 			return File.ReadAllTextAsync(path, cancellationToken);

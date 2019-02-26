@@ -196,7 +196,7 @@ namespace Thinktecture.IO
 		[NotNull]
 		IDirectoryInfo[] GetDirectories([NotNull] string searchPattern, SearchOption searchOption);
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Returns a file list from the current directory matching the given search pattern and using a value to determine whether to search subdirectories.</summary>
 		/// <returns>An array of type <see cref="T:System.IO.FileInfo" />.</returns>
 		/// <param name="searchPattern">The search string to match against the names of files.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>

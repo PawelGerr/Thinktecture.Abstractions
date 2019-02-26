@@ -53,7 +53,7 @@ namespace Thinktecture.Adapters
 			return Convert.ToBase64CharArray(inArray, offsetIn, length, outArray, offsetOut);
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public string ToBase64String(ReadOnlySpan<byte> bytes, Base64FormattingOptions options = Base64FormattingOptions.None)
 		{

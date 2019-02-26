@@ -1,39 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>Provides interfaces for types in System.IO.FileSystem: Directory, File, FileSystemInfo, DirectoryInfo, FileInfo, FileStream, SafeFileHandle.</Description>
-    <Copyright>(c) 2018, Pawel Gerr. All rights reserved.</Copyright>
-    <VersionPrefix>2.4.0</VersionPrefix>
-    <Authors>Pawel Gerr</Authors>
-    <TargetFrameworks>netstandard1.3;netstandard2.0;netcoreapp2.1;net46</TargetFrameworks>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TargetFrameworks>netstandard1.3;netstandard2.0;netcoreapp2.2;net46</TargetFrameworks>
     <PackageTags>io;filesystem;abstraction</PackageTags>
-    <PackageIconUrl>http://thinktecture.com/images/Logo_T_Nontransparent.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/PawelGerr/Thinktecture.Abstractions</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/PawelGerr/Thinktecture.Abstractions/blob/master/LICENCE.md</PackageLicenseUrl>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git@github.com:PawelGerr/Thinktecture.Abstractions.git</RepositoryUrl>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <RootNamespace>Thinktecture</RootNamespace>
-    <LangVersion>7.3</LangVersion>
-    <CodeAnalysisRuleSet>..\..\Visual Studio.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.1' ">
-    <DefineConstants>$(DefineConstants);NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Thinktecture.IO.Abstractions\Thinktecture.IO.Abstractions.csproj" />
     <ProjectReference Include="..\Thinktecture.Text.Encoding.Abstractions\Thinktecture.Text.Encoding.Abstractions.csproj" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' OR '$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.1' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' OR '$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.2' ">
     <ProjectReference Include="..\Thinktecture.Runtime.Handles.Abstractions\Thinktecture.Runtime.Handles.Abstractions.csproj" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
     <ProjectReference Include="..\Thinktecture.Runtime.Handles.Abstractions\Thinktecture.Runtime.Handles.Abstractions.csproj" />
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 </Project>

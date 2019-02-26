@@ -40,7 +40,7 @@ namespace Thinktecture.Text
 		[IndexerName("Chars")]
 		char this[int index] { get; set; }
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// Appends the <paramref name="values"/> after joining them using the <paramref name="separator"/>.
 		/// </summary>

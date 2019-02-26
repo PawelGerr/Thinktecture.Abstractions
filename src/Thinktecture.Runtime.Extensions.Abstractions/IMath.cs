@@ -14,7 +14,7 @@ namespace Thinktecture
 		/// <summary>Represents the natural logarithmic base, specified by the constant, e.</summary>
 		double E { get; }
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// Returns the <paramref name="value"/> that is betweend <paramref name="min"/> and <paramref name="max"/>.
 		/// </summary>

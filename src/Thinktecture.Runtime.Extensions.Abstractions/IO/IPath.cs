@@ -43,7 +43,7 @@ namespace Thinktecture.IO
 		[NotNull]
 		string Combine([NotNull, ItemNotNull] params string[] paths);
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// Gets a path that is relative to <paramref name="relativeTo"/>.
 		/// </summary>

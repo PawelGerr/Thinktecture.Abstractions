@@ -593,7 +593,7 @@ namespace Thinktecture.Net.Sockets
 		/// </returns>
 		bool ReceiveMessageFromAsync([NotNull] ISocketAsyncEventArgs e);
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// Sends data to a connected Socket.
 		/// </summary>

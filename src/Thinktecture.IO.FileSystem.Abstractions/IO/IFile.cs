@@ -12,7 +12,7 @@ namespace Thinktecture.IO
 	/// <summary>Provides static methods for the creation, copying, deletion, moving, and opening of a single file, and aids in the creation of <see cref="T:System.IO.FileStream" /> objects.To browse the .NET Framework source code for this type, see the Reference Source.</summary>
 	public interface IFile
 	{
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// Reads all text from file.
 		/// </summary>

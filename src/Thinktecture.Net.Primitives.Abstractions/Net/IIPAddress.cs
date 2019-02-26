@@ -57,7 +57,7 @@ namespace Thinktecture.Net
 		[NotNull]
 		IIPAddress MapToIPv6();
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>
 		/// Write the address into <paramref name="destination"/>.
 		/// </summary>

@@ -139,7 +139,7 @@ namespace Thinktecture.IO.Adapters
 			return Directory.GetDirectoryRoot(path);
 		}
 
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public string[] GetFiles(string path, string searchPattern, EnumerationOptions enumerationOptions)
 		{

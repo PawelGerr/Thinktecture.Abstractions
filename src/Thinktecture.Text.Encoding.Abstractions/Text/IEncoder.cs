@@ -7,7 +7,7 @@ namespace Thinktecture.Text
 	/// <summary>Converts a set of characters into a sequence of bytes.</summary>
 	public interface IEncoder : IAbstraction<Encoder>
 	{
-#if NETCOREAPP2_1
+#if NETCOREAPP2_2
 		/// <summary>Converts a span of Unicode characters to an encoded byte sequence and stores the result in an span of bytes.</summary>
 		/// <param name="chars">A span of characters to convert.</param>
 		/// <param name="bytes">A span where the converted bytes are stored.</param>
