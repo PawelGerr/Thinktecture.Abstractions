@@ -4,7 +4,15 @@
     <TargetFrameworks>netstandard1.3;netstandard2.0;net46</TargetFrameworks>
     <PackageTags>filesystemwatcher;abstraction</PackageTags>
     <NoWarn>RCS1159</NoWarn>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Thinktecture.Abstractions\Thinktecture.Abstractions.csproj" />
   </ItemGroup>
