@@ -3,7 +3,15 @@
     <Description>Provides interfaces for types in System.Net.Primitives: Cookie, CookieCollection, CookieContainer, NetworkCredential.</Description>
     <TargetFrameworks>netstandard1.0;netstandard1.1;netstandard1.3;netstandard2.0;netcoreapp2.2;net45</TargetFrameworks>
     <PackageTags>net;abstraction</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Thinktecture.Abstractions\Thinktecture.Abstractions.csproj" />
   </ItemGroup>

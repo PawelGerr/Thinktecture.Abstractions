@@ -4,7 +4,15 @@
     <TargetFrameworks>netstandard1.3;netstandard2.0;netcoreapp2.2;net46</TargetFrameworks>
     <PackageTags>sockets;abstraction</PackageTags>
     <NoWarn>RCS1047</NoWarn>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Thinktecture.IO.Abstractions\Thinktecture.IO.Abstractions.csproj" />
     <ProjectReference Include="..\Thinktecture.Net.Primitives.Abstractions\Thinktecture.Net.Primitives.Abstractions.csproj" />

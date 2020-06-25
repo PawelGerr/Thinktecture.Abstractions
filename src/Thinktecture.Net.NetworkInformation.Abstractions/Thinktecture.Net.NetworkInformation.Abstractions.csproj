@@ -3,7 +3,15 @@
     <Description>Provides interfaces for types in System.Net.NetworkInformation: NetworkInterface, PhysicalAddress, IPAddressInformation, IPAddressInformationCollection, IPInterfaceProperties, IPInterfaceStatistics, IPv4InterfaceProperties, IPv6InterfaceProperties, UnicastIPAddressInformation, UnicastIPAddressInformationCollection, MulticastIPAddressInformation, MulticastIPAddressInformationCollection, GatewayIPAddressInformation, GatewayIPAddressInformationCollection.</Description>
     <TargetFrameworks>netstandard1.0;netstandard1.3;netstandard2.0;net45;net46</TargetFrameworks>
     <PackageTags>network;abstraction</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Thinktecture.Net.Primitives.Abstractions\Thinktecture.Net.Primitives.Abstractions.csproj" />
     <ProjectReference Include="..\Thinktecture.Runtime.Abstractions\Thinktecture.Runtime.Abstractions.csproj" />

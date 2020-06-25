@@ -3,7 +3,15 @@
     <Description>Provides interfaces for types in System.IO.Pipes: NamedPipeServerStream, NamedPipeClientStream, PipeStream.</Description>
     <TargetFrameworks>netstandard1.3;netstandard2.0;net46</TargetFrameworks>
     <PackageTags>io;pipes;abstraction</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Thinktecture.IO.Abstractions\Thinktecture.IO.Abstractions.csproj" />
   </ItemGroup>

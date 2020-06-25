@@ -6,7 +6,16 @@
 		<DebugSymbols>false</DebugSymbols>
 		<DebugType>None</DebugType>
 		<IncludeBuildOutput>false</IncludeBuildOutput>
-	</PropertyGroup>
+	
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net45' OR '$(TargetFramework)' == 'net451' OR '$(TargetFramework)' == 'net46' OR '$(TargetFramework)' == 'net461' ">
 		<ProjectReference Include="..\..\src\Thinktecture.IO.Abstractions\Thinktecture.IO.Abstractions.csproj" />
 		<ProjectReference Include="..\..\src\Thinktecture.Net.Primitives.Abstractions\Thinktecture.Net.Primitives.Abstractions.csproj" />
