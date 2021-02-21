@@ -3,7 +3,7 @@ using FluentAssertions;
 using Thinktecture.IO.Adapters;
 using Xunit;
 
-namespace Thinktecture.IO.TextReaderTests
+namespace Thinktecture.Abstractions.Tests.IO.TextReaderTests
 {
 	public class Null
 	{

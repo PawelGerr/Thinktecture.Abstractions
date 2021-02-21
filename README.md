@@ -4,7 +4,7 @@
 Interfaces for commonly used .NET types like `File`, `Directory`, `Stream`, `Path`, `Math`, `Environment`, etc. to be able to extend or to change the standard behavior and for better testability.
 
 * The interfaces have the same API like the .NET types
-* Support of .NET 4.5, .NET 4.6 and .NET Core
+* Support of .NET Standard 2.1, .NET Core 3.1 and .NET 5.0
 
 Read my blog "[.NET Abstractions - It's not just about testing!](http://weblogs.thinktecture.com/pawel/2016/11/net-abstractions-its-not-just-about-testing.html)" for more info about the design decisions I made.
 

@@ -16,8 +16,4 @@
       <Nullable>enable</Nullable>
    </PropertyGroup>
 
-   <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.2' ">
-      <DefineConstants>$(DefineConstants);NETSTANDARD2_0</DefineConstants>
-   </PropertyGroup>
-
 </Project>

@@ -1,5 +1,4 @@
 using System.IO;
-using JetBrains.Annotations;
 using Thinktecture.Text;
 
 namespace Thinktecture.IO
@@ -12,12 +11,10 @@ namespace Thinktecture.IO
 	{
 		/// <summary>Returns the underlying stream.</summary>
 		/// <returns>The underlying stream.</returns>
-		[NotNull]
 		IStream BaseStream { get; }
 
 		/// <summary>Gets the current character encoding that the current <see cref="T:System.IO.StreamReader" /> object is using.</summary>
 		/// <returns>The current character encoding used by the current reader. The value can be different after the first call to any <see cref="ITextReader.Read()" /> method of <see cref="T:System.IO.StreamReader" />, since encoding autodetection is not done until the first call to a <see cref="ITextReader.Read()" /> method.</returns>
-		[NotNull]
 		IEncoding CurrentEncoding { get; }
 
 		/// <summary>Gets a value that indicates whether the current stream position is at the end of the stream.</summary>

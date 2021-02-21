@@ -1,5 +1,4 @@
 using System.IO;
-using JetBrains.Annotations;
 using Thinktecture.Text;
 
 namespace Thinktecture.IO
@@ -10,7 +9,6 @@ namespace Thinktecture.IO
 	{
 		/// <summary>Returns the underlying <see cref="T:System.Text.StringBuilder" />.</summary>
 		/// <returns>The underlying StringBuilder.</returns>
-		[NotNull]
 		IStringBuilder GetStringBuilder();
 	}
 }

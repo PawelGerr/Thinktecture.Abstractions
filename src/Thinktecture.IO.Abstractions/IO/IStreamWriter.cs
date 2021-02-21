@@ -1,6 +1,4 @@
 using System.IO;
-using JetBrains.Annotations;
-
 namespace Thinktecture.IO
 {
 	/// <summary>
@@ -15,7 +13,6 @@ namespace Thinktecture.IO
 
 		/// <summary>Gets the underlying stream that interfaces with a backing store.</summary>
 		/// <returns>The stream this StreamWriter is writing to.</returns>
-		[NotNull]
 		IStream BaseStream { get; }
 	}
 }

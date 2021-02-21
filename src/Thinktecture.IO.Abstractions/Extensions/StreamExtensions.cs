@@ -1,5 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -16,8 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="stream">Stream to convert.</param>
 		/// <returns>Converted stream.</returns>
-		[CanBeNull]
-		public static IStream ToInterface([CanBeNull] this Stream stream)
+      [return: NotNullIfNotNull("stream")]
+		public static IStream? ToInterface(this Stream? stream)
 		{
 			if (stream == null)
 				return null;

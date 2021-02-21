@@ -1,4 +1,3 @@
-#if NET45 || NET462 || NETSTANDARD1_5 || NETSTANDARD2_0
 using System.IO;
 
 namespace Thinktecture.IO
@@ -7,7 +6,6 @@ namespace Thinktecture.IO
 	// ReSharper disable once PossibleInterfaceMemberAmbiguity
 	public interface IBufferedStream : IStream, IAbstraction<BufferedStream>
 	{
-#if NETCOREAPP2_2
 		/// <summary>
 		/// Underlying stream.
 		/// </summary>
@@ -17,7 +15,5 @@ namespace Thinktecture.IO
 		/// Buffer size.
 		/// </summary>
 		long BufferSize { get; }
-#endif
 	}
 }
-#endif

@@ -40,9 +40,10 @@ namespace Thinktecture.Abstractions.Tests
          ExcludedTypes.Add(typeof(Lazy<,>));
          ExcludedTypes.Add(typeof(Pointer));
 
-#pragma warning disable 618
+#pragma warning disable 618, SYSLIB0003
          ExcludedTypes.Add(typeof(TimeZone)); // deprecated
-#pragma warning restore 618
+         ExcludedTypes.Add(typeof(System.Security.PermissionSet)); // obsolete
+#pragma warning restore 618, SYSLIB0003
 
          ExcludedTypes.Add(typeof(Activator));
          ExcludedTypes.Add(typeof(AppContext));
@@ -231,7 +232,6 @@ namespace Thinktecture.Abstractions.Tests
          ExcludedTypes.Add(typeof(System.Runtime.Remoting.ObjectHandle));
          ExcludedTypes.Add(typeof(System.Runtime.Versioning.FrameworkName));
          ExcludedTypes.Add(typeof(System.Runtime.Versioning.VersioningHelper));
-         ExcludedTypes.Add(typeof(System.Security.PermissionSet));
          ExcludedTypes.Add(typeof(System.Security.SecurityElement));
          ExcludedTypes.Add(typeof(StringComparer));
          ExcludedTypes.Add(typeof(StringNormalizationExtensions));

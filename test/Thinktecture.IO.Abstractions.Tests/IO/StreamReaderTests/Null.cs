@@ -3,7 +3,7 @@ using FluentAssertions;
 using Thinktecture.IO.Adapters;
 using Xunit;
 
-namespace Thinktecture.IO.StreamReaderTests
+namespace Thinktecture.Abstractions.Tests.IO.StreamReaderTests
 {
 	public class Null
 	{

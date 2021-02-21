@@ -1,5 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -16,10 +16,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="reader">Reader to convert.</param>
 		/// <returns>Converted reader.</returns>
-		[CanBeNull]
-		public static IStringReader ToInterface([CanBeNull] this StringReader reader)
+      [return: NotNullIfNotNull("reader")]
+      public static IStringReader? ToInterface(this StringReader? reader)
 		{
-			return (reader == null) ? null : new StringReaderAdapter(reader);
+			return reader == null ? null : new StringReaderAdapter(reader);
 		}
 
 		/// <summary>
@@ -27,10 +27,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IStringReader"/> to convert.</param>
 		/// <returns>An instance of <see cref="StringReader"/>.</returns>
-		[CanBeNull]
-		public static StringReader ToImplementation([CanBeNull] this IStringReader abstraction)
+      [return: NotNullIfNotNull("abstraction")]
+      public static StringReader? ToImplementation(this IStringReader? abstraction)
 		{
-			return ((IAbstraction<StringReader>)abstraction)?.UnsafeConvert();
+			return ((IAbstraction<StringReader>?)abstraction)?.UnsafeConvert();
 		}
 	}
 }

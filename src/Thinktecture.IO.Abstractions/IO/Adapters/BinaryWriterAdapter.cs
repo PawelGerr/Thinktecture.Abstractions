@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Text;
-using JetBrains.Annotations;
+using System.Threading.Tasks;
 using Thinktecture.Text;
 
 // ReSharper disable AssignNullToNotNullAttribute
@@ -24,7 +24,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> is null. </exception>
-		public BinaryWriterAdapter([NotNull] IStream output)
+		public BinaryWriterAdapter(IStream output)
 			: this(output.ToImplementation())
 		{
 		}
@@ -34,7 +34,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> is null. </exception>
-		public BinaryWriterAdapter([NotNull] Stream output)
+		public BinaryWriterAdapter(Stream output)
 			: this(new BinaryWriter(output))
 		{
 		}
@@ -45,7 +45,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter([NotNull] IStream output, [NotNull] IEncoding encoding)
+		public BinaryWriterAdapter(IStream output, IEncoding encoding)
 			: this(output.ToImplementation(), encoding.ToImplementation())
 		{
 		}
@@ -56,7 +56,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter([NotNull] Stream output, [NotNull] IEncoding encoding)
+		public BinaryWriterAdapter(Stream output, IEncoding encoding)
 			: this(output, encoding.ToImplementation())
 		{
 		}
@@ -67,7 +67,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter([NotNull] IStream output, [NotNull] Encoding encoding)
+		public BinaryWriterAdapter(IStream output, Encoding encoding)
 			: this(output.ToImplementation(), encoding)
 		{
 		}
@@ -78,7 +78,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter([NotNull] Stream output, [NotNull] Encoding encoding)
+		public BinaryWriterAdapter(Stream output, Encoding encoding)
 			: this(new BinaryWriter(output, encoding))
 		{
 		}
@@ -90,7 +90,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter([NotNull] IStream output, [NotNull] IEncoding encoding, bool leaveOpen)
+		public BinaryWriterAdapter(IStream output, IEncoding encoding, bool leaveOpen)
 			: this(output.ToImplementation(), encoding.ToImplementation(), leaveOpen)
 		{
 		}
@@ -102,7 +102,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter([NotNull] Stream output, [NotNull] IEncoding encoding, bool leaveOpen)
+		public BinaryWriterAdapter(Stream output, IEncoding encoding, bool leaveOpen)
 			: this(output, encoding.ToImplementation(), leaveOpen)
 		{
 		}
@@ -114,7 +114,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter([NotNull] IStream output, [NotNull] Encoding encoding, bool leaveOpen)
+		public BinaryWriterAdapter(IStream output, Encoding encoding, bool leaveOpen)
 			: this(output.ToImplementation(), encoding, leaveOpen)
 		{
 		}
@@ -126,7 +126,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">The stream does not support writing or is already closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="output" /> or <paramref name="encoding" /> is null. </exception>
-		public BinaryWriterAdapter([NotNull] Stream output, [NotNull] Encoding encoding, bool leaveOpen)
+		public BinaryWriterAdapter(Stream output, Encoding encoding, bool leaveOpen)
 			: this(new BinaryWriter(output, encoding, leaveOpen))
 		{
 		}
@@ -135,7 +135,7 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="BinaryWriterAdapter" /> class
 		/// </summary>
 		/// <param name="writer">Writer to be used by the adapter.</param>
-		public BinaryWriterAdapter([NotNull] BinaryWriter writer)
+		public BinaryWriterAdapter(BinaryWriter writer)
 			: base(writer)
 		{
 		}
@@ -152,7 +152,6 @@ namespace Thinktecture.IO.Adapters
 			return Implementation.Seek(offset, origin);
 		}
 
-#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public void Write(ReadOnlySpan<byte> buffer)
 		{
@@ -164,7 +163,6 @@ namespace Thinktecture.IO.Adapters
 		{
 			Implementation.Write(buffer);
 		}
-#endif
 
 		/// <inheritdoc />
 		public void Write(bool value)
@@ -274,18 +272,22 @@ namespace Thinktecture.IO.Adapters
 			Implementation.Write(value);
 		}
 
-#if NET45 || NET462 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public void Close()
 		{
 			Implementation.Close();
 		}
-#endif
 
 		/// <inheritdoc />
 		public void Dispose()
 		{
 			Implementation.Dispose();
 		}
-	}
+
+      /// <inheritdoc />
+      public ValueTask DisposeAsync()
+      {
+         return Implementation.DisposeAsync();
+      }
+   }
 }

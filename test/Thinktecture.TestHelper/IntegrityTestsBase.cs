@@ -62,11 +62,10 @@ namespace Thinktecture.Abstractions.Tests
 
       protected static Assembly GetAssembly(string name)
       {
-         var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-         var assembly = assemblies.FirstOrDefault(a => a.GetName().Name == name);
+         var assembly = Assembly.Load(name);
 
          if (assembly == null)
-            throw new ArgumentException($"Assembly with then name {name} not found.");
+            throw new ArgumentException($"Assembly with the name {name} not found.");
 
          return assembly;
       }

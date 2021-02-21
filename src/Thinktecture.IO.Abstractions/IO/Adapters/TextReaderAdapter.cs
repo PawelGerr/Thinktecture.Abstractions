@@ -1,11 +1,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
-#if NETCOREAPP2_2
 using System.Threading;
-
-#endif
 
 // ReSharper disable AssignNullToNotNullAttribute
 
@@ -23,7 +19,7 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="TextReaderAdapter" /> class.
 		/// </summary>
 		/// <param name="reader">Reader to be used by the adapter.</param>
-		public TextReaderAdapter([NotNull] TextReader reader)
+		public TextReaderAdapter(TextReader reader)
 			: base(reader)
 		{
 		}
@@ -40,7 +36,6 @@ namespace Thinktecture.IO.Adapters
 			return Implementation.Peek();
 		}
 
-#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public int Read(Span<char> buffer)
 		{
@@ -64,7 +59,6 @@ namespace Thinktecture.IO.Adapters
 		{
 			return Implementation.ReadBlockAsync(buffer, cancellationToken);
 		}
-#endif
 
 		/// <inheritdoc />
 		public int Read()
@@ -97,13 +91,13 @@ namespace Thinktecture.IO.Adapters
 		}
 
 		/// <inheritdoc />
-		public string ReadLine()
+		public string? ReadLine()
 		{
 			return Implementation.ReadLine();
 		}
 
 		/// <inheritdoc />
-		public Task<string> ReadLineAsync()
+		public Task<string?> ReadLineAsync()
 		{
 			return Implementation.ReadLineAsync();
 		}
@@ -120,12 +114,10 @@ namespace Thinktecture.IO.Adapters
 			return Implementation.ReadToEndAsync();
 		}
 
-#if NET45 || NET462 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public void Close()
 		{
 			Implementation.Close();
 		}
-#endif
 	}
 }

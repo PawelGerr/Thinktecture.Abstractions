@@ -1,8 +1,6 @@
 using System;
 using System.ComponentModel;
 using System.IO;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 namespace Thinktecture.IO.Adapters
 {
@@ -12,7 +10,6 @@ namespace Thinktecture.IO.Adapters
 	public class MemoryStreamAdapter : StreamAdapter, IMemoryStream
 	{
 		/// <inheritdoc />
-		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new MemoryStream UnsafeConvert()
 		{
@@ -22,7 +19,6 @@ namespace Thinktecture.IO.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new MemoryStream Implementation { get; }
 
 		/// <inheritdoc />
@@ -42,7 +38,7 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="buffer">The array of unsigned bytes from which to create the current stream. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="buffer" /> is null. </exception>
-		public MemoryStreamAdapter([NotNull] byte[] buffer)
+		public MemoryStreamAdapter(byte[] buffer)
 			: this(new MemoryStream(buffer))
 		{
 		}
@@ -52,7 +48,7 @@ namespace Thinktecture.IO.Adapters
 		/// <param name="writable">The setting of the <see cref="P:System.IO.MemoryStream.CanWrite" /> property, which determines whether the stream supports writing. </param>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="buffer" /> is null. </exception>
-		public MemoryStreamAdapter([NotNull] byte[] buffer, bool writable)
+		public MemoryStreamAdapter(byte[] buffer, bool writable)
 			: this(new MemoryStream(buffer, writable))
 		{
 		}
@@ -66,7 +62,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> is less than zero. </exception>
 		/// <exception cref="T:System.ArgumentException">The buffer length minus <paramref name="index" /> is less than <paramref name="count" />.</exception>
-		public MemoryStreamAdapter([NotNull] byte[] buffer, int index, int count)
+		public MemoryStreamAdapter(byte[] buffer, int index, int count)
 			: this(new MemoryStream(buffer, index, count))
 		{
 		}
@@ -81,12 +77,11 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> are negative. </exception>
 		/// <exception cref="T:System.ArgumentException">The buffer length minus <paramref name="index" /> is less than <paramref name="count" />.</exception>
-		public MemoryStreamAdapter([NotNull] byte[] buffer, int index, int count, bool writable)
+		public MemoryStreamAdapter(byte[] buffer, int index, int count, bool writable)
 			: this(new MemoryStream(buffer, index, count, writable))
 		{
 		}
 
-#if !NETSTANDARD1_0
 		/// <summary>Initializes a new non-resizable instance of the <see cref="MemoryStreamAdapter" /> class based on the specified region of a byte array, with the <see cref="P:System.IO.MemoryStream.CanWrite" /> property set as specified.</summary>
 		/// <param name="buffer">The array of unsigned bytes from which to create this stream. </param>
 		/// <param name="index">The index in <paramref name="buffer" /> at which the stream begins. </param>
@@ -98,11 +93,10 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> are negative. </exception>
 		/// <exception cref="T:System.ArgumentException">The buffer length minus <paramref name="index" /> is less than <paramref name="count" />.</exception>
-		public MemoryStreamAdapter([NotNull] byte[] buffer, int index, int count, bool writable, bool publiclyVisible)
+		public MemoryStreamAdapter(byte[] buffer, int index, int count, bool writable, bool publiclyVisible)
 			: this(new MemoryStream(buffer, index, count, writable, publiclyVisible))
 		{
 		}
-#endif
 
 		/// <summary>Initializes a new instance of the <see cref="MemoryStreamAdapter" /> class with an expandable capacity initialized as specified.</summary>
 		/// <param name="capacity">The initial size of the internal array in bytes. </param>
@@ -117,7 +111,7 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="MemoryStreamAdapter" /> class.
 		/// </summary>
 		/// <param name="stream">Stream to be used by the adapter.</param>
-		public MemoryStreamAdapter([NotNull] MemoryStream stream)
+		public MemoryStreamAdapter(MemoryStream stream)
 			: base(stream)
 		{
 			Implementation = stream ?? throw new ArgumentNullException(nameof(stream));
@@ -129,21 +123,17 @@ namespace Thinktecture.IO.Adapters
 			return Implementation.ToArray();
 		}
 
-#if NET45 || NET462 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public byte[] GetBuffer()
 		{
 			return Implementation.GetBuffer();
 		}
-#endif
 
-#if NET462 || NETSTANDARD1_3 || NETSTANDARD1_5 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public bool TryGetBuffer(out ArraySegment<byte> buffer)
 		{
 			return Implementation.TryGetBuffer(out buffer);
 		}
-#endif
 
 		/// <inheritdoc />
 		public void WriteTo(IStream stream)

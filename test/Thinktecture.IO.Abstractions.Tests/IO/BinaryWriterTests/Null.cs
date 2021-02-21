@@ -3,7 +3,7 @@ using FluentAssertions;
 using Thinktecture.IO.Adapters;
 using Xunit;
 
-namespace Thinktecture.IO.BinaryWriterTests
+namespace Thinktecture.Abstractions.Tests.IO.BinaryWriterTests
 {
 	public class Null
 	{

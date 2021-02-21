@@ -1,16 +1,13 @@
 using System;
 using System.IO;
-using JetBrains.Annotations;
-
 namespace Thinktecture.IO
 {
 	/// <summary>Writes primitive types in binary to a stream and supports writing strings in a specific encoding.</summary>
-	public interface IBinaryWriter : IAbstraction<BinaryWriter>, IDisposable
+	public interface IBinaryWriter : IAbstraction<BinaryWriter>, IDisposable, IAsyncDisposable
 	{
 		/// <summary>Gets the underlying stream of the <see cref="T:System.IO.BinaryWriter" />.</summary>
 		/// <returns>The underlying stream associated with the BinaryWriter.</returns>
 
-		[NotNull]
 		IStream BaseStream { get; }
 
 		/// <summary>Clears all buffers for the current writer and causes any buffered data to be written to the underlying device.</summary>
@@ -24,7 +21,6 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentException">The <see cref="T:System.IO.SeekOrigin" /> value is invalid. </exception>
 		long Seek(int offset, SeekOrigin origin);
 
-#if NETCOREAPP2_2
 		/// <summary>Writes the buffer to the underlying stream.</summary>
 		/// <param name="buffer">A buffer containing the data to write. </param>
 		void Write(ReadOnlySpan<byte> buffer);
@@ -32,7 +28,6 @@ namespace Thinktecture.IO
 		/// <summary>Writes the buffer to the underlying stream.</summary>
 		/// <param name="buffer">A buffer containing the data to write. </param>
 		void Write(ReadOnlySpan<char> buffer);
-#endif
 
 		/// <summary>Writes a one-byte Boolean value to the current stream, with 0 representing false and 1 representing true.</summary>
 		/// <param name="value">The Boolean value to write (0 or 1). </param>
@@ -52,7 +47,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="buffer" /> is null. </exception>
-		void Write([NotNull] byte[] buffer);
+		void Write(byte[] buffer);
 
 		/// <summary>Writes a region of a byte array to the current stream.</summary>
 		/// <param name="buffer">A byte array containing the data to write. </param>
@@ -65,7 +60,7 @@ namespace Thinktecture.IO
 		/// <paramref name="index" /> or <paramref name="count" /> is negative. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-		void Write([NotNull] byte[] buffer, int index, int count);
+		void Write(byte[] buffer, int index, int count);
 
 		/// <summary>Writes a Unicode character to the current stream and advances the current position of the stream in accordance with the Encoding used and the specific characters being written to the stream.</summary>
 		/// <param name="ch">The non-surrogate, Unicode character to write. </param>
@@ -81,7 +76,7 @@ namespace Thinktecture.IO
 		/// <paramref name="chars" /> is null. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-		void Write([NotNull] char[] chars);
+		void Write(char[] chars);
 
 		/// <summary>Writes a section of a character array to the current stream, and advances the current position of the stream in accordance with the Encoding used and perhaps the specific characters being written to the stream.</summary>
 		/// <param name="chars">A character array containing the data to write. </param>
@@ -94,7 +89,7 @@ namespace Thinktecture.IO
 		/// <paramref name="index" /> or <paramref name="count" /> is negative. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-		void Write([NotNull] char[] chars, int index, int count);
+		void Write(char[] chars, int index, int count);
 
 		/// <summary>Writes a decimal value to the current stream and advances the stream position by sixteen bytes.</summary>
 		/// <param name="value">The decimal value to write. </param>
@@ -144,7 +139,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ArgumentNullException">
 		/// <paramref name="value" /> is null. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-		void Write([NotNull] string value);
+		void Write(string value);
 
 		/// <summary>Writes a two-byte unsigned integer to the current stream and advances the stream position by two bytes.</summary>
 		/// <param name="value">The two-byte unsigned integer to write. </param>
@@ -164,10 +159,8 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
 		void Write(ulong value);
 
-#if NET45 || NET462 || NETSTANDARD2_0
 		/// <summary>Closes the current <see cref="T:System.IO.BinaryWriter" /> and the underlying stream.</summary>
 		/// <filterpriority>1</filterpriority>
 		void Close();
-#endif
 	}
 }
