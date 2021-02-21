@@ -23,10 +23,8 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public DateTime UtcNow => DateTime.UtcNow;
 
-#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public DateTime UnixEpoch => DateTime.UnixEpoch;
-#endif
 
 		/// <inheritdoc />
 		public int Compare(DateTime t1, DateTime t2)
@@ -64,9 +62,8 @@ namespace Thinktecture.Adapters
 			return DateTime.FromFileTimeUtc(fileTime);
 		}
 
-#if NETCOREAPP2_2
 		/// <inheritdoc />
-		public DateTime Parse(ReadOnlySpan<char> s, IFormatProvider provider = null, DateTimeStyles styles = DateTimeStyles.None)
+		public DateTime Parse(ReadOnlySpan<char> s, IFormatProvider? provider = null, DateTimeStyles styles = DateTimeStyles.None)
 		{
 			return DateTime.Parse(s, provider, styles);
 		}
@@ -106,7 +103,6 @@ namespace Thinktecture.Adapters
 		{
 			return DateTime.TryParseExact(s, formats, provider, style, out result);
 		}
-#endif
 
 		/// <inheritdoc />
 		public DateTime Parse(string s)
@@ -174,14 +170,11 @@ namespace Thinktecture.Adapters
 			return DateTime.TryParseExact(s, formats, provider, style, out result);
 		}
 
-#if NET45 || NET462 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public DateTime FromOADate(double d)
 		{
 			return DateTime.FromOADate(d);
 		}
-
-#endif
 
 		/// <inheritdoc />
 		public bool IsLeapYear(int year)

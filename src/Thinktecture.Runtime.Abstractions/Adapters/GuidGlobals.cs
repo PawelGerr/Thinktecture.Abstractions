@@ -24,7 +24,6 @@ namespace Thinktecture.Adapters
 			return Guid.NewGuid();
 		}
 
-#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public Guid Parse(ReadOnlySpan<char> input)
 		{
@@ -48,7 +47,6 @@ namespace Thinktecture.Adapters
 		{
 			return Guid.TryParseExact(input, format, out result);
 		}
-#endif
 
 		/// <inheritdoc />
 		public Guid Parse(string input)

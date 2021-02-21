@@ -1,6 +1,4 @@
 using System;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Adapters
 {
 	/// <summary>Represents the base class for classes that contain event data, and provides a value to use for events that do not include event data. </summary>
@@ -21,7 +19,7 @@ namespace Thinktecture.Adapters
 		/// Initializes new instance of <see cref="EventArgsAdapter"/>.
 		/// </summary>
 		/// <param name="args">EventArgs to be used by the adapter</param>
-		public EventArgsAdapter([NotNull] EventArgs args)
+		public EventArgsAdapter(EventArgs args)
 			: base(args)
 		{
 		}

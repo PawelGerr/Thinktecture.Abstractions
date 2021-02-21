@@ -16,7 +16,6 @@ namespace Thinktecture
 		/// <filterpriority>1</filterpriority>
 		Guid NewGuid();
 
-#if NETCOREAPP2_2
 		/// <summary>Converts the string representation of a GUID to the equivalent <see cref="T:System.Guid" /> structure.</summary>
 		/// <returns>A structure that contains the value that was parsed.</returns>
 		/// <param name="input">The string to convert.</param>
@@ -48,7 +47,6 @@ namespace Thinktecture
 		/// <param name="format">One of the following specifiers that indicates the exact format to use when interpreting <paramref name="input" />: "N", "D", "B", "P", or "X".</param>
 		/// <param name="result">The structure that will contain the parsed value. If the method returns true, <paramref name="result" /> contains a valid <see cref="T:System.Guid" />. If the method returns false, <paramref name="result" /> equals <see cref="F:System.Guid.Empty" />.</param>
 		bool TryParseExact(ReadOnlySpan<char> input, ReadOnlySpan<char> format, out Guid result);
-#endif
 
 		/// <summary>Converts the string representation of a GUID to the equivalent <see cref="T:System.Guid" /> structure.</summary>
 		/// <returns>A structure that contains the value that was parsed.</returns>

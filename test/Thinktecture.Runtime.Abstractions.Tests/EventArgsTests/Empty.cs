@@ -3,7 +3,7 @@ using FluentAssertions;
 using Thinktecture.Adapters;
 using Xunit;
 
-namespace Thinktecture.EventArgsTests
+namespace Thinktecture.Abstractions.Tests.EventArgsTests
 {
 	public class Empty
 	{

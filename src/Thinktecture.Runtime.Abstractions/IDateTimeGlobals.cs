@@ -31,12 +31,10 @@ namespace Thinktecture
 		/// <filterpriority>1</filterpriority>
 		DateTime UtcNow { get; }
 
-#if NETCOREAPP2_2
 		/// <summary>
 		/// Start of the unix epoch.
 		/// </summary>
 		DateTime UnixEpoch { get; }
-#endif
 
 		/// <summary>Compares two instances of <see cref="T:System.DateTime" /> and returns an integer that indicates whether the first instance is earlier than, the same as, or later than the second instance.</summary>
 		/// <returns>A signed number indicating the relative values of <paramref name="t1" /> and <paramref name="t2" />.Value Type Condition Less than zero <paramref name="t1" /> is earlier than <paramref name="t2" />. Zero <paramref name="t1" /> is the same as <paramref name="t2" />. Greater than zero <paramref name="t1" /> is later than <paramref name="t2" />. </returns>
@@ -85,7 +83,6 @@ namespace Thinktecture
 		/// <filterpriority>1</filterpriority>
 		DateTime FromFileTimeUtc(long fileTime);
 
-#if NETCOREAPP2_2
 		/// <summary>Converts the string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent by using culture-specific format information and formatting style.</summary>
 		/// <param name="s">A string that contains a date and time to convert. </param>
 		/// <param name="provider">An object that supplies culture-specific formatting information about <paramref name="s" />. </param>
@@ -140,7 +137,6 @@ namespace Thinktecture
 		/// <param name="result">When this method returns, contains the <see cref="T:System.DateTime" /> value equivalent to the date and time contained in <paramref name="s" />, if the conversion succeeded, or <see cref="F:System.DateTime.MinValue" /> if the conversion failed. The conversion fails if <paramref name="s" /> or <paramref name="formats" /> is null, <paramref name="s" /> or an element of <paramref name="formats" /> is an empty string, or the format of <paramref name="s" /> is not exactly as specified by at least one of the format patterns in <paramref name="formats" />. This parameter is passed uninitialized. </param>
 		/// <returns>true if the <paramref name="s" /> parameter was converted successfully; otherwise, false.</returns>
 		bool TryParseExact(ReadOnlySpan<char> s, string[] formats, IFormatProvider provider, DateTimeStyles style, out DateTime result);
-#endif
 
 		/// <summary>Converts the string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent.</summary>
 		/// <returns>An object that is equivalent to the date and time contained in <paramref name="s" />.</returns>
@@ -270,7 +266,6 @@ namespace Thinktecture
 		/// <filterpriority>1</filterpriority>
 		bool TryParseExact(string s, string[] formats, IFormatProvider provider, DateTimeStyles style, out DateTime result);
 
-#if NET45 || NET462 || NETSTANDARD2_0
 		/// <summary>Returns a <see cref="T:System.DateTime" /> equivalent to the specified OLE Automation Date.</summary>
 		/// <returns>An object that represents the same date and time as <paramref name="d" />.</returns>
 		/// <param name="d">An OLE Automation Date value. </param>
@@ -278,7 +273,6 @@ namespace Thinktecture
 		/// <filterpriority>1</filterpriority>
 		// ReSharper disable once InconsistentNaming
 		DateTime FromOADate(double d);
-#endif
 
 		/// <summary>Returns an indication whether the specified year is a leap year.</summary>
 		/// <returns>true if <paramref name="year" /> is a leap year; otherwise, false.</returns>
