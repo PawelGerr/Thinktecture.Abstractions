@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Thinktecture
+namespace Thinktecture.Abstractions.Tests
 {
 	public class CustomMappings
 	{

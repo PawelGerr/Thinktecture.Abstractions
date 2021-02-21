@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Thinktecture.Abstractions.Tests;
 using Thinktecture.Text;
 using Thinktecture.Text.Adapters;
 using Xunit;
@@ -64,7 +65,7 @@ namespace Thinktecture
 		[Fact]
 		public void Should_contain_all_adapters_constructors()
 		{
-			CheckConstructors(typeof(EncodingGlobals));
+			CheckConstructors(IEncodingGlobals.Instance.GetType());
 		}
 
 		[Fact]

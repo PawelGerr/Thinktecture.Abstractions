@@ -1,13 +1,10 @@
 using System;
 using System.Text;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Text
 {
 	/// <summary>Converts a set of characters into a sequence of bytes.</summary>
 	public interface IEncoder : IAbstraction<Encoder>
 	{
-#if NETCOREAPP2_2
 		/// <summary>Converts a span of Unicode characters to an encoded byte sequence and stores the result in an span of bytes.</summary>
 		/// <param name="chars">A span of characters to convert.</param>
 		/// <param name="bytes">A span where the converted bytes are stored.</param>
@@ -29,7 +26,6 @@ namespace Thinktecture.Text
 		/// <param name="bytes">The span of bytes to contain the resulting sequence of bytes. </param>
 		/// <param name="flush">true to clear the internal state of the encoder after the conversion; otherwise, false. </param>
 		int GetBytes(ReadOnlySpan<char> chars, Span<byte> bytes, bool flush);
-#endif
 
 		/// <summary>Converts an array of Unicode characters to an encoded byte sequence and stores the result in an array of bytes.</summary>
 		/// <param name="chars">An array of characters to convert.</param>
@@ -48,7 +44,7 @@ namespace Thinktecture.Text
 		/// <paramref name="charIndex" />, <paramref name="charCount" />, <paramref name="byteIndex" />, or <paramref name="byteCount" /> is less than zero.-or-The length of <paramref name="chars" /> - <paramref name="charIndex" /> is less than <paramref name="charCount" />.-or-The length of <paramref name="bytes" /> - <paramref name="byteIndex" /> is less than <paramref name="byteCount" />.</exception>
 		/// <exception cref="T:System.ArgumentException">The output buffer is too small to contain any of the converted input. The output buffer should be greater than or equal to the size indicated by the <see cref="GetByteCount(char[],int,int,bool)" /> method.</exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Encoder.Fallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		void Convert([NotNull] char[] chars, int charIndex, int charCount, [NotNull] byte[] bytes, int byteIndex, int byteCount, bool flush, out int charsUsed, out int bytesUsed, out bool completed);
+		void Convert(char[] chars, int charIndex, int charCount, byte[] bytes, int byteIndex, int byteCount, bool flush, out int charsUsed, out int bytesUsed, out bool completed);
 
 		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding a set of characters from the specified character array. A parameter indicates whether to clear the internal state of the encoder after the calculation.</summary>
 		/// <returns>The number of bytes produced by encoding the specified characters and any characters in the internal buffer.</returns>
@@ -61,7 +57,7 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="index" /> or <paramref name="count" /> is less than zero.-or- <paramref name="index" /> and <paramref name="count" /> do not denote a valid range in <paramref name="chars" />. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Encoder.Fallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		int GetByteCount([NotNull] char[] chars, int index, int count, bool flush);
+		int GetByteCount(char[] chars, int index, int count, bool flush);
 
 		/// <summary>When overridden in a derived class, encodes a set of characters from the specified character array and any characters in the internal buffer into the specified byte array. A parameter indicates whether to clear the internal state of the encoder after the conversion.</summary>
 		/// <returns>The actual number of bytes written into <paramref name="bytes" />.</returns>
@@ -78,16 +74,15 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="bytes" /> does not have enough capacity from <paramref name="byteIndex" /> to the end of the array to accommodate the resulting bytes. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Encoder.Fallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
-		int GetBytes([NotNull] char[] chars, int charIndex, int charCount, [NotNull] byte[] bytes, int byteIndex, bool flush);
+		int GetBytes(char[] chars, int charIndex, int charCount, byte[] bytes, int byteIndex, bool flush);
 
-#if NET45 || NETSTANDARD1_3 || NETSTANDARD2_0
 		/// <summary>Gets or sets a <see cref="T:System.Text.EncoderFallback" /> object for the current <see cref="T:System.Text.Encoder" /> object.</summary>
 		/// <returns>A <see cref="T:System.Text.EncoderFallback" /> object.</returns>
 		/// <exception cref="T:System.ArgumentNullException">The value in a set operation is null (Nothing).</exception>
 		/// <exception cref="T:System.ArgumentException">A new value cannot be assigned in a set operation because the current <see cref="T:System.Text.EncoderFallbackBuffer" /> object contains data that has not been encoded yet. </exception>
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Encoder.Fallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
 		/// <filterpriority>1</filterpriority>
-		EncoderFallback Fallback { get; set; }
+		EncoderFallback? Fallback { get; set; }
 
 		/// <summary>Gets the <see cref="T:System.Text.EncoderFallbackBuffer" /> object associated with the current <see cref="T:System.Text.Encoder" /> object.</summary>
 		/// <returns>A <see cref="T:System.Text.EncoderFallbackBuffer" /> object.</returns>
@@ -97,9 +92,7 @@ namespace Thinktecture.Text
 		/// <summary>When overridden in a derived class, sets the encoder back to its initial state.</summary>
 		/// <filterpriority>2</filterpriority>
 		void Reset();
-#endif
 
-#if NET45 || NETSTANDARD2_0
 		/// <summary>When overridden in a derived class, calculates the number of bytes produced by encoding a set of characters starting at the specified character pointer. A parameter indicates whether to clear the internal state of the encoder after the calculation.</summary>
 		/// <returns>The number of bytes produced by encoding the specified characters and any characters in the internal buffer.</returns>
 		/// <param name="chars">A pointer to the first character to encode. </param>
@@ -147,6 +140,5 @@ namespace Thinktecture.Text
 		/// <exception cref="T:System.Text.EncoderFallbackException">A fallback occurred (see Character Encoding in the .NET Framework for fuller explanation)-and-<see cref="P:System.Text.Encoder.Fallback" /> is set to <see cref="T:System.Text.EncoderExceptionFallback" />.</exception>
 		/// <filterpriority>2</filterpriority>
 		unsafe void Convert(char* chars, int charCount, byte* bytes, int byteCount, bool flush, out int charsUsed, out int bytesUsed, out bool completed);
-#endif
 	}
 }

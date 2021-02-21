@@ -1,19 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <Description>Provides interfaces for types in System.Text.Encoding: Encoding, Encoder, Decoder</Description>
-    <TargetFrameworks>netstandard1.0;netstandard1.3;netstandard2.0;netcoreapp2.2;net45</TargetFrameworks>
-    <PackageTags>encoding;abstraction</PackageTags>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-  </ItemGroup>
+   <PropertyGroup>
+      <Description>Provides interfaces for types in System.Text.Encoding: Encoding, Encoder, Decoder</Description>
+      <PackageTags>encoding;abstraction</PackageTags>
+   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Thinktecture.Abstractions\Thinktecture.Abstractions.csproj" />
-  </ItemGroup>
+   <ItemGroup>
+      <ProjectReference Include="..\Thinktecture.Abstractions\Thinktecture.Abstractions.csproj" />
+   </ItemGroup>
+   
 </Project>

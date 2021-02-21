@@ -2,7 +2,6 @@
 
    <PropertyGroup>
       <Description>Provides types used by all Thinktecture.*.Abstractions projects.</Description>
-      <TargetFrameworks>netstandard2.1;netcoreapp3.1;net5.0</TargetFrameworks>
       <PackageTags>abstraction</PackageTags>
    </PropertyGroup>
 
