@@ -4,17 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4860E453-E56B-4BED-BA8A-DDFA89A19B0D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{C37A280D-0672-43EB-AA82-A7837C67FD0A}"
-	ProjectSection(SolutionItems) = preProject
-		LICENCE.md = LICENCE.md
-		doc\ReadingFiles.md = doc\ReadingFiles.md
-		README.md = README.md
-	EndProjectSection
+ProjectSection(SolutionItems) = preProject
+	src\Directory.Build.props = src\Directory.Build.props
+EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{F2F0BF55-C0C6-4325-98EB-CEC4E4A5EBC6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C095C061-B87D-4C07-93E7-8CA0217ED68F}"
+ProjectSection(SolutionItems) = preProject
+	test\Directory.Build.props = test\Directory.Build.props
+EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thinktecture.IO.FileSystem.Abstractions", "src\Thinktecture.IO.FileSystem.Abstractions\Thinktecture.IO.FileSystem.Abstractions.csproj", "{D8B5876B-CFDB-47D4-A1DE-01E715D10871}"
 EndProject
@@ -81,6 +80,17 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.Runtime.Extensions.Abstractions.Tests", "test\Thinktecture.Runtime.Extensions.Abstractions.Tests\Thinktecture.Runtime.Extensions.Abstractions.Tests.csproj", "{90B426CA-F35F-4E7A-AB6E-C8E156CAA87A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thinktecture.Runtime.Handles.Abstractions.Tests", "test\Thinktecture.Runtime.Handles.Abstractions.Tests\Thinktecture.Runtime.Handles.Abstractions.Tests.csproj", "{064AF2D9-DB55-432A-8766-632E9B8F7DB6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{DDA8A0AC-F541-4CE2-B0EE-8167C865108F}"
+ProjectSection(SolutionItems) = preProject
+	Directory.Build.props = Directory.Build.props
+	.gitignore = .gitignore
+	README.md = README.md
+	doc\ReadingFiles.md = doc\ReadingFiles.md
+	.github\workflows\ci.ps1 = .github\workflows\ci.ps1
+	.github\workflows\main.yml = .github\workflows\main.yml
+	LICENSE.md = LICENSE.md
+EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

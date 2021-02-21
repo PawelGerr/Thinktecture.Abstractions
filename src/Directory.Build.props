@@ -1,0 +1,31 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+   <PropertyGroup>
+      <ParentPropsFile>$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))</ParentPropsFile>
+   </PropertyGroup>
+
+   <Import Condition=" exists('$(ParentPropsFile)') " Project="$(ParentPropsFile)" />
+
+   <PropertyGroup>
+      <PublishRepositoryUrl>true</PublishRepositoryUrl>
+      <IsPackable>True</IsPackable>
+      <IncludeSymbols>true</IncludeSymbols>
+      <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+   </PropertyGroup>
+
+   <ItemGroup>
+      <None Include="./../../icon.png" Pack="true" PackagePath="" />
+      <None Include="./../../LICENSE.md" Pack="true" PackagePath="$(PackageLicenseFile)" />
+
+      <Compile Include="..\..\shared\SkipLocalsInit.cs">
+         <Link>SkipLocalsInit.cs</Link>
+      </Compile>
+   </ItemGroup>
+
+   <ItemGroup>
+      <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+      <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3" PrivateAssets="All" />
+   </ItemGroup>
+
+</Project>
