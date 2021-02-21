@@ -1,4 +1,6 @@
-namespace Thinktecture.AbstractionAdapterTests
+using Thinktecture.Abstractions.Tests.TestClasses;
+
+namespace Thinktecture.Abstractions.Tests.AbstractionAdapterTests
 {
 	public class AbstractionAdapterTestsBase
 	{

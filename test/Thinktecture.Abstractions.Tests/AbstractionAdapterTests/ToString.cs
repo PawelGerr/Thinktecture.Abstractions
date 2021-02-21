@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Xunit;
 
-namespace Thinktecture.AbstractionAdapterTests
+namespace Thinktecture.Abstractions.Tests.AbstractionAdapterTests
 {
 	public class ToString : AbstractionAdapterTestsBase
 	{

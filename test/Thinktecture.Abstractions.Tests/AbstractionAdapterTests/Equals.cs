@@ -1,7 +1,8 @@
 using FluentAssertions;
+using Thinktecture.Abstractions.Tests.TestClasses;
 using Xunit;
 
-namespace Thinktecture.AbstractionAdapterTests
+namespace Thinktecture.Abstractions.Tests.AbstractionAdapterTests
 {
 	public class Equals : AbstractionAdapterTestsBase
 	{

@@ -1,4 +1,4 @@
-namespace Thinktecture.AbstractionAdapterTests
+namespace Thinktecture.Abstractions.Tests.TestClasses
 {
 	public class TestComponent
 	{
