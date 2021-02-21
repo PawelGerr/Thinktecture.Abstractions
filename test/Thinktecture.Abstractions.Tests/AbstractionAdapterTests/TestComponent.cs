@@ -1,5 +1,3 @@
-using JetBrains.Annotations;
-
 namespace Thinktecture.AbstractionAdapterTests
 {
 	public class TestComponent
@@ -7,7 +5,6 @@ namespace Thinktecture.AbstractionAdapterTests
 		public string ToStringResult { get; set; }
 		public int GetHashCodeResult { get; set; }
 
-		[CanBeNull]
 		public override string ToString()
 		{
 			return ToStringResult;

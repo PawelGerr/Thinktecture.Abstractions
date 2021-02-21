@@ -1,13 +1,11 @@
 using System;
 using FluentAssertions;
-using JetBrains.Annotations;
 using Xunit;
 
 namespace Thinktecture.AbstractionDelegateLookupTests
 {
 	public class TryMapForDetachment
 	{
-		[NotNull]
 		private readonly AbstractionDelegateLookup<ITestAbstraction, EventHandler<TestImplementation>> _lookup;
 
 		public TryMapForDetachment()

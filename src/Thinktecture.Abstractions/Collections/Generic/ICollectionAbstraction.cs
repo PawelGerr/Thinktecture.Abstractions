@@ -6,10 +6,10 @@ namespace Thinktecture.Collections.Generic
 	/// <summary>
 	/// An abstraction for collections.
 	/// </summary>
-	/// <typeparam name="TImplementationItem">Tzpe of the item of the implementation.</typeparam>
+	/// <typeparam name="TImplementationItem">Type of the item of the implementation.</typeparam>
 	/// <typeparam name="TImplementation">Type of the implementation.</typeparam>
 	public interface ICollectionAbstraction<TImplementationItem, out TImplementation> : ICollectionAbstraction<TImplementationItem, TImplementationItem, TImplementation>
-		where TImplementation : ICollection<TImplementationItem>
+		where TImplementation : ICollection<TImplementationItem?>
 	{
 	}
 
@@ -19,8 +19,8 @@ namespace Thinktecture.Collections.Generic
 	/// <typeparam name="TAbstractionItem">Type of the abstraction.</typeparam>
 	/// <typeparam name="TImplementationItem">Tzpe of the item of the implementation.</typeparam>
 	/// <typeparam name="TImplementation">Type of the implementation.</typeparam>
-	public interface ICollectionAbstraction<TAbstractionItem, in TImplementationItem, out TImplementation> : IAbstraction<TImplementation>, ICollection<TAbstractionItem>
-		where TImplementation : ICollection<TImplementationItem>
+	public interface ICollectionAbstraction<TAbstractionItem, in TImplementationItem, out TImplementation> : IAbstraction<TImplementation>, ICollection<TAbstractionItem?>
+		where TImplementation : ICollection<TImplementationItem?>
 	{
 		/// <summary>
 		/// Gets inner instance of <typeparamref name="TImplementation"/>.

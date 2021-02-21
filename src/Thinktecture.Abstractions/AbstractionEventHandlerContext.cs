@@ -1,6 +1,4 @@
 using System;
-using JetBrains.Annotations;
-
 namespace Thinktecture
 {
 	/// <summary>
@@ -13,7 +11,6 @@ namespace Thinktecture
 		/// <summary>
 		/// Event handler.
 		/// </summary>
-		[NotNull]
 		public TImplementationDelegate Handler { get; }
 
 		/// <summary>
@@ -25,7 +22,7 @@ namespace Thinktecture
 		/// Initializes new istance of <see cref="AbstractionEventHandlerContext{TImplementationDelegate}"/>.
 		/// </summary>
 		/// <param name="handler">Event handler</param>
-		public AbstractionEventHandlerContext([NotNull] TImplementationDelegate handler)
+		public AbstractionEventHandlerContext(TImplementationDelegate handler)
 		{
 			Handler = handler ?? throw new ArgumentNullException(nameof(handler));
 		}

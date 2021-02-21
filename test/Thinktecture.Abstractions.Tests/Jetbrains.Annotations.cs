@@ -41,7 +41,7 @@ namespace JetBrains.Annotations
 	/// </summary>
 	/// <example><code>
 	/// [CanBeNull] object Test() => null;
-	/// 
+	///
 	/// void UseTest() {
 	///   var p = Test();
 	///   var s = p.ToString(); // Warning: Possible 'System.NullReferenceException'
@@ -59,7 +59,7 @@ namespace JetBrains.Annotations
 	/// Indicates that the value of the marked element could never be <c>null</c>.
 	/// </summary>
 	/// <example><code>
-	/// [NotNull] object Foo() {
+	/// object Foo() {
 	///   return null; // Warning: Possible 'null' assignment
 	/// }
 	/// </code></example>

@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using JetBrains.Annotations;
 using Thinktecture.IO.Adapters;
 
 namespace Thinktecture.IO.FileSystem.Examples.ReadingFiles.Simple
@@ -9,10 +8,9 @@ namespace Thinktecture.IO.FileSystem.Examples.ReadingFiles.Simple
 	{
 		private const string _EXAMPLE_FILE_PATH = "ReadingFiles/Example.txt";
 
-		[NotNull]
 		private readonly IFile _file;
 
-		public ViaFile([NotNull] IFile file)
+		public ViaFile(IFile file)
 		{
 			_file = file ?? throw new ArgumentNullException(nameof(file));
 		}

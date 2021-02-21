@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using JetBrains.Annotations;
 using Thinktecture.IO.FileSystem.Examples.Factories;
 
 namespace Thinktecture.IO.FileSystem.Examples.ReadingFiles.Recommended
@@ -9,13 +8,11 @@ namespace Thinktecture.IO.FileSystem.Examples.ReadingFiles.Recommended
 	{
 		private const string _EXAMPLE_FILE_PATH = "ReadingFiles/Example.txt";
 
-		[NotNull]
 		private readonly IFile _file;
 
-		[NotNull]
 		private readonly ICustomFactory _factory;
 
-		public ViaFile([NotNull] IFile file, [NotNull] ICustomFactory factory)
+		public ViaFile(IFile file, ICustomFactory factory)
 		{
 			_file = file ?? throw new ArgumentNullException(nameof(file));
 			_factory = factory ?? throw new ArgumentNullException(nameof(factory));

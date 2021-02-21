@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using JetBrains.Annotations;
 using Xunit;
 
 namespace Thinktecture.AbstractionEventHandlerLookupTests
 {
 	public class MapForAttachment
 	{
-		[NotNull]
 		private readonly AbstractionEventHandlerLookup<ITestAbstraction, TestImplementation> _lookup;
 
 		public MapForAttachment()

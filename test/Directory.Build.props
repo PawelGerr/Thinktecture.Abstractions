@@ -11,7 +11,7 @@
       <Nullable>disable</Nullable>
       <IsPackable>false</IsPackable>
       <NoWarn>$(NoWarn);CS1591;CA1707</NoWarn>
-      <RootNamespace>Thinktecture.Abstrations.Tests</RootNamespace>
+      <RootNamespace>Thinktecture.Abstractions.Tests</RootNamespace>
    </PropertyGroup>
 
    <ItemGroup>

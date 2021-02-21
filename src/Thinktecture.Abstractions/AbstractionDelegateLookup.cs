@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using JetBrains.Annotations;
 using Thinktecture.Collections.Generic;
 
 namespace Thinktecture
@@ -12,8 +11,9 @@ namespace Thinktecture
 	/// <typeparam name="TImplementationDelegate">Type of delegate.</typeparam>
 	public class AbstractionDelegateLookup<TImplementationDelegate>
 		where TImplementationDelegate : class
-	{
-		[NotNull]
+   {
+      private static readonly Type _implementationDelegateType = typeof(TImplementationDelegate);
+
 		private readonly Dictionary<EventHandler, AbstractionEventHandlerContext<TImplementationDelegate>> _lookup;
 
 		/// <summary>
@@ -25,16 +25,17 @@ namespace Thinktecture
 			_lookup = new Dictionary<EventHandler, AbstractionEventHandlerContext<TImplementationDelegate>>(comparer);
 		}
 
-		private static int GetHashCode([CanBeNull] EventHandler key)
+		private static int GetHashCode(EventHandler? key)
 		{
-			return ((key?.Target?.GetHashCode() ?? 0) * 397)
-					^ (key.GetMethodInfo()?.GetHashCode() ?? 0);
+			return key is null
+                   ? _implementationDelegateType.GetHashCode()
+                   : HashCode.Combine(key.Target, key.GetMethodInfo());
 		}
 
-		private static bool Equal([CanBeNull] EventHandler key, [CanBeNull] Delegate otherKey)
+		private static bool Equal(EventHandler? key, Delegate? otherKey)
 		{
 			return ReferenceEquals(key?.Target, otherKey?.Target)
-					&& ReferenceEquals(key.GetMethodInfo(), otherKey.GetMethodInfo());
+					&& ReferenceEquals(key?.GetMethodInfo(), otherKey?.GetMethodInfo());
 		}
 
 		/// <summary>
@@ -43,8 +44,7 @@ namespace Thinktecture
 		/// <param name="handler">Handler to map.</param>
 		/// <param name="convertDelegate">Function to convert an implementation to an abstraction.</param>
 		/// <returns>Mapped handler</returns>
-		[CanBeNull]
-		public TImplementationDelegate MapForAttachment([CanBeNull] EventHandler handler, [NotNull] Func<EventHandler, TImplementationDelegate> convertDelegate)
+		public TImplementationDelegate? MapForAttachment(EventHandler? handler, Func<EventHandler, TImplementationDelegate> convertDelegate)
 		{
 			if (handler == null)
 				return null;
@@ -67,8 +67,7 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="handler">Handler to map.</param>
 		/// <returns>Mapped handler</returns>
-		[CanBeNull]
-		public TImplementationDelegate TryMapForDetachment([CanBeNull] EventHandler handler)
+		public TImplementationDelegate? TryMapForDetachment(EventHandler? handler)
 		{
 			if (handler == null || !_lookup.TryGetValue(handler, out var ctx))
 				return default;
@@ -90,7 +89,6 @@ namespace Thinktecture
 	public class AbstractionDelegateLookup<TAbstraction, TImplementationDelegate>
 		where TImplementationDelegate : class
 	{
-		[NotNull]
 		private readonly Dictionary<EventHandler<TAbstraction>, AbstractionEventHandlerContext<TImplementationDelegate>> _lookup;
 
 		/// <summary>
@@ -102,16 +100,16 @@ namespace Thinktecture
 			_lookup = new Dictionary<EventHandler<TAbstraction>, AbstractionEventHandlerContext<TImplementationDelegate>>(comparer);
 		}
 
-		private static int GetHashCode([CanBeNull] EventHandler<TAbstraction> key)
+		private static int GetHashCode(EventHandler<TAbstraction>? key)
 		{
 			return ((key?.Target?.GetHashCode() ?? 0) * 397)
-					^ (key.GetMethodInfo()?.GetHashCode() ?? 0);
+					^ (key?.GetMethodInfo()?.GetHashCode() ?? 0);
 		}
 
-		private static bool Equal([CanBeNull] EventHandler<TAbstraction> key, [CanBeNull] Delegate otherKey)
+		private static bool Equal(EventHandler<TAbstraction>? key, Delegate? otherKey)
 		{
 			return ReferenceEquals(key?.Target, otherKey?.Target)
-					&& ReferenceEquals(key.GetMethodInfo(), otherKey.GetMethodInfo());
+					&& ReferenceEquals(key?.GetMethodInfo(), otherKey?.GetMethodInfo());
 		}
 
 		/// <summary>
@@ -120,8 +118,7 @@ namespace Thinktecture
 		/// <param name="handler">Handler to map.</param>
 		/// <param name="convertDelegate">Function to convert an implementation to an abstraction.</param>
 		/// <returns>Mapped handler</returns>
-		[CanBeNull]
-		public TImplementationDelegate MapForAttachment([CanBeNull] EventHandler<TAbstraction> handler, [NotNull] Func<EventHandler<TAbstraction>, TImplementationDelegate> convertDelegate)
+		public TImplementationDelegate? MapForAttachment(EventHandler<TAbstraction>? handler, Func<EventHandler<TAbstraction>, TImplementationDelegate> convertDelegate)
 		{
 			if (handler == null)
 				return null;
@@ -144,8 +141,7 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="handler">Handler to map.</param>
 		/// <returns>Mapped handler</returns>
-		[CanBeNull]
-		public TImplementationDelegate TryMapForDetachment([CanBeNull] EventHandler<TAbstraction> handler)
+		public TImplementationDelegate? TryMapForDetachment(EventHandler<TAbstraction>? handler)
 		{
 			if (handler == null || !_lookup.TryGetValue(handler, out var ctx))
 				return default;
