@@ -1,7 +1,6 @@
 using System.Net.Sockets;
+using System.Runtime.Versioning;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net.Sockets
 {
 	/// <summary>
@@ -17,27 +16,23 @@ namespace Thinktecture.Net.Sockets
 		/// <summary>
 		/// Gets the underlying EndPoint of the current TcpListener.
 		/// </summary>
-		[NotNull]
 		IEndPoint LocalEndpoint { get; }
 
 		/// <summary>
 		/// Gets the underlying network Socket.
 		/// </summary>
-		[NotNull]
 		ISocket Server { get; }
 
 		/// <summary>
 		/// Accepts a pending connection request as an asynchronous operation.
 		/// </summary>
 		/// <returns>The task object representing the asynchronous operation. The Result property on the task object returns a Socket used to send and receive data.</returns>
-		[NotNull, ItemNotNull]
 		Task<ISocket> AcceptSocketAsync();
 
 		/// <summary>
 		/// Accepts a pending connection request as an asynchronous operation.
 		/// </summary>
 		/// <returns>The task object representing the asynchronous operation. The Result property on the task object returns a TcpClient used to send and receive data.</returns>
-		[NotNull, ItemNotNull]
 		Task<ITcpClient> AcceptTcpClientAsync();
 
 		/// <summary>
@@ -62,11 +57,13 @@ namespace Thinktecture.Net.Sockets
 		/// </summary>
 		void Stop();
 
-#if NET46 || NETSTANDARD2_0
 		/// <summary>Enables or disables Network Address Translation (NAT) traversal on a <see cref="T:System.Net.Sockets.TcpListener" /> instance.</summary>
 		/// <param name="allowed">A Boolean value that specifies whether to enable or disable NAT traversal.</param>
 		/// <exception cref="T:System.InvalidOperationException">The <see cref="M:System.Net.Sockets.TcpListener.AllowNatTraversal(System.Boolean)" /> method was called after calling the <see cref="M:System.Net.Sockets.TcpListener.Start" /> method</exception>
-		void AllowNatTraversal(bool allowed);
+#if NET5_0
+      [SupportedOSPlatform("windows")]
+#endif
+      void AllowNatTraversal(bool allowed);
 
 		/// <summary>Accepts a pending connection request.</summary>
 		/// <returns>A <see cref="T:System.Net.Sockets.Socket" /> used to send and receive data.</returns>
@@ -90,6 +87,5 @@ namespace Thinktecture.Net.Sockets
 		///   <IPermission class="System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
 		ITcpClient AcceptTcpClient();
-#endif
 	}
 }

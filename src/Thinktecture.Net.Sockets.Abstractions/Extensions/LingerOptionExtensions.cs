@@ -1,5 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Sockets;
-using JetBrains.Annotations;
 using Thinktecture.Net.Sockets;
 using Thinktecture.Net.Sockets.Adapters;
 
@@ -16,8 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="option">Option to convert.</param>
 		/// <returns>Converted option.</returns>
-		[CanBeNull]
-		public static ILingerOption ToInterface([CanBeNull] this LingerOption option)
+      [return: NotNullIfNotNull("option")]
+		public static ILingerOption? ToInterface(this LingerOption? option)
 		{
 			return (option == null) ? null : new LingerOptionAdapter(option);
 		}

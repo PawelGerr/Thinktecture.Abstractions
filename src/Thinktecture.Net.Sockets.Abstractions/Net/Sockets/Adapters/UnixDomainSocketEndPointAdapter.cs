@@ -1,7 +1,4 @@
-﻿#if NETCOREAPP2_2
-
-using System.Net.Sockets;
-using JetBrains.Annotations;
+﻿using System.Net.Sockets;
 using Thinktecture.Net.Adapters;
 
 namespace Thinktecture.Net.Sockets.Adapters
@@ -14,11 +11,9 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new UnixDomainSocketEndPoint Implementation { get; }
 
 		/// <inheritdoc />
-		[NotNull]
 		UnixDomainSocketEndPoint IAbstraction<UnixDomainSocketEndPoint>.UnsafeConvert()
 		{
 			return Implementation;
@@ -37,12 +32,10 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// <summary>
 		/// Initializes new instance of <see cref="UnixDomainSocketEndPointAdapter"/>.
 		/// </summary>
-		public UnixDomainSocketEndPointAdapter([NotNull] UnixDomainSocketEndPoint implementation)
+		public UnixDomainSocketEndPointAdapter(UnixDomainSocketEndPoint implementation)
 			: base(implementation)
 		{
 			Implementation = implementation;
 		}
 	}
 }
-
-#endif

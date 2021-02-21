@@ -1,9 +1,8 @@
 using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Versioning;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Sockets.Adapters
@@ -66,7 +65,6 @@ namespace Thinktecture.Net.Sockets.Adapters
 		{
 		}
 
-#if NET46 || NETSTANDARD2_0
 		/// <summary>
 		/// Initializes a new instance of the UdpClient class.
 		/// </summary>
@@ -76,7 +74,6 @@ namespace Thinktecture.Net.Sockets.Adapters
 			: this(new UdpClient(hostname, port))
 		{
 		}
-#endif
 
 		/// <summary>
 		/// Initializes a new instance of the UdpClient class and binds it to the local port number provided.
@@ -102,7 +99,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="localEP">An IPEndPoint that respresents the local endpoint to which you bind the UDP connection.</param>
 		// ReSharper disable once InconsistentNaming
-		public UdpClientAdapter([NotNull] IPEndPoint localEP)
+		public UdpClientAdapter(IPEndPoint localEP)
 			: this(new UdpClient(localEP))
 		{
 		}
@@ -112,7 +109,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="localEP">An IPEndPoint that respresents the local endpoint to which you bind the UDP connection.</param>
 		// ReSharper disable once InconsistentNaming
-		public UdpClientAdapter([NotNull] IIPEndPoint localEP)
+		public UdpClientAdapter(IIPEndPoint localEP)
 			: this(localEP.ToImplementation<IPEndPoint>())
 		{
 		}
@@ -130,7 +127,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// Intializes new instance of <see cref="UdpClientAdapter"/>.
 		/// </summary>
 		/// <param name="client">Client to be used by the adapter.</param>
-		public UdpClientAdapter([NotNull] UdpClient client)
+		public UdpClientAdapter(UdpClient client)
 			: base(client)
 		{
 		}
@@ -226,24 +223,23 @@ namespace Thinktecture.Net.Sockets.Adapters
 		}
 
 		/// <inheritdoc />
-		public Task<int> SendAsync(byte[] datagram, int bytes, IPEndPoint endPoint)
+		public Task<int> SendAsync(byte[] datagram, int bytes, IPEndPoint? endPoint)
 		{
 			return Implementation.SendAsync(datagram, bytes, endPoint);
 		}
 
 		/// <inheritdoc />
-		public Task<int> SendAsync(byte[] datagram, int bytes, IIPEndPoint endPoint)
+		public Task<int> SendAsync(byte[] datagram, int bytes, IIPEndPoint? endPoint)
 		{
 			return Implementation.SendAsync(datagram, bytes, endPoint.ToImplementation<IPEndPoint>());
 		}
 
 		/// <inheritdoc />
-		public Task<int> SendAsync(byte[] datagram, int bytes, string hostname, int port)
+		public Task<int> SendAsync(byte[] datagram, int bytes, string? hostname, int port)
 		{
 			return Implementation.SendAsync(datagram, bytes, hostname, port);
 		}
 
-#if NET46 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public Task<int> SendAsync(byte[] datagram, int bytes)
 		{
@@ -251,6 +247,9 @@ namespace Thinktecture.Net.Sockets.Adapters
 		}
 
 		/// <inheritdoc />
+#if NET5_0
+      [SupportedOSPlatform("windows")]
+#endif
 		public void AllowNatTraversal(bool allowed)
 		{
 			Implementation.AllowNatTraversal(allowed);
@@ -331,7 +330,6 @@ namespace Thinktecture.Net.Sockets.Adapters
 		{
 			return Implementation.Send(dgram, bytes);
 		}
-#endif
 
 		/// <inheritdoc />
 		public void Dispose()

@@ -1,8 +1,7 @@
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Versioning;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 // ReSharper disable PossibleNullReferenceException
 
@@ -31,7 +30,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="localaddr">An IPAddress that represents the local IP address.</param>
 		/// <param name="port">The port on which to listen for incoming connection attempts.</param>
-		public TcpListenerAdapter([NotNull] IPAddress localaddr, int port)
+		public TcpListenerAdapter(IPAddress localaddr, int port)
 			: this(new TcpListener(localaddr, port))
 		{
 		}
@@ -41,7 +40,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="localaddr">An IPAddress that represents the local IP address.</param>
 		/// <param name="port">The port on which to listen for incoming connection attempts.</param>
-		public TcpListenerAdapter([NotNull] IIPAddress localaddr, int port)
+		public TcpListenerAdapter(IIPAddress localaddr, int port)
 			: this(localaddr.ToImplementation(), port)
 		{
 		}
@@ -51,7 +50,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="localEP">An IPEndPoint that represents the local endpoint to which to bind the listener Socket.</param>
 		// ReSharper disable once InconsistentNaming
-		public TcpListenerAdapter([NotNull] IPEndPoint localEP)
+		public TcpListenerAdapter(IPEndPoint localEP)
 			: this(new TcpListener(localEP))
 		{
 		}
@@ -61,7 +60,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// </summary>
 		/// <param name="localEP">An IPEndPoint that represents the local endpoint to which to bind the listener Socket.</param>
 		// ReSharper disable once InconsistentNaming
-		public TcpListenerAdapter([NotNull] IIPEndPoint localEP)
+		public TcpListenerAdapter(IIPEndPoint localEP)
 			: this(localEP.ToImplementation())
 		{
 		}
@@ -70,7 +69,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// Initializes new instance of <see cref="TcpListenerAdapter"/>.
 		/// </summary>
 		/// <param name="listener">Listener to be used by the adapter.</param>
-		public TcpListenerAdapter([NotNull] TcpListener listener)
+		public TcpListenerAdapter(TcpListener listener)
 			: base(listener)
 		{
 		}
@@ -113,8 +112,10 @@ namespace Thinktecture.Net.Sockets.Adapters
 			Implementation.Stop();
 		}
 
-#if NET46 || NETSTANDARD2_0
 		/// <inheritdoc />
+#if NET5_0
+      [SupportedOSPlatform("windows")]
+#endif
 		public void AllowNatTraversal(bool allowed)
 		{
 			Implementation.AllowNatTraversal(allowed);
@@ -131,6 +132,5 @@ namespace Thinktecture.Net.Sockets.Adapters
 		{
 			return Implementation.AcceptTcpClient().ToInterface();
 		}
-#endif
 	}
 }

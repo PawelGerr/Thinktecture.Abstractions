@@ -1,5 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Sockets;
-using JetBrains.Annotations;
 using Thinktecture.Net.Sockets;
 using Thinktecture.Net.Sockets.Adapters;
 
@@ -16,10 +16,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="socket">Client to convert.</param>
 		/// <returns>Converted client.</returns>
-		[CanBeNull]
-		public static ITcpClient ToInterface([CanBeNull] this TcpClient socket)
+      [return: NotNullIfNotNull("socket")]
+		public static ITcpClient? ToInterface(this TcpClient? socket)
 		{
-			return (socket == null) ? null : new TcpClientAdapter(socket);
+			return socket == null ? null : new TcpClientAdapter(socket);
 		}
 	}
 }

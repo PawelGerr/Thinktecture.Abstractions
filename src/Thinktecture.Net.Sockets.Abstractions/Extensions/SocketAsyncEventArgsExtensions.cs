@@ -1,5 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Sockets;
-using JetBrains.Annotations;
 using Thinktecture.Net.Sockets;
 using Thinktecture.Net.Sockets.Adapters;
 
@@ -16,8 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="args">Event args to convert.</param>
 		/// <returns>Converted event args.</returns>
-		[CanBeNull]
-		public static ISocketAsyncEventArgs ToInterface([CanBeNull] this SocketAsyncEventArgs args)
+      [return: NotNullIfNotNull("args")]
+		public static ISocketAsyncEventArgs? ToInterface(this SocketAsyncEventArgs? args)
 		{
 			return (args == null) ? null : new SocketAsyncEventArgsAdapter(args);
 		}
@@ -27,10 +27,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="ISocketAsyncEventArgs"/> to convert.</param>
 		/// <returns>An instance of <see cref="SocketAsyncEventArgs"/>.</returns>
-		[CanBeNull]
-		public static SocketAsyncEventArgs ToImplementation([CanBeNull] this ISocketAsyncEventArgs abstraction)
+      [return: NotNullIfNotNull("abstraction")]
+		public static SocketAsyncEventArgs? ToImplementation(this ISocketAsyncEventArgs? abstraction)
 		{
-			return ((IAbstraction<SocketAsyncEventArgs>)abstraction)?.UnsafeConvert();
+			return ((IAbstraction<SocketAsyncEventArgs>?)abstraction)?.UnsafeConvert();
 		}
 	}
 }

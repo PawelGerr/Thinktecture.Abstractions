@@ -1,6 +1,4 @@
 using System.Net.Sockets;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net.Sockets.Adapters
 {
 	/// <summary>
@@ -36,7 +34,7 @@ namespace Thinktecture.Net.Sockets.Adapters
 		/// Initializes a new instance of the <see cref="LingerOptionAdapter"/> class.
 		/// </summary>
 		/// <param name="options">Options to be used by the adapter.</param>
-		public LingerOptionAdapter([NotNull] LingerOption options)
+		public LingerOptionAdapter(LingerOption options)
 			: base(options)
 		{
 		}

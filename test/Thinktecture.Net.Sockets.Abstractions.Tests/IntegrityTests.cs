@@ -7,7 +7,7 @@ using Thinktecture.Net.Sockets;
 using Thinktecture.Net.Sockets.Adapters;
 using Xunit;
 
-namespace Thinktecture
+namespace Thinktecture.Abstractions.Tests
 {
 	public class IntegrityTests : IntegrityTestsBase
 	{
@@ -22,6 +22,7 @@ namespace Thinktecture
 
 			ExcludedTypes.Add(typeof(MulticastOption));
 			ExcludedTypes.Add(typeof(IPv6MulticastOption));
+			ExcludedTypes.Add(typeof(SafeSocketHandle));
 
 			CustomTypeMappings.Add(typeof(SocketTaskExtensions), typeof(SocketExtensions));
 			CustomTypeMappings.Add(typeof(Socket), new List<Type> { typeof(ISocket), typeof(ISocketGlobals) });

@@ -1,6 +1,4 @@
-﻿#if NETCOREAPP2_2
-
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 
 namespace Thinktecture.Net.Sockets
 {
@@ -12,5 +10,3 @@ namespace Thinktecture.Net.Sockets
 
 	}
 }
-
-#endif
