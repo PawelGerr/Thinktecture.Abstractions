@@ -1,5 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
-using JetBrains.Annotations;
 using Thinktecture.Net;
 using Thinktecture.Net.Adapters;
 
@@ -16,8 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="cookie">Cookie to convert.</param>
 		/// <returns>Converted cookie.</returns>
-		[CanBeNull]
-		public static ICookie ToInterface([CanBeNull] this Cookie cookie)
+      [return: NotNullIfNotNull("cookie")]
+		public static ICookie? ToInterface(this Cookie? cookie)
 		{
 			return (cookie == null) ? null : new CookieAdapter(cookie);
 		}

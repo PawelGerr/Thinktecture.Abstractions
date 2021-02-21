@@ -1,11 +1,7 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-
 using System;
 using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Adapters
@@ -16,11 +12,9 @@ namespace Thinktecture.Net.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new DnsEndPoint Implementation { get; }
 
 		/// <inheritdoc />
-		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new DnsEndPoint UnsafeConvert()
 		{
@@ -40,7 +34,7 @@ namespace Thinktecture.Net.Adapters
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="host" /> parameter is a null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="port" /> is less than <see cref="F:System.Net.IPEndPoint.MinPort" />.-or- <paramref name="port" /> is greater than <see cref="F:System.Net.IPEndPoint.MaxPort" />. </exception>
-		public DnsEndPointAdapter([NotNull] string host, int port)
+		public DnsEndPointAdapter(string host, int port)
 			: this(new DnsEndPoint(host, port))
 		{
 		}
@@ -53,19 +47,17 @@ namespace Thinktecture.Net.Adapters
 		/// <exception cref="T:System.ArgumentNullException">The <paramref name="host" /> parameter is a null.</exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="port" /> is less than <see cref="F:System.Net.IPEndPoint.MinPort" />.-or- <paramref name="port" /> is greater than <see cref="F:System.Net.IPEndPoint.MaxPort" />.</exception>
-		public DnsEndPointAdapter([NotNull] string host, int port, AddressFamily addressFamily)
+		public DnsEndPointAdapter(string host, int port, AddressFamily addressFamily)
 			: this(new DnsEndPoint(host, port, addressFamily))
 		{
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="DnsEndPointAdapter" /> class.</summary>
 		/// <param name="endpoint">Endpoint to be used by the adapter.</param>
-		public DnsEndPointAdapter([NotNull] DnsEndPoint endpoint)
+		public DnsEndPointAdapter(DnsEndPoint endpoint)
 			: base(endpoint)
 		{
 			Implementation = endpoint ?? throw new ArgumentNullException(nameof(endpoint));
 		}
 	}
 }
-
-#endif

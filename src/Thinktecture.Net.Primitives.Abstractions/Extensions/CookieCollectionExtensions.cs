@@ -1,5 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
-using JetBrains.Annotations;
 using Thinktecture.Net;
 using Thinktecture.Net.Adapters;
 
@@ -16,10 +16,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="collection">Collection to convert.</param>
 		/// <returns>Converted collection.</returns>
-		[CanBeNull]
-		public static ICookieCollection ToInterface([CanBeNull] this CookieCollection collection)
+      [return: NotNullIfNotNull("collection")]
+		public static ICookieCollection? ToInterface(this CookieCollection? collection)
 		{
-			return (collection == null) ? null : new CookieCollectionAdapter(collection);
+			return collection == null ? null : new CookieCollectionAdapter(collection);
 		}
 	}
 }

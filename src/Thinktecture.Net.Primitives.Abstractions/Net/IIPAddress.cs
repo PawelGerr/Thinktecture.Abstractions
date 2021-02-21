@@ -1,10 +1,6 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-
 using System;
 using System.Net;
 using System.Net.Sockets;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net
 {
 	/// <summary>Provides an Internet Protocol (IP) address.</summary>
@@ -44,20 +40,16 @@ namespace Thinktecture.Net
 
 		/// <summary>Provides a copy of the <see cref="T:System.Net.IPAddress" /> as an array of bytes.</summary>
 		/// <returns>A <see cref="T:System.Byte" /> array.</returns>
-		[NotNull]
 		byte[] GetAddressBytes();
 
 		/// <summary>Maps the <see cref="T:System.Net.IPAddress" /> object to an IPv4 address.</summary>
 		/// <returns>Returns <see cref="T:System.Net.IPAddress" />.An IPv4 address.</returns>
-		[NotNull]
 		IIPAddress MapToIPv4();
 
 		/// <summary>Maps the <see cref="T:System.Net.IPAddress" /> object to an IPv6 address.</summary>
 		/// <returns>Returns <see cref="T:System.Net.IPAddress" />.An IPv6 address.</returns>
-		[NotNull]
 		IIPAddress MapToIPv6();
 
-#if NETCOREAPP2_2
 		/// <summary>
 		/// Write the address into <paramref name="destination"/>.
 		/// </summary>
@@ -73,8 +65,5 @@ namespace Thinktecture.Net
 		/// <param name="bytesWritten">Number of bytes written into <paramref name="destination"/>.</param>
 		/// <returns><c>true</c> if the address has been written successfully; otherweise <c>false</c>.</returns>
 		bool TryWriteBytes(Span<byte> destination, out int bytesWritten);
-#endif
 	}
 }
-
-#endif

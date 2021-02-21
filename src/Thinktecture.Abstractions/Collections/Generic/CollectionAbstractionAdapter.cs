@@ -158,7 +158,7 @@ namespace Thinktecture.Collections.Generic
       }
 
       /// <inheritdoc />
-      public void CopyTo(TImplementationItem[] array, int arrayIndex)
+      public void CopyTo(TImplementationItem?[] array, int arrayIndex)
       {
          Implementation.CopyTo(array, arrayIndex);
       }

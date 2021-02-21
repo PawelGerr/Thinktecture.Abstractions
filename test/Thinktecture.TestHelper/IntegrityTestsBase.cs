@@ -429,6 +429,9 @@ namespace Thinktecture.Abstractions.Tests
          if (originalType == null)
             throw new ArgumentNullException(nameof(originalType));
 
+         if (originalType.Namespace == null)
+            throw new ArgumentException($"The type '{originalType}' has no namespace.");
+
          var ns = originalType.Namespace.Split('.');
          ns.Should().HaveCountGreaterOrEqualTo(1);
 
@@ -440,7 +443,7 @@ namespace Thinktecture.Abstractions.Tests
       private IReadOnlyList<Type> GetOriginalTypes(Assembly assembly)
       {
          return GetTypes(assembly)
-                .Where(t => !t.IsInterface)
+                .Where(t => !t.IsInterface && t.IsVisible)
                 .ToList().AsReadOnly();
       }
 

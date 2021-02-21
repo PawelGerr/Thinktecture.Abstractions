@@ -1,7 +1,5 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
-using JetBrains.Annotations;
 using Thinktecture.Net;
 using Thinktecture.Net.Adapters;
 
@@ -18,12 +16,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="address">Address to convert.</param>
 		/// <returns>Converted address.</returns>
-		[CanBeNull]
-		public static ISocketAddress ToInterface([CanBeNull] this SocketAddress address)
+      [return: NotNullIfNotNull("address")]
+		public static ISocketAddress? ToInterface(this SocketAddress? address)
 		{
-			return (address == null) ? null : new SocketAddressAdapter(address);
+			return address == null ? null : new SocketAddressAdapter(address);
 		}
 	}
 }
-
-#endif

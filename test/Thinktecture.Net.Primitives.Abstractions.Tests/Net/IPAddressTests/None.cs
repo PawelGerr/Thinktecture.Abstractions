@@ -3,7 +3,7 @@ using FluentAssertions;
 using Thinktecture.Net.Adapters;
 using Xunit;
 
-namespace Thinktecture.Net.IPAddressTests
+namespace Thinktecture.Abstractions.Tests.Net.IPAddressTests
 {
 	public class None
 	{

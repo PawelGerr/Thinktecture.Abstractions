@@ -1,5 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
-using JetBrains.Annotations;
 using Thinktecture.Net;
 using Thinktecture.Net.Adapters;
 
@@ -16,16 +16,14 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="credential">Credential to convert.</param>
 		/// <returns>Converted credential.</returns>
-		[CanBeNull]
-		public static INetworkCredential ToInterface([CanBeNull] this NetworkCredential credential)
+      [return: NotNullIfNotNull("credential")]
+		public static INetworkCredential? ToInterface(this NetworkCredential? credential)
 		{
 			if (credential == null)
 				return null;
 
-#if NETSTANDARD1_1 || NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
 			if (ReferenceEquals(credential, CredentialCache.DefaultNetworkCredentials))
 				return CredentialCacheAdapter.DefaultNetworkCredentials;
-#endif
 
 			return new NetworkCredentialAdapter(credential);
 		}

@@ -1,7 +1,5 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
-using JetBrains.Annotations;
 using Thinktecture.Net;
 using Thinktecture.Net.Adapters;
 
@@ -18,12 +16,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="endPoint">Endpoint to convert.</param>
 		/// <returns>Converted endpoint.</returns>
-		[CanBeNull]
-		public static IEndPoint ToInterface([CanBeNull] this EndPoint endPoint)
+      [return: NotNullIfNotNull("endPoint")]
+		public static IEndPoint? ToInterface(this EndPoint? endPoint)
 		{
 			return (endPoint == null) ? null : new EndPointAdapter(endPoint);
 		}
 	}
 }
-
-#endif

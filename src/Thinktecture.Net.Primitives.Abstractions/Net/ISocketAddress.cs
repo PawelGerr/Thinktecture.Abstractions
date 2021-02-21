@@ -1,5 +1,3 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-
 using System.Net;
 using System.Net.Sockets;
 
@@ -23,5 +21,3 @@ namespace Thinktecture.Net
 		byte this[int offset] { get; set; }
 	}
 }
-
-#endif

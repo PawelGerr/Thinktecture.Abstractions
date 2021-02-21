@@ -1,6 +1,4 @@
-﻿#if NET45 || NETSTANDARD2_0
-
-using System.Net.Cache;
+﻿using System.Net.Cache;
 
 namespace Thinktecture.Net.Cache
 {
@@ -12,5 +10,3 @@ namespace Thinktecture.Net.Cache
 		RequestCacheLevel Level { get; }
 	}
 }
-
-#endif

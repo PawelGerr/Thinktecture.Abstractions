@@ -1,8 +1,4 @@
-#if NET45 || NETSTANDARD2_0
-
 using System.Net.Cache;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net.Cache.Adapters
 {
 	/// <summary>Defines an application's caching requirements for resources obtained by using <see cref="T:System.Net.WebRequest" /> objects.</summary>
@@ -30,11 +26,9 @@ namespace Thinktecture.Net.Cache.Adapters
 		/// Initializes new instance of <see cref="RequestCachePolicyAdapter"/>.
 		/// </summary>
 		/// <param name="policy">Policy to use by the adapter.</param>
-		public RequestCachePolicyAdapter([NotNull] RequestCachePolicy policy)
+		public RequestCachePolicyAdapter(RequestCachePolicy policy)
 			: base(policy)
 		{
 		}
 	}
 }
-
-#endif

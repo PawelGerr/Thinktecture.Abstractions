@@ -1,21 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <Description>Provides interfaces for types in System.Net.Primitives: Cookie, CookieCollection, CookieContainer, NetworkCredential.</Description>
-    <TargetFrameworks>netstandard1.0;netstandard1.1;netstandard1.3;netstandard2.0;netcoreapp2.2;net45</TargetFrameworks>
-    <PackageTags>net;abstraction</PackageTags>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-  </ItemGroup>
+   <PropertyGroup>
+      <Description>Provides interfaces for types in System.Net.Primitives: Cookie, CookieCollection, CookieContainer, NetworkCredential.</Description>
+      <PackageTags>net;abstraction</PackageTags>
+   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Thinktecture.Abstractions\Thinktecture.Abstractions.csproj" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' OR '$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.2' ">
-    <ProjectReference Include="..\Thinktecture.Runtime.Handles.Abstractions\Thinktecture.Runtime.Handles.Abstractions.csproj" />
-  </ItemGroup>
+   <ItemGroup>
+      <ProjectReference Include="..\Thinktecture.Abstractions\Thinktecture.Abstractions.csproj" />
+      <ProjectReference Include="..\Thinktecture.Runtime.Handles.Abstractions\Thinktecture.Runtime.Handles.Abstractions.csproj" />
+   </ItemGroup>
+
 </Project>

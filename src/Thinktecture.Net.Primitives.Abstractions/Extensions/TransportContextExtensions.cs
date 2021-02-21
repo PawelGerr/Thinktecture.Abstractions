@@ -1,7 +1,5 @@
-#if NETSTANDARD1_1 || NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
-using JetBrains.Annotations;
 using Thinktecture.Net;
 using Thinktecture.Net.Adapters;
 
@@ -18,12 +16,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="context">Context to convert.</param>
 		/// <returns>Converted context.</returns>
-		[CanBeNull]
-		public static ITransportContext ToInterface([CanBeNull] this TransportContext context)
+      [return: NotNullIfNotNull("context")]
+		public static ITransportContext? ToInterface(this TransportContext? context)
 		{
-			return (context == null) ? null : new TransportContextAdapter(context);
+			return context == null ? null : new TransportContextAdapter(context);
 		}
 	}
 }
-
-#endif

@@ -1,7 +1,5 @@
 using System;
 using System.Net;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Adapters
@@ -41,7 +39,6 @@ namespace Thinktecture.Net.Adapters
 		{
 		}
 
-#if NET45 || NETSTANDARD2_0
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CookieContainerAdapter" /> class.
 		/// </summary>
@@ -61,18 +58,16 @@ namespace Thinktecture.Net.Adapters
 			: this(new CookieContainer(capacity, perDomainCapacity, maxCookieSize))
 		{
 		}
-#endif
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CookieContainerAdapter" /> class.
 		/// </summary>
 		/// <param name="container">The implementation to use by the adapter.</param>
-		public CookieContainerAdapter([NotNull] CookieContainer container)
+		public CookieContainerAdapter(CookieContainer container)
 			: base(container)
 		{
 		}
 
-#if NET45 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public void Add(Cookie cookie)
 		{
@@ -96,7 +91,6 @@ namespace Thinktecture.Net.Adapters
 		{
 			Implementation.Add(cookies.ToImplementation());
 		}
-#endif
 
 		/// <inheritdoc />
 		public void Add(Uri uri, Cookie cookie)

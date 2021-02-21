@@ -1,9 +1,5 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-
 using System.Net;
 using System.Net.Sockets;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net.Adapters
 {
 	/// <summary>Stores serialized information from <see cref="T:System.Net.EndPoint" /> derived classes.</summary>
@@ -41,11 +37,9 @@ namespace Thinktecture.Net.Adapters
 
 		/// <summary>Creates a new instance of the <see cref="T:System.Net.SocketAddress" /> class.</summary>
 		/// <param name="address">Address to be used by the adapter</param>
-		public SocketAddressAdapter([NotNull] SocketAddress address)
+		public SocketAddressAdapter(SocketAddress address)
 			: base(address)
 		{
 		}
 	}
 }
-
-#endif

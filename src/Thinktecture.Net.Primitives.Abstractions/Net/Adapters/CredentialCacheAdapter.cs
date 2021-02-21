@@ -1,10 +1,6 @@
-#if NETSTANDARD1_1 || NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-
 using System;
 using System.Collections;
 using System.Net;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Adapters
@@ -17,12 +13,10 @@ namespace Thinktecture.Net.Adapters
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Read="USERNAME" />
 		/// </PermissionSet>
-		[NotNull]
 		public static ICredentials DefaultCredentials => CredentialCache.DefaultCredentials;
 
 		/// <summary>Gets the network credentials of the current security context.</summary>
 		/// <returns>An <see cref="T:System.Net.NetworkCredential" /> that represents the network credentials of the current user or application.</returns>
-		[NotNull]
 		public static INetworkCredential DefaultNetworkCredentials => new NetworkCredentialAdapter(CredentialCache.DefaultNetworkCredentials);
 
 		/// <summary>
@@ -37,7 +31,7 @@ namespace Thinktecture.Net.Adapters
 		/// Initializes new instance of <see cref="CredentialCacheAdapter"/>.
 		/// </summary>
 		/// <param name="cache">Cache to be used by the adapter.</param>
-		public CredentialCacheAdapter([NotNull] CredentialCache cache)
+		public CredentialCacheAdapter(CredentialCache cache)
 			: base(cache)
 		{
 		}
@@ -67,48 +61,43 @@ namespace Thinktecture.Net.Adapters
 		}
 
 		/// <inheritdoc />
-		public INetworkCredential GetCredential(string host, int port, string authenticationType)
+		public INetworkCredential? GetCredential(string host, int port, string authenticationType)
 		{
 			return Implementation.GetCredential(host, port, authenticationType).ToInterface();
 		}
 
 		/// <inheritdoc />
-		public INetworkCredential GetCredential(Uri uriPrefix, string authType)
+		public INetworkCredential? GetCredential(Uri uriPrefix, string authType)
 		{
 			return Implementation.GetCredential(uriPrefix, authType).ToInterface();
 		}
 
 		/// <inheritdoc />
-		[NotNull]
 		public IEnumerator GetEnumerator()
 		{
 			return Implementation.GetEnumerator();
 		}
 
 		/// <inheritdoc />
-		public void Remove(string host, int port, string authenticationType)
+		public void Remove(string? host, int port, string? authenticationType)
 		{
 			Implementation.Remove(host, port, authenticationType);
 		}
 
 		/// <inheritdoc />
-		public void Remove(Uri uriPrefix, string authType)
+		public void Remove(Uri? uriPrefix, string? authType)
 		{
 			Implementation.Remove(uriPrefix, authType);
 		}
 
-		[CanBeNull]
-		NetworkCredential ICredentials.GetCredential([NotNull] Uri uri, [NotNull] string authType)
+		NetworkCredential? ICredentials.GetCredential(Uri uri, string authType)
 		{
 			return Implementation.GetCredential(uri, authType);
 		}
 
-		[CanBeNull]
-		NetworkCredential ICredentialsByHost.GetCredential([NotNull] string host, int port, [NotNull] string authenticationType)
+		NetworkCredential? ICredentialsByHost.GetCredential(string host, int port, string authenticationType)
 		{
 			return Implementation.GetCredential(host, port, authenticationType);
 		}
 	}
 }
-
-#endif

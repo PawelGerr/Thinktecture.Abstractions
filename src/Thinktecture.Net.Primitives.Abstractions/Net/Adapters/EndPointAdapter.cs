@@ -1,9 +1,5 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-
 using System.Net;
 using System.Net.Sockets;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Adapters
@@ -36,11 +32,9 @@ namespace Thinktecture.Net.Adapters
 		/// Initializes new instance of <see cref="EndPointAdapter"/>.
 		/// </summary>
 		/// <param name="endpoint">Endpoint to be used by the adapter.</param>
-		public EndPointAdapter([NotNull] EndPoint endpoint)
+		public EndPointAdapter(EndPoint endpoint)
 			: base(endpoint)
 		{
 		}
 	}
 }
-
-#endif

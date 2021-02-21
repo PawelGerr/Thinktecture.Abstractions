@@ -3,7 +3,7 @@ using FluentAssertions;
 using Thinktecture.Net.Adapters;
 using Xunit;
 
-namespace Thinktecture.Net.CredentialCacheAdapterTests
+namespace Thinktecture.Abstractions.Tests.Net.CredentialCacheAdapterTests
 {
 	public class DefaultNetworkCredentials
 	{
