@@ -1,6 +1,5 @@
 using System;
 using System.ComponentModel;
-using JetBrains.Annotations;
 using Thinktecture.Adapters;
 
 // ReSharper disable once CheckNamespace
@@ -10,7 +9,6 @@ namespace Thinktecture
 	public class ConsoleCancelEventArgsAdapter : EventArgsAdapter, IConsoleCancelEventArgs
 	{
 		/// <inheritdoc />
-		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new ConsoleCancelEventArgs UnsafeConvert()
 		{
@@ -20,7 +18,6 @@ namespace Thinktecture
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new ConsoleCancelEventArgs Implementation { get; }
 
 		/// <inheritdoc />
@@ -37,7 +34,7 @@ namespace Thinktecture
 		/// Initializes a new instance of <see cref="ConsoleCancelEventArgsAdapter"/>.
 		/// </summary>
 		/// <param name="eventArgs">Event args to use.</param>
-		public ConsoleCancelEventArgsAdapter([NotNull] ConsoleCancelEventArgs eventArgs)
+		public ConsoleCancelEventArgsAdapter(ConsoleCancelEventArgs eventArgs)
 		{
 			Implementation = eventArgs ?? throw new ArgumentNullException(nameof(eventArgs));
 		}

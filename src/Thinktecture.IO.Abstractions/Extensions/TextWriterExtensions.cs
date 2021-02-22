@@ -16,7 +16,7 @@ namespace Thinktecture
       /// </summary>
       /// <param name="writer">Writer to convert.</param>
       /// <returns>Converted writer.</returns>
-      [return: NotNullIfNotNull("abstraction")]
+      [return: NotNullIfNotNull("writer")]
       public static ITextWriter? ToInterface(this TextWriter? writer)
       {
          if (writer == null)
