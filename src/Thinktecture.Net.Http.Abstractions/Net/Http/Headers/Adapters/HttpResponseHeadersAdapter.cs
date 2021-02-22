@@ -1,8 +1,6 @@
 using System;
 using System.ComponentModel;
 using System.Net.Http.Headers;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Http.Headers.Adapters
@@ -13,11 +11,10 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new HttpResponseHeaders Implementation { get; }
 
 		/// <inheritdoc />
-		[NotNull, EditorBrowsable(EditorBrowsableState.Never)]
+		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new HttpResponseHeaders UnsafeConvert()
 		{
 			return Implementation;
@@ -34,14 +31,14 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		}
 
 		/// <inheritdoc />
-		public EntityTagHeaderValue ETag
+		public EntityTagHeaderValue? ETag
 		{
 			get => Implementation.ETag;
 			set => Implementation.ETag = value;
 		}
 
 		/// <inheritdoc />
-		public Uri Location
+		public Uri? Location
 		{
 			get => Implementation.Location;
 			set => Implementation.Location = value;
@@ -51,7 +48,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		public IHttpHeaderValueCollection<AuthenticationHeaderValue> ProxyAuthenticate => Implementation.ProxyAuthenticate.ToInterface();
 
 		/// <inheritdoc />
-		public RetryConditionHeaderValue RetryAfter
+		public RetryConditionHeaderValue? RetryAfter
 		{
 			get => Implementation.RetryAfter;
 			set => Implementation.RetryAfter = value;
@@ -67,7 +64,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		public IHttpHeaderValueCollection<AuthenticationHeaderValue> WwwAuthenticate => Implementation.WwwAuthenticate.ToInterface();
 
 		/// <inheritdoc />
-		public CacheControlHeaderValue CacheControl
+		public CacheControlHeaderValue? CacheControl
 		{
 			get => Implementation.CacheControl;
 			set => Implementation.CacheControl = value;
@@ -117,7 +114,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 
 		/// <summary>Initializes a new instance of the <see cref="HttpResponseHeaders" /> class.</summary>
 		/// <param name="headers">Http headers to be use by the adapter.</param>
-		public HttpResponseHeadersAdapter([NotNull] HttpResponseHeaders headers)
+		public HttpResponseHeadersAdapter(HttpResponseHeaders headers)
 			: base(headers)
 		{
 			Implementation = headers ?? throw new ArgumentNullException(nameof(headers));

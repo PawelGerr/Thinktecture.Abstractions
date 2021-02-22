@@ -6,6 +6,16 @@ namespace Thinktecture.Collections.Generic
    /// <summary>
    /// An abstraction for collections.
    /// </summary>
+   /// <typeparam name="TImplementationItem">Type of the item of the implementation.</typeparam>
+   /// <typeparam name="TImplementation">Type of the implementation.</typeparam>
+   public interface INotNullCollectionAbstraction<TImplementationItem, out TImplementation> : INotNullCollectionAbstraction<TImplementationItem, TImplementationItem, TImplementation>
+      where TImplementation : ICollection<TImplementationItem>
+   {
+   }
+
+   /// <summary>
+   /// An abstraction for collections.
+   /// </summary>
    /// <typeparam name="TAbstractionItem">Type of the abstraction.</typeparam>
    /// <typeparam name="TImplementationItem">Type of the item of the implementation.</typeparam>
    /// <typeparam name="TImplementation">Type of the implementation.</typeparam>

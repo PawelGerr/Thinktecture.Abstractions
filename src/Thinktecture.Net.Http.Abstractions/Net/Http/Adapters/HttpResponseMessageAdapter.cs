@@ -1,7 +1,6 @@
 using System;
 using System.Net;
 using System.Net.Http;
-using JetBrains.Annotations;
 using Thinktecture.Net.Http.Headers;
 
 // ReSharper disable AssignNullToNotNullAttribute
@@ -19,7 +18,7 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <inheritdoc />
-		public IHttpContent Content
+		public IHttpContent? Content
 		{
 			get => Implementation.Content.ToInterface();
 			set => Implementation.Content = value.ToImplementation();
@@ -33,7 +32,7 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <inheritdoc />
-		public string ReasonPhrase
+		public string? ReasonPhrase
 		{
 			get => Implementation.ReasonPhrase;
 			set => Implementation.ReasonPhrase = value;
@@ -43,7 +42,7 @@ namespace Thinktecture.Net.Http.Adapters
 		public IHttpResponseHeaders Headers => Implementation.Headers.ToInterface();
 
 		/// <inheritdoc />
-		public IHttpRequestMessage RequestMessage
+		public IHttpRequestMessage? RequestMessage
 		{
 			get => Implementation.RequestMessage.ToInterface();
 			set => Implementation.RequestMessage = value.ToImplementation();
@@ -69,7 +68,7 @@ namespace Thinktecture.Net.Http.Adapters
 		/// Initializes a new instance of the <see cref="HttpResponseMessageAdapter" /> class.
 		/// </summary>
 		/// <param name="message">Message to be used by the adapter.</param>
-		public HttpResponseMessageAdapter([NotNull] HttpResponseMessage message)
+		public HttpResponseMessageAdapter(HttpResponseMessage message)
 			: base(message)
 		{
 		}

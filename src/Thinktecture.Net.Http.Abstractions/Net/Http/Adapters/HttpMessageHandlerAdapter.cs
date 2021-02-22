@@ -1,6 +1,4 @@
 using System.Net.Http;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net.Http.Adapters
 {
 	/// <summary>A base type for HTTP message handlers.</summary>
@@ -8,7 +6,7 @@ namespace Thinktecture.Net.Http.Adapters
 	{
 		/// <summary>Initializes a new instance of the <see cref="HttpMessageHandlerAdapter" /> class.</summary>
 		/// <param name="handler">Handler to be used by the adapter.</param>
-		public HttpMessageHandlerAdapter([NotNull] HttpMessageHandler handler)
+		public HttpMessageHandlerAdapter(HttpMessageHandler handler)
 			: base(handler)
 		{
 		}

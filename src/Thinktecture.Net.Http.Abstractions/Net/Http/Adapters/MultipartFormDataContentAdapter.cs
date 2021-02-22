@@ -1,7 +1,5 @@
 using System.ComponentModel;
 using System.Net.Http;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net.Http.Adapters
 {
 	/// <summary>Provides a container for content encoded using multipart/form-data MIME type.</summary>
@@ -10,11 +8,10 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new MultipartFormDataContent Implementation { get; }
 
 		/// <inheritdoc />
-		[NotNull, EditorBrowsable(EditorBrowsableState.Never)]
+		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new MultipartFormDataContent UnsafeConvert()
 		{
 			return Implementation;
@@ -30,14 +27,14 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <param name="boundary">The boundary string for the multipart form data content.</param>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="boundary" /> was null or contains only white space characters.-or-The <paramref name="boundary" /> ends with a space character.</exception>
 		/// <exception cref="T:System.OutOfRangeException">The length of the <paramref name="boundary" /> was greater than 70.</exception>
-		public MultipartFormDataContentAdapter([NotNull] string boundary)
+		public MultipartFormDataContentAdapter(string boundary)
 			: this(new MultipartFormDataContent(boundary))
 		{
 		}
 
 		/// <summary>Creates a new instance of the <see cref="MultipartFormDataContentAdapter" /> class.</summary>
 		/// <param name="content">The implementation to use by the adapter.</param>
-		public MultipartFormDataContentAdapter([NotNull] MultipartFormDataContent content)
+		public MultipartFormDataContentAdapter(MultipartFormDataContent content)
 			: base(content)
 		{
 			Implementation = content;

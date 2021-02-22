@@ -2,7 +2,6 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.Net.Http.Headers;
 
@@ -18,7 +17,7 @@ namespace Thinktecture.Net.Http.Adapters
 
 		/// <summary>Initializes a new instance of the <see cref="HttpContentAdapter" /> class.</summary>
 		/// <param name="content">The implementation to use by the adapter.</param>
-		public HttpContentAdapter([NotNull] HttpContent content)
+		public HttpContentAdapter(HttpContent content)
 			: base(content)
 		{
 		}
@@ -43,25 +42,25 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <inheritdoc />
-		public Task CopyToAsync(Stream stream, TransportContext context)
+		public Task CopyToAsync(Stream stream, TransportContext? context)
 		{
 			return Implementation.CopyToAsync(stream, context);
 		}
 
 		/// <inheritdoc />
-		public Task CopyToAsync(Stream stream, ITransportContext context)
+		public Task CopyToAsync(Stream stream, ITransportContext? context)
 		{
 			return Implementation.CopyToAsync(stream, context.ToImplementation());
 		}
 
 		/// <inheritdoc />
-		public Task CopyToAsync(IStream stream, TransportContext context)
+		public Task CopyToAsync(IStream stream, TransportContext? context)
 		{
 			return Implementation.CopyToAsync(stream.ToImplementation(), context);
 		}
 
 		/// <inheritdoc />
-		public Task CopyToAsync(IStream stream, ITransportContext context)
+		public Task CopyToAsync(IStream stream, ITransportContext? context)
 		{
 			return Implementation.CopyToAsync(stream.ToImplementation(), context.ToImplementation());
 		}

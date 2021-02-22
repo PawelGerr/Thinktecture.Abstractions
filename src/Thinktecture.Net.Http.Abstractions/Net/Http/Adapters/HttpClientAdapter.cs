@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.Net.Http.Headers;
 
@@ -19,11 +18,9 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new HttpClient Implementation;
 
 		/// <inheritdoc />
-		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new HttpClient UnsafeConvert()
 		{
@@ -34,7 +31,7 @@ namespace Thinktecture.Net.Http.Adapters
 		public IHttpRequestHeaders DefaultRequestHeaders => Implementation.DefaultRequestHeaders.ToInterface();
 
 		/// <inheritdoc />
-		public Uri BaseAddress
+		public Uri? BaseAddress
 		{
 			get => Implementation.BaseAddress;
 			set => Implementation.BaseAddress = value;
@@ -62,14 +59,14 @@ namespace Thinktecture.Net.Http.Adapters
 
 		/// <summary>Initializes a new instance of the <see cref="HttpClientAdapter" /> class with a specific handler.</summary>
 		/// <param name="handler">The HTTP handler stack to use for sending requests. </param>
-		public HttpClientAdapter([NotNull] HttpMessageHandler handler)
+		public HttpClientAdapter(HttpMessageHandler handler)
 			: this(new HttpClient(handler))
 		{
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="HttpClientAdapter" /> class with a specific handler.</summary>
 		/// <param name="handler">The HTTP handler stack to use for sending requests. </param>
-		public HttpClientAdapter([NotNull] IHttpMessageHandler handler)
+		public HttpClientAdapter(IHttpMessageHandler handler)
 			: this(handler.ToImplementation())
 		{
 		}
@@ -77,7 +74,7 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <summary>Initializes a new instance of the <see cref="HttpClientAdapter" /> class with a specific handler.</summary>
 		/// <param name="handler">The <see cref="T:System.Net.Http.HttpMessageHandler" /> responsible for processing the HTTP response messages.</param>
 		/// <param name="disposeHandler">true if the inner handler should be disposed of by Dispose(),false if you intend to reuse the inner handler.</param>
-		public HttpClientAdapter([NotNull] HttpMessageHandler handler, bool disposeHandler)
+		public HttpClientAdapter(HttpMessageHandler handler, bool disposeHandler)
 			: this(new HttpClient(handler, disposeHandler))
 		{
 		}
@@ -85,7 +82,7 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <summary>Initializes a new instance of the <see cref="HttpClientAdapter" /> class with a specific handler.</summary>
 		/// <param name="handler">The <see cref="T:System.Net.Http.HttpMessageHandler" /> responsible for processing the HTTP response messages.</param>
 		/// <param name="disposeHandler">true if the inner handler should be disposed of by Dispose(),false if you intend to reuse the inner handler.</param>
-		public HttpClientAdapter([NotNull] IHttpMessageHandler handler, bool disposeHandler)
+		public HttpClientAdapter(IHttpMessageHandler handler, bool disposeHandler)
 			: this(handler.ToImplementation(), disposeHandler)
 		{
 		}
@@ -94,7 +91,7 @@ namespace Thinktecture.Net.Http.Adapters
 		/// Initializes a new instance of the <see cref="HttpClientAdapter" /> class.
 		/// </summary>
 		/// <param name="client">Client to be used by the adapter.</param>
-		public HttpClientAdapter([NotNull] HttpClient client)
+		public HttpClientAdapter(HttpClient client)
 			: base(client)
 		{
 			Implementation = client ?? throw new ArgumentNullException(nameof(client));

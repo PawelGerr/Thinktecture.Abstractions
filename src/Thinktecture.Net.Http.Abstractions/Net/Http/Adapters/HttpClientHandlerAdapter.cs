@@ -2,8 +2,6 @@ using System;
 using System.ComponentModel;
 using System.Net;
 using System.Net.Http;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Http.Adapters
@@ -14,11 +12,9 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new HttpClientHandler Implementation { get; }
 
 		/// <inheritdoc />
-		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new HttpClientHandler UnsafeConvert()
 		{
@@ -70,7 +66,7 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <inheritdoc />
-		public IWebProxy Proxy
+		public IWebProxy? Proxy
 		{
 			get => Implementation.Proxy;
 			set => Implementation.Proxy = value;
@@ -91,7 +87,7 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <inheritdoc />
-		public ICredentials Credentials
+		public ICredentials? Credentials
 		{
 			get => Implementation.Credentials;
 			set => Implementation.Credentials = value;
@@ -126,7 +122,7 @@ namespace Thinktecture.Net.Http.Adapters
 
 		/// <summary>Creates an instance of a <see cref="HttpClientHandlerAdapter" /> class.</summary>
 		/// <param name="handler">The implementation to use by the adapter.</param>
-		public HttpClientHandlerAdapter([NotNull] HttpClientHandler handler)
+		public HttpClientHandlerAdapter(HttpClientHandler handler)
 			: base(handler)
 		{
 			Implementation = handler ?? throw new ArgumentNullException(nameof(handler));

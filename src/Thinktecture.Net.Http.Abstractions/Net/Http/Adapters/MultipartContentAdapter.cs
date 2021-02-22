@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.Http;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Http.Adapters
@@ -14,7 +12,6 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new MultipartContent Implementation { get; }
 
 		/// <summary>Creates a new instance of the <see cref="MultipartContentAdapter" /> class.</summary>
@@ -26,7 +23,7 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <summary>Creates a new instance of the <see cref="MultipartContentAdapter" /> class.</summary>
 		/// <param name="subtype">The subtype of the multipart content.</param>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="subtype" /> was null or contains only white space characters.</exception>
-		public MultipartContentAdapter([NotNull] string subtype)
+		public MultipartContentAdapter(string subtype)
 			: this(new MultipartContent(subtype))
 
 		{
@@ -37,21 +34,21 @@ namespace Thinktecture.Net.Http.Adapters
 		/// <param name="boundary">The boundary string for the multipart content.</param>
 		/// <exception cref="T:System.ArgumentException">The <paramref name="subtype" /> was null or an empty string.The <paramref name="boundary" /> was null or contains only white space characters.-or-The <paramref name="boundary" /> ends with a space character.</exception>
 		/// <exception cref="T:System.OutOfRangeException">The length of the <paramref name="boundary" /> was greater than 70.</exception>
-		public MultipartContentAdapter([NotNull] string subtype, [NotNull] string boundary)
+		public MultipartContentAdapter(string subtype, string boundary)
 			: this(new MultipartContent(subtype, boundary))
 		{
 		}
 
 		/// <summary>Creates a new instance of the <see cref="MultipartContentAdapter" /> class.</summary>
 		/// <param name="content">The implementation to use by the adapter.</param>
-		public MultipartContentAdapter([NotNull] MultipartContent content)
+		public MultipartContentAdapter(MultipartContent content)
 			: base(content)
 		{
 			Implementation = content;
 		}
 
 		/// <inheritdoc />
-		[NotNull, EditorBrowsable(EditorBrowsableState.Never)]
+		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new MultipartContent UnsafeConvert()
 		{
 			return Implementation;
@@ -79,7 +76,6 @@ namespace Thinktecture.Net.Http.Adapters
 		}
 
 		/// <inheritdoc />
-		[NotNull]
 		IEnumerator IEnumerable.GetEnumerator()
 		{
 			return GetEnumerator();

@@ -1,8 +1,6 @@
 using System;
 using System.ComponentModel;
 using System.Net.Http.Headers;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.Http.Headers.Adapters
@@ -13,11 +11,10 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new HttpRequestHeaders Implementation { get; }
 
 		/// <inheritdoc />
-		[NotNull, EditorBrowsable(EditorBrowsableState.Never)]
+		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new HttpRequestHeaders UnsafeConvert()
 		{
 			return Implementation;
@@ -36,7 +33,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		public IHttpHeaderValueCollection<StringWithQualityHeaderValue> AcceptLanguage => Implementation.AcceptLanguage.ToInterface();
 
 		/// <inheritdoc />
-		public AuthenticationHeaderValue Authorization
+		public AuthenticationHeaderValue? Authorization
 		{
 			get => Implementation.Authorization;
 			set => Implementation.Authorization = value;
@@ -53,14 +50,14 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		}
 
 		/// <inheritdoc />
-		public string From
+		public string? From
 		{
 			get => Implementation.From;
 			set => Implementation.From = value;
 		}
 
 		/// <inheritdoc />
-		public string Host
+		public string? Host
 		{
 			get => Implementation.Host;
 			set => Implementation.Host = value;
@@ -80,7 +77,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		public IHttpHeaderValueCollection<EntityTagHeaderValue> IfNoneMatch => Implementation.IfNoneMatch.ToInterface();
 
 		/// <inheritdoc />
-		public RangeConditionHeaderValue IfRange
+		public RangeConditionHeaderValue? IfRange
 		{
 			get => Implementation.IfRange;
 			set => Implementation.IfRange = value;
@@ -101,21 +98,21 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		}
 
 		/// <inheritdoc />
-		public AuthenticationHeaderValue ProxyAuthorization
+		public AuthenticationHeaderValue? ProxyAuthorization
 		{
 			get => Implementation.ProxyAuthorization;
 			set => Implementation.ProxyAuthorization = value;
 		}
 
 		/// <inheritdoc />
-		public RangeHeaderValue Range
+		public RangeHeaderValue? Range
 		{
 			get => Implementation.Range;
 			set => Implementation.Range = value;
 		}
 
 		/// <inheritdoc />
-		public Uri Referrer
+		public Uri? Referrer
 		{
 			get => Implementation.Referrer;
 			set => Implementation.Referrer = value;
@@ -128,7 +125,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 		public IHttpHeaderValueCollection<ProductInfoHeaderValue> UserAgent => Implementation.UserAgent.ToInterface();
 
 		/// <inheritdoc />
-		public CacheControlHeaderValue CacheControl
+		public CacheControlHeaderValue? CacheControl
 		{
 			get => Implementation.CacheControl;
 			set => Implementation.CacheControl = value;
@@ -178,7 +175,7 @@ namespace Thinktecture.Net.Http.Headers.Adapters
 
 		/// <summary>Initializes a new instance of the <see cref="HttpHeadersAdapter" /> class.</summary>
 		/// <param name="headers">Http headers to be use by the adapter.</param>
-		public HttpRequestHeadersAdapter([NotNull] HttpRequestHeaders headers)
+		public HttpRequestHeadersAdapter(HttpRequestHeaders headers)
 			: base(headers)
 		{
 			Implementation = headers ?? throw new ArgumentNullException(nameof(headers));

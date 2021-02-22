@@ -7,6 +7,75 @@ namespace Thinktecture.Collections.Generic
    /// <summary>
    /// Adapter for collections.
    /// </summary>
+   /// <typeparam name="TItem">Item type.</typeparam>
+   /// <typeparam name="TImplementation">Type of the implementation.</typeparam>
+   public class NotNullCollectionAbstraction<TItem, TImplementation> : AbstractionAdapter<TImplementation>, INotNullCollectionAbstraction<TItem, TImplementation>
+      where TImplementation : class, ICollection<TItem>
+   {
+      /// <inheritdoc />
+      public int Count => Implementation.Count;
+
+      /// <inheritdoc />
+      public bool IsReadOnly => Implementation.IsReadOnly;
+
+      /// <summary>
+      /// Initializes new instance of <see cref="CollectionAbstractionAdapter{TAbstractionItem,TImplementationItem,TImplementation}"/>.
+      /// </summary>
+      /// <param name="collection">Collection to be used by the adapter.</param>
+      protected NotNullCollectionAbstraction(TImplementation collection)
+         : base(collection)
+      {
+      }
+
+      /// <inheritdoc />
+      public IEnumerator<TItem> GetEnumerator()
+      {
+         foreach (var item in Implementation)
+         {
+            yield return item;
+         }
+      }
+
+      /// <inheritdoc />
+      IEnumerator IEnumerable.GetEnumerator()
+      {
+         return GetEnumerator();
+      }
+
+      /// <inheritdoc cref="ICollection{T}.Add" />
+      public void Add(TItem item)
+      {
+         Implementation.Add(item);
+      }
+
+      /// <inheritdoc />
+      public void Clear()
+      {
+         Implementation.Clear();
+      }
+
+      /// <inheritdoc cref="ICollection{T}.Contains" />
+      public bool Contains(TItem item)
+      {
+         return Implementation.Contains(item);
+      }
+
+      /// <inheritdoc cref="ICollection{T}.CopyTo" />
+      public void CopyTo(TItem[] array, int arrayIndex)
+      {
+         Implementation.CopyTo(array, arrayIndex);
+      }
+
+      /// <inheritdoc cref="ICollection{T}.Remove" />
+      public bool Remove(TItem item)
+      {
+         return Implementation.Remove(item);
+      }
+   }
+
+   /// <summary>
+   /// Adapter for collections.
+   /// </summary>
    /// <typeparam name="TAbstractionItem">Item type of the abstraction.</typeparam>
    /// <typeparam name="TImplementationItem">Item type of the implementation.</typeparam>
    /// <typeparam name="TImplementation">Type of the implementation.</typeparam>
