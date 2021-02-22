@@ -1,5 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -16,10 +16,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="watcher"><see cref="FileSystemWatcher"/> to convert.</param>
 		/// <returns>An instance of <see cref="IFileSystemWatcher"/>.</returns>
-		[CanBeNull]
-		public static IFileSystemWatcher ToInterface([CanBeNull] this FileSystemWatcher watcher)
+		[return:NotNullIfNotNull("watcher")]
+		public static IFileSystemWatcher? ToInterface(this FileSystemWatcher? watcher)
 		{
-			return (watcher == null) ? null : new FileSystemWatcherAdapter(watcher);
+			return watcher == null ? null : new FileSystemWatcherAdapter(watcher);
 		}
 	}
 }

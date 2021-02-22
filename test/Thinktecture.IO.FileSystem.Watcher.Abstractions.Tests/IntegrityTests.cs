@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Xunit;
 
-namespace Thinktecture
+namespace Thinktecture.Abstractions.Tests
 {
 	public class IntegrityTests : IntegrityTestsBase
 	{
