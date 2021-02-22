@@ -1,8 +1,4 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
@@ -29,7 +25,6 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
 		///   <IPermission class="System.Net.NetworkInformation.NetworkInformationPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Access="Read" />
 		/// </PermissionSet>
-		[NotNull]
 		public static INetworkInterface[] GetAllNetworkInterfaces()
 		{
 			return NetworkInterface.GetAllNetworkInterfaces().ToInterface();
@@ -68,7 +63,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 
 		/// <summary>Initializes a new instance of the <see cref="NetworkInterfaceAdapter" /> class.</summary>
 		/// <param name="nic">Network interface to be used by the adapter.</param>
-		public NetworkInterfaceAdapter([NotNull] NetworkInterface nic)
+		public NetworkInterfaceAdapter(NetworkInterface nic)
 			: base(nic)
 		{
 		}
@@ -85,13 +80,11 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 			return Implementation.GetIPStatistics().ToInterface();
 		}
 
-#if NETSTANDARD2_0 || NET45 || NET46
 		/// <inheritdoc />
 		public IPv4InterfaceStatistics GetIPv4Statistics()
 		{
 			return Implementation.GetIPv4Statistics();
 		}
-#endif
 
 		/// <inheritdoc />
 		public IPhysicalAddress GetPhysicalAddress()
@@ -106,5 +99,3 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		}
 	}
 }
-
-#endif

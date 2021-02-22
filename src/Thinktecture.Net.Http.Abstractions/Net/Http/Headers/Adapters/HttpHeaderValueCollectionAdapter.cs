@@ -4,7 +4,7 @@ using Thinktecture.Collections.Generic;
 namespace Thinktecture.Net.Http.Headers.Adapters
 {
 	/// <inheritdoc cref="IHttpHeaderValueCollection{T}" />
-	public class HttpHeaderValueCollectionAdapter<T> : NotNullCollectionAbstraction<T, HttpHeaderValueCollection<T>>, IHttpHeaderValueCollection<T>
+	public class HttpHeaderValueCollectionAdapter<T> : NotNullCollectionAbstractionAdapter<T, HttpHeaderValueCollection<T>>, IHttpHeaderValueCollection<T>
 		where T : class
 	{
 		/// <summary>Initializes a new instance of the <see cref="HttpHeaderValueCollectionAdapter{T}" /> class.</summary>

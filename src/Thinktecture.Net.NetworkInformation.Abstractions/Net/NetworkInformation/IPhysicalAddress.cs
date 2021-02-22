@@ -1,22 +1,17 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
+using System;
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
 
 namespace Thinktecture.Net.NetworkInformation
 {
-	/// <summary>
-	/// Provides the Media Access Control (MAC) address for a network interface (adapter).
-	/// </summary>
-	public interface IPhysicalAddress : IAbstraction<PhysicalAddress>
-	{
-		/// <summary>
-		/// Returns the address of the current instance.
-		/// </summary>
-		/// <returns>A Byte array containing the address.</returns>
-		[NotNull]
-		byte[] GetAddressBytes();
-	}
+   /// <summary>
+   /// Provides the Media Access Control (MAC) address for a network interface (adapter).
+   /// </summary>
+   public interface IPhysicalAddress : IAbstraction<PhysicalAddress>
+   {
+      /// <summary>
+      /// Returns the address of the current instance.
+      /// </summary>
+      /// <returns>A Byte array containing the address.</returns>
+      byte[] GetAddressBytes();
+   }
 }
-
-#endif

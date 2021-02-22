@@ -9,7 +9,7 @@ namespace Thinktecture.Collections.Generic
    /// </summary>
    /// <typeparam name="TItem">Item type.</typeparam>
    /// <typeparam name="TImplementation">Type of the implementation.</typeparam>
-   public class NotNullCollectionAbstraction<TItem, TImplementation> : AbstractionAdapter<TImplementation>, INotNullCollectionAbstraction<TItem, TImplementation>
+   public class NotNullCollectionAbstractionAdapter<TItem, TImplementation> : AbstractionAdapter<TImplementation>, INotNullCollectionAbstraction<TItem, TImplementation>
       where TImplementation : class, ICollection<TItem>
    {
       /// <inheritdoc />
@@ -22,7 +22,7 @@ namespace Thinktecture.Collections.Generic
       /// Initializes new instance of <see cref="CollectionAbstractionAdapter{TAbstractionItem,TImplementationItem,TImplementation}"/>.
       /// </summary>
       /// <param name="collection">Collection to be used by the adapter.</param>
-      protected NotNullCollectionAbstraction(TImplementation collection)
+      protected NotNullCollectionAbstractionAdapter(TImplementation collection)
          : base(collection)
       {
       }
@@ -79,7 +79,7 @@ namespace Thinktecture.Collections.Generic
    /// <typeparam name="TAbstractionItem">Item type of the abstraction.</typeparam>
    /// <typeparam name="TImplementationItem">Item type of the implementation.</typeparam>
    /// <typeparam name="TImplementation">Type of the implementation.</typeparam>
-   public class NotNullCollectionAbstraction<TAbstractionItem, TImplementationItem, TImplementation> : AbstractionAdapter<TImplementation>, INotNullCollectionAbstraction<TAbstractionItem, TImplementationItem, TImplementation>
+   public class NotNullCollectionAbstractionAdapter<TAbstractionItem, TImplementationItem, TImplementation> : AbstractionAdapter<TImplementation>, INotNullCollectionAbstraction<TAbstractionItem, TImplementationItem, TImplementation>
       where TAbstractionItem : IAbstraction<TImplementationItem>
       where TImplementationItem : notnull
       where TImplementation : class, ICollection<TImplementationItem>
@@ -97,7 +97,7 @@ namespace Thinktecture.Collections.Generic
       /// </summary>
       /// <param name="collection">Collection to be used by the adapter.</param>
       /// <param name="toInterface">Converts an item of <typeparamref name="TImplementation"/> to type <typeparamref name="TAbstractionItem"/>.</param>
-      public NotNullCollectionAbstraction(TImplementation collection, Func<TImplementationItem, TAbstractionItem> toInterface)
+      public NotNullCollectionAbstractionAdapter(TImplementation collection, Func<TImplementationItem, TAbstractionItem> toInterface)
          : base(collection)
       {
          _toInterface = toInterface ?? throw new ArgumentNullException(nameof(toInterface));

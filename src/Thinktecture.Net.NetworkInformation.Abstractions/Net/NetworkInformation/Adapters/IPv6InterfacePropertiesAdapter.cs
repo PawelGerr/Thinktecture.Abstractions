@@ -1,8 +1,4 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net.NetworkInformation.Adapters
 {
 	/// <summary>
@@ -27,11 +23,9 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// Initializes new instance of <see cref="IPv6InterfacePropertiesAdapter"/>.
 		/// </summary>
 		/// <param name="props">Properties to be used by the adapter.</param>
-		public IPv6InterfacePropertiesAdapter([NotNull] IPv6InterfaceProperties props)
+		public IPv6InterfacePropertiesAdapter(IPv6InterfaceProperties props)
 			: base(props)
 		{
 		}
 	}
 }
-
-#endif

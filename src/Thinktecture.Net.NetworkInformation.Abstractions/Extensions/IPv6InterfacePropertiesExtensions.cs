@@ -1,7 +1,5 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
+using System.Diagnostics.CodeAnalysis;
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
 using Thinktecture.Net.NetworkInformation;
 using Thinktecture.Net.NetworkInformation.Adapters;
 
@@ -19,12 +17,11 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="properties">Properties to convert.</param>
 		/// <returns>Converted properties.</returns>
-		[CanBeNull]
-		public static IIPv6InterfaceProperties ToInterface([CanBeNull] this IPv6InterfaceProperties properties)
+      [return:NotNullIfNotNull("properties")]
+
+		public static IIPv6InterfaceProperties? ToInterface(this IPv6InterfaceProperties? properties)
 		{
 			return (properties == null) ? null : new IPv6InterfacePropertiesAdapter(properties);
 		}
 	}
 }
-
-#endif

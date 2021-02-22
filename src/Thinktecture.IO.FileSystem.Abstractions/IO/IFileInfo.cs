@@ -159,9 +159,13 @@ namespace Thinktecture.IO
       void MoveTo(string destFileName);
 
 #if NETCOREAPP || NET5_0
-      // Moves a given file to a new location and potentially a new file name.
-      // Optionally overwrites existing file.
-      // This method does work across volumes.
+      /// <summary>
+      /// Moves a given file to a new location and potentially a new file name.
+      /// Optionally overwrites existing file.
+      /// This method does work across volumes.
+      /// </summary>
+      /// <param name="destFileName">The path to move the file to, which can specify a different file name. </param>
+      /// <param name="overwrite">Indication whether the file at destination should be overwritten or not.</param>
       void MoveTo(string destFileName, bool overwrite);
 #endif
 

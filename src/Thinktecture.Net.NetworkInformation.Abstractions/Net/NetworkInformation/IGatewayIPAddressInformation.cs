@@ -1,8 +1,4 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net.NetworkInformation
 {
 	/// <summary>
@@ -14,9 +10,6 @@ namespace Thinktecture.Net.NetworkInformation
 		/// <summary>
 		/// Get the IP address of the gateway.
 		/// </summary>
-		[NotNull]
 		IIPAddress Address { get; }
 	}
 }
-
-#endif

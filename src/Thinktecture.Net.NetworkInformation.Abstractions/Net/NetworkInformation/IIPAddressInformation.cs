@@ -1,8 +1,4 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net.NetworkInformation
 {
 	/// <summary>
@@ -14,7 +10,6 @@ namespace Thinktecture.Net.NetworkInformation
 		/// <summary>
 		/// Gets the Internet Protocol (IP) address.
 		/// </summary>
-		[NotNull]
 		IIPAddress Address { get; }
 
 		/// <summary>
@@ -28,5 +23,3 @@ namespace Thinktecture.Net.NetworkInformation
 		bool IsTransient { get; }
 	}
 }
-
-#endif

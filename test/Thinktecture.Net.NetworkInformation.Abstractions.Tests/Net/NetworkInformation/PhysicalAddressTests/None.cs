@@ -3,7 +3,7 @@ using FluentAssertions;
 using Thinktecture.Net.NetworkInformation.Adapters;
 using Xunit;
 
-namespace Thinktecture.Net.NetworkInformation.PhysicalAddressTests
+namespace Thinktecture.Abstractions.Tests.Net.NetworkInformation.PhysicalAddressTests
 {
 	public class None
 	{

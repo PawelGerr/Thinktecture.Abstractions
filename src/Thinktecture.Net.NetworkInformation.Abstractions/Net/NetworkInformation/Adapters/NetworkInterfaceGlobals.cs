@@ -1,5 +1,3 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
@@ -26,5 +24,3 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		}
 	}
 }
-
-#endif

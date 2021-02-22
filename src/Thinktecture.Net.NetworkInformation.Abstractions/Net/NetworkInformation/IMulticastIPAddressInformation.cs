@@ -1,6 +1,4 @@
-﻿#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
-using System.Net.NetworkInformation;
+﻿using System.Net.NetworkInformation;
 
 namespace Thinktecture.Net.NetworkInformation
 {
@@ -42,5 +40,3 @@ namespace Thinktecture.Net.NetworkInformation
 		SuffixOrigin SuffixOrigin { get; }
 	}
 }
-
-#endif

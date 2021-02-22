@@ -1,8 +1,5 @@
-﻿#if NET45 || NET46 || NETSTANDARD2_0
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
 using Thinktecture.Adapters;
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
@@ -11,7 +8,6 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 	public class NetworkAvailabilityEventArgsAdapter : EventArgsAdapter, INetworkAvailabilityEventArgs
 	{
 		/// <inheritdoc />
-		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new NetworkAvailabilityEventArgs UnsafeConvert()
 		{
@@ -21,7 +17,6 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new NetworkAvailabilityEventArgs Implementation { get; }
 
 		/// <inheritdoc />
@@ -38,5 +33,3 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		}
 	}
 }
-
-#endif

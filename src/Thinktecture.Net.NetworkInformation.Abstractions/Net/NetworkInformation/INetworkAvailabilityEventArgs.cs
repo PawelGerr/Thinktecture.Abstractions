@@ -1,6 +1,4 @@
-﻿#if NET45 || NET46 || NETSTANDARD2_0
-
-using System.Net.NetworkInformation;
+﻿using System.Net.NetworkInformation;
 
 namespace Thinktecture.Net.NetworkInformation
 {
@@ -14,5 +12,3 @@ namespace Thinktecture.Net.NetworkInformation
 		bool IsAvailable { get; }
 	}
 }
-
-#endif

@@ -1,8 +1,4 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net.NetworkInformation
 {
 	/// <summary>Provides configuration and statistical information for a network interface.</summary>
@@ -10,17 +6,14 @@ namespace Thinktecture.Net.NetworkInformation
 	{
 		/// <summary>Gets the identifier of the network adapter.</summary>
 		/// <returns>A <see cref="T:System.String" /> that contains the identifier.</returns>
-		[NotNull]
 		string Id { get; }
 
 		/// <summary>Gets the name of the network adapter.</summary>
 		/// <returns>A <see cref="T:System.String" /> that contains the adapter name.</returns>
-		[NotNull]
 		string Name { get; }
 
 		/// <summary>Gets the description of the interface.</summary>
 		/// <returns>A <see cref="T:System.String" /> that describes this interface.</returns>
-		[NotNull]
 		string Description { get; }
 
 		/// <summary>Gets the current operational state of the network connection.</summary>
@@ -47,25 +40,20 @@ namespace Thinktecture.Net.NetworkInformation
 
 		/// <summary>Returns an object that describes the configuration of this network interface.</summary>
 		/// <returns>An <see cref="T:System.Net.NetworkInformation.IPInterfaceProperties" /> object that describes this network interface.</returns>
-		[NotNull]
 		// ReSharper disable once InconsistentNaming
 		IIPInterfaceProperties GetIPProperties();
 
 		/// <summary>Gets the IP statistics for this <see cref="T:System.Net.NetworkInformation.NetworkInterface" /> instance.</summary>
 		/// <returns>Returns <see cref="T:System.Net.NetworkInformation.IPInterfaceStatistics" />.The IP statistics.</returns>
-		[NotNull]
 		// ReSharper disable once InconsistentNaming
 		IIPInterfaceStatistics GetIPStatistics();
 
-#if NETSTANDARD2_0 || NET45 || NET46
 		/// <summary>Gets the IPv4 statistics for this <see cref="T:System.Net.NetworkInformation.NetworkInterface" /> instance.</summary>
 		/// <returns>An <see cref="T:System.Net.NetworkInformation.IPv4InterfaceStatistics" /> object.</returns>
 		IPv4InterfaceStatistics GetIPv4Statistics();
-#endif
 
 		/// <summary>Returns the Media Access Control (MAC) or physical address for this adapter.</summary>
 		/// <returns>A <see cref="T:System.Net.NetworkInformation.PhysicalAddress" /> object that contains the physical address.</returns>
-		[NotNull]
 		IPhysicalAddress GetPhysicalAddress();
 
 		/// <summary>Gets a <see cref="T:System.Boolean" /> value that indicates whether the interface supports the specified protocol.</summary>
@@ -74,5 +62,3 @@ namespace Thinktecture.Net.NetworkInformation
 		bool Supports(NetworkInterfaceComponent networkInterfaceComponent);
 	}
 }
-
-#endif

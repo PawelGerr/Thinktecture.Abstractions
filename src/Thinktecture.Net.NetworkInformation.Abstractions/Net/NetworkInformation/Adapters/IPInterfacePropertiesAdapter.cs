@@ -1,8 +1,4 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
@@ -47,7 +43,7 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// Initializes new instance of <see cref="IPInterfacePropertiesAdapter"/>.
 		/// </summary>
 		/// <param name="props">Properties to be used by the adapter.</param>
-		public IPInterfacePropertiesAdapter([NotNull] IPInterfaceProperties props)
+		public IPInterfacePropertiesAdapter(IPInterfaceProperties props)
 			: base(props)
 		{
 		}
@@ -65,5 +61,3 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		}
 	}
 }
-
-#endif

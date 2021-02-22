@@ -1,10 +1,6 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
 using System;
 using System.ComponentModel;
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
@@ -18,7 +14,6 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new UnicastIPAddressInformation Implementation { get; }
 
 		/// <inheritdoc />
@@ -49,19 +44,17 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// Initializes new instance of <see cref="UnicastIPAddressInformationAdapter"/>.
 		/// </summary>
 		/// <param name="info">Information to be used by the adapter.</param>
-		public UnicastIPAddressInformationAdapter([NotNull] UnicastIPAddressInformation info)
+		public UnicastIPAddressInformationAdapter(UnicastIPAddressInformation info)
 			: base(info)
 		{
 			Implementation = info ?? throw new ArgumentNullException(nameof(info));
 		}
 
 		/// <inheritdoc />
-		[NotNull, EditorBrowsable(EditorBrowsableState.Never)]
+		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new UnicastIPAddressInformation UnsafeConvert()
 		{
 			return Implementation;
 		}
 	}
 }
-
-#endif

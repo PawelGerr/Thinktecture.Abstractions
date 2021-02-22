@@ -1,8 +1,4 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Net.NetworkInformation.Adapters
@@ -17,14 +13,12 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		public IIPAddress Address => Implementation.Address.ToInterface();
 
 		/// <summary>
-		/// Initialies new instance of type <see cref="GatewayIPAddressInformation"/>
+		/// Initializes new instance of type <see cref="GatewayIPAddressInformation"/>
 		/// </summary>
 		/// <param name="info"></param>
-		public GatewayIPAddressInformationAdapter([NotNull] GatewayIPAddressInformation info)
+		public GatewayIPAddressInformationAdapter(GatewayIPAddressInformation info)
 			: base(info)
 		{
 		}
 	}
 }
-
-#endif

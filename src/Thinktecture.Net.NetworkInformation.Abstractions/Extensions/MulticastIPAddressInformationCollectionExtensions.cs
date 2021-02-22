@@ -1,7 +1,5 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
+using System.Diagnostics.CodeAnalysis;
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
 using Thinktecture.Net.NetworkInformation;
 using Thinktecture.Net.NetworkInformation.Adapters;
 
@@ -19,12 +17,11 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="collection">Collection to convert.</param>
 		/// <returns>Converted collection.</returns>
-		[CanBeNull]
-		public static IMulticastIPAddressInformationCollection ToInterface([CanBeNull] this MulticastIPAddressInformationCollection collection)
+      [return:NotNullIfNotNull("collection")]
+
+		public static IMulticastIPAddressInformationCollection? ToInterface(this MulticastIPAddressInformationCollection? collection)
 		{
 			return (collection == null) ? null : new MulticastIPAddressInformationCollectionAdapter(collection);
 		}
 	}
 }
-
-#endif

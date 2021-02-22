@@ -639,6 +639,7 @@ namespace Thinktecture.Adapters
       }
 
 #if NET5_0
+      /// <inheritdoc />
       [UnsupportedOSPlatform("browser")]
       public (int Left, int Top) GetCursorPosition()
       {

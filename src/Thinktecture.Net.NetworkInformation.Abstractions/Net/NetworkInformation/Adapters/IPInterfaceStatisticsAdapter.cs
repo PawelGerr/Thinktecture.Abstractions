@@ -1,8 +1,4 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net.NetworkInformation.Adapters
 {
 	/// <summary>
@@ -51,11 +47,9 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// Initializes new instance of <see cref="IPInterfaceStatisticsAdapter"/>.
 		/// </summary>
 		/// <param name="stats">Statistics to be used by the adapter.</param>
-		public IPInterfaceStatisticsAdapter([NotNull] IPInterfaceStatistics stats)
+		public IPInterfaceStatisticsAdapter(IPInterfaceStatistics stats)
 			: base(stats)
 		{
 		}
 	}
 }
-
-#endif

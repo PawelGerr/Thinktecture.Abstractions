@@ -1,10 +1,6 @@
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45 || NET46
-
 using System;
 using System.ComponentModel;
 using System.Net.NetworkInformation;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Net.NetworkInformation.Adapters
 {
 	/// <summary>
@@ -16,7 +12,6 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new MulticastIPAddressInformation Implementation { get; }
 
 		/// <inheritdoc />
@@ -41,19 +36,17 @@ namespace Thinktecture.Net.NetworkInformation.Adapters
 		/// Initializes new instance of <see cref="MulticastIPAddressInformationAdapter"/>.
 		/// </summary>
 		/// <param name="info">Information to be used by the adapter.</param>
-		public MulticastIPAddressInformationAdapter([NotNull] MulticastIPAddressInformation info)
+		public MulticastIPAddressInformationAdapter(MulticastIPAddressInformation info)
 			: base(info)
 		{
 			Implementation = info ?? throw new ArgumentNullException(nameof(info));
 		}
 
 		/// <inheritdoc />
-		[NotNull, EditorBrowsable(EditorBrowsableState.Never)]
+		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new MulticastIPAddressInformation UnsafeConvert()
 		{
 			return Implementation;
 		}
 	}
 }
-
-#endif
