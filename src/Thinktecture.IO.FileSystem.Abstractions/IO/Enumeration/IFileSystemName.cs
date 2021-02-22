@@ -1,7 +1,4 @@
-﻿#if NETCOREAPP2_2
-
-using System;
-using JetBrains.Annotations;
+﻿using System;
 using Thinktecture.IO.Enumeration.Adapters;
 
 namespace Thinktecture.IO.Enumeration
@@ -15,7 +12,7 @@ namespace Thinktecture.IO.Enumeration
 		/// Change '*' and '?' to '&lt;', '&gt;' and '"' to match Win32 behavior. For compatibility, Windows
 		/// changes some wildcards to provide a closer match to historical DOS 8.3 filename matching.
 		/// </summary>
-		string TranslateWin32Expression([CanBeNull] string expression);
+		string TranslateWin32Expression(string? expression);
 
 		/// <summary>
 		/// Return true if the given expression matches the given name. Supports the following wildcards:
@@ -39,5 +36,3 @@ namespace Thinktecture.IO.Enumeration
 		bool MatchesSimpleExpression(ReadOnlySpan<char> expression, ReadOnlySpan<char> name, bool ignoreCase = true);
 	}
 }
-
-#endif

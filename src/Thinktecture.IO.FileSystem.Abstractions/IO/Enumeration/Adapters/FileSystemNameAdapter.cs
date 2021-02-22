@@ -1,6 +1,4 @@
-﻿#if NETCOREAPP2_2
-
-using System;
+﻿using System;
 using System.IO.Enumeration;
 
 namespace Thinktecture.IO.Enumeration.Adapters
@@ -11,7 +9,7 @@ namespace Thinktecture.IO.Enumeration.Adapters
 	public class FileSystemNameAdapter : IFileSystemName
 	{
 		/// <inheritdoc />
-		public string TranslateWin32Expression(string expression)
+		public string TranslateWin32Expression(string? expression)
 		{
 			return FileSystemName.TranslateWin32Expression(expression);
 		}
@@ -29,5 +27,3 @@ namespace Thinktecture.IO.Enumeration.Adapters
 		}
 	}
 }
-
-#endif

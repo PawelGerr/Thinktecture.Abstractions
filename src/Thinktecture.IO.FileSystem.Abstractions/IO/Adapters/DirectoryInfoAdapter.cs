@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.IO.Adapters
@@ -14,7 +12,6 @@ namespace Thinktecture.IO.Adapters
 	public class DirectoryInfoAdapter : FileSystemInfoAdapter, IDirectoryInfo
 	{
 		/// <inheritdoc />
-		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new DirectoryInfo UnsafeConvert()
 		{
@@ -24,7 +21,6 @@ namespace Thinktecture.IO.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new DirectoryInfo Implementation { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="DirectoryInfoAdapter" /> class on the specified path.</summary>
@@ -35,7 +31,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.ArgumentException">
 		/// <paramref name="path" /> contains invalid characters such as ", &lt;, &gt;, or |. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. The specified path, file name, or both are too long.</exception>
-		public DirectoryInfoAdapter([NotNull] string path)
+		public DirectoryInfoAdapter(string path)
 			: this(new DirectoryInfo(path))
 		{
 		}
@@ -44,14 +40,14 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="DirectoryInfoAdapter" /> class
 		/// </summary>
 		/// <param name="directoryInfo">Directory info to be used by the adapter.</param>
-		public DirectoryInfoAdapter([NotNull] DirectoryInfo directoryInfo)
+		public DirectoryInfoAdapter(DirectoryInfo directoryInfo)
 			: base(directoryInfo)
 		{
 			Implementation = directoryInfo ?? throw new ArgumentNullException(nameof(directoryInfo));
 		}
 
 		/// <inheritdoc />
-		public IDirectoryInfo Parent => Implementation.Parent.ToInterface();
+		public IDirectoryInfo? Parent => Implementation.Parent.ToInterface();
 
 		/// <inheritdoc />
 		public IDirectoryInfo Root => Implementation.Root.ToInterface();
@@ -146,7 +142,6 @@ namespace Thinktecture.IO.Adapters
 			return Implementation.GetDirectories(searchPattern, searchOption).ToInterface();
 		}
 
-#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles(string searchPattern, EnumerationOptions enumerationOptions)
 		{
@@ -182,7 +177,6 @@ namespace Thinktecture.IO.Adapters
 		{
 			return Convert(Implementation.EnumerateDirectories(searchPattern, enumerationOptions));
 		}
-#endif
 
 		/// <inheritdoc />
 		public IFileInfo[] GetFiles()
@@ -226,8 +220,7 @@ namespace Thinktecture.IO.Adapters
 			Implementation.MoveTo(destDirName);
 		}
 
-		[NotNull, ItemNotNull]
-		private static IEnumerable<IDirectoryInfo> Convert([NotNull, ItemNotNull] IEnumerable<DirectoryInfo> infos)
+		private static IEnumerable<IDirectoryInfo> Convert(IEnumerable<DirectoryInfo> infos)
 		{
 			foreach (var info in infos)
 			{
@@ -235,8 +228,7 @@ namespace Thinktecture.IO.Adapters
 			}
 		}
 
-		[NotNull, ItemNotNull]
-		private static IEnumerable<IFileInfo> Convert([NotNull, ItemNotNull] IEnumerable<FileInfo> infos)
+		private static IEnumerable<IFileInfo> Convert(IEnumerable<FileInfo> infos)
 		{
 			foreach (var info in infos)
 			{
@@ -244,8 +236,7 @@ namespace Thinktecture.IO.Adapters
 			}
 		}
 
-		[NotNull, ItemNotNull]
-		private static IEnumerable<IFileSystemInfo> Convert([NotNull, ItemNotNull] IEnumerable<FileSystemInfo> infos)
+		private static IEnumerable<IFileSystemInfo> Convert(IEnumerable<FileSystemInfo> infos)
 		{
 			foreach (var info in infos)
 			{

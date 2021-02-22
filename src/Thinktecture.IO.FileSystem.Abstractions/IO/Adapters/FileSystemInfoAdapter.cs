@@ -1,10 +1,6 @@
 using System;
 using System.IO;
-using JetBrains.Annotations;
-
-#if NET46 || NETSTANDARD2_0
 using System.Runtime.Serialization;
-#endif
 
 namespace Thinktecture.IO.Adapters
 {
@@ -17,7 +13,7 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="FileSystemInfoAdapter" /> class.
 		/// </summary>
 		/// <param name="info">File system info to be used by the adapter.</param>
-		public FileSystemInfoAdapter([NotNull] FileSystemInfo info)
+		public FileSystemInfoAdapter(FileSystemInfo info)
 			: base(info)
 		{
 		}
@@ -95,12 +91,10 @@ namespace Thinktecture.IO.Adapters
 			Implementation.Refresh();
 		}
 
-#if NET46 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public void GetObjectData(SerializationInfo info, StreamingContext context)
 		{
 			Implementation.GetObjectData(info, context);
 		}
-#endif
 	}
 }

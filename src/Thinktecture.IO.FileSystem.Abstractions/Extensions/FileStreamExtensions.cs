@@ -1,5 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using JetBrains.Annotations;
 using Thinktecture.IO;
 using Thinktecture.IO.Adapters;
 
@@ -16,8 +16,8 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="file">File stream to convert.</param>
 		/// <returns>Converted file stream.</returns>
-		[CanBeNull]
-		public static IFileStream ToInterface([CanBeNull] this FileStream file)
+      [return:NotNullIfNotNull("file")]
+      public static IFileStream? ToInterface(this FileStream? file)
 		{
 			return (file == null) ? null : new FileStreamAdapter(file);
 		}
@@ -27,10 +27,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="abstraction">Instance of <see cref="IFileStream"/> to convert.</param>
 		/// <returns>An instance of <see cref="FileStream"/>.</returns>
-		[CanBeNull]
-		public static FileStream ToImplementation([CanBeNull] this IFileStream abstraction)
+      [return:NotNullIfNotNull("abstraction")]
+      public static FileStream? ToImplementation(this IFileStream? abstraction)
 		{
-			return ((IAbstraction<FileStream>)abstraction)?.UnsafeConvert();
+			return ((IAbstraction<FileStream>?)abstraction)?.UnsafeConvert();
 		}
 	}
 }

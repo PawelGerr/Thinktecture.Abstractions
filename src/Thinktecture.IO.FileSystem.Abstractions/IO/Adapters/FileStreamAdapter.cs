@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel;
 using System.IO;
-using JetBrains.Annotations;
 using Microsoft.Win32.SafeHandles;
 using Thinktecture.Win32.SafeHandles;
 
@@ -15,7 +14,6 @@ namespace Thinktecture.IO.Adapters
 	public class FileStreamAdapter : StreamAdapter, IFileStream
 	{
 		/// <inheritdoc />
-		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new FileStream UnsafeConvert()
 		{
@@ -25,7 +23,6 @@ namespace Thinktecture.IO.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new FileStream Implementation { get; }
 
 		/// <inheritdoc />
@@ -45,7 +42,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error, such as a disk error, occurred.-or-The stream has been closed. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
-		public FileStreamAdapter([NotNull] ISafeFileHandle handle, FileAccess access)
+		public FileStreamAdapter(ISafeFileHandle handle, FileAccess access)
 			: this(handle.ToImplementation(), access)
 		{
 		}
@@ -58,7 +55,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error, such as a disk error, occurred.-or-The stream has been closed. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
-		public FileStreamAdapter([NotNull] SafeFileHandle handle, FileAccess access)
+		public FileStreamAdapter(SafeFileHandle handle, FileAccess access)
 			: this(new FileStream(handle, access))
 		{
 		}
@@ -72,7 +69,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.IO.IOException">An I/O error, such as a disk error, occurred.-or-The stream has been closed.  </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
-		public FileStreamAdapter([NotNull] ISafeFileHandle handle, FileAccess access, int bufferSize)
+		public FileStreamAdapter(ISafeFileHandle handle, FileAccess access, int bufferSize)
 			: this(handle.ToImplementation(), access, bufferSize)
 		{
 		}
@@ -86,7 +83,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.IO.IOException">An I/O error, such as a disk error, occurred.-or-The stream has been closed.  </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
-		public FileStreamAdapter([NotNull] SafeFileHandle handle, FileAccess access, int bufferSize)
+		public FileStreamAdapter(SafeFileHandle handle, FileAccess access, int bufferSize)
 			: this(new FileStream(handle, access, bufferSize))
 		{
 		}
@@ -101,7 +98,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.IO.IOException">An I/O error, such as a disk error, occurred.-or-The stream has been closed.  </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
-		public FileStreamAdapter([NotNull] ISafeFileHandle handle, FileAccess access, int bufferSize, bool isAsync)
+		public FileStreamAdapter(ISafeFileHandle handle, FileAccess access, int bufferSize, bool isAsync)
 			: this(handle.ToImplementation(), access, bufferSize, isAsync)
 		{
 		}
@@ -116,7 +113,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.IO.IOException">An I/O error, such as a disk error, occurred.-or-The stream has been closed.  </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified file handle, such as when <paramref name="access" /> is Write or ReadWrite and the file handle is set for read-only access. </exception>
-		public FileStreamAdapter([NotNull] SafeFileHandle handle, FileAccess access, int bufferSize, bool isAsync)
+		public FileStreamAdapter(SafeFileHandle handle, FileAccess access, int bufferSize, bool isAsync)
 			: this(new FileStream(handle, access, bufferSize, isAsync))
 		{
 		}
@@ -137,7 +134,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="mode" /> contains an invalid value. </exception>
-		public FileStreamAdapter([NotNull] string path, FileMode mode)
+		public FileStreamAdapter(string path, FileMode mode)
 			: this(new FileStream(path, mode))
 		{
 		}
@@ -160,7 +157,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="mode" /> contains an invalid value. </exception>
-		public FileStreamAdapter([NotNull] string path, FileMode mode, FileAccess access)
+		public FileStreamAdapter(string path, FileMode mode, FileAccess access)
 			: this(new FileStream(path, mode, access))
 		{
 		}
@@ -184,7 +181,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.ArgumentOutOfRangeException">
 		/// <paramref name="mode" /> contains an invalid value. </exception>
-		public FileStreamAdapter([NotNull] string path, FileMode mode, FileAccess access, FileShare share)
+		public FileStreamAdapter(string path, FileMode mode, FileAccess access, FileShare share)
 			: this(new FileStream(path, mode, access, share))
 		{
 		}
@@ -209,7 +206,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified <paramref name="path" />, such as when <paramref name="access" /> is Write or ReadWrite and the file or directory is set for read-only access. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
-		public FileStreamAdapter([NotNull] string path, FileMode mode, FileAccess access, FileShare share, int bufferSize)
+		public FileStreamAdapter(string path, FileMode mode, FileAccess access, FileShare share, int bufferSize)
 			: this(new FileStream(path, mode, access, share, bufferSize))
 		{
 		}
@@ -235,7 +232,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified <paramref name="path" />, such as when <paramref name="access" /> is Write or ReadWrite and the file or directory is set for read-only access. -or-<see cref="F:System.IO.FileOptions.Encrypted" /> is specified for <paramref name="options" />, but file encryption is not supported on the current platform.</exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
-		public FileStreamAdapter([NotNull] string path, FileMode mode, FileAccess access, FileShare share, int bufferSize, FileOptions options)
+		public FileStreamAdapter(string path, FileMode mode, FileAccess access, FileShare share, int bufferSize, FileOptions options)
 			: this(new FileStream(path, mode, access, share, bufferSize, options))
 		{
 		}
@@ -262,7 +259,7 @@ namespace Thinktecture.IO.Adapters
 		/// <exception cref="T:System.UnauthorizedAccessException">The <paramref name="access" /> requested is not permitted by the operating system for the specified <paramref name="path" />, such as when <paramref name="access" /> is Write or ReadWrite and the file or directory is set for read-only access. </exception>
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
 		// ReSharper disable once InconsistentNaming
-		public FileStreamAdapter([NotNull] string path, FileMode mode, FileAccess access, FileShare share, int bufferSize, bool useAsync)
+		public FileStreamAdapter(string path, FileMode mode, FileAccess access, FileShare share, int bufferSize, bool useAsync)
 			: this(new FileStream(path, mode, access, share, bufferSize, useAsync))
 		{
 		}
@@ -271,7 +268,7 @@ namespace Thinktecture.IO.Adapters
 		/// Initializes a new instance of the <see cref="FileStream" /> class.
 		/// </summary>
 		/// <param name="fileStream">File stream to be used by the adapter.</param>
-		public FileStreamAdapter([NotNull] FileStream fileStream)
+		public FileStreamAdapter(FileStream fileStream)
 			: base(fileStream)
 		{
 			Implementation = fileStream ?? throw new ArgumentNullException(nameof(fileStream));
@@ -283,7 +280,6 @@ namespace Thinktecture.IO.Adapters
 			Implementation.Flush(flushToDisk);
 		}
 
-#if NET46 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public void Lock(long position, long length)
 		{
@@ -295,6 +291,5 @@ namespace Thinktecture.IO.Adapters
 		{
 			Implementation.Unlock(position, length);
 		}
-#endif
 	}
 }

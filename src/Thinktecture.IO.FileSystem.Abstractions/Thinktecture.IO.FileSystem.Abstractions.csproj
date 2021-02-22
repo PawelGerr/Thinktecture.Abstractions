@@ -1,25 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <Description>Provides interfaces for types in System.IO.FileSystem: Directory, File, FileSystemInfo, DirectoryInfo, FileInfo, FileStream, SafeFileHandle.</Description>
-    <TargetFrameworks>netstandard1.3;netstandard2.0;netcoreapp2.2;net46</TargetFrameworks>
-    <PackageTags>io;filesystem;abstraction</PackageTags>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  </PropertyGroup>
+   <PropertyGroup>
+      <Description>Provides interfaces for types in System.IO.FileSystem: Directory, File, FileSystemInfo, DirectoryInfo, FileInfo, FileStream, SafeFileHandle.</Description>
+      <PackageTags>io;filesystem;abstraction</PackageTags>
+   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-  </ItemGroup>
+   <ItemGroup>
+      <ProjectReference Include="..\Thinktecture.IO.Abstractions\Thinktecture.IO.Abstractions.csproj" />
+      <ProjectReference Include="..\Thinktecture.Text.Encoding.Abstractions\Thinktecture.Text.Encoding.Abstractions.csproj" />
+      <ProjectReference Include="..\Thinktecture.Runtime.Handles.Abstractions\Thinktecture.Runtime.Handles.Abstractions.csproj" />
+   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Thinktecture.IO.Abstractions\Thinktecture.IO.Abstractions.csproj" />
-    <ProjectReference Include="..\Thinktecture.Text.Encoding.Abstractions\Thinktecture.Text.Encoding.Abstractions.csproj" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' OR '$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.2' ">
-    <ProjectReference Include="..\Thinktecture.Runtime.Handles.Abstractions\Thinktecture.Runtime.Handles.Abstractions.csproj" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
-    <ProjectReference Include="..\Thinktecture.Runtime.Handles.Abstractions\Thinktecture.Runtime.Handles.Abstractions.csproj" />
-  </ItemGroup>
 </Project>

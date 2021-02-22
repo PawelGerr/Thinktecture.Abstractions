@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using JetBrains.Annotations;
-
 namespace Thinktecture.IO
 {
 	/// <summary>
@@ -26,8 +24,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
-		IDirectoryInfo CreateDirectory([NotNull] string path);
+		IDirectoryInfo CreateDirectory(string path);
 
 		/// <summary>Deletes an empty directory from a specified path.</summary>
 		/// <param name="path">The name of the empty directory to remove. This directory must be writable and empty. </param>
@@ -43,7 +40,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void Delete([NotNull] string path);
+		void Delete(string path);
 
 		/// <summary>Deletes the specified directory and, if indicated, any subdirectories and files in the directory. </summary>
 		/// <param name="path">The name of the directory to remove. </param>
@@ -60,7 +57,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void Delete([NotNull] string path, bool recursive);
+		void Delete(string path, bool recursive);
 
 		/// <summary>Returns an enumerable collection of directory names in a specified path.</summary>
 		/// <returns>An enumerable collection of the full names (including paths) for the directories in the directory specified by <paramref name="path" />.</returns>
@@ -76,8 +73,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or combined exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
-		[NotNull]
-		IEnumerable<string> EnumerateDirectories([NotNull] string path);
+		IEnumerable<string> EnumerateDirectories(string path);
 
 		/// <summary>Returns an enumerable collection of directory names that match a search pattern in a specified path.</summary>
 		/// <returns>An enumerable collection of the full names (including paths) for the directories in the directory specified by <paramref name="path" /> and that match the specified search pattern.</returns>
@@ -94,8 +90,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or combined exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
-		[NotNull]
-		IEnumerable<string> EnumerateDirectories([NotNull] string path, [NotNull] string searchPattern);
+		IEnumerable<string> EnumerateDirectories(string path, string searchPattern);
 
 		/// <summary>Returns an enumerable collection of directory names that match a search pattern in a specified path, and optionally searches subdirectories.</summary>
 		/// <returns>An enumerable collection of the full names (including paths) for the directories in the directory specified by <paramref name="path" /> and that match the specified search pattern and option.</returns>
@@ -115,8 +110,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or combined exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
-		[NotNull]
-		IEnumerable<string> EnumerateDirectories([NotNull] string path, [NotNull] string searchPattern, SearchOption searchOption);
+		IEnumerable<string> EnumerateDirectories(string path, string searchPattern, SearchOption searchOption);
 
 		/// <summary>Returns an enumerable collection of file names in a specified path.</summary>
 		/// <returns>An enumerable collection of the full names (including paths) for the files in the directory specified by <paramref name="path" />.</returns>
@@ -132,8 +126,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or combined exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
-		[NotNull]
-		IEnumerable<string> EnumerateFiles([NotNull] string path);
+		IEnumerable<string> EnumerateFiles(string path);
 
 		/// <summary>Returns an enumerable collection of file names that match a search pattern in a specified path.</summary>
 		/// <returns>An enumerable collection of the full names (including paths) for the files in the directory specified by <paramref name="path" /> and that match the specified search pattern.</returns>
@@ -150,8 +143,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or combined exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
-		[NotNull]
-		IEnumerable<string> EnumerateFiles([NotNull] string path, [NotNull] string searchPattern);
+		IEnumerable<string> EnumerateFiles(string path, string searchPattern);
 
 		/// <summary>Returns an enumerable collection of file names that match a search pattern in a specified path, and optionally searches subdirectories.</summary>
 		/// <returns>An enumerable collection of the full names (including paths) for the files in the directory specified by <paramref name="path" /> and that match the specified search pattern and option.</returns>
@@ -171,8 +163,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or combined exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
-		[NotNull]
-		IEnumerable<string> EnumerateFiles([NotNull] string path, [NotNull] string searchPattern, SearchOption searchOption);
+		IEnumerable<string> EnumerateFiles(string path, string searchPattern, SearchOption searchOption);
 
 		/// <summary>Returns an enumerable collection of file names and directory names in a specified path. </summary>
 		/// <returns>An enumerable collection of file-system entries in the directory specified by <paramref name="path" />.</returns>
@@ -188,8 +179,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or combined exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
-		[NotNull]
-		IEnumerable<string> EnumerateFileSystemEntries([NotNull] string path);
+		IEnumerable<string> EnumerateFileSystemEntries(string path);
 
 		/// <summary>Returns an enumerable collection of file names and directory names that  match a search pattern in a specified path.</summary>
 		/// <returns>An enumerable collection of file-system entries in the directory specified by <paramref name="path" /> and that match the specified search pattern.</returns>
@@ -206,8 +196,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or combined exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
-		[NotNull]
-		IEnumerable<string> EnumerateFileSystemEntries([NotNull] string path, [NotNull] string searchPattern);
+		IEnumerable<string> EnumerateFileSystemEntries(string path, string searchPattern);
 
 		/// <summary>Returns an enumerable collection of file names and directory names that match a search pattern in a specified path, and optionally searches subdirectories.</summary>
 		/// <returns>An enumerable collection of file-system entries in the directory specified by <paramref name="path" /> and that match the specified search pattern and option.</returns>
@@ -227,10 +216,8 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or combined exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
-		[NotNull]
-		IEnumerable<string> EnumerateFileSystemEntries([NotNull] string path, [NotNull] string searchPattern, SearchOption searchOption);
+		IEnumerable<string> EnumerateFileSystemEntries(string path, string searchPattern, SearchOption searchOption);
 
-#if NET46 || NETSTANDARD2_0
 		/// <summary>Retrieves the names of the logical drives on this computer in the form "&lt;drive letter&gt;:\".</summary>
 		/// <returns>The logical drives on this computer.</returns>
 		/// <exception cref="T:System.IO.IOException">An I/O error occured (for example, a disk error). </exception>
@@ -240,7 +227,6 @@ namespace Thinktecture.IO
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
 		/// </PermissionSet>
 		string[] GetLogicalDrives();
-#endif
 
 		/// <summary>Determines whether the given path refers to an existing directory on disk.</summary>
 		/// <returns>true if <paramref name="path" /> refers to an existing directory; false if the directory does not exist or an error occurs when trying to determine if the specified file exists.</returns>
@@ -248,7 +234,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		bool Exists([NotNull] string path);
+		bool Exists(string path);
 
 		/// <summary>Gets the creation date and time of a directory.</summary>
 		/// <returns>A structure that is set to the creation date and time for the specified directory. This value is expressed in local time.</returns>
@@ -262,7 +248,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime GetCreationTime([NotNull] string path);
+		DateTime GetCreationTime(string path);
 
 		/// <summary>Gets the creation date and time, in Coordinated Universal Time (UTC) format, of a directory.</summary>
 		/// <returns>A structure that is set to the creation date and time for the specified directory. This value is expressed in UTC time.</returns>
@@ -276,7 +262,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime GetCreationTimeUtc([NotNull] string path);
+		DateTime GetCreationTimeUtc(string path);
 
 		/// <summary>Gets the current working directory of the application.</summary>
 		/// <returns>A string that contains the path of the current working directory, and does not end with a backslash (\).</returns>
@@ -285,7 +271,6 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
 		string GetCurrentDirectory();
 
 		/// <summary>Returns the names of subdirectories (including their paths) in the specified directory.</summary>
@@ -303,8 +288,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
-		string[] GetDirectories([NotNull] string path);
+		string[] GetDirectories(string path);
 
 		/// <summary>Returns the names of subdirectories (including their paths) that match the specified search pattern in the specified directory.</summary>
 		/// <returns>An array of the full names (including paths) of the subdirectories that match the search pattern in the specified directory, or an empty array if no directories are found.</returns>
@@ -322,8 +306,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
-		string[] GetDirectories([NotNull] string path, [NotNull] string searchPattern);
+		string[] GetDirectories(string path, string searchPattern);
 
 		/// <summary>Returns the names of the subdirectories (including their paths) that match the specified search pattern in the specified directory, and optionally searches subdirectories.</summary>
 		/// <returns>An array of the full names (including paths) of the subdirectories that match the specified criteria, or an empty array if no directories are found.</returns>
@@ -341,8 +324,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.IOException">
 		/// <paramref name="path" /> is a file name. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
-		[NotNull]
-		string[] GetDirectories([NotNull] string path, [NotNull] string searchPattern, SearchOption searchOption);
+		string[] GetDirectories(string path, string searchPattern, SearchOption searchOption);
 
 		/// <summary>Returns the volume information, root information, or both for the specified path.</summary>
 		/// <returns>A string that contains the volume information, root information, or both for the specified path.</returns>
@@ -356,16 +338,13 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
-		string GetDirectoryRoot([NotNull] string path);
+		string GetDirectoryRoot(string path);
 
-#if NETCOREAPP2_2
 		/// <summary>Returns the names of files (including their paths) in the specified directory.</summary>
 		/// <returns>An array of the full names (including paths) for the files in the specified directory, or an empty array if no files are found.</returns>
 		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive.</param>
 		/// <param name="searchPattern"></param>
 		/// <param name="enumerationOptions">Enumeration options.</param>
-		[NotNull]
 		string[] GetFiles(string path, string searchPattern, EnumerationOptions enumerationOptions);
 
 		/// <summary>Returns the names of subdirectories (including their paths) that match the specified search pattern in the specified directory.</summary>
@@ -373,7 +352,6 @@ namespace Thinktecture.IO
 		/// <param name="searchPattern">The search string to match against the names of subdirectories in <paramref name="path" />. This parameter can contain a combination of valid literal and wildcard characters (see Remarks), but doesn't support regular expressions. </param>
 		/// <param name="enumerationOptions">Enumeration options.</param>
 		/// <returns>An array of the full names (including paths) of the subdirectories that match the search pattern in the specified directory, or an empty array if no directories are found.</returns>
-		[NotNull]
 		string[] GetDirectories(string path, string searchPattern, EnumerationOptions enumerationOptions);
 
 		/// <summary>Returns an array of file names and directory names that that match a search pattern in a specified path.</summary>
@@ -381,7 +359,6 @@ namespace Thinktecture.IO
 		/// <param name="searchPattern">The search string to match against the names of file and directories in <paramref name="path" />.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions.</param>
 		/// <param name="enumerationOptions">Enumeration options.</param>
 		/// <returns>An array of file names and directory names that match the specified search criteria, or an empty array if no files or directories are found.</returns>
-		[NotNull]
 		string[] GetFileSystemEntries(string path, string searchPattern, EnumerationOptions enumerationOptions);
 
 		/// <summary>Returns an enumerable collection of directory names that match a search pattern in a specified path.</summary>
@@ -389,25 +366,21 @@ namespace Thinktecture.IO
 		/// <param name="searchPattern">The search string to match against the names of directories in <paramref name="path" />.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions.</param>
 		/// <param name="enumerationOptions">Enumeration options.</param>
 		/// <returns>An enumerable collection of the full names (including paths) for the directories in the directory specified by <paramref name="path" /> and that match the specified search pattern.</returns>
-		[NotNull]
-		IEnumerable<string> EnumerateDirectories([NotNull] string path, string searchPattern, [NotNull] EnumerationOptions enumerationOptions);
+		IEnumerable<string> EnumerateDirectories(string path, string searchPattern, EnumerationOptions enumerationOptions);
 
 		/// <summary>Returns an enumerable collection of file names that match a search pattern in a specified path, and optionally searches subdirectories.</summary>
 		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive.</param>
 		/// <param name="searchPattern">The search string to match against the names of files in <paramref name="path" />.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions.  </param>
 		/// <param name="enumerationOptions">Enumeration options.</param>
 		/// <returns>An enumerable collection of the full names (including paths) for the files in the directory specified by <paramref name="path" /> and that match the specified search pattern and option.</returns>
-		[NotNull]
-		IEnumerable<string> EnumerateFiles([NotNull] string path, [NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+		IEnumerable<string> EnumerateFiles(string path, string searchPattern, EnumerationOptions enumerationOptions);
 
 		/// <summary>Returns an enumerable collection of file names and directory names that  match a search pattern in a specified path.</summary>
 		/// <param name="path">The relative or absolute path to the directory to search. This string is not case-sensitive. </param>
 		/// <param name="searchPattern">The search string to match against the names of file-system entries in <paramref name="path" />.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions.  </param>
 		/// <param name="enumerationOptions">Enumeration options.</param>
 		/// <returns>An enumerable collection of file-system entries in the directory specified by <paramref name="path" /> and that match the specified search pattern.</returns>
-		[NotNull]
-		IEnumerable<string> EnumerateFileSystemEntries([NotNull] string path, [NotNull] string searchPattern, EnumerationOptions enumerationOptions);
-#endif
+		IEnumerable<string> EnumerateFileSystemEntries(string path, string searchPattern, EnumerationOptions enumerationOptions);
 
 		/// <summary>Returns the names of files (including their paths) in the specified directory.</summary>
 		/// <returns>An array of the full names (including paths) for the files in the specified directory, or an empty array if no files are found.</returns>
@@ -443,8 +416,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
-		string[] GetFiles([NotNull] string path, string searchPattern);
+		string[] GetFiles(string path, string searchPattern);
 
 		/// <summary>Returns the names of files (including their paths) that match the specified search pattern in the specified directory, using a value to determine whether to search subdirectories.</summary>
 		/// <returns>An array of the full names (including paths) for the files in the specified directory that match the specified search pattern and option, or an empty array if no files are found.</returns>
@@ -462,8 +434,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters. </exception>
 		/// <exception cref="T:System.IO.IOException">
 		/// <paramref name="path" /> is a file name.-or-A network error has occurred. </exception>
-		[NotNull]
-		string[] GetFiles([NotNull] string path, [NotNull] string searchPattern, SearchOption searchOption);
+		string[] GetFiles(string path, string searchPattern, SearchOption searchOption);
 
 		/// <summary>Returns the names of all files and subdirectories in a specified path.</summary>
 		/// <returns>An array of the names of files and subdirectories in the specified directory, or an empty array if no files or subdirectories are found.</returns>
@@ -480,8 +451,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
-		string[] GetFileSystemEntries([NotNull] string path);
+		string[] GetFileSystemEntries(string path);
 
 		/// <summary>Returns an array of file names and directory names that that match a search pattern in a specified path.</summary>
 		/// <returns>An array of file names and directory names that match the specified search criteria, or an empty array if no files or directories are found.</returns>
@@ -499,8 +469,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
-		string[] GetFileSystemEntries([NotNull] string path, [NotNull] string searchPattern);
+		string[] GetFileSystemEntries(string path, string searchPattern);
 
 		/// <summary>Returns an array of all the file names and directory names that match a search pattern in a specified path, and optionally searches subdirectories.</summary>
 		/// <returns>An array of file the file names and directory names that match the specified search criteria, or an empty array if no files or directories are found.</returns>
@@ -520,8 +489,7 @@ namespace Thinktecture.IO
 		/// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or combined exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters and file names must be less than 260 characters.</exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission.</exception>
-		[NotNull]
-		string[] GetFileSystemEntries([NotNull] string path, [NotNull] string searchPattern, SearchOption searchOption);
+		string[] GetFileSystemEntries(string path, string searchPattern, SearchOption searchOption);
 
 		/// <summary>Returns the date and time the specified file or directory was last accessed.</summary>
 		/// <returns>A structure that is set to the date and time the specified file or directory was last accessed. This value is expressed in local time.</returns>
@@ -536,7 +504,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime GetLastAccessTime([NotNull] string path);
+		DateTime GetLastAccessTime(string path);
 
 		/// <summary>Returns the date and time, in Coordinated Universal Time (UTC) format, that the specified file or directory was last accessed.</summary>
 		/// <returns>A structure that is set to the date and time the specified file or directory was last accessed. This value is expressed in UTC time.</returns>
@@ -551,7 +519,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime GetLastAccessTimeUtc([NotNull] string path);
+		DateTime GetLastAccessTimeUtc(string path);
 
 		/// <summary>Returns the date and time the specified file or directory was last written to.</summary>
 		/// <returns>A structure that is set to the date and time the specified file or directory was last written to. This value is expressed in local time.</returns>
@@ -565,7 +533,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime GetLastWriteTime([NotNull] string path);
+		DateTime GetLastWriteTime(string path);
 
 		/// <summary>Returns the date and time, in Coordinated Universal Time (UTC) format, that the specified file or directory was last written to.</summary>
 		/// <returns>A structure that is set to the date and time the specified file or directory was last written to. This value is expressed in UTC time.</returns>
@@ -579,7 +547,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		DateTime GetLastWriteTimeUtc([NotNull] string path);
+		DateTime GetLastWriteTimeUtc(string path);
 
 		/// <summary>Retrieves the parent directory of the specified path, including both absolute and relative paths.</summary>
 		/// <returns>The parent directory, or null if <paramref name="path" /> is the root directory, including the root of a UNC server or share name.</returns>
@@ -595,8 +563,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[CanBeNull]
-		IDirectoryInfo GetParent([NotNull] string path);
+		IDirectoryInfo? GetParent(string path);
 
 		/// <summary>Moves a file or a directory and its contents to a new location.</summary>
 		/// <param name="sourceDirName">The path of the file or directory to move. </param>
@@ -612,7 +579,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void Move([NotNull] string sourceDirName, [NotNull] string destDirName);
+		void Move(string sourceDirName, string destDirName);
 
 		/// <summary>Sets the creation date and time for the specified file or directory.</summary>
 		/// <param name="path">The file or directory for which to set the creation date and time information. </param>
@@ -630,7 +597,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetCreationTime([NotNull] string path, DateTime creationTime);
+		void SetCreationTime(string path, DateTime creationTime);
 
 		/// <summary>Sets the creation date and time, in Coordinated Universal Time (UTC) format, for the specified file or directory.</summary>
 		/// <param name="path">The file or directory for which to set the creation date and time information. </param>
@@ -648,7 +615,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetCreationTimeUtc([NotNull] string path, DateTime creationTimeUtc);
+		void SetCreationTimeUtc(string path, DateTime creationTimeUtc);
 
 		/// <summary>Sets the application's current working directory to the specified directory.</summary>
 		/// <param name="path">The path to which the current working directory is set. </param>
@@ -664,7 +631,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
 		/// </PermissionSet>
-		void SetCurrentDirectory([NotNull] string path);
+		void SetCurrentDirectory(string path);
 
 		/// <summary>Sets the date and time the specified file or directory was last accessed.</summary>
 		/// <param name="path">The file or directory for which to set the access date and time information. </param>
@@ -682,7 +649,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetLastAccessTime([NotNull] string path, DateTime lastAccessTime);
+		void SetLastAccessTime(string path, DateTime lastAccessTime);
 
 		/// <summary>Sets the date and time, in Coordinated Universal Time (UTC) format, that the specified file or directory was last accessed.</summary>
 		/// <param name="path">The file or directory for which to set the access date and time information. </param>
@@ -700,7 +667,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetLastAccessTimeUtc([NotNull] string path, DateTime lastAccessTimeUtc);
+		void SetLastAccessTimeUtc(string path, DateTime lastAccessTimeUtc);
 
 		/// <summary>Sets the date and time a directory was last written to.</summary>
 		/// <param name="path">The path of the directory. </param>
@@ -718,7 +685,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetLastWriteTime([NotNull] string path, DateTime lastWriteTime);
+		void SetLastWriteTime(string path, DateTime lastWriteTime);
 
 		/// <summary>Sets the date and time, in Coordinated Universal Time (UTC) format, that a directory was last written to.</summary>
 		/// <param name="path">The path of the directory. </param>
@@ -736,6 +703,6 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void SetLastWriteTimeUtc([NotNull] string path, DateTime lastWriteTimeUtc);
+		void SetLastWriteTimeUtc(string path, DateTime lastWriteTimeUtc);
 	}
 }

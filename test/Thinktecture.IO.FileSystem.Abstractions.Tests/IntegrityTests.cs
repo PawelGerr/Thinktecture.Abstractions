@@ -2,7 +2,7 @@
 using System.IO.Enumeration;
 using Xunit;
 
-namespace Thinktecture
+namespace Thinktecture.Abstractions.Tests
 {
 	public class IntegrityTests : IntegrityTestsBase
 	{
@@ -12,6 +12,8 @@ namespace Thinktecture
 			ExcludedTypes.Add(typeof(EnumerationOptions));
 			ExcludedTypes.Add(typeof(FileSystemEntry)); // struct
 			ExcludedTypes.Add(typeof(FileSystemEnumerable<>)); // IEnumerable
+			ExcludedTypes.Add(typeof(FileSystemEnumerable<>.FindPredicate));
+			ExcludedTypes.Add(typeof(FileSystemEnumerable<>.FindTransform));
 			ExcludedTypes.Add(typeof(FileSystemEnumerator<>)); // Enumerator
 
 			ExcludeMembers(typeof(FileStream), nameof(FileStream.BeginRead));

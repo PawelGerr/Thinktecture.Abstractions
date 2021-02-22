@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using JetBrains.Annotations;
-
 namespace Thinktecture.IO
 {
 	/// <summary>
@@ -16,8 +14,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[CanBeNull]
-		IDirectoryInfo Parent { get; }
+		IDirectoryInfo? Parent { get; }
 
 		/// <summary>Gets the root portion of the directory.</summary>
 		/// <returns>An object that represents the root of the directory.</returns>
@@ -25,7 +22,6 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
 		IDirectoryInfo Root { get; }
 
 		/// <summary>Creates a directory.</summary>
@@ -51,8 +47,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
-		IDirectoryInfo CreateSubdirectory([NotNull] string path);
+		IDirectoryInfo CreateSubdirectory(string path);
 
 		/// <summary>Deletes this instance of a <see cref="T:System.IO.DirectoryInfo" />, specifying whether to delete subdirectories and files.</summary>
 		/// <param name="recursive">true to delete this directory, its subdirectories, and all files; otherwise, false. </param>
@@ -69,7 +64,6 @@ namespace Thinktecture.IO
 		/// <returns>An enumerable collection of directories in the current directory.</returns>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the <see cref="T:System.IO.DirectoryInfo" /> object is invalid (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		[NotNull]
 		IEnumerable<IDirectoryInfo> EnumerateDirectories();
 
 		/// <summary>Returns an enumerable collection of directory information that matches a specified search pattern.</summary>
@@ -79,8 +73,7 @@ namespace Thinktecture.IO
 		/// <paramref name="searchPattern" /> is null. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the <see cref="T:System.IO.DirectoryInfo" /> object is invalid (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		[NotNull]
-		IEnumerable<IDirectoryInfo> EnumerateDirectories([NotNull] string searchPattern);
+		IEnumerable<IDirectoryInfo> EnumerateDirectories(string searchPattern);
 
 		/// <summary>Returns an enumerable collection of directory information that matches a specified search pattern and search subdirectory option. </summary>
 		/// <returns>An enumerable collection of directories that matches <paramref name="searchPattern" /> and <paramref name="searchOption" />.</returns>
@@ -92,14 +85,12 @@ namespace Thinktecture.IO
 		/// <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the <see cref="T:System.IO.DirectoryInfo" /> object is invalid (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		[NotNull]
-		IEnumerable<IDirectoryInfo> EnumerateDirectories([NotNull] string searchPattern, SearchOption searchOption);
+		IEnumerable<IDirectoryInfo> EnumerateDirectories(string searchPattern, SearchOption searchOption);
 
 		/// <summary>Returns an enumerable collection of file information in the current directory.</summary>
 		/// <returns>An enumerable collection of the files in the current directory.</returns>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the <see cref="T:System.IO.DirectoryInfo" /> object is invalid (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		[NotNull]
 		IEnumerable<IFileInfo> EnumerateFiles();
 
 		/// <summary>Returns an enumerable collection of file information that matches a search pattern.</summary>
@@ -109,8 +100,7 @@ namespace Thinktecture.IO
 		/// <paramref name="searchPattern" /> is null. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the <see cref="T:System.IO.DirectoryInfo" /> object is invalid, (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		[NotNull]
-		IEnumerable<IFileInfo> EnumerateFiles([NotNull] string searchPattern);
+		IEnumerable<IFileInfo> EnumerateFiles(string searchPattern);
 
 		/// <summary>Returns an enumerable collection of file information that matches a specified search pattern and search subdirectory option.</summary>
 		/// <returns>An enumerable collection of files that matches <paramref name="searchPattern" /> and <paramref name="searchOption" />.</returns>
@@ -122,14 +112,12 @@ namespace Thinktecture.IO
 		/// <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the <see cref="T:System.IO.DirectoryInfo" /> object is invalid (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		[NotNull]
-		IEnumerable<IFileInfo> EnumerateFiles([NotNull] string searchPattern, SearchOption searchOption);
+		IEnumerable<IFileInfo> EnumerateFiles(string searchPattern, SearchOption searchOption);
 
 		/// <summary>Returns an enumerable collection of file system information in the current directory.</summary>
 		/// <returns>An enumerable collection of file system information in the current directory. </returns>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the <see cref="T:System.IO.DirectoryInfo" /> object is invalid (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		[NotNull]
 		IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos();
 
 		/// <summary>Returns an enumerable collection of file system information that matches a specified search pattern.</summary>
@@ -139,8 +127,7 @@ namespace Thinktecture.IO
 		/// <paramref name="searchPattern" /> is null. </exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the <see cref="T:System.IO.DirectoryInfo" /> object is invalid (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		[NotNull]
-		IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos([NotNull] string searchPattern);
+		IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos(string searchPattern);
 
 		/// <summary>Returns an enumerable collection of file system information that matches a specified search pattern and search subdirectory option.</summary>
 		/// <returns>An enumerable collection of file system information objects that matches <paramref name="searchPattern" /> and <paramref name="searchOption" />.</returns>
@@ -152,8 +139,7 @@ namespace Thinktecture.IO
 		/// <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the <see cref="T:System.IO.DirectoryInfo" /> object is invalid (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		[NotNull]
-		IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos([NotNull] string searchPattern, SearchOption searchOption);
+		IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos(string searchPattern, SearchOption searchOption);
 
 		/// <summary>Returns the subdirectories of the current directory.</summary>
 		/// <returns>An array of <see cref="T:System.IO.DirectoryInfo" /> objects.</returns>
@@ -163,7 +149,6 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
 		IDirectoryInfo[] GetDirectories();
 
 		/// <summary>Returns an array of directories in the current <see cref="T:System.IO.DirectoryInfo" /> matching the given search criteria.</summary>
@@ -178,8 +163,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
-		IDirectoryInfo[] GetDirectories([NotNull] string searchPattern);
+		IDirectoryInfo[] GetDirectories(string searchPattern);
 
 		/// <summary>Returns an array of directories in the current <see cref="T:System.IO.DirectoryInfo" /> matching the given search criteria and using a value to determine whether to search subdirectories.</summary>
 		/// <returns>An array of type DirectoryInfo matching <paramref name="searchPattern" />.</returns>
@@ -193,52 +177,43 @@ namespace Thinktecture.IO
 		/// <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the DirectoryInfo object is invalid (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
-		[NotNull]
-		IDirectoryInfo[] GetDirectories([NotNull] string searchPattern, SearchOption searchOption);
+		IDirectoryInfo[] GetDirectories(string searchPattern, SearchOption searchOption);
 
-#if NETCOREAPP2_2
 		/// <summary>Returns a file list from the current directory matching the given search pattern and using a value to determine whether to search subdirectories.</summary>
 		/// <returns>An array of type <see cref="T:System.IO.FileInfo" />.</returns>
 		/// <param name="searchPattern">The search string to match against the names of files.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
 		/// <param name="enumerationOptions">Enumeration options.</param>
-		[NotNull]
-		IFileInfo[] GetFiles([NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+		IFileInfo[] GetFiles(string searchPattern, EnumerationOptions enumerationOptions);
 
 		/// <summary>Retrieves an array of <see cref="T:System.IO.FileSystemInfo" /> objects that represent the files and subdirectories matching the specified search criteria.</summary>
 		/// <returns>An array of file system entries that match the search criteria.</returns>
 		/// <param name="searchPattern">The search string to match against the names of directories and filesa.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
 		/// <param name="enumerationOptions">Enumeration options.</param>
-		[NotNull]
-		IFileSystemInfo[] GetFileSystemInfos([NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+		IFileSystemInfo[] GetFileSystemInfos(string searchPattern, EnumerationOptions enumerationOptions);
 
 		/// <summary>Returns an array of directories in the current <see cref="T:System.IO.DirectoryInfo" /> matching the given search criteria and using a value to determine whether to search subdirectories.</summary>
 		/// <returns>An array of type DirectoryInfo matching <paramref name="searchPattern" />.</returns>
 		/// <param name="searchPattern">The search string to match against the names of directories.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
 		/// <param name="enumerationOptions">Enumeration options.</param>
-		[NotNull]
-		IDirectoryInfo[] GetDirectories([NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+		IDirectoryInfo[] GetDirectories(string searchPattern, EnumerationOptions enumerationOptions);
 
 		/// <summary>Returns an enumerable collection of directory information that matches a specified search pattern and search subdirectory option. </summary>
 		/// <param name="searchPattern">The search string to match against the names of directories.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
 		/// <param name="enumerationOptions">Enumeration options.</param>
 		/// <returns>An enumerable collection of directories that matches <paramref name="searchPattern" />.</returns>
-		[NotNull]
-		IEnumerable<IDirectoryInfo> EnumerateDirectories([NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+		IEnumerable<IDirectoryInfo> EnumerateDirectories(string searchPattern, EnumerationOptions enumerationOptions);
 
 		/// <summary>Returns an enumerable collection of file information that matches a search pattern.</summary>
 		/// <param name="searchPattern">The search string to match against the names of files.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
 		/// <param name="enumerationOptions">Enumeration options.</param>
 		/// <returns>An enumerable collection of files that matches <paramref name="searchPattern" />.</returns>
-		[NotNull]
-		IEnumerable<IFileInfo> EnumerateFiles([NotNull] string searchPattern, EnumerationOptions enumerationOptions);
+		IEnumerable<IFileInfo> EnumerateFiles(string searchPattern, EnumerationOptions enumerationOptions);
 
 		/// <summary>Returns an enumerable collection of file system information that matches a specified search pattern.</summary>
 		/// <param name="searchPattern">The search string to match against the names of directories.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
 		/// <param name="enumerationOptions">Enumeration options.</param>
 		/// <returns>An enumerable collection of file system information objects that matches <paramref name="searchPattern" />.</returns>
-		[NotNull]
-		IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos([NotNull] string searchPattern, EnumerationOptions enumerationOptions);
-#endif
+		IEnumerable<IFileSystemInfo> EnumerateFileSystemInfos(string searchPattern, EnumerationOptions enumerationOptions);
 
 		/// <summary>Returns a file list from the current directory.</summary>
 		/// <returns>An array of type <see cref="T:System.IO.FileInfo" />.</returns>
@@ -246,7 +221,6 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
 		IFileInfo[] GetFiles();
 
 		/// <summary>Returns a file list from the current directory matching the given search pattern.</summary>
@@ -261,8 +235,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
-		IFileInfo[] GetFiles([NotNull] string searchPattern);
+		IFileInfo[] GetFiles(string searchPattern);
 
 		/// <summary>Returns a file list from the current directory matching the given search pattern and using a value to determine whether to search subdirectories.</summary>
 		/// <returns>An array of type <see cref="T:System.IO.FileInfo" />.</returns>
@@ -276,8 +249,7 @@ namespace Thinktecture.IO
 		/// <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The path is invalid (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		[NotNull]
-		IFileInfo[] GetFiles([NotNull] string searchPattern, SearchOption searchOption);
+		IFileInfo[] GetFiles(string searchPattern, SearchOption searchOption);
 
 		/// <summary>Returns an array of strongly typed <see cref="T:System.IO.FileSystemInfo" /> entries representing all the files and subdirectories in a directory.</summary>
 		/// <returns>An array of strongly typed <see cref="T:System.IO.FileSystemInfo" /> entries.</returns>
@@ -285,7 +257,6 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
 		IFileSystemInfo[] GetFileSystemInfos();
 
 		/// <summary>Retrieves an array of strongly typed <see cref="T:System.IO.FileSystemInfo" /> objects representing the files and subdirectories that match the specified search criteria.</summary>
@@ -300,8 +271,7 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
-		IFileSystemInfo[] GetFileSystemInfos([NotNull] string searchPattern);
+		IFileSystemInfo[] GetFileSystemInfos(string searchPattern);
 
 		/// <summary>Retrieves an array of <see cref="T:System.IO.FileSystemInfo" /> objects that represent the files and subdirectories matching the specified search criteria.</summary>
 		/// <returns>An array of file system entries that match the search criteria.</returns>
@@ -315,8 +285,7 @@ namespace Thinktecture.IO
 		/// <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
 		/// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
 		/// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-		[NotNull]
-		IFileSystemInfo[] GetFileSystemInfos([NotNull] string searchPattern, SearchOption searchOption);
+		IFileSystemInfo[] GetFileSystemInfos(string searchPattern, SearchOption searchOption);
 
 		/// <summary>Moves a <see cref="T:System.IO.DirectoryInfo" /> instance and its contents to a new path.</summary>
 		/// <param name="destDirName">The name and path to which to move this directory. The destination cannot be another disk volume or a directory with the identical name. It can be an existing directory to which you want to add this directory as a subdirectory. </param>
@@ -330,6 +299,6 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		void MoveTo([NotNull] string destDirName);
+		void MoveTo(string destDirName);
 	}
 }

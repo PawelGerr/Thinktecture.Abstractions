@@ -83,13 +83,11 @@ namespace Thinktecture.IO.Adapters
 			return Directory.EnumerateFileSystemEntries(path, searchPattern, searchOption);
 		}
 
-#if NET46 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public string[] GetLogicalDrives()
 		{
 			return Directory.GetLogicalDrives();
 		}
-#endif
 
 		/// <inheritdoc />
 		public bool Exists(string path)
@@ -139,7 +137,6 @@ namespace Thinktecture.IO.Adapters
 			return Directory.GetDirectoryRoot(path);
 		}
 
-#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public string[] GetFiles(string path, string searchPattern, EnumerationOptions enumerationOptions)
 		{
@@ -175,7 +172,6 @@ namespace Thinktecture.IO.Adapters
 		{
 			return Directory.EnumerateFileSystemEntries(path, searchPattern, enumerationOptions);
 		}
-#endif
 
 		/// <inheritdoc />
 		public string[] GetFiles(string path)
@@ -238,7 +234,7 @@ namespace Thinktecture.IO.Adapters
 		}
 
 		/// <inheritdoc />
-		public IDirectoryInfo GetParent(string path)
+		public IDirectoryInfo? GetParent(string path)
 		{
 			return Directory.GetParent(path).ToInterface();
 		}

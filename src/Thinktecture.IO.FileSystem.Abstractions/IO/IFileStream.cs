@@ -1,5 +1,4 @@
 using System.IO;
-using JetBrains.Annotations;
 using Thinktecture.Win32.SafeHandles;
 
 namespace Thinktecture.IO
@@ -19,19 +18,16 @@ namespace Thinktecture.IO
 		/// <PermissionSet>
 		///   <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
 		/// </PermissionSet>
-		[NotNull]
 		string Name { get; }
 
 		/// <summary>Gets a <see cref="T:Microsoft.Win32.SafeHandles.SafeFileHandle" /> object that represents the operating system file handle for the file that the current <see cref="T:System.IO.FileStream" /> object encapsulates.</summary>
 		/// <returns>An object that represents the operating system file handle for the file that the current <see cref="T:System.IO.FileStream" /> object encapsulates.</returns>
-		[NotNull]
 		ISafeFileHandle SafeFileHandle { get; }
 
 		/// <summary>Clears buffers for this stream and causes any buffered data to be written to the file, and also clears all intermediate file buffers.</summary>
 		/// <param name="flushToDisk">true to flush all intermediate file buffers; otherwise, false. </param>
 		void Flush(bool flushToDisk);
 
-#if NET46 || NETSTANDARD2_0
 		/// <summary>Prevents other processes from reading from or writing to the <see cref="T:System.IO.FileStream" />.</summary>
 		/// <param name="position">The beginning of the range to lock. The value of this parameter must be equal to or greater than zero (0). </param>
 		/// <param name="length">The range to be locked. </param>
@@ -49,6 +45,5 @@ namespace Thinktecture.IO
 		/// <paramref name="position" /> or <paramref name="length" /> is negative. </exception>
 		/// <filterpriority>2</filterpriority>
 		void Unlock(long position, long length);
-#endif
 	}
 }
