@@ -2,7 +2,6 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.IO.Pipes;
-using JetBrains.Annotations;
 using Microsoft.Win32.SafeHandles;
 
 namespace Thinktecture.IO.Pipes.Adapters
@@ -13,7 +12,6 @@ namespace Thinktecture.IO.Pipes.Adapters
 	public class AnonymousPipeClientStreamAdapter : PipeStreamAdapter, IAnonymousPipeClientStream
 	{
 		/// <inheritdoc />
-		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new AnonymousPipeClientStream UnsafeConvert()
 		{
@@ -23,14 +21,13 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new AnonymousPipeClientStream Implementation { get; }
 
 		/// <summary>Initializes a new instance of the <see cref="AnonymousPipeClientStreamAdapter" /> class with the specified string representation of the pipe handle.</summary>
 		/// <param name="pipeHandleAsString">A string that represents the pipe handle.</param>
 		/// <exception cref="IOException">
 		/// <paramref name="pipeHandleAsString" /> is not a valid pipe handle.</exception>
-		public AnonymousPipeClientStreamAdapter([NotNull] string pipeHandleAsString)
+		public AnonymousPipeClientStreamAdapter(string pipeHandleAsString)
 			: this(new AnonymousPipeClientStream(pipeHandleAsString))
 		{
 		}
@@ -44,7 +41,7 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <paramref name="pipeHandleAsString" /> is <see langword="null" />.</exception>
 		/// <exception cref="NotSupportedException">
 		/// <paramref name="direction" /> is set to <see cref="PipeDirection.InOut" />.</exception>
-		public AnonymousPipeClientStreamAdapter(PipeDirection direction, [NotNull] string pipeHandleAsString)
+		public AnonymousPipeClientStreamAdapter(PipeDirection direction, string pipeHandleAsString)
 			: this(new AnonymousPipeClientStream(direction, pipeHandleAsString))
 		{
 		}
@@ -59,14 +56,14 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <exception cref="NotSupportedException">
 		/// <paramref name="direction" /> is set to <see cref="PipeDirection.InOut" />.</exception>
 		/// <exception cref="IOException">An I/O error, such as a disk error, has occurred.-or-The stream has been closed.</exception>
-		public AnonymousPipeClientStreamAdapter(PipeDirection direction, [NotNull] SafePipeHandle safePipeHandle)
+		public AnonymousPipeClientStreamAdapter(PipeDirection direction, SafePipeHandle safePipeHandle)
 			: this(new AnonymousPipeClientStream(direction, safePipeHandle))
 		{
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="AnonymousPipeClientStream" />.</summary>
 		/// <param name="stream">Stream to use by the adapter.</param>
-		public AnonymousPipeClientStreamAdapter([NotNull] AnonymousPipeClientStream stream)
+		public AnonymousPipeClientStreamAdapter(AnonymousPipeClientStream stream)
 			: base(stream)
 		{
 			Implementation = stream ?? throw new ArgumentNullException(nameof(stream));

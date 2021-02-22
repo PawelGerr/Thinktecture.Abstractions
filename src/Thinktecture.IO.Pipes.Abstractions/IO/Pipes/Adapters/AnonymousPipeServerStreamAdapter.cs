@@ -2,7 +2,6 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.IO.Pipes;
-using JetBrains.Annotations;
 using Microsoft.Win32.SafeHandles;
 
 namespace Thinktecture.IO.Pipes.Adapters
@@ -13,7 +12,6 @@ namespace Thinktecture.IO.Pipes.Adapters
 	public class AnonymousPipeServerStreamAdapter : PipeStreamAdapter, IAnonymousPipeServerStream
 	{
 		/// <inheritdoc />
-		[NotNull]
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public new AnonymousPipeServerStream UnsafeConvert()
 		{
@@ -23,7 +21,6 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <summary>
 		/// Implementation used by the adapter.
 		/// </summary>
-		[NotNull]
 		protected new AnonymousPipeServerStream Implementation { get; }
 
 		/// <inheritdoc />
@@ -97,14 +94,14 @@ namespace Thinktecture.IO.Pipes.Adapters
 		/// <exception cref="T:System.NotSupportedException">
 		/// <paramref name="direction" /> is set to <see cref="F:System.IO.Pipes.PipeDirection.InOut" />.</exception>
 		/// <exception cref="T:System.IO.IOException">An I/O error, such as a disk error, has occurred.-or-The stream has been closed.</exception>
-		public AnonymousPipeServerStreamAdapter(PipeDirection direction, [NotNull] SafePipeHandle serverSafePipeHandle, [NotNull] SafePipeHandle clientSafePipeHandle)
+		public AnonymousPipeServerStreamAdapter(PipeDirection direction, SafePipeHandle serverSafePipeHandle, SafePipeHandle clientSafePipeHandle)
 			: this(new AnonymousPipeServerStream(direction, serverSafePipeHandle, clientSafePipeHandle))
 		{
 		}
 
 		/// <summary>Initializes a new instance of the <see cref="AnonymousPipeServerStreamAdapter" /> class with the specified pipe direction.</summary>
 		/// <param name="stream">Stream to use by the adapter.</param>
-		public AnonymousPipeServerStreamAdapter([NotNull] AnonymousPipeServerStream stream)
+		public AnonymousPipeServerStreamAdapter(AnonymousPipeServerStream stream)
 			: base(stream)
 		{
 			Implementation = stream ?? throw new ArgumentNullException(nameof(stream));

@@ -4,7 +4,7 @@ using System.IO.Pipes;
 using Microsoft.Win32.SafeHandles;
 using Xunit;
 
-namespace Thinktecture
+namespace Thinktecture.Abstractions.Tests
 {
 	public class IntegrityTests : IntegrityTestsBase
 	{
@@ -17,7 +17,9 @@ namespace Thinktecture
 			ExcludeTypeCallback = type => type.FullName == "System.IO.Pipes.PipeAccessRule"
 													|| type.FullName == "System.IO.Pipes.PipeAuditRule"
 													|| type.FullName == "System.IO.Pipes.PipesAclExtensions"
-													|| type.FullName == "System.IO.Pipes.PipeSecurity";
+													|| type.FullName == "System.IO.Pipes.PipeSecurity"
+													|| type.FullName == "System.IO.Pipes.AnonymousPipeServerStreamAcl"
+													|| type.FullName == "System.IO.Pipes.NamedPipeServerStreamAcl";
 
 			ExcludeMembers<PipeStream>(nameof(PipeStream.BeginRead));
 			ExcludeMembers<PipeStream>(nameof(PipeStream.EndRead));

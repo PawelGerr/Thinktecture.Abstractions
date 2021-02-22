@@ -1,5 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
 using System.IO.Pipes;
-using JetBrains.Annotations;
 using Thinktecture.IO.Pipes;
 using Thinktecture.IO.Pipes.Adapters;
 
@@ -16,10 +16,10 @@ namespace Thinktecture
 		/// </summary>
 		/// <param name="stream"><see cref="AnonymousPipeServerStream"/> to convert.</param>
 		/// <returns>An instance of <see cref="IAnonymousPipeServerStream"/>.</returns>
-		[CanBeNull]
-		public static IAnonymousPipeServerStream ToInterface([CanBeNull] this AnonymousPipeServerStream stream)
+      [return:NotNullIfNotNull("stream")]
+      public static IAnonymousPipeServerStream? ToInterface(this AnonymousPipeServerStream? stream)
 		{
-			return (stream == null) ? null : new AnonymousPipeServerStreamAdapter(stream);
+			return stream == null ? null : new AnonymousPipeServerStreamAdapter(stream);
 		}
 	}
 }
