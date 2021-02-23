@@ -1,6 +1,4 @@
 using System;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Adapters
@@ -34,7 +32,7 @@ namespace Thinktecture.Adapters
 		/// -or-
 		/// <paramref name="uri"/> is not a valid URI.
 		/// </exception>
-		public UriBuilderAdapter([NotNull] string uri)
+		public UriBuilderAdapter(string uri)
 			: this(new UriBuilder(uri))
 		{
 		}
@@ -45,7 +43,7 @@ namespace Thinktecture.Adapters
 		/// </summary>
 		/// <param name="scheme">An Internet access protocol.</param>
 		/// <param name="hostName">A DNS-style domain name or IP address.</param>
-		public UriBuilderAdapter([NotNull] string scheme, [NotNull] string hostName)
+		public UriBuilderAdapter(string scheme, string hostName)
 			: this(new UriBuilder(scheme, hostName))
 		{
 		}
@@ -57,7 +55,7 @@ namespace Thinktecture.Adapters
 		/// <param name="hostName">A DNS-style domain name or IP address.</param>
 		/// <param name="portNumber">An IP port number for the service.</param>
 		/// <exception cref="ArgumentOutOfRangeException"><paramref name="portNumber"/> is less than -1 or greater than 65,535.</exception>
-		public UriBuilderAdapter([NotNull] string scheme, [NotNull] string hostName, int portNumber)
+		public UriBuilderAdapter(string scheme, string hostName, int portNumber)
 			: this(new UriBuilder(scheme, hostName, portNumber))
 		{
 		}
@@ -70,7 +68,7 @@ namespace Thinktecture.Adapters
 		/// <param name="portNumber">An IP port number for the service.</param>
 		/// <param name="pathValue">The path to the Internet resource.</param>
 		/// <exception cref="ArgumentOutOfRangeException"><paramref name="portNumber"/> is less than -1 or greater than 65,535.</exception>
-		public UriBuilderAdapter([NotNull] string scheme, [NotNull] string hostName, int portNumber, [NotNull] string pathValue)
+		public UriBuilderAdapter(string scheme, string hostName, int portNumber, string pathValue)
 			: this(new UriBuilder(scheme, hostName, portNumber, pathValue))
 		{
 		}
@@ -85,7 +83,7 @@ namespace Thinktecture.Adapters
 		/// <param name="extraValue">A query string or fragment identifier.</param>
 		/// <exception cref="ArgumentException"><paramref name="extraValue"/> is neither <c>null</c> nor <see cref="String.Empty"/>, nor does a valid fragment identifier begin with a number sign (#), nor a valid query string begin with a question mark (?).</exception>
 		/// <exception cref="ArgumentOutOfRangeException"><paramref name="portNumber"/> is less than -1 or greater than 65,535.</exception>
-		public UriBuilderAdapter([NotNull] string scheme, [NotNull] string hostName, int portNumber, [NotNull] string path, [CanBeNull] string extraValue)
+		public UriBuilderAdapter(string scheme, string hostName, int portNumber, string path, string? extraValue)
 			: this(new UriBuilder(scheme, hostName, portNumber, path, extraValue))
 		{
 		}
@@ -95,7 +93,7 @@ namespace Thinktecture.Adapters
 		/// </summary>
 		/// <param name="uri">An instance of the Uri class.</param>
 		/// <exception cref="ArgumentNullException"><paramref name="uri"/> is null.</exception>
-		public UriBuilderAdapter([NotNull] Uri uri)
+		public UriBuilderAdapter(Uri uri)
 			: this(new UriBuilder(uri))
 		{
 		}
@@ -104,7 +102,7 @@ namespace Thinktecture.Adapters
 		/// Initializes a new instance of the <see cref="UriBuilderAdapter"/> class.
 		/// </summary>
 		/// <param name="builder"></param>
-		public UriBuilderAdapter([NotNull] UriBuilder builder)
+		public UriBuilderAdapter(UriBuilder builder)
 			: base(builder)
 		{
 		}

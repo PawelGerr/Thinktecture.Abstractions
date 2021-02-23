@@ -1,7 +1,5 @@
 using System;
 using System.Diagnostics;
-using JetBrains.Annotations;
-
 // ReSharper disable AssignNullToNotNullAttribute
 
 namespace Thinktecture.Diagnostics.Adapters
@@ -34,7 +32,6 @@ namespace Thinktecture.Diagnostics.Adapters
 		/// Initializes a new Stopwatch instance, sets the elapsed time property to zero, and starts measuring elapsed time.
 		/// </summary>
 		/// <returns>A <see cref="IStopwatch"/> that has just begun measuring elapsed time.</returns>
-		[NotNull]
 		public static IStopwatch StartNew()
 		{
 			return Stopwatch.StartNew().ToInterface();
@@ -64,7 +61,7 @@ namespace Thinktecture.Diagnostics.Adapters
 		/// 	Initializes a new instance of the <see cref="StopwatchAdapter"/> class.
 		/// </summary>
 		/// <param name="stopwatch">Stopwatch to be use by the adapter.</param>
-		public StopwatchAdapter([NotNull] Stopwatch stopwatch)
+		public StopwatchAdapter(Stopwatch stopwatch)
 			: base(stopwatch)
 		{
 		}

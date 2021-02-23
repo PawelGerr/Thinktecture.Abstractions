@@ -12,7 +12,6 @@ namespace Thinktecture.Adapters
 		/// <inheritdoc />
 		public bool IsLittleEndian => BitConverter.IsLittleEndian;
 
-#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public int SingleToInt32Bits(float value)
 		{
@@ -144,7 +143,6 @@ namespace Thinktecture.Adapters
 		{
 			return BitConverter.ToUInt64(value);
 		}
-#endif
 
 		/// <inheritdoc />
 		public long DoubleToInt64Bits(double value)

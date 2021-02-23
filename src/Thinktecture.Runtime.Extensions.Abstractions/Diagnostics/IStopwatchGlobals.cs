@@ -1,6 +1,4 @@
 ﻿using System.Diagnostics;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Diagnostics
 {
 	/// <summary>
@@ -28,7 +26,6 @@ namespace Thinktecture.Diagnostics
 		/// Initializes a new Stopwatch instance, sets the elapsed time property to zero, and starts measuring elapsed time.
 		/// </summary>
 		/// <returns>A <see cref="IStopwatch"/> that has just begun measuring elapsed time.</returns>
-		[NotNull]
 		IStopwatch StartNew();
 	}
 }

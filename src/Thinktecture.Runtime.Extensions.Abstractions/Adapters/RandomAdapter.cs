@@ -1,6 +1,4 @@
 using System;
-using JetBrains.Annotations;
-
 namespace Thinktecture.Adapters
 {
 	/// <summary>
@@ -25,7 +23,7 @@ namespace Thinktecture.Adapters
 		/// Initializes a new instance of the <see cref="RandomAdapter" /> class.
 		/// </summary>
 		/// <param name="random">Random to be used by the adapter.</param>
-		public RandomAdapter([NotNull] Random random)
+		public RandomAdapter(Random random)
 			: base(random)
 		{
 		}
@@ -48,13 +46,11 @@ namespace Thinktecture.Adapters
 			return Implementation.Next(minValue, maxValue);
 		}
 
-#if NETCOREAPP2_2
 		/// <inheritdoc />
 		public void NextBytes(Span<byte> buffer)
 		{
 			Implementation.NextBytes(buffer);
 		}
-#endif
 
 		/// <inheritdoc />
 		public void NextBytes(byte[] buffer)

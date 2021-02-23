@@ -1,8 +1,5 @@
 using System.Net;
-#if NET45 || NET462 || NETSTANDARD2_0
 using System.IO;
-
-#endif
 
 // ReSharper disable AssignNullToNotNullAttribute
 namespace Thinktecture.Net.Adapters
@@ -13,19 +10,19 @@ namespace Thinktecture.Net.Adapters
 	public class WebUtilityAdapter : IWebUtility
 	{
 		/// <inheritdoc />
-		public string HtmlEncode(string value)
+		public string? HtmlEncode(string? value)
 		{
 			return WebUtility.HtmlEncode(value);
 		}
 
 		/// <inheritdoc />
-		public string HtmlDecode(string value)
+		public string? HtmlDecode(string? value)
 		{
 			return WebUtility.HtmlDecode(value);
 		}
 
 		/// <inheritdoc />
-		public string UrlEncode(string value)
+		public string? UrlEncode(string? value)
 		{
 			return WebUtility.UrlEncode(value);
 		}
@@ -37,7 +34,7 @@ namespace Thinktecture.Net.Adapters
 		}
 
 		/// <inheritdoc />
-		public string UrlDecode(string encodedValue)
+		public string? UrlDecode(string? encodedValue)
 		{
 			return WebUtility.UrlDecode(encodedValue);
 		}
@@ -48,7 +45,6 @@ namespace Thinktecture.Net.Adapters
 			return WebUtility.UrlDecodeToBytes(encodedValue, offset, count);
 		}
 
-#if NET45 || NET462 || NETSTANDARD2_0
 		/// <inheritdoc />
 		public void HtmlEncode(string value, TextWriter output)
 		{
@@ -60,6 +56,5 @@ namespace Thinktecture.Net.Adapters
 		{
 			WebUtility.HtmlDecode(value, output);
 		}
-#endif
 	}
 }
