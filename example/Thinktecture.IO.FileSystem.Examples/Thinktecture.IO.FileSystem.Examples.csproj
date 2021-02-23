@@ -1,16 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <OutputType>Exe</OutputType>
-  </PropertyGroup>
+   <PropertyGroup>
+      <TargetFramework>net5.0</TargetFramework>
+      <OutputType>Exe</OutputType>
+      <NoWarn>$(NoWarn);CS1591;</NoWarn>
+   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2018.3.0" />
-  </ItemGroup>
+   <ItemGroup>
+      <ProjectReference Include="..\..\src\Thinktecture.IO.FileSystem.Abstractions\Thinktecture.IO.FileSystem.Abstractions.csproj" />
+   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Thinktecture.IO.FileSystem.Abstractions\Thinktecture.IO.FileSystem.Abstractions.csproj" />
-  </ItemGroup>
+   <ItemGroup>
+     <None Remove="ReadingFiles\Example.txt" />
+     <Content Include="ReadingFiles\Example.txt">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </Content>
+   </ItemGroup>
 
 </Project>
