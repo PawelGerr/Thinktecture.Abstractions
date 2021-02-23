@@ -119,8 +119,3 @@ Provides interfaces for types in `System.Runtime.Handles`: `SafeHandle`, `SafeWa
 Provides interfaces for types in `System.Runtime`: `StringBuilder`, `EventArgs`, statics of `Guid` (like `Guid.NewGuid()`), statics of `DateTime` (like `DateTime.Now`).
 
 **Nuget**: `Install-Package Thinktecture.Runtime.Abstractions`
-
-### Thinktecture.Threading.Tasks.Abstractions
-Provides interfaces for types in `System.Threading.Tasks`: `Task`, `Task<T>`, `TaskFactory`, `TaskFactory<T>`, statics of `Task` (like `Task.WhenAll()`).
-
-**Nuget**: `Install-Package Thinktecture.Threading.Tasks.Abstractions`
